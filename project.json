@@ -84,6 +84,14 @@
           "codeCoverage": true
         }
       }
+    },
+    "deploy": {
+      "executor": "angular-cli-ghpages:deploy",
+      "options": {
+        "baseHref": "/typing-san/",
+        "name": "Tangent Chang",
+        "email": "andy23512@gmail.com"
+      }
     }
   }
 }
