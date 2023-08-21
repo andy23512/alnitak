@@ -5,7 +5,8 @@
   "scripts": {
     "start": "nx serve",
     "build": "nx build",
-    "test": "nx test"
+    "test": "nx test",
+    "deploy": "nx deploy --no-silent"
   },
   "private": true,
   "dependencies": {
