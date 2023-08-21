@@ -25,4 +25,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           npm install
-          npm run ng -- deploy --no-silent
+          npm run nx -- deploy --no-silent
