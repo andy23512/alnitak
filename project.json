@@ -16,18 +16,11 @@
         "outputPath": "dist/typing-san",
         "index": "src/index.html",
         "main": "src/main.ts",
-        "polyfills": [
-          "zone.js"
-        ],
+        "polyfills": ["zone.js"],
         "tsConfig": "tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": [
-          "src/favicon.ico",
-          "src/assets"
-        ],
-        "styles": [
-          "src/styles.scss"
-        ],
+        "assets": ["src/favicon.ico", "src/assets"],
+        "styles": ["src/styles.scss"],
         "scripts": []
       },
       "configurations": {
@@ -56,9 +49,7 @@
         }
       },
       "defaultConfiguration": "production",
-      "outputs": [
-        "{options.outputPath}"
-      ]
+      "outputs": ["{options.outputPath}"]
     },
     "serve": {
       "executor": "@angular-devkit/build-angular:dev-server",
@@ -81,25 +72,18 @@
     "test": {
       "executor": "@angular-devkit/build-angular:karma",
       "options": {
-        "polyfills": [
-          "zone.js",
-          "zone.js/testing"
-        ],
+        "polyfills": ["zone.js", "zone.js/testing"],
         "tsConfig": "tsconfig.spec.json",
         "inlineStyleLanguage": "scss",
-        "assets": [
-          "src/favicon.ico",
-          "src/assets"
-        ],
-        "styles": [
-          "src/styles.scss"
-        ],
+        "assets": ["src/favicon.ico", "src/assets"],
+        "styles": ["src/styles.scss"],
         "scripts": []
       }
     },
     "deploy": {
       "executor": "angular-cli-ghpages:deploy",
       "options": {
+        "buildTarget": "typing-san:build:production",
         "baseHref": "/typing-san/",
         "name": "Tangent Chang",
         "email": "andy23512@gmail.com"
