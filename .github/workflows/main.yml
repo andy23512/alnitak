@@ -24,5 +24,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          npm install
-          npm run ng -- deploy --no-silent
+          yarn
+          yarn nx deploy --no-silent
