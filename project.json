@@ -87,7 +87,7 @@
         "baseHref": "/typing-san/",
         "name": "Tangent Chang",
         "email": "andy23512@gmail.com",
-        "noNojekyll": true
+        "dir": "dist/typing-san"
       }
     }
   }
