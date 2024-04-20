@@ -86,7 +86,8 @@
         "buildTarget": "typing-san:build:production",
         "baseHref": "/typing-san/",
         "name": "Tangent Chang",
-        "email": "andy23512@gmail.com"
+        "email": "andy23512@gmail.com",
+        "noNojekyll": true
       }
     }
   }
