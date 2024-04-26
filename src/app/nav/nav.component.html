@@ -7,12 +7,19 @@
     [mode]="(isHandset$ | async) ? 'over' : 'side'"
     [opened]="(isHandset$ | async) === false"
   >
-    <mat-toolbar>Menu</mat-toolbar>
-    <mat-nav-list>
-      <a mat-list-item href="#">Link 1</a>
-      <a mat-list-item href="#">Link 2</a>
-      <a mat-list-item href="#">Link 3</a>
-    </mat-nav-list>
+    @for (topic of topics; track topic.id) {
+      <mat-toolbar>{{ topic.name }}</mat-toolbar>
+      <mat-nav-list dense>
+        @for (lesson of topic.lessons; track lesson.id) {
+          <a
+            mat-list-item
+            [routerLink]="'/lesson/' + lesson.id"
+            routerLinkActive="router-link-active"
+            >{{ lesson.name }}</a
+          >
+        }
+      </mat-nav-list>
+    }
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary">

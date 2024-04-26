@@ -6,8 +6,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
 import { provideAnimations } from '@angular/platform-browser/animations';
-import { provideRouter } from '@angular/router';
+import { provideRouter, withComponentInputBinding } from '@angular/router';
 import { AppComponent } from './app/app.component';
+import { APP_ROUTES } from './app/app.routes';
 
 bootstrapApplication(AppComponent, {
   providers: [
@@ -17,9 +18,9 @@ bootstrapApplication(AppComponent, {
       MatButtonModule,
       MatSidenavModule,
       MatIconModule,
-      MatListModule
+      MatListModule,
     ),
-    provideRouter([]),
+    provideRouter(APP_ROUTES, withComponentInputBinding()),
     provideAnimations(),
   ],
 }).catch((err) => console.error(err));
