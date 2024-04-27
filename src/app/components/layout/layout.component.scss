@@ -1,0 +1,36 @@
+:host {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 10px;
+  grid-template-areas: 'left-little left-ring left-middle left-index . . right-index right-middle right-ring right-little' '. left-ring-mid left-middle-mid . . . . right-middle-mid right-ring-mid .' '. . . . left-thumb-tip right-thumb-tip . . . .' '. . . . left-thumb-mid right-thumb-mid . . . .' '. . . . left-thumb-end right-thumb-end . . . .';
+}
+
+.little,
+.index {
+  transform: translateY(50%) translateY(5px);
+}
+
+.left.thumb-tip {
+  transform: translateX(-25%)
+}
+
+.right.thumb-tip {
+  transform: translateX(25%)
+}
+
+.left.thumb-mid {
+  transform: translateX(-50%)
+}
+
+.right.thumb-mid {
+  transform: translateX(50%)
+}
+
+.left.thumb-end {
+  transform: translateX(-75%)
+}
+
+.right.thumb-end {
+  transform: translateX(75%)
+}

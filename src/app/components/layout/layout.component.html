@@ -1,0 +1,8 @@
+@for (side of sides; track side) {
+  @for (switch of switches; track switch) {
+    <app-switch
+      [ngClass]="[side, switch | camelToKebab]"
+      style.grid-area="{{ side }}-{{ switch | camelToKebab }}"
+    ></app-switch>
+  }
+}
