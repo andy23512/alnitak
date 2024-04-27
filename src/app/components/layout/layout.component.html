@@ -3,6 +3,7 @@
     <app-switch
       [ngClass]="[side, switch | camelToKebab]"
       style.grid-area="{{ side }}-{{ switch | camelToKebab }}"
+      [direction]="side === 'left' ? 'cw' : 'ccw'"
     ></app-switch>
   }
 }

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 function sin(deg: number) {
   return Math.sin((deg / 180) * Math.PI);
@@ -19,17 +19,26 @@ const r2 = 167;
   standalone: true,
 })
 export class SwitchComponent {
+  readonly direction = input.required<'cw' | 'ccw'>();
+
   public sectorPath(d: number) {
-    return [
-      `M ${o * cos(d) + r1 * cos(d - 45)} ${o * sin(d) + r1 * sin(d - 45)}` +
-        `A ${r1} ${r1} 0 0 1 ${o * cos(d) + r1 * cos(d + 45)}
-  ${o * sin(d) + r1 * sin(d + 45)}` +
-        `L ${o * cos(d) + r2 * cos(d + 45)} ${o * sin(d) + r2 * sin(d + 45)}` +
-        `A ${r2} ${r2} 0 0 0 ${o * cos(d) + r2 * cos(d - 45)} ${
-          o * sin(d) + r2 * sin(d - 45)
-        }`,
-      `Z`,
-    ].join(' ');
+    const cx = o * cos(d);
+    const cy = o * sin(d);
+    if (this.direction() === 'cw') {
+      return [
+        `M ${cx + r1 * cos(d - 45)} ${cy + r1 * sin(d - 45)}`,
+        `A ${r1} ${r1} 0 0 1 ${cx + r1 * cos(d + 45)} ${cy + r1 * sin(d + 45)}`,
+        `L ${cx + r2 * cos(d + 45)} ${cy + r2 * sin(d + 45)}`,
+        `A ${r2} ${r2} 0 0 0 ${cx + r2 * cos(d - 45)} ${cy + r2 * sin(d - 45)}`,
+      ].join(' ');
+    } else {
+      return [
+        `M ${cx + r1 * cos(d + 45)} ${cy + r1 * sin(d + 45)}`,
+        `A ${r1} ${r1} 0 0 0 ${cx + r1 * cos(d - 45)} ${cy + r1 * sin(d - 45)}`,
+        `L ${cx + r2 * cos(d - 45)} ${cy + r2 * sin(d - 45)}`,
+        `A ${r2} ${r2} 0 0 1 ${cx + r2 * cos(d + 45)} ${cy + r2 * sin(d + 45)}`,
+      ].join(' ');
+    }
   }
 
   public textX(d: number) {
