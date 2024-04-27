@@ -1,4 +1,11 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  input,
+} from '@angular/core';
+import { DirectionMap } from 'src/app/models/layout.models';
+import { SwitchSectorComponent } from '../switch-sector/switch-sector.component';
 
 function sin(deg: number) {
   return Math.sin((deg / 180) * Math.PI);
@@ -16,35 +23,21 @@ const r2 = 167;
   templateUrl: './switch.component.html',
   styleUrls: ['./switch.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [SwitchSectorComponent],
   standalone: true,
 })
 export class SwitchComponent {
-  readonly direction = input.required<'cw' | 'ccw'>();
-
-  public sectorPath(d: number) {
-    const cx = o * cos(d);
-    const cy = o * sin(d);
-    if (this.direction() === 'cw') {
-      return [
-        `M ${cx + r1 * cos(d - 45)} ${cy + r1 * sin(d - 45)}`,
-        `A ${r1} ${r1} 0 0 1 ${cx + r1 * cos(d + 45)} ${cy + r1 * sin(d + 45)}`,
-        `L ${cx + r2 * cos(d + 45)} ${cy + r2 * sin(d + 45)}`,
-        `A ${r2} ${r2} 0 0 0 ${cx + r2 * cos(d - 45)} ${cy + r2 * sin(d - 45)}`,
-      ].join(' ');
-    } else {
-      return [
-        `M ${cx + r1 * cos(d + 45)} ${cy + r1 * sin(d + 45)}`,
-        `A ${r1} ${r1} 0 0 0 ${cx + r1 * cos(d - 45)} ${cy + r1 * sin(d - 45)}`,
-        `L ${cx + r2 * cos(d - 45)} ${cy + r2 * sin(d - 45)}`,
-        `A ${r2} ${r2} 0 0 1 ${cx + r2 * cos(d + 45)} ${cy + r2 * sin(d + 45)}`,
-      ].join(' ');
-    }
-  }
-
-  public textX(d: number) {
-    return ((r1 + r2) / 2) * cos(d);
-  }
-  public textY(d: number) {
-    return ((r1 + r2) / 2) * sin(d);
-  }
+  readonly rotationDirection = input.required<'cw' | 'ccw'>();
+  readonly rotation = input<number>(0);
+  readonly positionCodeMap = input.required<DirectionMap<number>>();
+  sectors: { direction: 'n' | 'e' | 's' | 'w'; degree: number }[] = [
+    { direction: 'n', degree: 270 },
+    { direction: 'e', degree: 0 },
+    { direction: 's', degree: 90 },
+    { direction: 'w', degree: 180 },
+  ];
+  readonly keyLabelMap = input<Record<number, string>>({});
+  readonly r = computed(() => {
+    return (this.rotationDirection() === 'cw' ? 1 : -1) * this.rotation();
+  });
 }

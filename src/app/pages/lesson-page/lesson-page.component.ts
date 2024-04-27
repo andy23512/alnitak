@@ -61,11 +61,28 @@ export class LessonPageComponent {
         if (!actionCode) {
           return null;
         }
-        return getCharacterDevicePositionCodesFromActionCode(
-          actionCode,
-          deviceLayout,
-        );
+        return {
+          c,
+          positionCodes: getCharacterDevicePositionCodesFromActionCode(
+            actionCode,
+            deviceLayout,
+          ),
+        };
       })
       .filter(Boolean);
+  });
+  readonly keyLabelMap = computed(() => {
+    const lessonCharactersDevicePositionCodes =
+      this.lessonCharactersDevicePositionCodes();
+    if (!lessonCharactersDevicePositionCodes) {
+      return {};
+    }
+    return Object.fromEntries(
+      lessonCharactersDevicePositionCodes
+        .map((v) =>
+          v?.positionCodes ? ([v.positionCodes[0], v.c] as const) : null,
+        )
+        .filter(Boolean) as [number, string][],
+    );
   });
 }

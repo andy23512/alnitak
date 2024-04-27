@@ -1,0 +1,12 @@
+<svg:path [attr.d]="sectorPath()" fill="transparent" stroke="white" />
+<svg:text
+  [attr.x]="textX()"
+  [attr.y]="textY()"
+  dominant-baseline="central"
+  text-anchor="middle"
+  font-size="80px"
+  fill="currentColor"
+  font-weight="lighter"
+>
+  {{ keyLabel() }}
+</svg:text>

@@ -2,8 +2,11 @@
   @for (switch of switches; track switch) {
     <app-switch
       [ngClass]="[side, switch | camelToKebab]"
+      [keyLabelMap]="keyLabelMap()"
+      [positionCodeMap]="positionCodeLayout[side][switch]"
       style.grid-area="{{ side }}-{{ switch | camelToKebab }}"
-      [direction]="side === 'left' ? 'cw' : 'ccw'"
+      [rotationDirection]="side === 'left' ? 'cw' : 'ccw'"
+      [rotation]="switch.startsWith('thumb') ? 10 : 0"
     ></app-switch>
   }
 }

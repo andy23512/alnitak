@@ -87,33 +87,35 @@ export function getCharacterDevicePositionCodesFromActionCode(
     return null;
   }
   const primaryLayout = deviceLayout.layout[0];
-  return deviceLayout.layout.map((layer, layerIndex) => {
-    const indexes = layer
-      .map((ac, index) => (ac === actionCode ? index : -1))
-      .filter((pos) => pos !== -1);
-    if (indexes.length === 0) {
-      return null;
-    }
-    const positionCodes = [indexes[0]];
-    if (layerIndex === 1) {
-      positionCodes.push(
-        primaryLayout.findIndex((ac) => ac === NUM_SHIFT_ACTION_CODES[0]),
-      );
-    } else if (layerIndex === 2) {
-      positionCodes.push(
-        primaryLayout.findIndex((ac) => ac === FN_SHIFT_ACTION_CODES[0]),
-      );
-    }
-    if (shiftKey) {
-      positionCodes.push(
-        primaryLayout.findIndex((ac) => ac === SHIFT_ACTION_CODES[0]),
-      );
-    }
-    if (altGraphKey) {
-      positionCodes.push(
-        primaryLayout.findIndex((ac) => ac === ALT_GR_ACTION_CODE) + 1,
-      );
-    }
-    return positionCodes;
-  });
+  return deviceLayout.layout
+    .map((layer, layerIndex) => {
+      const indexes = layer
+        .map((ac, index) => (ac === actionCode ? index : -1))
+        .filter((pos) => pos !== -1);
+      if (indexes.length === 0) {
+        return null;
+      }
+      const positionCodes = [indexes[0]];
+      if (layerIndex === 1) {
+        positionCodes.push(
+          primaryLayout.findIndex((ac) => ac === NUM_SHIFT_ACTION_CODES[0]),
+        );
+      } else if (layerIndex === 2) {
+        positionCodes.push(
+          primaryLayout.findIndex((ac) => ac === FN_SHIFT_ACTION_CODES[0]),
+        );
+      }
+      if (shiftKey) {
+        positionCodes.push(
+          primaryLayout.findIndex((ac) => ac === SHIFT_ACTION_CODES[0]),
+        );
+      }
+      if (altGraphKey) {
+        positionCodes.push(
+          primaryLayout.findIndex((ac) => ac === ALT_GR_ACTION_CODE) + 1,
+        );
+      }
+      return positionCodes;
+    })
+    .filter(Boolean)[0];
 }

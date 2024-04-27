@@ -1,5 +1,6 @@
 import { NgClass } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
+import { POSITION_CODE_LAYOUT } from 'src/app/data/layouts';
 import { CamelToKebabPipe } from 'src/app/pipes/camel-to-kebab.pipe';
 import { SwitchComponent } from '../switch/switch.component';
 
@@ -11,6 +12,8 @@ import { SwitchComponent } from '../switch/switch.component';
   imports: [SwitchComponent, CamelToKebabPipe, NgClass],
 })
 export class LayoutComponent {
+  readonly keyLabelMap = input<Record<number, string>>({});
+  readonly positionCodeLayout = POSITION_CODE_LAYOUT;
   public switches = [
     'thumbEnd',
     'thumbMid',
