@@ -3,7 +3,7 @@ export type TopicType = 'character' | 'word' | 'chord';
 export interface Lesson {
   id: string;
   name: string;
-  components: { input: string; output: string }[] | string[];
+  components: string[];
 }
 
 export interface Topic {

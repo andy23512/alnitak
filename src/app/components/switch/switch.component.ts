@@ -28,6 +28,7 @@ export class SwitchComponent {
         `A ${r2} ${r2} 0 0 0 ${o * cos(d) + r2 * cos(d - 45)} ${
           o * sin(d) + r2 * sin(d - 45)
         }`,
+      `Z`,
     ].join(' ');
   }
 

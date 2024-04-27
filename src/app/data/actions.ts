@@ -1,5 +1,9 @@
 import { Action } from '../models/action.models';
 
+export const NUM_SHIFT_ACTION_CODES = [550, 551];
+export const FN_SHIFT_ACTION_CODES = [552, 553];
+export const SHIFT_ACTION_CODES = [513, 517];
+export const ALT_GR_ACTION_CODE = 518;
 export const ACTIONS: Action[] = [
   {
     codeId: 0,
