@@ -3,13 +3,16 @@ import { AsyncPipe, NgIf } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
-import { MatListItem, MatNavList } from '@angular/material/list';
+import {
+  MatListItem,
+  MatListSubheaderCssMatStyler,
+  MatNavList,
+} from '@angular/material/list';
 import {
   MatSidenav,
   MatSidenavContainer,
   MatSidenavContent,
 } from '@angular/material/sidenav';
-import { MatToolbar } from '@angular/material/toolbar';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
@@ -23,7 +26,6 @@ import { TOPICS } from '../data/topics';
   imports: [
     MatSidenavContainer,
     MatSidenav,
-    MatToolbar,
     MatNavList,
     MatListItem,
     MatSidenavContent,
@@ -34,6 +36,7 @@ import { TOPICS } from '../data/topics';
     AsyncPipe,
     RouterLink,
     RouterLinkActive,
+    MatListSubheaderCssMatStyler,
   ],
 })
 export class NavComponent {

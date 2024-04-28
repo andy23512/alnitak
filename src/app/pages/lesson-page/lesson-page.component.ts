@@ -79,10 +79,9 @@ export class LessonPageComponent {
     }
     return Object.fromEntries(
       lessonCharactersDevicePositionCodes
-        .map((v) =>
-          v?.positionCodes ? ([v.positionCodes[0], v.c] as const) : null,
-        )
-        .filter(Boolean) as [number, string][],
+        .map((v) => v?.positionCodes?.map((pc) => [pc[0], v.c] as const))
+        .filter(Boolean)
+        .flat() as [number, string][],
     );
   });
 }

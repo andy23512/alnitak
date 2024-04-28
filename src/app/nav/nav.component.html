@@ -8,7 +8,7 @@
     [opened]="(isHandset$ | async) === false"
   >
     @for (topic of topics; track topic.id) {
-      <mat-toolbar>{{ topic.name }}</mat-toolbar>
+      <h3 matSubheader>{{ topic.name }}</h3>
       <mat-nav-list dense>
         @for (lesson of topic.lessons; track lesson.id) {
           <a
@@ -22,23 +22,17 @@
     }
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
-      @if (isHandset$ | async) {
-        <button
-          type="button"
-          aria-label="Toggle sidenav"
-          mat-icon-button
-          (click)="drawer.toggle()"
-        >
-          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-        </button>
-      }
-      <span>typing-san</span>
-      <div class="spacer"></div>
-      <button mat-icon-button aria-label="Go to settings page">
-        <mat-icon>settings</mat-icon>
+    @if (isHandset$ | async) {
+      <button
+        type="button"
+        class="sidenav-toggle-button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+      >
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-    </mat-toolbar>
+    }
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
