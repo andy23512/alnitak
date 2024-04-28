@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/nx/schemas/project-schema.json",
-  "name": "typing-san",
+  "name": "alnitak",
   "projectType": "application",
   "generators": {
     "@schematics/angular:component": {
@@ -13,7 +13,7 @@
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
       "options": {
-        "outputPath": "dist/typing-san",
+        "outputPath": "dist/alnitak",
         "index": "src/index.html",
         "main": "src/main.ts",
         "polyfills": ["zone.js"],
@@ -55,10 +55,10 @@
       "executor": "@angular-devkit/build-angular:dev-server",
       "configurations": {
         "production": {
-          "browserTarget": "typing-san:build:production"
+          "browserTarget": "alnitak:build:production"
         },
         "development": {
-          "browserTarget": "typing-san:build:development"
+          "browserTarget": "alnitak:build:development"
         }
       },
       "defaultConfiguration": "development"
@@ -66,7 +66,7 @@
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
-        "browserTarget": "typing-san:build"
+        "browserTarget": "alnitak:build"
       }
     },
     "test": {
@@ -83,11 +83,11 @@
     "deploy": {
       "executor": "angular-cli-ghpages:deploy",
       "options": {
-        "buildTarget": "typing-san:build:production",
-        "baseHref": "/typing-san/",
+        "buildTarget": "alnitak:build:production",
+        "baseHref": "/alnitak/",
         "name": "Tangent Chang",
         "email": "andy23512@gmail.com",
-        "dir": "dist/typing-san"
+        "dir": "dist/alnitak"
       }
     }
   }

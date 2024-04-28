@@ -7,7 +7,7 @@ describe('AppComponent', () => {
     TestBed.configureTestingModule({
       imports: [AppComponent],
       providers: [provideRouter([])],
-    })
+    }),
   );
 
   it('should create the app', () => {
@@ -16,10 +16,10 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'typing-san'`, () => {
+  it(`should have as title 'alnitak'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('typing-san');
+    expect(app.title).toEqual('alnitak');
   });
 
   it('should render title', () => {
@@ -27,7 +27,7 @@ describe('AppComponent', () => {
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('.content span')?.textContent).toContain(
-      'typing-san app is running!'
+      'alnitak app is running!',
     );
   });
 });
