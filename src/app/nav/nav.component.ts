@@ -1,6 +1,6 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { AsyncPipe, NgIf } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, ViewChild, inject } from '@angular/core';
 import { MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import {
@@ -43,10 +43,16 @@ export class NavComponent {
   public topics = TOPICS;
   private breakpointObserver = inject(BreakpointObserver);
 
+  @ViewChild('drawer') public drawer!: MatSidenav;
+
   isHandset$: Observable<boolean> = this.breakpointObserver
     .observe(Breakpoints.Handset)
     .pipe(
       map((result) => result.matches),
       shareReplay(),
     );
+
+  onNavLinkClick() {
+    this.drawer.close();
+  }
 }
