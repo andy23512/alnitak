@@ -7,9 +7,9 @@
     [mode]="(isHandset$ | async) ? 'over' : 'side'"
     [opened]="(isHandset$ | async) === false"
   >
-    @for (topic of topics; track topic.id) {
-      <h3 matSubheader>{{ topic.name }}</h3>
-      <mat-nav-list dense>
+    <mat-nav-list>
+      @for (topic of topics; track topic.id) {
+        <h4 matSubheader>{{ topic.name }}</h4>
         @for (lesson of topic.lessons; track lesson.id) {
           <a
             mat-list-item
@@ -18,8 +18,8 @@
             >{{ lesson.name }}</a
           >
         }
-      </mat-nav-list>
-    }
+      }
+    </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
     @if (isHandset$ | async) {
