@@ -10,6 +10,7 @@ import {
   input,
   untracked,
 } from '@angular/core';
+import { MatIcon } from '@angular/material/icon';
 import { LayoutComponent } from 'src/app/components/layout/layout.component';
 import { TOPICS } from 'src/app/data/topics';
 import { DeviceLayoutStore } from 'src/app/stores/device-layout.store';
@@ -25,7 +26,7 @@ import {
 @Component({
   selector: 'app-lesson-page',
   standalone: true,
-  imports: [CommonModule, LayoutComponent],
+  imports: [CommonModule, LayoutComponent, MatIcon],
   templateUrl: './lesson-page.component.html',
   styleUrl: './lesson-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -102,12 +103,16 @@ export class LessonPageComponent {
         if (components) {
           this.lessonStore.setComponents(components);
         }
-        this.input.nativeElement.focus();
+        this.focusInput();
       });
     });
   }
 
   onKeyUpInInput(event: KeyboardEvent) {
     this.lessonStore.type(event.key);
+  }
+
+  focusInput() {
+    this.input.nativeElement.focus();
   }
 }

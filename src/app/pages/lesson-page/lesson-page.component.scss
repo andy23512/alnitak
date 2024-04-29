@@ -8,11 +8,16 @@
 }
 
 .worksheet {
-  font-size: 20px;
-  font-family: "Roboto Mono", monospace;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  height: 50px;
+
+  span {
+    font-size: 20px;
+    font-family: "Roboto Mono", monospace;
+  }
 
   .history {
     color: #999;
@@ -58,6 +63,28 @@
         border-bottom-color: red;
       }
     }
+  }
+
+  .dimmer {
+    position: absolute;
+    inset: 0;
+    background-color: #EEE;
+    border-radius: 3px;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+
+    mat-icon {
+      color: black;
+      transform: scale(1.2);
+    }
+  }
+
+  input:focus+.dimmer {
+    display: none;
   }
 }
 

@@ -4,5 +4,8 @@
     >{{ lessonStore.queue().join("") }}...</span
   >
   <input #input type="text" (keyup)="onKeyUpInInput($event)" />
+  <div class="dimmer" (click)="focusInput()">
+    <mat-icon>play_arrow</mat-icon> Resume
+  </div>
 </div>
 <app-layout [keyLabelMap]="keyLabelMap()"></app-layout>
