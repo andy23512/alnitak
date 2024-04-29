@@ -8,6 +8,7 @@ export interface Lesson {
 
 export interface Topic {
   id: string;
+  iconName?: string;
   name: string;
   type: TopicType;
   lessons: Lesson[];

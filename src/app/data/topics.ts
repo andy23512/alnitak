@@ -3,6 +3,7 @@ import { generateCharacterLesson } from '../utils/lesson.utils';
 
 export const LETTER_TOPIC: Topic = {
   id: 'letter',
+  iconName: 'abc',
   name: 'Letter',
   type: 'character',
   lessons: ['eto', 'nus', 'cda', 'rhm', 'ilw', 'fgy', 'pbvk', 'jxqz'].map(
@@ -12,6 +13,7 @@ export const LETTER_TOPIC: Topic = {
 
 export const NUMBER_TOPIC: Topic = {
   id: 'number',
+  iconName: '123',
   name: 'Number',
   type: 'character',
   lessons: ['123', '456', '7890'].map(generateCharacterLesson).concat([

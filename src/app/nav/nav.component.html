@@ -9,7 +9,10 @@
   >
     <mat-nav-list>
       @for (topic of topics; track topic.id) {
-        <h4 matSubheader>{{ topic.name }}</h4>
+        <h4 class="topic-title" matSubheader>
+          <mat-icon>{{ topic.iconName || "topic" }}</mat-icon
+          >{{ topic.name }}
+        </h4>
         @for (lesson of topic.lessons; track lesson.id) {
           <a
             mat-list-item
