@@ -2,14 +2,19 @@ import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
+  ElementRef,
+  ViewChild,
   computed,
+  effect,
   inject,
   input,
+  untracked,
 } from '@angular/core';
 import { LayoutComponent } from 'src/app/components/layout/layout.component';
 import { TOPICS } from 'src/app/data/topics';
 import { DeviceLayoutStore } from 'src/app/stores/device-layout.store';
 import { KeyboardLayoutStore } from 'src/app/stores/keyboard-layout.store';
+import { LessonStore } from 'src/app/stores/lesson.store';
 import {
   convertKeyboardLayoutToCharacterKeyCodeMap,
   getCharacterActionCodeFromCharacterKeyCode,
@@ -24,6 +29,7 @@ import {
   templateUrl: './lesson-page.component.html',
   styleUrl: './lesson-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [LessonStore],
 })
 export class LessonPageComponent {
   readonly topicId = input.required<string>();
@@ -37,6 +43,8 @@ export class LessonPageComponent {
     }
     return topic.lessons.find((lesson) => lesson.id === lessonId);
   });
+  @ViewChild('input', { static: true })
+  public input!: ElementRef<HTMLInputElement>;
 
   readonly keyboardLayout = inject(KeyboardLayoutStore).selectedEntity;
   readonly characterKeyCodeMap = computed(() =>
@@ -84,4 +92,22 @@ export class LessonPageComponent {
         .flat() as [number, string][],
     );
   });
+
+  readonly lessonStore = inject(LessonStore);
+
+  constructor() {
+    effect(() => {
+      const components = this.lesson()?.components;
+      untracked(() => {
+        if (components) {
+          this.lessonStore.setComponents(components);
+        }
+        this.input.nativeElement.focus();
+      });
+    });
+  }
+
+  onKeyUpInInput(event: KeyboardEvent) {
+    this.lessonStore.type(event.key);
+  }
 }

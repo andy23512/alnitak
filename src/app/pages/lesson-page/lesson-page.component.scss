@@ -1,0 +1,66 @@
+:host {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.worksheet {
+  font-size: 20px;
+  font-family: "Roboto Mono", monospace;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .history {
+    color: #999;
+    white-space: pre;
+  }
+
+  .queue {
+    position: relative;
+
+    &::before {
+      position: absolute;
+      content: '';
+      display: block;
+      width: 0;
+      height: 0;
+      border-top: 0.5ch solid white;
+      border-left: 0.5ch solid transparent;
+      border-right: 0.5ch solid transparent;
+      top: -0.5ch;
+    }
+
+    &::after {
+      position: absolute;
+      content: '';
+      display: block;
+      width: 0;
+      height: 0;
+      border-left: 0.5ch solid transparent;
+      border-right: 0.5ch solid transparent;
+      border-bottom: 0.5ch solid white;
+    }
+
+    &.error {
+      &::first-letter {
+        color: red;
+      }
+
+      &::before {
+        border-top-color: red;
+      }
+
+      &::after {
+        border-bottom-color: red;
+      }
+    }
+  }
+}
+
+input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}

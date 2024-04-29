@@ -1,2 +1,8 @@
-{{ lessonCharactersDevicePositionCodes() | json }}
+<div class="worksheet">
+  <span class="history">{{ lessonStore.history().join("") }}</span>
+  <span class="queue" [class.error]="lessonStore.error()"
+    >{{ lessonStore.queue().join("") }}...</span
+  >
+  <input #input type="text" (keyup)="onKeyUpInInput($event)" />
+</div>
 <app-layout [keyLabelMap]="keyLabelMap()"></app-layout>
