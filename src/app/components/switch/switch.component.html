@@ -6,6 +6,9 @@
     [direction]="rotationDirection()"
     [positionCode]="positionCodeMap()[sector.direction]"
     [keyLabel]="keyLabelMap()[positionCodeMap()[sector.direction]]"
+    [highlight]="
+      highlightPositionCodes().includes(positionCodeMap()[sector.direction])
+    "
   ></svg:g>
 }
 <svg:text

@@ -17,6 +17,8 @@ const gap = 35;
 })
 export class LayoutComponent {
   readonly keyLabelMap = input<Record<number, string>>({});
+  readonly highlightPositionCodes = input<number[]>([]);
+
   readonly positionCodeLayout = POSITION_CODE_LAYOUT;
   switches = [
     'thumbEnd',

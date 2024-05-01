@@ -1,4 +1,9 @@
 <svg:path [attr.d]="sectorPath()" fill="transparent" stroke="white" />
+<svg:path
+  [attr.d]="sectorPath() + ' Z'"
+  fill="#0fe8fb"
+  [attr.opacity]="highlight() ? 0.5 : 0"
+/>
 <svg:text
   [attr.x]="textX()"
   [attr.y]="textY()"

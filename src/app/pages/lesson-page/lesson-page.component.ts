@@ -96,6 +96,21 @@ export class LessonPageComponent {
   });
 
   readonly lessonStore = inject(LessonStore);
+  readonly highlightPositionCodes = computed(() => {
+    const currentCharacter = this.lessonStore.queue()[0];
+    const lessonCharactersDevicePositionCodes =
+      this.lessonCharactersDevicePositionCodes();
+    if (!lessonCharactersDevicePositionCodes) {
+      return [];
+    }
+    const positionCodes = lessonCharactersDevicePositionCodes.find(
+      (d) => d?.c === currentCharacter,
+    )?.positionCodes;
+    if (!positionCodes) {
+      return [];
+    }
+    return positionCodes[0];
+  });
 
   constructor() {
     effect(() => {

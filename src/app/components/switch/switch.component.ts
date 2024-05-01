@@ -28,6 +28,7 @@ export class SwitchComponent {
   ];
   readonly positionCodeMap = input.required<DirectionMap<number>>();
   readonly keyLabelMap = input<Record<number, string>>({});
+  readonly highlightPositionCodes = input<number[]>([]);
   readonly r = computed(() => {
     return (this.rotationDirection() === 'cw' ? 1 : -1) * this.rotation();
   });

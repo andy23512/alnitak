@@ -30,7 +30,8 @@ export class SwitchSectorComponent {
   readonly direction = input.required<'cw' | 'ccw'>();
   readonly degree = input.required<number>();
   readonly positionCode = input.required<number>();
-  readonly keyLabel = input<string>();
+  readonly keyLabel = input<string>('');
+  readonly highlight = input<boolean>(false);
 
   readonly sectorPath = computed(() => {
     const center = this.center();
