@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { LayoutComponent } from './layout.component';
 
 describe('LayoutComponent', () => {
@@ -8,7 +7,7 @@ describe('LayoutComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [LayoutComponent],
+      imports: [LayoutComponent],
     }).compileComponents();
 
     fixture = TestBed.createComponent(LayoutComponent);

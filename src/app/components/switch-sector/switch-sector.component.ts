@@ -18,7 +18,7 @@ const r1 = 57;
 const r2 = 167;
 
 @Component({
-  selector: '[appSwitchSector]',
+  selector: '[appSwitchSector2]',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './switch-sector.component.html',
@@ -26,15 +26,18 @@ const r2 = 167;
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SwitchSectorComponent {
+  readonly center = input.required<{ x: number; y: number }>();
   readonly direction = input.required<'cw' | 'ccw'>();
   readonly degree = input.required<number>();
   readonly positionCode = input.required<number>();
   readonly keyLabel = input<string>();
+
   readonly sectorPath = computed(() => {
+    const center = this.center();
     const direction = this.direction();
     const d = this.degree();
-    const cx = o * cos(d);
-    const cy = o * sin(d);
+    const cx = center.x + o * cos(d);
+    const cy = center.y + o * sin(d);
     if (direction === 'cw') {
       return [
         `M ${cx + r1 * cos(d - 45)} ${cy + r1 * sin(d - 45)}`,
@@ -52,12 +55,19 @@ export class SwitchSectorComponent {
     }
   });
 
+  textRadius = (() => {
+    const ratio = 0.55;
+    return (1 - ratio) * r1 + ratio * r2;
+  })();
+
   readonly textX = computed(() => {
     const d = this.degree();
-    return ((r1 + r2) / 2) * cos(d);
+    const center = this.center();
+    return center.x + this.textRadius * cos(d);
   });
   readonly textY = computed(() => {
     const d = this.degree();
-    return ((r1 + r2) / 2) * sin(d);
+    const center = this.center();
+    return center.y + this.textRadius * sin(d);
   });
 }

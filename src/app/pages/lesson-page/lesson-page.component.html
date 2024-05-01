@@ -5,7 +5,7 @@
   >
   <input #input type="text" (keyup)="onKeyUpInInput($event)" />
   <div class="dimmer" (click)="focusInput()">
-    <mat-icon>play_arrow</mat-icon> Resume
+    <mat-icon>play_arrow</mat-icon> Start / Resume (<kbd>Space</kbd> key)
   </div>
 </div>
 <app-layout [keyLabelMap]="keyLabelMap()"></app-layout>

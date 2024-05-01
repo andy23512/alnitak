@@ -15,7 +15,7 @@ import {
 } from '@angular/material/sidenav';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { Observable } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
+import { filter, map, shareReplay, take } from 'rxjs/operators';
 import { TOPICS } from '../data/topics';
 
 @Component({
@@ -53,6 +53,13 @@ export class NavComponent {
     );
 
   onNavLinkClick() {
-    this.drawer.close();
+    this.isHandset$
+      .pipe(
+        take(1),
+        filter((isHandSet) => isHandSet),
+      )
+      .subscribe(() => {
+        this.drawer.close();
+      });
   }
 }

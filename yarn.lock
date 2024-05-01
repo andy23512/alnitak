@@ -2615,6 +2615,13 @@
     "@material/theme" "15.0.0-canary.7f224ddd4.0"
     tslib "^2.1.0"
 
+"@ngrx/component@^17.2.0":
+  version "17.2.0"
+  resolved "https://registry.yarnpkg.com/@ngrx/component/-/component-17.2.0.tgz#41a9a64f2c80f1595656ba2bb94805170fcf9be7"
+  integrity sha512-Ahxa1tZ1vhsaZPOtN8cBFyenYZZQiHtpzCSCldSDk1fvTsLlUo0oEikUlxEOspkRSLDB+DutLFeZzJgXPCsMGQ==
+  dependencies:
+    tslib "^2.0.0"
+
 "@ngrx/signals@^17.2.0":
   version "17.2.0"
   resolved "https://registry.yarnpkg.com/@ngrx/signals/-/signals-17.2.0.tgz#30d2e75cf3786111356115bf3cdb10e81517ac23"

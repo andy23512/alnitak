@@ -68,23 +68,26 @@
   .dimmer {
     position: absolute;
     inset: 0;
-    background-color: #EEE;
+    background-color: #303030;
     border-radius: 3px;
-    color: black;
+    border: 1px solid white;
+    color: white;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 5px;
     cursor: pointer;
+    opacity: 1;
 
     mat-icon {
-      color: black;
+      color: white;
       transform: scale(1.2);
     }
   }
 
   input:focus+.dimmer {
-    display: none;
+    pointer-events: none;
+    opacity: 0;
   }
 }
 

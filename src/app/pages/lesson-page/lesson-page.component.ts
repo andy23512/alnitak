@@ -3,6 +3,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   ElementRef,
+  HostListener,
   ViewChild,
   computed,
   effect,
@@ -26,7 +27,7 @@ import {
 @Component({
   selector: 'app-lesson-page',
   standalone: true,
-  imports: [CommonModule, LayoutComponent, MatIcon],
+  imports: [CommonModule, LayoutComponent, MatIcon, LayoutComponent],
   templateUrl: './lesson-page.component.html',
   styleUrl: './lesson-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -103,7 +104,6 @@ export class LessonPageComponent {
         if (components) {
           this.lessonStore.setComponents(components);
         }
-        this.focusInput();
       });
     });
   }
@@ -112,6 +112,7 @@ export class LessonPageComponent {
     this.lessonStore.type(event.key);
   }
 
+  @HostListener('window:keyup.space')
   focusInput() {
     this.input.nativeElement.focus();
   }

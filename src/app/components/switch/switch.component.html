@@ -1,22 +1,21 @@
-<svg width="100%" height="100%" viewBox="-175 -175 350 350">
-  @for (sector of sectors; track sector.direction) {
-    <g
-      appSwitchSector
-      [degree]="sector.degree + r()"
-      [positionCode]="positionCodeMap()[sector.direction]"
-      [direction]="rotationDirection()"
-      [keyLabel]="keyLabelMap()[positionCodeMap()[sector.direction]]"
-    ></g>
-  }
-  <text
-    [attr.x]="0"
-    [attr.y]="0"
-    dominant-baseline="central"
-    text-anchor="middle"
-    font-size="80px"
-    fill="currentColor"
-    font-weight="lighter"
-  >
-    {{ keyLabelMap()[positionCodeMap().c] }}
-  </text>
-</svg>
+@for (sector of sectors; track sector) {
+  <svg:g
+    appSwitchSector2
+    [center]="center()"
+    [degree]="sector.degree + r()"
+    [direction]="rotationDirection()"
+    [positionCode]="positionCodeMap()[sector.direction]"
+    [keyLabel]="keyLabelMap()[positionCodeMap()[sector.direction]]"
+  ></svg:g>
+}
+<svg:text
+  [attr.x]="center().x"
+  [attr.y]="center().y"
+  dominant-baseline="central"
+  text-anchor="middle"
+  font-size="80px"
+  fill="currentColor"
+  font-weight="lighter"
+>
+  {{ keyLabelMap()[positionCodeMap().c] }}
+</svg:text>
