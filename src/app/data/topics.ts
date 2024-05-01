@@ -25,4 +25,20 @@ export const NUMBER_TOPIC: Topic = {
   ]),
 };
 
-export const TOPICS = [NUMBER_TOPIC, LETTER_TOPIC];
+export const SYMBOL_TOPIC: Topic = {
+  id: 'symbol',
+  name: 'Symbol',
+  type: 'character',
+  lessons: [
+    '`~!@',
+    '#$%^',
+    '&*()',
+    '-_=+',
+    '[]{}',
+    ';:\'"',
+    ',<.>',
+    '/?\\|',
+  ].map(generateCharacterLesson),
+};
+
+export const TOPICS = [NUMBER_TOPIC, LETTER_TOPIC, SYMBOL_TOPIC];
