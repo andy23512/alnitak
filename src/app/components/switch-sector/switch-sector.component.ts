@@ -18,7 +18,7 @@ const r1 = 57;
 const r2 = 167;
 
 @Component({
-  selector: '[appSwitchSector2]',
+  selector: '[appSwitchSector]',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './switch-sector.component.html',

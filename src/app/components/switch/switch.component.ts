@@ -9,7 +9,7 @@ import { DirectionMap } from 'src/app/models/layout.models';
 import { SwitchSectorComponent } from '../switch-sector/switch-sector.component';
 
 @Component({
-  selector: '[appSwitch2]',
+  selector: '[appSwitch]',
   standalone: true,
   imports: [CommonModule, SwitchSectorComponent],
   templateUrl: './switch.component.html',
