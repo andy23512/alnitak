@@ -3,7 +3,7 @@
   <span class="queue" [class.error]="lessonStore.error()"
     >{{ lessonStore.queue().join("") }}...</span
   >
-  <input #input type="text" (keyup)="onKeyUpInInput($event)" />
+  <input #input type="text" inputmode="none" (keyup)="onKeyUpInInput($event)" />
   <div class="dimmer" (click)="focusInput()">
     <mat-icon>play_arrow</mat-icon> Start / Resume <kbd>Space</kbd>
   </div>
