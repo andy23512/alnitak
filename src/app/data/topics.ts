@@ -6,7 +6,7 @@ export const LETTER_TOPIC: Topic = {
   iconName: 'abc',
   name: 'Letter',
   type: 'character',
-  lessons: ['eto', 'nus', 'cda', 'rhm', 'ilw', 'fgy', 'pbvk', 'jxqz'].map(
+  lessons: ['reat', 'ioln', 'ujys', 'kcfd', 'mvhp', 'wgz', 'bqx'].map(
     generateCharacterLesson,
   ),
 };
