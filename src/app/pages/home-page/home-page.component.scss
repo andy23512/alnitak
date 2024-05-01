@@ -1,0 +1,22 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+main {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+
+  header {
+    text-align: center;
+  }
+
+  h1 {
+    color: #0fe8fb;
+    margin-bottom: 0px;
+  }
+}
