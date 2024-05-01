@@ -1,8 +1,13 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  HostListener,
+  inject,
+} from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home-page',
@@ -12,4 +17,12 @@ import { RouterLink } from '@angular/router';
   styleUrl: './home-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HomePageComponent {}
+export class HomePageComponent {
+  readonly router = inject(Router);
+  firstLessonUrl = '/topic/number/lesson/123';
+
+  @HostListener('window:keyup.space')
+  goToFirstLesson() {
+    this.router.navigateByUrl(this.firstLessonUrl);
+  }
+}
