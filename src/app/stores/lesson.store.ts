@@ -27,6 +27,8 @@ export const LessonStore = signalStore(
       patchState(store, () => ({
         components,
         queue: chance.n(chance.pickone, QUEUE_SIZE, components),
+        history: [' ', ' ', ' '],
+        error: false,
       }));
     },
     type(component: string) {
