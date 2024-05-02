@@ -1,16 +1,13 @@
 <section class="top-section">
+  <kbd [innerHTML]="shortcuts.goToPreviousLesson | hotkeysShortcut"></kbd>
   <a
     class="lesson-link"
-    *ngrxLet="lesson()?.previous as previous"
+    *ngrxLet="lesson()?.previousLessonUrl as previousLessonUrl"
     aria-label="link to previous lesson"
-    [routerLink]="
-      previous
-        ? '/topic/' + previous.topic.id + '/lesson/' + previous.lesson.id
-        : null
-    "
+    [routerLink]="previousLessonUrl"
     matTooltip="Go to previous lesson"
   >
-    <button type="button" mat-icon-button [disabled]="!previous">
+    <button type="button" mat-icon-button [disabled]="!previousLessonUrl">
       <mat-icon>chevron_left</mat-icon>
     </button>
   </a>
@@ -31,17 +28,16 @@
   </div>
   <a
     class="lesson-link"
-    *ngrxLet="lesson()?.next as next"
+    *ngrxLet="lesson()?.nextLessonUrl as nextLessonUrl"
     aria-label="link to next lesson"
-    [routerLink]="
-      next ? '/topic/' + next.topic.id + '/lesson/' + next.lesson.id : null
-    "
+    [routerLink]="nextLessonUrl"
     matTooltip="Go to next lesson"
   >
-    <button type="button" mat-icon-button [disabled]="!next">
+    <button type="button" mat-icon-button [disabled]="!nextLessonUrl">
       <mat-icon>chevron_right</mat-icon>
     </button>
   </a>
+  <kbd [innerHTML]="shortcuts.goToNextLesson | hotkeysShortcut"></kbd>
 </section>
 <app-layout
   [keyLabelMap]="keyLabelMap()"

@@ -13,11 +13,6 @@
   display: flex;
   align-items: center;
   flex: 0 0 auto;
-  gap: 5px;
-
-  &:has(input:focus) .lesson-link {
-    visibility: hidden;
-  }
 }
 
 .worksheet {

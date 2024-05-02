@@ -4,6 +4,8 @@ import {
   Component,
   ElementRef,
   HostListener,
+  OnDestroy,
+  OnInit,
   ViewChild,
   computed,
   effect,
@@ -14,7 +16,8 @@ import {
 import { MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { MatTooltip } from '@angular/material/tooltip';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { HotkeysService, HotkeysShortcutPipe } from '@ngneat/hotkeys';
 import { LetDirective } from '@ngrx/component';
 import { LayoutComponent } from 'src/app/components/layout/layout.component';
 import { TOPICS } from 'src/app/data/topics';
@@ -41,15 +44,22 @@ import {
     RouterLink,
     MatIconButton,
     MatTooltip,
+    HotkeysShortcutPipe,
   ],
   templateUrl: './lesson-page.component.html',
   styleUrl: './lesson-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [LessonStore],
 })
-export class LessonPageComponent {
+export class LessonPageComponent implements OnInit, OnDestroy {
   readonly topicId = input.required<string>();
   readonly lessonId = input.required<string>();
+
+  readonly shortcuts = {
+    goToPreviousLesson: 'meta.left',
+    goToNextLesson: 'meta.right',
+  };
+
   readonly lesson = computed(() => {
     const topicId = this.topicId();
     const lessonId = this.lessonId();
@@ -91,8 +101,12 @@ export class LessonPageComponent {
     }
     return {
       ...currentLesson,
-      previous,
-      next,
+      previousLessonUrl: previous
+        ? `/topic/${previous.topic.id}/lesson/${previous.lesson.id}`
+        : null,
+      nextLessonUrl: next
+        ? `/topic/${next.topic.id}/lesson/${next.lesson.id}`
+        : null,
     };
   });
   @ViewChild('input', { static: true })
@@ -162,6 +176,9 @@ export class LessonPageComponent {
     return positionCodes[0];
   });
 
+  readonly hotkeys = inject(HotkeysService);
+  readonly router = inject(Router);
+
   constructor() {
     effect(() => {
       const components = this.lesson()?.components;
@@ -171,6 +188,32 @@ export class LessonPageComponent {
         }
       });
     });
+  }
+
+  ngOnInit(): void {
+    this.hotkeys
+      .addShortcut({ keys: this.shortcuts.goToPreviousLesson })
+      .subscribe(() => {
+        const previousLessonUrl = this.lesson()?.previousLessonUrl;
+        if (previousLessonUrl) {
+          this.router.navigateByUrl(previousLessonUrl);
+        }
+      });
+    this.hotkeys
+      .addShortcut({ keys: this.shortcuts.goToNextLesson })
+      .subscribe(() => {
+        const nextLessonUrl = this.lesson()?.nextLessonUrl;
+        if (nextLessonUrl) {
+          this.router.navigateByUrl(nextLessonUrl);
+        }
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.hotkeys.removeShortcuts([
+      this.shortcuts.goToPreviousLesson,
+      this.shortcuts.goToNextLesson,
+    ]);
   }
 
   onKeyUpInInput(event: KeyboardEvent) {
