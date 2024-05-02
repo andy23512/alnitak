@@ -26,7 +26,8 @@
     "@ngrx/signals": "^17.2.0",
     "@ngrx/store": "^17.2.0",
     "chance": "^1.1.11",
-    "prettier": "3.2.5",
+    "prettier": "^3.2.5",
+    "prettier-plugin-tailwindcss": "^0.5.14",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "0.14.4"
@@ -43,6 +44,7 @@
     "@types/chance": "^1.1.6",
     "@types/jasmine": "~4.3.0",
     "angular-cli-ghpages": "2.0.0-beta.1",
+    "autoprefixer": "^10.4.0",
     "jasmine-core": "~4.6.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
@@ -50,6 +52,8 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
     "nx": "18.3.3",
+    "postcss": "^8.4.5",
+    "tailwindcss": "^3.0.2",
     "typescript": "5.4.5"
   }
 }

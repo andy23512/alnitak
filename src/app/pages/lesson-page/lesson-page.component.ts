@@ -3,6 +3,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   ElementRef,
+  HostBinding,
   HostListener,
   OnDestroy,
   OnInit,
@@ -54,6 +55,8 @@ import {
 export class LessonPageComponent implements OnInit, OnDestroy {
   readonly topicId = input.required<string>();
   readonly lessonId = input.required<string>();
+
+  @HostBinding('class') classes = 'p-5 flex flex-col gap-2 h-screen box-border';
 
   readonly shortcuts = {
     goToPreviousLesson: 'meta.left',

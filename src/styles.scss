@@ -1,8 +1,13 @@
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
-@use '@angular/material' as mat;
+@use "@angular/material" as mat;
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 // Plus imports for other components in your app.
-@import 'custom-palette';
+@import "custom-palette";
 
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
@@ -23,7 +28,8 @@ $alnitak-warn: mat.define-palette(mat.$red-palette);
 $alnitak-theme: mat.define-dark-theme((color: (primary: $alnitak-primary,
         accent: $alnitak-accent,
         warn: $alnitak-warn,
-      )));
+      ),
+    ));
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -34,33 +40,28 @@ html {
   --mat-toolbar-title-text-font: Roboto, sans-serif;
   --mat-toolbar-title-text-line-height: 32px;
   --mat-toolbar-title-text-size: 20px;
-  --mat-toolbar-title-text-tracking: .0125em;
-  --mat-toolbar-title-text-weight: 500
+  --mat-toolbar-title-text-tracking: 0.0125em;
+  --mat-toolbar-title-text-weight: 500;
 }
 
 .list-item-active {
-  background: mat.get-theme-color($alnitak-theme, primary, default, 0.5) !important;
+  background: mat.get-theme-color($alnitak-theme,
+      primary,
+      default,
+      0.5) !important;
 }
 
 /* You can add global styles to this file, and also import other style files */
 
 html,
 body {
-  height: 100%;
+  @apply h-full;
 }
 
 body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-}
-
-.spacer {
-  flex: 1 1 auto;
+  @apply font-body m-0;
 }
 
 kbd {
-  border: 1px solid #AAA;
-  padding: 3px;
-  border-radius: 3px;
-  color: #AAA;
+  @apply border border-solid border-gray-200 p-1 rounded text-gray-200;
 }

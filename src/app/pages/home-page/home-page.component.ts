@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
+  HostBinding,
   HostListener,
   inject,
 } from '@angular/core';
@@ -20,6 +21,8 @@ import { Router, RouterLink } from '@angular/router';
 export class HomePageComponent {
   readonly router = inject(Router);
   firstLessonUrl = '/topic/number/lesson/123';
+
+  @HostBinding('class') classes = 'block relative h-full';
 
   @HostListener('window:keyup.space')
   goToFirstLesson() {

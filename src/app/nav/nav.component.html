@@ -1,7 +1,7 @@
-<mat-sidenav-container class="sidenav-container">
+<mat-sidenav-container class="h-full">
   <mat-sidenav
     #drawer
-    class="sidenav"
+    class="w-[200px]"
     fixedInViewport
     [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'"
@@ -9,7 +9,7 @@
   >
     <mat-nav-list>
       @for (topic of topics; track topic.id) {
-        <h4 class="topic-title" matSubheader>
+        <h4 class="flex items-center gap-1" matSubheader>
           <mat-icon>{{ topic.iconName || "topic" }}</mat-icon
           >{{ topic.name }}
         </h4>
@@ -29,7 +29,7 @@
     @if (isHandset$ | async) {
       <button
         type="button"
-        class="sidenav-toggle-button"
+        class="!fixed bottom-0 left-0"
         aria-label="Toggle sidenav"
         mat-icon-button
         (click)="drawer.toggle()"
