@@ -19,7 +19,7 @@
       class="text-xl font-mono relative before:absolute before:block before:w-0 before:h-0 before:border-t-[0.5ch] before:border-solid before:border-t-white before:border-x-[0.5ch] before:border-x-transparent before:-top-[0.5ch] after:absolute after:block after:w-0 after:h-0 after:border-b-[0.5ch] after:border-solid after:border-b-white after:border-x-[0.5ch] after:border-x-transparent"
       [ngClass]="
         lessonStore.error()
-          ? 'first-letter:text-red-500 before:border-t-red-500 after:border-b-red-500'
+          ? 'first-letter:text-red-500 before:!border-t-red-500 after:!border-b-red-500'
           : null
       "
       >{{ lessonStore.queue().join("") }}...</span
