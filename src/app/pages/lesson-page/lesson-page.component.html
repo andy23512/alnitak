@@ -1,13 +1,48 @@
-<div class="worksheet">
-  <span class="history">{{ lessonStore.history().join("") }}</span>
-  <span class="queue" [class.error]="lessonStore.error()"
-    >{{ lessonStore.queue().join("") }}...</span
+<section class="top-section">
+  <a
+    class="lesson-link"
+    *ngrxLet="lesson()?.previous as previous"
+    aria-label="link to previous lesson"
+    [routerLink]="
+      previous
+        ? '/topic/' + previous.topic.id + '/lesson/' + previous.lesson.id
+        : null
+    "
+    matTooltip="Go to previous lesson"
   >
-  <input #input type="text" inputmode="none" (keyup)="onKeyUpInInput($event)" />
-  <div class="dimmer" (click)="focusInput()">
-    <mat-icon>play_arrow</mat-icon> Start / Resume <kbd>Space</kbd>
+    <button type="button" mat-icon-button [disabled]="!previous">
+      <mat-icon>chevron_left</mat-icon>
+    </button>
+  </a>
+  <div class="worksheet">
+    <span class="history">{{ lessonStore.history().join("") }}</span>
+    <span class="queue" [class.error]="lessonStore.error()"
+      >{{ lessonStore.queue().join("") }}...</span
+    >
+    <input
+      #input
+      type="text"
+      inputmode="none"
+      (keyup)="onKeyUpInInput($event)"
+    />
+    <div class="dimmer" (click)="focusInput()">
+      <mat-icon>play_arrow</mat-icon> Start / Resume <kbd>Space</kbd>
+    </div>
   </div>
-</div>
+  <a
+    class="lesson-link"
+    *ngrxLet="lesson()?.next as next"
+    aria-label="link to next lesson"
+    [routerLink]="
+      next ? '/topic/' + next.topic.id + '/lesson/' + next.lesson.id : null
+    "
+    matTooltip="Go to next lesson"
+  >
+    <button type="button" mat-icon-button [disabled]="!next">
+      <mat-icon>chevron_right</mat-icon>
+    </button>
+  </a>
+</section>
 <app-layout
   [keyLabelMap]="keyLabelMap()"
   [highlightPositionCodes]="highlightPositionCodes()"

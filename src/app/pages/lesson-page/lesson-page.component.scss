@@ -9,13 +9,24 @@
   box-sizing: border-box;
 }
 
+.top-section {
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+  gap: 5px;
+
+  &:has(input:focus) .lesson-link {
+    visibility: hidden;
+  }
+}
+
 .worksheet {
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   height: 50px;
-  flex: 0 0 auto;
+  flex: 1 1 0;
 
   span {
     font-size: 20px;
@@ -103,4 +114,8 @@ input {
 app-layout {
   display: block;
   flex: 1 1 0;
+}
+
+.lesson-link {
+  color: inherit;
 }

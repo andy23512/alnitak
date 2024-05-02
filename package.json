@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "nx serve",
+    "start": "nx serve --port 8315",
     "build": "nx build",
     "watch": "nx build --watch --configuration development",
     "test": "nx test"

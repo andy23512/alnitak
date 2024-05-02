@@ -11,9 +11,14 @@ import {
   input,
   untracked,
 } from '@angular/core';
+import { MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
+import { MatTooltip } from '@angular/material/tooltip';
+import { RouterLink } from '@angular/router';
+import { LetDirective } from '@ngrx/component';
 import { LayoutComponent } from 'src/app/components/layout/layout.component';
 import { TOPICS } from 'src/app/data/topics';
+import { Lesson, Topic } from 'src/app/models/topic.models';
 import { DeviceLayoutStore } from 'src/app/stores/device-layout.store';
 import { KeyboardLayoutStore } from 'src/app/stores/keyboard-layout.store';
 import { LessonStore } from 'src/app/stores/lesson.store';
@@ -27,7 +32,16 @@ import {
 @Component({
   selector: 'app-lesson-page',
   standalone: true,
-  imports: [CommonModule, LayoutComponent, MatIcon, LayoutComponent],
+  imports: [
+    CommonModule,
+    LayoutComponent,
+    MatIcon,
+    LayoutComponent,
+    LetDirective,
+    RouterLink,
+    MatIconButton,
+    MatTooltip,
+  ],
   templateUrl: './lesson-page.component.html',
   styleUrl: './lesson-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -39,11 +53,47 @@ export class LessonPageComponent {
   readonly lesson = computed(() => {
     const topicId = this.topicId();
     const lessonId = this.lessonId();
-    const topic = TOPICS.find((t) => t.id === topicId);
-    if (!topic) {
+    const topicIndex = TOPICS.findIndex((t) => t.id === topicId);
+    if (topicIndex === -1) {
       return null;
     }
-    return topic.lessons.find((lesson) => lesson.id === lessonId);
+    const topic = TOPICS[topicIndex];
+    const lessonIndex = topic.lessons.findIndex(
+      (lesson) => lesson.id === lessonId,
+    );
+    if (lessonIndex === -1) {
+      return null;
+    }
+    const currentLesson = topic.lessons[lessonIndex];
+    let previous: { topic: Topic; lesson: Lesson } | null = null;
+    let next: { topic: Topic; lesson: Lesson } | null = null;
+    if (lessonIndex === 0) {
+      const previousTopic = TOPICS[topicIndex - 1];
+      previous = previousTopic
+        ? {
+            topic: previousTopic,
+            lesson: previousTopic.lessons.at(-1) as Lesson,
+          }
+        : null;
+    } else {
+      previous = { topic: topic, lesson: topic.lessons[lessonIndex - 1] };
+    }
+    if (lessonIndex === topic.lessons.length - 1) {
+      const nextTopic = TOPICS[topicIndex + 1];
+      next = nextTopic
+        ? {
+            topic: nextTopic,
+            lesson: nextTopic.lessons[0],
+          }
+        : null;
+    } else {
+      next = { topic: topic, lesson: topic.lessons[lessonIndex + 1] };
+    }
+    return {
+      ...currentLesson,
+      previous,
+      next,
+    };
   });
   @ViewChild('input', { static: true })
   public input!: ElementRef<HTMLInputElement>;
@@ -130,5 +180,10 @@ export class LessonPageComponent {
   @HostListener('window:keyup.space')
   focusInput() {
     this.input.nativeElement.focus();
+  }
+
+  @HostListener('window:keyup.esc')
+  blurInput() {
+    this.input.nativeElement.blur();
   }
 }
