@@ -5,7 +5,7 @@ import {
   NUM_SHIFT_ACTION_CODES,
   SHIFT_ACTION_CODES,
 } from '../data/actions';
-import { DeviceLayout } from '../models/device-layout.models';
+import { CharaChorderOneLayer, CharacterDeviceKey, DeviceLayout } from '../models/device-layout.models';
 import {
   CharacterActionCode,
   CharacterKeyCode,
@@ -79,10 +79,10 @@ export function getCharacterActionCodeFromCharacterKeyCode({
   };
 }
 
-export function getCharacterDevicePositionCodesFromActionCode(
+export function getCharacterDeviceKeysFromActionCode(
   { actionCode, shiftKey, altGraphKey }: CharacterActionCode,
   deviceLayout: DeviceLayout | null,
-) {
+): CharacterDeviceKey[] | null {
   if (!deviceLayout) {
     return null;
   }
@@ -94,11 +94,14 @@ export function getCharacterDevicePositionCodesFromActionCode(
         .filter((pos) => pos !== -1)
         .map((pos) => {
           const positionCodes = [pos];
+          let layer = CharaChorderOneLayer.Primary;
           if (layerIndex === 1) {
+            layer = CharaChorderOneLayer.Secondary;
             positionCodes.push(
               primaryLayout.findIndex((ac) => ac === NUM_SHIFT_ACTION_CODES[0]),
             );
           } else if (layerIndex === 2) {
+            layer = CharaChorderOneLayer.Tertiary;
             positionCodes.push(
               primaryLayout.findIndex((ac) => ac === FN_SHIFT_ACTION_CODES[0]),
             );
@@ -113,7 +116,13 @@ export function getCharacterDevicePositionCodesFromActionCode(
               primaryLayout.findIndex((ac) => ac === ALT_GR_ACTION_CODE) + 1,
             );
           }
-          return positionCodes;
+          return {
+            device: 'CharaChorderOne' as const,
+            positionCodes,
+            layer,
+            shiftKey,
+            altGraphKey
+          }
         });
       if (positionCodesList.length === 0) {
         return null;

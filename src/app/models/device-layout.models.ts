@@ -19,3 +19,22 @@ export interface CharaChorderOneLayout extends BaseDeviceLayout {
 }
 
 export type DeviceLayout = CharaChorderOneLayout;
+
+export enum CharaChorderOneLayer {
+  Primary = 'A1',
+  Secondary = 'A2', /* Numeric */
+  Tertiary = 'A3', /* Functional */
+}
+
+/*
+ * Key information of a character on CharaChorder One
+ */
+export interface CharaChorderOneCharacterKey {
+  device: 'CharaChorderOne',
+  positionCodes: number[];
+  layer: CharaChorderOneLayer;
+  shiftKey: boolean;
+  altGraphKey: boolean;
+}
+
+export type CharacterDeviceKey = CharaChorderOneCharacterKey;

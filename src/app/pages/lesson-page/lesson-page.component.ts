@@ -29,8 +29,8 @@ import { LessonStore } from 'src/app/stores/lesson.store';
 import {
   convertKeyboardLayoutToCharacterKeyCodeMap,
   getCharacterActionCodeFromCharacterKeyCode,
-  getCharacterDevicePositionCodesFromActionCode,
-  getCharacterKeyCodeFromCharacter,
+  getCharacterDeviceKeysFromActionCode,
+  getCharacterKeyCodeFromCharacter
 } from 'src/app/utils/layout.utils';
 
 @Component({
@@ -140,7 +140,7 @@ export class LessonPageComponent implements OnInit, OnDestroy {
         }
         return {
           c,
-          positionCodes: getCharacterDevicePositionCodesFromActionCode(
+          characterDeviceKeys: getCharacterDeviceKeysFromActionCode(
             actionCode,
             deviceLayout,
           ),
@@ -156,7 +156,7 @@ export class LessonPageComponent implements OnInit, OnDestroy {
     }
     return Object.fromEntries(
       lessonCharactersDevicePositionCodes
-        .map((v) => v?.positionCodes?.map((pc) => [pc[0], v.c] as const))
+        .map((v) => v?.characterDeviceKeys?.map(({positionCodes}) => [positionCodes[0], v.c] as const))
         .filter(Boolean)
         .flat() as [number, string][],
     );
@@ -172,11 +172,11 @@ export class LessonPageComponent implements OnInit, OnDestroy {
     }
     const positionCodes = lessonCharactersDevicePositionCodes.find(
       (d) => d?.c === currentCharacter,
-    )?.positionCodes;
+    )?.characterDeviceKeys?.[0].positionCodes;
     if (!positionCodes) {
       return [];
     }
-    return positionCodes[0];
+    return positionCodes;
   });
 
   readonly hotkeys = inject(HotkeysService);
