@@ -1,10 +1,26 @@
-<svg viewBox="0 0 350 350" preserveAspectRatio="xMidYMid meet"  class="absolute opacity-10 w-full h-full">
-  <g appSwitch [center]="{x:0, y:0}" [rotationDirection]="'cw'" [positionCodeMap]="{ c: 0, e: 1, n: 2, w: 3, s: 4 }" [highlightPositionCodes]="highlightPositionCodes"></g>
-  <g appSwitch [center]="{x:350, y:350}" [rotationDirection]="'ccw'" [positionCodeMap]="{ c: 5, e: 6, n: 7, w: 8, s: 9 }" [highlightPositionCodes]="highlightPositionCodes"></g>
+<svg
+  viewBox="0 0 350 350"
+  preserveAspectRatio="xMidYMid meet"
+  class="absolute h-full w-full opacity-10"
+>
+  <g
+    appSwitch
+    [center]="{ x: 0, y: 0 }"
+    [rotationDirection]="'cw'"
+    [positionCodeMap]="{ c: 0, e: 1, n: 2, w: 3, s: 4 }"
+    [highlightPositionCodes]="highlightPositionCodes"
+  ></g>
+  <g
+    appSwitch
+    [center]="{ x: 350, y: 350 }"
+    [rotationDirection]="'ccw'"
+    [positionCodeMap]="{ c: 5, e: 6, n: 7, w: 8, s: 9 }"
+    [highlightPositionCodes]="highlightPositionCodes"
+  ></g>
 </svg>
-<main class="flex h-full flex-col items-center justify-center gap-4">
+<main class="flex h-full flex-col items-center justify-center gap-4 p-4">
   <header class="text-center">
-    <h1 class="text-alnitak-500 mb-0 text-4xl">Alnitak</h1>
+    <h1 class="mb-0 text-4xl text-alnitak-500">Alnitak</h1>
     <span>A CharaChorder One Practice Tool</span>
   </header>
   <span
@@ -12,7 +28,7 @@
     the side menu.</span
   >
 </main>
-<footer class="absolute w-full bottom-1 text-center text-gray-200">
+<footer class="absolute bottom-1 w-full p-2 text-center text-gray-200">
   Disclaimer: This tool is not affiliated, associated, authorized, endorsed by,
   or in any way officially connected with CharaChorder.
 </footer>
