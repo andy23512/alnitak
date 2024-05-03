@@ -4,6 +4,16 @@
   preserveAspectRatio="xMidYMid meet"
   viewBox="0 0 3815 1890"
 >
+  <text
+    [attr.x]="1907.5"
+    [attr.y]="100"
+    text-anchor="middle"
+    dominant-baseline="text-top"
+    font-size="80px"
+    fill="currentColor"
+  >
+    {{ highlightPositionCodesInText() }}
+  </text>
   @for (side of sides; track side) {
     @for (sw of switches; track sw) {
       <g

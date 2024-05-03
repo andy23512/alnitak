@@ -5,7 +5,11 @@ import {
   NUM_SHIFT_ACTION_CODES,
   SHIFT_ACTION_CODES,
 } from '../data/actions';
-import { CharaChorderOneLayer, CharacterDeviceKey, DeviceLayout } from '../models/device-layout.models';
+import {
+  CharaChorderOneLayer,
+  CharacterDeviceKey,
+  DeviceLayout,
+} from '../models/device-layout.models';
 import {
   CharacterActionCode,
   CharacterKeyCode,
@@ -121,8 +125,8 @@ export function getCharacterDeviceKeysFromActionCode(
             positionCodes,
             layer,
             shiftKey,
-            altGraphKey
-          }
+            altGraphKey,
+          };
         });
       if (positionCodesList.length === 0) {
         return null;
@@ -130,4 +134,25 @@ export function getCharacterDeviceKeysFromActionCode(
       return positionCodesList;
     })
     .filter(Boolean)[0];
+}
+
+export function humanizePositionCode(positionCode: number) {
+  const hand = positionCode < 45 ? 'Left' : 'Right';
+  const sw = [
+    'Thumb Back',
+    'Thumb Middle',
+    'Thumb Front',
+    'Index',
+    'Middle',
+    'Ring',
+    'Pinky',
+    'Middle Secondary',
+    'Ring Secondary',
+  ][Math.floor((positionCode % 45) / 5)];
+  const direction = (
+    hand === 'Left'
+      ? ['Down (Press)', 'East', 'North', 'West', 'South']
+      : ['Down (Press)', 'West', 'North', 'East', 'South']
+  )[positionCode % 5];
+  return [hand, sw, direction].join(' ');
 }

@@ -1,8 +1,14 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  input,
+} from '@angular/core';
 import { LetDirective } from '@ngrx/component';
 import { POSITION_CODE_LAYOUT } from 'src/app/data/layouts';
 import { FingerMap, HandMap } from 'src/app/models/layout.models';
+import { humanizePositionCode } from 'src/app/utils/layout.utils';
 import { SwitchComponent } from '../switch/switch.component';
 const cellSize = 350;
 const gap = 35;
@@ -18,6 +24,11 @@ const gap = 35;
 export class LayoutComponent {
   readonly keyLabelMap = input<Record<number, string>>({});
   readonly highlightPositionCodes = input<number[]>([]);
+
+  readonly highlightPositionCodesInText = computed(() => {
+    const highlightPositionCodes = this.highlightPositionCodes();
+    return highlightPositionCodes.map(humanizePositionCode).join(' + ');
+  });
 
   readonly positionCodeLayout = POSITION_CODE_LAYOUT;
   switches = [
