@@ -49,7 +49,7 @@ export class NavComponent {
     .observe(Breakpoints.Handset)
     .pipe(
       map((result) => result.matches),
-      shareReplay(),
+      shareReplay(1),
     );
 
   onNavLinkClick() {
