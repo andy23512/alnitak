@@ -12,6 +12,7 @@ import {
   effect,
   inject,
   input,
+  signal,
   untracked,
 } from '@angular/core';
 import { MatIconButton } from '@angular/material/button';
@@ -30,7 +31,7 @@ import {
   convertKeyboardLayoutToCharacterKeyCodeMap,
   getCharacterActionCodeFromCharacterKeyCode,
   getCharacterDeviceKeysFromActionCode,
-  getCharacterKeyCodeFromCharacter
+  getCharacterKeyCodeFromCharacter,
 } from 'src/app/utils/layout.utils';
 
 @Component({
@@ -55,6 +56,8 @@ import {
 export class LessonPageComponent implements OnInit, OnDestroy {
   readonly topicId = input.required<string>();
   readonly lessonId = input.required<string>();
+
+  readonly isFocus = signal(false);
 
   @HostBinding('class') classes = 'p-5 flex flex-col gap-2 h-screen box-border';
 
@@ -156,7 +159,11 @@ export class LessonPageComponent implements OnInit, OnDestroy {
     }
     return Object.fromEntries(
       lessonCharactersDevicePositionCodes
-        .map((v) => v?.characterDeviceKeys?.map(({positionCodes}) => [positionCodes[0], v.c] as const))
+        .map((v) =>
+          v?.characterDeviceKeys?.map(
+            ({ positionCodes }) => [positionCodes[0], v.c] as const,
+          ),
+        )
         .filter(Boolean)
         .flat() as [number, string][],
     );

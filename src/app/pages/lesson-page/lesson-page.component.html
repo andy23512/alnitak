@@ -1,4 +1,4 @@
-<section class="flex items-center flex-none">
+<section class="flex flex-none items-center">
   <kbd [innerHTML]="shortcuts.goToPreviousLesson | hotkeysShortcut"></kbd>
   <a
     class="text-inherit"
@@ -11,12 +11,12 @@
       <mat-icon>chevron_left</mat-icon>
     </button>
   </a>
-  <div class="flex items-center justify-center relative h-12 flex-1">
-    <span class="text-xl font-mono text-gray-500 whitespace-pre">{{
+  <div class="relative flex h-12 flex-1 items-center justify-center">
+    <span class="whitespace-pre font-mono text-xl text-gray-500">{{
       lessonStore.history().join("")
     }}</span>
     <span
-      class="text-xl font-mono relative before:absolute before:block before:w-0 before:h-0 before:border-t-[0.5ch] before:border-solid before:border-t-white before:border-x-[0.5ch] before:border-x-transparent before:-top-[0.5ch] after:absolute after:block after:w-0 after:h-0 after:border-b-[0.5ch] after:border-solid after:border-b-white after:border-x-[0.5ch] after:border-x-transparent"
+      class="relative font-mono text-xl before:absolute before:-top-[0.5ch] before:block before:h-0 before:w-0 before:border-x-[0.5ch] before:border-t-[0.5ch] before:border-solid before:border-x-transparent before:border-t-white after:absolute after:block after:h-0 after:w-0 after:border-x-[0.5ch] after:border-b-[0.5ch] after:border-solid after:border-x-transparent after:border-b-white"
       [ngClass]="
         lessonStore.error()
           ? 'first-letter:text-red-500 before:!border-t-red-500 after:!border-b-red-500'
@@ -25,17 +25,19 @@
       >{{ lessonStore.queue().join("") }}...</span
     >
     <input
-      class="peer opacity-0 w-0 h-0"
+      class="peer h-0 w-0 opacity-0"
       #input
       type="text"
       inputmode="none"
       (keyup)="onKeyUpInInput($event)"
+      (focus)="isFocus.set(true)"
+      (blur)="isFocus.set(false)"
     />
     <div
-      class="absolute inset-0 bg-gray-500 rounded border border-solid border-white text-white flex justify-center items-center gap-1 cursor-pointer peer-focus:pointer-events-none peer-focus:opacity-0"
+      class="absolute inset-0 flex cursor-pointer items-center justify-center gap-1 rounded border border-solid border-white bg-gray-500 text-white peer-focus:pointer-events-none peer-focus:opacity-0"
       (click)="focusInput()"
     >
-      <mat-icon class="text-white scale-125">play_arrow</mat-icon> Start /
+      <mat-icon class="scale-125 text-white">play_arrow</mat-icon> Start /
       Resume <kbd>Space</kbd>
     </div>
   </div>
@@ -55,5 +57,5 @@
 <app-layout
   class="block flex-1"
   [keyLabelMap]="keyLabelMap()"
-  [highlightPositionCodes]="highlightPositionCodes()"
+  [highlightPositionCodes]="isFocus() ? highlightPositionCodes() : []"
 ></app-layout>
