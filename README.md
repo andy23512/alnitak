@@ -13,6 +13,7 @@
 - Device Layout View
   - only show the labels of keys in the current lesson
   - highlight the current key(s) required to type out the character
+- Combo Counter
 
 ## Disclaimer
 
