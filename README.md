@@ -7,13 +7,15 @@
 
 ## Features
 
-- Lesson
+- Layout Lesson
   - 3~4 keys in a small lesson
   - numbers and letters
 - Device Layout View
   - only show the labels of keys in the current lesson
   - highlight the current key(s) required to type out the character
-- Combo Counter
+- Widgets
+  - combo counter that counts the number of consecutive correct keystokes
+  - speedometer that shows the current typing speed
 
 ## Disclaimer
 
