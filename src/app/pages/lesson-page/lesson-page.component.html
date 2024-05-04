@@ -55,7 +55,7 @@
   <kbd [innerHTML]="shortcuts.goToNextLesson | hotkeysShortcut"></kbd>
 </section>
 <app-layout
-  class="block flex-1"
+  class="block flex-1 overflow-hidden"
   [keyLabelMap]="keyLabelMap()"
   [highlightPositionCodes]="isFocus() ? highlightPositionCodes() : []"
 ></app-layout>
