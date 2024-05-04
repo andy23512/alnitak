@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { SpeedoMeterComponent } from './speedo-meter.component';
+import { SpeedometerComponent } from './speedometer.component';
 
-describe('SpeedoMeterComponent', () => {
-  let component: SpeedoMeterComponent;
-  let fixture: ComponentFixture<SpeedoMeterComponent>;
+describe('SpeedometerComponent', () => {
+  let component: SpeedometerComponent;
+  let fixture: ComponentFixture<SpeedometerComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SpeedoMeterComponent],
+      imports: [SpeedometerComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(SpeedoMeterComponent);
+    fixture = TestBed.createComponent(SpeedometerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

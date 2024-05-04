@@ -23,7 +23,7 @@ import { HotkeysService, HotkeysShortcutPipe } from '@ngneat/hotkeys';
 import { LetDirective } from '@ngrx/component';
 import { ComboCounterComponent } from 'src/app/components/combo-counter/combo-counter.component';
 import { LayoutComponent } from 'src/app/components/layout/layout.component';
-import { SpeedoMeterComponent } from 'src/app/components/speedo-meter/speedo-meter.component';
+import { SpeedometerComponent } from 'src/app/components/speedometer/speedometer.component';
 import { TOPICS } from 'src/app/data/topics';
 import { Lesson, Topic } from 'src/app/models/topic.models';
 import { DeviceLayoutStore } from 'src/app/stores/device-layout.store';
@@ -50,7 +50,7 @@ import {
     MatTooltip,
     HotkeysShortcutPipe,
     ComboCounterComponent,
-    SpeedoMeterComponent,
+    SpeedometerComponent,
   ],
   templateUrl: './lesson-page.component.html',
   styleUrl: './lesson-page.component.scss',

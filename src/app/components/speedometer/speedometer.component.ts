@@ -22,14 +22,14 @@ function cos(deg: number) {
 }
 
 @Component({
-  selector: 'app-speedo-meter',
+  selector: 'app-speedometer',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './speedo-meter.component.html',
-  styleUrl: './speedo-meter.component.scss',
+  templateUrl: './speedometer.component.html',
+  styleUrl: './speedometer.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SpeedoMeterComponent implements OnInit {
+export class SpeedometerComponent implements OnInit {
   public speed = input.required<number>();
   public speedUnit = input.required<string>();
   public displaySpeed = signal<number>(0);
