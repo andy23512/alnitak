@@ -6,6 +6,7 @@
     aria-label="link to previous lesson"
     [routerLink]="previousLessonUrl"
     matTooltip="Go to previous lesson"
+    [matTooltipDisabled]="!previousLessonUrl"
   >
     <button type="button" mat-icon-button [disabled]="!previousLessonUrl">
       <mat-icon>chevron_left</mat-icon>
@@ -47,6 +48,7 @@
     aria-label="link to next lesson"
     [routerLink]="nextLessonUrl"
     matTooltip="Go to next lesson"
+    [matTooltipDisabled]="!nextLessonUrl"
   >
     <button type="button" mat-icon-button [disabled]="!nextLessonUrl">
       <mat-icon>chevron_right</mat-icon>
