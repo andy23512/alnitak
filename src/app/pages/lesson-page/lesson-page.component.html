@@ -59,3 +59,7 @@
   [keyLabelMap]="keyLabelMap()"
   [highlightPositionCodes]="isFocus() ? highlightPositionCodes() : []"
 ></app-layout>
+<app-combo-counter
+  class="absolute bottom-4 left-4"
+  [combo]="lessonStore.combo()"
+></app-combo-counter>

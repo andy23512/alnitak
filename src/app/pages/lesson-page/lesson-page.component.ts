@@ -21,6 +21,7 @@ import { MatTooltip } from '@angular/material/tooltip';
 import { Router, RouterLink } from '@angular/router';
 import { HotkeysService, HotkeysShortcutPipe } from '@ngneat/hotkeys';
 import { LetDirective } from '@ngrx/component';
+import { ComboCounterComponent } from 'src/app/components/combo-counter/combo-counter.component';
 import { LayoutComponent } from 'src/app/components/layout/layout.component';
 import { TOPICS } from 'src/app/data/topics';
 import { Lesson, Topic } from 'src/app/models/topic.models';
@@ -47,6 +48,7 @@ import {
     MatIconButton,
     MatTooltip,
     HotkeysShortcutPipe,
+    ComboCounterComponent,
   ],
   templateUrl: './lesson-page.component.html',
   styleUrl: './lesson-page.component.scss',

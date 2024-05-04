@@ -31,5 +31,10 @@ export function temperatureToColor(temp: number) {
     b = m.min(m.max(138.5177312231 * m.log(b) - 305.0447927307, 0), 255);
   }
 
-  return rgbToHex(r, g, b);
+  return rgbToHex(Math.round(r), Math.round(g), Math.round(b));
+}
+
+export function rank(score: number) {
+  const scoreLevels = [10, 20, 30, 40, 50, 60, 80, 100, 200, 500, Infinity];
+  return scoreLevels.findIndex((s) => s > score);
 }
