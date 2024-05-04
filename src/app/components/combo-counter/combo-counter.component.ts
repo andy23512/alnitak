@@ -26,7 +26,7 @@ export class ComboCounterComponent implements OnInit, OnDestroy {
   mediaQuery!: MediaQueryList;
 
   @HostBinding('class') hostClasses =
-    'text-center transition-[font-size] ease-[cubic-bezier(0.34,1.56,0.64,1)]';
+    'text-left transition-[font-size] ease-[cubic-bezier(0.34,1.56,0.64,1)]';
   @HostBinding('style.font-size') get fontSize() {
     if (this.noAnimation()) {
       return '1em';

@@ -1,5 +1,5 @@
-@if (combo(); as c) {
-  COMBO
-  <br />
-  <span class="count font-7seg text-[1.5em]">{{ c }}</span>
-}
+COMBO
+<br />
+<span class="font-7seg text-[1.5em]">{{
+  combo().toString().padStart(3, "0")
+}}</span>

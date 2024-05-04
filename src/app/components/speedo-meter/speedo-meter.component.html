@@ -1,0 +1,24 @@
+<div class="absolute bottom-0 right-0 text-right">
+  {{ speedUnit() }}
+  <br />
+  <span class="font-7seg text-[1.5em]">{{
+    displaySpeed().toString().padStart(3, "0")
+  }}</span>
+</div>
+<svg
+  class="absolute"
+  width="100%"
+  height="100%"
+  preserveAspectRatio="xMidYMid meet"
+  viewBox="0 0 100 100"
+>
+  @for (s of sectors; track s.degFrom) {
+    <path
+      class="transition-opacity duration-1000"
+      [attr.d]="d(s)"
+      [attr.fill]="fill($index)"
+      [style.opacity]="opacity($index)"
+      stroke="transparent"
+    ></path>
+  }
+</svg>
