@@ -30,9 +30,9 @@ function cos(deg: number) {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SpeedoMeterComponent implements OnInit {
-  public speed = input(0);
-  public displaySpeed = signal(0);
-  public speedUnit = input<string>('CPM');
+  public speed = input.required<number>();
+  public speedUnit = input.required<string>();
+  public displaySpeed = signal<number>(0);
   public maxSpeed = 200;
 
   public sectorNumber = 45;
@@ -46,9 +46,10 @@ export class SpeedoMeterComponent implements OnInit {
 
   ngOnInit(): void {
     interval(100).subscribe(() => {
+      const speed = this.speed();
       const displaySpeed = this.displaySpeed();
-      const diff = this.speed() - this.displaySpeed();
-      this.displaySpeed.set(displaySpeed + Math.sign(diff));
+      const diff = speed - displaySpeed;
+      this.displaySpeed.set(displaySpeed + Math.max(Math.min(diff, 2), -2));
     });
   }
 

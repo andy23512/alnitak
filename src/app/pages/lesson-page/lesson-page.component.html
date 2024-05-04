@@ -64,5 +64,7 @@
   [combo]="lessonStore.combo()"
 ></app-combo-counter>
 <app-speedo-meter
-  class="absolute bottom-4 right-4 hidden h-24 w-24"
+  class="absolute bottom-4 right-4 h-24 w-24"
+  [speed]="lessonStore.cpm()"
+  [speedUnit]="'CPM'"
 ></app-speedo-meter>
