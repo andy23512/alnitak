@@ -11,6 +11,7 @@ module.exports = {
     fontFamily: {
       body: ["Roboto", '"Helvetica Neue"', "sans-serif"],
       mono: ['"Roboto Mono"', "monospace"],
+      "7seg": ['"FS Sevegment"', '"Roboto Mono"', "monospace"],
     },
     extend: {
       colors: {
@@ -27,17 +28,17 @@ module.exports = {
           900: "#04d8f8",
         },
         gray: {
-          50 : '#e6e6e6',
-          100 : '#c1c1c1',
-          200 : '#989898',
-          300 : '#6e6e6e',
-          400 : '#4f4f4f',
-          500 : '#303030',
-          600 : '#2b2b2b',
-          700 : '#242424',
-          800 : '#1e1e1e',
-          900 : '#131313',
-        }
+          50: "#e6e6e6",
+          100: "#c1c1c1",
+          200: "#989898",
+          300: "#6e6e6e",
+          400: "#4f4f4f",
+          500: "#303030",
+          600: "#2b2b2b",
+          700: "#242424",
+          800: "#1e1e1e",
+          900: "#131313",
+        },
       },
     },
   },
