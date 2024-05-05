@@ -1,4 +1,6 @@
-# Alnitak - CharaChorder One practice tool
+# Alnitak
+
+An unofficial CharaChorder One practice tool
 
 ## Links
 
