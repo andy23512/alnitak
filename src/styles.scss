@@ -71,6 +71,7 @@ kbd {
   @apply border border-solid border-gray-200 p-1 rounded text-gray-200;
 }
 
-mat-nav-list[data-style-dense] {
+mat-sidenav[data-style-dense] {
+  @include mat.toolbar-density(-3);
   @include mat.list-density(-3);
 }

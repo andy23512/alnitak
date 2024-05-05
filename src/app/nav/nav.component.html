@@ -1,13 +1,26 @@
 <mat-sidenav-container class="h-full">
   <mat-sidenav
     #drawer
-    class="!w-[200px]"
+    class="!bg-gray-450 !w-[200px]"
     fixedInViewport
     [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'"
     [opened]="(isHandset$ | async) === false"
+    data-style-dense
   >
-    <mat-nav-list data-style-dense>
+    <mat-toolbar class="!bg-gray-450 sticky top-0 z-10 shadow">
+      <a
+        [routerLink]="'/'"
+        aria-label="link to home page"
+        matTooltip="Go to home page"
+        (click)="onNavLinkClick()"
+      >
+        <button type="button" mat-icon-button>
+          <mat-icon>home</mat-icon>
+        </button>
+      </a>
+    </mat-toolbar>
+    <mat-nav-list>
       @for (topic of topics; track topic.id) {
         <h4 class="flex items-center gap-1" matSubheader>
           <mat-icon>{{ topic.iconName || "topic" }}</mat-icon
