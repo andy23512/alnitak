@@ -4,7 +4,6 @@ import {
   Component,
   ElementRef,
   HostBinding,
-  HostListener,
   OnDestroy,
   OnInit,
   ViewChild,
@@ -68,6 +67,8 @@ export class LessonPageComponent implements OnInit, OnDestroy {
   readonly shortcuts = {
     goToPreviousLesson: 'meta.left',
     goToNextLesson: 'meta.right',
+    startLesson: 'space',
+    pauseLesson: 'esc',
   };
 
   readonly lesson = computed(() => {
@@ -221,12 +222,24 @@ export class LessonPageComponent implements OnInit, OnDestroy {
           this.router.navigateByUrl(nextLessonUrl);
         }
       });
+    this.hotkeys
+      .addShortcut({ keys: this.shortcuts.startLesson })
+      .subscribe(() => {
+        this.startLesson();
+      });
+    this.hotkeys
+      .addShortcut({ keys: this.shortcuts.pauseLesson, allowIn: ['INPUT'] })
+      .subscribe(() => {
+        this.endLesson();
+      });
   }
 
   ngOnDestroy(): void {
     this.hotkeys.removeShortcuts([
       this.shortcuts.goToPreviousLesson,
       this.shortcuts.goToNextLesson,
+      this.shortcuts.startLesson,
+      this.shortcuts.pauseLesson,
     ]);
   }
 
@@ -236,13 +249,11 @@ export class LessonPageComponent implements OnInit, OnDestroy {
     }
   }
 
-  @HostListener('window:keyup.space')
-  focusInput() {
+  startLesson() {
     this.input.nativeElement.focus();
   }
 
-  @HostListener('window:keyup.esc')
-  blurInput() {
+  endLesson() {
     this.input.nativeElement.blur();
   }
 }
