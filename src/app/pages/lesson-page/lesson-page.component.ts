@@ -230,8 +230,10 @@ export class LessonPageComponent implements OnInit, OnDestroy {
     ]);
   }
 
-  onKeyUpInInput(event: KeyboardEvent) {
-    this.lessonStore.type(event.key);
+  onKeyUpInInput({ key }: KeyboardEvent) {
+    if (key.length === 1 || (key.length > 1 && /[^a-zA-Z0-9]/.test(key))) {
+      this.lessonStore.type(key);
+    }
   }
 
   @HostListener('window:keyup.space')
