@@ -7,7 +7,7 @@
     [mode]="(isHandset$ | async) ? 'over' : 'side'"
     [opened]="(isHandset$ | async) === false"
   >
-    <mat-nav-list>
+    <mat-nav-list data-style-dense>
       @for (topic of topics; track topic.id) {
         <h4 class="flex items-center gap-1" matSubheader>
           <mat-icon>{{ topic.iconName || "topic" }}</mat-icon
