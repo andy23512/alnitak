@@ -11,7 +11,7 @@
     <mat-toolbar class="sticky top-0 z-10 !bg-gray-450 shadow">
       <a
         [routerLink]="'/'"
-        aria-label="link to home page"
+        aria-label="home page link"
         matTooltip="Go to home page"
         (click)="onNavLinkClick()"
       >
@@ -19,7 +19,13 @@
           <mat-icon>home</mat-icon>
         </button>
       </a>
-      <button type="button" mat-icon-button (click)="openHotkeyDialog()">
+      <button
+        type="button"
+        mat-icon-button
+        aria-label="button that opens hotkey dialog"
+        (click)="openHotkeyDialog()"
+        matTooltip="Open hotkey dialog"
+      >
         <mat-icon>keyboard</mat-icon>
       </button>
     </mat-toolbar>

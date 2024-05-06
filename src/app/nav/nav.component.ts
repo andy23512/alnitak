@@ -16,6 +16,7 @@ import {
   MatSidenavContent,
 } from '@angular/material/sidenav';
 import { MatToolbar } from '@angular/material/toolbar';
+import { MatTooltip } from '@angular/material/tooltip';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { Observable } from 'rxjs';
 import { filter, map, shareReplay, take } from 'rxjs/operators';
@@ -42,6 +43,7 @@ import { TOPICS } from '../data/topics';
     RouterLinkActive,
     MatListSubheaderCssMatStyler,
     MatToolbar,
+    MatTooltip,
     MatDivider,
   ],
 })
