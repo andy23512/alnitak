@@ -2,6 +2,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { AsyncPipe, NgIf } from '@angular/common';
 import { Component, ViewChild, inject } from '@angular/core';
 import { MatIconButton } from '@angular/material/button';
+import { MatDialog } from '@angular/material/dialog';
 import { MatDivider } from '@angular/material/divider';
 import { MatIcon } from '@angular/material/icon';
 import {
@@ -18,6 +19,7 @@ import { MatToolbar } from '@angular/material/toolbar';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { Observable } from 'rxjs';
 import { filter, map, shareReplay, take } from 'rxjs/operators';
+import { HotkeyDialogComponent } from '../components/hotkey-dialog/hotkey-dialog.component';
 import { TOPICS } from '../data/topics';
 
 @Component({
@@ -45,7 +47,9 @@ import { TOPICS } from '../data/topics';
 })
 export class NavComponent {
   public topics = TOPICS;
-  private breakpointObserver = inject(BreakpointObserver);
+
+  private readonly breakpointObserver = inject(BreakpointObserver);
+  private readonly matDialog = inject(MatDialog);
 
   @ViewChild('drawer') public drawer!: MatSidenav;
 
@@ -65,5 +69,9 @@ export class NavComponent {
       .subscribe(() => {
         this.drawer.close();
       });
+  }
+
+  openHotkeyDialog() {
+    this.matDialog.open(HotkeyDialogComponent);
   }
 }

@@ -68,7 +68,7 @@ export class LessonPageComponent implements OnInit, OnDestroy {
     goToPreviousLesson: 'meta.left',
     goToNextLesson: 'meta.right',
     startLesson: 'space',
-    pauseLesson: 'esc',
+    pauseLesson: 'escape',
   };
 
   readonly lesson = computed(() => {

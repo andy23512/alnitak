@@ -1,0 +1,21 @@
+<h2 mat-dialog-title class="!text-xl">Hotkeys</h2>
+<mat-dialog-content class="space-y-3">
+  @for (hotkeyGroup of hotkeyGroups; track $index) {
+    <section class="space-y-2">
+      <h3 class="text-lg text-white">{{ hotkeyGroup.name }}</h3>
+      <ul class="space-y-1">
+        @for (hotkey of hotkeyGroup.hotkeys; track hotkey.key) {
+          <li class="flex items-center gap-1">
+            <div class="w-[70px] flex-none">
+              <kbd [innerHTML]="hotkey.key | hotkeysShortcut"></kbd>
+            </div>
+            <span>{{ hotkey.description }}</span>
+          </li>
+        }
+      </ul>
+    </section>
+  }
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button [mat-dialog-close]="true">Close</button>
+</mat-dialog-actions>
