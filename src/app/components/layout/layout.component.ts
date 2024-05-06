@@ -27,7 +27,10 @@ export class LayoutComponent {
 
   readonly highlightPositionCodesInText = computed(() => {
     const highlightPositionCodes = this.highlightPositionCodes();
-    return highlightPositionCodes.map(humanizePositionCode).join(' + ');
+    return [...highlightPositionCodes]
+      .reverse()
+      .map(humanizePositionCode)
+      .join(' + ');
   });
 
   readonly positionCodeLayout = POSITION_CODE_LAYOUT;
