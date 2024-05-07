@@ -24,6 +24,7 @@ import { ComboCounterComponent } from 'src/app/components/combo-counter/combo-co
 import { LayoutComponent } from 'src/app/components/layout/layout.component';
 import { SpeedometerComponent } from 'src/app/components/speedometer/speedometer.component';
 import { TOPICS } from 'src/app/data/topics';
+import { VisibleDirective } from 'src/app/directives/visible.directive';
 import { CharaChorderOneKeyLabel } from 'src/app/models/device-layout.models';
 import { Lesson, Topic } from 'src/app/models/topic.models';
 import { DeviceLayoutStore } from 'src/app/stores/device-layout.store';
@@ -51,6 +52,7 @@ import {
     HotkeysShortcutPipe,
     ComboCounterComponent,
     SpeedometerComponent,
+    VisibleDirective,
   ],
   templateUrl: './lesson-page.component.html',
   styleUrl: './lesson-page.component.scss',

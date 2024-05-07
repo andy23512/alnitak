@@ -4,7 +4,7 @@ export function generateCharacterLesson(str: string): Lesson {
   const components = str.split('');
   return {
     id: str,
-    name: components.join(', '),
+    name: components.join(' '),
     components,
   };
 }

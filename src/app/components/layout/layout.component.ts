@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 import { LetDirective } from '@ngrx/component';
 import { POSITION_CODE_LAYOUT } from 'src/app/data/layouts';
+import { VisibleDirective } from 'src/app/directives/visible.directive';
 import {
   CharaChorderOneCharacterKey,
   CharaChorderOneKeyLabel,
@@ -20,7 +21,7 @@ const gap = 35;
 @Component({
   selector: 'app-layout',
   standalone: true,
-  imports: [CommonModule, SwitchComponent, LetDirective],
+  imports: [CommonModule, SwitchComponent, LetDirective, VisibleDirective],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

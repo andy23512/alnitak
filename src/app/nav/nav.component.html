@@ -19,6 +19,16 @@
           <mat-icon>home</mat-icon>
         </button>
       </a>
+      <a
+        [routerLink]="'/settings'"
+        aria-label="settings page link"
+        matTooltip="Go to settings page"
+        (click)="onNavLinkClick()"
+      >
+        <button type="button" mat-icon-button>
+          <mat-icon>settings</mat-icon>
+        </button>
+      </a>
       <button
         type="button"
         mat-icon-button
