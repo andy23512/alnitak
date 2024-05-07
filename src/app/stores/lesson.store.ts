@@ -7,10 +7,9 @@ import {
   withMethods,
   withState,
 } from '@ngrx/signals';
-import { Chance } from 'chance';
+import { pickRandomItem, pickRandomItemNTimes } from '../utils/random.utils';
 
 const QUEUE_SIZE = 20;
-const chance = new Chance();
 
 interface LessonState {
   components: string[];
@@ -39,7 +38,7 @@ export const LessonStore = signalStore(
     setComponents(components: string[]) {
       patchState(store, () => ({
         components,
-        queue: chance.n(chance.pickone, QUEUE_SIZE, components),
+        queue: pickRandomItemNTimes(components, QUEUE_SIZE),
         history: [' ', ' ', ' '],
         lastCorrectKeyTime: null,
         keyIntervals: [],
@@ -59,7 +58,7 @@ export const LessonStore = signalStore(
           keyIntervals.push(keyInterval);
         }
         return {
-          queue: [...state.queue.slice(1), chance.pickone(state.components)],
+          queue: [...state.queue.slice(1), pickRandomItem(state.components)],
           history: [...state.history.slice(1), component],
           lastCorrectKeyTime: currentKeyTime,
           keyIntervals: keyIntervals.slice(-10),

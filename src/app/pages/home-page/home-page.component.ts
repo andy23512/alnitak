@@ -9,11 +9,9 @@ import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { Router, RouterLink } from '@angular/router';
 import { HotkeysService } from '@ngneat/hotkeys';
-import { Chance } from 'chance';
 import { SwitchComponent } from 'src/app/components/switch/switch.component';
 import { CharaChorderOneLayer } from 'src/app/models/device-layout.models';
-
-const chance = new Chance();
+import { pickRandomItem } from 'src/app/utils/random.utils';
 
 @Component({
   selector: 'app-home-page',
@@ -31,7 +29,7 @@ export class HomePageComponent {
     [-1, -1, 2, 4],
     [-1, -1, 6, 8],
     [-1, -1, 7, 9],
-  ].map((list) => chance.pickone(list));
+  ].map((list) => pickRandomItem(list));
 
   @HostBinding('class') classes = 'block relative h-full';
 
