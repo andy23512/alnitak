@@ -2,16 +2,28 @@
 <svg:path
   class="fill-alnitak-500"
   [attr.d]="sectorPath() + ' Z'"
-  [attr.opacity]="highlight() ? 0.5 : 0"
+  [attr.opacity]="
+    highlightKey()?.positionCodes?.includes(positionCode()) ? 0.5 : 0
+  "
 />
-<svg:text
-  [attr.x]="textX()"
-  [attr.y]="textY()"
-  dominant-baseline="central"
-  text-anchor="middle"
-  font-size="80px"
-  fill="currentColor"
-  font-weight="lighter"
->
-  {{ keyLabel() }}
-</svg:text>
+@for (label of keyLabel(); track label.c) {
+  <svg:text
+    [attr.x]="textX()"
+    [attr.y]="textY()"
+    dominant-baseline="central"
+    text-anchor="middle"
+    font-size="80px"
+    fill="currentColor"
+    font-weight="lighter"
+    class="transition-opacity"
+    [attr.opacity]="
+      label.layer === highlightKey()?.layer &&
+      label.shiftKey === highlightKey()?.shiftKey &&
+      label.altGraphKey === highlightKey()?.altGraphKey
+        ? 1
+        : 0
+    "
+  >
+    {{ label.c }}
+  </svg:text>
+}

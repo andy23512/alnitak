@@ -41,4 +41,4 @@ export const SYMBOL_TOPIC: Topic = {
   ].map(generateCharacterLesson),
 };
 
-export const TOPICS = [NUMBER_TOPIC, LETTER_TOPIC];
+export const TOPICS = [NUMBER_TOPIC, LETTER_TOPIC, SYMBOL_TOPIC];

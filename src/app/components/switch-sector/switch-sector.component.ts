@@ -5,6 +5,10 @@ import {
   computed,
   input,
 } from '@angular/core';
+import {
+  CharaChorderOneCharacterKey,
+  CharaChorderOneKeyLabel,
+} from 'src/app/models/device-layout.models';
 
 function sin(deg: number) {
   return Math.sin((deg / 180) * Math.PI);
@@ -30,8 +34,8 @@ export class SwitchSectorComponent {
   readonly direction = input.required<'cw' | 'ccw'>();
   readonly degree = input.required<number>();
   readonly positionCode = input.required<number>();
-  readonly keyLabel = input<string>('');
-  readonly highlight = input<boolean>(false);
+  readonly keyLabel = input<CharaChorderOneKeyLabel[]>([]);
+  readonly highlightKey = input<CharaChorderOneCharacterKey | null>(null);
 
   readonly sectorPath = computed(() => {
     const center = this.center();

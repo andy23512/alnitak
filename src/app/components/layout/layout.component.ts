@@ -7,6 +7,10 @@ import {
 } from '@angular/core';
 import { LetDirective } from '@ngrx/component';
 import { POSITION_CODE_LAYOUT } from 'src/app/data/layouts';
+import {
+  CharaChorderOneCharacterKey,
+  CharaChorderOneKeyLabel,
+} from 'src/app/models/device-layout.models';
 import { FingerMap, HandMap } from 'src/app/models/layout.models';
 import { humanizePositionCode } from 'src/app/utils/layout.utils';
 import { SwitchComponent } from '../switch/switch.component';
@@ -22,11 +26,14 @@ const gap = 35;
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LayoutComponent {
-  readonly keyLabelMap = input<Record<number, string>>({});
-  readonly highlightPositionCodes = input<number[]>([]);
+  readonly keyLabelMap = input<Record<number, CharaChorderOneKeyLabel[]>>({});
+  readonly highlightKey = input<CharaChorderOneCharacterKey | null>(null);
 
   readonly highlightPositionCodesInText = computed(() => {
-    const highlightPositionCodes = this.highlightPositionCodes();
+    const highlightPositionCodes = this.highlightKey()?.positionCodes;
+    if (!highlightPositionCodes) {
+      return '';
+    }
     return [...highlightPositionCodes]
       .reverse()
       .map(humanizePositionCode)

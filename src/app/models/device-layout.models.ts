@@ -22,16 +22,23 @@ export type DeviceLayout = CharaChorderOneLayout;
 
 export enum CharaChorderOneLayer {
   Primary = 'A1',
-  Secondary = 'A2', /* Numeric */
-  Tertiary = 'A3', /* Functional */
+  Secondary = 'A2' /* Numeric */,
+  Tertiary = 'A3' /* Functional */,
 }
 
 /*
  * Key information of a character on CharaChorder One
  */
 export interface CharaChorderOneCharacterKey {
-  device: 'CharaChorderOne',
+  device: 'CharaChorderOne';
   positionCodes: number[];
+  layer: CharaChorderOneLayer;
+  shiftKey: boolean;
+  altGraphKey: boolean;
+}
+
+export interface CharaChorderOneKeyLabel {
+  c: string;
   layer: CharaChorderOneLayer;
   shiftKey: boolean;
   altGraphKey: boolean;

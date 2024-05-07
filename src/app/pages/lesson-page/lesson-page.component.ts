@@ -24,6 +24,7 @@ import { ComboCounterComponent } from 'src/app/components/combo-counter/combo-co
 import { LayoutComponent } from 'src/app/components/layout/layout.component';
 import { SpeedometerComponent } from 'src/app/components/speedometer/speedometer.component';
 import { TOPICS } from 'src/app/data/topics';
+import { CharaChorderOneKeyLabel } from 'src/app/models/device-layout.models';
 import { Lesson, Topic } from 'src/app/models/topic.models';
 import { DeviceLayoutStore } from 'src/app/stores/device-layout.store';
 import { KeyboardLayoutStore } from 'src/app/stores/keyboard-layout.store';
@@ -162,33 +163,35 @@ export class LessonPageComponent implements OnInit, OnDestroy {
     if (!lessonCharactersDevicePositionCodes) {
       return {};
     }
-    return Object.fromEntries(
-      lessonCharactersDevicePositionCodes
-        .map((v) =>
-          v?.characterDeviceKeys?.map(
-            ({ positionCodes }) => [positionCodes[0], v.c] as const,
-          ),
-        )
-        .filter(Boolean)
-        .flat() as [number, string][],
-    );
+    const keyLabelMap: Record<number, CharaChorderOneKeyLabel[]> = {};
+    lessonCharactersDevicePositionCodes.forEach((v) => {
+      v?.characterDeviceKeys?.forEach(
+        ({ positionCodes, layer, shiftKey, altGraphKey }) => {
+          const positionCode = positionCodes[0];
+          const d = { c: v.c, layer, shiftKey, altGraphKey };
+          if (!keyLabelMap[positionCode]) {
+            keyLabelMap[positionCode] = [d];
+          } else {
+            keyLabelMap[positionCode].push(d);
+          }
+        },
+      );
+    });
+    return keyLabelMap;
   });
 
   readonly lessonStore = inject(LessonStore);
-  readonly highlightPositionCodes = computed(() => {
+  readonly highlightKey = computed(() => {
     const currentCharacter = this.lessonStore.queue()[0];
     const lessonCharactersDevicePositionCodes =
       this.lessonCharactersDevicePositionCodes();
-    if (!lessonCharactersDevicePositionCodes) {
-      return [];
-    }
-    const positionCodes = lessonCharactersDevicePositionCodes.find(
+    const key = lessonCharactersDevicePositionCodes?.find(
       (d) => d?.c === currentCharacter,
-    )?.characterDeviceKeys?.[0].positionCodes;
-    if (!positionCodes) {
-      return [];
+    )?.characterDeviceKeys?.[0];
+    if (!key) {
+      return null;
     }
-    return positionCodes;
+    return key;
   });
 
   readonly hotkeys = inject(HotkeysService);

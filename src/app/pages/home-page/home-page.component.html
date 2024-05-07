@@ -8,14 +8,26 @@
     [center]="{ x: 0, y: 0 }"
     [rotationDirection]="'cw'"
     [positionCodeMap]="{ c: 0, e: 1, n: 2, w: 3, s: 4 }"
-    [highlightPositionCodes]="highlightPositionCodes"
+    [highlightKey]="{
+      positionCodes: highlightPositionCodes,
+      device: 'CharaChorderOne',
+      layer: CharaChorderOneLayer.Primary,
+      shiftKey: false,
+      altGraphKey: false
+    }"
   ></g>
   <g
     appSwitch
     [center]="{ x: 350, y: 350 }"
     [rotationDirection]="'ccw'"
     [positionCodeMap]="{ c: 5, e: 6, n: 7, w: 8, s: 9 }"
-    [highlightPositionCodes]="highlightPositionCodes"
+    [highlightKey]="{
+      positionCodes: highlightPositionCodes,
+      device: 'CharaChorderOne',
+      layer: CharaChorderOneLayer.Primary,
+      shiftKey: false,
+      altGraphKey: false
+    }"
   ></g>
 </svg>
 <main class="flex h-full flex-col items-center justify-center gap-4 p-4">

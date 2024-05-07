@@ -57,7 +57,7 @@
 <app-layout
   class="block flex-1 overflow-hidden"
   [keyLabelMap]="keyLabelMap()"
-  [highlightPositionCodes]="isFocus() ? highlightPositionCodes() : []"
+  [highlightKey]="isFocus() ? highlightKey() : null"
 ></app-layout>
 <app-combo-counter
   class="absolute bottom-4 left-4"

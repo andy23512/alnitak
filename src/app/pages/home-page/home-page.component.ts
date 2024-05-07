@@ -11,6 +11,7 @@ import { Router, RouterLink } from '@angular/router';
 import { HotkeysService } from '@ngneat/hotkeys';
 import { Chance } from 'chance';
 import { SwitchComponent } from 'src/app/components/switch/switch.component';
+import { CharaChorderOneLayer } from 'src/app/models/device-layout.models';
 
 const chance = new Chance();
 
@@ -35,6 +36,7 @@ export class HomePageComponent {
   @HostBinding('class') classes = 'block relative h-full';
 
   readonly hotkeysService = inject(HotkeysService);
+  readonly CharaChorderOneLayer = CharaChorderOneLayer;
 
   ngOnInit() {
     this.hotkeysService.addShortcut({ keys: 'space' }).subscribe(() => {
