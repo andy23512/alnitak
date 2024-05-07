@@ -3,7 +3,7 @@ import {
   withStorageSync,
 } from '@angular-architects/ngrx-toolkit';
 import { patchState, signalStore, withMethods, withState } from '@ngrx/signals';
-import { VisibilitySetting } from '../models/setting.models';
+import { VisibilitySetting } from '../models/visibility-setting.models';
 
 const initialVisibilitySetting: VisibilitySetting = {
   layout: true,

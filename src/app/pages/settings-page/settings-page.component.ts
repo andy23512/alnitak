@@ -7,8 +7,8 @@ import {
   inject,
 } from '@angular/core';
 import { MatCheckbox } from '@angular/material/checkbox';
-import { VisibilitySetting } from 'src/app/models/setting.models';
-import { VisibilitySettingStore } from 'src/app/stores/setting.store';
+import { VisibilitySetting } from 'src/app/models/visibility-setting.models';
+import { VisibilitySettingStore } from 'src/app/stores/visibility-setting.store';
 
 const VISIBILITY_SETTING_ITEMS: {
   name: string;

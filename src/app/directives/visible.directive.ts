@@ -5,8 +5,8 @@ import {
   ViewContainerRef,
   inject,
 } from '@angular/core';
-import { VisibilitySetting } from '../models/setting.models';
-import { VisibilitySettingStore } from '../stores/setting.store';
+import { VisibilitySetting } from '../models/visibility-setting.models';
+import { VisibilitySettingStore } from '../stores/visibility-setting.store';
 
 @Directive({
   selector: '[appVisible]',
