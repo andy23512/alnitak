@@ -1,9 +1,7 @@
 <div class="absolute bottom-0 right-0 text-right">
   {{ speedUnit() }}
   <br />
-  <span class="font-7seg text-[1.5em]">{{
-    displaySpeed().toString().padStart(3, "0")
-  }}</span>
+  <app-seven-segment [number]="displaySpeed()"></app-seven-segment>
 </div>
 <svg
   class="absolute"

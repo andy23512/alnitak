@@ -6,11 +6,12 @@ import {
   input,
 } from '@angular/core';
 import { temperatureToColor } from 'src/app/utils/color.utils';
+import { SevenSegmentComponent } from '../seven-segment/seven-segment.component';
 
 @Component({
   selector: 'app-combo-counter',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, SevenSegmentComponent],
   templateUrl: './combo-counter.component.html',
   styleUrl: './combo-counter.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

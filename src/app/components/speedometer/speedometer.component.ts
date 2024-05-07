@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import { interval } from 'rxjs';
 import { temperatureToColor } from 'src/app/utils/color.utils';
+import { SevenSegmentComponent } from '../seven-segment/seven-segment.component';
 
 const r1 = 80;
 const r2 = 95;
@@ -24,7 +25,7 @@ function cos(deg: number) {
 @Component({
   selector: 'app-speedometer',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, SevenSegmentComponent],
   templateUrl: './speedometer.component.html',
   styleUrl: './speedometer.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
