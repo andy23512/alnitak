@@ -3,26 +3,30 @@ import {
   withStorageSync,
 } from '@angular-architects/ngrx-toolkit';
 import { patchState, signalStore, withMethods, withState } from '@ngrx/signals';
-import { Setting } from '../models/setting.models';
+import { VisibilitySetting } from '../models/setting.models';
 
-const initialSetting: Setting = {
-  hidden: {
-    layout: false,
-    layoutTextGuide: false,
-    comboCounter: false,
-    speedometer: false,
-  },
+const initialVisibilitySetting: VisibilitySetting = {
+  layout: true,
+  layoutTextGuide: true,
+  comboCounter: true,
+  speedometer: true,
 };
 
-export const SettingStore = signalStore(
+export const VisibilitySettingStore = signalStore(
   { providedIn: 'root' },
-  withDevtools('setting'),
-  withStorageSync('setting'),
-  withState(initialSetting),
+  withDevtools('visibilitySetting'),
+  withStorageSync({
+    key: 'visibilitySetting',
+    parse(stateString: string) {
+      return { ...initialVisibilitySetting, ...JSON.parse(stateString) };
+    },
+  }),
+  withState(initialVisibilitySetting),
   withMethods((store) => ({
-    setHidden(key: keyof Setting['hidden'], value: boolean) {
+    set(key: keyof VisibilitySetting, value: boolean) {
       patchState(store, (state) => ({
-        hidden: { ...state.hidden, [key]: value },
+        ...state,
+        [key]: value,
       }));
     },
   })),

@@ -5,8 +5,8 @@ import {
   ViewContainerRef,
   inject,
 } from '@angular/core';
-import { Setting } from '../models/setting.models';
-import { SettingStore } from '../stores/setting.store';
+import { VisibilitySetting } from '../models/setting.models';
+import { VisibilitySettingStore } from '../stores/setting.store';
 
 @Directive({
   selector: '[appVisible]',
@@ -17,14 +17,14 @@ export class VisibleDirective {
 
   private templateRef = inject(TemplateRef);
   private viewContainer = inject(ViewContainerRef);
-  private settingStore = inject(SettingStore);
+  private visibilitySettingStore = inject(VisibilitySettingStore);
 
-  @Input() set appVisible(key: keyof Setting['hidden']) {
-    const hidden = this.settingStore.hidden()[key];
-    if (!hidden && !this.hasView) {
+  @Input() set appVisible(key: keyof VisibilitySetting) {
+    const visible = this.visibilitySettingStore[key]();
+    if (visible && !this.hasView) {
       this.viewContainer.createEmbeddedView(this.templateRef);
       this.hasView = true;
-    } else if (hidden && this.hasView) {
+    } else if (!visible && this.hasView) {
       this.viewContainer.clear();
       this.hasView = false;
     }

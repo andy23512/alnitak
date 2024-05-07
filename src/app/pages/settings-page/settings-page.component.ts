@@ -7,12 +7,12 @@ import {
   inject,
 } from '@angular/core';
 import { MatCheckbox } from '@angular/material/checkbox';
-import { Setting } from 'src/app/models/setting.models';
-import { SettingStore } from 'src/app/stores/setting.store';
+import { VisibilitySetting } from 'src/app/models/setting.models';
+import { VisibilitySettingStore } from 'src/app/stores/setting.store';
 
 const VISIBILITY_SETTING_ITEMS: {
   name: string;
-  key: keyof Setting['hidden'];
+  key: keyof VisibilitySetting;
 }[] = [
   { name: 'Layout', key: 'layout' },
   { name: 'Layout Text Guide', key: 'layoutTextGuide' },
@@ -31,17 +31,16 @@ const VISIBILITY_SETTING_ITEMS: {
 export class SettingsPageComponent {
   @HostBinding('class') classes = 'block p-5';
 
-  settingStore = inject(SettingStore);
+  settingStore = inject(VisibilitySettingStore);
 
   visibilitySettingItems = computed(() => {
-    const hidden = this.settingStore.hidden();
     return VISIBILITY_SETTING_ITEMS.map((item) => ({
       ...item,
-      value: !hidden[item.key],
+      value: this.settingStore[item.key](),
     }));
   });
 
-  setVisible(key: keyof Setting['hidden'], visible: boolean) {
-    this.settingStore.setHidden(key, !visible);
+  setVisible(key: keyof VisibilitySetting, visible: boolean) {
+    this.settingStore.set(key, visible);
   }
 }
