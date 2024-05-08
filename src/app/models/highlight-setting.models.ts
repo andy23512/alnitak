@@ -1,17 +1,17 @@
-export type PreferHand = 'both' | 'single' | null;
-export type PreferSide = 'left' | 'right' | null;
+export type PreferSides = 'both' | 'same';
+export type PreferKeySide = 'left' | 'right';
 
 export interface HighlightSetting {
   shiftLayer: {
-    preferHand: PreferHand;
-    preferSideOfShift: PreferSide;
+    preferSides: PreferSides;
+    preferShiftSide: PreferKeySide;
   };
   numShiftLayer: {
-    preferHand: PreferHand;
-    preferSideOfNumShift: PreferSide;
+    preferSides: PreferSides;
+    preferNumShiftSide: PreferKeySide;
   };
   shiftAndNumShiftLayer: {
-    preferSideOfShift: PreferSide;
-    preferSideOfCharacterKey: PreferSide;
+    preferShiftSide: PreferKeySide;
+    preferCharacterKeySide: PreferKeySide;
   };
 }

@@ -10,3 +10,63 @@
     >
   </div>
 }
+<h3 class="text-lg"></h3>
+<section>
+  <h4>Shift Layer</h4>
+  <ul>
+    <li>
+      Prefer to use keys from
+      <app-sides-dropdown
+        [value]="highlightSettingStore.shiftLayer().preferSides"
+      ></app-sides-dropdown>
+      for key combination.
+    </li>
+    <li>
+      Prefer to use the
+      <app-key-side-dropdown
+        [value]="highlightSettingStore.shiftLayer().preferShiftSide"
+      ></app-key-side-dropdown>
+      Shift key.
+    </li>
+  </ul>
+</section>
+<section>
+  <h4>Num-shift Layer</h4>
+  <ul>
+    <li>
+      Prefer to use keys from
+      <app-sides-dropdown
+        [value]="highlightSettingStore.numShiftLayer().preferSides"
+      ></app-sides-dropdown>
+      for key combination.
+    </li>
+    <li>
+      Prefer to use the
+      <app-key-side-dropdown
+        [value]="highlightSettingStore.numShiftLayer().preferNumShiftSide"
+      ></app-key-side-dropdown>
+      Num-shift key.
+    </li>
+  </ul>
+</section>
+<section>
+  <h4>Shift + Num-Shift Layer</h4>
+  <ul>
+    <li>
+      Prefer to use the character key on the
+      <app-key-side-dropdown
+        [value]="
+          highlightSettingStore.shiftAndNumShiftLayer().preferCharacterKeySide
+        "
+      ></app-key-side-dropdown>
+      side.
+    </li>
+    <li>
+      Prefer to use the
+      <app-key-side-dropdown
+        [value]="highlightSettingStore.shiftAndNumShiftLayer().preferShiftSide"
+      ></app-key-side-dropdown>
+      Shift key.
+    </li>
+  </ul>
+</section>

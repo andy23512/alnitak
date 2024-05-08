@@ -8,16 +8,16 @@ import { HighlightSetting } from '../models/highlight-setting.models';
 
 const INITIAL_HIGHLIGHT_SETTING: HighlightSetting = {
   shiftLayer: {
-    preferHand: 'both',
-    preferSideOfShift: 'left',
+    preferSides: 'both',
+    preferShiftSide: 'left',
   },
   numShiftLayer: {
-    preferHand: 'both',
-    preferSideOfNumShift: 'left',
+    preferSides: 'both',
+    preferNumShiftSide: 'left',
   },
   shiftAndNumShiftLayer: {
-    preferSideOfShift: 'left',
-    preferSideOfCharacterKey: 'right',
+    preferShiftSide: 'left',
+    preferCharacterKeySide: 'right',
   },
 };
 

@@ -7,7 +7,11 @@ import {
   inject,
 } from '@angular/core';
 import { MatCheckbox } from '@angular/material/checkbox';
+import { KeySideDropdownComponent } from 'src/app/components/key-side-dropdown/key-side-dropdown.component';
+import { SidesDropdownComponent } from 'src/app/components/sides-dropdown/sides-dropdown.component';
+import { HighlightSetting } from 'src/app/models/highlight-setting.models';
 import { VisibilitySetting } from 'src/app/models/visibility-setting.models';
+import { HighlightSettingStore } from 'src/app/stores/highlight-setting.store';
 import { VisibilitySettingStore } from 'src/app/stores/visibility-setting.store';
 
 const VISIBILITY_SETTING_ITEMS: {
@@ -23,7 +27,12 @@ const VISIBILITY_SETTING_ITEMS: {
 @Component({
   selector: 'app-settings-page',
   standalone: true,
-  imports: [CommonModule, MatCheckbox],
+  imports: [
+    CommonModule,
+    MatCheckbox,
+    SidesDropdownComponent,
+    KeySideDropdownComponent,
+  ],
   templateUrl: './settings-page.component.html',
   styleUrl: './settings-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -31,16 +40,24 @@ const VISIBILITY_SETTING_ITEMS: {
 export class SettingsPageComponent {
   @HostBinding('class') classes = 'block p-5';
 
-  settingStore = inject(VisibilitySettingStore);
+  visibilitySettingStore = inject(VisibilitySettingStore);
+  highlightSettingStore = inject(HighlightSettingStore);
 
   visibilitySettingItems = computed(() => {
     return VISIBILITY_SETTING_ITEMS.map((item) => ({
       ...item,
-      value: this.settingStore[item.key](),
+      value: this.visibilitySettingStore[item.key](),
     }));
   });
 
   setVisible(key: keyof VisibilitySetting, visible: boolean) {
-    this.settingStore.set(key, visible);
+    this.visibilitySettingStore.set(key, visible);
+  }
+
+  setHighlightSetting<
+    L extends keyof HighlightSetting,
+    K extends keyof HighlightSetting[L],
+  >(layer: L, key: K, value: HighlightSetting[L][K]) {
+    this.highlightSettingStore.set(layer, key, value);
   }
 }
