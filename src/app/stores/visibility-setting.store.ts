@@ -5,7 +5,7 @@ import {
 import { patchState, signalStore, withMethods, withState } from '@ngrx/signals';
 import { VisibilitySetting } from '../models/visibility-setting.models';
 
-const initialVisibilitySetting: VisibilitySetting = {
+const INITIAL_VISIBILITY_SETTING: VisibilitySetting = {
   layout: true,
   layoutTextGuide: true,
   comboCounter: true,
@@ -18,10 +18,10 @@ export const VisibilitySettingStore = signalStore(
   withStorageSync({
     key: 'visibilitySetting',
     parse(stateString: string) {
-      return { ...initialVisibilitySetting, ...JSON.parse(stateString) };
+      return { ...INITIAL_VISIBILITY_SETTING, ...JSON.parse(stateString) };
     },
   }),
-  withState(initialVisibilitySetting),
+  withState(INITIAL_VISIBILITY_SETTING),
   withMethods((store) => ({
     set(key: keyof VisibilitySetting, value: boolean) {
       patchState(store, (state) => ({
