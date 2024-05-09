@@ -1,4 +1,9 @@
-<mat-select [value]="value()" (valueChange)="select.emit($event)">
+<mat-select
+  class="!w-auto !font-bold !text-alnitak-500"
+  [value]="value()"
+  [panelWidth]="null"
+  (valueChange)="select.emit($event)"
+>
   <mat-option [value]="'both'">both sides</mat-option>
   <mat-option [value]="'same'">same side</mat-option>
 </mat-select>

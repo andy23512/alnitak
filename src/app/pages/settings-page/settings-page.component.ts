@@ -6,7 +6,8 @@ import {
   computed,
   inject,
 } from '@angular/core';
-import { MatCheckbox } from '@angular/material/checkbox';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { KeySideDropdownComponent } from 'src/app/components/key-side-dropdown/key-side-dropdown.component';
 import { SidesDropdownComponent } from 'src/app/components/sides-dropdown/sides-dropdown.component';
 import { HighlightSetting } from 'src/app/models/highlight-setting.models';
@@ -29,7 +30,8 @@ const VISIBILITY_SETTING_ITEMS: {
   standalone: true,
   imports: [
     CommonModule,
-    MatCheckbox,
+    MatCheckboxModule,
+    MatExpansionModule,
     SidesDropdownComponent,
     KeySideDropdownComponent,
   ],
