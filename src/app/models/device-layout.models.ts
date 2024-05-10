@@ -31,7 +31,7 @@ export enum CharaChorderOneLayer {
  */
 export interface CharaChorderOneCharacterKey {
   device: 'CharaChorderOne';
-  positionCodes: number[];
+  characterKeyPositionCode: number;
   layer: CharaChorderOneLayer;
   shiftKey: boolean;
   altGraphKey: boolean;

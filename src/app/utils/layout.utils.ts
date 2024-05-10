@@ -1,10 +1,4 @@
-import {
-  ACTIONS,
-  ALT_GR_ACTION_CODE,
-  FN_SHIFT_ACTION_CODES,
-  NUM_SHIFT_ACTION_CODES,
-  SHIFT_ACTION_CODES,
-} from '../data/actions';
+import { ACTIONS } from '../data/actions';
 import {
   CharaChorderOneLayer,
   CharacterDeviceKey,
@@ -90,39 +84,21 @@ export function getCharacterDeviceKeysFromActionCode(
   if (!deviceLayout) {
     return null;
   }
-  const primaryLayout = deviceLayout.layout[0];
   return deviceLayout.layout
     .map((layer, layerIndex) => {
       const positionCodesList = layer
         .map((ac, index) => (ac === actionCode ? index : -1))
         .filter((pos) => pos !== -1)
         .map((pos) => {
-          const positionCodes = [pos];
           let layer = CharaChorderOneLayer.Primary;
           if (layerIndex === 1) {
             layer = CharaChorderOneLayer.Secondary;
-            positionCodes.push(
-              primaryLayout.findIndex((ac) => ac === NUM_SHIFT_ACTION_CODES[0]),
-            );
           } else if (layerIndex === 2) {
             layer = CharaChorderOneLayer.Tertiary;
-            positionCodes.push(
-              primaryLayout.findIndex((ac) => ac === FN_SHIFT_ACTION_CODES[0]),
-            );
-          }
-          if (shiftKey) {
-            positionCodes.push(
-              primaryLayout.findIndex((ac) => ac === SHIFT_ACTION_CODES[0]),
-            );
-          }
-          if (altGraphKey) {
-            positionCodes.push(
-              primaryLayout.findIndex((ac) => ac === ALT_GR_ACTION_CODE) + 1,
-            );
           }
           return {
             device: 'CharaChorderOne' as const,
-            positionCodes,
+            characterKeyPositionCode: pos,
             layer,
             shiftKey,
             altGraphKey,

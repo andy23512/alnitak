@@ -31,11 +31,12 @@ export class LayoutComponent {
   readonly highlightKey = input<CharaChorderOneCharacterKey | null>(null);
 
   readonly highlightPositionCodesInText = computed(() => {
-    const highlightPositionCodes = this.highlightKey()?.positionCodes;
-    if (!highlightPositionCodes) {
+    const characterKeyPositionCode =
+      this.highlightKey()?.characterKeyPositionCode;
+    if (!characterKeyPositionCode) {
       return '';
     }
-    return [...highlightPositionCodes]
+    return [characterKeyPositionCode]
       .reverse()
       .map(humanizePositionCode)
       .join(' + ');

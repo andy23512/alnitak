@@ -28,6 +28,7 @@ import { VisibleDirective } from 'src/app/directives/visible.directive';
 import { CharaChorderOneKeyLabel } from 'src/app/models/device-layout.models';
 import { Lesson, Topic } from 'src/app/models/topic.models';
 import { DeviceLayoutStore } from 'src/app/stores/device-layout.store';
+import { HighlightSettingStore } from 'src/app/stores/highlight-setting.store';
 import { KeyboardLayoutStore } from 'src/app/stores/keyboard-layout.store';
 import { LessonStore } from 'src/app/stores/lesson.store';
 import {
@@ -62,6 +63,8 @@ import {
 export class LessonPageComponent implements OnInit, OnDestroy {
   readonly topicId = input.required<string>();
   readonly lessonId = input.required<string>();
+
+  readonly highlightSettingStore = inject(HighlightSettingStore);
 
   readonly isFocus = signal(false);
 
@@ -168,13 +171,12 @@ export class LessonPageComponent implements OnInit, OnDestroy {
     const keyLabelMap: Record<number, CharaChorderOneKeyLabel[]> = {};
     lessonCharactersDevicePositionCodes.forEach((v) => {
       v?.characterDeviceKeys?.forEach(
-        ({ positionCodes, layer, shiftKey, altGraphKey }) => {
-          const positionCode = positionCodes[0];
+        ({ characterKeyPositionCode, layer, shiftKey, altGraphKey }) => {
           const d = { c: v.c, layer, shiftKey, altGraphKey };
-          if (!keyLabelMap[positionCode]) {
-            keyLabelMap[positionCode] = [d];
+          if (!keyLabelMap[characterKeyPositionCode]) {
+            keyLabelMap[characterKeyPositionCode] = [d];
           } else {
-            keyLabelMap[positionCode].push(d);
+            keyLabelMap[characterKeyPositionCode].push(d);
           }
         },
       );
