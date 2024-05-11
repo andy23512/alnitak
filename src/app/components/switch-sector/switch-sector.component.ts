@@ -47,16 +47,16 @@ export class SwitchSectorComponent {
     if (direction === 'cw') {
       return [
         `M ${cx + r1 * cos(d - 45)} ${cy + r1 * sin(d - 45)}`,
-        `A ${r1} ${r1} 0 0 1 ${cx + r1 * cos(d + 45)} ${cy + r1 * sin(d + 45)}`,
+        `A ${o + r1} ${o + r1} 0 0 1 ${cx + r1 * cos(d + 45)} ${cy + r1 * sin(d + 45)}`,
         `L ${cx + r2 * cos(d + 45)} ${cy + r2 * sin(d + 45)}`,
-        `A ${r2} ${r2} 0 0 0 ${cx + r2 * cos(d - 45)} ${cy + r2 * sin(d - 45)}`,
+        `A ${o + r2} ${o + r2} 0 0 0 ${cx + r2 * cos(d - 45)} ${cy + r2 * sin(d - 45)}`,
       ].join(' ');
     } else {
       return [
         `M ${cx + r1 * cos(d + 45)} ${cy + r1 * sin(d + 45)}`,
-        `A ${r1} ${r1} 0 0 0 ${cx + r1 * cos(d - 45)} ${cy + r1 * sin(d - 45)}`,
+        `A ${o + r1} ${o + r1} 0 0 0 ${cx + r1 * cos(d - 45)} ${cy + r1 * sin(d - 45)}`,
         `L ${cx + r2 * cos(d - 45)} ${cy + r2 * sin(d - 45)}`,
-        `A ${r2} ${r2} 0 0 1 ${cx + r2 * cos(d + 45)} ${cy + r2 * sin(d + 45)}`,
+        `A ${o + r2} ${o + r2} 0 0 1 ${cx + r2 * cos(d + 45)} ${cy + r2 * sin(d + 45)}`,
       ].join(' ');
     }
   });
