@@ -32,11 +32,11 @@ export class HomePageComponent {
   readonly router = inject(Router);
   firstLessonUrl = '/topic/number/lesson/123';
   highlightPositionCodes: number[] = [
-    [-1, -1, 1, 3],
-    [-1, -1, 2, 4],
-    [-1, -1, 6, 8],
-    [-1, -1, 7, 9],
-  ].map((list) => pickRandomItem(list));
+    [0, 1, 2, 3, 4, [1, 2], [1, 4], [3, 2], [3, 4]],
+    [5, 6, 7, 8, 9, [6, 7], [6, 9], [8, 7], [8, 9]],
+  ]
+    .map((list) => pickRandomItem(list))
+    .flat();
 
   @HostBinding('class') classes = 'block relative h-full';
 

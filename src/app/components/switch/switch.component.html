@@ -9,6 +9,15 @@
     [highlightKey]="highlightKey()"
   ></svg:g>
 }
+<svg:circle
+  class="fill-alnitak-500"
+  [attr.cx]="center().x"
+  [attr.cy]="center().y"
+  [attr.r]="53.68"
+  [attr.opacity]="
+    highlightKey()?.positionCodes?.includes(positionCodeMap().c) ? 0.5 : 0
+  "
+></svg:circle>
 <svg:text
   [attr.x]="center().x"
   [attr.y]="center().y"
