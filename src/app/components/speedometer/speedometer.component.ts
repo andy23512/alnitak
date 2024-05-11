@@ -57,13 +57,13 @@ export class SpeedometerComponent implements OnInit {
   d({ degFrom, degTo }: { degFrom: number; degTo: number }) {
     const cx = 100;
     const cy = 100;
-    return [
-      `M ${cx - r1 * cos(degFrom)} ${cy - r1 * sin(degFrom)}`,
-      `A ${r1} ${r1} 0 0 1 ${cx - r1 * cos(degTo)} ${cy - r1 * sin(degTo)}`,
-      `L ${cx - r2 * cos(degTo)} ${cy - r2 * sin(degTo)}`,
-      `A ${r2} ${r2} 0 0 0 ${cx - r2 * cos(degFrom)} ${cy - r2 * sin(degFrom)}`,
-      `Z`,
-    ].join(' ');
+    return `
+      M ${cx - r1 * cos(degFrom)} ${cy - r1 * sin(degFrom)}
+      A ${r1} ${r1} 0 0 1 ${cx - r1 * cos(degTo)} ${cy - r1 * sin(degTo)}
+      L ${cx - r2 * cos(degTo)} ${cy - r2 * sin(degTo)}
+      A ${r2} ${r2} 0 0 0 ${cx - r2 * cos(degFrom)} ${cy - r2 * sin(degFrom)}
+      Z
+    `;
   }
 
   fill(index: number) {
