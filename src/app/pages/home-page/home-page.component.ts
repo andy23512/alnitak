@@ -8,7 +8,7 @@ import {
 import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { Router, RouterLink } from '@angular/router';
-import { HotkeysService } from '@ngneat/hotkeys';
+import { HotkeysService, HotkeysShortcutPipe } from '@ngneat/hotkeys';
 import { SwitchComponent } from 'src/app/components/switch/switch.component';
 import { CharaChorderOneLayer } from 'src/app/models/device-layout.models';
 import { pickRandomItem } from 'src/app/utils/random.utils';
@@ -16,7 +16,14 @@ import { pickRandomItem } from 'src/app/utils/random.utils';
 @Component({
   selector: 'app-home-page',
   standalone: true,
-  imports: [CommonModule, MatButton, MatIcon, RouterLink, SwitchComponent],
+  imports: [
+    CommonModule,
+    MatButton,
+    MatIcon,
+    RouterLink,
+    SwitchComponent,
+    HotkeysShortcutPipe,
+  ],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

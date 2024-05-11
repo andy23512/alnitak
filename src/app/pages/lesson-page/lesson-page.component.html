@@ -38,7 +38,7 @@
       (click)="startLesson()"
     >
       <mat-icon class="scale-125 text-white">play_arrow</mat-icon> Start /
-      Resume <kbd>Space</kbd>
+      Resume <kbd [innerHTML]="'space' | hotkeysShortcut"></kbd>
     </div>
   </div>
   <a
