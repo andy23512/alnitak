@@ -6,7 +6,7 @@ import {
   input,
 } from '@angular/core';
 import {
-  CharaChorderOneCharacterKey,
+  CharaChorderOneCharacterKeyWithPositionCodesAndScore,
   CharaChorderOneKeyLabel,
 } from 'src/app/models/device-layout.models';
 
@@ -35,7 +35,8 @@ export class SwitchSectorComponent {
   readonly degree = input.required<number>();
   readonly positionCode = input.required<number>();
   readonly keyLabel = input<CharaChorderOneKeyLabel[]>([]);
-  readonly highlightKey = input<CharaChorderOneCharacterKey | null>(null);
+  readonly highlightKey =
+    input<CharaChorderOneCharacterKeyWithPositionCodesAndScore | null>(null);
 
   readonly sectorPath = computed(() => {
     const center = this.center();

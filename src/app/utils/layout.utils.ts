@@ -1,9 +1,15 @@
 import { ACTIONS } from '../data/actions';
 import {
+  CharaChorderOneCharacterKey,
+  CharaChorderOneCharacterKeyWithPositionCodesAndScore,
   CharaChorderOneLayer,
   CharacterDeviceKey,
   DeviceLayout,
 } from '../models/device-layout.models';
+import {
+  HighlightSetting,
+  PreferSides,
+} from '../models/highlight-setting.models';
 import {
   CharacterActionCode,
   CharacterKeyCode,
@@ -112,6 +118,26 @@ export function getCharacterDeviceKeysFromActionCode(
     .filter(Boolean)[0];
 }
 
+export function getPositionSide(positionCode: number) {
+  return positionCode < 45 ? 'left' : 'right';
+}
+
+export function isPositionAtSide(positionCode: number, side: 'left' | 'right') {
+  return getPositionSide(positionCode) === side;
+}
+
+export function meetPreferSides(
+  positionCode1: number,
+  positionCode2: number,
+  preferSides: PreferSides,
+) {
+  if (preferSides === 'both') {
+    return getPositionSide(positionCode1) !== getPositionSide(positionCode2);
+  } else {
+    return getPositionSide(positionCode1) === getPositionSide(positionCode2);
+  }
+}
+
 export function humanizePositionCode(positionCode: number) {
   const hand = positionCode < 45 ? 'Left' : 'Right';
   const sw = [
@@ -131,4 +157,115 @@ export function humanizePositionCode(positionCode: number) {
       : ['Down (Press)', 'West', 'North', 'East', 'South']
   )[positionCode % 5];
   return [hand, sw, direction].join(' ');
+}
+
+export function getHighlightPositionCodesFromCharacterDeviceKeys(
+  characterDeviceKeys: CharaChorderOneCharacterKey[],
+  modifierKeyPositionCodeMap: {
+    shift: number[];
+    numShift: number[];
+    fnShift: number[];
+    altGraph: number[];
+  },
+  highlightSetting: HighlightSetting,
+) {
+  return characterDeviceKeys
+    .map((k) => {
+      const result: CharaChorderOneCharacterKeyWithPositionCodesAndScore[] = [];
+      if (k.shiftKey) {
+        if (k.layer === CharaChorderOneLayer.Secondary) {
+          const { preferCharacterKeySide, preferShiftSide } =
+            highlightSetting.shiftAndNumShiftLayer;
+          for (const shiftPositionCode of modifierKeyPositionCodeMap.shift) {
+            for (const numShiftPositionCode of modifierKeyPositionCodeMap.numShift) {
+              let score = 0;
+              if (
+                isPositionAtSide(
+                  k.characterKeyPositionCode,
+                  preferCharacterKeySide,
+                )
+              ) {
+                score += 1;
+              }
+              if (isPositionAtSide(shiftPositionCode, preferShiftSide)) {
+                score += 1;
+              }
+              if (!isPositionAtSide(numShiftPositionCode, preferShiftSide)) {
+                score += 1;
+              }
+              result.push({
+                ...k,
+                positionCodes: [
+                  k.characterKeyPositionCode,
+                  shiftPositionCode,
+                  numShiftPositionCode,
+                ],
+                score,
+              });
+            }
+          }
+        } else {
+          const { preferShiftSide, preferSides } = highlightSetting.shiftLayer;
+          for (const shiftPositionCode of modifierKeyPositionCodeMap.shift) {
+            let score = 0;
+            if (
+              meetPreferSides(
+                k.characterKeyPositionCode,
+                shiftPositionCode,
+                preferSides,
+              )
+            ) {
+              score += 2;
+            }
+            if (isPositionAtSide(shiftPositionCode, preferShiftSide)) {
+              score += 1;
+            }
+            result.push({
+              ...k,
+              positionCodes: [k.characterKeyPositionCode, shiftPositionCode],
+              score,
+            });
+          }
+        }
+      } else {
+        if (k.layer === CharaChorderOneLayer.Secondary) {
+          const { preferNumShiftSide, preferSides } =
+            highlightSetting.numShiftLayer;
+          for (const numShiftPositionCode of modifierKeyPositionCodeMap.numShift) {
+            let score = 0;
+            if (
+              meetPreferSides(
+                k.characterKeyPositionCode,
+                numShiftPositionCode,
+                preferSides,
+              )
+            ) {
+              score += 2;
+            }
+            if (isPositionAtSide(numShiftPositionCode, preferNumShiftSide)) {
+              score += 1;
+            }
+            result.push({
+              ...k,
+              positionCodes: [k.characterKeyPositionCode, numShiftPositionCode],
+              score,
+            });
+          }
+        } else {
+          result.push({
+            ...k,
+            positionCodes: [k.characterKeyPositionCode],
+            score: 0,
+          });
+        }
+      }
+      return result;
+    })
+    .flat()
+    .sort((a, b) => {
+      if (a.positionCodes.length === b.positionCodes.length) {
+        return b.score - a.score;
+      }
+      return a.positionCodes.length - b.positionCodes.length;
+    })[0];
 }

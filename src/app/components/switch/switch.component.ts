@@ -6,7 +6,7 @@ import {
   input,
 } from '@angular/core';
 import {
-  CharaChorderOneCharacterKey,
+  CharaChorderOneCharacterKeyWithPositionCodesAndScore,
   CharaChorderOneKeyLabel,
 } from 'src/app/models/device-layout.models';
 import { DirectionMap } from 'src/app/models/layout.models';
@@ -32,7 +32,8 @@ export class SwitchComponent {
   ];
   readonly positionCodeMap = input.required<DirectionMap<number>>();
   readonly keyLabelMap = input<Record<number, CharaChorderOneKeyLabel[]>>({});
-  readonly highlightKey = input<CharaChorderOneCharacterKey | null>(null);
+  readonly highlightKey =
+    input<CharaChorderOneCharacterKeyWithPositionCodesAndScore | null>(null);
   readonly r = computed(() => {
     return (this.rotationDirection() === 'cw' ? 1 : -1) * this.rotation();
   });

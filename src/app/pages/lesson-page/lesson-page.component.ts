@@ -6,6 +6,7 @@ import {
   HostBinding,
   OnDestroy,
   OnInit,
+  Signal,
   ViewChild,
   computed,
   effect,
@@ -20,12 +21,22 @@ import { MatTooltip } from '@angular/material/tooltip';
 import { Router, RouterLink } from '@angular/router';
 import { HotkeysService, HotkeysShortcutPipe } from '@ngneat/hotkeys';
 import { LetDirective } from '@ngrx/component';
+import { getState } from '@ngrx/signals';
 import { ComboCounterComponent } from 'src/app/components/combo-counter/combo-counter.component';
 import { LayoutComponent } from 'src/app/components/layout/layout.component';
 import { SpeedometerComponent } from 'src/app/components/speedometer/speedometer.component';
+import {
+  ALT_GR_ACTION_CODE,
+  FN_SHIFT_ACTION_CODES,
+  NUM_SHIFT_ACTION_CODES,
+  SHIFT_ACTION_CODES,
+} from 'src/app/data/actions';
 import { TOPICS } from 'src/app/data/topics';
 import { VisibleDirective } from 'src/app/directives/visible.directive';
-import { CharaChorderOneKeyLabel } from 'src/app/models/device-layout.models';
+import {
+  CharaChorderOneCharacterKeyWithPositionCodesAndScore,
+  CharaChorderOneKeyLabel,
+} from 'src/app/models/device-layout.models';
 import { Lesson, Topic } from 'src/app/models/topic.models';
 import { DeviceLayoutStore } from 'src/app/stores/device-layout.store';
 import { HighlightSettingStore } from 'src/app/stores/highlight-setting.store';
@@ -36,6 +47,7 @@ import {
   getCharacterActionCodeFromCharacterKeyCode,
   getCharacterDeviceKeysFromActionCode,
   getCharacterKeyCodeFromCharacter,
+  getHighlightPositionCodesFromCharacterDeviceKeys,
 } from 'src/app/utils/layout.utils';
 
 @Component({
@@ -183,19 +195,74 @@ export class LessonPageComponent implements OnInit, OnDestroy {
     });
     return keyLabelMap;
   });
+  readonly highlightCharacterKeyMap: Signal<
+    Record<string, CharaChorderOneCharacterKeyWithPositionCodesAndScore>
+  > = computed(() => {
+    const lessonCharactersDevicePositionCodes =
+      this.lessonCharactersDevicePositionCodes();
+    const highlightSetting = getState(this.highlightSettingStore);
+    const deviceLayout = this.deviceLayout();
+    if (!lessonCharactersDevicePositionCodes || !deviceLayout) {
+      return {};
+    }
+    const modifierKeyPositionCodeMap = {
+      shift: SHIFT_ACTION_CODES.map((actionCode) =>
+        getCharacterDeviceKeysFromActionCode(
+          { actionCode, shiftKey: false, altGraphKey: false },
+          deviceLayout,
+        )?.map((k) => k.characterKeyPositionCode),
+      )
+        .filter(Boolean)
+        .flat() as number[],
+      numShift: NUM_SHIFT_ACTION_CODES.map((actionCode) =>
+        getCharacterDeviceKeysFromActionCode(
+          { actionCode, shiftKey: false, altGraphKey: false },
+          deviceLayout,
+        )?.map((k) => k.characterKeyPositionCode),
+      )
+        .filter(Boolean)
+        .flat() as number[],
+      fnShift: FN_SHIFT_ACTION_CODES.map((actionCode) =>
+        getCharacterDeviceKeysFromActionCode(
+          { actionCode, shiftKey: false, altGraphKey: false },
+          deviceLayout,
+        )?.map((k) => k.characterKeyPositionCode),
+      )
+        .filter(Boolean)
+        .flat() as number[],
+      altGraph: [ALT_GR_ACTION_CODE]
+        .map((actionCode) =>
+          getCharacterDeviceKeysFromActionCode(
+            { actionCode, shiftKey: false, altGraphKey: false },
+            deviceLayout,
+          )?.map((k) => k.characterKeyPositionCode),
+        )
+        .filter(Boolean)
+        .flat() as number[],
+    };
+    const highlightCharacterKeyMap: Record<
+      string,
+      CharaChorderOneCharacterKeyWithPositionCodesAndScore
+    > = {};
+    lessonCharactersDevicePositionCodes.forEach((k) => {
+      if (!k || !k.characterDeviceKeys) {
+        return;
+      }
+      highlightCharacterKeyMap[k.c] =
+        getHighlightPositionCodesFromCharacterDeviceKeys(
+          k.characterDeviceKeys,
+          modifierKeyPositionCodeMap,
+          highlightSetting,
+        );
+    });
+    return highlightCharacterKeyMap;
+  });
 
   readonly lessonStore = inject(LessonStore);
   readonly highlightKey = computed(() => {
     const currentCharacter = this.lessonStore.queue()[0];
-    const lessonCharactersDevicePositionCodes =
-      this.lessonCharactersDevicePositionCodes();
-    const key = lessonCharactersDevicePositionCodes?.find(
-      (d) => d?.c === currentCharacter,
-    )?.characterDeviceKeys?.[0];
-    if (!key) {
-      return null;
-    }
-    return key;
+    const highlightCharacterKeyMap = this.highlightCharacterKeyMap();
+    return highlightCharacterKeyMap[currentCharacter];
   });
 
   readonly hotkeys = inject(HotkeysService);

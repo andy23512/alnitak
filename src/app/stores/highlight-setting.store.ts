@@ -6,7 +6,7 @@ import { patchState, signalStore, withMethods, withState } from '@ngrx/signals';
 import { mergeDeepLeft } from 'ramda';
 import { HighlightSetting } from '../models/highlight-setting.models';
 
-const INITIAL_HIGHLIGHT_SETTING: HighlightSetting = {
+export const INITIAL_HIGHLIGHT_SETTING: HighlightSetting = {
   shiftLayer: {
     preferSides: 'both',
     preferShiftSide: 'left',
@@ -16,7 +16,7 @@ const INITIAL_HIGHLIGHT_SETTING: HighlightSetting = {
     preferNumShiftSide: 'left',
   },
   shiftAndNumShiftLayer: {
-    preferShiftSide: 'left',
+    preferShiftSide: 'right',
     preferCharacterKeySide: 'right',
   },
 };
@@ -25,7 +25,7 @@ export const HighlightSettingStore = signalStore(
   { providedIn: 'root' },
   withDevtools('highlightSetting'),
   withStorageSync({
-    key: 'visibilitySetting',
+    key: 'highlightSetting',
     parse(stateString: string) {
       return mergeDeepLeft(
         INITIAL_HIGHLIGHT_SETTING,

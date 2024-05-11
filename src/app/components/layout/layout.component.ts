@@ -9,7 +9,7 @@ import { LetDirective } from '@ngrx/component';
 import { POSITION_CODE_LAYOUT } from 'src/app/data/layouts';
 import { VisibleDirective } from 'src/app/directives/visible.directive';
 import {
-  CharaChorderOneCharacterKey,
+  CharaChorderOneCharacterKeyWithPositionCodesAndScore,
   CharaChorderOneKeyLabel,
 } from 'src/app/models/device-layout.models';
 import { FingerMap, HandMap } from 'src/app/models/layout.models';
@@ -28,15 +28,15 @@ const gap = 35;
 })
 export class LayoutComponent {
   readonly keyLabelMap = input<Record<number, CharaChorderOneKeyLabel[]>>({});
-  readonly highlightKey = input<CharaChorderOneCharacterKey | null>(null);
+  readonly highlightKey =
+    input<CharaChorderOneCharacterKeyWithPositionCodesAndScore | null>(null);
 
   readonly highlightPositionCodesInText = computed(() => {
-    const characterKeyPositionCode =
-      this.highlightKey()?.characterKeyPositionCode;
-    if (!characterKeyPositionCode) {
+    const highlightKey = this.highlightKey();
+    if (!highlightKey) {
       return '';
     }
-    return [characterKeyPositionCode]
+    return highlightKey.positionCodes
       .reverse()
       .map(humanizePositionCode)
       .join(' + ');

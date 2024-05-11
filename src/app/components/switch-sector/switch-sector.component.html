@@ -3,7 +3,7 @@
   class="fill-alnitak-500"
   [attr.d]="sectorPath() + ' Z'"
   [attr.opacity]="
-    highlightKey()?.characterKeyPositionCode === positionCode() ? 0.5 : 0
+    highlightKey()?.positionCodes?.includes(positionCode()) ? 0.5 : 0
   "
 />
 @for (label of keyLabel(); track label.c) {

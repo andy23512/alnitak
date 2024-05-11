@@ -37,6 +37,12 @@ export interface CharaChorderOneCharacterKey {
   altGraphKey: boolean;
 }
 
+export interface CharaChorderOneCharacterKeyWithPositionCodesAndScore
+  extends CharaChorderOneCharacterKey {
+  positionCodes: number[];
+  score: number;
+}
+
 export interface CharaChorderOneKeyLabel {
   c: string;
   layer: CharaChorderOneLayer;
