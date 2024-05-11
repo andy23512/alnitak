@@ -38,7 +38,8 @@ export class SpeedometerComponent implements OnInit {
 
   public sectorNumber = 45;
   public gapDeg = 1;
-  public sectorDeg = (90 - 1 * (this.sectorNumber - 1)) / this.sectorNumber;
+  public sectorDeg =
+    (90 - this.gapDeg * (this.sectorNumber - 1)) / this.sectorNumber;
   sectors = Array.from({ length: this.sectorNumber }).map((_, i) => ({
     index: i,
     degFrom: i * (this.sectorDeg + this.gapDeg),
