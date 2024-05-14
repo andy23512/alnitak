@@ -4,6 +4,7 @@ export interface Lesson {
   id: string;
   name: string;
   components: string[];
+  componentNames: string[];
 }
 
 export interface Topic {
@@ -12,4 +13,8 @@ export interface Topic {
   name: string;
   type: TopicType;
   lessons: Lesson[];
+}
+
+export interface LessonWithTopic extends Lesson {
+  topic: Topic;
 }

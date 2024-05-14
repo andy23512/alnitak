@@ -49,6 +49,7 @@ import {
   getCharacterKeyCodeFromCharacter,
   getHighlightPositionCodesFromCharacterDeviceKeys,
 } from 'src/app/utils/layout.utils';
+import { nonNullable } from 'src/app/utils/non-nullable.utils';
 
 @Component({
   selector: 'app-lesson-page',
@@ -172,7 +173,7 @@ export class LessonPageComponent implements OnInit, OnDestroy {
           ),
         };
       })
-      .filter(Boolean);
+      .filter(nonNullable);
   });
   readonly keyLabelMap = computed(() => {
     const lessonCharactersDevicePositionCodes =
@@ -212,24 +213,24 @@ export class LessonPageComponent implements OnInit, OnDestroy {
           deviceLayout,
         )?.map((k) => k.characterKeyPositionCode),
       )
-        .filter(Boolean)
-        .flat() as number[],
+        .filter(nonNullable)
+        .flat(),
       numShift: NUM_SHIFT_ACTION_CODES.map((actionCode) =>
         getCharacterDeviceKeysFromActionCode(
           { actionCode, shiftKey: false, altGraphKey: false },
           deviceLayout,
         )?.map((k) => k.characterKeyPositionCode),
       )
-        .filter(Boolean)
-        .flat() as number[],
+        .filter(nonNullable)
+        .flat(),
       fnShift: FN_SHIFT_ACTION_CODES.map((actionCode) =>
         getCharacterDeviceKeysFromActionCode(
           { actionCode, shiftKey: false, altGraphKey: false },
           deviceLayout,
         )?.map((k) => k.characterKeyPositionCode),
       )
-        .filter(Boolean)
-        .flat() as number[],
+        .filter(nonNullable)
+        .flat(),
       altGraph: [ALT_GR_ACTION_CODE]
         .map((actionCode) =>
           getCharacterDeviceKeysFromActionCode(
@@ -237,8 +238,8 @@ export class LessonPageComponent implements OnInit, OnDestroy {
             deviceLayout,
           )?.map((k) => k.characterKeyPositionCode),
         )
-        .filter(Boolean)
-        .flat() as number[],
+        .filter(nonNullable)
+        .flat(),
     };
     const highlightCharacterKeyMap: Record<
       string,

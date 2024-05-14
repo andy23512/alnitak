@@ -18,6 +18,7 @@ import {
   KeyboardLayoutKey,
 } from '../models/keyboard-layout.models';
 import { WritingSystemKeyCode } from '../models/writing-system-key-code.models';
+import { nonNullable } from './non-nullable.utils';
 
 export function convertKeyboardLayoutToCharacterKeyCodeMap(
   keyboardLayout: KeyBoardLayout | null,
@@ -115,7 +116,7 @@ export function getCharacterDeviceKeysFromActionCode(
       }
       return positionCodesList;
     })
-    .filter(Boolean)[0];
+    .filter(nonNullable)[0];
 }
 
 export function getPositionSide(positionCode: number) {

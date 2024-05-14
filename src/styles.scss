@@ -74,4 +74,6 @@ kbd {
 mat-sidenav[data-style-dense] {
   @include mat.toolbar-density(-3);
   @include mat.list-density(-3);
+  @include mat.input-density(-3);
+  @include mat.form-field-density(-3);
 }

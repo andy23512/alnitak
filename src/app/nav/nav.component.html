@@ -8,51 +8,84 @@
     [opened]="(isHandset$ | async) === false"
     data-style-dense
   >
-    <mat-toolbar class="sticky top-0 z-10 !bg-gray-450 shadow">
-      <a
-        [routerLink]="'/'"
-        aria-label="home page link"
-        matTooltip="Go to Home page"
-        (click)="onNavLinkClick()"
-      >
-        <button type="button" mat-icon-button>
-          <mat-icon>home</mat-icon>
+    <header class="sticky top-0 z-10 shadow">
+      <mat-toolbar class="sticky top-0 z-10 !bg-gray-450">
+        <a
+          [routerLink]="'/'"
+          aria-label="home page link"
+          matTooltip="Go to Home page"
+          (click)="onNavLinkClick()"
+        >
+          <button type="button" mat-icon-button>
+            <mat-icon>home</mat-icon>
+          </button>
+        </a>
+        <a
+          [routerLink]="'/settings'"
+          aria-label="settings page link"
+          matTooltip="Go to Settings page"
+          (click)="onNavLinkClick()"
+        >
+          <button type="button" mat-icon-button>
+            <mat-icon>settings</mat-icon>
+          </button>
+        </a>
+        <button
+          type="button"
+          mat-icon-button
+          aria-label="button that opens hotkey dialog"
+          (click)="openHotkeyDialog()"
+          matTooltip="Open hotkey dialog"
+        >
+          <mat-icon>keyboard</mat-icon>
         </button>
-      </a>
-      <a
-        [routerLink]="'/settings'"
-        aria-label="settings page link"
-        matTooltip="Go to Settings page"
-        (click)="onNavLinkClick()"
+      </mat-toolbar>
+      <mat-form-field
+        class="w-full [&_.mat-mdc-form-field-subscript-wrapper]:hidden"
       >
-        <button type="button" mat-icon-button>
-          <mat-icon>settings</mat-icon>
-        </button>
-      </a>
-      <button
-        type="button"
-        mat-icon-button
-        aria-label="button that opens hotkey dialog"
-        (click)="openHotkeyDialog()"
-        matTooltip="Open hotkey dialog"
-      >
-        <mat-icon>keyboard</mat-icon>
-      </button>
-    </mat-toolbar>
-    <mat-nav-list>
-      @for (topic of topics; track topic.id) {
-        <h4 class="flex items-center gap-1" matSubheader>
-          <mat-icon>{{ topic.iconName || "topic" }}</mat-icon
-          >{{ topic.name }}
-        </h4>
-        @for (lesson of topic.lessons; track lesson.id) {
+        <input
+          [ngModel]="searchQuery()"
+          (ngModelChange)="searchQuery.set($event)"
+          matInput
+          type="search"
+          placeholder="Search Lessons"
+          aria-label="search box for lesson"
+        />
+        @if (!searchQuery()) {
+          <button mat-icon-button matSuffix aria-label="clear search query">
+            <mat-icon>search</mat-icon>
+          </button>
+        }
+      </mat-form-field>
+    </header>
+    <mat-nav-list class="!p-0">
+      @if (searchQuery()) {
+        @for (lesson of searchResult(); track lesson.id) {
           <a
             mat-list-item
-            routerLink="/topic/{{ topic.id }}/lesson/{{ lesson.id }}"
+            routerLink="/topic/{{ lesson.topic.id }}/lesson/{{ lesson.id }}"
             routerLinkActive="list-item-active"
             (click)="onNavLinkClick()"
-            >{{ lesson.name }}</a
+            >{{ lesson.topic.name }} - {{ lesson.name }}</a
           >
+        } @empty {
+          <a mat-list-item> No results were found.</a>
+        }
+      } @else {
+        @for (topic of topics; track topic.id) {
+          <h4 class="flex items-center gap-1" matSubheader>
+            <mat-icon>{{ topic.iconName || "topic" }}</mat-icon
+            >{{ topic.name }}
+          </h4>
+          @for (lesson of topic.lessons; track lesson.id) {
+            <a
+              mat-list-item
+              routerLink="/topic/{{ topic.id }}/lesson/{{ lesson.id }}"
+              routerLinkActive="list-item-active"
+              (click)="onNavLinkClick()"
+              >{{ lesson.name }}</a
+            >
+          }
         }
       }
     </mat-nav-list>

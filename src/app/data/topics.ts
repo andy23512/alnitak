@@ -1,10 +1,10 @@
-import { Topic } from '../models/topic.models';
+import { LessonWithTopic, Topic } from '../models/topic.models';
 import { generateCharacterLesson } from '../utils/lesson.utils';
 
 export const LETTER_TOPIC: Topic = {
   id: 'letter',
   iconName: 'abc',
-  name: 'Letter',
+  name: 'Letters',
   type: 'character',
   lessons: ['reat', 'ioln', 'ujys', 'kcfd', 'mvhp', 'wgz', 'bqx'].map(
     generateCharacterLesson,
@@ -14,20 +14,21 @@ export const LETTER_TOPIC: Topic = {
 export const NUMBER_TOPIC: Topic = {
   id: 'number',
   iconName: '123',
-  name: 'Number',
+  name: 'Numbers',
   type: 'character',
   lessons: ['123', '456', '7890'].map(generateCharacterLesson).concat([
     {
+      ...generateCharacterLesson('1234567890'),
       id: 'all',
-      name: 'All',
-      components: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'],
+      name: 'All Numbers',
     },
   ]),
 };
 
 export const SYMBOL_TOPIC: Topic = {
   id: 'symbol',
-  name: 'Symbol',
+  name: 'Symbols',
+  iconName: 'question_mark',
   type: 'character',
   lessons: [
     '`~!@',
@@ -42,3 +43,11 @@ export const SYMBOL_TOPIC: Topic = {
 };
 
 export const TOPICS = [NUMBER_TOPIC, LETTER_TOPIC, SYMBOL_TOPIC];
+export const LESSONS: LessonWithTopic[] = TOPICS.map((topic) =>
+  topic.lessons.map((l) => ({ ...l, topic })),
+).flat();
+export const LESSON_DATA_FOR_SEARCH = LESSONS.map((lesson) =>
+  [{ key: lesson.name, lesson }]
+    .concat(lesson.components.map((c) => ({ key: c, lesson })))
+    .concat(lesson.componentNames.map((n) => ({ key: n, lesson }))),
+).flat();
