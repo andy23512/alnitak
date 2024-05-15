@@ -17,9 +17,11 @@
     font-weight="lighter"
     class="transition-opacity"
     [attr.opacity]="
-      label.layer === highlightKey()?.layer &&
-      label.shiftKey === highlightKey()?.shiftKey &&
-      label.altGraphKey === highlightKey()?.altGraphKey
+      highlightKey() &&
+      ((label.layer === highlightKey()?.layer &&
+        label.shiftKey === highlightKey()?.shiftKey &&
+        label.altGraphKey === highlightKey()?.altGraphKey) ||
+        label.layer === null)
         ? 1
         : 0
     "

@@ -45,9 +45,9 @@ export interface CharaChorderOneCharacterKeyWithPositionCodesAndScore
 
 export interface CharaChorderOneKeyLabel {
   c: string;
-  layer: CharaChorderOneLayer;
-  shiftKey: boolean;
-  altGraphKey: boolean;
+  layer: CharaChorderOneLayer | null;
+  shiftKey: boolean | null;
+  altGraphKey: boolean | null;
 }
 
 export type CharacterDeviceKey = CharaChorderOneCharacterKey;

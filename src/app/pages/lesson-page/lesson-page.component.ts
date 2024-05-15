@@ -36,6 +36,7 @@ import { VisibleDirective } from 'src/app/directives/visible.directive';
 import {
   CharaChorderOneCharacterKeyWithPositionCodesAndScore,
   CharaChorderOneKeyLabel,
+  CharaChorderOneLayer,
 } from 'src/app/models/device-layout.models';
 import { Lesson, Topic } from 'src/app/models/topic.models';
 import { DeviceLayoutStore } from 'src/app/stores/device-layout.store';
@@ -176,38 +177,9 @@ export class LessonPageComponent implements OnInit, OnDestroy {
       })
       .filter(nonNullable);
   });
-  readonly keyLabelMap = computed(() => {
-    const lessonCharactersDevicePositionCodes =
-      this.lessonCharactersDevicePositionCodes();
-    if (!lessonCharactersDevicePositionCodes) {
-      return {};
-    }
-    const keyLabelMap: Record<number, CharaChorderOneKeyLabel[]> = {};
-    lessonCharactersDevicePositionCodes.forEach((v) => {
-      v?.characterDeviceKeys?.forEach(
-        ({ characterKeyPositionCode, layer, shiftKey, altGraphKey }) => {
-          const d = { c: v.c, layer, shiftKey, altGraphKey };
-          if (!keyLabelMap[characterKeyPositionCode]) {
-            keyLabelMap[characterKeyPositionCode] = [d];
-          } else {
-            keyLabelMap[characterKeyPositionCode].push(d);
-          }
-        },
-      );
-    });
-    return keyLabelMap;
-  });
-  readonly highlightCharacterKeyMap: Signal<
-    Record<string, CharaChorderOneCharacterKeyWithPositionCodesAndScore>
-  > = computed(() => {
-    const lessonCharactersDevicePositionCodes =
-      this.lessonCharactersDevicePositionCodes();
-    const highlightSetting = getState(this.highlightSettingStore);
+  readonly modifierKeyPositionCodeMap = computed(() => {
     const deviceLayout = this.deviceLayout();
-    if (!lessonCharactersDevicePositionCodes || !deviceLayout) {
-      return {};
-    }
-    const modifierKeyPositionCodeMap = {
+    return {
       shift: SHIFT_ACTION_CODES.map((actionCode) =>
         getCharacterDeviceKeysFromActionCode(
           { actionCode, shiftKey: false, altGraphKey: false },
@@ -242,6 +214,81 @@ export class LessonPageComponent implements OnInit, OnDestroy {
         .filter(nonNullable)
         .flat(),
     };
+  });
+  readonly keyLabelMap = computed(() => {
+    const lessonCharactersDevicePositionCodes =
+      this.lessonCharactersDevicePositionCodes();
+    if (!lessonCharactersDevicePositionCodes) {
+      return {};
+    }
+    const modifierKeyPositionCodeMap = this.modifierKeyPositionCodeMap();
+    if (!modifierKeyPositionCodeMap) {
+      return {};
+    }
+    const keyLabelMap: Record<number, CharaChorderOneKeyLabel[]> = {};
+    let addShiftLabel = false;
+    let addNumShiftLabel = false;
+    lessonCharactersDevicePositionCodes.forEach((v) => {
+      v?.characterDeviceKeys?.forEach(
+        ({ characterKeyPositionCode, layer, shiftKey, altGraphKey }) => {
+          const d = { c: v.c, layer, shiftKey, altGraphKey };
+          if (!keyLabelMap[characterKeyPositionCode]) {
+            keyLabelMap[characterKeyPositionCode] = [d];
+          } else {
+            keyLabelMap[characterKeyPositionCode].push(d);
+          }
+          if (shiftKey && !addShiftLabel) {
+            addShiftLabel = true;
+          }
+          if (layer === CharaChorderOneLayer.Secondary && !addNumShiftLabel) {
+            addNumShiftLabel = true;
+          }
+        },
+      );
+    });
+    if (addShiftLabel) {
+      modifierKeyPositionCodeMap.shift.forEach((pos) => {
+        const d: CharaChorderOneKeyLabel = {
+          c: '⇧',
+          layer: null,
+          shiftKey: null,
+          altGraphKey: null,
+        };
+        if (!keyLabelMap[pos]) {
+          keyLabelMap[pos] = [d];
+        } else {
+          keyLabelMap[pos].push(d);
+        }
+      });
+    }
+    if (addNumShiftLabel) {
+      modifierKeyPositionCodeMap.numShift.forEach((pos) => {
+        const d: CharaChorderOneKeyLabel = {
+          c: '②',
+          layer: null,
+          shiftKey: null,
+          altGraphKey: null,
+        };
+        if (!keyLabelMap[pos]) {
+          keyLabelMap[pos] = [d];
+        } else {
+          keyLabelMap[pos].push(d);
+        }
+      });
+    }
+    return keyLabelMap;
+  });
+  readonly highlightCharacterKeyMap: Signal<
+    Record<string, CharaChorderOneCharacterKeyWithPositionCodesAndScore>
+  > = computed(() => {
+    const lessonCharactersDevicePositionCodes =
+      this.lessonCharactersDevicePositionCodes();
+    const highlightSetting = getState(this.highlightSettingStore);
+    const deviceLayout = this.deviceLayout();
+    if (!lessonCharactersDevicePositionCodes || !deviceLayout) {
+      return {};
+    }
+    const modifierKeyPositionCodeMap = this.modifierKeyPositionCodeMap();
     const highlightCharacterKeyMap: Record<
       string,
       CharaChorderOneCharacterKeyWithPositionCodesAndScore
