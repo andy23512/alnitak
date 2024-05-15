@@ -15,10 +15,10 @@ import {
   signal,
   untracked,
 } from '@angular/core';
-import { MatIconButton } from '@angular/material/button';
-import { MatIcon } from '@angular/material/icon';
-import { MatTooltip } from '@angular/material/tooltip';
-import { Router, RouterLink } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { Router, RouterModule } from '@angular/router';
 import { HotkeysService, HotkeysShortcutPipe } from '@ngneat/hotkeys';
 import { LetDirective } from '@ngrx/component';
 import { getState } from '@ngrx/signals';
@@ -55,16 +55,16 @@ import { nonNullable } from 'src/app/utils/non-nullable.utils';
   selector: 'app-lesson-page',
   standalone: true,
   imports: [
+    ComboCounterComponent,
     CommonModule,
+    HotkeysShortcutPipe,
     LayoutComponent,
-    MatIcon,
     LayoutComponent,
     LetDirective,
-    RouterLink,
-    MatIconButton,
-    MatTooltip,
-    HotkeysShortcutPipe,
-    ComboCounterComponent,
+    MatButtonModule,
+    MatIconModule,
+    MatTooltipModule,
+    RouterModule,
     SpeedometerComponent,
     VisibleDirective,
   ],
@@ -81,7 +81,7 @@ export class LessonPageComponent implements OnInit, OnDestroy {
 
   readonly isFocus = signal(false);
 
-  @HostBinding('class') classes = 'p-5 flex flex-col gap-2 h-screen box-border';
+  @HostBinding('class') classes = 'flex flex-col gap-2 h-screen';
 
   readonly shortcuts = {
     goToPreviousLesson: 'meta.left',
@@ -131,6 +131,7 @@ export class LessonPageComponent implements OnInit, OnDestroy {
     }
     return {
       ...currentLesson,
+      topic,
       previousLessonUrl: previous
         ? `/topic/${previous.topic.id}/lesson/${previous.lesson.id}`
         : null,

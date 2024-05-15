@@ -77,3 +77,7 @@ mat-sidenav[data-style-dense] {
   @include mat.input-density(-3);
   @include mat.form-field-density(-3);
 }
+
+.mat-mdc-icon-button {
+  @apply leading-none;
+}

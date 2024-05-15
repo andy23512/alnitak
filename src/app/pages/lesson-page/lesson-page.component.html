@@ -1,4 +1,4 @@
-<section class="flex flex-none items-center">
+<section class="flex flex-none items-center bg-gray-700">
   <a
     class="text-inherit"
     *ngrxLet="lesson()?.previousLessonUrl as previousLessonUrl"
@@ -11,6 +11,23 @@
       <mat-icon>chevron_left</mat-icon>
     </button>
   </a>
+  <a
+    class="text-inherit"
+    *ngrxLet="lesson()?.nextLessonUrl as nextLessonUrl"
+    aria-label="link to next lesson"
+    [routerLink]="nextLessonUrl"
+    matTooltip="Go to next lesson"
+    [matTooltipDisabled]="!nextLessonUrl"
+  >
+    <button type="button" mat-icon-button [disabled]="!nextLessonUrl">
+      <mat-icon>chevron_right</mat-icon>
+    </button>
+  </a>
+  <span>{{ lesson()?.topic?.name }}</span>
+  <mat-icon>arrow_right</mat-icon>
+  <span> {{ lesson()?.name }}</span>
+</section>
+<section class="flex flex-none items-center">
   <div class="relative flex h-12 flex-1 items-center justify-center">
     <span class="whitespace-pre font-mono text-xl text-gray-300">{{
       lessonStore.history().join("")
@@ -34,28 +51,16 @@
       (blur)="isFocus.set(false)"
     />
     <div
-      class="absolute inset-0 flex cursor-pointer items-center justify-center gap-1 rounded border border-solid border-white bg-gray-500 text-white peer-focus:pointer-events-none peer-focus:opacity-0"
-      (click)="startLesson()"
+      class="absolute inset-0 flex cursor-pointer items-center justify-center gap-2 bg-gray-500 text-white peer-focus:pointer-events-none peer-focus:opacity-0"
     >
-      <mat-icon class="scale-125 text-white">play_arrow</mat-icon> Start /
-      Resume <kbd [innerHTML]="'space' | hotkeysShortcut"></kbd>
+      <button mat-flat-button (click)="startLesson()">
+        <mat-icon class="text-white">play_arrow</mat-icon> Start
+      </button>
     </div>
   </div>
-  <a
-    class="text-inherit"
-    *ngrxLet="lesson()?.nextLessonUrl as nextLessonUrl"
-    aria-label="link to next lesson"
-    [routerLink]="nextLessonUrl"
-    matTooltip="Go to next lesson"
-    [matTooltipDisabled]="!nextLessonUrl"
-  >
-    <button type="button" mat-icon-button [disabled]="!nextLessonUrl">
-      <mat-icon>chevron_right</mat-icon>
-    </button>
-  </a>
 </section>
 <app-layout
-  class="block flex-1 overflow-hidden"
+  class="block flex-1 overflow-hidden px-5 pb-5"
   [keyLabelMap]="keyLabelMap()"
   [highlightKey]="isFocus() ? highlightKey() : null"
 ></app-layout>
