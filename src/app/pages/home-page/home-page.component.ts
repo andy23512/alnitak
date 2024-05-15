@@ -10,7 +10,7 @@ import { MatIcon } from '@angular/material/icon';
 import { Router, RouterLink } from '@angular/router';
 import { HotkeysService, HotkeysShortcutPipe } from '@ngneat/hotkeys';
 import { SwitchComponent } from 'src/app/components/switch/switch.component';
-import { CharaChorderOneLayer } from 'src/app/models/device-layout.models';
+import { Layer } from 'src/app/models/device-layout.models';
 import { pickRandomItem } from 'src/app/utils/random.utils';
 
 @Component({
@@ -41,7 +41,7 @@ export class HomePageComponent {
   @HostBinding('class') classes = 'block relative h-full';
 
   readonly hotkeysService = inject(HotkeysService);
-  readonly CharaChorderOneLayer = CharaChorderOneLayer;
+  readonly Layer = Layer;
 
   ngOnInit() {
     this.hotkeysService.addShortcut({ keys: 'space' }).subscribe(() => {

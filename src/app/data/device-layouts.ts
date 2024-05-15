@@ -1,8 +1,7 @@
-import { CharaChorderOneLayout } from '../models/device-layout.models';
+import { DeviceLayout } from '../models/device-layout.models';
 
-export const CHARA_CHORDER_ONE_DEFAULT_LAYOUT: CharaChorderOneLayout = {
-  id: 'charachorder-one-default',
-  device: 'CharaChorderOne',
+export const DEFAULT_DEVICE_LAYOUT: DeviceLayout = {
+  id: 'default',
   name: 'default',
   layout: [
     [

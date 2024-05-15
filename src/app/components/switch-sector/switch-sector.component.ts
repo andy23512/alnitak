@@ -6,8 +6,8 @@ import {
   input,
 } from '@angular/core';
 import {
-  CharaChorderOneCharacterKeyWithPositionCodesAndScore,
-  CharaChorderOneKeyLabel,
+  HighlightKeyCombination,
+  KeyLabel,
 } from 'src/app/models/device-layout.models';
 import { cos, sin } from 'src/app/utils/math.utils';
 
@@ -30,9 +30,9 @@ export class SwitchSectorComponent {
   readonly direction = input.required<'cw' | 'ccw'>();
   readonly degree = input.required<number>();
   readonly positionCode = input.required<number>();
-  readonly keyLabel = input<CharaChorderOneKeyLabel[]>([]);
-  readonly highlightKey =
-    input<CharaChorderOneCharacterKeyWithPositionCodesAndScore | null>(null);
+  readonly keyLabel = input<KeyLabel[]>([]);
+  readonly highlightKeyCombination =
+    input<HighlightKeyCombination | null>(null);
 
   readonly sectorPath = computed(() => {
     const center = this.center();

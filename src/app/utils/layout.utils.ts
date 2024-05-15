@@ -1,10 +1,9 @@
 import { ACTIONS } from '../data/actions';
 import {
-  CharaChorderOneCharacterKey,
-  CharaChorderOneCharacterKeyWithPositionCodesAndScore,
-  CharaChorderOneLayer,
-  CharacterDeviceKey,
   DeviceLayout,
+  HighlightKeyCombination,
+  KeyCombination,
+  Layer
 } from '../models/device-layout.models';
 import {
   HighlightSetting,
@@ -84,10 +83,10 @@ export function getCharacterActionCodeFromCharacterKeyCode({
   };
 }
 
-export function getCharacterDeviceKeysFromActionCode(
+export function getKeyCombinationsFromActionCode(
   { actionCode, shiftKey, altGraphKey }: CharacterActionCode,
   deviceLayout: DeviceLayout | null,
-): CharacterDeviceKey[] | null {
+): KeyCombination[] | null {
   if (!deviceLayout) {
     return null;
   }
@@ -97,14 +96,13 @@ export function getCharacterDeviceKeysFromActionCode(
         .map((ac, index) => (ac === actionCode ? index : -1))
         .filter((pos) => pos !== -1)
         .map((pos) => {
-          let layer = CharaChorderOneLayer.Primary;
+          let layer = Layer.Primary;
           if (layerIndex === 1) {
-            layer = CharaChorderOneLayer.Secondary;
+            layer = Layer.Secondary;
           } else if (layerIndex === 2) {
-            layer = CharaChorderOneLayer.Tertiary;
+            layer = Layer.Tertiary;
           }
           return {
-            device: 'CharaChorderOne' as const,
             characterKeyPositionCode: pos,
             layer,
             shiftKey,
@@ -160,8 +158,8 @@ export function humanizePositionCode(positionCode: number) {
   return [hand, sw, direction].join(' ');
 }
 
-export function getHighlightPositionCodesFromCharacterDeviceKeys(
-  characterDeviceKeys: CharaChorderOneCharacterKey[],
+export function getHighlightKeyCombinationFromKeyCombinations(
+  keyCombinations: KeyCombination[],
   modifierKeyPositionCodeMap: {
     shift: number[];
     numShift: number[];
@@ -170,11 +168,11 @@ export function getHighlightPositionCodesFromCharacterDeviceKeys(
   },
   highlightSetting: HighlightSetting,
 ) {
-  return characterDeviceKeys
+  return keyCombinations
     .map((k) => {
-      const result: CharaChorderOneCharacterKeyWithPositionCodesAndScore[] = [];
+      const result: HighlightKeyCombination[] = [];
       if (k.shiftKey) {
-        if (k.layer === CharaChorderOneLayer.Secondary) {
+        if (k.layer === Layer.Secondary) {
           const { preferCharacterKeySide, preferShiftSide } =
             highlightSetting.shiftAndNumShiftLayer;
           for (const shiftPositionCode of modifierKeyPositionCodeMap.shift) {
@@ -229,7 +227,7 @@ export function getHighlightPositionCodesFromCharacterDeviceKeys(
           }
         }
       } else {
-        if (k.layer === CharaChorderOneLayer.Secondary) {
+        if (k.layer === Layer.Secondary) {
           const { preferNumShiftSide, preferSides } =
             highlightSetting.numShiftLayer;
           for (const numShiftPositionCode of modifierKeyPositionCodeMap.numShift) {

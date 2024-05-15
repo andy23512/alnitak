@@ -34,9 +34,9 @@ import {
 import { TOPICS } from 'src/app/data/topics';
 import { VisibleDirective } from 'src/app/directives/visible.directive';
 import {
-  CharaChorderOneCharacterKeyWithPositionCodesAndScore,
-  CharaChorderOneKeyLabel,
-  CharaChorderOneLayer,
+  HighlightKeyCombination,
+  KeyLabel,
+  Layer,
 } from 'src/app/models/device-layout.models';
 import { Lesson, Topic } from 'src/app/models/topic.models';
 import { DeviceLayoutStore } from 'src/app/stores/device-layout.store';
@@ -46,9 +46,9 @@ import { LessonStore } from 'src/app/stores/lesson.store';
 import {
   convertKeyboardLayoutToCharacterKeyCodeMap,
   getCharacterActionCodeFromCharacterKeyCode,
-  getCharacterDeviceKeysFromActionCode,
   getCharacterKeyCodeFromCharacter,
-  getHighlightPositionCodesFromCharacterDeviceKeys,
+  getHighlightKeyCombinationFromKeyCombinations,
+  getKeyCombinationsFromActionCode,
 } from 'src/app/utils/layout.utils';
 import { nonNullable } from 'src/app/utils/non-nullable.utils';
 
@@ -169,7 +169,7 @@ export class LessonPageComponent implements OnInit, OnDestroy {
         }
         return {
           c,
-          characterDeviceKeys: getCharacterDeviceKeysFromActionCode(
+          characterDeviceKeys: getKeyCombinationsFromActionCode(
             actionCode,
             deviceLayout,
           ),
@@ -181,7 +181,7 @@ export class LessonPageComponent implements OnInit, OnDestroy {
     const deviceLayout = this.deviceLayout();
     return {
       shift: SHIFT_ACTION_CODES.map((actionCode) =>
-        getCharacterDeviceKeysFromActionCode(
+        getKeyCombinationsFromActionCode(
           { actionCode, shiftKey: false, altGraphKey: false },
           deviceLayout,
         )?.map((k) => k.characterKeyPositionCode),
@@ -189,7 +189,7 @@ export class LessonPageComponent implements OnInit, OnDestroy {
         .filter(nonNullable)
         .flat(),
       numShift: NUM_SHIFT_ACTION_CODES.map((actionCode) =>
-        getCharacterDeviceKeysFromActionCode(
+        getKeyCombinationsFromActionCode(
           { actionCode, shiftKey: false, altGraphKey: false },
           deviceLayout,
         )?.map((k) => k.characterKeyPositionCode),
@@ -197,7 +197,7 @@ export class LessonPageComponent implements OnInit, OnDestroy {
         .filter(nonNullable)
         .flat(),
       fnShift: FN_SHIFT_ACTION_CODES.map((actionCode) =>
-        getCharacterDeviceKeysFromActionCode(
+        getKeyCombinationsFromActionCode(
           { actionCode, shiftKey: false, altGraphKey: false },
           deviceLayout,
         )?.map((k) => k.characterKeyPositionCode),
@@ -206,7 +206,7 @@ export class LessonPageComponent implements OnInit, OnDestroy {
         .flat(),
       altGraph: [ALT_GR_ACTION_CODE]
         .map((actionCode) =>
-          getCharacterDeviceKeysFromActionCode(
+          getKeyCombinationsFromActionCode(
             { actionCode, shiftKey: false, altGraphKey: false },
             deviceLayout,
           )?.map((k) => k.characterKeyPositionCode),
@@ -225,7 +225,7 @@ export class LessonPageComponent implements OnInit, OnDestroy {
     if (!modifierKeyPositionCodeMap) {
       return {};
     }
-    const keyLabelMap: Record<number, CharaChorderOneKeyLabel[]> = {};
+    const keyLabelMap: Record<number, KeyLabel[]> = {};
     let addShiftLabel = false;
     let addNumShiftLabel = false;
     lessonCharactersDevicePositionCodes.forEach((v) => {
@@ -240,7 +240,7 @@ export class LessonPageComponent implements OnInit, OnDestroy {
           if (shiftKey && !addShiftLabel) {
             addShiftLabel = true;
           }
-          if (layer === CharaChorderOneLayer.Secondary && !addNumShiftLabel) {
+          if (layer === Layer.Secondary && !addNumShiftLabel) {
             addNumShiftLabel = true;
           }
         },
@@ -248,7 +248,7 @@ export class LessonPageComponent implements OnInit, OnDestroy {
     });
     if (addShiftLabel) {
       modifierKeyPositionCodeMap.shift.forEach((pos) => {
-        const d: CharaChorderOneKeyLabel = {
+        const d: KeyLabel = {
           c: '⇧',
           layer: null,
           shiftKey: null,
@@ -263,7 +263,7 @@ export class LessonPageComponent implements OnInit, OnDestroy {
     }
     if (addNumShiftLabel) {
       modifierKeyPositionCodeMap.numShift.forEach((pos) => {
-        const d: CharaChorderOneKeyLabel = {
+        const d: KeyLabel = {
           c: '②',
           layer: null,
           shiftKey: null,
@@ -278,8 +278,8 @@ export class LessonPageComponent implements OnInit, OnDestroy {
     }
     return keyLabelMap;
   });
-  readonly highlightCharacterKeyMap: Signal<
-    Record<string, CharaChorderOneCharacterKeyWithPositionCodesAndScore>
+  readonly highlightCharacterKeyCombinationMap: Signal<
+    Record<string, HighlightKeyCombination>
   > = computed(() => {
     const lessonCharactersDevicePositionCodes =
       this.lessonCharactersDevicePositionCodes();
@@ -291,14 +291,14 @@ export class LessonPageComponent implements OnInit, OnDestroy {
     const modifierKeyPositionCodeMap = this.modifierKeyPositionCodeMap();
     const highlightCharacterKeyMap: Record<
       string,
-      CharaChorderOneCharacterKeyWithPositionCodesAndScore
+      HighlightKeyCombination
     > = {};
     lessonCharactersDevicePositionCodes.forEach((k) => {
-      if (!k || !k.characterDeviceKeys) {
+      if (!k?.characterDeviceKeys) {
         return;
       }
       highlightCharacterKeyMap[k.c] =
-        getHighlightPositionCodesFromCharacterDeviceKeys(
+        getHighlightKeyCombinationFromKeyCombinations(
           k.characterDeviceKeys,
           modifierKeyPositionCodeMap,
           highlightSetting,
@@ -308,10 +308,10 @@ export class LessonPageComponent implements OnInit, OnDestroy {
   });
 
   readonly lessonStore = inject(LessonStore);
-  readonly highlightKey = computed(() => {
+  readonly highlightKeyCombination = computed(() => {
     const currentCharacter = this.lessonStore.queue()[0];
-    const highlightCharacterKeyMap = this.highlightCharacterKeyMap();
-    return highlightCharacterKeyMap[currentCharacter];
+    const highlightCharacterKeyCombinationMap = this.highlightCharacterKeyCombinationMap();
+    return highlightCharacterKeyCombinationMap[currentCharacter];
   });
 
   readonly hotkeys = inject(HotkeysService);

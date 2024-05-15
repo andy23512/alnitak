@@ -1,53 +1,46 @@
 import { Tuple } from '../types/tuple.types';
 
-/**
- * Base shape of device layout data
- */
-interface BaseDeviceLayout {
-  id: string;
-  device: string;
-  name: string;
-  layout: any;
-}
 
 /**
  * Shape of CharaChorder One layout data. 90 keys x 3 layers = 180 action codes
  */
-export interface CharaChorderOneLayout extends BaseDeviceLayout {
-  device: 'CharaChorderOne';
+export interface DeviceLayout {
+  id: string;
+  name: string;
   layout: Tuple<Tuple<number, 90>, 3>;
 }
 
-export type DeviceLayout = CharaChorderOneLayout;
-
-export enum CharaChorderOneLayer {
+export enum Layer {
   Primary = 'A1',
   Secondary = 'A2' /* Numeric */,
   Tertiary = 'A3' /* Functional */,
 }
 
 /*
- * Key information of a character on CharaChorder One
+ * A key combination on CharaChorder One
  */
-export interface CharaChorderOneCharacterKey {
-  device: 'CharaChorderOne';
+export interface KeyCombination {
   characterKeyPositionCode: number;
-  layer: CharaChorderOneLayer;
+  layer: Layer;
   shiftKey: boolean;
   altGraphKey: boolean;
 }
 
-export interface CharaChorderOneCharacterKeyWithPositionCodesAndScore
-  extends CharaChorderOneCharacterKey {
+/*
+ * A key combination on CharaChorder One with position codes of all used keys and priority score
+ */
+export interface HighlightKeyCombination
+  extends KeyCombination {
   positionCodes: number[];
   score: number;
 }
 
-export interface CharaChorderOneKeyLabel {
+/*
+ * Label of a physical key, which records the corresponding character when the key is triggered under certain layer and modifiers
+ */
+export interface KeyLabel {
   c: string;
-  layer: CharaChorderOneLayer | null;
+  layer: Layer | null;
   shiftKey: boolean | null;
   altGraphKey: boolean | null;
 }
-
-export type CharacterDeviceKey = CharaChorderOneCharacterKey;

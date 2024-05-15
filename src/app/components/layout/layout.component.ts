@@ -9,8 +9,8 @@ import { LetDirective } from '@ngrx/component';
 import { POSITION_CODE_LAYOUT } from 'src/app/data/layouts';
 import { VisibleDirective } from 'src/app/directives/visible.directive';
 import {
-  CharaChorderOneCharacterKeyWithPositionCodesAndScore,
-  CharaChorderOneKeyLabel,
+  HighlightKeyCombination,
+  KeyLabel,
 } from 'src/app/models/device-layout.models';
 import { FingerMap, HandMap } from 'src/app/models/layout.models';
 import { humanizePositionCode } from 'src/app/utils/layout.utils';
@@ -31,16 +31,16 @@ const gridRows = 5;
 export class LayoutComponent {
   public viewBoxWidth = cellSize * gridColumns + gap * (gridColumns - 1);
   public viewBoxHeight = cellSize * gridRows + gap * (gridRows - 1);
-  readonly keyLabelMap = input<Record<number, CharaChorderOneKeyLabel[]>>({});
-  readonly highlightKey =
-    input<CharaChorderOneCharacterKeyWithPositionCodesAndScore | null>(null);
+  readonly keyLabelMap = input<Record<number, KeyLabel[]>>({});
+  readonly highlightKeyCombination =
+    input<HighlightKeyCombination | null>(null);
 
-  readonly highlightPositionCodesInText = computed(() => {
-    const highlightKey = this.highlightKey();
-    if (!highlightKey) {
+  readonly highlightKeyCombinationInText = computed(() => {
+    const highlightKeyCombination = this.highlightKeyCombination();
+    if (!highlightKeyCombination) {
       return '';
     }
-    return highlightKey.positionCodes
+    return highlightKeyCombination.positionCodes
       .reverse()
       .map(humanizePositionCode)
       .join(' + ');

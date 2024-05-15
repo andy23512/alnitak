@@ -62,7 +62,7 @@
 <app-layout
   class="block flex-1 overflow-hidden px-5 pb-5"
   [keyLabelMap]="keyLabelMap()"
-  [highlightKey]="isFocus() ? highlightKey() : null"
+  [highlightKeyCombination]="isFocus() ? highlightKeyCombination() : null"
 ></app-layout>
 <app-combo-counter
   *appVisible="'comboCounter'"

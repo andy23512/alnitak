@@ -13,7 +13,7 @@
     font-size="80px"
     fill="currentColor"
   >
-    {{ highlightPositionCodesInText() }}
+    {{ highlightKeyCombinationInText() }}
   </text>
   <ng-container *appVisible="'layout'">
     @for (side of sides; track side) {
@@ -25,7 +25,7 @@
           [rotation]="sw.startsWith('thumb') ? 10 : 0"
           [keyLabelMap]="keyLabelMap()"
           [positionCodeMap]="positionCodeLayout[side][sw]"
-          [highlightKey]="highlightKey()"
+          [highlightKeyCombination]="highlightKeyCombination()"
         ></g>
       }
     }
