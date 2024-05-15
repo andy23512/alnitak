@@ -1,0 +1,10 @@
+@for (item of visibilitySettingItems(); track item.key) {
+  <div>
+    <mat-checkbox
+      [color]="'primary'"
+      [checked]="item.value"
+      (change)="setVisible(item.key, $event.checked)"
+      >{{ item.name }}</mat-checkbox
+    >
+  </div>
+}

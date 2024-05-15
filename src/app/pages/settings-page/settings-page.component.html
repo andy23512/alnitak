@@ -4,84 +4,12 @@
     <mat-expansion-panel-header class="!text-xl"
       >Visibility</mat-expansion-panel-header
     >
-    @for (item of visibilitySettingItems(); track item.key) {
-      <div>
-        <mat-checkbox
-          [color]="'primary'"
-          [checked]="item.value"
-          (change)="setVisible(item.key, $event.checked)"
-          >{{ item.name }}</mat-checkbox
-        >
-      </div>
-    }
+    <app-visibility-setting-panel-content></app-visibility-setting-panel-content>
   </mat-expansion-panel>
   <mat-expansion-panel>
     <mat-expansion-panel-header class="!text-xl"
       >Layout Highlight</mat-expansion-panel-header
     >
-    <section class="space-y-4">
-      <section class="space-y-2">
-        <h4 class="text-lg">Shift Layer</h4>
-        <ul>
-          <li>
-            Tend to choose the key combination from
-            <app-sides-dropdown
-              [value]="highlightSettingStore.shiftLayer().preferSides"
-            ></app-sides-dropdown
-            >.
-          </li>
-          <li>
-            Tend to choose the
-            <app-key-side-dropdown
-              [value]="highlightSettingStore.shiftLayer().preferShiftSide"
-            ></app-key-side-dropdown>
-            Shift key.
-          </li>
-        </ul>
-      </section>
-      <section class="space-y-2">
-        <h4 class="text-lg">Num-shift Layer</h4>
-        <ul>
-          <li>
-            Tend to choose the key combination from
-            <app-sides-dropdown
-              [value]="highlightSettingStore.numShiftLayer().preferSides"
-            ></app-sides-dropdown
-            >.
-          </li>
-          <li>
-            Tend to choose the
-            <app-key-side-dropdown
-              [value]="highlightSettingStore.numShiftLayer().preferNumShiftSide"
-            ></app-key-side-dropdown>
-            Num-shift key.
-          </li>
-        </ul>
-      </section>
-      <section class="space-y-2">
-        <h4 class="text-lg">Shift Num-Shift Layer</h4>
-        <ul>
-          <li>
-            Tend to choose the character key on the
-            <app-key-side-dropdown
-              [value]="
-                highlightSettingStore.shiftAndNumShiftLayer()
-                  .preferCharacterKeySide
-              "
-            ></app-key-side-dropdown>
-            side.
-          </li>
-          <li>
-            Tend to use the
-            <app-key-side-dropdown
-              [value]="
-                highlightSettingStore.shiftAndNumShiftLayer().preferShiftSide
-              "
-            ></app-key-side-dropdown>
-            Shift key.
-          </li>
-        </ul>
-      </section>
-    </section>
+    <app-layout-highlight-setting-panel-content></app-layout-highlight-setting-panel-content>
   </mat-expansion-panel>
 </mat-accordion>
