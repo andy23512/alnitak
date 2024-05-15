@@ -2,11 +2,11 @@
   width="100%"
   height="100%"
   preserveAspectRatio="xMidYMid meet"
-  viewBox="0 0 3815 1890"
+  [attr.viewBox]="'0 0 ' + viewBoxWidth + ' ' + viewBoxHeight"
 >
   <text
     *appVisible="'layoutTextGuide'"
-    [attr.x]="1907.5"
+    [attr.x]="viewBoxWidth / 2"
     [attr.y]="100"
     text-anchor="middle"
     dominant-baseline="text-top"

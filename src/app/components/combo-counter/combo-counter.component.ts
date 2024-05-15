@@ -5,6 +5,7 @@ import {
   HostBinding,
   input,
 } from '@angular/core';
+import { PARAMETER } from 'src/app/data/parameters';
 import { temperatureToColor } from 'src/app/utils/color.utils';
 import { SevenSegmentComponent } from '../seven-segment/seven-segment.component';
 
@@ -21,7 +22,7 @@ export class ComboCounterComponent {
 
   @HostBinding('class') hostClasses = 'text-left';
   @HostBinding('style.color') get color() {
-    const c = this.combo();
-    return temperatureToColor(c * 100);
+    const combo = this.combo();
+    return temperatureToColor(combo / PARAMETER.ComboHeatCapacity);
   }
 }

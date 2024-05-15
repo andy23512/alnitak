@@ -9,14 +9,8 @@ import {
   CharaChorderOneCharacterKeyWithPositionCodesAndScore,
   CharaChorderOneKeyLabel,
 } from 'src/app/models/device-layout.models';
+import { cos, sin } from 'src/app/utils/math.utils';
 
-function sin(deg: number) {
-  return Math.sin((deg / 180) * Math.PI);
-}
-
-function cos(deg: number) {
-  return Math.cos((deg / 180) * Math.PI);
-}
 const o = 8;
 const r1 = 65;
 const r2 = 175;

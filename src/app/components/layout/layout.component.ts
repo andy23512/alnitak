@@ -17,6 +17,8 @@ import { humanizePositionCode } from 'src/app/utils/layout.utils';
 import { SwitchComponent } from '../switch/switch.component';
 const cellSize = 350;
 const gap = 35;
+const gridColumns = 10;
+const gridRows = 5;
 
 @Component({
   selector: 'app-layout',
@@ -27,6 +29,8 @@ const gap = 35;
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LayoutComponent {
+  public viewBoxWidth = cellSize * gridColumns + gap * (gridColumns - 1);
+  public viewBoxHeight = cellSize * gridRows + gap * (gridRows - 1);
   readonly keyLabelMap = input<Record<number, CharaChorderOneKeyLabel[]>>({});
   readonly highlightKey =
     input<CharaChorderOneCharacterKeyWithPositionCodesAndScore | null>(null);
@@ -96,7 +100,7 @@ export class LayoutComponent {
         break;
     }
     if (side === 'right') {
-      position.x = 3815 - position.x;
+      position.x = this.viewBoxWidth - position.x;
     }
     return position;
   }

@@ -19,7 +19,9 @@ export class SevenSegmentComponent {
   number = input<number>(0);
   minDigit = input<number>(3);
 
-  displayNumber = computed(() => this.number().toString().padStart(3, ' '));
+  displayNumber = computed(() =>
+    this.number().toString().padStart(this.minDigit(), ' '),
+  );
   backgroundNumber = computed(() =>
     '8'.repeat(Math.max(this.number().toString().length, this.minDigit())),
   );
