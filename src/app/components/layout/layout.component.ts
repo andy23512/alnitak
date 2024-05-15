@@ -25,7 +25,6 @@ const gridRows = 5;
   standalone: true,
   imports: [CommonModule, SwitchComponent, LetDirective, VisibleDirective],
   templateUrl: './layout.component.html',
-  styleUrl: './layout.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LayoutComponent {

@@ -22,7 +22,6 @@ const alpha2 = (Math.asin(((o / 2) * Math.SQRT2) / r2) / Math.PI) * 180;
   standalone: true,
   imports: [CommonModule],
   templateUrl: './switch-sector.component.html',
-  styleUrl: './switch-sector.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SwitchSectorComponent {

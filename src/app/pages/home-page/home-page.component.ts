@@ -25,7 +25,6 @@ import { pickRandomItem } from 'src/app/utils/random.utils';
     HotkeysShortcutPipe,
   ],
   templateUrl: './home-page.component.html',
-  styleUrl: './home-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomePageComponent {

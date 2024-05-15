@@ -12,7 +12,6 @@ import {
   standalone: true,
   imports: [CommonModule],
   templateUrl: './seven-segment.component.html',
-  styleUrl: './seven-segment.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SevenSegmentComponent {

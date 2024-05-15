@@ -27,7 +27,6 @@ import { LESSON_DATA_FOR_SEARCH, TOPICS } from '../data/topics';
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
-  styleUrls: ['./nav.component.scss'],
   standalone: true,
   imports: [
     CommonModule,

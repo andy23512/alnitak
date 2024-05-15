@@ -42,7 +42,6 @@ export const HOTKEY_GROUPS = [
     HotkeysShortcutPipe,
   ],
   templateUrl: './hotkey-dialog.component.html',
-  styleUrl: './hotkey-dialog.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HotkeyDialogComponent {

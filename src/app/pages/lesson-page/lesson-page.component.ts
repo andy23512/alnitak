@@ -70,7 +70,6 @@ import { nonNullable } from 'src/app/utils/non-nullable.utils';
     VisibleDirective,
   ],
   templateUrl: './lesson-page.component.html',
-  styleUrl: './lesson-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [LessonStore],
 })

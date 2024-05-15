@@ -26,7 +26,6 @@ const maxDiffPerFrame = 2;
   standalone: true,
   imports: [CommonModule, SevenSegmentComponent],
   templateUrl: './speedometer.component.html',
-  styleUrl: './speedometer.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SpeedometerComponent implements OnInit {

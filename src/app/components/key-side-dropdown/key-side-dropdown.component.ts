@@ -14,7 +14,6 @@ import { PreferKeySide } from 'src/app/models/highlight-setting.models';
   standalone: true,
   imports: [CommonModule, MatSelectModule],
   templateUrl: './key-side-dropdown.component.html',
-  styleUrl: './key-side-dropdown.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KeySideDropdownComponent {

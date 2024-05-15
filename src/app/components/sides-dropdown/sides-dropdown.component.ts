@@ -14,7 +14,6 @@ import { PreferSides } from '../../models/highlight-setting.models';
   standalone: true,
   imports: [CommonModule, MatSelectModule],
   templateUrl: './sides-dropdown.component.html',
-  styleUrl: './sides-dropdown.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SidesDropdownComponent {

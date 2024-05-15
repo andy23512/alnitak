@@ -17,7 +17,6 @@ import { SwitchSectorComponent } from '../switch-sector/switch-sector.component'
   standalone: true,
   imports: [CommonModule, SwitchSectorComponent],
   templateUrl: './switch.component.html',
-  styleUrl: './switch.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SwitchComponent {

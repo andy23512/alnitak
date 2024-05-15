@@ -14,7 +14,6 @@ import { SevenSegmentComponent } from '../seven-segment/seven-segment.component'
   standalone: true,
   imports: [CommonModule, SevenSegmentComponent],
   templateUrl: './combo-counter.component.html',
-  styleUrl: './combo-counter.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ComboCounterComponent {
