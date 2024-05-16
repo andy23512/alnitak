@@ -28,7 +28,6 @@ import { SpeedometerComponent } from 'src/app/components/speedometer/speedometer
 import {
   ALT_GR_ACTION_CODE,
   FN_SHIFT_ACTION_CODES,
-  NUM_SHIFT_ACTION_CODES,
   SHIFT_ACTION_CODES,
 } from 'src/app/data/actions';
 import { TOPICS } from 'src/app/data/topics';
@@ -49,6 +48,7 @@ import {
   getCharacterKeyCodeFromCharacter,
   getHighlightKeyCombinationFromKeyCombinations,
   getKeyCombinationsFromActionCode,
+  getNumShiftKeyPositionCodes,
 } from 'src/app/utils/layout.utils';
 import { nonNullable } from 'src/app/utils/non-nullable.utils';
 
@@ -178,6 +178,9 @@ export class LessonPageComponent implements OnInit, OnDestroy {
   });
   readonly modifierKeyPositionCodeMap = computed(() => {
     const deviceLayout = this.deviceLayout();
+    if (!deviceLayout) {
+      return null;
+    }
     return {
       shift: SHIFT_ACTION_CODES.map((actionCode) =>
         getKeyCombinationsFromActionCode(
@@ -187,14 +190,7 @@ export class LessonPageComponent implements OnInit, OnDestroy {
       )
         .filter(nonNullable)
         .flat(),
-      numShift: NUM_SHIFT_ACTION_CODES.map((actionCode) =>
-        getKeyCombinationsFromActionCode(
-          { actionCode, shiftKey: false, altGraphKey: false },
-          deviceLayout,
-        )?.map((k) => k.characterKeyPositionCode),
-      )
-        .filter(nonNullable)
-        .flat(),
+      numShift: getNumShiftKeyPositionCodes(deviceLayout),
       fnShift: FN_SHIFT_ACTION_CODES.map((actionCode) =>
         getKeyCombinationsFromActionCode(
           { actionCode, shiftKey: false, altGraphKey: false },
@@ -288,12 +284,10 @@ export class LessonPageComponent implements OnInit, OnDestroy {
       return {};
     }
     const modifierKeyPositionCodeMap = this.modifierKeyPositionCodeMap();
-    const highlightCharacterKeyMap: Record<
-      string,
-      HighlightKeyCombination
-    > = {};
+    const highlightCharacterKeyMap: Record<string, HighlightKeyCombination> =
+      {};
     lessonCharactersDevicePositionCodes.forEach((k) => {
-      if (!k?.characterDeviceKeys) {
+      if (!k?.characterDeviceKeys || !modifierKeyPositionCodeMap) {
         return;
       }
       highlightCharacterKeyMap[k.c] =
@@ -309,7 +303,8 @@ export class LessonPageComponent implements OnInit, OnDestroy {
   readonly lessonStore = inject(LessonStore);
   readonly highlightKeyCombination = computed(() => {
     const currentCharacter = this.lessonStore.queue()[0];
-    const highlightCharacterKeyCombinationMap = this.highlightCharacterKeyCombinationMap();
+    const highlightCharacterKeyCombinationMap =
+      this.highlightCharacterKeyCombinationMap();
     return highlightCharacterKeyCombinationMap[currentCharacter];
   });
 

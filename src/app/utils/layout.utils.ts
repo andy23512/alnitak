@@ -1,9 +1,9 @@
-import { ACTIONS } from '../data/actions';
+import { ACTIONS, NUM_SHIFT_ACTION_CODES } from '../data/actions';
 import {
   DeviceLayout,
   HighlightKeyCombination,
   KeyCombination,
-  Layer
+  Layer,
 } from '../models/device-layout.models';
 import {
   HighlightSetting,
@@ -81,6 +81,15 @@ export function getCharacterActionCodeFromCharacterKeyCode({
     shiftKey,
     altGraphKey,
   };
+}
+
+export function getNumShiftKeyPositionCodes(
+  deviceLayout: DeviceLayout,
+): number[] {
+  const [primaryLayer, secondaryLayer] = deviceLayout.layout;
+  return primaryLayer
+    .map((ac, index) => (NUM_SHIFT_ACTION_CODES.includes(ac) ? index : -1))
+    .filter((pos) => pos !== -1 && primaryLayer[pos] === secondaryLayer[pos]);
 }
 
 export function getKeyCombinationsFromActionCode(
