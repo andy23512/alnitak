@@ -1,4 +1,7 @@
-import { withDevtools, withStorageSync } from '@angular-architects/ngrx-toolkit';
+import {
+  withDevtools,
+  withStorageSync,
+} from '@angular-architects/ngrx-toolkit';
 import { patchState, signalStore, withHooks, withMethods } from '@ngrx/signals';
 import { setAllEntities, withEntities } from '@ngrx/signals/entities';
 import { DEFAULT_DEVICE_LAYOUT } from '../data/device-layouts';
@@ -17,5 +20,11 @@ export const DeviceLayoutStore = signalStore(
       store.setSelectedId(DEFAULT_DEVICE_LAYOUT.id);
     },
   })),
-  withHooks({ onInit: (store) => store.load() }),
+  withHooks({
+    onInit: (store) => {
+      if (store.selectedId() === null) {
+        store.load();
+      }
+    },
+  }),
 );
