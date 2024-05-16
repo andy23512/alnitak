@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -6,13 +5,13 @@ import {
   Output,
   input,
 } from '@angular/core';
-import { MatSelectModule } from '@angular/material/select';
+import { MatOption, MatSelect } from '@angular/material/select';
 import { PreferKeySide } from 'src/app/models/highlight-setting.models';
 
 @Component({
   selector: 'app-key-side-dropdown',
   standalone: true,
-  imports: [CommonModule, MatSelectModule],
+  imports: [MatSelect, MatOption],
   templateUrl: './key-side-dropdown.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

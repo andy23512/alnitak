@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -15,7 +14,7 @@ import { SwitchSectorComponent } from '../switch-sector/switch-sector.component'
 @Component({
   selector: '[appSwitch]',
   standalone: true,
-  imports: [CommonModule, SwitchSectorComponent],
+  imports: [SwitchSectorComponent],
   templateUrl: './switch.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -31,8 +30,9 @@ export class SwitchComponent {
   ];
   readonly positionCodeMap = input.required<DirectionMap<number>>();
   readonly keyLabelMap = input<Record<number, KeyLabel[]>>({});
-  readonly highlightKeyCombination =
-    input<HighlightKeyCombination | null>(null);
+  readonly highlightKeyCombination = input<HighlightKeyCombination | null>(
+    null,
+  );
   readonly r = computed(() => {
     return (this.rotationDirection() === 'cw' ? 1 : -1) * this.rotation();
   });

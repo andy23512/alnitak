@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -17,7 +16,6 @@ import { pickRandomItem } from 'src/app/utils/random.utils';
   selector: 'app-home-page',
   standalone: true,
   imports: [
-    CommonModule,
     MatButton,
     MatIcon,
     RouterLink,

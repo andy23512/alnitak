@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -20,7 +19,6 @@ const alpha2 = (Math.asin(((o / 2) * Math.SQRT2) / r2) / Math.PI) * 180;
 @Component({
   selector: '[appSwitchSector]',
   standalone: true,
-  imports: [CommonModule],
   templateUrl: './switch-sector.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -30,8 +28,9 @@ export class SwitchSectorComponent {
   readonly degree = input.required<number>();
   readonly positionCode = input.required<number>();
   readonly keyLabel = input<KeyLabel[]>([]);
-  readonly highlightKeyCombination =
-    input<HighlightKeyCombination | null>(null);
+  readonly highlightKeyCombination = input<HighlightKeyCombination | null>(
+    null,
+  );
 
   readonly sectorPath = computed(() => {
     const center = this.center();

@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -7,10 +6,10 @@ import {
   ViewChild,
   inject,
 } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
-import { MatSelectModule } from '@angular/material/select';
+import { MatButton } from '@angular/material/button';
+import { MatFormField } from '@angular/material/form-field';
+import { MatIcon } from '@angular/material/icon';
+import { MatOption, MatSelect } from '@angular/material/select';
 import { patchState } from '@ngrx/signals';
 import { addEntity } from '@ngrx/signals/entities';
 import { DeviceLayoutStore } from 'src/app/stores/device-layout.store';
@@ -18,13 +17,7 @@ import { DeviceLayoutStore } from 'src/app/stores/device-layout.store';
 @Component({
   selector: 'app-device-layout-setting-panel-content',
   standalone: true,
-  imports: [
-    CommonModule,
-    MatSelectModule,
-    MatFormFieldModule,
-    MatButtonModule,
-    MatIconModule,
-  ],
+  imports: [MatSelect, MatOption, MatFormField, MatButton, MatIcon],
   templateUrl: './device-layout-setting-panel-content.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

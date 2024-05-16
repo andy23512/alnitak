@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { HighlightSetting } from 'src/app/models/highlight-setting.models';
 import { HighlightSettingStore } from 'src/app/stores/highlight-setting.store';
@@ -8,7 +7,7 @@ import { SidesDropdownComponent } from '../sides-dropdown/sides-dropdown.compone
 @Component({
   selector: 'app-layout-highlight-setting-panel-content',
   standalone: true,
-  imports: [CommonModule, SidesDropdownComponent, KeySideDropdownComponent],
+  imports: [SidesDropdownComponent, KeySideDropdownComponent],
   templateUrl: './layout-highlight-setting-panel-content.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

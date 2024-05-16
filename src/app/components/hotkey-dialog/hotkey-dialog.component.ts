@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import {
@@ -33,7 +32,6 @@ export const HOTKEY_GROUPS = [
   selector: 'app-hotkey-dialog',
   standalone: true,
   imports: [
-    CommonModule,
     MatDialogActions,
     MatDialogClose,
     MatDialogContent,

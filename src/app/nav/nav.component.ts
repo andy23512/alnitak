@@ -1,22 +1,30 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { CommonModule } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { Component, ViewChild, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
+import { MatIconButton } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
-import { MatDividerModule } from '@angular/material/divider';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
-import { MatListModule } from '@angular/material/list';
+import { MatDivider } from '@angular/material/divider';
+import { MatFormField, MatSuffix } from '@angular/material/form-field';
+import { MatIcon } from '@angular/material/icon';
+import { MatInput } from '@angular/material/input';
+import {
+  MatListItem,
+  MatListSubheaderCssMatStyler,
+  MatNavList,
+} from '@angular/material/list';
 import {
   MatSidenav,
+  MatSidenavContainer,
   MatSidenavContent,
-  MatSidenavModule,
 } from '@angular/material/sidenav';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatTooltipModule } from '@angular/material/tooltip';
-import { RouterModule } from '@angular/router';
+import { MatToolbar } from '@angular/material/toolbar';
+import { MatTooltip } from '@angular/material/tooltip';
+import {
+  RouterLinkActive,
+  RouterLinkWithHref,
+  RouterOutlet,
+} from '@angular/router';
 import * as fuzzy from 'fuzzy';
 import { uniqBy } from 'ramda';
 import { Observable } from 'rxjs';
@@ -29,20 +37,25 @@ import { LESSON_DATA_FOR_SEARCH, TOPICS } from '../data/topics';
   templateUrl: './nav.component.html',
   standalone: true,
   imports: [
-    CommonModule,
+    AsyncPipe,
     FormsModule,
-    MatButtonModule,
-    MatDividerModule,
-    MatFormFieldModule,
-    MatIconModule,
-    MatInputModule,
-    MatListModule,
-    MatListModule,
+    MatDivider,
+    MatFormField,
+    MatSuffix,
+    MatIcon,
+    MatIconButton,
+    MatInput,
+    MatListItem,
+    MatListSubheaderCssMatStyler,
+    MatNavList,
+    MatSidenav,
+    MatSidenavContainer,
     MatSidenavContent,
-    MatSidenavModule,
-    MatToolbarModule,
-    MatTooltipModule,
-    RouterModule,
+    MatToolbar,
+    MatTooltip,
+    RouterLinkActive,
+    RouterLinkWithHref,
+    RouterOutlet,
   ],
 })
 export class NavComponent {

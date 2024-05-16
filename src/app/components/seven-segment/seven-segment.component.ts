@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -10,7 +9,6 @@ import {
 @Component({
   selector: 'app-seven-segment',
   standalone: true,
-  imports: [CommonModule],
   templateUrl: './seven-segment.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

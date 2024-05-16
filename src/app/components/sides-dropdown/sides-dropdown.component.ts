@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -6,13 +5,13 @@ import {
   Output,
   input,
 } from '@angular/core';
-import { MatSelectModule } from '@angular/material/select';
+import { MatOption, MatSelect } from '@angular/material/select';
 import { PreferSides } from '../../models/highlight-setting.models';
 
 @Component({
   selector: 'app-sides-dropdown',
   standalone: true,
-  imports: [CommonModule, MatSelectModule],
+  imports: [MatSelect, MatOption],
   templateUrl: './sides-dropdown.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

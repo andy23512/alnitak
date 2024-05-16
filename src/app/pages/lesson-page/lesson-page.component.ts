@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -15,10 +15,10 @@ import {
   signal,
   untracked,
 } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { MatTooltipModule } from '@angular/material/tooltip';
-import { Router, RouterModule } from '@angular/router';
+import { MatButton, MatIconButton } from '@angular/material/button';
+import { MatIcon } from '@angular/material/icon';
+import { MatTooltip } from '@angular/material/tooltip';
+import { Router, RouterLinkWithHref } from '@angular/router';
 import { HotkeysService, HotkeysShortcutPipe } from '@ngneat/hotkeys';
 import { LetDirective } from '@ngrx/component';
 import { getState } from '@ngrx/signals';
@@ -57,15 +57,16 @@ import { nonNullable } from 'src/app/utils/non-nullable.utils';
   standalone: true,
   imports: [
     ComboCounterComponent,
-    CommonModule,
     HotkeysShortcutPipe,
+    NgClass,
     LayoutComponent,
     LayoutComponent,
     LetDirective,
-    MatButtonModule,
-    MatIconModule,
-    MatTooltipModule,
-    RouterModule,
+    MatButton,
+    MatIconButton,
+    MatIcon,
+    MatTooltip,
+    RouterLinkWithHref,
     SpeedometerComponent,
     VisibleDirective,
   ],

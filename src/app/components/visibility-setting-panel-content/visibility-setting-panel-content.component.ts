@@ -1,11 +1,10 @@
-import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
   computed,
   inject,
 } from '@angular/core';
-import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatCheckbox } from '@angular/material/checkbox';
 import { VisibilitySetting } from 'src/app/models/visibility-setting.models';
 import { VisibilitySettingStore } from 'src/app/stores/visibility-setting.store';
 
@@ -22,7 +21,7 @@ const VISIBILITY_SETTING_ITEMS: {
 @Component({
   selector: 'app-visibility-setting-panel-content',
   standalone: true,
-  imports: [CommonModule, MatCheckboxModule],
+  imports: [MatCheckbox],
   templateUrl: './visibility-setting-panel-content.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

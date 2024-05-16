@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -23,7 +22,7 @@ const gridRows = 5;
 @Component({
   selector: 'app-layout',
   standalone: true,
-  imports: [CommonModule, SwitchComponent, LetDirective, VisibleDirective],
+  imports: [SwitchComponent, LetDirective, VisibleDirective],
   templateUrl: './layout.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -31,8 +30,9 @@ export class LayoutComponent {
   public viewBoxWidth = cellSize * gridColumns + gap * (gridColumns - 1);
   public viewBoxHeight = cellSize * gridRows + gap * (gridRows - 1);
   readonly keyLabelMap = input<Record<number, KeyLabel[]>>({});
-  readonly highlightKeyCombination =
-    input<HighlightKeyCombination | null>(null);
+  readonly highlightKeyCombination = input<HighlightKeyCombination | null>(
+    null,
+  );
 
   readonly highlightKeyCombinationInText = computed(() => {
     const highlightKeyCombination = this.highlightKeyCombination();

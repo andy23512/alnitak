@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -24,7 +23,7 @@ const maxDiffPerFrame = 2;
 @Component({
   selector: 'app-speedometer',
   standalone: true,
-  imports: [CommonModule, SevenSegmentComponent],
+  imports: [SevenSegmentComponent],
   templateUrl: './speedometer.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
