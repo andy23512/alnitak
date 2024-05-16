@@ -31,7 +31,7 @@ export const US_QWERTY_LAYOUT: KeyBoardLayout = {
     KeyO: { unmodified: 'o', withShift: 'O' },
     KeyP: { unmodified: 'p', withShift: 'P' },
     BracketLeft: { unmodified: '[', withShift: '{' },
-    BracketRight: { unmodified: '[', withShift: '}' },
+    BracketRight: { unmodified: ']', withShift: '}' },
     Backslash: { unmodified: '\\', withShift: '|' },
 
     KeyA: { unmodified: 'a', withShift: 'A' },
