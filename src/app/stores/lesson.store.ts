@@ -48,7 +48,7 @@ export const LessonStore = signalStore(
     },
     type(component: string) {
       patchState(store, (state) => {
-        const currentKeyTime = performance.now();
+        const currentKeyTime = Date.now();
         if (component !== state.queue[0]) {
           return { error: true, combo: 0 };
         }
