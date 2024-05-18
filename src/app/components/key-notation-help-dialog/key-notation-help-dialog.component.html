@@ -1,0 +1,74 @@
+<h2 mat-dialog-title class="!text-xl">Key Notation</h2>
+<mat-dialog-content>
+  <p>
+    In this tool, key notation is an experimental short format that represents
+    the key locations on CharaChorder One.
+  </p>
+  <br />
+  <p>
+    For example, the 'Left Thumb Middle West' key is noted as 'L1bW', and the
+    'Right Pinky Down (3D press)' is noted as 'R5D'.
+  </p>
+  <br />
+  <p>
+    The first and the last letters are the shorthands for the side (L/R) and the
+    direction (N/E/S/W/D), respectively.
+  </p>
+  <br />
+  <p>
+    The middle part indicates the switch. The number represents the finger (1 to
+    5: thumb to pinky), using the same way as
+    <a
+      class="underline"
+      target="_blank"
+      rel="noopener"
+      href="https://en.wikipedia.org/wiki/Fingering_(music)#Keyboard_instruments"
+      >fingering notation for keyboard instruments in modern scores</a
+    >. The additional 'b' and 'bb', originating from the
+    <a
+      class="underline"
+      target="_blank"
+      rel="noopener"
+      href="https://en.wikipedia.org/wiki/Flat_(music)"
+      >flat (♭) and double flat (𝄫) symbols</a
+    >
+    in music, are used to indicate the secondary/middle and back switch of that
+    finger.
+  </p>
+  <br />
+  <p>Below is a layout image that shows the notation of each switch.</p>
+  <br />
+  <app-layout
+    [keyLabelMap]="{
+      '0': [{ c: 'L1bb', layer: null, shiftKey: null, altGraphKey: null }],
+      '5': [{ c: 'L1b', layer: null, shiftKey: null, altGraphKey: null }],
+      '10': [{ c: 'L1', layer: null, shiftKey: null, altGraphKey: null }],
+      '15': [{ c: 'L2', layer: null, shiftKey: null, altGraphKey: null }],
+      '20': [{ c: 'L3', layer: null, shiftKey: null, altGraphKey: null }],
+      '25': [{ c: 'L4', layer: null, shiftKey: null, altGraphKey: null }],
+      '30': [{ c: 'L5', layer: null, shiftKey: null, altGraphKey: null }],
+      '35': [{ c: 'L3b', layer: null, shiftKey: null, altGraphKey: null }],
+      '40': [{ c: 'L4b', layer: null, shiftKey: null, altGraphKey: null }],
+      '45': [{ c: 'R1bb', layer: null, shiftKey: null, altGraphKey: null }],
+      '50': [{ c: 'R1b', layer: null, shiftKey: null, altGraphKey: null }],
+      '55': [{ c: 'R1', layer: null, shiftKey: null, altGraphKey: null }],
+      '60': [{ c: 'R2', layer: null, shiftKey: null, altGraphKey: null }],
+      '65': [{ c: 'R3', layer: null, shiftKey: null, altGraphKey: null }],
+      '70': [{ c: 'R4', layer: null, shiftKey: null, altGraphKey: null }],
+      '75': [{ c: 'R5', layer: null, shiftKey: null, altGraphKey: null }],
+      '80': [{ c: 'R3b', layer: null, shiftKey: null, altGraphKey: null }],
+      '85': [{ c: 'R4b', layer: null, shiftKey: null, altGraphKey: null }]
+    }"
+    [highlightKeyCombination]="{
+      positionCodes: [],
+      score: 0,
+      characterKeyPositionCode: -1,
+      layer: Layer.Primary,
+      shiftKey: false,
+      altGraphKey: false
+    }"
+  ></app-layout>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button type="button" mat-button [mat-dialog-close]="true">Close</button>
+</mat-dialog-actions>

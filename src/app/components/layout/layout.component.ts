@@ -12,7 +12,7 @@ import {
   KeyLabel,
 } from 'src/app/models/device-layout.models';
 import { FingerMap, HandMap } from 'src/app/models/layout.models';
-import { humanizePositionCode } from 'src/app/utils/layout.utils';
+import { convertPositionCodeToKeyNotation, convertPositionCodeToText } from 'src/app/utils/layout.utils';
 import { SwitchComponent } from '../switch/switch.component';
 const cellSize = 350;
 const gap = 35;
@@ -39,10 +39,19 @@ export class LayoutComponent {
     if (!highlightKeyCombination) {
       return '';
     }
-    return highlightKeyCombination.positionCodes
-      .reverse()
-      .map(humanizePositionCode)
+    return [...highlightKeyCombination.positionCodes].reverse()
+      .map(convertPositionCodeToText)
       .join(' + ');
+  });
+
+  readonly highlightKeyCombinationInKeyNotation = computed(() => {
+    const highlightKeyCombination = this.highlightKeyCombination();
+    if (!highlightKeyCombination) {
+      return '';
+    }
+    return [...highlightKeyCombination.positionCodes].reverse()
+      .map(convertPositionCodeToKeyNotation)
+      .join(' ');
   });
 
   readonly positionCodeLayout = POSITION_CODE_LAYOUT;

@@ -15,17 +15,31 @@
   [attr.cy]="center().y"
   [attr.r]="53.68"
   [attr.opacity]="
-    highlightKeyCombination()?.positionCodes?.includes(positionCodeMap().c) ? 0.5 : 0
+    highlightKeyCombination()?.positionCodes?.includes(positionCodeMap().c)
+      ? 0.5
+      : 0
   "
 ></svg:circle>
-<svg:text
-  [attr.x]="center().x"
-  [attr.y]="center().y"
-  dominant-baseline="central"
-  text-anchor="middle"
-  font-size="80px"
-  fill="currentColor"
-  font-weight="lighter"
->
-  {{ keyLabelMap()[positionCodeMap().c] }}
-</svg:text>
+@for (label of keyLabelMap()[positionCodeMap().c]; track label.c) {
+  <svg:text
+    [attr.x]="center().x"
+    [attr.y]="center().y"
+    dominant-baseline="central"
+    text-anchor="middle"
+    font-size="80px"
+    fill="currentColor"
+    font-weight="lighter"
+    class="transition-opacity"
+    [attr.opacity]="
+      highlightKeyCombination() &&
+      ((label.layer === highlightKeyCombination()?.layer &&
+        label.shiftKey === highlightKeyCombination()?.shiftKey &&
+        label.altGraphKey === highlightKeyCombination()?.altGraphKey) ||
+        label.layer === null)
+        ? 1
+        : 0
+    "
+  >
+    {{ label.c }}
+  </svg:text>
+}

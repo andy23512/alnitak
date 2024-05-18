@@ -15,6 +15,17 @@
   >
     {{ highlightKeyCombinationInText() }}
   </text>
+  <text
+    *appVisible="'layoutKeyNotationGuide'"
+    [attr.x]="viewBoxWidth / 2"
+    [attr.y]="200"
+    text-anchor="middle"
+    dominant-baseline="text-top"
+    font-size="80px"
+    fill="currentColor"
+  >
+    {{ highlightKeyCombinationInKeyNotation() }}
+  </text>
   <ng-container *appVisible="'layout'">
     @for (side of sides; track side) {
       @for (sw of switches; track sw) {

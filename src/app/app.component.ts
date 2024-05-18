@@ -2,7 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { HotkeysService } from '@ngneat/hotkeys';
 import { HotkeyDialogComponent } from './components/hotkey-dialog/hotkey-dialog.component';
-import { NavComponent } from './nav/nav.component';
+import { NavComponent } from './components/nav/nav.component';
 
 @Component({
   selector: 'app-root',

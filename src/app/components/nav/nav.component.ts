@@ -9,28 +9,28 @@ import { MatFormField, MatSuffix } from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
 import { MatInput } from '@angular/material/input';
 import {
-  MatListItem,
-  MatListSubheaderCssMatStyler,
-  MatNavList,
+    MatListItem,
+    MatListSubheaderCssMatStyler,
+    MatNavList,
 } from '@angular/material/list';
 import {
-  MatSidenav,
-  MatSidenavContainer,
-  MatSidenavContent,
+    MatSidenav,
+    MatSidenavContainer,
+    MatSidenavContent,
 } from '@angular/material/sidenav';
 import { MatToolbar } from '@angular/material/toolbar';
 import { MatTooltip } from '@angular/material/tooltip';
 import {
-  RouterLinkActive,
-  RouterLinkWithHref,
-  RouterOutlet,
+    RouterLinkActive,
+    RouterLinkWithHref,
+    RouterOutlet,
 } from '@angular/router';
 import * as fuzzy from 'fuzzy';
 import { uniqBy } from 'ramda';
 import { Observable } from 'rxjs';
 import { filter, map, shareReplay, take } from 'rxjs/operators';
-import { HotkeyDialogComponent } from '../components/hotkey-dialog/hotkey-dialog.component';
-import { LESSON_DATA_FOR_SEARCH, TOPICS } from '../data/topics';
+import { LESSON_DATA_FOR_SEARCH, TOPICS } from '../../data/topics';
+import { HotkeyDialogComponent } from '../hotkey-dialog/hotkey-dialog.component';
 
 @Component({
   selector: 'app-nav',
