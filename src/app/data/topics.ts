@@ -1,4 +1,4 @@
-import { LessonWithTopic, Topic } from '../models/topic.models';
+import { Lesson, Topic } from '../models/topic.models';
 import { generateCharacterLesson } from '../utils/lesson.utils';
 
 export const LETTER_TOPIC: Topic = {
@@ -43,7 +43,7 @@ export const SYMBOL_TOPIC: Topic = {
 };
 
 export const TOPICS = [NUMBER_TOPIC, LETTER_TOPIC, SYMBOL_TOPIC];
-export const LESSONS: LessonWithTopic[] = TOPICS.map((topic) =>
+export const LESSONS: Lesson[] = TOPICS.map((topic) =>
   topic.lessons.map((l) => ({ ...l, topic })),
 ).flat();
 export const LESSON_DATA_FOR_SEARCH = LESSONS.map((lesson) =>

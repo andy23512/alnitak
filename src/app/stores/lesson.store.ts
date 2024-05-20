@@ -7,11 +7,15 @@ import {
   withMethods,
   withState,
 } from '@ngrx/signals';
+import { db } from '../db';
+import { Lesson } from '../models/topic.models';
 import { pickRandomItem, pickRandomItemNTimes } from '../utils/random.utils';
 
 const QUEUE_SIZE = 20;
 
 interface LessonState {
+  topicId: string | null;
+  lessonId: string | null;
   components: string[];
   queue: string[];
   history: string[];
@@ -22,6 +26,8 @@ interface LessonState {
 }
 
 const initialState: LessonState = {
+  topicId: null,
+  lessonId: null,
   components: [],
   queue: [],
   history: [' ', ' ', ' '],
@@ -35,10 +41,12 @@ export const LessonStore = signalStore(
   withDevtools('lesson'),
   withState(initialState),
   withMethods((store) => ({
-    setComponents(components: string[]) {
+    setLesson(lesson: Lesson) {
       patchState(store, () => ({
-        components,
-        queue: pickRandomItemNTimes(components, QUEUE_SIZE),
+        topicId: lesson.topic.id,
+        lessonId: lesson.id,
+        components: lesson.components,
+        queue: pickRandomItemNTimes(lesson.components, QUEUE_SIZE),
         history: [' ', ' ', ' '],
         lastCorrectKeyTime: null,
         keyIntervals: [],
@@ -48,13 +56,40 @@ export const LessonStore = signalStore(
     },
     type(component: string) {
       patchState(store, (state) => {
+        if (state.topicId === null || state.lessonId === null) {
+          return {};
+        }
         const currentKeyTime = Date.now();
+        const keyInterval =
+          state.lastCorrectKeyTime !== null
+            ? currentKeyTime - state.lastCorrectKeyTime
+            : null;
+        const commonKeyRecord = {
+          timestamp: currentKeyTime,
+          topicId: state.topicId,
+          lessonId: state.lessonId,
+          targetKey: state.queue[0],
+          inputKey: component,
+        };
         if (component !== state.queue[0]) {
+          db.keyRecords.add({
+            ...commonKeyRecord,
+            isCorrect: false,
+            intervalToPreviousCorrectKey: keyInterval,
+            cpm: null,
+            combo: 0,
+          });
           return { error: true, combo: 0 };
         }
+        db.keyRecords.add({
+          ...commonKeyRecord,
+          isCorrect: false,
+          intervalToPreviousCorrectKey: keyInterval,
+          cpm: keyInterval ? Math.floor((60 * 1000) / keyInterval) : null,
+          combo: state.combo + 1,
+        });
         const keyIntervals = [...state.keyIntervals];
-        if (state.lastCorrectKeyTime !== null) {
-          const keyInterval = currentKeyTime - state.lastCorrectKeyTime;
+        if (keyInterval) {
           keyIntervals.push(keyInterval);
         }
         return {

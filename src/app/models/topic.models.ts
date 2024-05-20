@@ -1,6 +1,6 @@
 export type TopicType = 'character' | 'word' | 'chord';
 
-export interface Lesson {
+export interface RawLesson {
   id: string;
   name: string;
   components: string[];
@@ -12,9 +12,9 @@ export interface Topic {
   iconName?: string;
   name: string;
   type: TopicType;
-  lessons: Lesson[];
+  lessons: RawLesson[];
 }
 
-export interface LessonWithTopic extends Lesson {
+export interface Lesson extends RawLesson {
   topic: Topic;
 }

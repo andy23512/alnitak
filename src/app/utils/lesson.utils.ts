@@ -1,8 +1,8 @@
 import { CHARACTER_NAME_MAP } from '../data/character-name-map';
-import { Lesson } from '../models/topic.models';
+import { RawLesson } from '../models/topic.models';
 import { nonNullable } from './non-nullable.utils';
 
-export function generateCharacterLesson(str: string): Lesson {
+export function generateCharacterLesson(str: string): RawLesson {
   const components = str.split('');
   return {
     id: encodeURIComponent(str),

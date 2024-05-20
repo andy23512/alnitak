@@ -22,6 +22,7 @@ import { Router, RouterLinkWithHref } from '@angular/router';
 import { HotkeysService, HotkeysShortcutPipe } from '@ngneat/hotkeys';
 import { LetDirective } from '@ngrx/component';
 import { getState } from '@ngrx/signals';
+import { liveQuery } from 'dexie';
 import { ComboCounterComponent } from 'src/app/components/combo-counter/combo-counter.component';
 import { LayoutComponent } from 'src/app/components/layout/layout.component';
 import { SpeedometerComponent } from 'src/app/components/speedometer/speedometer.component';
@@ -30,14 +31,14 @@ import {
   FN_SHIFT_ACTION_CODES,
   SHIFT_ACTION_CODES,
 } from 'src/app/data/actions';
-import { TOPICS } from 'src/app/data/topics';
+import { LESSONS } from 'src/app/data/topics';
+import { db } from 'src/app/db';
 import { VisibleDirective } from 'src/app/directives/visible.directive';
 import {
   HighlightKeyCombination,
   KeyLabel,
   Layer,
 } from 'src/app/models/device-layout.models';
-import { Lesson, Topic } from 'src/app/models/topic.models';
 import { DeviceLayoutStore } from 'src/app/stores/device-layout.store';
 import { HighlightSettingStore } from 'src/app/stores/highlight-setting.store';
 import { KeyboardLayoutStore } from 'src/app/stores/keyboard-layout.store';
@@ -94,51 +95,23 @@ export class LessonPageComponent implements OnInit, OnDestroy {
   readonly lesson = computed(() => {
     const topicId = this.topicId();
     const lessonId = this.lessonId();
-    const topicIndex = TOPICS.findIndex((t) => t.id === topicId);
-    if (topicIndex === -1) {
-      return null;
-    }
-    const topic = TOPICS[topicIndex];
-    const lessonIndex = topic.lessons.findIndex(
-      (lesson) => lesson.id === lessonId,
-    );
+    const lessonIndex = LESSONS.findIndex((lesson) => lesson.id === lessonId);
     if (lessonIndex === -1) {
       return null;
     }
-    const currentLesson = topic.lessons[lessonIndex];
-    let previous: { topic: Topic; lesson: Lesson } | null = null;
-    let next: { topic: Topic; lesson: Lesson } | null = null;
-    if (lessonIndex === 0) {
-      const previousTopic = TOPICS[topicIndex - 1];
-      previous = previousTopic
-        ? {
-            topic: previousTopic,
-            lesson: previousTopic.lessons.at(-1) as Lesson,
-          }
-        : null;
-    } else {
-      previous = { topic: topic, lesson: topic.lessons[lessonIndex - 1] };
+    const lesson = LESSONS[lessonIndex];
+    if (!lesson || topicId !== lesson.topic.id) {
+      return null;
     }
-    if (lessonIndex === topic.lessons.length - 1) {
-      const nextTopic = TOPICS[topicIndex + 1];
-      next = nextTopic
-        ? {
-            topic: nextTopic,
-            lesson: nextTopic.lessons[0],
-          }
-        : null;
-    } else {
-      next = { topic: topic, lesson: topic.lessons[lessonIndex + 1] };
-    }
+    const previous = lessonIndex !== 0 ? LESSONS[lessonIndex - 1] : null;
+    const next =
+      lessonIndex !== LESSONS.length - 1 ? LESSONS[lessonIndex + 1] : null;
     return {
-      ...currentLesson,
-      topic,
+      ...lesson,
       previousLessonUrl: previous
-        ? `/topic/${previous.topic.id}/lesson/${previous.lesson.id}`
+        ? `/topic/${previous.topic.id}/lesson/${previous.id}`
         : null,
-      nextLessonUrl: next
-        ? `/topic/${next.topic.id}/lesson/${next.lesson.id}`
-        : null,
+      nextLessonUrl: next ? `/topic/${next.topic.id}/lesson/${next.id}` : null,
     };
   });
   @ViewChild('input', { static: true })
@@ -314,10 +287,10 @@ export class LessonPageComponent implements OnInit, OnDestroy {
 
   constructor() {
     effect(() => {
-      const components = this.lesson()?.components;
+      const lesson = this.lesson();
       untracked(() => {
-        if (components) {
-          this.lessonStore.setComponents(components);
+        if (lesson) {
+          this.lessonStore.setLesson(lesson);
         }
       });
     });
@@ -374,4 +347,6 @@ export class LessonPageComponent implements OnInit, OnDestroy {
   endLesson() {
     this.input.nativeElement.blur();
   }
+
+  keyRecords$ = liveQuery(() => db.keyRecords.toArray());
 }
