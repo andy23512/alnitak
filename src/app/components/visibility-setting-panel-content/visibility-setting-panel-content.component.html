@@ -1,18 +1,22 @@
 @for (item of visibilitySettingItems(); track item.key) {
   <div>
     <mat-checkbox
-      class="[&_.mdc-label]:flex [&_.mdc-label]:items-center"
+      class="small-icon-button-wrapper [&_.mdc-label]:flex [&_.mdc-label]:items-center"
       [color]="'primary'"
       [checked]="item.value"
       (change)="setVisible(item.key, $event.checked)"
-      >
-        {{ item.name }}
-        @if (item.key === 'layoutKeyNotationGuide') {
-          <button type="button" mat-icon-button aria-label="open help dialog for key notation" (click)="openKeyNotationHelpDialog()">
-            <mat-icon>help</mat-icon>
-          </button>
-        }
-      </mat-checkbox
     >
+      {{ item.name }}
+      @if (item.key === "layoutKeyNotationGuide") {
+        <button
+          type="button"
+          mat-icon-button
+          aria-label="open help dialog for key notation"
+          (click)="openKeyNotationHelpDialog()"
+        >
+          <mat-icon>help</mat-icon>
+        </button>
+      }
+    </mat-checkbox>
   </div>
 }
