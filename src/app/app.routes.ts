@@ -7,4 +7,11 @@ export const APP_ROUTES: Route[] = [
   { path: '', pathMatch: 'full', component: HomePageComponent },
   { path: 'settings', component: SettingsPageComponent },
   { path: 'topic/:topicId/lesson/:lessonId', component: LessonPageComponent },
+  {
+    path: 'statistics',
+    loadComponent: () =>
+      import('./pages/statistics-page/statistics-page.component').then(
+        (m) => m.StatisticsPageComponent,
+      ),
+  },
 ];

@@ -9,7 +9,7 @@
     data-style-dense
   >
     <header class="sticky top-0 z-10 shadow">
-      <mat-toolbar class="sticky top-0 z-10 !bg-gray-450">
+      <mat-toolbar class="sticky top-0 z-10 !bg-gray-450 !p-0">
         <a
           [routerLink]="'/'"
           aria-label="home page link"
@@ -18,6 +18,16 @@
         >
           <button type="button" mat-icon-button>
             <mat-icon>home</mat-icon>
+          </button>
+        </a>
+        <a
+          [routerLink]="'/statistics'"
+          aria-label="statistics page link"
+          matTooltip="Go to Statistics page"
+          (click)="onNavLinkClick()"
+        >
+          <button type="button" mat-icon-button>
+            <mat-icon>trending_up</mat-icon>
           </button>
         </a>
         <a
