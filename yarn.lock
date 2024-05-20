@@ -5903,6 +5903,18 @@ he@^1.2.0:
   resolved "https://registry.yarnpkg.com/he/-/he-1.2.0.tgz#84ae65fa7eafb165fddb61566ae14baf05664f0f"
   integrity sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==
 
+highcharts-angular@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/highcharts-angular/-/highcharts-angular-4.0.0.tgz#941904715fc708304690d859a178785793f673aa"
+  integrity sha512-0ghWnKvab6u+AgSDR1mgmWa2RLZHeAQ1tHyfqx/8nJr6iy1NA5m6kVRERF6NAofrLQoZ0v+lNP2AlN/pim0d9A==
+  dependencies:
+    tslib "^2.0.0"
+
+highcharts@^11.4.1:
+  version "11.4.1"
+  resolved "https://registry.yarnpkg.com/highcharts/-/highcharts-11.4.1.tgz#e40e97c4ea61a10389da75bff0cdb8f83bdb57e1"
+  integrity sha512-t+BjB4hba5rNheczCrpyDz8BJrqGdgECHaaXQrgbf1mRdPMPemlOfo08/kTMgZ/Kp/Xfj015atdXpUFdwUU12Q==
+
 hosted-git-info@^7.0.0:
   version "7.0.1"
   resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-7.0.1.tgz#9985fcb2700467fecf7f33a4d4874e30680b5322"
