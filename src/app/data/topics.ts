@@ -6,9 +6,31 @@ export const LETTER_TOPIC: Topic = {
   iconName: 'abc',
   name: 'Letters',
   type: 'character',
-  lessons: ['reat', 'ioln', 'ujys', 'kcfd', 'mvhp', 'wgz', 'bqx'].map(
-    generateCharacterLesson,
-  ),
+  lessons: [
+    ...['reat', 'ioln'].map(generateCharacterLesson),
+    {
+      ...generateCharacterLesson('reatioln'),
+      id: 'review1',
+      name: 'Review 1',
+    },
+    ...['ujys', 'kcfd'].map(generateCharacterLesson),
+    {
+      ...generateCharacterLesson('ujyskcfd'),
+      id: 'review2',
+      name: 'Review 2',
+    },
+    ...['mvhp', 'wgz', 'bqx'].map(generateCharacterLesson),
+    {
+      ...generateCharacterLesson('mvhpwgzbqx'),
+      id: 'review3',
+      name: 'Review 3',
+    },
+    {
+      ...generateCharacterLesson('abcdefghijklmnopqrstuvwxyz'),
+      id: 'all',
+      name: 'All Letters',
+    },
+  ],
 };
 
 export const NUMBER_TOPIC: Topic = {

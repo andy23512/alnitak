@@ -95,14 +95,13 @@ export class LessonPageComponent implements OnInit, OnDestroy {
   readonly lesson = computed(() => {
     const topicId = this.topicId();
     const lessonId = this.lessonId();
-    const lessonIndex = LESSONS.findIndex((lesson) => lesson.id === lessonId);
+    const lessonIndex = LESSONS.findIndex(
+      (lesson) => lesson.id === lessonId && lesson.topic.id === topicId,
+    );
     if (lessonIndex === -1) {
       return null;
     }
     const lesson = LESSONS[lessonIndex];
-    if (!lesson || topicId !== lesson.topic.id) {
-      return null;
-    }
     const previous = lessonIndex !== 0 ? LESSONS[lessonIndex - 1] : null;
     const next =
       lessonIndex !== LESSONS.length - 1 ? LESSONS[lessonIndex + 1] : null;
