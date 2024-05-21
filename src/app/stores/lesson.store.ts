@@ -83,7 +83,7 @@ export const LessonStore = signalStore(
         }
         db.keyRecords.add({
           ...commonKeyRecord,
-          isCorrect: false,
+          isCorrect: true,
           intervalToPreviousCorrectKey: keyInterval,
           cpm: keyInterval ? Math.floor((60 * 1000) / keyInterval) : null,
           combo: state.combo + 1,

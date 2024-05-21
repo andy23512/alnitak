@@ -1,6 +1,9 @@
-<highcharts-chart
-  [Highcharts]="Highcharts"
-  [constructorType]="chartConstructor"
-  [options]="chartOptions"
-  class="block h-full w-full"
-></highcharts-chart>
+@if (chartOptions(); as chartOptions) {
+  <highcharts-chart
+    [Highcharts]="Highcharts"
+    [constructorType]="chartConstructor"
+    [options]="chartOptions"
+    [update]="updateFlag"
+    class="block h-full w-full"
+  ></highcharts-chart>
+}
