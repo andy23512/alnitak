@@ -1,5 +1,5 @@
 import { withDevtools } from '@angular-architects/ngrx-toolkit';
-import { computed } from '@angular/core';
+import { computed, inject } from '@angular/core';
 import {
   patchState,
   signalStore,
@@ -7,8 +7,8 @@ import {
   withMethods,
   withState,
 } from '@ngrx/signals';
-import { db } from '../db';
 import { Lesson } from '../models/topic.models';
+import { KeyRecordService } from '../services/key-record.service';
 import { pickRandomItem, pickRandomItemNTimes } from '../utils/random.utils';
 
 const QUEUE_SIZE = 20;
@@ -40,7 +40,7 @@ const initialState: LessonState = {
 export const LessonStore = signalStore(
   withDevtools('lesson'),
   withState(initialState),
-  withMethods((store) => ({
+  withMethods((store, keyRecordService = inject(KeyRecordService)) => ({
     setLesson(lesson: Lesson) {
       patchState(store, () => ({
         topicId: lesson.topic.id,
@@ -72,7 +72,7 @@ export const LessonStore = signalStore(
           inputKey: component,
         };
         if (component !== state.queue[0]) {
-          db.keyRecords.add({
+          keyRecordService.pushIntoQueue({
             ...commonKeyRecord,
             isCorrect: false,
             intervalToPreviousCorrectKey: keyInterval,
@@ -81,7 +81,7 @@ export const LessonStore = signalStore(
           });
           return { error: true, combo: 0 };
         }
-        db.keyRecords.add({
+        keyRecordService.pushIntoQueue({
           ...commonKeyRecord,
           isCorrect: true,
           intervalToPreviousCorrectKey: keyInterval,
