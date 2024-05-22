@@ -32,12 +32,19 @@ export class StatisticsPageComponent {
     if (!keyRecords) {
       return null;
     }
-    const series = TOPICS.map((t) => ({
+    const series: Highcharts.SeriesOptionsType[] = TOPICS.map((t) => ({
       type: 'line' as const,
       data: keyRecords
         .filter((k) => k.cpm && k.topicId === t.id)
         .map((k) => [k.timestamp, k.cpm]),
       name: t.name,
+      dataGrouping: {
+        groupPixelWidth: 20,
+      },
+      marker: {
+        enabled: true,
+        radius: 5,
+      },
     })).filter((s) => s.data.length > 0);
     return {
       legend: { enabled: true },
@@ -47,6 +54,11 @@ export class StatisticsPageComponent {
         title: {
           text: 'CPM',
         },
+      },
+      xAxis: {
+        type: 'datetime',
+        ordinal: false,
+        breaks: undefined,
       },
     };
   });
