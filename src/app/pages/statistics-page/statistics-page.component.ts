@@ -50,6 +50,9 @@ export class StatisticsPageComponent {
       legend: { enabled: true },
       scrollbar: { enabled: false },
       series,
+      time: {
+        useUTC: false
+      },
       yAxis: {
         title: {
           text: 'CPM',
