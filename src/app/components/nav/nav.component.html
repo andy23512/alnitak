@@ -7,6 +7,7 @@
     [mode]="(isHandset$ | async) ? 'over' : 'side'"
     [opened]="(isHandset$ | async) === false"
     data-style-dense
+    autosize
   >
     <header class="sticky top-0 z-10 shadow">
       <mat-toolbar class="sticky top-0 z-10 !bg-gray-450 !p-0">
