@@ -53,6 +53,11 @@ export class StatisticsPageComponent {
       time: {
         useUTC: false
       },
+      tooltip: {
+        formatter: function () {
+          return `${this.series.name}: ${this.y?.toFixed(1)}`
+        }
+      },
       yAxis: {
         title: {
           text: 'CPM',
