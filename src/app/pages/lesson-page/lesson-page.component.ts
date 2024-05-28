@@ -43,6 +43,7 @@ import { DeviceLayoutStore } from 'src/app/stores/device-layout.store';
 import { HighlightSettingStore } from 'src/app/stores/highlight-setting.store';
 import { KeyboardLayoutStore } from 'src/app/stores/keyboard-layout.store';
 import { LessonStore } from 'src/app/stores/lesson.store';
+import { VisibilitySettingStore } from 'src/app/stores/visibility-setting.store';
 import {
   convertKeyboardLayoutToCharacterKeyCodeMap,
   getCharacterActionCodeFromCharacterKeyCode,
@@ -80,6 +81,7 @@ export class LessonPageComponent implements OnInit, OnDestroy {
   readonly lessonId = input.required<string>();
 
   readonly highlightSettingStore = inject(HighlightSettingStore);
+  readonly visibilitySettingStore = inject(VisibilitySettingStore);
 
   readonly isFocus = signal(false);
 

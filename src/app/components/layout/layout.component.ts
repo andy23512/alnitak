@@ -12,12 +12,14 @@ import {
   KeyLabel,
 } from 'src/app/models/device-layout.models';
 import { FingerMap, HandMap } from 'src/app/models/layout.models';
-import { convertPositionCodeToKeyNotation, convertPositionCodeToText } from 'src/app/utils/layout.utils';
+import {
+  convertPositionCodeToKeyNotation,
+  convertPositionCodeToText,
+} from 'src/app/utils/layout.utils';
 import { SwitchComponent } from '../switch/switch.component';
 const cellSize = 350;
 const gap = 35;
 const gridColumns = 10;
-const gridRows = 5;
 
 @Component({
   selector: 'app-layout',
@@ -27,8 +29,16 @@ const gridRows = 5;
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LayoutComponent {
+  public showThumb3Switch = input<boolean>(true);
+  public gridRows = computed(() => {
+    const showThumb3Switch = this.showThumb3Switch();
+    return showThumb3Switch ? 5 : 4;
+  });
   public viewBoxWidth = cellSize * gridColumns + gap * (gridColumns - 1);
-  public viewBoxHeight = cellSize * gridRows + gap * (gridRows - 1);
+  public viewBoxHeight = computed(() => {
+    const gridRows = this.gridRows();
+    return cellSize * gridRows + gap * (gridRows - 1);
+  });
   readonly keyLabelMap = input<Record<number, KeyLabel[]>>({});
   readonly highlightKeyCombination = input<HighlightKeyCombination | null>(
     null,
@@ -39,7 +49,8 @@ export class LayoutComponent {
     if (!highlightKeyCombination) {
       return '';
     }
-    return [...highlightKeyCombination.positionCodes].reverse()
+    return [...highlightKeyCombination.positionCodes]
+      .reverse()
       .map(convertPositionCodeToText)
       .join(' + ');
   });
@@ -49,23 +60,39 @@ export class LayoutComponent {
     if (!highlightKeyCombination) {
       return '';
     }
-    return [...highlightKeyCombination.positionCodes].reverse()
+    return [...highlightKeyCombination.positionCodes]
+      .reverse()
       .map(convertPositionCodeToKeyNotation)
       .join(' ');
   });
 
   readonly positionCodeLayout = POSITION_CODE_LAYOUT;
-  switches = [
-    'thumbEnd',
-    'thumbMid',
-    'thumbTip',
-    'index',
-    'middle',
-    'middleMid',
-    'ring',
-    'ringMid',
-    'little',
-  ] as const;
+  readonly switches = computed(() => {
+    const showThumb3Switch = this.showThumb3Switch();
+    if (showThumb3Switch) {
+      return [
+        'thumbEnd',
+        'thumbMid',
+        'thumbTip',
+        'index',
+        'middle',
+        'middleMid',
+        'ring',
+        'ringMid',
+        'little',
+      ] as const;
+    }
+    return [
+      'thumbMid',
+      'thumbTip',
+      'index',
+      'middle',
+      'middleMid',
+      'ring',
+      'ringMid',
+      'little',
+    ] as const;
+  });
   sides = ['left', 'right'] as const;
 
   gridY(rowIndex: number) {

@@ -2,7 +2,7 @@
   width="100%"
   height="100%"
   preserveAspectRatio="xMidYMid meet"
-  [attr.viewBox]="'0 0 ' + viewBoxWidth + ' ' + viewBoxHeight"
+  [attr.viewBox]="'0 0 ' + viewBoxWidth + ' ' + viewBoxHeight()"
 >
   <text
     *appVisible="'layoutTextGuide'"
@@ -28,7 +28,7 @@
   </text>
   <ng-container *appVisible="'layout'">
     @for (side of sides; track side) {
-      @for (sw of switches; track sw) {
+      @for (sw of switches(); track sw) {
         <g
           appSwitch
           [center]="switchCenter(sw, side)"

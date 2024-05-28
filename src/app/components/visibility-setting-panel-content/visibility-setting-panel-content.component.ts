@@ -17,8 +17,9 @@ const VISIBILITY_SETTING_ITEMS: {
   key: keyof VisibilitySetting;
 }[] = [
   { name: 'Layout', key: 'layout' },
-  { name: 'Layout Text Guide', key: 'layoutTextGuide' },
-  { name: 'Layout Key Notation Guide', key: 'layoutKeyNotationGuide' },
+  { name: 'Layout - Text Guide', key: 'layoutTextGuide' },
+  { name: 'Layout - Key Notation Guide', key: 'layoutKeyNotationGuide' },
+  { name: 'Layout - Thumb 3 Switch', key: 'layoutThumb3Switch' },
   { name: 'Combo Counter', key: 'comboCounter' },
   { name: 'Speedometer', key: 'speedometer' },
 ];
