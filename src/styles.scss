@@ -76,6 +76,7 @@ mat-sidenav[data-style-dense] {
   @include mat.list-density(-3);
   @include mat.input-density(-3);
   @include mat.form-field-density(-3);
+  @include mat.icon-button-density(-2);
 }
 
 .small-icon-button-wrapper {
