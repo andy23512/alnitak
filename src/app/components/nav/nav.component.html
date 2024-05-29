@@ -11,36 +11,25 @@
   >
     <header class="sticky top-0 z-10 shadow">
       <mat-toolbar class="sticky top-0 z-10 !bg-gray-450 !p-0">
-        <a
-          [routerLink]="'/'"
-          aria-label="home page link"
-          matTooltip="Go to Home page"
-          (click)="onNavLinkClick()"
-        >
-          <button type="button" mat-icon-button>
-            <mat-icon>home</mat-icon>
-          </button>
-        </a>
-        <a
-          [routerLink]="'/statistics'"
-          aria-label="statistics page link"
-          matTooltip="Go to Statistics page"
-          (click)="onNavLinkClick()"
-        >
-          <button type="button" mat-icon-button>
-            <mat-icon>trending_up</mat-icon>
-          </button>
-        </a>
-        <a
-          [routerLink]="'/settings'"
-          aria-label="settings page link"
-          matTooltip="Go to Settings page"
-          (click)="onNavLinkClick()"
-        >
-          <button type="button" mat-icon-button>
-            <mat-icon>settings</mat-icon>
-          </button>
-        </a>
+        @for (iconLink of iconLinks; track $index) {
+          <a
+            [routerLink]="iconLink.routerLink"
+            routerLinkActive
+            [routerLinkActiveOptions]="iconLink.routerLinkActiveOptions"
+            #rla="routerLinkActive"
+            [attr.aria-label]="iconLink.ariaLabel"
+            [matTooltip]="iconLink.tooltipMessage"
+            (click)="onNavLinkClick()"
+          >
+            <button
+              type="button"
+              mat-icon-button
+              [color]="rla.isActive ? 'primary' : null"
+            >
+              <mat-icon>{{ iconLink.icon }}</mat-icon>
+            </button>
+          </a>
+        }
         <button
           type="button"
           mat-icon-button
