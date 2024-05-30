@@ -22,4 +22,11 @@ export const ICON_LINKS: IconLink[] = [
     tooltipMessage: 'Go to Settings page',
     icon: 'settings',
   },
+  {
+    routerLink: '/chord',
+    routerLinkActiveOptions: { exact: false },
+    ariaLabel: 'chord page link',
+    tooltipMessage: 'Go to Chord page',
+    icon: 'piano',
+  },
 ];

@@ -14,4 +14,11 @@ export const APP_ROUTES: Route[] = [
         (m) => m.StatisticsPageComponent,
       ),
   },
+  {
+    path: 'chord',
+    loadComponent: () =>
+      import('./pages/chord-page/chord-page.component').then(
+        (m) => m.ChordPageComponent,
+      ),
+  },
 ];
