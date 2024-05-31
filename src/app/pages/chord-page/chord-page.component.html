@@ -1,1 +1,40 @@
-<p>chord-page works!</p>
+<section class="flex h-12 flex-none items-center bg-gray-700 px-5">
+  Chord Practice
+</section>
+<section class="p-5">
+  <ol class="list-inside list-decimal">
+    <li>
+      Import your chord list file (the backup file from
+      <a
+        class="underline"
+        href="https://manager.charachorder.com/"
+        target="_blank"
+        rel="noopener"
+        >CharaChorder Device Manager</a
+      >
+      website). (for first time usage or updating the chord list)
+      <br />
+      <button
+        class="my-2"
+        type="button"
+        [color]="'primary'"
+        mat-flat-button
+        (click)="fileInput.click()"
+      >
+        <mat-icon>upload</mat-icon>
+        Choose File
+      </button>
+      <input
+        hidden
+        #fileInput
+        type="file"
+        accept=".json"
+        aria-label="file input for selecting a chord map file to load into this tool"
+        (change)="loadChordFile()"
+      />
+    </li>
+    <li>
+      Select the chords you want to practice from the imported chord list below.
+    </li>
+  </ol>
+</section>
