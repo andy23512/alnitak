@@ -13,6 +13,8 @@ import { setEntities } from '@ngrx/signals/entities';
 import { sort } from 'ramda';
 import { ChordStore } from 'src/app/stores/chord.store';
 
+const sortWithNumber = sort((a: number, b: number) => a - b);
+
 @Component({
   selector: 'app-chord-page',
   standalone: true,
@@ -57,14 +59,14 @@ export class ChordPageComponent {
         this.chordStore,
         setEntities(
           (chordsItem.chords as [number[], number[]][]).map(
-            ([input, output]) => ({
-              id: sort(
-                (a, b) => a - b,
-                input.filter((a) => a > 0),
-              ).join('_'),
-              input,
-              output,
-            }),
+            ([input, output]) => {
+              const cleanedInput = sortWithNumber(input.filter((a) => a > 0));
+              return {
+                id: cleanedInput.join('_'),
+                input: cleanedInput,
+                output,
+              };
+            },
           ),
         ),
       );
