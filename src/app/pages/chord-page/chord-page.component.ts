@@ -60,9 +60,9 @@ export class ChordPageComponent {
         setEntities(
           (chordsItem.chords as [number[], number[]][]).map(
             ([input, output]) => {
-              const cleanedInput = sortWithNumber(input.filter((a) => a > 0));
+              const cleanedInput = input.filter((a) => a > 0);
               return {
-                id: cleanedInput.join('_'),
+                id: sortWithNumber(cleanedInput).join('_'),
                 input: cleanedInput,
                 output,
               };
