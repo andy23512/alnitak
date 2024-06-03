@@ -1,0 +1,7 @@
+<mat-dialog-content>
+  Are you sure to delete all the imported chords?
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button type="button" mat-button mat-dialog-close>Cancel</button>
+  <button type="button" mat-button [color]="'warn'" [mat-dialog-close]="{confirmed: true}">Yes. Delete them.</button>
+</mat-dialog-actions>

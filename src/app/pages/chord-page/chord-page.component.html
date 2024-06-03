@@ -35,6 +35,11 @@
     </li>
     <li>
       Select the chords you want to practice from the imported chord list below.
+      <mat-selection-list>
+        @for (chord of chordStore.entities(); track chord.id) {
+          <mat-list-option>{{chord.input | json }} {{chord.output | json }}</mat-list-option>
+        }
+      </mat-selection-list>
     </li>
   </ol>
 </section>

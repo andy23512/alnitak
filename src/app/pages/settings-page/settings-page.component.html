@@ -18,4 +18,18 @@
     >
     <app-device-layout-setting-panel-content></app-device-layout-setting-panel-content>
   </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header class="!text-xl"
+      >Chords</mat-expansion-panel-header
+    >
+    <button
+        type="button"
+        [color]="'warn'"
+        mat-flat-button
+        (click)="openDeleteChordsConfirmDialog()"
+      >
+        <mat-icon>delete</mat-icon>
+        Delete All Imported Chords
+      </button>
+  </mat-expansion-panel>
 </mat-accordion>

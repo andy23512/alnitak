@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
+import { MatListOption, MatSelectionList } from '@angular/material/list';
 import { patchState } from '@ngrx/signals';
 import { setEntities } from '@ngrx/signals/entities';
 import { sort } from 'ramda';
@@ -18,12 +19,12 @@ const sortWithNumber = sort((a: number, b: number) => a - b);
 @Component({
   selector: 'app-chord-page',
   standalone: true,
-  imports: [CommonModule, MatButton, MatIcon],
+  imports: [CommonModule, MatButton, MatIcon, MatSelectionList, MatListOption],
   templateUrl: './chord-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChordPageComponent {
-  private chordStore = inject(ChordStore);
+  chordStore = inject(ChordStore);
 
   @ViewChild('fileInput', { static: true })
   public fileInput!: ElementRef<HTMLInputElement>;
