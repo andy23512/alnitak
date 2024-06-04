@@ -126,6 +126,24 @@ export function getKeyCombinationsFromActionCode(
     .filter(nonNullable)[0];
 }
 
+export function getCharacterFromActionCode(
+  actionCode: number,
+  keyboardLayout: KeyBoardLayout | null,
+) {
+  if (!keyboardLayout) {
+    return null;
+  }
+  const action = ACTIONS.find((a) => a.codeId === actionCode);
+  if (!action?.writingSystemKeyCode) {
+    return null;
+  }
+  const character = keyboardLayout.layout[action.writingSystemKeyCode];
+  if (!character) {
+    return null;
+  }
+  return character;
+}
+
 export function getPositionSide(positionCode: number) {
   return positionCode < 45 ? 'left' : 'right';
 }
