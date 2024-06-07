@@ -40,7 +40,11 @@
         class="!my-2 max-h-56 overflow-auto rounded border"
       >
         @for (chord of chords(); track chord.id) {
-          <mat-list-option [color]="'primary'" [value]="chord">
+          <mat-list-option
+            [color]="'primary'"
+            [value]="chord"
+            [togglePosition]="'before'"
+          >
             <app-chord-input-keys
               [keys]="chord.inputKeys"
             ></app-chord-input-keys>
