@@ -1,4 +1,6 @@
+import { ACTION_REPRESENTATION_ICON_MAP } from '../data/action-representation-icon-map';
 import { ACTIONS, NUM_SHIFT_ACTION_CODES } from '../data/actions';
+import { ChordKey } from '../models/chord.models';
 import {
   DeviceLayout,
   HighlightKeyCombination,
@@ -72,7 +74,9 @@ export function getCharacterActionCodeFromCharacterKeyCode({
   shiftKey,
   altGraphKey,
 }: CharacterKeyCode) {
-  const action = ACTIONS.find((a) => a.writingSystemKeyCode === keyCode);
+  const action = ACTIONS.find(
+    (a) => a.writingSystemKeyCode === keyCode && a.withShift === false,
+  );
   if (!action) {
     return null;
   }
@@ -126,22 +130,30 @@ export function getKeyCombinationsFromActionCode(
     .filter(nonNullable)[0];
 }
 
-export function getCharacterFromActionCode(
+export function getChordKeyFromActionCode(
   actionCode: number,
   keyboardLayout: KeyBoardLayout | null,
-) {
+): ChordKey | null {
   if (!keyboardLayout) {
     return null;
   }
   const action = ACTIONS.find((a) => a.codeId === actionCode);
-  if (!action?.writingSystemKeyCode) {
-    return null;
+  if (action?.writingSystemKeyCode) {
+    const keyboardLayoutKey =
+      keyboardLayout.layout[action.writingSystemKeyCode];
+    const modifier = action.withShift ? 'withShift' : 'unmodified';
+    const character = keyboardLayoutKey?.[modifier];
+    if (!character) {
+      return null;
+    }
+    return { type: 'character', value: character };
+  } else {
+    const icon = ACTION_REPRESENTATION_ICON_MAP.get(actionCode);
+    if (!icon) {
+      return null;
+    }
+    return { type: 'icon', value: icon };
   }
-  const character = keyboardLayout.layout[action.writingSystemKeyCode];
-  if (!character) {
-    return null;
-  }
-  return character;
 }
 
 export function getPositionSide(positionCode: number) {

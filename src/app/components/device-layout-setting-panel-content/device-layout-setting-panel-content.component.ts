@@ -52,9 +52,14 @@ export class DeviceLayoutSettingPanelContentComponent {
       if (!data) {
         return;
       }
-      const layoutItem = data.history[0].find(
-        (item: any) => item.type === 'layout' && item.device === 'ONE',
-      );
+      let layoutItem = null;
+      if (data.history) {
+        layoutItem = data.history[0].find(
+          (item: any) => item.type === 'layout' && item.device === 'One',
+        );
+      } else {
+        layoutItem = data;
+      }
       if (!layoutItem) {
         return;
       }

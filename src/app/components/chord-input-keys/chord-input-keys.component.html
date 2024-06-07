@@ -1,0 +1,12 @@
+@for (key of keys(); track $index; let last = $last) {
+  @if (key.type === "character") {
+    {{ key.value }}
+  } @else {
+    <mat-icon>
+      {{ key.value }}
+    </mat-icon>
+  }
+  @if (!last) {
+    <span>+</span>
+  }
+}

@@ -1,0 +1,7 @@
+@for (key of keys(); track $index) {
+  @if (key.type === "character") {
+    <span>{{ key.value }}</span>
+  } @else {
+    <mat-icon [inline]="true">{{ key.value }}</mat-icon>
+  }
+}

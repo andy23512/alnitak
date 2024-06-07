@@ -6,4 +6,5 @@ import { WritingSystemKeyCode } from './writing-system-key-code.models';
 export interface Action {
   codeId: number;
   writingSystemKeyCode: WritingSystemKeyCode;
+  withShift?: boolean;
 }
