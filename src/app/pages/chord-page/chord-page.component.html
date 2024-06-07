@@ -35,9 +35,12 @@
     </li>
     <li>
       Select the chords you want to practice from the imported chord list below.
-      <mat-selection-list>
+      <mat-selection-list
+        #chordSelectionList
+        class="!my-2 max-h-56 overflow-auto rounded border"
+      >
         @for (chord of chords(); track chord.id) {
-          <mat-list-option>
+          <mat-list-option [color]="'primary'" [value]="chord">
             <app-chord-input-keys
               [keys]="chord.inputKeys"
             ></app-chord-input-keys>
@@ -48,6 +51,20 @@
           </mat-list-option>
         }
       </mat-selection-list>
+    </li>
+    <li>
+      Click the following button to start.
+      <br />
+      <button
+        class="my-2"
+        type="button"
+        [color]="'primary'"
+        mat-flat-button
+        [disabled]="chordSelectionList.selectedOptions.selected.length === 0"
+      >
+        <mat-icon>play_arrow</mat-icon>
+        Start
+      </button>
     </li>
   </ol>
 </section>
