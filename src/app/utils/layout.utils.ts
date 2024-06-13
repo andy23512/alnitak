@@ -75,7 +75,7 @@ export function getCharacterActionCodeFromCharacterKeyCode({
   altGraphKey,
 }: CharacterKeyCode) {
   const action = ACTIONS.find(
-    (a) => a.writingSystemKeyCode === keyCode && a.withShift === false,
+    (a) => a.writingSystemKeyCode === keyCode && !a.withShift,
   );
   if (!action) {
     return null;

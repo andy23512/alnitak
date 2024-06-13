@@ -2,73 +2,83 @@
   Chord Practice
 </section>
 <section class="p-5">
-  <ol class="list-inside list-decimal">
-    <li>
-      Import your chord list file (the backup file from
-      <a
-        class="underline"
-        href="https://manager.charachorder.com/"
-        target="_blank"
-        rel="noopener"
-        >CharaChorder Device Manager</a
-      >
-      website). (for first time usage or updating the chord list)
-      <br />
-      <button
-        class="my-2"
-        type="button"
-        [color]="'primary'"
-        mat-flat-button
-        (click)="fileInput.click()"
-      >
-        <mat-icon>upload</mat-icon>
-        Choose File
-      </button>
-      <input
-        hidden
-        #fileInput
-        type="file"
-        accept=".json"
-        aria-label="file input for selecting a chord map file to load into this tool"
-        (change)="loadChordFile()"
-      />
-    </li>
-    <li>
-      Select the chords you want to practice from the imported chord list below.
-      <mat-selection-list
-        #chordSelectionList
-        class="!my-2 max-h-56 overflow-auto rounded border"
-      >
-        @for (chord of chords(); track chord.id) {
-          <mat-list-option
-            [color]="'primary'"
-            [value]="chord"
-            [togglePosition]="'before'"
+  @switch (stage()) {
+    @case ("setting") {
+      <ol class="list-inside list-decimal">
+        <li>
+          Import your chord list file (the backup file from
+          <a
+            class="underline"
+            href="https://manager.charachorder.com/"
+            target="_blank"
+            rel="noopener"
+            >CharaChorder Device Manager</a
           >
-            <app-chord-input-keys
-              [keys]="chord.inputKeys"
-            ></app-chord-input-keys>
-            -&gt;
-            <app-chord-output-keys
-              [keys]="chord.outputKeys"
-            ></app-chord-output-keys>
-          </mat-list-option>
-        }
-      </mat-selection-list>
-    </li>
-    <li>
-      Click the following button to start.
-      <br />
-      <button
-        class="my-2"
-        type="button"
-        [color]="'primary'"
-        mat-flat-button
-        [disabled]="chordSelectionList.selectedOptions.selected.length === 0"
-      >
-        <mat-icon>play_arrow</mat-icon>
-        Start
-      </button>
-    </li>
-  </ol>
+          website). (for first time usage or updating the chord list)
+          <br />
+          <button
+            class="my-2"
+            type="button"
+            [color]="'primary'"
+            mat-flat-button
+            (click)="fileInput.click()"
+          >
+            <mat-icon>upload</mat-icon>
+            Choose File
+          </button>
+          <input
+            hidden
+            #fileInput
+            type="file"
+            accept=".json"
+            aria-label="file input for selecting a chord map file to load into this tool"
+            (change)="loadChordFile()"
+          />
+        </li>
+        <li>
+          Select the chords you want to practice from the imported chord list
+          below.
+          <mat-selection-list
+            class="!my-2 max-h-56 overflow-auto rounded border"
+            (selectionChange)="onChordSelectionChange($event)"
+          >
+            @for (chord of chords(); track chord.id) {
+              <mat-list-option
+                [color]="'primary'"
+                [value]="chord"
+                [togglePosition]="'before'"
+                [selected]="selectedChordIds().has(chord.id)"
+              >
+                <app-chord-input-keys
+                  [keys]="chord.inputKeys"
+                ></app-chord-input-keys>
+                -&gt;
+                <app-chord-output-keys
+                  [keys]="chord.outputKeys"
+                ></app-chord-output-keys>
+              </mat-list-option>
+            }
+          </mat-selection-list>
+        </li>
+        <li>
+          Click the following button to start.
+          <br />
+          <button
+            class="my-2"
+            type="button"
+            [color]="'primary'"
+            mat-flat-button
+            [disabled]="selectedChordIds().size === 0"
+            (click)="startChordPractice()"
+          >
+            <mat-icon>play_arrow</mat-icon>
+            Start
+          </button>
+        </li>
+      </ol>
+    }
+    @case ("practice") {
+      practice!
+    }
+  }
 </section>

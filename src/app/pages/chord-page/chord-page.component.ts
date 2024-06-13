@@ -6,10 +6,15 @@ import {
   ViewChild,
   computed,
   inject,
+  signal,
 } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
-import { MatListOption, MatSelectionList } from '@angular/material/list';
+import {
+  MatListOption,
+  MatSelectionList,
+  MatSelectionListChange,
+} from '@angular/material/list';
 import { patchState } from '@ngrx/signals';
 import { setEntities } from '@ngrx/signals/entities';
 import { sort } from 'ramda';
@@ -41,27 +46,30 @@ export class ChordPageComponent {
   readonly chordStore = inject(ChordStore);
   readonly keyboardLayout = inject(KeyboardLayoutStore).selectedEntity;
 
+  readonly selectedChordIds = signal<Set<string>>(new Set());
+  readonly stage = signal<'setting' | 'practice'>('setting');
+
   chords = computed(() => {
     const rawChords = this.chordStore.entities();
     const keyboardLayout = this.keyboardLayout();
-    return rawChords.map((c) => ({
-      ...c,
-      inputKeys: c.input.map((a) =>
-        getChordKeyFromActionCode(a, keyboardLayout),
-      ),
-      outputKeys: c.output.map((a) =>
-        getChordKeyFromActionCode(a, keyboardLayout),
-      ),
-    })) as ChordWithChordKeys[];
-    /*
+    return rawChords
+      .map((c) => ({
+        ...c,
+        inputKeys: c.input.map((a) =>
+          getChordKeyFromActionCode(a, keyboardLayout),
+        ),
+        outputKeys: c.output.map((a) =>
+          getChordKeyFromActionCode(a, keyboardLayout),
+        ),
+      }))
       .filter(
         (c) =>
           c.inputKeys.every((r) => r !== null) &&
           c.outputKeys.every((r) => r !== null),
-      ) as ChordWithChordKeys[];*/
+      ) as ChordWithChordKeys[];
   });
 
-  @ViewChild('fileInput', { static: true })
+  @ViewChild('fileInput')
   public fileInput!: ElementRef<HTMLInputElement>;
 
   loadChordFile() {
@@ -114,5 +122,21 @@ export class ChordPageComponent {
     };
 
     reader.readAsText(fileInputElement.files[0]);
+  }
+
+  onChordSelectionChange({ options }: MatSelectionListChange) {
+    let selectedChordIds = this.selectedChordIds();
+    options.forEach((option) => {
+      if (option.selected) {
+        selectedChordIds.add((option.value as ChordWithChordKeys).id);
+      } else {
+        selectedChordIds.delete((option.value as ChordWithChordKeys).id);
+      }
+    });
+    this.selectedChordIds.set(selectedChordIds);
+  }
+
+  startChordPractice() {
+    this.stage.set('practice');
   }
 }
