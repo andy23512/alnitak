@@ -1,0 +1,60 @@
+<section class="flex h-12 flex-none items-center bg-gray-700 px-5">
+  Chord - Practice
+</section>
+<section class="flex-none">
+  <div class="relative h-16 overflow-hidden">
+    <div
+      class="history absolute top-2 space-x-1 whitespace-nowrap text-gray-300"
+      [style.right]="'calc(100% - 96px)'"
+    >
+      @for (chord of chordPracticeStore.history(); track $index) {
+        <app-chord-output-keys
+          [keys]="chord.outputKeys"
+        ></app-chord-output-keys>
+      }
+    </div>
+    <div class="absolute left-24 top-2 space-x-1 whitespace-nowrap">
+      @for (chord of chordPracticeStore.queue(); track $index) {
+        <app-chord-output-keys
+          [keys]="chord.outputKeys"
+        ></app-chord-output-keys>
+      }
+    </div>
+    <div class="absolute bottom-2 left-24 whitespace-nowrap text-alnitak-300">
+      {{ chordPracticeStore.buffer().join("")
+      }}<span
+        class="animate-ping border-l border-solid border-alnitak-300"
+      ></span>
+    </div>
+    <input
+      class="peer h-0 w-0 opacity-0"
+      type="text"
+      #input
+      inputmode="none"
+      (keyup)="onKeyUp($event)"
+      (focus)="isFocus.set(true)"
+      (blur)="isFocus.set(false)"
+    />
+    <div
+      class="absolute inset-0 flex cursor-pointer items-center justify-center gap-2 bg-gray-500 text-white peer-focus:pointer-events-none peer-focus:opacity-0"
+    >
+      <button mat-flat-button (click)="startPractice()">
+        <mat-icon class="text-white">play_arrow</mat-icon> Start
+      </button>
+    </div>
+  </div>
+</section>
+<app-layout
+  class="box-border block flex-1 overflow-hidden px-5 pb-5"
+  [showThumb3Switch]="visibilitySettingStore.layoutThumb3Switch()"
+  [keyLabelMap]="keyLabelMap()"
+  [highlightKeyCombination]="isFocus() ? highlightKeyCombination() : null"
+></app-layout>
+<app-speedometer
+  *appVisible="'speedometer'"
+  class="absolute bottom-4 right-4 h-24 w-24 opacity-50"
+  [class.opacity-50]="isFocus()"
+  [speed]="chordPracticeStore.chpm()"
+  [maxSpeed]="100"
+  [speedUnit]="'ChPM'"
+></app-speedometer>

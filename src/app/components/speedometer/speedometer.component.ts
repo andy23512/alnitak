@@ -3,6 +3,7 @@ import {
   Component,
   HostBinding,
   OnInit,
+  computed,
   input,
   signal,
 } from '@angular/core';
@@ -30,10 +31,12 @@ const maxDiffPerFrame = 2;
 export class SpeedometerComponent implements OnInit {
   public speed = input.required<number>();
   public speedUnit = input.required<string>();
+  public maxSpeed = input.required<number>();
   public displaySpeed = signal<number>(0);
-  public maxSpeed = 200;
   public maxTemperature = 20000;
-  public speedHeatCapacity = this.maxSpeed / this.maxTemperature;
+  public speedHeatCapacity = computed(
+    () => this.maxSpeed() / this.maxTemperature,
+  );
   public size = size;
 
   sectors = Array.from({ length: sectorNumber }).map((_, i) => ({
@@ -72,11 +75,11 @@ export class SpeedometerComponent implements OnInit {
 
   opacity(index: number) {
     const displaySpeed = this.displaySpeed();
-    return displaySpeed / this.maxSpeed > (index + 1) / sectorNumber ? 1 : 0;
+    return displaySpeed / this.maxSpeed() > (index + 1) / sectorNumber ? 1 : 0;
   }
 
   @HostBinding('style.color') get color() {
     const displaySpeed = this.displaySpeed();
-    return temperatureToColor(displaySpeed / this.speedHeatCapacity);
+    return temperatureToColor(displaySpeed / this.speedHeatCapacity());
   }
 }

@@ -26,6 +26,13 @@ export const HOTKEY_GROUPS = [
       { key: 'escape', description: 'Pause lesson' },
     ],
   },
+  {
+    name: 'Chord Practice Page',
+    hotkeys: [
+      { key: 'space', description: 'Start/resume practice' },
+      { key: 'escape', description: 'Pause practice' },
+    ],
+  },
 ];
 
 @Component({

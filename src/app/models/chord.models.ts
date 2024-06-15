@@ -12,4 +12,5 @@ export interface Chord {
 export interface ChordWithChordKeys extends Chord {
   inputKeys: ChordKey[];
   outputKeys: ChordKey[];
+  outputText: string;
 }
