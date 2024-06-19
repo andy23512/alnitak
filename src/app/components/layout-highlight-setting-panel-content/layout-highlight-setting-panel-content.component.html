@@ -6,6 +6,7 @@
         Tend to choose the key combination from
         <app-sides-dropdown
           [value]="highlightSettingStore.shiftLayer().preferSides"
+          (select)="setHighlightSetting('shiftLayer', 'preferSides', $event)"
         ></app-sides-dropdown
         >.
       </li>
@@ -13,6 +14,9 @@
         Tend to choose the
         <app-key-side-dropdown
           [value]="highlightSettingStore.shiftLayer().preferShiftSide"
+          (select)="
+            setHighlightSetting('shiftLayer', 'preferShiftSide', $event)
+          "
         ></app-key-side-dropdown>
         Shift key.
       </li>
@@ -25,6 +29,7 @@
         Tend to choose the key combination from
         <app-sides-dropdown
           [value]="highlightSettingStore.numShiftLayer().preferSides"
+          (select)="setHighlightSetting('numShiftLayer', 'preferSides', $event)"
         ></app-sides-dropdown
         >.
       </li>
@@ -32,6 +37,9 @@
         Tend to choose the
         <app-key-side-dropdown
           [value]="highlightSettingStore.numShiftLayer().preferNumShiftSide"
+          (select)="
+            setHighlightSetting('numShiftLayer', 'preferNumShiftSide', $event)
+          "
         ></app-key-side-dropdown>
         Num-shift key.
       </li>
@@ -46,6 +54,13 @@
           [value]="
             highlightSettingStore.shiftAndNumShiftLayer().preferCharacterKeySide
           "
+          (select)="
+            setHighlightSetting(
+              'shiftAndNumShiftLayer',
+              'preferCharacterKeySide',
+              $event
+            )
+          "
         ></app-key-side-dropdown>
         side.
       </li>
@@ -54,6 +69,13 @@
         <app-key-side-dropdown
           [value]="
             highlightSettingStore.shiftAndNumShiftLayer().preferShiftSide
+          "
+          (select)="
+            setHighlightSetting(
+              'shiftAndNumShiftLayer',
+              'preferShiftSide',
+              $event
+            )
           "
         ></app-key-side-dropdown>
         Shift key.
