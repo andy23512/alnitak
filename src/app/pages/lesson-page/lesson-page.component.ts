@@ -31,6 +31,7 @@ import {
   FN_SHIFT_ACTION_CODES,
   SHIFT_ACTION_CODES,
 } from 'src/app/data/actions';
+import { NUM_SHIFT_KEY_LABEL, SHIFT_KEY_LABEL } from 'src/app/data/key-labels';
 import { LESSONS } from 'src/app/data/topics';
 import { db } from 'src/app/db';
 import { VisibleDirective } from 'src/app/directives/visible.directive';
@@ -218,31 +219,19 @@ export class LessonPageComponent implements OnInit, OnDestroy {
     });
     if (addShiftLabel) {
       modifierKeyPositionCodeMap.shift.forEach((pos) => {
-        const d: KeyLabel = {
-          c: '⇧',
-          layer: null,
-          shiftKey: null,
-          altGraphKey: null,
-        };
         if (!keyLabelMap[pos]) {
-          keyLabelMap[pos] = [d];
+          keyLabelMap[pos] = [SHIFT_KEY_LABEL];
         } else {
-          keyLabelMap[pos].push(d);
+          keyLabelMap[pos].push(SHIFT_KEY_LABEL);
         }
       });
     }
     if (addNumShiftLabel) {
       modifierKeyPositionCodeMap.numShift.forEach((pos) => {
-        const d: KeyLabel = {
-          c: '②',
-          layer: null,
-          shiftKey: null,
-          altGraphKey: null,
-        };
         if (!keyLabelMap[pos]) {
-          keyLabelMap[pos] = [d];
+          keyLabelMap[pos] = [NUM_SHIFT_KEY_LABEL];
         } else {
-          keyLabelMap[pos].push(d);
+          keyLabelMap[pos].push(NUM_SHIFT_KEY_LABEL);
         }
       });
     }
