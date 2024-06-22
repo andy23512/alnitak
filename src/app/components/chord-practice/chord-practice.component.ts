@@ -25,7 +25,6 @@ import { DeviceLayoutStore } from 'src/app/stores/device-layout.store';
 import { KeyboardLayoutStore } from 'src/app/stores/keyboard-layout.store';
 import { VisibilitySettingStore } from 'src/app/stores/visibility-setting.store';
 import {
-  convertKeyboardLayoutToCharacterKeyCodeMap,
   getChordKeyFromActionCode,
   getKeyCombinationsFromActionCode,
 } from 'src/app/utils/layout.utils';
@@ -65,9 +64,6 @@ export class ChordPracticeComponent implements OnInit {
   public input!: ElementRef<HTMLInputElement>;
 
   readonly keyboardLayout = inject(KeyboardLayoutStore).selectedEntity;
-  readonly characterKeyCodeMap = computed(() =>
-    convertKeyboardLayoutToCharacterKeyCodeMap(this.keyboardLayout()),
-  );
   readonly deviceLayout = inject(DeviceLayoutStore).selectedEntity;
 
   readonly practiceCharactersDevicePositionCodes = computed(() => {

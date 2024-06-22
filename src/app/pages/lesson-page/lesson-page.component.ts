@@ -46,7 +46,6 @@ import { KeyboardLayoutStore } from 'src/app/stores/keyboard-layout.store';
 import { LessonStore } from 'src/app/stores/lesson.store';
 import { VisibilitySettingStore } from 'src/app/stores/visibility-setting.store';
 import {
-  convertKeyboardLayoutToCharacterKeyCodeMap,
   getCharacterActionCodeFromCharacterKeyCode,
   getCharacterKeyCodeFromCharacter,
   getHighlightKeyCombinationFromKeyCombinations,
@@ -119,10 +118,8 @@ export class LessonPageComponent implements OnInit, OnDestroy {
   @ViewChild('input', { static: true })
   public input!: ElementRef<HTMLInputElement>;
 
-  readonly keyboardLayout = inject(KeyboardLayoutStore).selectedEntity;
-  readonly characterKeyCodeMap = computed(() =>
-    convertKeyboardLayoutToCharacterKeyCodeMap(this.keyboardLayout()),
-  );
+  readonly characterKeyCodeMap =
+    inject(KeyboardLayoutStore).characterKeyCodeMap;
   readonly deviceLayout = inject(DeviceLayoutStore).selectedEntity;
   readonly lessonCharactersDevicePositionCodes = computed(() => {
     const lesson = this.lesson();
