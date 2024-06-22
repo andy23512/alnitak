@@ -11,13 +11,19 @@ An unofficial CharaChorder One practice tool
 
 - Layout Lesson
   - 3~4 keys in a small lesson
-  - lessons for numbers, letters, and symbol
+  - lessons for numbers, letters, and symbols
 - Device Layout View
   - only show the labels of keys in the current lesson
   - highlight the current key(s) required to type out the character
+  - an load the custom layout via the backup json file from device manager website
 - Widgets
   - combo counter that counts the number of consecutive correct input
   - speedometer that shows the current typing speed
+- Chord Practice
+  - can load the chord list via the backup json file from device manager website
+  - can select chords to practice from the chord list
+  - only show the labels of keys from the input of the selected chords
+  - highlight the keys of current chord
 
 ## Disclaimer
 
