@@ -9,6 +9,7 @@ import {
   KeyLabel,
 } from 'src/app/models/device-layout.models';
 import { cos, sin } from 'src/app/utils/math.utils';
+import { KeyLabelComponent } from '../key-label/key-label.component';
 
 const o = 8;
 const r1 = 65;
@@ -19,6 +20,7 @@ const alpha2 = (Math.asin(((o / 2) * Math.SQRT2) / r2) / Math.PI) * 180;
 @Component({
   selector: '[appSwitchSector]',
   standalone: true,
+  imports: [KeyLabelComponent],
   templateUrl: './switch-sector.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

@@ -6,26 +6,10 @@
     highlightKeyCombination()?.positionCodes?.includes(positionCode()) ? 0.5 : 0
   "
 />
-@for (label of keyLabel(); track label.c) {
-  <svg:text
-    [attr.x]="textX()"
-    [attr.y]="textY()"
-    dominant-baseline="central"
-    text-anchor="middle"
-    font-size="80px"
-    fill="currentColor"
-    font-weight="lighter"
-    class="transition-opacity"
-    [attr.opacity]="
-      highlightKeyCombination() &&
-      ((label.layer === highlightKeyCombination()?.layer &&
-        label.shiftKey === highlightKeyCombination()?.shiftKey &&
-        label.altGraphKey === highlightKeyCombination()?.altGraphKey) ||
-        label.layer === null)
-        ? 1
-        : 0
-    "
-  >
-    {{ label.c }}
-  </svg:text>
-}
+<svg:g
+  appKeyLabel
+  [x]="textX()"
+  [y]="textY()"
+  [highlightKeyCombination]="highlightKeyCombination()"
+  [labels]="keyLabel()"
+></svg:g>

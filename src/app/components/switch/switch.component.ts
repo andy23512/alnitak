@@ -9,12 +9,13 @@ import {
   KeyLabel,
 } from 'src/app/models/device-layout.models';
 import { DirectionMap } from 'src/app/models/layout.models';
+import { KeyLabelComponent } from '../key-label/key-label.component';
 import { SwitchSectorComponent } from '../switch-sector/switch-sector.component';
 
 @Component({
   selector: '[appSwitch]',
   standalone: true,
-  imports: [SwitchSectorComponent],
+  imports: [SwitchSectorComponent, KeyLabelComponent],
   templateUrl: './switch.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
