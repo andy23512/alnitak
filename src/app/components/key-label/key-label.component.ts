@@ -14,6 +14,7 @@ import {
 export class KeyLabelComponent {
   readonly x = input.required<number>();
   readonly y = input.required<number>();
+  readonly fontSize = input<number>(80);
   readonly highlightKeyCombination = input<HighlightKeyCombination | null>(
     null,
   );

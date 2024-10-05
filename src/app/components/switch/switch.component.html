@@ -7,6 +7,9 @@
     [positionCode]="positionCodeMap()[sector.direction]"
     [keyLabel]="keyLabelMap()[positionCodeMap()[sector.direction]]"
     [highlightKeyCombination]="highlightKeyCombination()"
+    [strokeWidth]="strokeWidth()"
+    [highlightOpacity]="highlightOpacity()"
+    [fontSize]="fontSize()"
   ></svg:g>
 }
 <svg:circle
@@ -16,7 +19,7 @@
   [attr.r]="53.68"
   [attr.opacity]="
     highlightKeyCombination()?.positionCodes?.includes(positionCodeMap().c)
-      ? 0.5
+      ? highlightOpacity()
       : 0
   "
 ></svg:circle>
@@ -26,4 +29,5 @@
   [y]="center().y"
   [highlightKeyCombination]="highlightKeyCombination()"
   [labels]="keyLabelMap()[positionCodeMap().c]"
+  [fontSize]="fontSize()"
 ></svg:g>

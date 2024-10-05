@@ -21,4 +21,11 @@ export const APP_ROUTES: Route[] = [
         (m) => m.ChordPageComponent,
       ),
   },
+  {
+    path: 'layout-schematic',
+    loadComponent: () =>
+      import(
+        './pages/layout-schematic-page/layout-schematic-page.component'
+      ).then((m) => m.LayoutSchematicPageComponent),
+  },
 ];

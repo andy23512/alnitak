@@ -20,9 +20,12 @@ import { SwitchSectorComponent } from '../switch-sector/switch-sector.component'
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SwitchComponent {
+  readonly fontSize = input<number>(80);
   readonly center = input.required<{ x: number; y: number }>();
   readonly rotationDirection = input.required<'cw' | 'ccw'>();
   readonly rotation = input<number>(0);
+  readonly highlightOpacity = input<number>(0.5);
+  readonly strokeWidth = input<number>(1);
   sectors: { direction: 'n' | 'e' | 's' | 'w'; degree: number }[] = [
     { direction: 'n', degree: 270 },
     { direction: 'e', degree: 0 },

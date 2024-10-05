@@ -1,15 +1,23 @@
-<svg:path [attr.d]="sectorPath()" fill="transparent" stroke="white" />
+<svg:path
+  [attr.d]="sectorPath()"
+  fill="transparent"
+  stroke="white"
+  [attr.stroke-width]="strokeWidth()"
+/>
 <svg:path
   class="fill-alnitak-500"
   [attr.d]="sectorPath() + ' Z'"
   [attr.opacity]="
-    highlightKeyCombination()?.positionCodes?.includes(positionCode()) ? 0.5 : 0
+    highlightKeyCombination()?.positionCodes?.includes(positionCode())
+      ? highlightOpacity()
+      : 0
   "
 />
 <svg:g
   appKeyLabel
   [x]="textX()"
   [y]="textY()"
+  [fontSize]="fontSize()"
   [highlightKeyCombination]="highlightKeyCombination()"
   [labels]="keyLabel()"
 ></svg:g>

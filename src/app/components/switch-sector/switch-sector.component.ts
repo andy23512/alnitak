@@ -12,10 +12,8 @@ import { cos, sin } from 'src/app/utils/math.utils';
 import { KeyLabelComponent } from '../key-label/key-label.component';
 
 const o = 8;
-const r1 = 65;
-const r2 = 175;
-const alpha1 = (Math.asin(((o / 2) * Math.SQRT2) / r1) / Math.PI) * 180;
-const alpha2 = (Math.asin(((o / 2) * Math.SQRT2) / r2) / Math.PI) * 180;
+const R1 = 65;
+const R2 = 175;
 
 @Component({
   selector: '[appSwitchSector]',
@@ -26,13 +24,32 @@ const alpha2 = (Math.asin(((o / 2) * Math.SQRT2) / r2) / Math.PI) * 180;
 })
 export class SwitchSectorComponent {
   readonly center = input.required<{ x: number; y: number }>();
+  readonly strokeWidth = input<number>(1);
   readonly direction = input.required<'cw' | 'ccw'>();
   readonly degree = input.required<number>();
   readonly positionCode = input.required<number>();
+  readonly fontSize = input<number>(80);
   readonly keyLabel = input<KeyLabel[]>([]);
   readonly highlightKeyCombination = input<HighlightKeyCombination | null>(
     null,
   );
+  readonly highlightOpacity = input<number>(0.5);
+
+  readonly r1 = computed(() => {
+    return R1;
+  });
+
+  readonly r2 = computed(() => {
+    return R2 - this.strokeWidth();
+  });
+
+  readonly alpha1 = computed(() => {
+    return (Math.asin(((o / 2) * Math.SQRT2) / this.r1()) / Math.PI) * 180;
+  });
+
+  readonly alpha2 = computed(() => {
+    return (Math.asin(((o / 2) * Math.SQRT2) / this.r2()) / Math.PI) * 180;
+  });
 
   readonly sectorPath = computed(() => {
     const center = this.center();
@@ -42,10 +59,14 @@ export class SwitchSectorComponent {
     const cy = center.y;
     const dStart = d - 45;
     const dEnd = d + 45;
+    const alpha1 = this.alpha1();
+    const alpha2 = this.alpha2();
     const beta1Start = dStart + alpha1;
     const beta1End = dEnd - alpha1;
     const beta2Start = dStart + alpha2;
     const beta2End = dEnd - alpha2;
+    const r1 = this.r1();
+    const r2 = this.r2();
     if (direction === 'cw') {
       return `
         M ${cx + r1 * cos(beta1Start)} ${cy + r1 * sin(beta1Start)}
@@ -64,7 +85,7 @@ export class SwitchSectorComponent {
   });
 
   textRadius = (() => {
-    return (r1 + r2) / 2;
+    return (this.r1() + this.r2()) / 2;
   })();
 
   readonly textX = computed(() => {

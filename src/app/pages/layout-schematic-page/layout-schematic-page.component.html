@@ -1,0 +1,157 @@
+<mat-form-field>
+  <mat-select
+    [value]="osLayoutIndex()"
+    (valueChange)="onOsLayoutIndexChange($event)"
+  >
+    @for (osLayout of osLayouts; track $index) {
+      <mat-option [value]="$index">{{ osLayout.name }}</mat-option>
+    }
+  </mat-select>
+</mat-form-field>
+<div class="flex gap-3 p-2">
+  <div
+    class="flex w-[130px] flex-col items-center gap-1 rounded-sm border border-solid border-gray-200 p-2 text-center"
+  >
+    Keyboard <br />
+    (Scancode)
+    @for (item of scancodes; track $index) {
+      <div
+        class="size-8 content-center rounded-md border border-solid border-white text-center"
+        [class.bg-alnitak-500]="$index === keyIndex() && scancodeOn()"
+      >
+        {{ item }}
+      </div>
+    }
+  </div>
+  <div class="flex h-[210px] w-12 flex-col items-center justify-center gap-1">
+    <div class="arrow" [class.bg-alnitak-200]="scancodeOutputOn()"></div>
+    <span class="opacity-0" [class.!opacity-100]="scancodeOutputOn()">{{
+      currentScancode()
+    }}</span>
+  </div>
+  <div
+    class="flex flex-col items-center gap-1 rounded-sm border border-solid border-gray-200 p-2 text-center"
+  >
+    OS Layout <br />
+    {{ osLayoutName() }}
+    @for (item of osLayoutKeys(); track $index) {
+      <div
+        class="size-8 content-center rounded-md border border-solid border-white text-center transition-colors"
+        [class.bg-alnitak-500]="$index === keyIndex() && osOn()"
+      >
+        {{ item }}
+      </div>
+    }
+  </div>
+  <div class="flex h-[210px] w-12 flex-col items-center justify-center gap-1">
+    <div class="arrow" [class.bg-alnitak-200]="osOutputOn()"></div>
+    <span class="opacity-0" [class.!opacity-100]="osOutputOn()">{{
+      currentKey()
+    }}</span>
+  </div>
+  <div
+    class="relative flex flex-col items-center gap-1 rounded-sm border border-solid border-gray-200 p-2"
+  >
+    Output
+    <span
+      class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-alnitak-200 underline-offset-2"
+      [class.underline]="osLayout().isBopomofo"
+      >{{ currentOutput() }}</span
+    >
+  </div>
+</div>
+<div class="flex gap-3 p-2">
+  <div
+    class="flex w-[130px] flex-col items-center gap-1 rounded-sm border border-solid border-gray-200 p-2 text-center"
+  >
+    CC1 / M4G <br />
+    (Device Layout)
+    <svg
+      class="size-8"
+      viewBox="0 0 350 350"
+      preserveAspectRatio="xMidYMid meet"
+      class="size-20"
+    >
+      <g
+        appSwitch
+        [center]="{ x: 175, y: 175 }"
+        [rotationDirection]="'cw'"
+        [positionCodeMap]="{ c: 0, e: 1, n: 2, w: 3, s: 4 }"
+        [highlightKeyCombination]="{
+          characterKeyPositionCode: 0,
+          layer: Layer.Primary,
+          shiftKey: false,
+          altGraphKey: false,
+          positionCodes: scancodeOn() ? [keyIndex() + 1] : [],
+          score: 0
+        }"
+        [keyLabelMap]="keyLabelMap"
+        [highlightOpacity]="1"
+        [strokeWidth]="4.375"
+        [fontSize]="70"
+      ></g>
+    </svg>
+    (Scancode)
+    <svg
+      class="size-8"
+      viewBox="0 0 350 350"
+      preserveAspectRatio="xMidYMid meet"
+      class="size-20"
+    >
+      <g
+        appSwitch
+        [center]="{ x: 175, y: 175 }"
+        [rotationDirection]="'cw'"
+        [positionCodeMap]="{ c: 0, e: 1, n: 2, w: 3, s: 4 }"
+        [highlightKeyCombination]="{
+          characterKeyPositionCode: 0,
+          layer: Layer.Primary,
+          shiftKey: false,
+          altGraphKey: false,
+          positionCodes: scancodeOn() ? [keyIndex() + 1] : [],
+          score: 0
+        }"
+        [keyLabelMap]="scancodeLabelMap"
+        [highlightOpacity]="1"
+        [strokeWidth]="4.375"
+        [fontSize]="70"
+      ></g>
+    </svg>
+  </div>
+  <div class="flex h-[210px] w-12 flex-col items-center justify-center gap-1">
+    <div class="arrow" [class.bg-alnitak-200]="scancodeOutputOn()"></div>
+    <span class="opacity-0" [class.!opacity-100]="scancodeOutputOn()">{{
+      currentScancode()
+    }}</span>
+  </div>
+  <div
+    class="flex flex-col items-center gap-1 self-start rounded-sm border border-solid border-gray-200 p-2 text-center"
+  >
+    OS Layout <br />
+    {{ osLayoutName() }}
+    @for (item of osLayoutKeys(); track $index) {
+      <div
+        class="size-8 content-center rounded-md border border-solid border-white text-center transition-colors"
+        [class.bg-alnitak-500]="$index === keyIndex() && osOn()"
+      >
+        {{ item }}
+      </div>
+    }
+  </div>
+  <div class="flex h-[210px] w-12 flex-col items-center justify-center gap-1">
+    <div class="arrow" [class.bg-alnitak-200]="osOutputOn()"></div>
+    <span class="opacity-0" [class.!opacity-100]="osOutputOn()">{{
+      currentKey()
+    }}</span>
+  </div>
+  <div
+    class="relative flex h-[210px] flex-col items-center gap-1 rounded-sm border border-solid border-gray-200 p-2"
+  >
+    Output
+    <span
+      class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-alnitak-200 underline-offset-2"
+      [class.underline]="osLayout().isBopomofo"
+      >{{ currentOutput() }}</span
+    >
+  </div>
+</div>
