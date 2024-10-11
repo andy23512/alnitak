@@ -33,8 +33,24 @@ const OS_LAYOUTS: OsLayout[] = [
     keys: ['ㄅ', 'ㄆ', 'ㄇ', 'ㄈ'],
     isBopomofo: true,
   },
-  { name: '標準注音', keys: ['ㄅ', 'ㄆ', 'ㄇ', 'ㄈ'], isBopomofo: true },
+  { name: '大千注音', keys: ['ㄅ', 'ㄆ', 'ㄇ', 'ㄈ'], isBopomofo: true },
 ];
+
+const EN_TEXT = {
+  Keyboard: 'Keyboard',
+  Scancode: 'Scancode',
+  OSLayout: 'OS Layout',
+  DeviceLayout: 'Device Layout',
+  Output: 'Output',
+} as const;
+
+const ZH_HANT_TEXT = {
+  Keyboard: '鍵盤',
+  Scancode: '掃描碼',
+  OSLayout: '作業系統佈局',
+  DeviceLayout: '裝置佈局',
+  Output: '輸出',
+} as const;
 
 @Component({
   selector: 'app-layout-schematic-page',
@@ -59,6 +75,19 @@ export class LayoutSchematicPageComponent {
     3: [{ c: '04', layer: null, shiftKey: null, altGraphKey: null }],
     4: [{ c: '1D', layer: null, shiftKey: null, altGraphKey: null }],
   };
+
+  languages = [
+    { name: 'English', value: 'en' as const },
+    { name: '繁體中文', value: 'zh_Hant' as const },
+  ];
+  currentLanguage = signal<'en' | 'zh_Hant'>('en');
+  text = computed(() => {
+    const currentLanguage = this.currentLanguage();
+    if (currentLanguage === 'zh_Hant') {
+      return ZH_HANT_TEXT;
+    }
+    return EN_TEXT;
+  });
 
   osLayouts = OS_LAYOUTS;
   osLayoutIndex = signal(0);
@@ -92,5 +121,9 @@ export class LayoutSchematicPageComponent {
 
   public onOsLayoutIndexChange(index: number) {
     this.osLayoutIndex.set(index);
+  }
+
+  public onLanguageChange(language: 'en' | 'zh_Hant') {
+    this.currentLanguage.set(language);
   }
 }

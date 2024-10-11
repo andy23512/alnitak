@@ -8,12 +8,22 @@
     }
   </mat-select>
 </mat-form-field>
+<mat-form-field>
+  <mat-select
+    [value]="currentLanguage()"
+    (valueChange)="onLanguageChange($event)"
+  >
+    @for (language of languages; track $index) {
+      <mat-option [value]="language.value">{{ language.name }}</mat-option>
+    }
+  </mat-select>
+</mat-form-field>
 <div class="flex gap-3 p-2">
   <div
     class="flex w-[130px] flex-col items-center gap-1 rounded-sm border border-solid border-gray-200 p-2 text-center"
   >
-    Keyboard <br />
-    (Scancode)
+    {{ text().Keyboard }} <br />
+    ({{ text().Scancode }})
     @for (item of scancodes; track $index) {
       <div
         class="size-8 content-center rounded-md border border-solid border-white text-center"
@@ -32,7 +42,7 @@
   <div
     class="flex flex-col items-center gap-1 rounded-sm border border-solid border-gray-200 p-2 text-center"
   >
-    OS Layout <br />
+    {{ text().OSLayout }} <br />
     {{ osLayoutName() }}
     @for (item of osLayoutKeys(); track $index) {
       <div
@@ -52,7 +62,7 @@
   <div
     class="relative flex flex-col items-center gap-1 rounded-sm border border-solid border-gray-200 p-2"
   >
-    Output
+    {{ text().Output }}
     <span
       class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-alnitak-200 underline-offset-2"
       [class.underline]="osLayout().isBopomofo"
@@ -65,7 +75,7 @@
     class="flex w-[130px] flex-col items-center gap-1 rounded-sm border border-solid border-gray-200 p-2 text-center"
   >
     CC1 / M4G <br />
-    (Device Layout)
+    ({{ text().DeviceLayout }})
     <svg
       class="size-8"
       viewBox="0 0 350 350"
@@ -91,7 +101,7 @@
         [fontSize]="70"
       ></g>
     </svg>
-    (Scancode)
+    ({{ text().Scancode }})
     <svg
       class="size-8"
       viewBox="0 0 350 350"
@@ -127,7 +137,7 @@
   <div
     class="flex flex-col items-center gap-1 self-start rounded-sm border border-solid border-gray-200 p-2 text-center"
   >
-    OS Layout <br />
+    {{ text().OSLayout }} <br />
     {{ osLayoutName() }}
     @for (item of osLayoutKeys(); track $index) {
       <div
@@ -147,7 +157,7 @@
   <div
     class="relative flex h-[210px] flex-col items-center gap-1 rounded-sm border border-solid border-gray-200 p-2"
   >
-    Output
+    {{ text().Output }}
     <span
       class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-alnitak-200 underline-offset-2"
       [class.underline]="osLayout().isBopomofo"
