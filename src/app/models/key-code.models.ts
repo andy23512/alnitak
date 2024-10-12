@@ -51,7 +51,7 @@ export type WSKCode =
   | 'Semicolon'
   | 'Slash';
 
-// Reference: https://w3c.github.io/uievents-code/#key-alphanumeric-functional
+// Reference: https://w3c.github.io/uievents-code/
 export type NonWSKCode =
   | 'AltLeft'
   | 'AltRight'
@@ -67,4 +67,21 @@ export type NonWSKCode =
   | 'ShiftRight'
   | 'Space'
   | 'Tab'
-  | 'Escape';
+  | 'Escape'
+  | 'F1'
+  | 'F2'
+  | 'F3'
+  | 'F4'
+  | 'F5'
+  | 'F6'
+  | 'F7'
+  | 'F8'
+  | 'F9'
+  | 'F10'
+  | 'F11'
+  | 'F12'
+  | 'Delete'
+  | 'ArrowDown'
+  | 'ArrowLeft'
+  | 'ArrowRight'
+  | 'ArrowUp';

@@ -10,7 +10,15 @@ export enum ActionType {
   NonKey = 'non-key',
 }
 
-export type NonKeyActionName = 'MouseLeftClick' | 'MouseRightClick';
+export type NonKeyActionName =
+  | 'MouseLeftClick'
+  | 'MouseRightClick'
+  | 'TertiaryKeymapLeft'
+  | 'TertiaryKeymapRight'
+  | 'SecondaryKeymapLeft'
+  | 'SecondaryKeymapRight'
+  | 'AmbidextrousThrowoverLeft'
+  | 'AmbidextrousThrowoverRight';
 
 export interface WSKAction extends BaseAction {
   type: ActionType.WSK;

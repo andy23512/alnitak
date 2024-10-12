@@ -85,6 +85,7 @@ export const WSK_ACTIONS: Omit<WSKAction, 'type'>[] = [
   { codeId: 120, keyCode: 'KeyX' },
   { codeId: 121, keyCode: 'KeyY' },
   { codeId: 122, keyCode: 'KeyZ' },
+  { codeId: 124, keyCode: 'Backslash', withShift: true },
 ];
 export const NON_WSK_ACTIONS: Omit<NonWSKAction, 'type'>[] = [
   { codeId: 514, keyCode: 'AltLeft' },
@@ -97,15 +98,38 @@ export const NON_WSK_ACTIONS: Omit<NonWSKAction, 'type'>[] = [
   { codeId: 296, keyCode: 'Enter' },
   { codeId: 515, keyCode: 'MetaLeft' },
   { codeId: 519, keyCode: 'MetaRight' },
-  { codeId: 515, keyCode: 'ShiftLeft' },
-  { codeId: 519, keyCode: 'ShiftRight' },
+  { codeId: 513, keyCode: 'ShiftLeft' },
+  { codeId: 517, keyCode: 'ShiftRight' },
   { codeId: 32, keyCode: 'Space' },
   { codeId: 299, keyCode: 'Tab' },
   { codeId: 297, keyCode: 'Escape' },
+  { codeId: 314, keyCode: 'F1' },
+  { codeId: 315, keyCode: 'F2' },
+  { codeId: 316, keyCode: 'F3' },
+  { codeId: 317, keyCode: 'F4' },
+  { codeId: 318, keyCode: 'F5' },
+  { codeId: 319, keyCode: 'F6' },
+  { codeId: 320, keyCode: 'F7' },
+  { codeId: 321, keyCode: 'F8' },
+  { codeId: 322, keyCode: 'F9' },
+  { codeId: 323, keyCode: 'F10' },
+  { codeId: 324, keyCode: 'F11' },
+  { codeId: 325, keyCode: 'F12' },
+  { codeId: 127, keyCode: 'Delete' },
+  { codeId: 337, keyCode: 'ArrowDown' },
+  { codeId: 336, keyCode: 'ArrowLeft' },
+  { codeId: 335, keyCode: 'ArrowRight' },
+  { codeId: 338, keyCode: 'ArrowUp' },
 ];
 export const NON_KEY_ACTIONS: Omit<NonKeyAction, 'type'>[] = [
   { codeId: 562, actionName: 'MouseLeftClick' },
   { codeId: 563, actionName: 'MouseRightClick' },
+  { codeId: 552, actionName: 'TertiaryKeymapLeft' },
+  { codeId: 553, actionName: 'TertiaryKeymapRight' },
+  { codeId: 550, actionName: 'SecondaryKeymapLeft' },
+  { codeId: 551, actionName: 'SecondaryKeymapRight' },
+  { codeId: 540, actionName: 'AmbidextrousThrowoverLeft' },
+  { codeId: 542, actionName: 'AmbidextrousThrowoverRight' },
 ];
 export const NO_ACTION_ACTION_CODES = [0, ...range(600, 617 + 1)];
 export const ACTIONS: Action[] = [
