@@ -18,6 +18,7 @@ import {
   HighlightKeyCombination,
   KeyCombination,
   KeyLabel,
+  KeyLabelType,
   Layer,
 } from 'src/app/models/device-layout.models';
 import { ChordPracticeStore } from 'src/app/stores/chord-practice.store';
@@ -98,7 +99,13 @@ export class ChordPracticeComponent implements OnInit {
     practiceCharactersDevicePositionCodes.forEach((v) => {
       v?.characterDeviceKeys?.forEach(
         ({ characterKeyPositionCode, layer, shiftKey, altGraphKey }) => {
-          const d = { c: v.c, layer, shiftKey, altGraphKey };
+          const d = {
+            type: KeyLabelType.String,
+            c: v.c,
+            layer,
+            shiftKey,
+            altGraphKey,
+          };
           if (!keyLabelMap[characterKeyPositionCode]) {
             keyLabelMap[characterKeyPositionCode] = [d];
           } else {

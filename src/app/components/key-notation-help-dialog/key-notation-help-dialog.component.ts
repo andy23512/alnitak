@@ -7,7 +7,7 @@ import {
   MatDialogContent,
   MatDialogTitle,
 } from '@angular/material/dialog';
-import { Layer } from 'src/app/models/device-layout.models';
+import { KeyLabelType, Layer } from 'src/app/models/device-layout.models';
 import { LayoutComponent } from '../layout/layout.component';
 
 @Component({
@@ -27,4 +27,5 @@ import { LayoutComponent } from '../layout/layout.component';
 })
 export class KeyNotationHelpDialogComponent {
   Layer = Layer;
+  KeyLabelType = KeyLabelType;
 }

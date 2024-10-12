@@ -1,6 +1,7 @@
-import { KeyLabel } from '../models/device-layout.models';
+import { KeyLabel, KeyLabelType } from '../models/device-layout.models';
 
 export const SHIFT_KEY_LABEL: KeyLabel = {
+  type: KeyLabelType.String,
   c: '⇧',
   layer: null,
   shiftKey: null,
@@ -8,6 +9,7 @@ export const SHIFT_KEY_LABEL: KeyLabel = {
 };
 
 export const NUM_SHIFT_KEY_LABEL: KeyLabel = {
+  type: KeyLabelType.String,
   c: '②',
   layer: null,
   shiftKey: null,

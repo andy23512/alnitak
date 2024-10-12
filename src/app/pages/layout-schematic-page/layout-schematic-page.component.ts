@@ -11,7 +11,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { timer } from 'rxjs';
 import { SwitchComponent } from 'src/app/components/switch/switch.component';
-import { Layer } from 'src/app/models/device-layout.models';
+import {
+  KeyLabel,
+  KeyLabelType,
+  Layer,
+} from 'src/app/models/device-layout.models';
 
 // 0: all off
 // 1: scan code on, scan code output
@@ -63,17 +67,81 @@ const ZH_HANT_TEXT = {
 export class LayoutSchematicPageComponent {
   readonly Layer = Layer;
   scancodes = ['1E', '14', '04', '1D'];
-  keyLabelMap = {
-    1: [{ c: '1', layer: null, shiftKey: null, altGraphKey: null }],
-    2: [{ c: 'q', layer: null, shiftKey: null, altGraphKey: null }],
-    3: [{ c: 'a', layer: null, shiftKey: null, altGraphKey: null }],
-    4: [{ c: 'z', layer: null, shiftKey: null, altGraphKey: null }],
+  keyLabelMap: Record<number, KeyLabel[]> = {
+    1: [
+      {
+        type: KeyLabelType.String,
+        c: '1',
+        layer: null,
+        shiftKey: null,
+        altGraphKey: null,
+      },
+    ],
+    2: [
+      {
+        type: KeyLabelType.String,
+        c: 'q',
+        layer: null,
+        shiftKey: null,
+        altGraphKey: null,
+      },
+    ],
+    3: [
+      {
+        type: KeyLabelType.String,
+        c: 'a',
+        layer: null,
+        shiftKey: null,
+        altGraphKey: null,
+      },
+    ],
+    4: [
+      {
+        type: KeyLabelType.String,
+        c: 'z',
+        layer: null,
+        shiftKey: null,
+        altGraphKey: null,
+      },
+    ],
   };
-  scancodeLabelMap = {
-    1: [{ c: '1E', layer: null, shiftKey: null, altGraphKey: null }],
-    2: [{ c: '14', layer: null, shiftKey: null, altGraphKey: null }],
-    3: [{ c: '04', layer: null, shiftKey: null, altGraphKey: null }],
-    4: [{ c: '1D', layer: null, shiftKey: null, altGraphKey: null }],
+  scancodeLabelMap: Record<number, KeyLabel[]> = {
+    1: [
+      {
+        type: KeyLabelType.String,
+        c: '1E',
+        layer: null,
+        shiftKey: null,
+        altGraphKey: null,
+      },
+    ],
+    2: [
+      {
+        type: KeyLabelType.String,
+        c: '14',
+        layer: null,
+        shiftKey: null,
+        altGraphKey: null,
+      },
+    ],
+    3: [
+      {
+        type: KeyLabelType.String,
+        c: '04',
+        layer: null,
+        shiftKey: null,
+        altGraphKey: null,
+      },
+    ],
+    4: [
+      {
+        type: KeyLabelType.String,
+        c: '1D',
+        layer: null,
+        shiftKey: null,
+        altGraphKey: null,
+      },
+    ],
   };
 
   languages = [

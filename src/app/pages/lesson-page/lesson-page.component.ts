@@ -38,6 +38,7 @@ import { VisibleDirective } from 'src/app/directives/visible.directive';
 import {
   HighlightKeyCombination,
   KeyLabel,
+  KeyLabelType,
   Layer,
 } from 'src/app/models/device-layout.models';
 import { DeviceLayoutStore } from 'src/app/stores/device-layout.store';
@@ -199,7 +200,13 @@ export class LessonPageComponent implements OnInit, OnDestroy {
     lessonCharactersDevicePositionCodes.forEach((v) => {
       v?.characterDeviceKeys?.forEach(
         ({ characterKeyPositionCode, layer, shiftKey, altGraphKey }) => {
-          const d = { c: v.c, layer, shiftKey, altGraphKey };
+          const d = {
+            type: KeyLabelType.String,
+            c: v.c,
+            layer,
+            shiftKey,
+            altGraphKey,
+          };
           if (!keyLabelMap[characterKeyPositionCode]) {
             keyLabelMap[characterKeyPositionCode] = [d];
           } else {

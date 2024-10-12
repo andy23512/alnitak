@@ -37,18 +37,14 @@ export interface HighlightKeyCombination extends KeyCombination {
  * Label of a physical key, which records the corresponding character when the key is triggered under certain layer and modifiers
  */
 export interface KeyLabel {
-  c: LabelText;
+  type: KeyLabelType;
+  c: string;
   layer: Layer | null;
   shiftKey: boolean | null;
   altGraphKey: boolean | null;
 }
 
-export interface LabelText {
-  type: LabelTextType;
-  value: string;
-}
-
-export enum LabelTextType {
+export enum KeyLabelType {
   String = 'string',
   Icon = 'icon',
 }

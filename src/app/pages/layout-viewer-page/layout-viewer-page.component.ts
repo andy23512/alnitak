@@ -9,7 +9,11 @@ import { range } from 'ramda';
 import { LayoutComponent } from 'src/app/components/layout/layout.component';
 import { ACTIONS } from 'src/app/data/actions';
 import { ActionType } from 'src/app/models/action.models';
-import { KeyLabel, Layer } from 'src/app/models/device-layout.models';
+import {
+  KeyLabel,
+  KeyLabelType,
+  Layer,
+} from 'src/app/models/device-layout.models';
 import { DeviceLayoutStore } from 'src/app/stores/device-layout.store';
 import { HighlightSettingStore } from 'src/app/stores/highlight-setting.store';
 import { KeyboardLayoutStore } from 'src/app/stores/keyboard-layout.store';
@@ -57,6 +61,7 @@ export class LayoutViewerPageComponent {
             keyboardLayout.layout[action?.writingSystemKeyCode];
           if (keyboardLayoutKey?.unmodified) {
             keyLabels.push({
+              type: KeyLabelType.String,
               c: keyboardLayoutKey.unmodified,
               layer,
               shiftKey: false,
