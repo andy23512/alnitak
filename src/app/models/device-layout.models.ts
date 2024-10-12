@@ -33,12 +33,15 @@ export interface HighlightKeyCombination extends KeyCombination {
   score: number;
 }
 
+export interface RawKeyLabel {
+  type: KeyLabelType;
+  c: string;
+}
+
 /*
  * Label of a physical key, which records the corresponding character when the key is triggered under certain layer and modifiers
  */
-export interface KeyLabel {
-  type: KeyLabelType;
-  c: string;
+export interface KeyLabel extends RawKeyLabel {
   layer: Layer | null;
   shiftKey: boolean | null;
   altGraphKey: boolean | null;

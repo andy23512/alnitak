@@ -1,5 +1,5 @@
 import { Action } from './action.models';
-import { WritingSystemKeyCode } from './writing-system-key-code.models';
+import { WSKCode } from './key-code.models';
 
 /**
  * Output character information of a key on a keyboard layout.
@@ -18,7 +18,7 @@ export interface KeyBoardLayout {
   id: string;
   name: string;
   reference: string;
-  layout: Partial<Record<WritingSystemKeyCode, Partial<KeyboardLayoutKey>>>;
+  layout: Partial<Record<WSKCode, Partial<KeyboardLayoutKey>>>;
 }
 
 /**
@@ -30,7 +30,7 @@ export type CharacterKeyCodeMap = Map<string, CharacterKeyCode>;
  * Data for a key combination that can type out a character
  */
 export interface CharacterKeyCode {
-  keyCode: WritingSystemKeyCode;
+  keyCode: WSKCode;
   shiftKey: boolean;
   altGraphKey: boolean;
 }

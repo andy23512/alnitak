@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import {
   HighlightKeyCombination,
   KeyLabel,
+  KeyLabelType,
 } from 'src/app/models/device-layout.models';
 
 @Component({
@@ -19,4 +20,5 @@ export class KeyLabelComponent {
     null,
   );
   readonly labels = input.required<KeyLabel[]>();
+  KeyLabelType = KeyLabelType;
 }

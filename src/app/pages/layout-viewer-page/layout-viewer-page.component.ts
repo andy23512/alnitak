@@ -7,7 +7,11 @@ import {
 } from '@angular/core';
 import { range } from 'ramda';
 import { LayoutComponent } from 'src/app/components/layout/layout.component';
-import { ACTIONS } from 'src/app/data/actions';
+import { ACTIONS, NO_ACTION_ACTION_CODES } from 'src/app/data/actions';
+import {
+  NON_KEY_ACTION_NAME_2_RAW_KEY_LABEL_MAP,
+  NON_WSK_CODE_2_RAW_KEY_LABEL_MAP,
+} from 'src/app/data/key-labels';
 import { ActionType } from 'src/app/models/action.models';
 import {
   KeyLabel,
@@ -53,12 +57,8 @@ export class LayoutViewerPageComponent {
         }
         const actionCodeId = deviceLayout.layout[layerIndex][positionIndex];
         const action = ACTIONS.find((a) => a.codeId === actionCodeId);
-        if (
-          action?.type === ActionType.WritingSystemKey &&
-          action.writingSystemKeyCode
-        ) {
-          const keyboardLayoutKey =
-            keyboardLayout.layout[action?.writingSystemKeyCode];
+        if (action?.type === ActionType.WSK && action.keyCode) {
+          const keyboardLayoutKey = keyboardLayout.layout[action?.keyCode];
           if (keyboardLayoutKey?.unmodified) {
             keyLabels.push({
               type: KeyLabelType.String,
@@ -68,7 +68,31 @@ export class LayoutViewerPageComponent {
               altGraphKey: false,
             });
           }
+        } else if (action?.type === ActionType.NonWSK && action.keyCode) {
+          const rawKeyLabel = NON_WSK_CODE_2_RAW_KEY_LABEL_MAP[action.keyCode];
+          if (rawKeyLabel) {
+            keyLabels.push({
+              ...rawKeyLabel,
+              layer,
+              shiftKey: false,
+              altGraphKey: false,
+            });
+          }
+        } else if (action?.type === ActionType.NonKey && action.actionName) {
+          const rawKeyLabel =
+            NON_KEY_ACTION_NAME_2_RAW_KEY_LABEL_MAP[action.actionName];
+          if (rawKeyLabel) {
+            keyLabels.push({
+              ...rawKeyLabel,
+              layer,
+              shiftKey: false,
+              altGraphKey: false,
+            });
+          }
+        } else if (NO_ACTION_ACTION_CODES.includes(actionCodeId)) {
+          continue;
         } else {
+          console.log(actionCodeId);
           console.log(action);
         }
       }

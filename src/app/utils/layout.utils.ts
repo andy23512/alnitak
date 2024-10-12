@@ -12,6 +12,7 @@ import {
   HighlightSetting,
   PreferSides,
 } from '../models/highlight-setting.models';
+import { WSKCode } from '../models/key-code.models';
 import {
   CharacterActionCode,
   CharacterKeyCode,
@@ -19,7 +20,6 @@ import {
   KeyBoardLayout,
   KeyboardLayoutKey,
 } from '../models/keyboard-layout.models';
-import { WritingSystemKeyCode } from '../models/writing-system-key-code.models';
 import { nonNullable } from './non-nullable.utils';
 
 export function convertKeyboardLayoutToCharacterKeyCodeMap(
@@ -31,7 +31,7 @@ export function convertKeyboardLayoutToCharacterKeyCodeMap(
   return new Map(
     (
       Object.entries(keyboardLayout.layout) as [
-        WritingSystemKeyCode,
+        WSKCode,
         Partial<KeyboardLayoutKey>,
       ][]
     )
@@ -76,10 +76,7 @@ export function getCharacterActionCodeFromCharacterKeyCode({
   altGraphKey,
 }: CharacterKeyCode) {
   const action = ACTIONS.find(
-    (a) =>
-      a.type === ActionType.WritingSystemKey &&
-      a.writingSystemKeyCode === keyCode &&
-      !a.withShift,
+    (a) => a.type === ActionType.WSK && a.keyCode === keyCode && !a.withShift,
   );
   if (!action) {
     return null;
@@ -142,12 +139,8 @@ export function getChordKeyFromActionCode(
     return null;
   }
   const action = ACTIONS.find((a) => a.codeId === actionCode);
-  if (
-    action?.type === ActionType.WritingSystemKey &&
-    action.writingSystemKeyCode
-  ) {
-    const keyboardLayoutKey =
-      keyboardLayout.layout[action.writingSystemKeyCode];
+  if (action?.type === ActionType.WSK && action.keyCode) {
+    const keyboardLayoutKey = keyboardLayout.layout[action.keyCode];
     const modifier = action.withShift ? 'withShift' : 'unmodified';
     const character = keyboardLayoutKey?.[modifier];
     if (!character) {

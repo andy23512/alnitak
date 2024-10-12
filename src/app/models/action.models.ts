@@ -1,27 +1,34 @@
-import { FunctionalKeyCode } from './functional-key-code.models';
-import { WritingSystemKeyCode } from './writing-system-key-code.models';
+import { NonWSKCode, WSKCode } from './key-code.models';
 
 interface BaseAction {
   codeId: number;
 }
 
 export enum ActionType {
-  WritingSystemKey = 'writing-system-key',
-  FunctionalKey = 'functional-key',
+  WSK = 'wsk',
+  NonWSK = 'non-wsk',
+  NonKey = 'non-key',
 }
 
-export interface WritingSystemKeyAction extends BaseAction {
-  type: ActionType.WritingSystemKey;
-  writingSystemKeyCode: WritingSystemKeyCode;
+export type NonKeyActionName = 'MouseLeftClick' | 'MouseRightClick';
+
+export interface WSKAction extends BaseAction {
+  type: ActionType.WSK;
+  keyCode: WSKCode;
   withShift?: boolean;
 }
 
-export interface FunctionalKeyAction extends BaseAction {
-  type: ActionType.FunctionalKey;
-  functionalKeyCode: FunctionalKeyCode;
+export interface NonWSKAction extends BaseAction {
+  type: ActionType.NonWSK;
+  keyCode: NonWSKCode;
+}
+
+export interface NonKeyAction extends BaseAction {
+  type: ActionType.NonKey;
+  actionName: NonKeyActionName;
 }
 
 /**
  * Action of CharaChorder device. They can be assigned to keys on a CharaChorder device.
  */
-export type Action = WritingSystemKeyAction | FunctionalKeyAction;
+export type Action = WSKAction | NonWSKAction | NonKeyAction;
