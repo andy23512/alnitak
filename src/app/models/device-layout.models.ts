@@ -1,6 +1,5 @@
 import { Tuple } from '../types/tuple.types';
 
-
 /**
  * Shape of CharaChorder One layout data. 90 keys x 3 layers = 180 action codes
  */
@@ -29,8 +28,7 @@ export interface KeyCombination {
 /*
  * A key combination on CharaChorder One with position codes of all used keys and priority score
  */
-export interface HighlightKeyCombination
-  extends KeyCombination {
+export interface HighlightKeyCombination extends KeyCombination {
   positionCodes: number[];
   score: number;
 }
@@ -39,8 +37,18 @@ export interface HighlightKeyCombination
  * Label of a physical key, which records the corresponding character when the key is triggered under certain layer and modifiers
  */
 export interface KeyLabel {
-  c: string;
+  c: LabelText;
   layer: Layer | null;
   shiftKey: boolean | null;
   altGraphKey: boolean | null;
+}
+
+export interface LabelText {
+  type: LabelTextType;
+  value: string;
+}
+
+export enum LabelTextType {
+  String = 'string',
+  Icon = 'icon',
 }

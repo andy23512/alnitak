@@ -1,5 +1,6 @@
 import { ACTION_REPRESENTATION_ICON_MAP } from '../data/action-representation-icon-map';
 import { ACTIONS, NUM_SHIFT_ACTION_CODES } from '../data/actions';
+import { ActionType } from '../models/action.models';
 import { ChordKey } from '../models/chord.models';
 import {
   DeviceLayout,
@@ -75,7 +76,10 @@ export function getCharacterActionCodeFromCharacterKeyCode({
   altGraphKey,
 }: CharacterKeyCode) {
   const action = ACTIONS.find(
-    (a) => a.writingSystemKeyCode === keyCode && !a.withShift,
+    (a) =>
+      a.type === ActionType.WritingSystemKey &&
+      a.writingSystemKeyCode === keyCode &&
+      !a.withShift,
   );
   if (!action) {
     return null;
@@ -138,7 +142,10 @@ export function getChordKeyFromActionCode(
     return null;
   }
   const action = ACTIONS.find((a) => a.codeId === actionCode);
-  if (action?.writingSystemKeyCode) {
+  if (
+    action?.type === ActionType.WritingSystemKey &&
+    action.writingSystemKeyCode
+  ) {
     const keyboardLayoutKey =
       keyboardLayout.layout[action.writingSystemKeyCode];
     const modifier = action.withShift ? 'withShift' : 'unmodified';

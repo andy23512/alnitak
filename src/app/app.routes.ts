@@ -28,4 +28,11 @@ export const APP_ROUTES: Route[] = [
         './pages/layout-schematic-page/layout-schematic-page.component'
       ).then((m) => m.LayoutSchematicPageComponent),
   },
+  {
+    path: 'layout-viewer',
+    loadComponent: () =>
+      import('./pages/layout-viewer-page/layout-viewer-page.component').then(
+        (m) => m.LayoutViewerPageComponent,
+      ),
+  },
 ];

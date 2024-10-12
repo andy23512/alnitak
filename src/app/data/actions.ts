@@ -1,10 +1,18 @@
-import { Action } from '../models/action.models';
+import {
+  Action,
+  ActionType,
+  FunctionalKeyAction,
+  WritingSystemKeyAction,
+} from '../models/action.models';
 
 export const NUM_SHIFT_ACTION_CODES = [550, 551];
 export const FN_SHIFT_ACTION_CODES = [552, 553];
 export const SHIFT_ACTION_CODES = [513, 517];
 export const ALT_GR_ACTION_CODE = 518;
-export const ACTIONS: Action[] = [
+export const WRITING_SYSTEM_KEY_ACTIONS: Omit<
+  WritingSystemKeyAction,
+  'type'
+>[] = [
   { codeId: 39, writingSystemKeyCode: 'Quote' },
   { codeId: 44, writingSystemKeyCode: 'Comma' },
   { codeId: 45, writingSystemKeyCode: 'Minus' },
@@ -78,4 +86,30 @@ export const ACTIONS: Action[] = [
   { codeId: 120, writingSystemKeyCode: 'KeyX' },
   { codeId: 121, writingSystemKeyCode: 'KeyY' },
   { codeId: 122, writingSystemKeyCode: 'KeyZ' },
+];
+export const FUNCTIONAL_KEY_ACTIONS: Omit<FunctionalKeyAction, 'type'>[] = [
+  { codeId: 514, functionalKeyCode: 'AltLeft' },
+  { codeId: 518, functionalKeyCode: 'AltRight' },
+  { codeId: 298, functionalKeyCode: 'Backspace' },
+  { codeId: 313, functionalKeyCode: 'CapsLock' },
+  { codeId: 357, functionalKeyCode: 'ContextMenu' },
+  { codeId: 512, functionalKeyCode: 'ControlLeft' },
+  { codeId: 516, functionalKeyCode: 'ControlRight' },
+  { codeId: 296, functionalKeyCode: 'Enter' },
+  { codeId: 515, functionalKeyCode: 'MetaLeft' },
+  { codeId: 519, functionalKeyCode: 'MetaRight' },
+  { codeId: 515, functionalKeyCode: 'ShiftLeft' },
+  { codeId: 519, functionalKeyCode: 'ShiftRight' },
+  { codeId: 32, functionalKeyCode: 'Space' },
+  { codeId: 299, functionalKeyCode: 'Tab' },
+];
+export const ACTIONS: Action[] = [
+  ...WRITING_SYSTEM_KEY_ACTIONS.map((a) => ({
+    ...a,
+    type: ActionType.WritingSystemKey as const,
+  })),
+  ...FUNCTIONAL_KEY_ACTIONS.map((a) => ({
+    ...a,
+    type: ActionType.FunctionalKey as const,
+  })),
 ];
