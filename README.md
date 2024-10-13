@@ -24,6 +24,8 @@ An unofficial CharaChorder One practice tool
   - can select chords to practice from the chord list
   - only show the labels of keys from the input of the selected chords
   - highlight the keys of current chord
+- Layout Viewer
+  - can view the final layout (actual output under `QWERTY - US` layout) by layers and with/without shift
 
 ## Disclaimer
 
