@@ -6,11 +6,15 @@
     text-anchor="middle"
     [attr.font-size]="
       label.type !== KeyLabelType.Icon
-        ? (label.c.length > 2 ? fontSize() * 0.6 : fontSize()) + 'px'
+        ? (label.c.length > 2
+            ? fontSize() * 0.6
+            : label.c.length > 1
+              ? fontSize() * 0.8
+              : fontSize()) + 'px'
         : null
     "
     [style.font-size.px]="
-      label.type === KeyLabelType.Icon ? fontSize() * 0.75 : null
+      label.type === KeyLabelType.Icon ? fontSize() * 0.8 : null
     "
     [class.material-icons]="label.type === KeyLabelType.Icon"
     fill="currentColor"

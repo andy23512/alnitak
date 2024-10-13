@@ -29,6 +29,7 @@ export const WSK_ACTIONS: Omit<WSKAction, 'type'>[] = [
   { codeId: 57, keyCode: 'Digit9' },
   { codeId: 59, keyCode: 'Semicolon' },
   { codeId: 61, keyCode: 'Equal' },
+  { codeId: 63, keyCode: 'Slash', withShift: true },
   { codeId: 65, keyCode: 'KeyA', withShift: true },
   { codeId: 66, keyCode: 'KeyB', withShift: true },
   { codeId: 67, keyCode: 'KeyC', withShift: true },
@@ -101,6 +102,7 @@ export const NON_WSK_ACTIONS: Omit<NonWSKAction, 'type'>[] = [
   { codeId: 513, keyCode: 'ShiftLeft' },
   { codeId: 517, keyCode: 'ShiftRight' },
   { codeId: 32, keyCode: 'Space' },
+  { codeId: 544, keyCode: 'Space' },
   { codeId: 299, keyCode: 'Tab' },
   { codeId: 297, keyCode: 'Escape' },
   { codeId: 314, keyCode: 'F1' },
@@ -130,6 +132,15 @@ export const NON_KEY_ACTIONS: Omit<NonKeyAction, 'type'>[] = [
   { codeId: 551, actionName: 'SecondaryKeymapRight' },
   { codeId: 540, actionName: 'AmbidextrousThrowoverLeft' },
   { codeId: 542, actionName: 'AmbidextrousThrowoverRight' },
+  { codeId: 569, actionName: 'MouseScrollCoastRight' },
+  { codeId: 570, actionName: 'MouseScrollCoastLeft' },
+  { codeId: 571, actionName: 'MouseScrollCoastDown' },
+  { codeId: 572, actionName: 'MouseScrollCoastUp' },
+  { codeId: 565, actionName: 'MouseMoveRight' },
+  { codeId: 566, actionName: 'MouseMoveLeft' },
+  { codeId: 567, actionName: 'MouseMoveDown' },
+  { codeId: 568, actionName: 'MouseMoveUp' },
+  { codeId: 536, actionName: 'Dup' },
 ];
 export const NO_ACTION_ACTION_CODES = [0, ...range(600, 617 + 1)];
 export const ACTIONS: Action[] = [

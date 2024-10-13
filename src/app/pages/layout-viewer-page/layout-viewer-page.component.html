@@ -1,14 +1,25 @@
-<app-layout
-  *ngIf="keyLabelMap() as keyLabelMap"
-  class="block flex-1 overflow-hidden px-5 pb-5"
-  [showThumb3Switch]="visibilitySettingStore.layoutThumb3Switch()"
-  [keyLabelMap]="keyLabelMap"
-  [highlightKeyCombination]="{
-    positionCodes: [],
-    score: 0,
-    characterKeyPositionCode: 0,
-    layer: Layer.Primary,
-    shiftKey: false,
-    altGraphKey: false
-  }"
-></app-layout>
+<section class="flex flex-none items-center gap-8 bg-gray-700">
+  <mat-button-toggle-group [(ngModel)]="currentLayer">
+    @for (layer of layers; track $index) {
+      <mat-button-toggle [value]="layer.value">
+        <mat-icon>{{ layer.icon }}</mat-icon>
+      </mat-button-toggle>
+    }
+  </mat-button-toggle-group>
+  <mat-checkbox [(ngModel)]="shiftKey" color="primary">Shift</mat-checkbox>
+</section>
+@if (keyLabelMap(); as keyLabelMap) {
+  <app-layout
+    class="block flex-1 overflow-hidden px-5 pb-5"
+    [showThumb3Switch]="visibilitySettingStore.layoutThumb3Switch()"
+    [keyLabelMap]="keyLabelMap"
+    [highlightKeyCombination]="{
+      positionCodes: [],
+      score: 0,
+      characterKeyPositionCode: 0,
+      layer: currentLayer(),
+      shiftKey: shiftKey(),
+      altGraphKey: false
+    }"
+  ></app-layout>
+}

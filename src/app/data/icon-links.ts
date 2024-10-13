@@ -2,13 +2,6 @@ import { IconLink } from '../models/icon-link.models';
 
 export const ICON_LINKS: IconLink[] = [
   {
-    routerLink: '/',
-    routerLinkActiveOptions: { exact: true },
-    ariaLabel: 'home page link',
-    tooltipMessage: 'Go to Home page',
-    icon: 'home',
-  },
-  {
     routerLink: '/statistics',
     routerLinkActiveOptions: { exact: false },
     ariaLabel: 'statistics page link',
@@ -28,5 +21,12 @@ export const ICON_LINKS: IconLink[] = [
     ariaLabel: 'chord page link',
     tooltipMessage: 'Go to Chord page',
     icon: 'piano',
+  },
+  {
+    routerLink: '/layout-viewer',
+    routerLinkActiveOptions: { exact: false },
+    ariaLabel: 'layout viewer page link',
+    tooltipMessage: 'Go to Layout Viewer page',
+    icon: 'map',
   },
 ];

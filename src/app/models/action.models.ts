@@ -18,7 +18,16 @@ export type NonKeyActionName =
   | 'SecondaryKeymapLeft'
   | 'SecondaryKeymapRight'
   | 'AmbidextrousThrowoverLeft'
-  | 'AmbidextrousThrowoverRight';
+  | 'AmbidextrousThrowoverRight'
+  | 'MouseScrollCoastRight'
+  | 'MouseScrollCoastLeft'
+  | 'MouseScrollCoastDown'
+  | 'MouseScrollCoastUp'
+  | 'MouseMoveRight'
+  | 'MouseMoveLeft'
+  | 'MouseMoveDown'
+  | 'MouseMoveUp'
+  | 'Dup';
 
 export interface WSKAction extends BaseAction {
   type: ActionType.WSK;

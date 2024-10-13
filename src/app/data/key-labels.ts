@@ -70,4 +70,13 @@ export const NON_KEY_ACTION_NAME_2_RAW_KEY_LABEL_MAP: Record<
   SecondaryKeymapRight: { type: KeyLabelType.Icon, c: 'counter_2' },
   AmbidextrousThrowoverLeft: { type: KeyLabelType.Icon, c: 'switch_left' },
   AmbidextrousThrowoverRight: { type: KeyLabelType.Icon, c: 'switch_right' },
+  MouseScrollCoastRight: { type: KeyLabelType.Icon, c: 'swipe_right' },
+  MouseScrollCoastLeft: { type: KeyLabelType.Icon, c: 'swipe_left' },
+  MouseScrollCoastDown: { type: KeyLabelType.Icon, c: 'swipe_down' },
+  MouseScrollCoastUp: { type: KeyLabelType.Icon, c: 'swipe_up' },
+  MouseMoveRight: { type: KeyLabelType.Icon, c: 'arrow_circle_right' },
+  MouseMoveLeft: { type: KeyLabelType.Icon, c: 'arrow_circle_left' },
+  MouseMoveDown: { type: KeyLabelType.Icon, c: 'arrow_circle_down' },
+  MouseMoveUp: { type: KeyLabelType.Icon, c: 'arrow_circle_up' },
+  Dup: { type: KeyLabelType.Icon, c: 'copy_all' },
 };
