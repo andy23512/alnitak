@@ -19,8 +19,8 @@ export class VisibleDirective {
   private viewContainer = inject(ViewContainerRef);
   private visibilitySettingStore = inject(VisibilitySettingStore);
 
-  @Input() set appVisible(key: keyof VisibilitySetting) {
-    const visible = this.visibilitySettingStore[key]();
+  @Input() set appVisible(key: keyof VisibilitySetting | null) {
+    const visible = !key || this.visibilitySettingStore[key]();
     if (visible && !this.hasView) {
       this.viewContainer.createEmbeddedView(this.templateRef);
       this.hasView = true;

@@ -26,7 +26,7 @@
   >
     {{ highlightKeyCombinationInKeyNotation() }}
   </text>
-  <ng-container *appVisible="'layout'">
+  <ng-container *appVisible="alwaysShowLayout() ? null : 'layout'">
     @for (side of sides; track side) {
       @for (sw of switches(); track sw) {
         <g
