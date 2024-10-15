@@ -8,6 +8,7 @@ import {
   signal,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
@@ -26,7 +27,7 @@ import {
 } from 'src/app/models/device-layout.models';
 import { DeviceLayoutStore } from 'src/app/stores/device-layout.store';
 import { HighlightSettingStore } from 'src/app/stores/highlight-setting.store';
-import { KeyboardLayoutStore } from 'src/app/stores/keyboard-layout.store';
+import { LayoutViewerKeyboardLayoutStore } from 'src/app/stores/layout-viewer-keyboard-layout.store';
 import { VisibilitySettingStore } from 'src/app/stores/visibility-setting.store';
 
 @Component({
@@ -39,6 +40,7 @@ import { VisibilitySettingStore } from 'src/app/stores/visibility-setting.store'
     MatIconModule,
     MatCheckboxModule,
     FormsModule,
+    MatButtonModule,
   ],
   templateUrl: './layout-viewer-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -49,7 +51,8 @@ export class LayoutViewerPageComponent {
   readonly highlightSettingStore = inject(HighlightSettingStore);
   readonly visibilitySettingStore = inject(VisibilitySettingStore);
 
-  readonly keyboardLayout = inject(KeyboardLayoutStore).selectedEntity;
+  readonly keyboardLayout = inject(LayoutViewerKeyboardLayoutStore)
+    .selectedEntity;
   readonly deviceLayout = inject(DeviceLayoutStore).selectedEntity;
 
   readonly Layer = Layer;
