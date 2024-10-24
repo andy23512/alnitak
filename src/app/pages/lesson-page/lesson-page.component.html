@@ -62,7 +62,7 @@
 </section>
 <app-layout
   class="opacity-1 block flex-1 overflow-hidden px-5 pb-5 transition-[opacity] ease-in-out"
-  [class.opacity-0]="lessonStore.combo() > 20"
+  [class.opacity-0]="lessonStore.combo() > 20 && !airModeSettingStore.enabled()"
   [style.transition-duration]="(lessonStore.combo() >= 20 ? 10000 : 100) + 'ms'"
   [showThumb3Switch]="visibilitySettingStore.layoutThumb3Switch()"
   [keyLabelMap]="keyLabelMap()"

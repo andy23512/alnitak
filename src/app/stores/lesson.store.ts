@@ -54,6 +54,30 @@ export const LessonStore = signalStore(
         error: false,
       }));
     },
+    airType() {
+      patchState(store, (state) => {
+        if (state.topicId === null || state.lessonId === null) {
+          return {};
+        }
+        const currentKeyTime = Date.now();
+        const keyInterval =
+          state.lastCorrectKeyTime !== null
+            ? currentKeyTime - state.lastCorrectKeyTime
+            : null;
+        const keyIntervals = [...state.keyIntervals];
+        if (keyInterval) {
+          keyIntervals.push(keyInterval);
+        }
+        return {
+          queue: [...state.queue.slice(1), pickRandomItem(state.components)],
+          history: [...state.history.slice(1), state.queue[0]],
+          lastCorrectKeyTime: currentKeyTime,
+          keyIntervals: keyIntervals.slice(-10),
+          combo: state.combo + 1,
+          error: false,
+        };
+      });
+    },
     type(component: string) {
       patchState(store, (state) => {
         if (state.topicId === null || state.lessonId === null) {

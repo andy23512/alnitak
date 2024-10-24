@@ -43,6 +43,26 @@ export const ChordPracticeStore = signalStore(
         chordIntervals: [],
       }));
     },
+    airType() {
+      patchState(
+        store,
+        ({ queue, chords, history, lastCorrectChordTime, chordIntervals }) => {
+          if (!chords) {
+            return {};
+          }
+          const currentKeyTime = Date.now();
+          return {
+            queue: [...queue.slice(1), pickRandomItem(chords)],
+            history: [...history, queue[0]].slice(-3),
+            lastCorrectChordTime: currentKeyTime,
+            chordIntervals: lastCorrectChordTime
+              ? [...chordIntervals, currentKeyTime - lastCorrectChordTime]
+              : [...chordIntervals],
+            buffer: [],
+          };
+        },
+      );
+    },
     keyUp(event: KeyboardEvent) {
       patchState(
         store,

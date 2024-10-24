@@ -20,9 +20,11 @@ import { MatIcon } from '@angular/material/icon';
 import { MatTooltip } from '@angular/material/tooltip';
 import { Router, RouterLinkWithHref } from '@angular/router';
 import { HotkeysService, HotkeysShortcutPipe } from '@ngneat/hotkeys';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { LetDirective } from '@ngrx/component';
 import { getState } from '@ngrx/signals';
 import { liveQuery } from 'dexie';
+import { interval } from 'rxjs';
 import { ComboCounterComponent } from 'src/app/components/combo-counter/combo-counter.component';
 import { LayoutComponent } from 'src/app/components/layout/layout.component';
 import { SpeedometerComponent } from 'src/app/components/speedometer/speedometer.component';
@@ -41,6 +43,7 @@ import {
   KeyLabelType,
   Layer,
 } from 'src/app/models/device-layout.models';
+import { AirModeSettingStore } from 'src/app/stores/air-mode-setting.store';
 import { DeviceLayoutStore } from 'src/app/stores/device-layout.store';
 import { HighlightSettingStore } from 'src/app/stores/highlight-setting.store';
 import { KeyboardLayoutStore } from 'src/app/stores/keyboard-layout.store';
@@ -55,6 +58,7 @@ import {
 } from 'src/app/utils/layout.utils';
 import { nonNullable } from 'src/app/utils/non-nullable.utils';
 
+@UntilDestroy()
 @Component({
   selector: 'app-lesson-page',
   standalone: true,
@@ -83,6 +87,7 @@ export class LessonPageComponent implements OnInit, OnDestroy {
 
   readonly highlightSettingStore = inject(HighlightSettingStore);
   readonly visibilitySettingStore = inject(VisibilitySettingStore);
+  readonly airModeSettingStore = inject(AirModeSettingStore);
 
   readonly isFocus = signal(false);
 
@@ -329,6 +334,10 @@ export class LessonPageComponent implements OnInit, OnDestroy {
   }
 
   onKeyUpInInput({ key }: KeyboardEvent) {
+    const airModeEnabled = this.airModeSettingStore.enabled();
+    if (airModeEnabled) {
+      return;
+    }
     if (key.length === 1 || (key.length > 1 && /[^a-zA-Z0-9]/.test(key))) {
       this.lessonStore.type(key);
     }
@@ -336,6 +345,17 @@ export class LessonPageComponent implements OnInit, OnDestroy {
 
   startLesson() {
     this.input.nativeElement.focus();
+    const airModeEnabled = this.airModeSettingStore.enabled();
+    if (airModeEnabled) {
+      const characterEntrySpeed =
+        this.airModeSettingStore.characterEntrySpeed();
+      const characterEntryInterval = (60 * 1000) / characterEntrySpeed;
+      interval(characterEntryInterval)
+        .pipe(untilDestroyed(this))
+        .subscribe(() => {
+          this.lessonStore.airType();
+        });
+    }
   }
 
   endLesson() {

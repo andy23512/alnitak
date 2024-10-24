@@ -1,0 +1,43 @@
+<div class="mt-2">
+  Air mode is a experimental practice mode that you can practice without a
+  device. <br />
+  The characters or chords will be automatically entered at the speed you set,
+  so you can follow along and move your fingers as if you were typing or
+  chording.
+</div>
+<div>
+  <mat-checkbox
+    class="small-icon-button-wrapper [&_.mdc-label]:flex [&_.mdc-label]:items-center"
+    [color]="'primary'"
+    [checked]="enabled()"
+    (change)="setEnabled($event.checked)"
+  >
+    Enable Air Mode
+  </mat-checkbox>
+</div>
+<div class="mt-2 space-x-1">
+  <mat-form-field>
+    <mat-label>Character Entry Speed</mat-label>
+    <input
+      matInput
+      type="number"
+      [ngModel]="characterEntrySpeed()"
+      (ngModelChange)="setCharacterEntrySpeed($event)"
+      aria-label="input box for character entry speed in air mode"
+      [disabled]="!enabled()"
+    />
+    <span matTextSuffix>CPM</span>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Chord Speed</mat-label>
+    <input
+      matInput
+      type="number"
+      [ngModel]="chordSpeed()"
+      (ngModelChange)="setChordSpeed($event)"
+      aria-label="input box for chord speed in air mode"
+      [disabled]="!enabled()"
+    />
+    <span matTextSuffix>ChPM</span>
+  </mat-form-field>
+</div>

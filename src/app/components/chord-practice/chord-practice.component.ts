@@ -13,6 +13,8 @@ import {
 import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { HotkeysService } from '@ngneat/hotkeys';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { interval } from 'rxjs';
 import { VisibleDirective } from 'src/app/directives/visible.directive';
 import {
   HighlightKeyCombination,
@@ -21,6 +23,7 @@ import {
   KeyLabelType,
   Layer,
 } from 'src/app/models/device-layout.models';
+import { AirModeSettingStore } from 'src/app/stores/air-mode-setting.store';
 import { ChordPracticeStore } from 'src/app/stores/chord-practice.store';
 import { DeviceLayoutStore } from 'src/app/stores/device-layout.store';
 import { KeyboardLayoutStore } from 'src/app/stores/keyboard-layout.store';
@@ -33,6 +36,7 @@ import { ChordOutputKeysComponent } from '../chord-output-keys/chord-output-keys
 import { LayoutComponent } from '../layout/layout.component';
 import { SpeedometerComponent } from '../speedometer/speedometer.component';
 
+@UntilDestroy()
 @Component({
   selector: 'app-chord-practice',
   standalone: true,
@@ -66,6 +70,7 @@ export class ChordPracticeComponent implements OnInit {
 
   readonly keyboardLayout = inject(KeyboardLayoutStore).selectedEntity;
   readonly deviceLayout = inject(DeviceLayoutStore).selectedEntity;
+  readonly airModeSettingStore = inject(AirModeSettingStore);
 
   readonly practiceCharactersDevicePositionCodes = computed(() => {
     const chords = this.chordPracticeStore.chords();
@@ -164,6 +169,16 @@ export class ChordPracticeComponent implements OnInit {
 
   startPractice() {
     this.input.nativeElement.focus();
+    const airModeEnabled = this.airModeSettingStore.enabled();
+    if (airModeEnabled) {
+      const chordSpeed = this.airModeSettingStore.chordSpeed();
+      const chordInterval = (60 * 1000) / chordSpeed;
+      interval(chordInterval)
+        .pipe(untilDestroyed(this))
+        .subscribe(() => {
+          this.chordPracticeStore.airType();
+        });
+    }
   }
 
   endPractice() {

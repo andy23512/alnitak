@@ -2629,6 +2629,13 @@
   dependencies:
     tslib "^2.0.0"
 
+"@ngneat/until-destroy@^10.0.0":
+  version "10.0.0"
+  resolved "https://registry.yarnpkg.com/@ngneat/until-destroy/-/until-destroy-10.0.0.tgz#105db43d858bc1cec2f36272a296af68bed7bf43"
+  integrity sha512-xXFAabQ4YVJ82LYxdgUlaKZyR3dSbxqG3woSyaclzxfCgWMEDweCcM/GGYbNiHJa0WwklI98RXHvca+UyCxpeg==
+  dependencies:
+    tslib "^2.3.0"
+
 "@ngrx/component@^17.2.0":
   version "17.2.0"
   resolved "https://registry.yarnpkg.com/@ngrx/component/-/component-17.2.0.tgz#41a9a64f2c80f1595656ba2bb94805170fcf9be7"
