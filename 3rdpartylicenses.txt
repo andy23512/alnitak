@@ -72,6 +72,9 @@ MIT
 @ngneat/hotkeys
 MIT
 
+@ngneat/until-destroy
+MIT
+
 @ngrx/component
 MIT
 The MIT License (MIT)
