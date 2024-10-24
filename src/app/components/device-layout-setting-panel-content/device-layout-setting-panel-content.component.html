@@ -31,6 +31,7 @@ or select a loaded device layout.
   <mat-select
     class="!font-bold !text-alnitak-500"
     [value]="selectedDeviceLayoutId()"
+    (valueChange)="setSelectedDeviceLayoutId($event)"
   >
     @for (deviceLayout of deviceLayouts(); track deviceLayout.id) {
       <mat-option [value]="deviceLayout.id">{{ deviceLayout.name }}</mat-option>

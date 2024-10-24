@@ -76,4 +76,8 @@ export class DeviceLayoutSettingPanelContentComponent {
 
     reader.readAsText(fileInputElement.files[0]);
   }
+
+  setSelectedDeviceLayoutId(deviceLayoutId: string) {
+    this.deviceLayoutStore.setSelectedId(deviceLayoutId);
+  }
 }
