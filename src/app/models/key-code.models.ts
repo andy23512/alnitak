@@ -85,3 +85,5 @@ export type NonWSKCode =
   | 'ArrowLeft'
   | 'ArrowRight'
   | 'ArrowUp';
+
+export type KCode = WSKCode | NonWSKCode;

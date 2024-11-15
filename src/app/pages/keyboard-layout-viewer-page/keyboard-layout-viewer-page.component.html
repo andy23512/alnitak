@@ -1,0 +1,11 @@
+<section class="flex flex-none items-center gap-8 bg-gray-700">
+  <mat-checkbox [(ngModel)]="shiftKey" color="primary">Shift</mat-checkbox>
+  <mat-checkbox [(ngModel)]="altGraphKey" color="primary"
+    >AltGraph</mat-checkbox
+  >
+</section>
+<app-keyboard-layout
+  class="block h-full w-full flex-1 px-2"
+  [withShift]="shiftKey()"
+  [withAltGraph]="altGraphKey()"
+></app-keyboard-layout>
