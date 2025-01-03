@@ -15,7 +15,7 @@ An unofficial CharaChorder One practice tool
 - Device Layout View
   - only show the labels of keys in the current lesson
   - highlight the current key(s) required to type out the character
-  - an load the custom layout via the backup json file from device manager website
+  - can load the custom layout via the backup json file from device manager website
 - Widgets
   - combo counter that counts the number of consecutive correct input
   - speedometer that shows the current typing speed
