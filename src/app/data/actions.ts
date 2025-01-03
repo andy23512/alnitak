@@ -118,6 +118,10 @@ export const NON_WSK_ACTIONS: Omit<NonWSKAction, 'type'>[] = [
   { codeId: 324, keyCode: 'F11' },
   { codeId: 325, keyCode: 'F12' },
   { codeId: 127, keyCode: 'Delete' },
+  { codeId: 330, keyCode: 'Home' },
+  { codeId: 331, keyCode: 'PageUp' },
+  { codeId: 333, keyCode: 'End' },
+  { codeId: 334, keyCode: 'PageDown' },
   { codeId: 337, keyCode: 'ArrowDown' },
   { codeId: 336, keyCode: 'ArrowLeft' },
   { codeId: 335, keyCode: 'ArrowRight' },
@@ -141,6 +145,8 @@ export const NON_KEY_ACTIONS: Omit<NonKeyAction, 'type'>[] = [
   { codeId: 567, actionName: 'MouseMoveDown' },
   { codeId: 568, actionName: 'MouseMoveUp' },
   { codeId: 536, actionName: 'Dup' },
+  { codeId: 532, actionName: 'GTM' },
+  { codeId: 534, actionName: 'Impulse' },
 ];
 export const NO_ACTION_ACTION_CODES = [0, ...range(600, 617 + 1)];
 export const ACTIONS: Action[] = [

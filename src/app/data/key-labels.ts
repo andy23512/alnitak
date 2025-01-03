@@ -56,6 +56,10 @@ export const NON_WSK_CODE_2_RAW_KEY_LABEL_MAP: Record<NonWSKCode, RawKeyLabel> =
     ArrowLeft: { type: KeyLabelType.Icon, c: 'keyboard_arrow_left' },
     ArrowRight: { type: KeyLabelType.Icon, c: 'keyboard_arrow_right' },
     ArrowUp: { type: KeyLabelType.Icon, c: 'keyboard_arrow_up' },
+    PageUp: { type: KeyLabelType.Icon, c: 'move_up' },
+    PageDown: { type: KeyLabelType.Icon, c: 'move_down' },
+    Home: { type: KeyLabelType.Icon, c: 'home' },
+    End: { type: KeyLabelType.String, c: 'END' },
   };
 
 export const NON_KEY_ACTION_NAME_2_RAW_KEY_LABEL_MAP: Record<
@@ -79,4 +83,6 @@ export const NON_KEY_ACTION_NAME_2_RAW_KEY_LABEL_MAP: Record<
   MouseMoveDown: { type: KeyLabelType.Icon, c: 'arrow_circle_down' },
   MouseMoveUp: { type: KeyLabelType.Icon, c: 'arrow_circle_up' },
   Dup: { type: KeyLabelType.Icon, c: 'copy_all' },
+  GTM: { type: KeyLabelType.Icon, c: 'terminal' },
+  Impulse: { type: KeyLabelType.Icon, c: 'heap_snapshot_multiple' },
 };

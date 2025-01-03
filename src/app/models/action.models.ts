@@ -27,7 +27,9 @@ export type NonKeyActionName =
   | 'MouseMoveLeft'
   | 'MouseMoveDown'
   | 'MouseMoveUp'
-  | 'Dup';
+  | 'Dup'
+  | 'GTM'
+  | 'Impulse';
 
 export interface WSKAction extends BaseAction {
   type: ActionType.WSK;

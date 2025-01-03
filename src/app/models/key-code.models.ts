@@ -84,6 +84,10 @@ export type NonWSKCode =
   | 'ArrowDown'
   | 'ArrowLeft'
   | 'ArrowRight'
-  | 'ArrowUp';
+  | 'ArrowUp'
+  | 'PageUp'
+  | 'PageDown'
+  | 'Home'
+  | 'End';
 
 export type KCode = WSKCode | NonWSKCode;
