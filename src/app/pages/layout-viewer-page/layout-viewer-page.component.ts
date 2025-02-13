@@ -8,9 +8,13 @@ import {
   signal,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSelectModule } from '@angular/material/select';
+import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { range } from 'ramda';
 import { LayoutComponent } from 'src/app/components/layout/layout.component';
 import { ACTIONS, NO_ACTION_ACTION_CODES } from 'src/app/data/actions';
@@ -26,7 +30,7 @@ import {
 } from 'src/app/models/device-layout.models';
 import { DeviceLayoutStore } from 'src/app/stores/device-layout.store';
 import { HighlightSettingStore } from 'src/app/stores/highlight-setting.store';
-import { KeyboardLayoutStore } from 'src/app/stores/keyboard-layout.store';
+import { LayoutViewerKeyboardLayoutStore } from 'src/app/stores/layout-viewer-keyboard-layout.store';
 import { VisibilitySettingStore } from 'src/app/stores/visibility-setting.store';
 
 @Component({
@@ -39,6 +43,10 @@ import { VisibilitySettingStore } from 'src/app/stores/visibility-setting.store'
     MatIconModule,
     MatCheckboxModule,
     FormsModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    NgxMatSelectSearchModule,
+    MatButtonModule,
   ],
   templateUrl: './layout-viewer-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -48,9 +56,26 @@ export class LayoutViewerPageComponent {
 
   readonly highlightSettingStore = inject(HighlightSettingStore);
   readonly visibilitySettingStore = inject(VisibilitySettingStore);
+  readonly keyboardLayoutStore = inject(LayoutViewerKeyboardLayoutStore);
 
-  readonly keyboardLayout = inject(KeyboardLayoutStore).selectedEntity;
+  readonly keyboardLayout = this.keyboardLayoutStore.selectedEntity;
+  readonly selectedKeyboardLayoutId = this.keyboardLayoutStore.selectedId;
+  readonly keyboardLayouts = this.keyboardLayoutStore.entities;
   readonly deviceLayout = inject(DeviceLayoutStore).selectedEntity;
+
+  readonly keyboardLayoutSearchQuery = signal('');
+
+  readonly filteredKeyboardLayouts = computed(() => {
+    const keyboardLayouts = this.keyboardLayouts();
+    const keyboardLayoutSearchQuery =
+      this.keyboardLayoutSearchQuery().toLowerCase();
+    if (!keyboardLayoutSearchQuery) {
+      return keyboardLayouts;
+    }
+    return keyboardLayouts.filter((k) =>
+      k.name.toLowerCase().includes(keyboardLayoutSearchQuery),
+    );
+  });
 
   readonly Layer = Layer;
   readonly layers = [
@@ -149,4 +174,13 @@ export class LayoutViewerPageComponent {
     }
     return keyLabelMap;
   });
+
+  public setSelectedKeyboardLayoutId(keyboardLayoutId: string) {
+    this.keyboardLayoutStore.setSelectedId(keyboardLayoutId);
+  }
+
+  public onResetButtonClick(event: MouseEvent) {
+    event.stopPropagation();
+    this.setSelectedKeyboardLayoutId('us');
+  }
 }

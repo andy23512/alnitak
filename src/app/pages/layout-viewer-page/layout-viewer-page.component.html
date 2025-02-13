@@ -7,6 +7,40 @@
     }
   </mat-button-toggle-group>
   <mat-checkbox [(ngModel)]="shiftKey" color="primary">Shift</mat-checkbox>
+  <div class="flex-1"></div>
+  <mat-form-field class="w-96" [subscriptSizing]="'dynamic'">
+    <mat-label>OS Keyboard Layout</mat-label>
+    <mat-select
+      class="!font-bold !text-alnitak-200"
+      [value]="selectedKeyboardLayoutId()"
+      (valueChange)="setSelectedKeyboardLayoutId($event)"
+    >
+      <mat-option>
+        <ngx-mat-select-search
+          [ngModel]="keyboardLayoutSearchQuery()"
+          (ngModelChange)="keyboardLayoutSearchQuery.set($event)"
+          placeholderLabel="Find layout..."
+          noEntriesFoundLabel="No matching layout found."
+        ></ngx-mat-select-search>
+      </mat-option>
+      @for (
+        keyboardLayout of filteredKeyboardLayouts();
+        track keyboardLayout.id
+      ) {
+        <mat-option [value]="keyboardLayout.id">{{
+          keyboardLayout.name
+        }}</mat-option>
+      }
+    </mat-select>
+    <button
+      mat-icon-button
+      matSuffix
+      (click)="onResetButtonClick($event)"
+      [disabled]="selectedKeyboardLayoutId() === 'us'"
+    >
+      <mat-icon>replay</mat-icon>
+    </button>
+  </mat-form-field>
 </section>
 @if (keyLabelMap(); as keyLabelMap) {
   <app-layout
