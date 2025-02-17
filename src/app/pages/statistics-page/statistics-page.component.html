@@ -1,9 +1,16 @@
+<section class="flex-none items-center bg-gray-700 px-3">
+  <span class="text-lg">Show metric:</span>
+  <mat-button-toggle-group class="ml-1" [(ngModel)]="currentMetric">
+    <mat-button-toggle [value]="'CPM'">CPM</mat-button-toggle>
+    <mat-button-toggle [value]="'Combo'">Combo</mat-button-toggle>
+  </mat-button-toggle-group>
+</section>
 @if (chartOptions(); as chartOptions) {
   <highcharts-chart
     [Highcharts]="Highcharts"
     [constructorType]="chartConstructor"
     [options]="chartOptions"
     [update]="updateFlag"
-    class="block h-full w-full"
+    class="block flex-1"
   ></highcharts-chart>
 }
