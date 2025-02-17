@@ -20,7 +20,7 @@ import { SwitchSectorComponent } from '../switch-sector/switch-sector.component'
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SwitchComponent {
-  readonly fontSize = input<number>(80);
+  readonly fontSize = input<number>(90);
   readonly center = input.required<{ x: number; y: number }>();
   readonly rotationDirection = input.required<'cw' | 'ccw'>();
   readonly rotation = input<number>(0);
