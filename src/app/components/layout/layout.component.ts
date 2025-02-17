@@ -4,7 +4,6 @@ import {
   computed,
   input,
 } from '@angular/core';
-import { LetDirective } from '@ngrx/component';
 import { POSITION_CODE_LAYOUT } from 'src/app/data/layouts';
 import { VisibleDirective } from 'src/app/directives/visible.directive';
 import {
@@ -24,7 +23,7 @@ const gridColumns = 10;
 @Component({
   selector: 'app-layout',
   standalone: true,
-  imports: [SwitchComponent, LetDirective, VisibleDirective],
+  imports: [SwitchComponent, VisibleDirective],
   templateUrl: './layout.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
