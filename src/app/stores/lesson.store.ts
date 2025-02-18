@@ -54,6 +54,12 @@ export const LessonStore = signalStore(
         error: false,
       }));
     },
+    pauseLesson() {
+      patchState(store, (state) => ({
+        ...state,
+        lastCorrectKeyTime: null,
+      }));
+    },
     airType() {
       patchState(store, (state) => {
         if (state.topicId === null || state.lessonId === null) {

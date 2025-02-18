@@ -320,7 +320,7 @@ export class LessonPageComponent implements OnInit, OnDestroy {
     this.hotkeys
       .addShortcut({ keys: this.shortcuts.pauseLesson, allowIn: ['INPUT'] })
       .subscribe(() => {
-        this.endLesson();
+        this.input.nativeElement.blur();
       });
   }
 
@@ -358,8 +358,8 @@ export class LessonPageComponent implements OnInit, OnDestroy {
     }
   }
 
-  endLesson() {
-    this.input.nativeElement.blur();
+  pauseLesson() {
+    this.lessonStore.pauseLesson();
   }
 
   keyRecords$ = liveQuery(() => db.keyRecords.toArray());
