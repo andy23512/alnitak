@@ -51,5 +51,5 @@ export const HOTKEY_GROUPS = [
 })
 export class HotkeyDialogComponent {
   hotkeyGroups = HOTKEY_GROUPS;
-  keyAlias = { escape: 'Esc' };
+  keyAlias = { escape: 'esc', space: 'space' };
 }
