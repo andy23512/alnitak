@@ -29,11 +29,11 @@
 </section>
 <section class="flex flex-none items-center">
   <div class="relative flex h-12 flex-1 items-center justify-center">
-    <span class="whitespace-pre font-mono text-xl text-gray-300">{{
+    <span class="whitespace-pre font-mono text-2xl text-gray-300">{{
       lessonStore.history().join("")
     }}</span>
     <span
-      class="relative font-mono text-xl before:absolute before:-top-[0.5ch] before:block before:h-0 before:w-0 before:border-x-[0.5ch] before:border-t-[0.5ch] before:border-solid before:border-x-transparent before:border-t-white after:absolute after:block after:h-0 after:w-0 after:border-x-[0.5ch] after:border-b-[0.5ch] after:border-solid after:border-x-transparent after:border-b-white"
+      class="relative font-mono text-2xl before:absolute before:-top-[0.5ch] before:block before:h-0 before:w-0 before:border-x-[0.5ch] before:border-t-[0.5ch] before:border-solid before:border-x-transparent before:border-t-white after:absolute after:block after:h-0 after:w-0 after:border-x-[0.5ch] after:border-b-[0.5ch] after:border-solid after:border-x-transparent after:border-b-white"
       [ngClass]="
         lessonStore.error()
           ? 'first-letter:text-red-500 before:!border-t-red-500 after:!border-b-red-500'
