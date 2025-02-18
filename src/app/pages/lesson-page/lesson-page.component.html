@@ -49,7 +49,7 @@
       inputmode="none"
       (keyup)="onKeyUpInInput($event)"
       (focus)="isFocus.set(true)"
-      (blur)="isFocus.set(false); endLesson()"
+      (blur)="isFocus.set(false); pauseLesson()"
     />
     <div
       class="absolute inset-0 flex cursor-pointer items-center justify-center gap-2 bg-gray-500 text-white peer-focus:pointer-events-none peer-focus:opacity-0"
