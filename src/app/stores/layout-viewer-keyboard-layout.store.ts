@@ -7,26 +7,36 @@ import {
   patchState,
   signalStore,
   withComputed,
-  withHooks,
   withMethods,
+  withState,
 } from '@ngrx/signals';
-import { setAllEntities, withEntities } from '@ngrx/signals/entities';
 import { KEYBOARD_LAYOUTS_FROM_KBDLAYOUT } from '../data/keyboard-layouts-from-kbdlayout';
 import { KeyBoardLayout } from '../models/keyboard-layout.models';
 import { convertKeyboardLayoutToCharacterKeyCodeMap } from '../utils/layout.utils';
-import { withSelectedEntity } from './selected-entity.feature';
 
 export const LayoutViewerKeyboardLayoutStore = signalStore(
   { providedIn: 'root' },
   withDevtools('layoutViewerKeyboardLayout'),
   withStorageSync('layoutViewerKeyboardLayout'),
-  withEntities<KeyBoardLayout>(),
-  withSelectedEntity(),
+  withState({
+    selectedId: 'us',
+  }),
   withMethods((store) => ({
-    load() {
-      patchState(store, setAllEntities(KEYBOARD_LAYOUTS_FROM_KBDLAYOUT));
-      store.setSelectedId('us');
+    setSelectedId(selectedId: string) {
+      patchState(store, (state) => ({
+        ...state,
+        selectedId,
+      }));
     },
+  })),
+  withComputed((state) => ({
+    entities: computed(() => KEYBOARD_LAYOUTS_FROM_KBDLAYOUT),
+    selectedEntity: computed(() => {
+      const selectedId = state.selectedId();
+      return KEYBOARD_LAYOUTS_FROM_KBDLAYOUT.find(
+        (layout) => layout.id === selectedId,
+      ) as KeyBoardLayout;
+    }),
   })),
   withComputed((state) => ({
     characterKeyCodeMap: computed(() => {
@@ -34,11 +44,4 @@ export const LayoutViewerKeyboardLayoutStore = signalStore(
       return convertKeyboardLayoutToCharacterKeyCodeMap(keyboardLayout);
     }),
   })),
-  withHooks({
-    onInit: (store) => {
-      if (store.selectedId() === null) {
-        return store.load();
-      }
-    },
-  }),
 );
