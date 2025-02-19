@@ -10,6 +10,7 @@ import {
   withMethods,
   withState,
 } from '@ngrx/signals';
+import { CHINESE_KEYBOARD_LAYOUTS } from '../data/chinese-keyboard-layouts';
 import { KEYBOARD_LAYOUTS_FROM_KBDLAYOUT } from '../data/keyboard-layouts-from-kbdlayout';
 import { KeyBoardLayout } from '../models/keyboard-layout.models';
 import { convertKeyboardLayoutToCharacterKeyCodeMap } from '../utils/layout.utils';
@@ -29,13 +30,18 @@ export const LayoutViewerKeyboardLayoutStore = signalStore(
       }));
     },
   })),
+  withComputed(() => ({
+    entities: computed(() => [
+      ...KEYBOARD_LAYOUTS_FROM_KBDLAYOUT,
+      ...CHINESE_KEYBOARD_LAYOUTS,
+    ]),
+  })),
   withComputed((state) => ({
-    entities: computed(() => KEYBOARD_LAYOUTS_FROM_KBDLAYOUT),
     selectedEntity: computed(() => {
       const selectedId = state.selectedId();
-      return KEYBOARD_LAYOUTS_FROM_KBDLAYOUT.find(
-        (layout) => layout.id === selectedId,
-      ) as KeyBoardLayout;
+      return state
+        .entities()
+        .find((layout) => layout.id === selectedId) as KeyBoardLayout;
     }),
   })),
   withComputed((state) => ({
