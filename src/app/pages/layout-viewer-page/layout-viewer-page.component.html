@@ -43,18 +43,44 @@
   </mat-form-field>
 </section>
 @if (keyLabelMap(); as keyLabelMap) {
-  <app-layout
-    class="block flex-1 overflow-hidden px-5 pb-5"
-    [alwaysShowLayout]="true"
-    [showThumb3Switch]="visibilitySettingStore.layoutThumb3Switch()"
-    [keyLabelMap]="keyLabelMap"
-    [highlightKeyCombination]="{
-      positionCodes: [],
-      score: 0,
-      characterKeyPositionCode: 0,
-      layer: currentLayer(),
-      shiftKey: shiftKey(),
-      altGraphKey: false
-    }"
-  ></app-layout>
+  <section class="relative flex-1 px-5 pb-5">
+    <app-layout
+      class="block h-full overflow-hidden"
+      [alwaysShowLayout]="true"
+      [showThumb3Switch]="visibilitySettingStore.layoutThumb3Switch()"
+      [keyLabelMap]="keyLabelMap"
+      [highlightKeyCombination]="{
+        positionCodes: [],
+        score: 0,
+        characterKeyPositionCode: 0,
+        layer: currentLayer(),
+        shiftKey: shiftKey(),
+        altGraphKey: false
+      }"
+    ></app-layout>
+    <diV
+      class="absolute top-0 flex w-full items-center justify-center text-gray-100"
+    >
+      @if (holdKeys().length) {
+        (Hold
+        @for (key of holdKeys(); track $index) {
+          @if ($index > 0) {
+            and
+          }
+          @switch (key) {
+            @case ("num-shift") {
+              <mat-icon class="mx-1">counter_2</mat-icon>
+            }
+            @case ("fn") {
+              <mat-icon class="mx-1">counter_3</mat-icon>
+            }
+            @case ("shift") {
+              <mat-icon>shift</mat-icon>
+            }
+          }
+        }
+        to access this layer)
+      }
+    </diV>
+  </section>
 }

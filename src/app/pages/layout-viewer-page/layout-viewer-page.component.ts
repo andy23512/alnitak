@@ -86,6 +86,21 @@ export class LayoutViewerPageComponent {
   currentLayer = signal(Layer.Primary);
   shiftKey = signal(false);
 
+  readonly holdKeys = computed(() => {
+    const holdKeys: ('num-shift' | 'fn' | 'shift')[] = [];
+    switch (this.currentLayer()) {
+      case Layer.Secondary:
+        holdKeys.push('num-shift');
+        break;
+      case Layer.Tertiary:
+        holdKeys.push('fn');
+    }
+    if (this.shiftKey()) {
+      holdKeys.push('shift');
+    }
+    return holdKeys;
+  });
+
   readonly keyLabelMap = computed(() => {
     const keyLabelMap: Record<number, KeyLabel[]> = {};
     const deviceLayout = this.deviceLayout();
