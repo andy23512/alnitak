@@ -50,7 +50,7 @@
       [showThumb3Switch]="visibilitySettingStore.layoutThumb3Switch()"
       [keyLabelMap]="keyLabelMap"
       [highlightKeyCombination]="{
-        positionCodes: [],
+        positionCodes: highlightPositionCodes(),
         score: 0,
         characterKeyPositionCode: 0,
         layer: currentLayer(),
@@ -69,13 +69,13 @@
           }
           @switch (key) {
             @case ("num-shift") {
-              <mat-icon class="mx-1">counter_2</mat-icon>
+              <mat-icon class="mx-1 text-alnitak-500">counter_2</mat-icon>
             }
             @case ("fn") {
-              <mat-icon class="mx-1">counter_3</mat-icon>
+              <mat-icon class="mx-1 text-alnitak-500">counter_3</mat-icon>
             }
             @case ("shift") {
-              <mat-icon>shift</mat-icon>
+              <mat-icon class="text-alnitak-500">shift</mat-icon>
             }
           }
         }

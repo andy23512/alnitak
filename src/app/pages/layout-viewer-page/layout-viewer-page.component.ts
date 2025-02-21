@@ -32,6 +32,7 @@ import { DeviceLayoutStore } from 'src/app/stores/device-layout.store';
 import { HighlightSettingStore } from 'src/app/stores/highlight-setting.store';
 import { LayoutViewerKeyboardLayoutStore } from 'src/app/stores/layout-viewer-keyboard-layout.store';
 import { VisibilitySettingStore } from 'src/app/stores/visibility-setting.store';
+import { getModifierKeyPositionCodeMap } from 'src/app/utils/layout.utils';
 
 @Component({
   selector: 'app-layout-viewer-page',
@@ -99,6 +100,36 @@ export class LayoutViewerPageComponent {
       holdKeys.push('shift');
     }
     return holdKeys;
+  });
+
+  readonly highlightPositionCodes = computed(() => {
+    const deviceLayout = this.deviceLayout();
+    let highlightPositionCodes: number[] = [];
+    if (deviceLayout) {
+      const modifierKeyPositionCodeMap =
+        getModifierKeyPositionCodeMap(deviceLayout);
+      switch (this.currentLayer()) {
+        case Layer.Secondary:
+          highlightPositionCodes = [
+            ...highlightPositionCodes,
+            ...modifierKeyPositionCodeMap.numShift,
+          ];
+          break;
+        case Layer.Tertiary:
+          highlightPositionCodes = [
+            ...highlightPositionCodes,
+            ...modifierKeyPositionCodeMap.fnShift,
+          ];
+          break;
+      }
+      if (this.shiftKey()) {
+        highlightPositionCodes = [
+          ...highlightPositionCodes,
+          ...modifierKeyPositionCodeMap.shift,
+        ];
+      }
+    }
+    return highlightPositionCodes;
   });
 
   readonly keyLabelMap = computed(() => {

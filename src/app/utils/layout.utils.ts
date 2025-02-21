@@ -1,5 +1,11 @@
 import { ACTION_REPRESENTATION_ICON_MAP } from '../data/action-representation-icon-map';
-import { ACTIONS, NUM_SHIFT_ACTION_CODES } from '../data/actions';
+import {
+  ACTIONS,
+  ALT_GR_ACTION_CODE,
+  FN_SHIFT_ACTION_CODES,
+  NUM_SHIFT_ACTION_CODES,
+  SHIFT_ACTION_CODES,
+} from '../data/actions';
 import { ActionType } from '../models/action.models';
 import { ChordKey } from '../models/chord.models';
 import {
@@ -95,6 +101,37 @@ export function getNumShiftKeyPositionCodes(
   return primaryLayer
     .map((ac, index) => (NUM_SHIFT_ACTION_CODES.includes(ac) ? index : -1))
     .filter((pos) => pos !== -1 && primaryLayer[pos] === secondaryLayer[pos]);
+}
+
+export function getModifierKeyPositionCodeMap(deviceLayout: DeviceLayout) {
+  return {
+    shift: SHIFT_ACTION_CODES.map((actionCode) =>
+      getKeyCombinationsFromActionCode(
+        { actionCode, shiftKey: false, altGraphKey: false },
+        deviceLayout,
+      )?.map((k) => k.characterKeyPositionCode),
+    )
+      .filter(nonNullable)
+      .flat(),
+    numShift: getNumShiftKeyPositionCodes(deviceLayout),
+    fnShift: FN_SHIFT_ACTION_CODES.map((actionCode) =>
+      getKeyCombinationsFromActionCode(
+        { actionCode, shiftKey: false, altGraphKey: false },
+        deviceLayout,
+      )?.map((k) => k.characterKeyPositionCode),
+    )
+      .filter(nonNullable)
+      .flat(),
+    altGraph: [ALT_GR_ACTION_CODE]
+      .map((actionCode) =>
+        getKeyCombinationsFromActionCode(
+          { actionCode, shiftKey: false, altGraphKey: false },
+          deviceLayout,
+        )?.map((k) => k.characterKeyPositionCode),
+      )
+      .filter(nonNullable)
+      .flat(),
+  };
 }
 
 export function getKeyCombinationsFromActionCode(

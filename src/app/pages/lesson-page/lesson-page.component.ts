@@ -28,11 +28,6 @@ import { interval } from 'rxjs';
 import { ComboCounterComponent } from 'src/app/components/combo-counter/combo-counter.component';
 import { LayoutComponent } from 'src/app/components/layout/layout.component';
 import { SpeedometerComponent } from 'src/app/components/speedometer/speedometer.component';
-import {
-  ALT_GR_ACTION_CODE,
-  FN_SHIFT_ACTION_CODES,
-  SHIFT_ACTION_CODES,
-} from 'src/app/data/actions';
 import { NUM_SHIFT_KEY_LABEL, SHIFT_KEY_LABEL } from 'src/app/data/key-labels';
 import { LESSONS } from 'src/app/data/topics';
 import { db } from 'src/app/db';
@@ -54,7 +49,7 @@ import {
   getCharacterKeyCodeFromCharacter,
   getHighlightKeyCombinationFromKeyCombinations,
   getKeyCombinationsFromActionCode,
-  getNumShiftKeyPositionCodes,
+  getModifierKeyPositionCodeMap,
 } from 'src/app/utils/layout.utils';
 import { nonNullable } from 'src/app/utils/non-nullable.utils';
 
@@ -160,34 +155,7 @@ export class LessonPageComponent implements OnInit, OnDestroy {
     if (!deviceLayout) {
       return null;
     }
-    return {
-      shift: SHIFT_ACTION_CODES.map((actionCode) =>
-        getKeyCombinationsFromActionCode(
-          { actionCode, shiftKey: false, altGraphKey: false },
-          deviceLayout,
-        )?.map((k) => k.characterKeyPositionCode),
-      )
-        .filter(nonNullable)
-        .flat(),
-      numShift: getNumShiftKeyPositionCodes(deviceLayout),
-      fnShift: FN_SHIFT_ACTION_CODES.map((actionCode) =>
-        getKeyCombinationsFromActionCode(
-          { actionCode, shiftKey: false, altGraphKey: false },
-          deviceLayout,
-        )?.map((k) => k.characterKeyPositionCode),
-      )
-        .filter(nonNullable)
-        .flat(),
-      altGraph: [ALT_GR_ACTION_CODE]
-        .map((actionCode) =>
-          getKeyCombinationsFromActionCode(
-            { actionCode, shiftKey: false, altGraphKey: false },
-            deviceLayout,
-          )?.map((k) => k.characterKeyPositionCode),
-        )
-        .filter(nonNullable)
-        .flat(),
-    };
+    return getModifierKeyPositionCodeMap(deviceLayout);
   });
   readonly keyLabelMap = computed(() => {
     const lessonCharactersDevicePositionCodes =
