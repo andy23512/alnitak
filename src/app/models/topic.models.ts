@@ -1,3 +1,5 @@
+import { Icon } from '../types/icon.types';
+
 export type TopicType = 'character' | 'word' | 'chord';
 
 export interface RawLesson {
@@ -9,7 +11,7 @@ export interface RawLesson {
 
 export interface Topic {
   id: string;
-  iconName?: string;
+  iconName?: Icon;
   name: string;
   type: TopicType;
   lessons: RawLesson[];

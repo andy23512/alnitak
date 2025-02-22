@@ -20,7 +20,7 @@
       mat-flat-button
       (click)="fileInput.click()"
     >
-      <mat-icon>upload</mat-icon>
+      <mat-icon>{{ "upload" | iconGuard }}</mat-icon>
       Choose File
     </button>
     <input
@@ -65,7 +65,7 @@
       [disabled]="selectedChordIds().size === 0"
       (click)="startPractice.emit()"
     >
-      <mat-icon>play_arrow</mat-icon>
+      <mat-icon>{{ "play_arrow" | iconGuard }}</mat-icon>
       Start
     </button>
   </li>

@@ -27,7 +27,7 @@
               mat-icon-button
               [color]="rla.isActive ? 'primary' : null"
             >
-              <mat-icon>{{ iconLink.icon }}</mat-icon>
+              <mat-icon>{{ iconLink.icon | iconGuard }}</mat-icon>
             </button>
           </a>
         }
@@ -38,7 +38,7 @@
           (click)="openHotkeyDialog()"
           matTooltip="Open hotkey dialog"
         >
-          <mat-icon>keyboard</mat-icon>
+          <mat-icon>{{ "keyboard" | iconGuard }}</mat-icon>
         </button>
       </mat-toolbar>
       <mat-form-field
@@ -54,7 +54,7 @@
         />
         @if (!searchQuery()) {
           <button mat-icon-button matSuffix aria-label="clear search query">
-            <mat-icon>search</mat-icon>
+            <mat-icon>{{ "search" | iconGuard }}</mat-icon>
           </button>
         }
       </mat-form-field>
@@ -75,7 +75,7 @@
       } @else {
         @for (topic of topics; track topic.id) {
           <h4 class="flex items-center gap-1 font-bold" matSubheader>
-            <mat-icon>{{ topic.iconName || "topic" }}</mat-icon
+            <mat-icon>{{ topic.iconName || "topic" | iconGuard }}</mat-icon
             >{{ topic.name }}
           </h4>
           @for (lesson of topic.lessons; track lesson.id) {
@@ -100,7 +100,9 @@
         mat-icon-button
         (click)="drawer.toggle()"
       >
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        <mat-icon aria-label="Side nav toggle icon">{{
+          "menu" | iconGuard
+        }}</mat-icon>
       </button>
     }
     <router-outlet></router-outlet>

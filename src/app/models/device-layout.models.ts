@@ -1,3 +1,4 @@
+import { Icon } from '../types/icon.types';
 import { Tuple } from '../types/tuple.types';
 
 /**
@@ -33,19 +34,21 @@ export interface HighlightKeyCombination extends KeyCombination {
   score: number;
 }
 
-export interface RawKeyLabel {
-  type: KeyLabelType;
-  c: string;
-}
+export type RawKeyLabel =
+  | {
+      type: KeyLabelType.String;
+      c: string;
+    }
+  | { type: KeyLabelType.Icon; c: Icon };
 
 /*
  * Label of a physical key, which records the corresponding character when the key is triggered under certain layer and modifiers
  */
-export interface KeyLabel extends RawKeyLabel {
+export type KeyLabel = RawKeyLabel & {
   layer: Layer | null;
   shiftKey: boolean | null;
   altGraphKey: boolean | null;
-}
+};
 
 export enum KeyLabelType {
   String = 'string',

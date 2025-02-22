@@ -6,22 +6,17 @@ import {
 } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
-import { Router, RouterLink } from '@angular/router';
-import { HotkeysService, HotkeysShortcutPipe } from '@ngneat/hotkeys';
+import { Router } from '@angular/router';
+import { HotkeysService } from '@ngneat/hotkeys';
 import { SwitchComponent } from 'src/app/components/switch/switch.component';
 import { Layer } from 'src/app/models/device-layout.models';
+import { IconGuardPipe } from 'src/app/pipes/icon-guard.pipe';
 import { pickRandomItem } from 'src/app/utils/random.utils';
 
 @Component({
   selector: 'app-home-page',
   standalone: true,
-  imports: [
-    MatButton,
-    MatIcon,
-    RouterLink,
-    SwitchComponent,
-    HotkeysShortcutPipe,
-  ],
+  imports: [MatButton, MatIcon, SwitchComponent, IconGuardPipe],
   templateUrl: './home-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

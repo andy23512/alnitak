@@ -19,6 +19,7 @@ import { patchState } from '@ngrx/signals';
 import { setEntities } from '@ngrx/signals/entities';
 import { sort } from 'ramda';
 import { ChordWithChordKeys } from 'src/app/models/chord.models';
+import { IconGuardPipe } from 'src/app/pipes/icon-guard.pipe';
 import { ChordStore } from 'src/app/stores/chord.store';
 import { ChordInputKeysComponent } from '../chord-input-keys/chord-input-keys.component';
 import { ChordOutputKeysComponent } from '../chord-output-keys/chord-output-keys.component';
@@ -35,6 +36,7 @@ const sortWithNumber = sort((a: number, b: number) => a - b);
     MatListOption,
     ChordInputKeysComponent,
     ChordOutputKeysComponent,
+    IconGuardPipe,
   ],
   templateUrl: './chord-practice-setting.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -12,12 +12,20 @@ import { MatIcon } from '@angular/material/icon';
 import { MatOption, MatSelect } from '@angular/material/select';
 import { patchState } from '@ngrx/signals';
 import { addEntity } from '@ngrx/signals/entities';
+import { IconGuardPipe } from 'src/app/pipes/icon-guard.pipe';
 import { DeviceLayoutStore } from 'src/app/stores/device-layout.store';
 
 @Component({
   selector: 'app-device-layout-setting-panel-content',
   standalone: true,
-  imports: [MatSelect, MatOption, MatFormField, MatButton, MatIcon],
+  imports: [
+    MatSelect,
+    MatOption,
+    MatFormField,
+    MatButton,
+    MatIcon,
+    IconGuardPipe,
+  ],
   templateUrl: './device-layout-setting-panel-content.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

@@ -15,7 +15,7 @@
   mat-flat-button
   (click)="fileInput.click()"
 >
-  <mat-icon>upload</mat-icon>
+  <mat-icon>{{ "upload" | iconGuard }}</mat-icon>
   Choose File
 </button>
 <input

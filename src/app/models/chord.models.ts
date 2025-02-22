@@ -1,7 +1,11 @@
-export type ChordKey = {
-  type: 'character' | 'icon';
-  value: string;
-};
+import { Icon } from '../types/icon.types';
+
+export type ChordKey =
+  | {
+      type: 'character';
+      value: string;
+    }
+  | { type: 'icon'; value: Icon };
 
 export interface Chord {
   id: string;

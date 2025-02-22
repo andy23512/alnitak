@@ -30,6 +30,7 @@ import { uniqBy } from 'ramda';
 import { Observable } from 'rxjs';
 import { filter, map, shareReplay, take } from 'rxjs/operators';
 import { ICON_LINKS } from 'src/app/data/icon-links';
+import { IconGuardPipe } from 'src/app/pipes/icon-guard.pipe';
 import { LESSON_DATA_FOR_SEARCH, TOPICS } from '../../data/topics';
 import { HotkeyDialogComponent } from '../hotkey-dialog/hotkey-dialog.component';
 
@@ -57,6 +58,7 @@ import { HotkeyDialogComponent } from '../hotkey-dialog/hotkey-dialog.component'
     RouterLinkActive,
     RouterLinkWithHref,
     RouterOutlet,
+    IconGuardPipe,
   ],
 })
 export class NavComponent {

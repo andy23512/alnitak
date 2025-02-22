@@ -28,10 +28,12 @@ import {
   KeyLabelType,
   Layer,
 } from 'src/app/models/device-layout.models';
+import { IconGuardPipe } from 'src/app/pipes/icon-guard.pipe';
 import { DeviceLayoutStore } from 'src/app/stores/device-layout.store';
 import { HighlightSettingStore } from 'src/app/stores/highlight-setting.store';
 import { LayoutViewerKeyboardLayoutStore } from 'src/app/stores/layout-viewer-keyboard-layout.store';
 import { VisibilitySettingStore } from 'src/app/stores/visibility-setting.store';
+import { Icon } from 'src/app/types/icon.types';
 import { getModifierKeyPositionCodeMap } from 'src/app/utils/layout.utils';
 
 @Component({
@@ -48,6 +50,7 @@ import { getModifierKeyPositionCodeMap } from 'src/app/utils/layout.utils';
     MatSelectModule,
     NgxMatSelectSearchModule,
     MatButtonModule,
+    IconGuardPipe,
   ],
   templateUrl: './layout-viewer-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -79,7 +82,7 @@ export class LayoutViewerPageComponent {
   });
 
   readonly Layer = Layer;
-  readonly layers = [
+  readonly layers: { value: Layer; icon: Icon }[] = [
     { value: Layer.Primary, icon: 'abc' },
     { value: Layer.Secondary, icon: '123' },
     { value: Layer.Tertiary, icon: 'function' },

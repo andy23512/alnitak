@@ -48,7 +48,7 @@
       rel="noopener"
     >
       <button type="button" mat-button>
-        <mat-icon>code</mat-icon> Source Code
+        <mat-icon>{{ "code" | iconGuard }}</mat-icon> Source Code
       </button>
     </a>
     <a
@@ -57,7 +57,7 @@
       rel="noopener"
     >
       <button type="button" mat-button>
-        <mat-icon>article</mat-icon> Dev Note
+        <mat-icon>{{ "article" | iconGuard }}</mat-icon> Dev Note
       </button>
     </a>
   </div>

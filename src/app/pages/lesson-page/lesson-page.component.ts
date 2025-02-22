@@ -19,7 +19,7 @@ import { MatButton, MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { MatTooltip } from '@angular/material/tooltip';
 import { Router, RouterLinkWithHref } from '@angular/router';
-import { HotkeysService, HotkeysShortcutPipe } from '@ngneat/hotkeys';
+import { HotkeysService } from '@ngneat/hotkeys';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { LetDirective } from '@ngrx/component';
 import { getState } from '@ngrx/signals';
@@ -38,6 +38,7 @@ import {
   KeyLabelType,
   Layer,
 } from 'src/app/models/device-layout.models';
+import { IconGuardPipe } from 'src/app/pipes/icon-guard.pipe';
 import { AirModeSettingStore } from 'src/app/stores/air-mode-setting.store';
 import { DeviceLayoutStore } from 'src/app/stores/device-layout.store';
 import { HighlightSettingStore } from 'src/app/stores/highlight-setting.store';
@@ -59,7 +60,6 @@ import { nonNullable } from 'src/app/utils/non-nullable.utils';
   standalone: true,
   imports: [
     ComboCounterComponent,
-    HotkeysShortcutPipe,
     NgClass,
     LayoutComponent,
     LayoutComponent,
@@ -71,6 +71,7 @@ import { nonNullable } from 'src/app/utils/non-nullable.utils';
     RouterLinkWithHref,
     SpeedometerComponent,
     VisibleDirective,
+    IconGuardPipe,
   ],
   templateUrl: './lesson-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -174,7 +175,7 @@ export class LessonPageComponent implements OnInit, OnDestroy {
       v?.characterDeviceKeys?.forEach(
         ({ characterKeyPositionCode, layer, shiftKey, altGraphKey }) => {
           const d = {
-            type: KeyLabelType.String,
+            type: KeyLabelType.String as const,
             c: v.c,
             layer,
             shiftKey,

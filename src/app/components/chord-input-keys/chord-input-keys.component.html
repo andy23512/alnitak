@@ -3,7 +3,7 @@
     {{ key.value }}
   } @else {
     <mat-icon>
-      {{ key.value }}
+      {{ key.value | iconGuard }}
     </mat-icon>
   }
   @if (!last) {

@@ -8,7 +8,7 @@
     [matTooltipDisabled]="!previousLessonUrl"
   >
     <button type="button" mat-icon-button [disabled]="!previousLessonUrl">
-      <mat-icon>chevron_left</mat-icon>
+      <mat-icon>{{ "chevron_left" | iconGuard }}</mat-icon>
     </button>
   </a>
   <a
@@ -20,16 +20,17 @@
     [matTooltipDisabled]="!nextLessonUrl"
   >
     <button type="button" mat-icon-button [disabled]="!nextLessonUrl">
-      <mat-icon>chevron_right</mat-icon>
+      <mat-icon>{{ "chevron_right" | iconGuard }}</mat-icon>
     </button>
   </a>
   <span>{{ lesson()?.topic?.name }}</span>
-  <mat-icon>arrow_right</mat-icon>
+  <mat-icon>{{ "arrow_right" | iconGuard }}</mat-icon>
   <span> {{ lesson()?.name }}</span>
   <div class="flex-1"></div>
   @if (isFocus()) {
     <button mat-flat-button (click)="pauseLesson()">
-      <mat-icon class="text-white">pause</mat-icon> Pause Lesson
+      <mat-icon class="text-white">{{ "pause" | iconGuard }}</mat-icon> Pause
+      Lesson
       <kbd class="small ml-1">esc</kbd>
     </button>
   }
@@ -62,7 +63,8 @@
       class="absolute inset-0 flex cursor-pointer items-center justify-center gap-2 bg-gray-500 text-white peer-focus:pointer-events-none peer-focus:opacity-0"
     >
       <button mat-flat-button (click)="startLesson()">
-        <mat-icon class="text-white">play_arrow</mat-icon> Start
+        <mat-icon class="text-white">{{ "play_arrow" | iconGuard }}</mat-icon>
+        Start
         <kbd class="small ml-1">space</kbd>
       </button>
     </div>

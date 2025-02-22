@@ -23,6 +23,7 @@ import {
   KeyLabelType,
   Layer,
 } from 'src/app/models/device-layout.models';
+import { IconGuardPipe } from 'src/app/pipes/icon-guard.pipe';
 import { AirModeSettingStore } from 'src/app/stores/air-mode-setting.store';
 import { ChordPracticeStore } from 'src/app/stores/chord-practice.store';
 import { DeviceLayoutStore } from 'src/app/stores/device-layout.store';
@@ -47,6 +48,7 @@ import { SpeedometerComponent } from '../speedometer/speedometer.component';
     LayoutComponent,
     SpeedometerComponent,
     VisibleDirective,
+    IconGuardPipe,
   ],
   templateUrl: './chord-practice.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -105,7 +107,7 @@ export class ChordPracticeComponent implements OnInit {
       v?.characterDeviceKeys?.forEach(
         ({ characterKeyPositionCode, layer, shiftKey, altGraphKey }) => {
           const d = {
-            type: KeyLabelType.String,
+            type: KeyLabelType.String as const,
             c: v.c,
             layer,
             shiftKey,

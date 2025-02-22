@@ -34,7 +34,7 @@
       mat-flat-button
       (click)="openDeleteChordsConfirmDialog()"
     >
-      <mat-icon>delete</mat-icon>
+      <mat-icon>{{ "delete" | iconGuard }}</mat-icon>
       Delete All Imported Chords
     </button>
   </mat-expansion-panel>

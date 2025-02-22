@@ -14,7 +14,7 @@
           aria-label="open help dialog for key notation"
           (click)="openKeyNotationHelpDialog()"
         >
-          <mat-icon>help</mat-icon>
+          <mat-icon>{{ "help" | iconGuard }}</mat-icon>
         </button>
       }
     </mat-checkbox>

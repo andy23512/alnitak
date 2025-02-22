@@ -9,6 +9,7 @@ import { MatCheckbox } from '@angular/material/checkbox';
 import { MatDialog } from '@angular/material/dialog';
 import { MatIcon } from '@angular/material/icon';
 import { VisibilitySetting } from 'src/app/models/visibility-setting.models';
+import { IconGuardPipe } from 'src/app/pipes/icon-guard.pipe';
 import { VisibilitySettingStore } from 'src/app/stores/visibility-setting.store';
 import { KeyNotationHelpDialogComponent } from '../key-notation-help-dialog/key-notation-help-dialog.component';
 
@@ -27,7 +28,7 @@ const VISIBILITY_SETTING_ITEMS: {
 @Component({
   selector: 'app-visibility-setting-panel-content',
   standalone: true,
-  imports: [MatCheckbox, MatIconButton, MatIcon],
+  imports: [MatCheckbox, MatIconButton, MatIcon, IconGuardPipe],
   templateUrl: './visibility-setting-panel-content.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

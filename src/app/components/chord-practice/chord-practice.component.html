@@ -39,7 +39,8 @@
       class="absolute inset-0 flex cursor-pointer items-center justify-center gap-2 bg-gray-500 text-white peer-focus:pointer-events-none peer-focus:opacity-0"
     >
       <button mat-flat-button (click)="startPractice()">
-        <mat-icon class="text-white">play_arrow</mat-icon> Start
+        <mat-icon class="text-white">{{ "play_arrow" | iconGuard }}</mat-icon>
+        Start
       </button>
     </div>
   </div>

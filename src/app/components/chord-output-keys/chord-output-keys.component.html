@@ -2,6 +2,6 @@
   @if (key.type === "character") {
     <span>{{ key.value }}</span>
   } @else {
-    <mat-icon [inline]="true">{{ key.value }}</mat-icon>
+    <mat-icon [inline]="true">{{ key.value | iconGuard }}</mat-icon>
   }
 }

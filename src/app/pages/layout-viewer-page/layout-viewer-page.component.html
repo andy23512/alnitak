@@ -2,7 +2,7 @@
   <mat-button-toggle-group [(ngModel)]="currentLayer">
     @for (layer of layers; track $index) {
       <mat-button-toggle [value]="layer.value">
-        <mat-icon>{{ layer.icon }}</mat-icon>
+        <mat-icon>{{ layer.icon | iconGuard }}</mat-icon>
       </mat-button-toggle>
     }
   </mat-button-toggle-group>
@@ -38,7 +38,7 @@
       (click)="onResetButtonClick($event)"
       [disabled]="selectedKeyboardLayoutId() === 'us'"
     >
-      <mat-icon>replay</mat-icon>
+      <mat-icon>{{ "replay" | iconGuard }}</mat-icon>
     </button>
   </mat-form-field>
 </section>
@@ -69,13 +69,19 @@
           }
           @switch (key) {
             @case ("num-shift") {
-              <mat-icon class="mx-1 text-alnitak-500">counter_2</mat-icon>
+              <mat-icon class="mx-1 text-alnitak-500">{{
+                "counter_2" | iconGuard
+              }}</mat-icon>
             }
             @case ("fn") {
-              <mat-icon class="mx-1 text-alnitak-500">counter_3</mat-icon>
+              <mat-icon class="mx-1 text-alnitak-500">{{
+                "counter_3" | iconGuard
+              }}</mat-icon>
             }
             @case ("shift") {
-              <mat-icon class="text-alnitak-500">shift</mat-icon>
+              <mat-icon class="text-alnitak-500">{{
+                "shift" | iconGuard
+              }}</mat-icon>
             }
           }
         }
