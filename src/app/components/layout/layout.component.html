@@ -4,28 +4,30 @@
   preserveAspectRatio="xMidYMid meet"
   [attr.viewBox]="'0 0 ' + viewBoxWidth + ' ' + viewBoxHeight()"
 >
-  <text
-    *appVisible="'layoutTextGuide'"
-    [attr.x]="viewBoxWidth / 2"
-    [attr.y]="100"
-    text-anchor="middle"
-    dominant-baseline="text-top"
-    font-size="80px"
-    class="fill-gray-100"
-  >
-    {{ highlightKeyCombinationInText() }}
-  </text>
-  <text
-    *appVisible="'layoutKeyNotationGuide'"
-    [attr.x]="viewBoxWidth / 2"
-    [attr.y]="200"
-    text-anchor="middle"
-    dominant-baseline="text-top"
-    font-size="80px"
-    class="fill-gray-100"
-  >
-    {{ highlightKeyCombinationInKeyNotation() }}
-  </text>
+  @if (!alwaysHideLayoutGuides()) {
+    <text
+      *appVisible="'layoutTextGuide'"
+      [attr.x]="viewBoxWidth / 2"
+      [attr.y]="100"
+      text-anchor="middle"
+      dominant-baseline="text-top"
+      font-size="80px"
+      class="fill-gray-100"
+    >
+      {{ highlightKeyCombinationInText() }}
+    </text>
+    <text
+      *appVisible="'layoutKeyNotationGuide'"
+      [attr.x]="viewBoxWidth / 2"
+      [attr.y]="200"
+      text-anchor="middle"
+      dominant-baseline="text-top"
+      font-size="80px"
+      class="fill-gray-100"
+    >
+      {{ highlightKeyCombinationInKeyNotation() }}
+    </text>
+  }
   <ng-container *appVisible="alwaysShowLayout() ? null : 'layout'">
     @for (side of sides; track side) {
       @for (sw of switches(); track sw) {

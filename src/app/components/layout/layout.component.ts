@@ -30,6 +30,7 @@ const gridColumns = 10;
 export class LayoutComponent {
   public showThumb3Switch = input<boolean>(true);
   public alwaysShowLayout = input<boolean>(false);
+  public alwaysHideLayoutGuides = input<boolean>(false);
   public gridRows = computed(() => {
     const showThumb3Switch = this.showThumb3Switch();
     return showThumb3Switch ? 5 : 4;
