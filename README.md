@@ -26,6 +26,7 @@ An unofficial CharaChorder One practice tool
   - highlight the keys of current chord
 - Layout Viewer
   - can view the final layout (actual output under the selected OS keyboard layout) by layers and with/without shift
+  - search for a key in the layout
 
 ## Disclaimer
 
