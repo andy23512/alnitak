@@ -4,7 +4,6 @@ import { Component, ViewChild, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatIconButton } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
-import { MatDivider } from '@angular/material/divider';
 import { MatFormField, MatSuffix } from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
 import { MatInput } from '@angular/material/input';
@@ -41,7 +40,6 @@ import { HotkeyDialogComponent } from '../hotkey-dialog/hotkey-dialog.component'
   imports: [
     AsyncPipe,
     FormsModule,
-    MatDivider,
     MatFormField,
     MatSuffix,
     MatIcon,

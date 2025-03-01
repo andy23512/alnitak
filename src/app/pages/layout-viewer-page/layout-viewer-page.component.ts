@@ -14,14 +14,24 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
+import {
+  MatSidenav,
+  MatSidenavContainer,
+  MatSidenavContent,
+} from '@angular/material/sidenav';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { range } from 'ramda';
 import { LayoutComponent } from 'src/app/components/layout/layout.component';
 import { ACTIONS, NO_ACTION_ACTION_CODES } from 'src/app/data/actions';
+import { CHARACTER_NAME_MAP } from 'src/app/data/character-name-map';
 import {
   NON_KEY_ACTION_NAME_2_RAW_KEY_LABEL_MAP,
   NON_WSK_CODE_2_RAW_KEY_LABEL_MAP,
 } from 'src/app/data/key-labels';
+import {
+  NON_KEY_ACTION_NAME_2_KEY_NAMES_MAP,
+  NON_WSK_CODE_2_KEY_NAMES_MAP,
+} from 'src/app/data/key-names';
 import { ActionType } from 'src/app/models/action.models';
 import {
   KeyLabel,
@@ -51,6 +61,9 @@ import { getModifierKeyPositionCodeMap } from 'src/app/utils/layout.utils';
     NgxMatSelectSearchModule,
     MatButtonModule,
     IconGuardPipe,
+    MatSidenav,
+    MatSidenavContainer,
+    MatSidenavContent,
   ],
   templateUrl: './layout-viewer-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -68,6 +81,7 @@ export class LayoutViewerPageComponent {
   readonly deviceLayout = inject(DeviceLayoutStore).selectedEntity;
 
   readonly keyboardLayoutSearchQuery = signal('');
+  readonly searchMenuIsOpen = signal(false);
 
   readonly filteredKeyboardLayouts = computed(() => {
     const keyboardLayouts = this.keyboardLayouts();
@@ -224,6 +238,90 @@ export class LayoutViewerPageComponent {
     return keyLabelMap;
   });
 
+  readonly keyListForSearch = computed(() => {
+    const deviceLayout = this.deviceLayout();
+    const keyboardLayout = this.keyboardLayout();
+    if (!deviceLayout || !keyboardLayout) {
+      return null;
+    }
+    const actionCodeToPositionsMap: Record<
+      number,
+      Partial<Record<Layer, number[]>>
+    > = {};
+    const keyList: {
+      keyName: string;
+      positions: Partial<Record<Layer, number[]>>;
+      withShift?: boolean;
+    }[] = [];
+    for (const positionIndex of range(0, 90)) {
+      for (const layerIndex of range(0, 3)) {
+        let layer = Layer.Primary;
+        if (layerIndex === 1) {
+          layer = Layer.Secondary;
+        } else if (layerIndex === 2) {
+          layer = Layer.Tertiary;
+        }
+        const actionCodeId = deviceLayout.layout[layerIndex][positionIndex];
+        if (!actionCodeToPositionsMap[actionCodeId]) {
+          actionCodeToPositionsMap[actionCodeId] = { [layer]: [positionIndex] };
+        } else if (!actionCodeToPositionsMap[actionCodeId][layer]) {
+          actionCodeToPositionsMap[actionCodeId][layer] = [positionIndex];
+        } else {
+          actionCodeToPositionsMap[actionCodeId][layer]?.push(positionIndex);
+        }
+      }
+    }
+    console.log(actionCodeToPositionsMap);
+    Object.entries(actionCodeToPositionsMap).forEach(
+      ([actionCodeId, positions]) => {
+        const action = ACTIONS.find((a) => a.codeId === +actionCodeId);
+        console.log({ actionCodeId, action });
+        let keyNames: string[] | null = null;
+        let shiftLayerKeyNames: string[] | null = null;
+        if (action?.type === ActionType.WSK && action.keyCode) {
+          const keyboardLayoutKey = keyboardLayout.layout[action?.keyCode];
+          if (action?.withShift) {
+            if (keyboardLayoutKey?.withShift) {
+              const char = keyboardLayoutKey.withShift;
+              keyNames = [char, ...(CHARACTER_NAME_MAP.get(char) ?? [])];
+            }
+          } else {
+            if (keyboardLayoutKey?.unmodified) {
+              const char = keyboardLayoutKey.unmodified;
+              keyNames = [char, ...(CHARACTER_NAME_MAP.get(char) ?? [])];
+            }
+            if (keyboardLayoutKey?.withShift) {
+              const char = keyboardLayoutKey.withShift;
+              shiftLayerKeyNames = [
+                char,
+                ...(CHARACTER_NAME_MAP.get(char) ?? []),
+              ];
+            }
+          }
+        } else if (action?.type === ActionType.NonWSK && action.keyCode) {
+          keyNames = NON_WSK_CODE_2_KEY_NAMES_MAP[action.keyCode];
+        } else if (action?.type === ActionType.NonKey && action.actionName) {
+          console.log('non key');
+          keyNames = NON_KEY_ACTION_NAME_2_KEY_NAMES_MAP[action.actionName];
+        } else if (NO_ACTION_ACTION_CODES.includes(+actionCodeId)) {
+          return;
+        }
+        if (keyNames) {
+          keyNames.forEach((keyName) => {
+            keyList.push({ keyName, positions });
+          });
+        }
+        if (shiftLayerKeyNames) {
+          shiftLayerKeyNames.forEach((keyName) => {
+            keyList.push({ keyName, positions, withShift: true });
+          });
+        }
+      },
+    );
+    console.log(keyList);
+    return keyList;
+  });
+
   public setSelectedKeyboardLayoutId(keyboardLayoutId: string) {
     this.keyboardLayoutStore.setSelectedId(keyboardLayoutId);
   }
@@ -231,5 +329,9 @@ export class LayoutViewerPageComponent {
   public onResetButtonClick(event: MouseEvent) {
     event.stopPropagation();
     this.setSelectedKeyboardLayoutId('us');
+  }
+
+  public toggleSearchMenu() {
+    this.searchMenuIsOpen.set(!this.searchMenuIsOpen());
   }
 }
