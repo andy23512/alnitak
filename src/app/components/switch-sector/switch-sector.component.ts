@@ -34,6 +34,7 @@ export class SwitchSectorComponent {
     null,
   );
   readonly highlightOpacity = input<number>(0.5);
+  readonly secondaryHighlightPositions = input<number[]>([]);
 
   readonly r1 = computed(() => {
     return R1;

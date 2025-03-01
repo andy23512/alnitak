@@ -44,6 +44,7 @@ export class LayoutComponent {
   readonly highlightKeyCombination = input<HighlightKeyCombination | null>(
     null,
   );
+  readonly secondaryHighlightPositions = input<number[]>([]);
 
   readonly highlightKeyCombinationInText = computed(() => {
     const highlightKeyCombination = this.highlightKeyCombination();

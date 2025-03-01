@@ -51,9 +51,41 @@
 </section>
 @if (keyLabelMap(); as keyLabelMap) {
   <mat-sidenav-container class="flex-1">
-    <mat-sidenav [opened]="searchMenuIsOpen()" mode="over" position="end"
-      >test</mat-sidenav
+    <mat-sidenav
+      [(opened)]="searchMenuIsOpen"
+      mode="over"
+      position="end"
+      data-style-dense
     >
+      <mat-form-field
+        class="w-96 [&_.mat-mdc-form-field-subscript-wrapper]:hidden"
+      >
+        <input
+          [ngModel]="keySearchQuery()"
+          (ngModelChange)="keySearchQuery.set($event)"
+          matInput
+          type="search"
+          placeholder="Search Keys"
+          aria-label="search box for key"
+        />
+        @if (!keySearchQuery()) {
+          <button mat-icon-button matSuffix aria-label="clear search query">
+            <mat-icon>{{ "search" | iconGuard }}</mat-icon>
+          </button>
+        }
+      </mat-form-field>
+      <mat-action-list>
+        @if (keySearchQuery()) {
+          @for (key of filteredKeyList(); track $index) {
+            <button mat-list-item (click)="onKeyInSearchResultClick(key)">
+              {{ key.keyName }}
+            </button>
+          } @empty {
+            <button mat-list-item disabled>No results were found.</button>
+          }
+        }
+      </mat-action-list>
+    </mat-sidenav>
     <mat-sidenav-content>
       <section class="relative px-5 pb-5">
         <app-layout
@@ -70,6 +102,7 @@
             shiftKey: shiftKey(),
             altGraphKey: false
           }"
+          [secondaryHighlightPositions]="selectedPositions()"
         ></app-layout>
         <diV
           class="absolute top-0 flex w-full items-center justify-center text-gray-100"

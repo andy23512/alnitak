@@ -13,6 +13,15 @@
       : 0
   "
 />
+<svg:path
+  class="fill-red-500"
+  [attr.d]="sectorPath() + ' Z'"
+  [attr.opacity]="
+    secondaryHighlightPositions().includes(positionCode())
+      ? highlightOpacity()
+      : 0
+  "
+/>
 <svg:g
   appKeyLabel
   [x]="textX()"

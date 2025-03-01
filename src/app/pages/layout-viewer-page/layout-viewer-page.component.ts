@@ -3,6 +3,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  effect,
   HostBinding,
   inject,
   signal,
@@ -13,12 +14,15 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
+import { MatInput } from '@angular/material/input';
+import { MatActionList, MatListItem } from '@angular/material/list';
 import { MatSelectModule } from '@angular/material/select';
 import {
   MatSidenav,
   MatSidenavContainer,
   MatSidenavContent,
 } from '@angular/material/sidenav';
+import * as fuzzy from 'fuzzy';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { range } from 'ramda';
 import { LayoutComponent } from 'src/app/components/layout/layout.component';
@@ -64,6 +68,9 @@ import { getModifierKeyPositionCodeMap } from 'src/app/utils/layout.utils';
     MatSidenav,
     MatSidenavContainer,
     MatSidenavContent,
+    MatInput,
+    MatActionList,
+    MatListItem,
   ],
   templateUrl: './layout-viewer-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -82,6 +89,8 @@ export class LayoutViewerPageComponent {
 
   readonly keyboardLayoutSearchQuery = signal('');
   readonly searchMenuIsOpen = signal(false);
+  readonly keySearchQuery = signal('');
+  readonly selectedPositions = signal<number[]>([]);
 
   readonly filteredKeyboardLayouts = computed(() => {
     const keyboardLayouts = this.keyboardLayouts();
@@ -271,11 +280,9 @@ export class LayoutViewerPageComponent {
         }
       }
     }
-    console.log(actionCodeToPositionsMap);
     Object.entries(actionCodeToPositionsMap).forEach(
       ([actionCodeId, positions]) => {
         const action = ACTIONS.find((a) => a.codeId === +actionCodeId);
-        console.log({ actionCodeId, action });
         let keyNames: string[] | null = null;
         let shiftLayerKeyNames: string[] | null = null;
         if (action?.type === ActionType.WSK && action.keyCode) {
@@ -301,7 +308,6 @@ export class LayoutViewerPageComponent {
         } else if (action?.type === ActionType.NonWSK && action.keyCode) {
           keyNames = NON_WSK_CODE_2_KEY_NAMES_MAP[action.keyCode];
         } else if (action?.type === ActionType.NonKey && action.actionName) {
-          console.log('non key');
           keyNames = NON_KEY_ACTION_NAME_2_KEY_NAMES_MAP[action.actionName];
         } else if (NO_ACTION_ACTION_CODES.includes(+actionCodeId)) {
           return;
@@ -318,9 +324,33 @@ export class LayoutViewerPageComponent {
         }
       },
     );
-    console.log(keyList);
     return keyList;
   });
+
+  readonly filteredKeyList = computed(() => {
+    const keyListForSearch = this.keyListForSearch();
+    const keySearchQuery = this.keySearchQuery();
+    if (!keySearchQuery || !keyListForSearch) {
+      return null;
+    }
+    return fuzzy
+      .filter(keySearchQuery, keyListForSearch, {
+        extract: (k) => k.keyName,
+      })
+      .map((r) => r.original);
+  });
+
+  constructor() {
+    effect(
+      () => {
+        this.currentLayer();
+        this.shiftKey();
+        this.keyboardLayout();
+        this.selectedPositions.set([]);
+      },
+      { allowSignalWrites: true },
+    );
+  }
 
   public setSelectedKeyboardLayoutId(keyboardLayoutId: string) {
     this.keyboardLayoutStore.setSelectedId(keyboardLayoutId);
@@ -333,5 +363,24 @@ export class LayoutViewerPageComponent {
 
   public toggleSearchMenu() {
     this.searchMenuIsOpen.set(!this.searchMenuIsOpen());
+  }
+
+  public onKeyInSearchResultClick({
+    withShift,
+    positions,
+  }: {
+    keyName: string;
+    positions: Partial<Record<Layer, number[]>>;
+    withShift?: boolean;
+  }) {
+    this.searchMenuIsOpen.set(false);
+    this.shiftKey.set(Boolean(withShift));
+    for (const layer of [Layer.Primary, Layer.Secondary, Layer.Tertiary]) {
+      if (positions[layer]) {
+        this.currentLayer.set(layer);
+        this.selectedPositions.set(positions[layer] ?? []);
+        return;
+      }
+    }
   }
 }
