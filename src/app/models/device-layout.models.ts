@@ -38,8 +38,9 @@ export type RawKeyLabel =
   | {
       type: KeyLabelType.String;
       c: string;
+      title: string;
     }
-  | { type: KeyLabelType.Icon; c: Icon };
+  | { type: KeyLabelType.Icon; c: Icon; title: string };
 
 /*
  * Label of a physical key, which records the corresponding character when the key is triggered under certain layer and modifiers

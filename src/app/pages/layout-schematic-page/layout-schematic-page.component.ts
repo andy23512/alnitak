@@ -72,6 +72,7 @@ export class LayoutSchematicPageComponent {
       {
         type: KeyLabelType.String,
         c: '1',
+        title: 'Character: 1',
         layer: null,
         shiftKey: null,
         altGraphKey: null,
@@ -81,6 +82,7 @@ export class LayoutSchematicPageComponent {
       {
         type: KeyLabelType.String,
         c: 'q',
+        title: 'Character: q',
         layer: null,
         shiftKey: null,
         altGraphKey: null,
@@ -90,6 +92,7 @@ export class LayoutSchematicPageComponent {
       {
         type: KeyLabelType.String,
         c: 'a',
+        title: 'Character: a',
         layer: null,
         shiftKey: null,
         altGraphKey: null,
@@ -99,6 +102,7 @@ export class LayoutSchematicPageComponent {
       {
         type: KeyLabelType.String,
         c: 'z',
+        title: 'Character: z',
         layer: null,
         shiftKey: null,
         altGraphKey: null,
@@ -110,6 +114,7 @@ export class LayoutSchematicPageComponent {
       {
         type: KeyLabelType.String,
         c: '1E',
+        title: 'Scancode: 1E',
         layer: null,
         shiftKey: null,
         altGraphKey: null,
@@ -119,6 +124,7 @@ export class LayoutSchematicPageComponent {
       {
         type: KeyLabelType.String,
         c: '14',
+        title: 'Scancode: 14',
         layer: null,
         shiftKey: null,
         altGraphKey: null,
@@ -128,6 +134,7 @@ export class LayoutSchematicPageComponent {
       {
         type: KeyLabelType.String,
         c: '04',
+        title: 'Scancode: 04',
         layer: null,
         shiftKey: null,
         altGraphKey: null,
@@ -137,6 +144,7 @@ export class LayoutSchematicPageComponent {
       {
         type: KeyLabelType.String,
         c: '1D',
+        title: 'Scancode: 1D',
         layer: null,
         shiftKey: null,
         altGraphKey: null,

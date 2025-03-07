@@ -109,6 +109,7 @@ export class ChordPracticeComponent implements OnInit {
           const d = {
             type: KeyLabelType.String as const,
             c: v.c,
+            title: `Character: ${v.c}`,
             layer,
             shiftKey,
             altGraphKey,

@@ -184,6 +184,7 @@ export class LayoutViewerPageComponent {
                 {
                   type: KeyLabelType.String,
                   c: keyboardLayoutKey.withShift,
+                  title: `Character: ${keyboardLayoutKey.withShift}`,
                   layer,
                   shiftKey: false,
                   altGraphKey: false,
@@ -191,6 +192,7 @@ export class LayoutViewerPageComponent {
                 {
                   type: KeyLabelType.String,
                   c: keyboardLayoutKey.withShift,
+                  title: `Character: ${keyboardLayoutKey.withShift}`,
                   layer,
                   shiftKey: true,
                   altGraphKey: false,
@@ -202,6 +204,7 @@ export class LayoutViewerPageComponent {
               keyLabels.push({
                 type: KeyLabelType.String,
                 c: keyboardLayoutKey.unmodified,
+                title: `Character: ${keyboardLayoutKey.unmodified}`,
                 layer,
                 shiftKey: false,
                 altGraphKey: false,
@@ -211,6 +214,7 @@ export class LayoutViewerPageComponent {
               keyLabels.push({
                 type: KeyLabelType.String,
                 c: keyboardLayoutKey.withShift,
+                title: `Character: ${keyboardLayoutKey.withShift}`,
                 layer,
                 shiftKey: true,
                 altGraphKey: false,

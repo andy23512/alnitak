@@ -177,6 +177,7 @@ export class LessonPageComponent implements OnInit, OnDestroy {
           const d = {
             type: KeyLabelType.String as const,
             c: v.c,
+            title: `Character: ${v.c}`,
             layer,
             shiftKey,
             altGraphKey,

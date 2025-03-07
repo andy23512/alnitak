@@ -20,15 +20,10 @@
     fill="currentColor"
     font-weight="lighter"
     class="transition-opacity"
-    [attr.opacity]="
-      highlightKeyCombination() &&
-      ((label.layer === highlightKeyCombination()?.layer &&
-        label.shiftKey === highlightKeyCombination()?.shiftKey &&
-        label.altGraphKey === highlightKeyCombination()?.altGraphKey) ||
-        label.layer === null)
-        ? 1
-        : 0
-    "
+    [attr.opacity]="isLabelActive(label) ? 1 : 0"
+    [matTooltip]="label.title"
+    [matTooltipDisabled]="!isLabelActive(label)"
+    [class.pointer-events-none]="!isLabelActive(label)"
   >
     {{ label.c }}
   </svg:text>
