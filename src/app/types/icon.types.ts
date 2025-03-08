@@ -37,6 +37,7 @@ export type Icon =
   | 'pause'
   | 'piano'
   | 'play_arrow'
+  | 'print'
   | 'question_mark'
   | 'replay'
   | 'right_click'

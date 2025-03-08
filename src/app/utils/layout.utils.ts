@@ -355,3 +355,18 @@ export function getHighlightKeyCombinationFromKeyCombinations(
       return a.positionCodes.length - b.positionCodes.length;
     })[0];
 }
+
+export function getHoldKeys(layer: Layer, shiftKey: boolean) {
+  const holdKeys: ('num-shift' | 'fn' | 'shift')[] = [];
+  switch (layer) {
+    case Layer.Secondary:
+      holdKeys.push('num-shift');
+      break;
+    case Layer.Tertiary:
+      holdKeys.push('fn');
+  }
+  if (shiftKey) {
+    holdKeys.push('shift');
+  }
+  return holdKeys;
+}

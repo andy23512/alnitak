@@ -1,11 +1,11 @@
 <svg:path
   [attr.d]="sectorPath()"
   fill="transparent"
-  stroke="white"
+  class="stroke-white print:stroke-black"
   [attr.stroke-width]="strokeWidth()"
 />
 <svg:path
-  class="fill-alnitak-500"
+  class="fill-alnitak-500 print:fill-black"
   [attr.d]="sectorPath() + ' Z'"
   [attr.opacity]="
     highlightKeyCombination()?.positionCodes?.includes(positionCode())

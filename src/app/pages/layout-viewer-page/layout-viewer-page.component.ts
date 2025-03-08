@@ -24,6 +24,7 @@ import {
 } from '@angular/material/sidenav';
 import * as fuzzy from 'fuzzy';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
+import { NgxPrintModule } from 'ngx-print';
 import { range } from 'ramda';
 import { LayoutComponent } from 'src/app/components/layout/layout.component';
 import { ACTIONS, NO_ACTION_ACTION_CODES } from 'src/app/data/actions';
@@ -38,6 +39,7 @@ import {
 } from 'src/app/data/key-names';
 import { ActionType } from 'src/app/models/action.models';
 import {
+  DeviceLayout,
   KeyLabel,
   KeyLabelType,
   Layer,
@@ -48,7 +50,43 @@ import { HighlightSettingStore } from 'src/app/stores/highlight-setting.store';
 import { LayoutViewerKeyboardLayoutStore } from 'src/app/stores/layout-viewer-keyboard-layout.store';
 import { VisibilitySettingStore } from 'src/app/stores/visibility-setting.store';
 import { Icon } from 'src/app/types/icon.types';
-import { getModifierKeyPositionCodeMap } from 'src/app/utils/layout.utils';
+import {
+  getHoldKeys,
+  getModifierKeyPositionCodeMap,
+} from 'src/app/utils/layout.utils';
+
+function getHighlightPositionCodes(
+  deviceLayout: DeviceLayout | null,
+  layer: Layer,
+  shiftKey: boolean,
+) {
+  let highlightPositionCodes: number[] = [];
+  if (deviceLayout) {
+    const modifierKeyPositionCodeMap =
+      getModifierKeyPositionCodeMap(deviceLayout);
+    switch (layer) {
+      case Layer.Secondary:
+        highlightPositionCodes = [
+          ...highlightPositionCodes,
+          ...modifierKeyPositionCodeMap.numShift,
+        ];
+        break;
+      case Layer.Tertiary:
+        highlightPositionCodes = [
+          ...highlightPositionCodes,
+          ...modifierKeyPositionCodeMap.fnShift,
+        ];
+        break;
+    }
+    if (shiftKey) {
+      highlightPositionCodes = [
+        ...highlightPositionCodes,
+        ...modifierKeyPositionCodeMap.shift,
+      ];
+    }
+  }
+  return highlightPositionCodes;
+}
 
 @Component({
   selector: 'app-layout-viewer-page',
@@ -71,6 +109,7 @@ import { getModifierKeyPositionCodeMap } from 'src/app/utils/layout.utils';
     MatInput,
     MatActionList,
     MatListItem,
+    NgxPrintModule,
   ],
   templateUrl: './layout-viewer-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -114,48 +153,15 @@ export class LayoutViewerPageComponent {
   shiftKey = signal(false);
 
   readonly holdKeys = computed(() => {
-    const holdKeys: ('num-shift' | 'fn' | 'shift')[] = [];
-    switch (this.currentLayer()) {
-      case Layer.Secondary:
-        holdKeys.push('num-shift');
-        break;
-      case Layer.Tertiary:
-        holdKeys.push('fn');
-    }
-    if (this.shiftKey()) {
-      holdKeys.push('shift');
-    }
-    return holdKeys;
+    return getHoldKeys(this.currentLayer(), this.shiftKey());
   });
 
   readonly highlightPositionCodes = computed(() => {
-    const deviceLayout = this.deviceLayout();
-    let highlightPositionCodes: number[] = [];
-    if (deviceLayout) {
-      const modifierKeyPositionCodeMap =
-        getModifierKeyPositionCodeMap(deviceLayout);
-      switch (this.currentLayer()) {
-        case Layer.Secondary:
-          highlightPositionCodes = [
-            ...highlightPositionCodes,
-            ...modifierKeyPositionCodeMap.numShift,
-          ];
-          break;
-        case Layer.Tertiary:
-          highlightPositionCodes = [
-            ...highlightPositionCodes,
-            ...modifierKeyPositionCodeMap.fnShift,
-          ];
-          break;
-      }
-      if (this.shiftKey()) {
-        highlightPositionCodes = [
-          ...highlightPositionCodes,
-          ...modifierKeyPositionCodeMap.shift,
-        ];
-      }
-    }
-    return highlightPositionCodes;
+    return getHighlightPositionCodes(
+      this.deviceLayout(),
+      this.currentLayer(),
+      this.shiftKey(),
+    );
   });
 
   readonly keyLabelMap = computed(() => {
@@ -386,5 +392,13 @@ export class LayoutViewerPageComponent {
         return;
       }
     }
+  }
+
+  public getHoldKeys(layer: Layer, shiftKey: boolean) {
+    return getHoldKeys(layer, shiftKey);
+  }
+
+  public getHighlightPositionCodes(layer: Layer, shiftKey: boolean) {
+    return getHighlightPositionCodes(this.deviceLayout(), layer, shiftKey);
   }
 }

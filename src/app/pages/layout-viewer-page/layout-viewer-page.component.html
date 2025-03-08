@@ -48,6 +48,14 @@
   >
     <mat-icon>{{ "search" | iconGuard }}</mat-icon>
   </button>
+  <button
+    mat-icon-button
+    ngxPrint
+    printSectionId="print-section"
+    [useExistingCss]="true"
+  >
+    <mat-icon>{{ "print" | iconGuard }}</mat-icon>
+  </button>
 </section>
 @if (keyLabelMap(); as keyLabelMap) {
   <mat-sidenav-container class="flex-1">
@@ -137,4 +145,61 @@
       </section>
     </mat-sidenav-content>
   </mat-sidenav-container>
+  <div id="print-section" class="hidden">
+    @for (layer of layers; track $index) {
+      @for (shiftKey of [false, true]; track $index) {
+        <section class="relative h-1/2">
+          <app-layout
+            class="block h-full overflow-hidden"
+            [alwaysHideLayoutGuides]="true"
+            [alwaysShowLayout]="true"
+            [showThumb3Switch]="visibilitySettingStore.layoutThumb3Switch()"
+            [keyLabelMap]="keyLabelMap"
+            [highlightKeyCombination]="{
+              positionCodes: getHighlightPositionCodes(layer.value, shiftKey),
+              score: 0,
+              characterKeyPositionCode: 0,
+              layer: layer.value,
+              shiftKey: shiftKey,
+              altGraphKey: false
+            }"
+          ></app-layout>
+          <diV
+            class="absolute top-20 flex w-full items-center justify-center text-black"
+          >
+            @if (getHoldKeys(layer.value, shiftKey); as holdKeys) {
+              @if (holdKeys.length) {
+                (Hold
+                @for (key of holdKeys; track $index) {
+                  @if ($index > 0) {
+                    and
+                  }
+                  @switch (key) {
+                    @case ("num-shift") {
+                      <mat-icon
+                        class="mx-1 text-alnitak-500 print:text-black"
+                        >{{ "counter_2" | iconGuard }}</mat-icon
+                      >
+                    }
+                    @case ("fn") {
+                      <mat-icon
+                        class="mx-1 text-alnitak-500 print:text-black"
+                        >{{ "counter_3" | iconGuard }}</mat-icon
+                      >
+                    }
+                    @case ("shift") {
+                      <mat-icon class="text-alnitak-500 print:text-black">{{
+                        "shift" | iconGuard
+                      }}</mat-icon>
+                    }
+                  }
+                }
+                to access this layer)
+              }
+            }
+          </diV>
+        </section>
+      }
+    }
+  </div>
 }

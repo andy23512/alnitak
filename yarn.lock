@@ -7230,6 +7230,13 @@ ngx-mat-select-search@^8.0.0:
   dependencies:
     tslib "^2.4.0"
 
+ngx-print@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/ngx-print/-/ngx-print-2.0.0.tgz#dc4fbfb8a5128544516b1e8345613402138873fc"
+  integrity sha512-AMdLvMlch2FmqiSI5RLDS5qtvb/4Dvhm4NbOeQ3EvmRXiqmM185vBt7EW1NVWCkqOicYXtfn3Rx87GXqPVyauw==
+  dependencies:
+    tslib "^2.3.0"
+
 nice-napi@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/nice-napi/-/nice-napi-1.0.2.tgz#dc0ab5a1eac20ce548802fc5686eaa6bc654927b"
