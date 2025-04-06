@@ -22,6 +22,7 @@ import {
   MatSidenavContainer,
   MatSidenavContent,
 } from '@angular/material/sidenav';
+import { MatTooltip } from '@angular/material/tooltip';
 import * as fuzzy from 'fuzzy';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { NgxPrintModule } from 'ngx-print';
@@ -110,6 +111,7 @@ function getHighlightPositionCodes(
     MatActionList,
     MatListItem,
     NgxPrintModule,
+    MatTooltip,
   ],
   templateUrl: './layout-viewer-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -144,10 +146,10 @@ export class LayoutViewerPageComponent {
   });
 
   readonly Layer = Layer;
-  readonly layers: { value: Layer; icon: Icon }[] = [
-    { value: Layer.Primary, icon: 'abc' },
-    { value: Layer.Secondary, icon: '123' },
-    { value: Layer.Tertiary, icon: 'function' },
+  readonly layers: { value: Layer; icon: Icon; tooltip: string }[] = [
+    { value: Layer.Primary, icon: 'abc', tooltip: 'Primary layer' },
+    { value: Layer.Secondary, icon: '123', tooltip: 'Numeric layer' },
+    { value: Layer.Tertiary, icon: 'function', tooltip: 'Function layer' },
   ];
   currentLayer = signal(Layer.Primary);
   shiftKey = signal(false);

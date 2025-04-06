@@ -1,7 +1,7 @@
 <section class="flex flex-none items-center gap-1 bg-gray-700">
   <mat-button-toggle-group [(ngModel)]="currentLayer">
     @for (layer of layers; track $index) {
-      <mat-button-toggle [value]="layer.value">
+      <mat-button-toggle [value]="layer.value" [matTooltip]="layer.tooltip">
         <mat-icon>{{ layer.icon | iconGuard }}</mat-icon>
       </mat-button-toggle>
     }
@@ -45,6 +45,7 @@
     mat-icon-button
     (click)="toggleSearchMenu()"
     [color]="searchMenuIsOpen() ? 'primary' : null"
+    matTooltip="Search for key"
   >
     <mat-icon>{{ "search" | iconGuard }}</mat-icon>
   </button>
@@ -53,6 +54,7 @@
     ngxPrint
     printSectionId="print-section"
     [useExistingCss]="true"
+    matTooltip="Print the layout"
   >
     <mat-icon>{{ "print" | iconGuard }}</mat-icon>
   </button>
