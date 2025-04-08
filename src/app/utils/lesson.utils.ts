@@ -5,7 +5,10 @@ import { nonNullable } from './non-nullable.utils';
 export function generateCharacterLesson(str: string): RawLesson {
   const components = str.split('');
   return {
-    id: str.replace(/\?/g, 'question-mark').replace(/\//g, 'slash'),
+    id: str
+      .replace(/\?/g, 'question-mark')
+      .replace(/\//g, 'slash')
+      .replace(/%/g, 'percent'),
     name: components.join(' '),
     components,
     componentNames: components
