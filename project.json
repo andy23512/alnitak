@@ -19,7 +19,7 @@
         "polyfills": ["zone.js"],
         "tsConfig": "tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": ["src/favicon.ico", "src/assets"],
+        "assets": ["src/favicon.ico", "src/assets", "src/googlef5d600e4a2cd82e1.html"],
         "styles": ["src/styles.scss"],
         "scripts": []
       },
