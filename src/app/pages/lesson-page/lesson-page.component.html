@@ -23,6 +23,27 @@
       >{{ lessonStore.queue().join("") }}...</span
     >
   } @else {
+    <span>{{ lesson()?.topic?.name }}</span>
+    <mat-icon>{{ "arrow_right" | iconGuard }}</mat-icon>
+    <span> {{ lesson()?.name }}</span>
+  }
+</section>
+<div class="absolute right-0 top-0 h-12 content-center">
+  @if (isFocus()) {
+    <button mat-flat-button (click)="pauseLesson()">
+      <mat-icon class="text-white">{{ "pause" | iconGuard }}</mat-icon> Pause
+      <kbd class="small ml-1">esc</kbd>
+    </button>
+  } @else {
+    <button mat-flat-button (click)="startLesson()">
+      <mat-icon class="text-white">{{ "play_arrow" | iconGuard }}</mat-icon>
+      Start
+      <kbd class="small ml-1">space</kbd>
+    </button>
+  }
+</div>
+@if (!isFocus()) {
+  <div class="absolute left-0 top-0 h-12 content-center">
     <a
       class="text-inherit"
       *ngrxLet="lesson()?.previousLessonUrl as previousLessonUrl"
@@ -47,26 +68,8 @@
         <mat-icon>{{ "chevron_right" | iconGuard }}</mat-icon>
       </button>
     </a>
-    <span>{{ lesson()?.topic?.name }}</span>
-    <mat-icon>{{ "arrow_right" | iconGuard }}</mat-icon>
-    <span> {{ lesson()?.name }}</span>
-  }
-</section>
-<div class="fixed right-0 h-12 content-center">
-  @if (isFocus()) {
-    <button mat-flat-button (click)="pauseLesson()">
-      <mat-icon class="text-white">{{ "pause" | iconGuard }}</mat-icon> Pause
-      <kbd class="small ml-1">esc</kbd>
-    </button>
-  } @else {
-    <button mat-flat-button (click)="startLesson()">
-      <mat-icon class="text-white">{{ "play_arrow" | iconGuard }}</mat-icon>
-      Start
-      <kbd class="small ml-1">space</kbd>
-    </button>
-  }
-</div>
-
+  </div>
+}
 <app-layout
   class="opacity-1 block flex-1 overflow-hidden px-5 pb-5 transition-[opacity] ease-in-out"
   [class.opacity-0]="lessonStore.combo() > 20 && !airModeSettingStore.enabled()"
