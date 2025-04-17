@@ -16,7 +16,7 @@ import { KeyboardLayoutComponent } from 'src/app/components/keyboard-layout/keyb
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KeyboardLayoutViewerPageComponent {
-  @HostBinding('class') classes = 'flex flex-col gap-2 h-screen';
+  @HostBinding('class') classes = 'flex flex-col gap-2 h-full';
   shiftKey = signal(false);
   altGraphKey = signal(false);
 }

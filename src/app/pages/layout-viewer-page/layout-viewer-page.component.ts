@@ -117,7 +117,7 @@ function getHighlightPositionCodes(
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LayoutViewerPageComponent {
-  @HostBinding('class') classes = 'flex flex-col gap-2 h-screen';
+  @HostBinding('class') classes = 'flex flex-col gap-2 h-full';
 
   readonly highlightSettingStore = inject(HighlightSettingStore);
   readonly visibilitySettingStore = inject(VisibilitySettingStore);

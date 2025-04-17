@@ -31,7 +31,7 @@ enum Metric {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StatisticsPageComponent {
-  @HostBinding('class') classes = 'flex flex-col gap-2 h-screen';
+  @HostBinding('class') classes = 'flex flex-col gap-2 h-full';
 
   Highcharts: typeof Highcharts = Highcharts;
   Metric = Metric;

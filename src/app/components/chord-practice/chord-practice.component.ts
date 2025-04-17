@@ -65,7 +65,7 @@ export class ChordPracticeComponent implements OnInit {
     pausePractice: 'escape',
   };
 
-  @HostBinding('class') classes = 'flex flex-col h-screen';
+  @HostBinding('class') classes = 'flex flex-col h-full';
 
   @ViewChild('input', { static: true })
   public input!: ElementRef<HTMLInputElement>;

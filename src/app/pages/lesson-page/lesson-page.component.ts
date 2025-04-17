@@ -87,7 +87,7 @@ export class LessonPageComponent implements OnInit, OnDestroy {
 
   readonly isFocus = signal(false);
 
-  @HostBinding('class') classes = 'flex flex-col gap-2 h-screen';
+  @HostBinding('class') classes = 'flex flex-col gap-2 h-full';
 
   readonly shortcuts = {
     goToPreviousLesson: 'meta.left',
