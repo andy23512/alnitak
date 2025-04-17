@@ -1,42 +1,15 @@
-<section class="flex flex-none items-center bg-gray-700">
-  <a
-    class="text-inherit"
-    *ngrxLet="lesson()?.previousLessonUrl as previousLessonUrl"
-    aria-label="link to previous lesson"
-    [routerLink]="previousLessonUrl"
-    matTooltip="Go to previous lesson"
-    [matTooltipDisabled]="!previousLessonUrl"
-  >
-    <button type="button" mat-icon-button [disabled]="!previousLessonUrl">
-      <mat-icon>{{ "chevron_left" | iconGuard }}</mat-icon>
-    </button>
-  </a>
-  <a
-    class="text-inherit"
-    *ngrxLet="lesson()?.nextLessonUrl as nextLessonUrl"
-    aria-label="link to next lesson"
-    [routerLink]="nextLessonUrl"
-    matTooltip="Go to next lesson"
-    [matTooltipDisabled]="!nextLessonUrl"
-  >
-    <button type="button" mat-icon-button [disabled]="!nextLessonUrl">
-      <mat-icon>{{ "chevron_right" | iconGuard }}</mat-icon>
-    </button>
-  </a>
-  <span>{{ lesson()?.topic?.name }}</span>
-  <mat-icon>{{ "arrow_right" | iconGuard }}</mat-icon>
-  <span> {{ lesson()?.name }}</span>
-  <div class="flex-1"></div>
+<section class="flex h-12 flex-none items-center justify-center bg-gray-700">
+  <input
+    class="h-0 w-0 opacity-0"
+    title="input box for practicing typing"
+    #input
+    type="text"
+    inputmode="none"
+    (keyup)="onKeyUpInInput($event)"
+    (focus)="isFocus.set(true)"
+    (blur)="isFocus.set(false); pauseLesson()"
+  />
   @if (isFocus()) {
-    <button mat-flat-button (click)="pauseLesson()">
-      <mat-icon class="text-white">{{ "pause" | iconGuard }}</mat-icon> Pause
-      Lesson
-      <kbd class="small ml-1">esc</kbd>
-    </button>
-  }
-</section>
-<section class="flex flex-none items-center">
-  <div class="relative flex h-12 flex-1 items-center justify-center">
     <span class="whitespace-pre font-mono text-2xl text-gray-300">{{
       lessonStore.history().join("")
     }}</span>
@@ -49,27 +22,51 @@
       "
       >{{ lessonStore.queue().join("") }}...</span
     >
-    <input
-      class="peer h-0 w-0 opacity-0"
-      title="input box for practicing typing"
-      #input
-      type="text"
-      inputmode="none"
-      (keyup)="onKeyUpInInput($event)"
-      (focus)="isFocus.set(true)"
-      (blur)="isFocus.set(false); pauseLesson()"
-    />
-    <div
-      class="absolute inset-0 flex cursor-pointer items-center justify-center gap-2 bg-gray-500 text-white peer-focus:pointer-events-none peer-focus:opacity-0"
+  } @else {
+    <a
+      class="text-inherit"
+      *ngrxLet="lesson()?.previousLessonUrl as previousLessonUrl"
+      aria-label="link to previous lesson"
+      [routerLink]="previousLessonUrl"
+      matTooltip="Go to previous lesson"
+      [matTooltipDisabled]="!previousLessonUrl"
     >
-      <button mat-flat-button (click)="startLesson()">
-        <mat-icon class="text-white">{{ "play_arrow" | iconGuard }}</mat-icon>
-        Start
-        <kbd class="small ml-1">space</kbd>
+      <button type="button" mat-icon-button [disabled]="!previousLessonUrl">
+        <mat-icon>{{ "chevron_left" | iconGuard }}</mat-icon>
       </button>
-    </div>
-  </div>
+    </a>
+    <a
+      class="text-inherit"
+      *ngrxLet="lesson()?.nextLessonUrl as nextLessonUrl"
+      aria-label="link to next lesson"
+      [routerLink]="nextLessonUrl"
+      matTooltip="Go to next lesson"
+      [matTooltipDisabled]="!nextLessonUrl"
+    >
+      <button type="button" mat-icon-button [disabled]="!nextLessonUrl">
+        <mat-icon>{{ "chevron_right" | iconGuard }}</mat-icon>
+      </button>
+    </a>
+    <span>{{ lesson()?.topic?.name }}</span>
+    <mat-icon>{{ "arrow_right" | iconGuard }}</mat-icon>
+    <span> {{ lesson()?.name }}</span>
+  }
 </section>
+<div class="fixed right-0 h-12 content-center">
+  @if (isFocus()) {
+    <button mat-flat-button (click)="pauseLesson()">
+      <mat-icon class="text-white">{{ "pause" | iconGuard }}</mat-icon> Pause
+      <kbd class="small ml-1">esc</kbd>
+    </button>
+  } @else {
+    <button mat-flat-button (click)="startLesson()">
+      <mat-icon class="text-white">{{ "play_arrow" | iconGuard }}</mat-icon>
+      Start
+      <kbd class="small ml-1">space</kbd>
+    </button>
+  }
+</div>
+
 <app-layout
   class="opacity-1 block flex-1 overflow-hidden px-5 pb-5 transition-[opacity] ease-in-out"
   [class.opacity-0]="lessonStore.combo() > 20 && !airModeSettingStore.enabled()"
