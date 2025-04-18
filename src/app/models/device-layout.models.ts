@@ -2,7 +2,7 @@ import { Icon } from '../types/icon.types';
 import { Tuple } from '../types/tuple.types';
 
 /**
- * Shape of CharaChorder One layout data. 90 keys x 3 layers = 180 action codes
+ * Shape of CharaChorder 3D device layout data. 90 keys x 3 layers = 180 action codes
  */
 export interface DeviceLayout {
   id: string;
@@ -17,7 +17,7 @@ export enum Layer {
 }
 
 /*
- * A key combination on CharaChorder One
+ * A key combination on CharaChorder 3D input devices
  */
 export interface KeyCombination {
   characterKeyPositionCode: number;
@@ -27,7 +27,7 @@ export interface KeyCombination {
 }
 
 /*
- * A key combination on CharaChorder One with position codes of all used keys and priority score
+ * A key combination on CharaChorder 3D input devices with position codes of all used keys and priority score
  */
 export interface HighlightKeyCombination extends KeyCombination {
   positionCodes: number[];

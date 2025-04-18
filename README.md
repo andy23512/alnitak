@@ -1,6 +1,6 @@
 # Alnitak
 
-An unofficial CharaChorder One practice tool
+An unofficial practice tool of CharaChorder 3D input devices (CharaChorder One, CharaChorder Two and Master Forge)
 
 ## Links
 
