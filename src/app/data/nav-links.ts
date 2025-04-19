@@ -1,7 +1,16 @@
-import { IconLink } from '../models/icon-link.models';
+import { NavLink } from '../models/nav-link.models';
 
-export const ICON_LINKS: IconLink[] = [
+export const NAV_LINKS: NavLink[] = [
   {
+    title: 'Home',
+    routerLink: '/',
+    routerLinkActiveOptions: { exact: true },
+    ariaLabel: 'home page link',
+    tooltipMessage: 'Go to Home page',
+    icon: 'home',
+  },
+  {
+    title: 'Stats',
     routerLink: '/statistics',
     routerLinkActiveOptions: { exact: false },
     ariaLabel: 'statistics page link',
@@ -9,13 +18,7 @@ export const ICON_LINKS: IconLink[] = [
     icon: 'trending_up',
   },
   {
-    routerLink: '/settings',
-    routerLinkActiveOptions: { exact: false },
-    ariaLabel: 'settings page link',
-    tooltipMessage: 'Go to Settings page',
-    icon: 'settings',
-  },
-  {
+    title: 'Chord',
     routerLink: '/chord',
     routerLinkActiveOptions: { exact: false },
     ariaLabel: 'chord page link',
@@ -23,10 +26,19 @@ export const ICON_LINKS: IconLink[] = [
     icon: 'piano',
   },
   {
+    title: 'Layout',
     routerLink: '/layout-viewer',
     routerLinkActiveOptions: { exact: false },
     ariaLabel: 'layout viewer page link',
     tooltipMessage: 'Go to Layout Viewer page',
     icon: 'map',
+  },
+  {
+    title: 'Settings',
+    routerLink: '/settings',
+    routerLinkActiveOptions: { exact: false },
+    ariaLabel: 'settings page link',
+    tooltipMessage: 'Go to Settings page',
+    icon: 'settings',
   },
 ];

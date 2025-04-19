@@ -2,7 +2,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { AsyncPipe } from '@angular/common';
 import { Component, ViewChild, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MatIconButton } from '@angular/material/button';
+import { MatButton } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 import { MatFormField, MatSuffix } from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
@@ -17,7 +17,6 @@ import {
   MatSidenavContainer,
   MatSidenavContent,
 } from '@angular/material/sidenav';
-import { MatToolbar } from '@angular/material/toolbar';
 import { MatTooltip } from '@angular/material/tooltip';
 import {
   RouterLinkActive,
@@ -28,7 +27,7 @@ import * as fuzzy from 'fuzzy';
 import { uniqBy } from 'ramda';
 import { Observable } from 'rxjs';
 import { filter, map, shareReplay, take } from 'rxjs/operators';
-import { ICON_LINKS } from 'src/app/data/icon-links';
+import { NAV_LINKS } from 'src/app/data/nav-links';
 import { IconGuardPipe } from 'src/app/pipes/icon-guard.pipe';
 import { LESSON_DATA_FOR_SEARCH, TOPICS } from '../../data/topics';
 import { HotkeyDialogComponent } from '../hotkey-dialog/hotkey-dialog.component';
@@ -43,7 +42,7 @@ import { HotkeyDialogComponent } from '../hotkey-dialog/hotkey-dialog.component'
     MatFormField,
     MatSuffix,
     MatIcon,
-    MatIconButton,
+    MatButton,
     MatInput,
     MatListItem,
     MatListSubheaderCssMatStyler,
@@ -51,7 +50,6 @@ import { HotkeyDialogComponent } from '../hotkey-dialog/hotkey-dialog.component'
     MatSidenav,
     MatSidenavContainer,
     MatSidenavContent,
-    MatToolbar,
     MatTooltip,
     RouterLinkActive,
     RouterLinkWithHref,
@@ -61,7 +59,7 @@ import { HotkeyDialogComponent } from '../hotkey-dialog/hotkey-dialog.component'
 })
 export class NavComponent {
   public topics = TOPICS;
-  public iconLinks = ICON_LINKS;
+  public navLinks = NAV_LINKS;
 
   public readonly searchQuery = signal('');
 

@@ -6,7 +6,7 @@
       <ul class="space-y-1">
         @for (hotkey of hotkeyGroup.hotkeys; track hotkey.key) {
           <li class="flex items-center gap-1">
-            <div class="w-[70px] flex-none">
+            <div class="w-[100px] flex-none">
               <kbd
                 [innerHTML]="
                   hotkey.key | hotkeysShortcut: ' + ' : ' then ' : keyAlias

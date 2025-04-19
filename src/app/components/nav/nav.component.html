@@ -1,7 +1,7 @@
 <mat-sidenav-container class="h-full">
   <mat-sidenav
     #drawer
-    class="!w-[200px] !bg-gray-450"
+    class="!w-[220px] !bg-gray-450"
     fixedInViewport
     [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'"
@@ -11,36 +11,40 @@
     autosize
   >
     <header class="sticky top-0 z-10 shadow">
-      <mat-toolbar class="sticky top-0 z-10 !bg-gray-450 !p-0">
-        @for (iconLink of iconLinks; track $index) {
+      <div class="flex flex-wrap">
+        @for (navLink of navLinks; track $index) {
           <a
-            [routerLink]="iconLink.routerLink"
+            class="w-1/2"
+            [routerLink]="navLink.routerLink"
             routerLinkActive
-            [routerLinkActiveOptions]="iconLink.routerLinkActiveOptions"
+            [routerLinkActiveOptions]="navLink.routerLinkActiveOptions"
             #rla="routerLinkActive"
-            [attr.aria-label]="iconLink.ariaLabel"
-            [matTooltip]="iconLink.tooltipMessage"
+            [attr.aria-label]="navLink.ariaLabel"
+            [matTooltip]="navLink.tooltipMessage"
             (click)="onNavLinkClick()"
           >
             <button
               type="button"
-              mat-icon-button
+              mat-flat-button
               [color]="rla.isActive ? 'primary' : null"
             >
-              <mat-icon>{{ iconLink.icon | iconGuard }}</mat-icon>
+              <mat-icon>{{ navLink.icon | iconGuard }}</mat-icon>
+              {{ navLink.title }}
             </button>
           </a>
         }
-        <button
-          type="button"
-          mat-icon-button
-          aria-label="button that opens hotkey dialog"
-          (click)="openHotkeyDialog()"
-          matTooltip="Open hotkey dialog"
+        <a class="w-1/2">
+          <button
+            type="button"
+            mat-flat-button
+            aria-label="button that opens hotkey dialog"
+            (click)="openHotkeyDialog()"
+            matTooltip="Open hotkey dialog"
+          >
+            <mat-icon>{{ "keyboard" | iconGuard }}</mat-icon> Hotkey
+          </button></a
         >
-          <mat-icon>{{ "keyboard" | iconGuard }}</mat-icon>
-        </button>
-      </mat-toolbar>
+      </div>
       <mat-form-field
         class="w-full [&_.mat-mdc-form-field-subscript-wrapper]:hidden"
       >
