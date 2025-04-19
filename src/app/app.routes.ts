@@ -35,11 +35,4 @@ export const APP_ROUTES: Route[] = [
         (m) => m.LayoutViewerPageComponent,
       ),
   },
-  {
-    path: 'keyboard-layout-viewer',
-    loadComponent: () =>
-      import('./pages/keyboard-layout-viewer-page/keyboard-layout-viewer-page.component').then(
-        (m) => m.KeyboardLayoutViewerPageComponent,
-      ),
-  }
 ];
