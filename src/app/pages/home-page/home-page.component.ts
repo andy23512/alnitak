@@ -10,14 +10,14 @@ import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { Router } from '@angular/router';
 import { HotkeysService } from '@ngneat/hotkeys';
-import { concatMap, interval } from 'rxjs';
+import { concatMap, from } from 'rxjs';
 import { SwitchComponent } from 'src/app/components/switch/switch.component';
 import { CHORDING_TIMING } from 'src/app/data/chord-timing';
 import { Layer } from 'src/app/models/device-layout.models';
 import { IconGuardPipe } from 'src/app/pipes/icon-guard.pipe';
 import { VisibilitySettingStore } from 'src/app/stores/visibility-setting.store';
 import { chordAnimationEventsToObservable } from 'src/app/utils/chord-animation.utils';
-import { pickRandomItem } from 'src/app/utils/random.utils';
+import { pickRandomItem, shuffle } from 'src/app/utils/random.utils';
 
 @Component({
   selector: 'app-home-page',
@@ -36,11 +36,9 @@ export class HomePageComponent {
   ]
     .map((list) => pickRandomItem(list))
     .flat();
-  typingDeviceName$ = interval().pipe(
-    concatMap((i) =>
-      chordAnimationEventsToObservable(
-        CHORDING_TIMING[['cc1', 'cc2', 'm4g'][i % 3]],
-      ),
+  typingDeviceName$ = from(shuffle(['cc1', 'cc2', 'm4g'])).pipe(
+    concatMap((device, index) =>
+      chordAnimationEventsToObservable(CHORDING_TIMING[device], index === 2),
     ),
   );
   useAnimation = signal(false);

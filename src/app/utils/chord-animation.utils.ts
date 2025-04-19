@@ -3,6 +3,7 @@ import { ChordAnimationEvent } from '../models/chord-animation-event.models';
 
 export function chordAnimationEventsToObservable(
   chordAnimationEvents: ChordAnimationEvent[],
+  noDelete: boolean,
 ) {
   const textAnimationFrames = chordAnimationEvents.reduce(
     (acc, cur) => {
@@ -23,7 +24,7 @@ export function chordAnimationEventsToObservable(
     }));
   const textAnimationObservables = [
     ...textAnimationFrames,
-    ...removeAnimationFrames,
+    ...(noDelete ? [] : removeAnimationFrames),
   ].map(({ text, t }) => of(text).pipe(delay(t)));
   return merge(...textAnimationObservables);
 }
