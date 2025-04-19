@@ -21,6 +21,7 @@ export type Icon =
   | 'heap_snapshot_multiple'
   | 'help'
   | 'home'
+  | 'info'
   | 'keyboard'
   | 'keyboard_arrow_down'
   | 'keyboard_arrow_left'

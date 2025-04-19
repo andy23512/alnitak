@@ -41,4 +41,12 @@ export const NAV_LINKS: NavLink[] = [
     tooltipMessage: 'Go to Settings page',
     icon: 'settings',
   },
+  {
+    title: 'Info',
+    routerLink: '/information',
+    routerLinkActiveOptions: { exact: false },
+    ariaLabel: 'information page link',
+    tooltipMessage: 'Go to Information page',
+    icon: 'info',
+  },
 ];
