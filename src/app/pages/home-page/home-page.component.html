@@ -35,8 +35,19 @@
 <main class="flex h-full flex-col items-center justify-center gap-4 p-4">
   <header class="text-center">
     <h1 class="mb-0 text-4xl text-alnitak-500">Alnitak</h1>
-    <span>An unofficial CharaChorder One practice tool</span>
   </header>
+  <div class="flex">
+    <div>An unofficial practice tool of&nbsp;</div>
+    <div class="font-bold">
+      @if (visibilitySettingStore.homePageChordingAnimation()) {
+        <div class="h-6 w-[150px]">
+          {{ typingDeviceName$ | async }}<span>_</span>
+        </div>
+      } @else {
+        CharaChorder 3D input devices
+      }
+    </div>
+  </div>
   <span
     >Use <kbd>space</kbd> key to enter the first lesson, or select a lesson from
     the side menu.</span

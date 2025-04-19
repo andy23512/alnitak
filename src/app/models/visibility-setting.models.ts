@@ -5,4 +5,5 @@ export interface VisibilitySetting {
   layoutThumb3Switch: boolean;
   comboCounter: boolean;
   speedometer: boolean;
+  homePageChordingAnimation: boolean;
 }

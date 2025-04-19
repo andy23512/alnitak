@@ -23,6 +23,7 @@ const VISIBILITY_SETTING_ITEMS: {
   { name: 'Layout - Thumb 3 Switch', key: 'layoutThumb3Switch' },
   { name: 'Combo Counter', key: 'comboCounter' },
   { name: 'Speedometer', key: 'speedometer' },
+  { name: 'Home Page Chording Animation', key: 'homePageChordingAnimation' },
 ];
 
 @Component({
