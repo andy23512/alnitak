@@ -57,12 +57,12 @@ export const NON_WSK_CODE_2_RAW_KEY_LABEL_MAP: Record<NonWSKCode, RawKeyLabel> =
     MetaLeft: {
       type: KeyLabelType.Icon,
       c: 'apps',
-      title: 'Windows / Command (left)',
+      title: 'Windows / Command / Super (left)',
     },
     MetaRight: {
       type: KeyLabelType.Icon,
       c: 'apps',
-      title: 'Windows / Command (right)',
+      title: 'Windows / Command / Super (right)',
     },
     ShiftLeft: { type: KeyLabelType.Icon, c: 'shift', title: 'Shift (left)' },
     ShiftRight: { type: KeyLabelType.Icon, c: 'shift', title: 'Shift (right)' },
