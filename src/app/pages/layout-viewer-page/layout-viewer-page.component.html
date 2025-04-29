@@ -52,6 +52,9 @@
   <button
     mat-icon-button
     ngxPrint
+    printTitle="{{ deviceLayout()?.name }} Device Layout under {{
+      keyboardLayout().name
+    }} OS Layout"
     printSectionId="print-section"
     [useExistingCss]="true"
     matTooltip="Print the layout"
