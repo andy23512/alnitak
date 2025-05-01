@@ -10,7 +10,7 @@ import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { Router } from '@angular/router';
 import { HotkeysService } from '@ngneat/hotkeys';
-import { concatMap, from } from 'rxjs';
+import { BehaviorSubject, concatMap, exhaustMap, from } from 'rxjs';
 import { SwitchComponent } from 'src/app/components/switch/switch.component';
 import { CHORDING_TIMING } from 'src/app/data/chord-timing';
 import { Layer } from 'src/app/models/device-layout.models';
@@ -36,9 +36,17 @@ export class HomePageComponent {
   ]
     .map((list) => pickRandomItem(list))
     .flat();
-  typingDeviceName$ = from(shuffle(['cc1', 'cc2', 'm4g']).concat(['ctd'])).pipe(
-    concatMap((device, index) =>
-      chordAnimationEventsToObservable(CHORDING_TIMING[device], index === 3),
+  animationStartSubject = new BehaviorSubject(1);
+  typingDeviceName$ = this.animationStartSubject.pipe(
+    exhaustMap(() =>
+      from(shuffle(['cc1', 'cc2', 'm4g']).concat(['ctd'])).pipe(
+        concatMap((device, index) =>
+          chordAnimationEventsToObservable(
+            CHORDING_TIMING[device],
+            index === 3,
+          ),
+        ),
+      ),
     ),
   );
   useAnimation = signal(false);
@@ -56,5 +64,10 @@ export class HomePageComponent {
 
   ngOnDestroy(): void {
     this.hotkeysService.removeShortcuts(['space']);
+  }
+
+  useAndReplayAnimation() {
+    this.useAnimation.set(true);
+    this.animationStartSubject.next(1);
   }
 }

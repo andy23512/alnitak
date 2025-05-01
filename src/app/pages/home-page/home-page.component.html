@@ -1,7 +1,7 @@
 <svg
   viewBox="0 0 350 350"
   preserveAspectRatio="xMidYMid meet"
-  class="absolute h-full w-full opacity-10"
+  class="absolute -z-10 h-full w-full opacity-10"
 >
   <g
     appSwitch
@@ -38,8 +38,10 @@
   </header>
   <div class="flex">
     <div>An unofficial practice tool of&nbsp;</div>
-    <div class="font-bold">
-      @if (visibilitySettingStore.homePageChordingAnimation()) {
+    <div class="cursor-pointer font-bold" (click)="useAndReplayAnimation()">
+      @if (
+        visibilitySettingStore.homePageChordingAnimation() || useAnimation()
+      ) {
         <div class="h-6 w-[230px]">
           {{ typingDeviceName$ | async }}<span>_</span>
         </div>
