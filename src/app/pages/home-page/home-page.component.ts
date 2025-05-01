@@ -36,9 +36,9 @@ export class HomePageComponent {
   ]
     .map((list) => pickRandomItem(list))
     .flat();
-  typingDeviceName$ = from(shuffle(['cc1', 'cc2', 'm4g'])).pipe(
+  typingDeviceName$ = from(shuffle(['cc1', 'cc2', 'm4g']).concat(['ctd'])).pipe(
     concatMap((device, index) =>
-      chordAnimationEventsToObservable(CHORDING_TIMING[device], index === 2),
+      chordAnimationEventsToObservable(CHORDING_TIMING[device], index === 3),
     ),
   );
   useAnimation = signal(false);
