@@ -1,0 +1,105 @@
+<mat-form-field>
+  <mat-label>Rotation Angle for Thumb Switches</mat-label>
+  <input
+    matInput
+    type="number"
+    [ngModel]="thumbRotationAngle()"
+    (ngModelChange)="setThumbRotationAngle($event)"
+    aria-label="input box for rotation angle for thumb switches on the layout display"
+  />
+  <span matTextSuffix>°</span>
+</mat-form-field>
+<app-layout
+  class="block w-full max-w-[500px]"
+  [alwaysShowLayout]="true"
+  [keyLabelMap]="{
+    '11': [
+      {
+        type: KeyLabelType.String,
+        c: 'E',
+        title: 'East',
+        layer: null,
+        shiftKey: null,
+        altGraphKey: null
+      }
+    ],
+    '12': [
+      {
+        type: KeyLabelType.String,
+        c: 'N',
+        title: 'North',
+        layer: null,
+        shiftKey: null,
+        altGraphKey: null
+      }
+    ],
+    '13': [
+      {
+        type: KeyLabelType.String,
+        c: 'W',
+        title: 'West',
+        layer: null,
+        shiftKey: null,
+        altGraphKey: null
+      }
+    ],
+    '14': [
+      {
+        type: KeyLabelType.String,
+        c: 'S',
+        title: 'South',
+        layer: null,
+        shiftKey: null,
+        altGraphKey: null
+      }
+    ],
+    '56': [
+      {
+        type: KeyLabelType.String,
+        c: 'W',
+        title: 'West',
+        layer: null,
+        shiftKey: null,
+        altGraphKey: null
+      }
+    ],
+    '57': [
+      {
+        type: KeyLabelType.String,
+        c: 'N',
+        title: 'North',
+        layer: null,
+        shiftKey: null,
+        altGraphKey: null
+      }
+    ],
+    '58': [
+      {
+        type: KeyLabelType.String,
+        c: 'E',
+        title: 'East',
+        layer: null,
+        shiftKey: null,
+        altGraphKey: null
+      }
+    ],
+    '59': [
+      {
+        type: KeyLabelType.String,
+        c: 'S',
+        title: 'South',
+        layer: null,
+        shiftKey: null,
+        altGraphKey: null
+      }
+    ]
+  }"
+  [highlightKeyCombination]="{
+    positionCodes: [],
+    score: 0,
+    characterKeyPositionCode: -1,
+    layer: Layer.Primary,
+    shiftKey: false,
+    altGraphKey: false
+  }"
+></app-layout>

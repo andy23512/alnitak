@@ -2,6 +2,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  inject,
   input,
 } from '@angular/core';
 import { POSITION_CODE_LAYOUT } from 'src/app/data/layouts';
@@ -11,6 +12,7 @@ import {
   KeyLabel,
 } from 'src/app/models/device-layout.models';
 import { FingerMap, HandMap } from 'src/app/models/layout.models';
+import { MiscSettingStore } from 'src/app/stores/misc-setting.store';
 import {
   convertPositionCodeToKeyNotation,
   convertPositionCodeToText,
@@ -96,6 +98,11 @@ export class LayoutComponent {
     ] as const;
   });
   sides = ['left', 'right'] as const;
+  miscSettingStore = inject(MiscSettingStore);
+
+  thumbRotationAngle = computed(() =>
+    this.miscSettingStore.thumbRotationAngle(),
+  );
 
   gridY(rowIndex: number) {
     return rowIndex * (cellSize + gap) + cellSize / 2;

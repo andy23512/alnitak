@@ -35,7 +35,7 @@
           appSwitch
           [center]="switchCenter(sw, side)"
           [rotationDirection]="side === 'left' ? 'cw' : 'ccw'"
-          [rotation]="sw.startsWith('thumb') ? 10 : 0"
+          [rotation]="sw.startsWith('thumb') ? thumbRotationAngle() : 0"
           [keyLabelMap]="keyLabelMap()"
           [positionCodeMap]="positionCodeLayout[side][sw]"
           [highlightKeyCombination]="highlightKeyCombination()"
