@@ -5,7 +5,7 @@ An unofficial practice tool of CharaChorder 3D input devices (CharaChorder One, 
 ## Links
 
 - [Website](https://andy23512.github.io/alnitak/)
-- [Introduction & Development Note](https://hackmd.io/@andy23512/SywN7okfC)
+- [Introduction & Development Note](https://andy23512.github.io/blog/2024/05/01/alnitak-a-practice-tool-of-charachorder-3d-input-devices-developed-by-tangent/)
 
 ## Features
 
@@ -27,6 +27,7 @@ An unofficial practice tool of CharaChorder 3D input devices (CharaChorder One, 
 - Layout Viewer
   - can view the final layout (actual output under the selected OS keyboard layout) by layers and with/without shift
   - search for a key in the layout
+  - print the final layout (or generate a pdf file of it)
 
 ## Disclaimer
 
