@@ -1,4 +1,4 @@
-<mat-sidenav-container class="h-full">
+<mat-sidenav-container class="h-full" autosize>
   <mat-sidenav
     #drawer
     class="!w-[220px] !bg-gray-450"
@@ -8,7 +8,6 @@
     [opened]="(isHandset$ | async) === false"
     [disableClose]="!(isHandset$ | async)"
     data-style-dense
-    autosize
   >
     <header class="sticky top-0 z-10 bg-gray-450 shadow">
       <div class="flex flex-wrap">
