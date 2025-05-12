@@ -60,7 +60,6 @@ export class DeviceLayoutSettingPanelContentComponent {
       if (!data) {
         return;
       }
-      console.log(data);
       let layoutItem = null;
       if (data.history) {
         layoutItem = data.history[0].find(
