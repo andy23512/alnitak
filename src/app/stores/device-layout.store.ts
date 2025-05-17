@@ -38,10 +38,16 @@ export const DeviceLayoutStore = signalStore(
       }
       const entities = store.entities();
       const defaultLayout = entities.find((e) => e.id === 'default');
-      if (defaultLayout && defaultLayout.name === 'Default') {
+      if (
+        defaultLayout &&
+        ['Default', 'CC1 Default'].includes(defaultLayout.name)
+      ) {
         patchState(
           store,
-          updateEntity({ id: 'default', changes: { name: 'CC1 Default' } }),
+          updateEntity({
+            id: 'default',
+            changes: { name: 'CC1/CC2 Default' },
+          }),
         );
       }
       const m4gDefaultLayout = entities.find((e) => e.id === 'm4g-default');
