@@ -12,6 +12,7 @@ module.exports = {
       body: ["Roboto", '"Helvetica Neue"', "sans-serif"],
       mono: ['"Roboto Mono"', "monospace"],
       "7seg": ['"FS Sevegment"', '"Roboto Mono"', "monospace"],
+      logos: ["font-logos"],
     },
     extend: {
       colors: {

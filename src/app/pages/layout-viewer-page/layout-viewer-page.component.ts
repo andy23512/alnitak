@@ -33,6 +33,7 @@ import { CHARACTER_NAME_MAP } from 'src/app/data/character-name-map';
 import {
   NON_KEY_ACTION_NAME_2_RAW_KEY_LABEL_MAP,
   NON_WSK_CODE_2_RAW_KEY_LABEL_MAP,
+  OS_2_META_KEY_LABEL_MAP,
 } from 'src/app/data/key-labels';
 import {
   NON_KEY_ACTION_NAME_2_KEY_NAMES_MAP,
@@ -46,6 +47,7 @@ import {
   Layer,
 } from 'src/app/models/device-layout.models';
 import { IconGuardPipe } from 'src/app/pipes/icon-guard.pipe';
+import { OperatingSystemService } from 'src/app/services/operating-system.service';
 import { DeviceLayoutStore } from 'src/app/stores/device-layout.store';
 import { HighlightSettingStore } from 'src/app/stores/highlight-setting.store';
 import { LayoutViewerKeyboardLayoutStore } from 'src/app/stores/layout-viewer-keyboard-layout.store';
@@ -122,6 +124,7 @@ export class LayoutViewerPageComponent {
   readonly highlightSettingStore = inject(HighlightSettingStore);
   readonly visibilitySettingStore = inject(VisibilitySettingStore);
   readonly keyboardLayoutStore = inject(LayoutViewerKeyboardLayoutStore);
+  readonly operatingSystemService = inject(OperatingSystemService);
 
   readonly keyboardLayout = this.keyboardLayoutStore.selectedEntity;
   readonly selectedKeyboardLayoutId = this.keyboardLayoutStore.selectedId;
@@ -167,6 +170,7 @@ export class LayoutViewerPageComponent {
   });
 
   readonly keyLabelMap = computed(() => {
+    const operatingSystem = this.operatingSystemService.getOS();
     const keyLabelMap: Record<number, KeyLabel[]> = {};
     const deviceLayout = this.deviceLayout();
     const keyboardLayout = this.keyboardLayout();
@@ -230,7 +234,14 @@ export class LayoutViewerPageComponent {
             }
           }
         } else if (action?.type === ActionType.NonWSK && action.keyCode) {
-          const rawKeyLabel = NON_WSK_CODE_2_RAW_KEY_LABEL_MAP[action.keyCode];
+          let rawKeyLabelMap = NON_WSK_CODE_2_RAW_KEY_LABEL_MAP;
+          if (operatingSystem && OS_2_META_KEY_LABEL_MAP[operatingSystem]) {
+            rawKeyLabelMap = {
+              ...rawKeyLabelMap,
+              ...OS_2_META_KEY_LABEL_MAP[operatingSystem],
+            };
+          }
+          const rawKeyLabel = rawKeyLabelMap[action.keyCode];
           if (rawKeyLabel) {
             keyLabels.push({
               ...rawKeyLabel,

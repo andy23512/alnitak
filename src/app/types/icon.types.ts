@@ -28,6 +28,7 @@ export type Icon =
   | 'keyboard_arrow_right'
   | 'keyboard_arrow_up'
   | 'keyboard_capslock'
+  | 'keyboard_command_key'
   | 'keyboard_return'
   | 'keyboard_tab'
   | 'left_click'
@@ -55,4 +56,5 @@ export type Icon =
   | 'terminal'
   | 'topic'
   | 'trending_up'
-  | 'upload';
+  | 'upload'
+  | 'window';

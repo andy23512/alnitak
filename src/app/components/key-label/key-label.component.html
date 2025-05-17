@@ -5,7 +5,7 @@
     dominant-baseline="central"
     text-anchor="middle"
     [attr.font-size]="
-      label.type !== KeyLabelType.Icon
+      label.type === KeyLabelType.String
         ? (label.c.length > 2
             ? fontSize() * 0.6
             : label.c.length > 1
@@ -14,12 +14,16 @@
         : null
     "
     [style.font-size.px]="
-      label.type === KeyLabelType.Icon ? fontSize() * 0.8 : null
+      label.type === KeyLabelType.Icon || label.type === KeyLabelType.Logo
+        ? fontSize() * 0.8
+        : null
     "
     [class.material-icons]="label.type === KeyLabelType.Icon"
+    [class.font-logos]="label.type === KeyLabelType.Logo"
     fill="currentColor"
     font-weight="lighter"
     class="transition-opacity"
+    [ngClass]="label.type === KeyLabelType.Logo ? label.c : null"
     [attr.opacity]="isLabelActive(label) ? 1 : 0"
     [matTooltip]="label.title"
     [matTooltipDisabled]="!isLabelActive(label)"

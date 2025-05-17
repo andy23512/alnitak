@@ -1,10 +1,12 @@
 import { NonKeyActionName } from '../models/action.models';
 import {
+  FontLogo,
   KeyLabel,
   KeyLabelType,
   RawKeyLabel,
 } from '../models/device-layout.models';
 import { NonWSKCode } from '../models/key-code.models';
+import { OperatingSystemName } from '../models/operating-system.models';
 
 export const SHIFT_KEY_LABEL: KeyLabel = {
   type: KeyLabelType.Icon,
@@ -202,5 +204,277 @@ export const NON_KEY_ACTION_NAME_2_RAW_KEY_LABEL_MAP: Record<
     type: KeyLabelType.Icon,
     c: 'heap_snapshot_multiple',
     title: 'Toggle Impulse',
+  },
+};
+
+export const OS_2_META_KEY_LABEL_MAP: Partial<
+  Record<
+    OperatingSystemName | '*',
+    Record<'MetaLeft' | 'MetaRight', RawKeyLabel>
+  >
+> = {
+  macOS: {
+    MetaLeft: {
+      type: KeyLabelType.Icon,
+      c: 'keyboard_command_key',
+      title: 'Command [Windows / Super] (left)',
+    },
+    MetaRight: {
+      type: KeyLabelType.Icon,
+      c: 'keyboard_command_key',
+      title: 'Command [Windows / Super] (right)',
+    },
+  },
+  iOS: {
+    MetaLeft: {
+      type: KeyLabelType.Icon,
+      c: 'keyboard_command_key',
+      title: 'Command [Windows / Super] (left)',
+    },
+    MetaRight: {
+      type: KeyLabelType.Icon,
+      c: 'keyboard_command_key',
+      title: 'Command [Windows / Super] (right)',
+    },
+  },
+  Windows: {
+    MetaLeft: {
+      type: KeyLabelType.Icon,
+      c: 'window',
+      title: 'Windows [Command / Super] (left)',
+    },
+    MetaRight: {
+      type: KeyLabelType.Icon,
+      c: 'window',
+      title: 'Windows [Command / Super] (right)',
+    },
+  },
+  'Windows Mobile': {
+    MetaLeft: {
+      type: KeyLabelType.Icon,
+      c: 'window',
+      title: 'Windows [Command / Super] (left)',
+    },
+    MetaRight: {
+      type: KeyLabelType.Icon,
+      c: 'window',
+      title: 'Windows [Command / Super] (right)',
+    },
+  },
+  'Windows Phone': {
+    MetaLeft: {
+      type: KeyLabelType.Icon,
+      c: 'window',
+      title: 'Windows [Command / Super] (left)',
+    },
+    MetaRight: {
+      type: KeyLabelType.Icon,
+      c: 'window',
+      title: 'Windows [Command / Super] (right)',
+    },
+  },
+  Ubuntu: {
+    MetaLeft: {
+      type: KeyLabelType.Logo,
+      c: FontLogo.Ubuntu,
+      title: 'Super [Windows / Command] (left)',
+    },
+    MetaRight: {
+      type: KeyLabelType.Logo,
+      c: FontLogo.Ubuntu,
+      title: 'Super [Windows / Command] (right)',
+    },
+  },
+  Arch: {
+    MetaLeft: {
+      type: KeyLabelType.Logo,
+      c: FontLogo.ArchLinux,
+      title: 'Super [Windows / Command] (left)',
+    },
+    MetaRight: {
+      type: KeyLabelType.Logo,
+      c: FontLogo.ArchLinux,
+      title: 'Super [Windows / Command] (right)',
+    },
+  },
+  CentOS: {
+    MetaLeft: {
+      type: KeyLabelType.Logo,
+      c: FontLogo.CentOS,
+      title: 'Super [Windows / Command] (left)',
+    },
+    MetaRight: {
+      type: KeyLabelType.Logo,
+      c: FontLogo.CentOS,
+      title: 'Super [Windows / Command] (right)',
+    },
+  },
+  Debian: {
+    MetaLeft: {
+      type: KeyLabelType.Logo,
+      c: FontLogo.Debian,
+      title: 'Super [Windows / Command] (left)',
+    },
+    MetaRight: {
+      type: KeyLabelType.Logo,
+      c: FontLogo.Debian,
+      title: 'Super [Windows / Command] (right)',
+    },
+  },
+  'elementary OS': {
+    MetaLeft: {
+      type: KeyLabelType.Logo,
+      c: FontLogo.Elementary,
+      title: 'Super [Windows / Command] (left)',
+    },
+    MetaRight: {
+      type: KeyLabelType.Logo,
+      c: FontLogo.Elementary,
+      title: 'Super [Windows / Command] (right)',
+    },
+  },
+  Fedora: {
+    MetaLeft: {
+      type: KeyLabelType.Logo,
+      c: FontLogo.Fedora,
+      title: 'Super [Windows / Command] (left)',
+    },
+    MetaRight: {
+      type: KeyLabelType.Logo,
+      c: FontLogo.Fedora,
+      title: 'Super [Windows / Command] (right)',
+    },
+  },
+  FreeBSD: {
+    MetaLeft: {
+      type: KeyLabelType.Logo,
+      c: FontLogo.FreeBSD,
+      title: 'Super [Windows / Command] (left)',
+    },
+    MetaRight: {
+      type: KeyLabelType.Logo,
+      c: FontLogo.FreeBSD,
+      title: 'Super [Windows / Command] (right)',
+    },
+  },
+  Gentoo: {
+    MetaLeft: {
+      type: KeyLabelType.Logo,
+      c: FontLogo.Gentoo,
+      title: 'Super [Windows / Command] (left)',
+    },
+    MetaRight: {
+      type: KeyLabelType.Logo,
+      c: FontLogo.Gentoo,
+      title: 'Super [Windows / Command] (right)',
+    },
+  },
+  Mageia: {
+    MetaLeft: {
+      type: KeyLabelType.Logo,
+      c: FontLogo.Mageia,
+      title: 'Super [Windows / Command] (left)',
+    },
+    MetaRight: {
+      type: KeyLabelType.Logo,
+      c: FontLogo.Mageia,
+      title: 'Super [Windows / Command] (right)',
+    },
+  },
+  Mandriva: {
+    MetaLeft: {
+      type: KeyLabelType.Logo,
+      c: FontLogo.Mandriva,
+      title: 'Super [Windows / Command] (left)',
+    },
+    MetaRight: {
+      type: KeyLabelType.Logo,
+      c: FontLogo.Mandriva,
+      title: 'Super [Windows / Command] (right)',
+    },
+  },
+  Manjaro: {
+    MetaLeft: {
+      type: KeyLabelType.Logo,
+      c: FontLogo.Manjaro,
+      title: 'Super [Windows / Command] (left)',
+    },
+    MetaRight: {
+      type: KeyLabelType.Logo,
+      c: FontLogo.Manjaro,
+      title: 'Super [Windows / Command] (right)',
+    },
+  },
+  Mint: {
+    MetaLeft: {
+      type: KeyLabelType.Logo,
+      c: FontLogo.LinuxMint,
+      title: 'Super [Windows / Command] (left)',
+    },
+    MetaRight: {
+      type: KeyLabelType.Logo,
+      c: FontLogo.LinuxMint,
+      title: 'Super [Windows / Command] (right)',
+    },
+  },
+  OpenBSD: {
+    MetaLeft: {
+      type: KeyLabelType.Logo,
+      c: FontLogo.OpenBSD,
+      title: 'Super [Windows / Command] (left)',
+    },
+    MetaRight: {
+      type: KeyLabelType.Logo,
+      c: FontLogo.OpenBSD,
+      title: 'Super [Windows / Command] (right)',
+    },
+  },
+  Raspbian: {
+    MetaLeft: {
+      type: KeyLabelType.Logo,
+      c: FontLogo.RaspberryPi,
+      title: 'Super [Windows / Command] (left)',
+    },
+    MetaRight: {
+      type: KeyLabelType.Logo,
+      c: FontLogo.RaspberryPi,
+      title: 'Super [Windows / Command] (right)',
+    },
+  },
+  RedHat: {
+    MetaLeft: {
+      type: KeyLabelType.Logo,
+      c: FontLogo.RedHat,
+      title: 'Super [Windows / Command] (left)',
+    },
+    MetaRight: {
+      type: KeyLabelType.Logo,
+      c: FontLogo.RedHat,
+      title: 'Super [Windows / Command] (right)',
+    },
+  },
+  Sabayon: {
+    MetaLeft: {
+      type: KeyLabelType.Logo,
+      c: FontLogo.Sabayon,
+      title: 'Super [Windows / Command] (left)',
+    },
+    MetaRight: {
+      type: KeyLabelType.Logo,
+      c: FontLogo.Sabayon,
+      title: 'Super [Windows / Command] (right)',
+    },
+  },
+  Linux: {
+    MetaLeft: {
+      type: KeyLabelType.Logo,
+      c: FontLogo.Tux,
+      title: 'Super [Windows / Command] (left)',
+    },
+    MetaRight: {
+      type: KeyLabelType.Logo,
+      c: FontLogo.Tux,
+      title: 'Super [Windows / Command] (right)',
+    },
   },
 };
