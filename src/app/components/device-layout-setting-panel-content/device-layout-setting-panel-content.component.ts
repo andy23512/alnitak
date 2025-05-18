@@ -64,7 +64,8 @@ export class DeviceLayoutSettingPanelContentComponent {
       if (data.history) {
         layoutItem = data.history[0].find(
           (item: any) =>
-            item.type === 'layout' && ['One', 'TWO'].includes(item.device),
+            item.type === 'layout' &&
+            ['One', 'TWO', 'M4G'].includes(item.device),
         );
       } else {
         layoutItem = data;
