@@ -3,7 +3,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
-  effect,
   HostBinding,
   inject,
   signal,
@@ -363,20 +362,9 @@ export class LayoutViewerPageComponent {
       .map((r) => r.original);
   });
 
-  constructor() {
-    effect(
-      () => {
-        this.currentLayer();
-        this.shiftKey();
-        this.keyboardLayout();
-        this.selectedPositions.set([]);
-      },
-      { allowSignalWrites: true },
-    );
-  }
-
   public setSelectedKeyboardLayoutId(keyboardLayoutId: string) {
     this.keyboardLayoutStore.setSelectedId(keyboardLayoutId);
+    this.resetSelectedPositions();
   }
 
   public onResetButtonClick(event: MouseEvent) {
@@ -413,5 +401,9 @@ export class LayoutViewerPageComponent {
 
   public getHighlightPositionCodes(layer: Layer, shiftKey: boolean) {
     return getHighlightPositionCodes(this.deviceLayout(), layer, shiftKey);
+  }
+
+  public resetSelectedPositions() {
+    this.selectedPositions.set([]);
   }
 }

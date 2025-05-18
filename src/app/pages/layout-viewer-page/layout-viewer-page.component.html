@@ -1,12 +1,20 @@
 <section class="flex flex-none items-center gap-1 bg-gray-700">
-  <mat-button-toggle-group [(ngModel)]="currentLayer">
+  <mat-button-toggle-group
+    [(ngModel)]="currentLayer"
+    (ngModelChange)="resetSelectedPositions()"
+  >
     @for (layer of layers; track $index) {
       <mat-button-toggle [value]="layer.value" [matTooltip]="layer.tooltip">
         <mat-icon>{{ layer.icon | iconGuard }}</mat-icon>
       </mat-button-toggle>
     }
   </mat-button-toggle-group>
-  <mat-checkbox [(ngModel)]="shiftKey" color="primary">Shift</mat-checkbox>
+  <mat-checkbox
+    [(ngModel)]="shiftKey"
+    color="primary"
+    (ngModelChange)="resetSelectedPositions()"
+    >Shift</mat-checkbox
+  >
   <div class="flex-1"></div>
   <mat-form-field class="w-96" [subscriptSizing]="'dynamic'">
     <mat-label>OS Keyboard Layout</mat-label>
