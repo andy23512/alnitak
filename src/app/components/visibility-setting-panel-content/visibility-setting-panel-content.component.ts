@@ -12,6 +12,7 @@ import { VisibilitySetting } from 'src/app/models/visibility-setting.models';
 import { IconGuardPipe } from 'src/app/pipes/icon-guard.pipe';
 import { VisibilitySettingStore } from 'src/app/stores/visibility-setting.store';
 import { KeyNotationHelpDialogComponent } from '../key-notation-help-dialog/key-notation-help-dialog.component';
+import { Thumb3SwitchHelpDialogComponent } from '../thumb-3-switch-help-dialog/thumb-3-switch-help-dialog.component';
 
 const VISIBILITY_SETTING_ITEMS: {
   name: string;
@@ -46,6 +47,10 @@ export class VisibilitySettingPanelContentComponent {
 
   setVisible(key: keyof VisibilitySetting, visible: boolean) {
     this.visibilitySettingStore.set(key, visible);
+  }
+
+  openThumb3SwitchHelpDialog() {
+    this.matDialog.open(Thumb3SwitchHelpDialogComponent);
   }
 
   openKeyNotationHelpDialog() {

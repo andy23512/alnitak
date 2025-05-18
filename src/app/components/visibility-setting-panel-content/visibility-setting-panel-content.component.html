@@ -7,6 +7,16 @@
       (change)="setVisible(item.key, $event.checked)"
     >
       {{ item.name }}
+      @if (item.key === "layoutThumb3Switch") {
+        <button
+          type="button"
+          mat-icon-button
+          aria-label="open help dialog for thumb 3 switch"
+          (click)="openThumb3SwitchHelpDialog()"
+        >
+          <mat-icon>{{ "help" | iconGuard }}</mat-icon>
+        </button>
+      }
       @if (item.key === "layoutKeyNotationGuide") {
         <button
           type="button"
