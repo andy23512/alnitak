@@ -76,22 +76,35 @@ export function getCharacterKeyCodeFromCharacter(
   return characterKeyCodeMap.get(character);
 }
 
-export function getCharacterActionCodeFromCharacterKeyCode({
+export function getCharacterActionCodesFromCharacterKeyCode({
   keyCode,
   shiftKey,
   altGraphKey,
-}: CharacterKeyCode) {
+}: CharacterKeyCode): CharacterActionCode[] {
+  const characterActionCodes: CharacterActionCode[] = [];
   const action = ACTIONS.find(
     (a) => a.type === ActionType.WSK && a.keyCode === keyCode && !a.withShift,
   );
-  if (!action) {
-    return null;
+  if (action) {
+    characterActionCodes.push({
+      actionCode: action.codeId,
+      shiftKey,
+      altGraphKey,
+    });
   }
-  return {
-    actionCode: action.codeId,
-    shiftKey,
-    altGraphKey,
-  };
+  if (shiftKey) {
+    const holdShiftKeyAction = ACTIONS.find(
+      (a) => a.type === ActionType.WSK && a.keyCode === keyCode && a.withShift,
+    );
+    if (holdShiftKeyAction) {
+      characterActionCodes.push({
+        actionCode: holdShiftKeyAction.codeId,
+        shiftKey: false,
+        altGraphKey,
+      });
+    }
+  }
+  return characterActionCodes;
 }
 
 export function getNumShiftKeyPositionCodes(
@@ -106,8 +119,8 @@ export function getNumShiftKeyPositionCodes(
 export function getModifierKeyPositionCodeMap(deviceLayout: DeviceLayout) {
   return {
     shift: SHIFT_ACTION_CODES.map((actionCode) =>
-      getKeyCombinationsFromActionCode(
-        { actionCode, shiftKey: false, altGraphKey: false },
+      getKeyCombinationsFromActionCodes(
+        [{ actionCode, shiftKey: false, altGraphKey: false }],
         deviceLayout,
       )?.map((k) => k.characterKeyPositionCode),
     )
@@ -115,8 +128,8 @@ export function getModifierKeyPositionCodeMap(deviceLayout: DeviceLayout) {
       .flat(),
     numShift: getNumShiftKeyPositionCodes(deviceLayout),
     fnShift: FN_SHIFT_ACTION_CODES.map((actionCode) =>
-      getKeyCombinationsFromActionCode(
-        { actionCode, shiftKey: false, altGraphKey: false },
+      getKeyCombinationsFromActionCodes(
+        [{ actionCode, shiftKey: false, altGraphKey: false }],
         deviceLayout,
       )?.map((k) => k.characterKeyPositionCode),
     )
@@ -124,8 +137,8 @@ export function getModifierKeyPositionCodeMap(deviceLayout: DeviceLayout) {
       .flat(),
     altGraph: [ALT_GR_ACTION_CODE]
       .map((actionCode) =>
-        getKeyCombinationsFromActionCode(
-          { actionCode, shiftKey: false, altGraphKey: false },
+        getKeyCombinationsFromActionCodes(
+          [{ actionCode, shiftKey: false, altGraphKey: false }],
           deviceLayout,
         )?.map((k) => k.characterKeyPositionCode),
       )
@@ -134,38 +147,42 @@ export function getModifierKeyPositionCodeMap(deviceLayout: DeviceLayout) {
   };
 }
 
-export function getKeyCombinationsFromActionCode(
-  { actionCode, shiftKey, altGraphKey }: CharacterActionCode,
+export function getKeyCombinationsFromActionCodes(
+  characterActionCodes: CharacterActionCode[],
   deviceLayout: DeviceLayout | null,
 ): KeyCombination[] | null {
   if (!deviceLayout) {
     return null;
   }
-  return deviceLayout.layout
-    .map((layer, layerIndex) => {
-      const positionCodesList = layer
-        .map((ac, index) => (ac === actionCode ? index : -1))
-        .filter((pos) => pos !== -1)
-        .map((pos) => {
-          let layer = Layer.Primary;
-          if (layerIndex === 1) {
-            layer = Layer.Secondary;
-          } else if (layerIndex === 2) {
-            layer = Layer.Tertiary;
-          }
-          return {
-            characterKeyPositionCode: pos,
-            layer,
-            shiftKey,
-            altGraphKey,
-          };
-        });
-      if (positionCodesList.length === 0) {
-        return null;
-      }
-      return positionCodesList;
-    })
-    .filter(nonNullable)[0];
+  return characterActionCodes
+    .map(({ actionCode, shiftKey, altGraphKey }) =>
+      deviceLayout.layout.map((layer, layerIndex) => {
+        const positionCodesList = layer
+          .map((ac, index) => (ac === actionCode ? index : -1))
+          .filter((pos) => pos !== -1)
+          .map((pos) => {
+            let layer = Layer.Primary;
+            if (layerIndex === 1) {
+              layer = Layer.Secondary;
+            } else if (layerIndex === 2) {
+              layer = Layer.Tertiary;
+            }
+            return {
+              characterKeyPositionCode: pos,
+              layer,
+              shiftKey,
+              altGraphKey,
+            };
+          });
+        if (positionCodesList.length === 0) {
+          return null;
+        }
+        return positionCodesList;
+      }),
+    )
+    .flat()
+    .flat()
+    .filter(nonNullable);
 }
 
 export function getChordKeyFromActionCode(

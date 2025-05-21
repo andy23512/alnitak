@@ -46,10 +46,10 @@ import { KeyboardLayoutStore } from 'src/app/stores/keyboard-layout.store';
 import { LessonStore } from 'src/app/stores/lesson.store';
 import { VisibilitySettingStore } from 'src/app/stores/visibility-setting.store';
 import {
-  getCharacterActionCodeFromCharacterKeyCode,
+  getCharacterActionCodesFromCharacterKeyCode,
   getCharacterKeyCodeFromCharacter,
   getHighlightKeyCombinationFromKeyCombinations,
-  getKeyCombinationsFromActionCode,
+  getKeyCombinationsFromActionCodes,
   getModifierKeyPositionCodeMap,
 } from 'src/app/utils/layout.utils';
 import { nonNullable } from 'src/app/utils/non-nullable.utils';
@@ -136,15 +136,15 @@ export class LessonPageComponent implements OnInit, OnDestroy {
         if (!characterKeyCode) {
           return null;
         }
-        const actionCode =
-          getCharacterActionCodeFromCharacterKeyCode(characterKeyCode);
-        if (!actionCode) {
+        const actionCodes =
+          getCharacterActionCodesFromCharacterKeyCode(characterKeyCode);
+        if (actionCodes.length === 0) {
           return null;
         }
         return {
           c,
-          characterDeviceKeys: getKeyCombinationsFromActionCode(
-            actionCode,
+          characterDeviceKeys: getKeyCombinationsFromActionCodes(
+            actionCodes,
             deviceLayout,
           ),
         };

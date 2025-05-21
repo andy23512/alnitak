@@ -31,7 +31,7 @@ import { KeyboardLayoutStore } from 'src/app/stores/keyboard-layout.store';
 import { VisibilitySettingStore } from 'src/app/stores/visibility-setting.store';
 import {
   getChordKeyFromActionCode,
-  getKeyCombinationsFromActionCode,
+  getKeyCombinationsFromActionCodes,
 } from 'src/app/utils/layout.utils';
 import { ChordOutputKeysComponent } from '../chord-output-keys/chord-output-keys.component';
 import { LayoutComponent } from '../layout/layout.component';
@@ -84,8 +84,8 @@ export class ChordPracticeComponent implements OnInit {
       return chordKey
         ? {
             c: chordKey.value,
-            characterDeviceKeys: getKeyCombinationsFromActionCode(
-              { actionCode, shiftKey: false, altGraphKey: false },
+            characterDeviceKeys: getKeyCombinationsFromActionCodes(
+              [{ actionCode, shiftKey: false, altGraphKey: false }],
               deviceLayout,
             ),
           }
@@ -147,8 +147,8 @@ export class ChordPracticeComponent implements OnInit {
         altGraphKey: false,
         positionCodes: chord.input
           .map((actionCode) =>
-            getKeyCombinationsFromActionCode(
-              { actionCode, shiftKey: false, altGraphKey: false },
+            getKeyCombinationsFromActionCodes(
+              [{ actionCode, shiftKey: false, altGraphKey: false }],
               deviceLayout,
             )?.map((k) => k.characterKeyPositionCode),
           )
