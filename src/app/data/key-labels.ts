@@ -114,6 +114,16 @@ export const NON_KEY_ACTION_NAME_2_RAW_KEY_LABEL_MAP: Record<
   NonKeyActionName,
   RawKeyLabel
 > = {
+  NoKeyPressed: {
+    type: KeyLabelType.Icon,
+    c: 'block',
+    title: 'No Key Pressed',
+  },
+  RestartInputDevice: {
+    type: KeyLabelType.Icon,
+    c: 'restart_alt',
+    title: 'Restart Input Device',
+  },
   MouseLeftClick: {
     type: KeyLabelType.Icon,
     c: 'left_click',
@@ -123,6 +133,11 @@ export const NON_KEY_ACTION_NAME_2_RAW_KEY_LABEL_MAP: Record<
     type: KeyLabelType.Icon,
     c: 'right_click',
     title: 'Mouse Right Click',
+  },
+  MouseMiddleClick: {
+    type: KeyLabelType.Icon,
+    c: 'touchpad_mouse',
+    title: 'Mouse Middle Click',
   },
   TertiaryKeymapLeft: {
     type: KeyLabelType.Icon,

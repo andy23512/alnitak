@@ -56,8 +56,11 @@ export const NON_KEY_ACTION_NAME_2_KEY_NAMES_MAP: Record<
   NonKeyActionName,
   string[]
 > = {
+  NoKeyPressed: ['no key pressed'],
+  RestartInputDevice: ['restart', 'restart device', 'restart input device'],
   MouseLeftClick: ['mouse left click', 'mouse left button press/release'],
   MouseRightClick: ['mouse right click', 'mouse right button press/release'],
+  MouseMiddleClick: ['mouse middle click', 'mouse middle button press/release'],
   TertiaryKeymapLeft: [
     'toggle A3 layer (left)',
     'toggle function layer (left)',

@@ -42,6 +42,7 @@ export type Icon =
   | 'print'
   | 'question_mark'
   | 'replay'
+  | 'restart_alt'
   | 'right_click'
   | 'search'
   | 'settings'
@@ -55,6 +56,7 @@ export type Icon =
   | 'switch_right'
   | 'terminal'
   | 'topic'
+  | 'touchpad_mouse'
   | 'trending_up'
   | 'upload'
   | 'window';

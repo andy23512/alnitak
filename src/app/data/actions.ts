@@ -12,7 +12,17 @@ export const FN_SHIFT_ACTION_CODES = [552, 553];
 export const SHIFT_ACTION_CODES = [513, 517];
 export const ALT_GR_ACTION_CODE = 518;
 export const WSK_ACTIONS: Omit<WSKAction, 'type'>[] = [
+  { codeId: 33, keyCode: 'Digit1', withShift: true },
+  { codeId: 34, keyCode: 'Quote', withShift: true },
+  { codeId: 35, keyCode: 'Digit3', withShift: true },
+  { codeId: 36, keyCode: 'Digit4', withShift: true },
+  { codeId: 37, keyCode: 'Digit5', withShift: true },
+  { codeId: 38, keyCode: 'Digit7', withShift: true },
   { codeId: 39, keyCode: 'Quote' },
+  { codeId: 40, keyCode: 'Digit9', withShift: true },
+  { codeId: 41, keyCode: 'Digit0', withShift: true },
+  { codeId: 42, keyCode: 'Digit8', withShift: true },
+  { codeId: 43, keyCode: 'Equal', withShift: true },
   { codeId: 44, keyCode: 'Comma' },
   { codeId: 45, keyCode: 'Minus' },
   { codeId: 46, keyCode: 'Period' },
@@ -27,9 +37,13 @@ export const WSK_ACTIONS: Omit<WSKAction, 'type'>[] = [
   { codeId: 55, keyCode: 'Digit7' },
   { codeId: 56, keyCode: 'Digit8' },
   { codeId: 57, keyCode: 'Digit9' },
+  { codeId: 58, keyCode: 'Semicolon', withShift: true },
   { codeId: 59, keyCode: 'Semicolon' },
+  { codeId: 60, keyCode: 'Comma', withShift: true },
   { codeId: 61, keyCode: 'Equal' },
+  { codeId: 62, keyCode: 'Period', withShift: true },
   { codeId: 63, keyCode: 'Slash', withShift: true },
+  { codeId: 64, keyCode: 'Digit2', withShift: true },
   { codeId: 65, keyCode: 'KeyA', withShift: true },
   { codeId: 66, keyCode: 'KeyB', withShift: true },
   { codeId: 67, keyCode: 'KeyC', withShift: true },
@@ -59,6 +73,8 @@ export const WSK_ACTIONS: Omit<WSKAction, 'type'>[] = [
   { codeId: 91, keyCode: 'BracketLeft' },
   { codeId: 92, keyCode: 'Backslash' },
   { codeId: 93, keyCode: 'BracketRight' },
+  { codeId: 94, keyCode: 'Digit6', withShift: true },
+  { codeId: 95, keyCode: 'Minus', withShift: true },
   { codeId: 96, keyCode: 'Backquote' },
   { codeId: 97, keyCode: 'KeyA' },
   { codeId: 98, keyCode: 'KeyB' },
@@ -86,7 +102,10 @@ export const WSK_ACTIONS: Omit<WSKAction, 'type'>[] = [
   { codeId: 120, keyCode: 'KeyX' },
   { codeId: 121, keyCode: 'KeyY' },
   { codeId: 122, keyCode: 'KeyZ' },
+  { codeId: 123, keyCode: 'BracketLeft', withShift: true },
   { codeId: 124, keyCode: 'Backslash', withShift: true },
+  { codeId: 125, keyCode: 'BracketRight', withShift: true },
+  { codeId: 126, keyCode: 'Backquote', withShift: true },
 ];
 export const NON_WSK_ACTIONS: Omit<NonWSKAction, 'type'>[] = [
   { codeId: 514, keyCode: 'AltLeft' },
@@ -128,8 +147,11 @@ export const NON_WSK_ACTIONS: Omit<NonWSKAction, 'type'>[] = [
   { codeId: 338, keyCode: 'ArrowUp' },
 ];
 export const NON_KEY_ACTIONS: Omit<NonKeyAction, 'type'>[] = [
+  { codeId: 256, actionName: 'NoKeyPressed' },
+  { codeId: 528, actionName: 'RestartInputDevice' },
   { codeId: 562, actionName: 'MouseLeftClick' },
   { codeId: 563, actionName: 'MouseRightClick' },
+  { codeId: 564, actionName: 'MouseMiddleClick' },
   { codeId: 552, actionName: 'TertiaryKeymapLeft' },
   { codeId: 553, actionName: 'TertiaryKeymapRight' },
   { codeId: 550, actionName: 'SecondaryKeymapLeft' },

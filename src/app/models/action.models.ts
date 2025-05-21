@@ -11,8 +11,11 @@ export enum ActionType {
 }
 
 export type NonKeyActionName =
+  | 'NoKeyPressed'
+  | 'RestartInputDevice'
   | 'MouseLeftClick'
   | 'MouseRightClick'
+  | 'MouseMiddleClick'
   | 'TertiaryKeymapLeft'
   | 'TertiaryKeymapRight'
   | 'SecondaryKeymapLeft'
