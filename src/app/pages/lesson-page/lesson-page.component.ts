@@ -308,10 +308,7 @@ export class LessonPageComponent implements OnInit, OnDestroy {
     if (airModeEnabled) {
       return;
     }
-    if (
-      key.length === 1 ||
-      (key.length > 1 && /[^a-zA-Z0-9]/.test(key) && key !== 'Shift')
-    ) {
+    if (key.length === 1) {
       this.lessonStore.type(key);
     }
   }
