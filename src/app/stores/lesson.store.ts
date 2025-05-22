@@ -23,6 +23,7 @@ interface LessonState {
   lastCorrectKeyTime: number | null;
   keyIntervals: number[];
   error: boolean;
+  lastErrorComponent: string | null;
 }
 
 const initialState: LessonState = {
@@ -35,6 +36,7 @@ const initialState: LessonState = {
   lastCorrectKeyTime: null,
   keyIntervals: [],
   error: false,
+  lastErrorComponent: null,
 };
 
 export const LessonStore = signalStore(
@@ -81,6 +83,7 @@ export const LessonStore = signalStore(
           keyIntervals: keyIntervals.slice(-10),
           combo: state.combo + 1,
           error: false,
+          lastErrorComponent: null,
         };
       });
     },
@@ -109,7 +112,7 @@ export const LessonStore = signalStore(
             cpm: null,
             combo: 0,
           });
-          return { error: true, combo: 0 };
+          return { error: true, combo: 0, lastErrorComponent: component };
         }
         keyRecordService.pushIntoQueue({
           ...commonKeyRecord,
@@ -129,6 +132,7 @@ export const LessonStore = signalStore(
           keyIntervals: keyIntervals.slice(-10),
           combo: state.combo + 1,
           error: false,
+          lastErrorComponent: null,
         };
       });
     },

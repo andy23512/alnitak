@@ -14,6 +14,7 @@ import {
   input,
   signal,
   untracked,
+  viewChild,
 } from '@angular/core';
 import { MatButton, MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
@@ -88,6 +89,7 @@ export class LessonPageComponent implements OnInit, OnDestroy {
   readonly isFocus = signal(false);
 
   @HostBinding('class') classes = 'flex flex-col gap-2 h-full relative';
+  readonly errorTooltip = viewChild<MatTooltip>('errorTooltip');
 
   readonly shortcuts = {
     goToPreviousLesson: 'meta.left',
@@ -262,6 +264,18 @@ export class LessonPageComponent implements OnInit, OnDestroy {
           this.lessonStore.setLesson(lesson);
         }
       });
+    });
+    effect(() => {
+      const errorTooltip = this.errorTooltip();
+      const error = this.lessonStore.error();
+      if (!errorTooltip) {
+        return;
+      }
+      if (error) {
+        errorTooltip.show();
+      } else {
+        errorTooltip.hide();
+      }
     });
   }
 

@@ -14,12 +14,15 @@
       lessonStore.history().join("")
     }}</span>
     <span
-      class="relative font-mono text-2xl before:absolute before:-top-[0.5ch] before:block before:h-0 before:w-0 before:border-x-[0.5ch] before:border-t-[0.5ch] before:border-solid before:border-x-transparent before:border-t-white after:absolute after:block after:h-0 after:w-0 after:border-x-[0.5ch] after:border-b-[0.5ch] after:border-solid after:border-x-transparent after:border-b-white"
+      class="pointer-events-none relative font-mono text-2xl before:absolute before:-top-[0.5ch] before:block before:h-0 before:w-0 before:border-x-[0.5ch] before:border-t-[0.5ch] before:border-solid before:border-x-transparent before:border-t-white after:absolute after:block after:h-0 after:w-0 after:border-x-[0.5ch] after:border-b-[0.5ch] after:border-solid after:border-x-transparent after:border-b-white"
       [ngClass]="
         lessonStore.error()
           ? 'before:!border-t-red-500 after:!border-b-red-500'
           : null
       "
+      #errorTooltip="matTooltip"
+      matTooltip="You typed: {{ lessonStore.lastErrorComponent() }}"
+      matTooltipPosition="below"
     >
       @for (character of lessonStore.queue(); track $index) {
         <span [ngClass]="lessonStore.error() ? 'first:text-red-500 ' : null">{{
