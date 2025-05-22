@@ -17,11 +17,17 @@
       class="relative font-mono text-2xl before:absolute before:-top-[0.5ch] before:block before:h-0 before:w-0 before:border-x-[0.5ch] before:border-t-[0.5ch] before:border-solid before:border-x-transparent before:border-t-white after:absolute after:block after:h-0 after:w-0 after:border-x-[0.5ch] after:border-b-[0.5ch] after:border-solid after:border-x-transparent after:border-b-white"
       [ngClass]="
         lessonStore.error()
-          ? 'first-letter:text-red-500 before:!border-t-red-500 after:!border-b-red-500'
+          ? 'before:!border-t-red-500 after:!border-b-red-500'
           : null
       "
-      >{{ lessonStore.queue().join("") }}...</span
     >
+      @for (character of lessonStore.queue(); track $index) {
+        <span [ngClass]="lessonStore.error() ? 'first:text-red-500 ' : null">{{
+          character
+        }}</span>
+      }
+      ...
+    </span>
   } @else {
     <span>{{ lesson()?.topic?.name }}</span>
     <mat-icon>{{ "arrow_right" | iconGuard }}</mat-icon>
