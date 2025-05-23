@@ -5,7 +5,7 @@
     #input
     type="text"
     inputmode="none"
-    (keyup)="onKeyUpInInput($event)"
+    (input)="onKeyUpInInput($any($event))"
     (focus)="isFocus.set(true)"
     (blur)="isFocus.set(false); pauseLesson()"
   />

@@ -317,13 +317,13 @@ export class LessonPageComponent implements OnInit, OnDestroy {
     ]);
   }
 
-  onKeyUpInInput({ key }: KeyboardEvent) {
+  onKeyUpInInput({ data }: InputEvent) {
     const airModeEnabled = this.airModeSettingStore.enabled();
     if (airModeEnabled) {
       return;
     }
-    if (key.length === 1) {
-      this.lessonStore.type(key);
+    if (data?.length === 1) {
+      this.lessonStore.type(data);
     }
   }
 
