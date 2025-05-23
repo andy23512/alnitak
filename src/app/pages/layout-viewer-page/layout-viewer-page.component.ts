@@ -260,8 +260,15 @@ export class LayoutViewerPageComponent {
               altGraphKey: false,
             });
           }
-        } else if (NO_ACTION_ACTION_CODES.includes(actionCodeId)) {
-          continue;
+        } else {
+          keyLabels.push({
+            type: KeyLabelType.ActionCode,
+            c: actionCodeId,
+            title: `Action Code: ${actionCodeId}`,
+            layer,
+            shiftKey: false,
+            altGraphKey: false,
+          });
         }
       }
       keyLabelMap[positionIndex] = keyLabels;

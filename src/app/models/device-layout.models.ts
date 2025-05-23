@@ -61,7 +61,8 @@ export type RawKeyLabel =
       title: string;
     }
   | { type: KeyLabelType.Icon; c: Icon; title: string }
-  | { type: KeyLabelType.Logo; c: FontLogo; title: string };
+  | { type: KeyLabelType.Logo; c: FontLogo; title: string }
+  | { type: KeyLabelType.ActionCode; c: number; title: string };
 
 /*
  * Label of a physical key, which records the corresponding character when the key is triggered under certain layer and modifiers
@@ -76,4 +77,5 @@ export enum KeyLabelType {
   String = 'string',
   Icon = 'icon',
   Logo = 'logo',
+  ActionCode = 'action-code',
 }

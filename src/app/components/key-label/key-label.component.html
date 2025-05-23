@@ -4,31 +4,22 @@
     [attr.y]="y()"
     dominant-baseline="central"
     text-anchor="middle"
-    [attr.font-size]="
-      label.type === KeyLabelType.String
-        ? (label.c.length > 2
-            ? fontSize() * 0.6
-            : label.c.length > 1
-              ? fontSize() * 0.8
-              : fontSize()) + 'px'
-        : null
-    "
-    [style.font-size.px]="
-      label.type === KeyLabelType.Icon || label.type === KeyLabelType.Logo
-        ? fontSize() * 0.8
-        : null
-    "
+    [style.font-size.px]="getFontSize(label)"
     [class.material-icons]="label.type === KeyLabelType.Icon"
     [class.font-logos]="label.type === KeyLabelType.Logo"
-    fill="currentColor"
-    font-weight="lighter"
     class="transition-opacity"
+    [class.fill-current]="label.type !== KeyLabelType.ActionCode"
+    [class.fill-red-500]="label.type === KeyLabelType.ActionCode"
     [ngClass]="label.type === KeyLabelType.Logo ? label.c : null"
     [attr.opacity]="isLabelActive(label) ? 1 : 0"
     [matTooltip]="label.title"
     [matTooltipDisabled]="!isLabelActive(label)"
     [class.pointer-events-none]="!isLabelActive(label)"
   >
-    {{ label.c }}
+    @if (label.type === KeyLabelType.ActionCode) {
+      ({{ label.c }})
+    } @else {
+      {{ label.c }}
+    }
   </svg:text>
 }

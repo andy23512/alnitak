@@ -35,4 +35,26 @@ export class KeyLabelComponent {
         label.layer === null)
     );
   }
+
+  public getFontSize({ type, c }: KeyLabel) {
+    const fontSize = this.fontSize();
+    switch (type) {
+      case KeyLabelType.String:
+        if (c.length > 2) {
+          return fontSize * 0.6;
+        }
+        if (c.length > 1) {
+          return fontSize * 0.8;
+        }
+        return fontSize;
+      case KeyLabelType.ActionCode:
+        return fontSize * 0.6;
+      case KeyLabelType.Icon:
+      case KeyLabelType.Logo:
+        return fontSize * 0.8;
+      default:
+        const _: never = type;
+        throw new Error(`Unhandled key label type case: ${type}`);
+    }
+  }
 }
