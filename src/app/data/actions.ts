@@ -1,4 +1,3 @@
-import { range } from 'ramda';
 import {
   Action,
   ActionType,
@@ -169,8 +168,26 @@ export const NON_KEY_ACTIONS: Omit<NonKeyAction, 'type'>[] = [
   { codeId: 536, actionName: 'Dup' },
   { codeId: 532, actionName: 'GTM' },
   { codeId: 534, actionName: 'Impulse' },
+  { codeId: 600, actionName: 'LeftHandThumb3Center' },
+  { codeId: 601, actionName: 'LeftHandThumb2Center' },
+  { codeId: 602, actionName: 'LeftHandThumb1Center' },
+  { codeId: 603, actionName: 'LeftHandIndexCenter' },
+  { codeId: 604, actionName: 'LeftHandMiddle1Center' },
+  { codeId: 605, actionName: 'LeftHandRing1Center' },
+  { codeId: 606, actionName: 'LeftHandPinkyCenter' },
+  { codeId: 607, actionName: 'LeftHandMiddle2Center' },
+  { codeId: 608, actionName: 'LeftHandRing2Center' },
+  { codeId: 609, actionName: 'RightHandThumb3Center' },
+  { codeId: 610, actionName: 'RightHandThumb2Center' },
+  { codeId: 611, actionName: 'RightHandThumb1Center' },
+  { codeId: 612, actionName: 'RightHandIndexCenter' },
+  { codeId: 613, actionName: 'RightHandMiddle1Center' },
+  { codeId: 614, actionName: 'RightHandRing1Center' },
+  { codeId: 615, actionName: 'RightHandPinkyCenter' },
+  { codeId: 616, actionName: 'RightHandMiddle2Center' },
+  { codeId: 617, actionName: 'RightHandRing2Center' },
 ];
-export const NO_ACTION_ACTION_CODES = [0, ...range(600, 617 + 1)];
+export const NO_ACTION_ACTION_CODES = [0];
 export const ACTIONS: Action[] = [
   ...WSK_ACTIONS.map((a) => ({
     ...a,

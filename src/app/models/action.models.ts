@@ -32,7 +32,25 @@ export type NonKeyActionName =
   | 'MouseMoveUp'
   | 'Dup'
   | 'GTM'
-  | 'Impulse';
+  | 'Impulse'
+  | 'LeftHandThumb3Center'
+  | 'LeftHandThumb2Center'
+  | 'LeftHandThumb1Center'
+  | 'LeftHandIndexCenter'
+  | 'LeftHandMiddle1Center'
+  | 'LeftHandRing1Center'
+  | 'LeftHandPinkyCenter'
+  | 'LeftHandMiddle2Center'
+  | 'LeftHandRing2Center'
+  | 'RightHandThumb3Center'
+  | 'RightHandThumb2Center'
+  | 'RightHandThumb1Center'
+  | 'RightHandIndexCenter'
+  | 'RightHandMiddle1Center'
+  | 'RightHandRing1Center'
+  | 'RightHandPinkyCenter'
+  | 'RightHandMiddle2Center'
+  | 'RightHandRing2Center';
 
 export interface WSKAction extends BaseAction {
   type: ActionType.WSK;

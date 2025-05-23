@@ -220,6 +220,96 @@ export const NON_KEY_ACTION_NAME_2_RAW_KEY_LABEL_MAP: Record<
     c: 'heap_snapshot_multiple',
     title: 'Toggle Impulse',
   },
+  LeftHandThumb3Center: {
+    type: KeyLabelType.Icon,
+    c: 'radio_button_checked',
+    title: 'Left Hand Thumb 3 3D Click',
+  },
+  LeftHandThumb2Center: {
+    type: KeyLabelType.Icon,
+    c: 'radio_button_checked',
+    title: 'Left Hand Thumb 2 3D Click',
+  },
+  LeftHandThumb1Center: {
+    type: KeyLabelType.Icon,
+    c: 'radio_button_checked',
+    title: 'Left Hand Thumb 1 3D Click',
+  },
+  LeftHandIndexCenter: {
+    type: KeyLabelType.Icon,
+    c: 'radio_button_checked',
+    title: 'Left Hand Index 3D Click',
+  },
+  LeftHandMiddle1Center: {
+    type: KeyLabelType.Icon,
+    c: 'radio_button_checked',
+    title: 'Left Hand Middle 1 3D Click',
+  },
+  LeftHandRing1Center: {
+    type: KeyLabelType.Icon,
+    c: 'radio_button_checked',
+    title: 'Left Hand Ring 1 3D Click',
+  },
+  LeftHandPinkyCenter: {
+    type: KeyLabelType.Icon,
+    c: 'radio_button_checked',
+    title: 'Left Hand Pinky 3D Click',
+  },
+  LeftHandMiddle2Center: {
+    type: KeyLabelType.Icon,
+    c: 'radio_button_checked',
+    title: 'Left Hand Middle 2 3D Click',
+  },
+  LeftHandRing2Center: {
+    type: KeyLabelType.Icon,
+    c: 'radio_button_checked',
+    title: 'Left Hand Ring 2 3D Click',
+  },
+  RightHandThumb3Center: {
+    type: KeyLabelType.Icon,
+    c: 'radio_button_checked',
+    title: 'Right Hand Thumb 3 3D Click',
+  },
+  RightHandThumb2Center: {
+    type: KeyLabelType.Icon,
+    c: 'radio_button_checked',
+    title: 'Right Hand Thumb 2 3D Click',
+  },
+  RightHandThumb1Center: {
+    type: KeyLabelType.Icon,
+    c: 'radio_button_checked',
+    title: 'Right Hand Thumb 1 3D Click',
+  },
+  RightHandIndexCenter: {
+    type: KeyLabelType.Icon,
+    c: 'radio_button_checked',
+    title: 'Right Hand Index 3D Click',
+  },
+  RightHandMiddle1Center: {
+    type: KeyLabelType.Icon,
+    c: 'radio_button_checked',
+    title: 'Right Hand Middle 1 3D Click',
+  },
+  RightHandRing1Center: {
+    type: KeyLabelType.Icon,
+    c: 'radio_button_checked',
+    title: 'Right Hand Ring 1 3D Click',
+  },
+  RightHandPinkyCenter: {
+    type: KeyLabelType.Icon,
+    c: 'radio_button_checked',
+    title: 'Right Hand Pinky 3D Click',
+  },
+  RightHandMiddle2Center: {
+    type: KeyLabelType.Icon,
+    c: 'radio_button_checked',
+    title: 'Right Hand Middle 2 3D Click',
+  },
+  RightHandRing2Center: {
+    type: KeyLabelType.Icon,
+    c: 'radio_button_checked',
+    title: 'Right Hand Ring 2 3D Click',
+  },
 };
 
 export const OS_2_META_KEY_LABEL_MAP: Partial<
