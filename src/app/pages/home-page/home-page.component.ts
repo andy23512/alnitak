@@ -1,4 +1,4 @@
-import { AsyncPipe, DatePipe } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -22,14 +22,7 @@ import { pickRandomItem, shuffle } from 'src/app/utils/random.utils';
 @Component({
   selector: 'app-home-page',
   standalone: true,
-  imports: [
-    MatButton,
-    MatIcon,
-    SwitchComponent,
-    IconGuardPipe,
-    AsyncPipe,
-    DatePipe,
-  ],
+  imports: [MatButton, MatIcon, SwitchComponent, IconGuardPipe, AsyncPipe],
   templateUrl: './home-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -63,13 +56,10 @@ export class HomePageComponent {
   readonly hotkeysService = inject(HotkeysService);
   readonly Layer = Layer;
 
-  commitTime = process.env['COMMIT_TIME'];
-
   ngOnInit() {
     this.hotkeysService.addShortcut({ keys: 'space' }).subscribe(() => {
       this.router.navigateByUrl(this.firstLessonUrl);
     });
-    console.debug(this.commitTime);
   }
 
   ngOnDestroy(): void {
