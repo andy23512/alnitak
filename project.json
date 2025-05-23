@@ -11,7 +11,7 @@
   "prefix": "app",
   "targets": {
     "build": {
-      "executor": "@angular-devkit/build-angular:browser",
+      "executor": "@nx/angular:webpack-browser",
       "options": {
         "outputPath": "dist/alnitak",
         "index": "src/index.html",
@@ -19,9 +19,16 @@
         "polyfills": ["zone.js"],
         "tsConfig": "tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": ["src/favicon.ico", "src/assets", "src/googlef5d600e4a2cd82e1.html"],
+        "assets": [
+          "src/favicon.ico",
+          "src/assets",
+          "src/googlef5d600e4a2cd82e1.html"
+        ],
         "styles": ["src/styles.scss"],
-        "scripts": []
+        "scripts": [],
+        "customWebpackConfig": {
+          "path": "src/webpack.config.js"
+        }
       },
       "configurations": {
         "production": {
@@ -52,7 +59,7 @@
       "outputs": ["{options.outputPath}"]
     },
     "serve": {
-      "executor": "@angular-devkit/build-angular:dev-server",
+      "executor": "@nx/angular:dev-server",
       "configurations": {
         "production": {
           "browserTarget": "alnitak:build:production"
