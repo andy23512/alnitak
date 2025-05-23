@@ -166,8 +166,8 @@ export class ChordPracticeComponent implements OnInit {
     return highlightChordKeyCombinationMap[currentChord.id];
   });
 
-  onKeyUp(event: KeyboardEvent) {
-    this.chordPracticeStore.keyUp(event);
+  onInput(event: InputEvent) {
+    this.chordPracticeStore.input(event);
   }
 
   startPractice() {

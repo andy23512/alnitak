@@ -63,7 +63,7 @@ export const ChordPracticeStore = signalStore(
         },
       );
     },
-    keyUp(event: KeyboardEvent) {
+    input(event: InputEvent) {
       patchState(
         store,
         ({
@@ -79,10 +79,12 @@ export const ChordPracticeStore = signalStore(
           }
           const currentKeyTime = Date.now();
           const nextBuffer = [...buffer];
-          if (event.code === 'Backspace') {
+          if (event.inputType === 'deleteContentBackward') {
             nextBuffer.pop();
+          } else if (event.inputType === 'insertText' && event.data) {
+            nextBuffer.push(event.data);
           } else {
-            nextBuffer.push(event.key);
+            return {};
           }
           if (nextBuffer.join('').trim() === queue[0].outputText) {
             return {

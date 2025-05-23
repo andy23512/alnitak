@@ -317,7 +317,7 @@ export class LessonPageComponent implements OnInit, OnDestroy {
     ]);
   }
 
-  onKeyUpInInput({ data }: InputEvent) {
+  onInput({ data }: InputEvent) {
     const airModeEnabled = this.airModeSettingStore.enabled();
     if (airModeEnabled) {
       return;
