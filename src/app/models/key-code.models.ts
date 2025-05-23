@@ -87,6 +87,7 @@ export type NonWSKCode =
   | 'ArrowUp'
   | 'PageUp'
   | 'PageDown'
+  | 'Insert'
   | 'Home'
   | 'End';
 

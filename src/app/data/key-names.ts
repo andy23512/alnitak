@@ -50,6 +50,7 @@ export const NON_WSK_CODE_2_KEY_NAMES_MAP: Record<NonWSKCode, string[]> = {
   PageDown: ['page down'],
   Home: ['home'],
   End: ['end'],
+  Insert: ['insert'],
 };
 
 export const NON_KEY_ACTION_NAME_2_KEY_NAMES_MAP: Record<

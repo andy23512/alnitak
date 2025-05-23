@@ -22,6 +22,7 @@ export type Icon =
   | 'help'
   | 'home'
   | 'info'
+  | 'insert_text'
   | 'keyboard'
   | 'keyboard_arrow_down'
   | 'keyboard_arrow_left'

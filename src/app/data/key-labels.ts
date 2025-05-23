@@ -108,6 +108,7 @@ export const NON_WSK_CODE_2_RAW_KEY_LABEL_MAP: Record<NonWSKCode, RawKeyLabel> =
     PageDown: { type: KeyLabelType.Icon, c: 'move_down', title: 'Page Down' },
     Home: { type: KeyLabelType.Icon, c: 'home', title: 'Home' },
     End: { type: KeyLabelType.String, c: 'END', title: 'End' },
+    Insert: { type: KeyLabelType.Icon, c: 'insert_text', title: 'Insert' },
   };
 
 export const NON_KEY_ACTION_NAME_2_RAW_KEY_LABEL_MAP: Record<
