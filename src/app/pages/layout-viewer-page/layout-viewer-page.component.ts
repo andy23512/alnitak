@@ -23,6 +23,8 @@ import {
   MatSidenavContent,
 } from '@angular/material/sidenav';
 import { MatTooltip } from '@angular/material/tooltip';
+import { HotkeysShortcutPipe } from '@ngneat/hotkeys';
+import { TooltipDirective } from '@webed/angular-tooltip';
 import * as fuzzy from 'fuzzy';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { NgxPrintModule } from 'ngx-print';
@@ -114,6 +116,8 @@ function getHighlightPositionCodes(
     MatListItem,
     NgxPrintModule,
     MatTooltip,
+    TooltipDirective,
+    HotkeysShortcutPipe,
   ],
   templateUrl: './layout-viewer-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -153,21 +157,25 @@ export class LayoutViewerPageComponent {
     value: Layer;
     icon: Icon;
     tooltip: string;
+    hotkey: string;
   }[] = [
     {
       value: Layer.Primary,
       icon: 'abc',
       tooltip: 'Primary layer',
+      hotkey: 'alt.1',
     },
     {
       value: Layer.Secondary,
       icon: '123',
       tooltip: 'Numeric layer',
+      hotkey: 'alt.2',
     },
     {
       value: Layer.Tertiary,
       icon: 'function',
       tooltip: 'Function layer',
+      hotkey: 'alt.3',
     },
   ];
   currentLayer = signal(Layer.Primary);

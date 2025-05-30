@@ -4,17 +4,33 @@
     (ngModelChange)="resetSelectedPositions()"
   >
     @for (layer of layers; track $index) {
-      <mat-button-toggle [value]="layer.value" [matTooltip]="layer.tooltip">
+      <mat-button-toggle
+        [value]="layer.value"
+        [tooltip]="$any(layerToggleTooltip)"
+        contentType="template"
+        placement="bottom"
+      >
         <mat-icon>{{ layer.icon | iconGuard }}</mat-icon>
       </mat-button-toggle>
+      <ng-template #layerToggleTooltip>
+        {{ layer.tooltip }} <br />
+        <kbd [innerHTML]="layer.hotkey | hotkeysShortcut: ' + '"></kbd>
+      </ng-template>
     }
   </mat-button-toggle-group>
   <mat-checkbox
     [(ngModel)]="shiftKey"
     color="primary"
     (ngModelChange)="resetSelectedPositions()"
+    [tooltip]="$any(shiftToggleTooltip)"
+    contentType="template"
+    placement="bottom"
     >Shift</mat-checkbox
   >
+  <ng-template #shiftToggleTooltip>
+    Toggle Shift Modifier <br />
+    <kbd [innerHTML]="'alt+s' | hotkeysShortcut: ' + '"></kbd>
+  </ng-template>
   <div class="flex-1"></div>
   <mat-form-field class="w-96" [subscriptSizing]="'dynamic'">
     <mat-label>OS Keyboard Layout</mat-label>
