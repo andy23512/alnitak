@@ -4,6 +4,7 @@ import {
   Component,
   computed,
   HostBinding,
+  HostListener,
   inject,
   signal,
 } from '@angular/core';
@@ -148,10 +149,26 @@ export class LayoutViewerPageComponent {
   });
 
   readonly Layer = Layer;
-  readonly layers: { value: Layer; icon: Icon; tooltip: string }[] = [
-    { value: Layer.Primary, icon: 'abc', tooltip: 'Primary layer' },
-    { value: Layer.Secondary, icon: '123', tooltip: 'Numeric layer' },
-    { value: Layer.Tertiary, icon: 'function', tooltip: 'Function layer' },
+  readonly layers: {
+    value: Layer;
+    icon: Icon;
+    tooltip: string;
+  }[] = [
+    {
+      value: Layer.Primary,
+      icon: 'abc',
+      tooltip: 'Primary layer',
+    },
+    {
+      value: Layer.Secondary,
+      icon: '123',
+      tooltip: 'Numeric layer',
+    },
+    {
+      value: Layer.Tertiary,
+      icon: 'function',
+      tooltip: 'Function layer',
+    },
   ];
   currentLayer = signal(Layer.Primary);
   shiftKey = signal(false);
@@ -412,5 +429,25 @@ export class LayoutViewerPageComponent {
 
   public resetSelectedPositions() {
     this.selectedPositions.set([]);
+  }
+
+  @HostListener('window:keyup', ['$event'])
+  public handleKeyUp({ code, altKey }: KeyboardEvent) {
+    if (altKey) {
+      switch (code) {
+        case 'Digit1':
+          this.currentLayer.set(Layer.Primary);
+          break;
+        case 'Digit2':
+          this.currentLayer.set(Layer.Secondary);
+          break;
+        case 'Digit3':
+          this.currentLayer.set(Layer.Tertiary);
+          break;
+        case 'KeyS':
+          this.shiftKey.set(!this.shiftKey());
+          break;
+      }
+    }
   }
 }

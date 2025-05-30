@@ -1,7 +1,9 @@
 <h2 mat-dialog-title class="!text-xl">Hotkeys</h2>
-<mat-dialog-content class="space-y-3">
+<mat-dialog-content class="columns-2 space-y-3">
   @for (hotkeyGroup of hotkeyGroups; track $index) {
-    <section class="space-y-2">
+    <section
+      class="break-inside-avoid break-inside-avoid-page break-inside-avoid-column space-y-2"
+    >
       <h3 class="text-lg text-white">{{ hotkeyGroup.name }}</h3>
       <ul class="space-y-1">
         @for (hotkey of hotkeyGroup.hotkeys; track hotkey.key) {

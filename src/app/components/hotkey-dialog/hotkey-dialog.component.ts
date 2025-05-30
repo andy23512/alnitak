@@ -33,6 +33,15 @@ export const HOTKEY_GROUPS = [
       { key: 'escape', description: 'Pause practice' },
     ],
   },
+  {
+    name: 'Layout Viewer Page',
+    hotkeys: [
+      { key: 'alt.1', description: 'Switch to the primary layer' },
+      { key: 'alt.2', description: 'Switch to the numeric layer' },
+      { key: 'alt.3', description: 'Switch to the functional layer' },
+      { key: 'alt.s', description: 'Toggle the Shift modifier' },
+    ],
+  },
 ];
 
 @Component({
