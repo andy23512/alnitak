@@ -74,4 +74,20 @@
       </button>
     </a>
   </div>
+  @if (deviceLayoutStore.selectedId() === "default") {
+    <div class="flex items-center text-gray-200">
+      Device Layout is set to "CC1/CC2 default" now.
+      <button mat-button color="primary" (click)="switchToM4GDefaultLayout()">
+        Switch it to "M4G default"
+      </button>
+    </div>
+  }
+  @if (deviceLayoutStore.selectedId() === "m4g-default") {
+    <div class="flex items-center text-gray-200">
+      Device Layout is set to "M4G default" now.
+      <button mat-button color="primary" (click)="switchToCC1DefaultLayout()">
+        Switch it to "CC1/CC2 default"
+      </button>
+    </div>
+  }
 </main>

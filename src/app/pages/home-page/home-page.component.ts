@@ -15,6 +15,7 @@ import { SwitchComponent } from 'src/app/components/switch/switch.component';
 import { CHORDING_TIMING } from 'src/app/data/chord-timing';
 import { Layer } from 'src/app/models/device-layout.models';
 import { IconGuardPipe } from 'src/app/pipes/icon-guard.pipe';
+import { DeviceLayoutStore } from 'src/app/stores/device-layout.store';
 import { VisibilitySettingStore } from 'src/app/stores/visibility-setting.store';
 import { chordAnimationEventsToObservable } from 'src/app/utils/chord-animation.utils';
 import { pickRandomItem, shuffle } from 'src/app/utils/random.utils';
@@ -29,6 +30,7 @@ import { pickRandomItem, shuffle } from 'src/app/utils/random.utils';
 export class HomePageComponent {
   readonly router = inject(Router);
   readonly visibilitySettingStore = inject(VisibilitySettingStore);
+  readonly deviceLayoutStore = inject(DeviceLayoutStore);
   firstLessonUrl = '/topic/number/lesson/123';
   highlightPositionCodes: number[] = [
     [0, 1, 2, 3, 4, [1, 2], [1, 4], [3, 2], [3, 4]],
@@ -69,5 +71,15 @@ export class HomePageComponent {
   useAndReplayAnimation() {
     this.useAnimation.set(true);
     this.animationStartSubject.next(1);
+  }
+
+  switchToCC1DefaultLayout() {
+    this.deviceLayoutStore.setSelectedId('default');
+    this.visibilitySettingStore.set('layoutThumb3Switch', true);
+  }
+
+  switchToM4GDefaultLayout() {
+    this.deviceLayoutStore.setSelectedId('m4g-default');
+    this.visibilitySettingStore.set('layoutThumb3Switch', false);
   }
 }
