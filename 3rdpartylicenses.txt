@@ -133,6 +133,9 @@ https://github.com/cartant/rxjs-etc by Nicholas Jamieson, MIT licensed. See the
 file header for details.
 
 
+@webed/angular-tooltip
+MIT
+
 dexie
 Apache-2.0
 Apache License
