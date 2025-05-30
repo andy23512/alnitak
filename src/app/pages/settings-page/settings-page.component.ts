@@ -18,6 +18,7 @@ import { removeAllEntities } from '@ngrx/signals/entities';
 import { AirModeSettingPanelContentComponent } from 'src/app/components/air-mode-setting-panel-content/air-mode-setting-panel-content.component';
 import { DeleteChordsConfirmDialogComponent } from 'src/app/components/delete-chords-confirm-dialog/delete-chords-confirm-dialog.component';
 import { DeviceLayoutSettingPanelContentComponent } from 'src/app/components/device-layout-setting-panel-content/device-layout-setting-panel-content.component';
+import { QuickSettingPanelContentComponent } from 'src/app/components/quick-setting-panel-content/quick-setting-panel-content.component';
 import { IconGuardPipe } from 'src/app/pipes/icon-guard.pipe';
 import { ChordStore } from 'src/app/stores/chord.store';
 import { LayoutHighlightSettingPanelContentComponent } from '../../components/layout-highlight-setting-panel-content/layout-highlight-setting-panel-content.component';
@@ -39,6 +40,7 @@ import { VisibilitySettingPanelContentComponent } from '../../components/visibil
     AirModeSettingPanelContentComponent,
     IconGuardPipe,
     MiscSettingPanelContentComponent,
+    QuickSettingPanelContentComponent,
   ],
   templateUrl: './settings-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
