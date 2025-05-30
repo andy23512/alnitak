@@ -56,7 +56,7 @@ import { SpeedometerComponent } from '../speedometer/speedometer.component';
 export class ChordPracticeComponent implements OnInit {
   readonly chordPracticeStore = inject(ChordPracticeStore);
   readonly visibilitySettingStore = inject(VisibilitySettingStore);
-  readonly hotkeys = inject(HotkeysService);
+  readonly hotkeysService = inject(HotkeysService);
 
   readonly isFocus = signal(false);
 
@@ -189,12 +189,12 @@ export class ChordPracticeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.hotkeys
+    this.hotkeysService
       .addShortcut({ keys: this.shortcuts.startPractice })
       .subscribe(() => {
         this.startPractice();
       });
-    this.hotkeys
+    this.hotkeysService
       .addShortcut({ keys: this.shortcuts.pausePractice, allowIn: ['INPUT'] })
       .subscribe(() => {
         this.endPractice();
@@ -202,7 +202,7 @@ export class ChordPracticeComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
-    this.hotkeys.removeShortcuts([
+    this.hotkeysService.removeShortcuts([
       this.shortcuts.startPractice,
       this.shortcuts.pausePractice,
     ]);

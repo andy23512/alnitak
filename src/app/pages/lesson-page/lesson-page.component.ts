@@ -253,7 +253,7 @@ export class LessonPageComponent implements OnInit, OnDestroy {
     return highlightCharacterKeyCombinationMap[currentCharacter];
   });
 
-  readonly hotkeys = inject(HotkeysService);
+  readonly hotkeysService = inject(HotkeysService);
   readonly router = inject(Router);
 
   constructor() {
@@ -280,7 +280,7 @@ export class LessonPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.hotkeys
+    this.hotkeysService
       .addShortcut({ keys: this.shortcuts.goToPreviousLesson })
       .subscribe(() => {
         const previousLessonUrl = this.lesson()?.previousLessonUrl;
@@ -288,7 +288,7 @@ export class LessonPageComponent implements OnInit, OnDestroy {
           this.router.navigateByUrl(previousLessonUrl);
         }
       });
-    this.hotkeys
+    this.hotkeysService
       .addShortcut({ keys: this.shortcuts.goToNextLesson })
       .subscribe(() => {
         const nextLessonUrl = this.lesson()?.nextLessonUrl;
@@ -296,12 +296,12 @@ export class LessonPageComponent implements OnInit, OnDestroy {
           this.router.navigateByUrl(nextLessonUrl);
         }
       });
-    this.hotkeys
+    this.hotkeysService
       .addShortcut({ keys: this.shortcuts.startLesson })
       .subscribe(() => {
         this.startLesson();
       });
-    this.hotkeys
+    this.hotkeysService
       .addShortcut({ keys: this.shortcuts.pauseLesson, allowIn: ['INPUT'] })
       .subscribe(() => {
         this.input.nativeElement.blur();
@@ -309,7 +309,7 @@ export class LessonPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.hotkeys.removeShortcuts([
+    this.hotkeysService.removeShortcuts([
       this.shortcuts.goToPreviousLesson,
       this.shortcuts.goToNextLesson,
       this.shortcuts.startLesson,
