@@ -1,6 +1,13 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { AsyncPipe } from '@angular/common';
-import { Component, ViewChild, computed, inject, signal } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  computed,
+  inject,
+  signal,
+} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButton } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
@@ -23,6 +30,8 @@ import {
   RouterLinkWithHref,
   RouterOutlet,
 } from '@angular/router';
+import { HotkeysService, HotkeysShortcutPipe } from '@ngneat/hotkeys';
+import { TooltipDirective } from '@webed/angular-tooltip';
 import * as fuzzy from 'fuzzy';
 import { uniqBy } from 'ramda';
 import { Observable } from 'rxjs';
@@ -55,11 +64,14 @@ import { HotkeyDialogComponent } from '../hotkey-dialog/hotkey-dialog.component'
     RouterLinkWithHref,
     RouterOutlet,
     IconGuardPipe,
+    TooltipDirective,
+    HotkeysShortcutPipe,
   ],
 })
-export class NavComponent {
+export class NavComponent implements OnInit {
   public topics = TOPICS;
   public navLinks = NAV_LINKS;
+  public toggleSideMenuShortcut = 'meta.b';
 
   public readonly searchQuery = signal('');
 
@@ -83,12 +95,24 @@ export class NavComponent {
 
   @ViewChild('drawer') public drawer!: MatSidenav;
 
+  readonly hotkeysService = inject(HotkeysService);
+
   isHandset$: Observable<boolean> = this.breakpointObserver
     .observe(Breakpoints.Handset)
     .pipe(
       map((result) => result.matches),
       shareReplay(1),
     );
+
+  ngOnInit(): void {
+    this.hotkeysService
+      .addShortcut({ keys: this.toggleSideMenuShortcut })
+      .subscribe(() => this.drawer.toggle());
+  }
+
+  ngOnDestroy(): void {
+    this.hotkeysService.removeShortcuts([this.toggleSideMenuShortcut]);
+  }
 
   onNavLinkClick() {
     this.cleanSearchQuery();

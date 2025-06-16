@@ -33,6 +33,7 @@ export type Icon =
   | 'keyboard_return'
   | 'keyboard_tab'
   | 'left_click'
+  | 'left_panel_open'
   | 'map'
   | 'menu'
   | 'move_down'

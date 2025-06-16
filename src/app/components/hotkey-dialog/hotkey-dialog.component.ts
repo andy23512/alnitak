@@ -11,7 +11,10 @@ import { HotkeysShortcutPipe } from '@ngneat/hotkeys';
 export const HOTKEY_GROUPS = [
   {
     name: 'Global',
-    hotkeys: [{ key: '?', description: 'Toggle hotkey dialog' }],
+    hotkeys: [
+      { key: '?', description: 'Toggle hotkey dialog' },
+      { key: 'meta.b', description: 'Toggle side menu' },
+    ],
   },
   {
     name: 'Home Page',

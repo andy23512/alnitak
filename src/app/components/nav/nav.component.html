@@ -95,16 +95,16 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    @if (isHandset$ | async) {
+    @if (!drawer.opened) {
       <button
         type="button"
-        class="!fixed bottom-0 left-0 !z-10"
-        aria-label="Toggle sidenav"
+        class="!fixed left-1 top-1/2 !z-10 -translate-y-1/2 cursor-pointer opacity-80 hover:text-alnitak-500"
+        aria-label="Toggle side menu"
         mat-icon-button
         (click)="drawer.toggle()"
       >
         <mat-icon aria-label="Side nav toggle icon">{{
-          "menu" | iconGuard
+          "left_panel_open" | iconGuard
         }}</mat-icon>
       </button>
     }
