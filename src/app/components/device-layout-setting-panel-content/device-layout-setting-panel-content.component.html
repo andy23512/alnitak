@@ -1,40 +1,48 @@
-<span>
-  Load a device layout file (the backup file from
-  <a
-    class="underline"
-    href="https://charachorder.io/"
-    target="_blank"
-    rel="noopener"
-    >CharaChorder Device Manager</a
-  >
-  website)
-</span>
-<button
-  type="button"
-  [color]="'primary'"
-  mat-flat-button
-  (click)="fileInput.click()"
->
-  <mat-icon>{{ "upload" | iconGuard }}</mat-icon>
-  Choose File
-</button>
-<input
-  hidden
-  #fileInput
-  type="file"
-  accept=".json"
-  aria-label="file input for selecting a device layout file to load into this tool"
-  (change)="loadDeviceLayoutFile()"
-/>
-or select a loaded device layout.
-<mat-form-field class="w-full">
-  <mat-select
-    class="!font-bold !text-alnitak-500"
-    [value]="selectedDeviceLayoutId()"
-    (valueChange)="setSelectedDeviceLayoutId($event)"
-  >
-    @for (deviceLayout of deviceLayouts(); track deviceLayout.id) {
-      <mat-option [value]="deviceLayout.id">{{ deviceLayout.name }}</mat-option>
-    }
-  </mat-select>
-</mat-form-field>
+<ol class="list-inside list-decimal">
+  <li>
+    (Optional) Import a device layout file (the backup file from
+    <a
+      class="underline"
+      href="https://charachorder.io/"
+      target="_blank"
+      rel="noopener"
+      >CharaChorder Device Manager</a
+    >
+    website).
+    <br />
+    <button
+      class="my-2"
+      type="button"
+      [color]="'primary'"
+      mat-flat-button
+      (click)="fileInput.click()"
+    >
+      <mat-icon>{{ "upload" | iconGuard }}</mat-icon>
+      Choose File
+    </button>
+    <input
+      hidden
+      #fileInput
+      type="file"
+      accept=".json"
+      aria-label="file input for selecting a device layout file to load into this tool"
+      (change)="loadDeviceLayoutFile()"
+    />
+  </li>
+  <li>
+    Select a loaded device layout.
+    <mat-form-field class="my-2 w-full">
+      <mat-select
+        class="!font-bold !text-alnitak-500"
+        [value]="selectedDeviceLayoutId()"
+        (valueChange)="setSelectedDeviceLayoutId($event)"
+      >
+        @for (deviceLayout of deviceLayouts(); track deviceLayout.id) {
+          <mat-option [value]="deviceLayout.id">{{
+            deviceLayout.name
+          }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+  </li>
+</ol>
