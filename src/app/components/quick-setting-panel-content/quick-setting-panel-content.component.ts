@@ -23,12 +23,12 @@ export class QuickSettingPanelContentComponent {
   public deviceLayoutStore = inject(DeviceLayoutStore);
   public quickSettings: QuickSetting[] = [
     {
-      name: 'Set to CC1/CC2 default layout',
+      name: 'CC1/CC2 default layout',
       deviceLayoutId: 'default',
       layoutThumb3SwitchVisibility: true,
     },
     {
-      name: 'Set to M4G default layout',
+      name: 'M4G default layout',
       deviceLayoutId: 'm4g-default',
       layoutThumb3SwitchVisibility: false,
     },

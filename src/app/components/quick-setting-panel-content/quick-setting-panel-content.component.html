@@ -1,15 +1,15 @@
 @for (quickSetting of quickSettings; track $index) {
-  <button
-    type="button"
-    mat-flat-button
-    color="primary"
-    (click)="onQuickSettingButtonClick(quickSetting)"
-    [disabled]="
-      deviceLayoutStore.selectedId() === quickSetting.deviceLayoutId &&
-      visibilitySettingStore.layoutThumb3Switch() ===
-        quickSetting.layoutThumb3SwitchVisibility
-    "
-  >
-    {{ quickSetting.name }}
-  </button>
+  @if (deviceLayoutStore.selectedId() === quickSetting.deviceLayoutId) {
+    <button type="button" mat-flat-button color="primary">
+      {{ quickSetting.name }}
+    </button>
+  } @else {
+    <button
+      type="button"
+      mat-raised-button
+      (click)="onQuickSettingButtonClick(quickSetting)"
+    >
+      {{ quickSetting.name }}
+    </button>
+  }
 }
