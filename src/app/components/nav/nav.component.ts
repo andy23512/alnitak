@@ -30,8 +30,7 @@ import {
   RouterLinkWithHref,
   RouterOutlet,
 } from '@angular/router';
-import { HotkeysService, HotkeysShortcutPipe } from '@ngneat/hotkeys';
-import { TooltipDirective } from '@webed/angular-tooltip';
+import { HotkeysService } from '@ngneat/hotkeys';
 import * as fuzzy from 'fuzzy';
 import { uniqBy } from 'ramda';
 import { Observable } from 'rxjs';
@@ -64,8 +63,6 @@ import { HotkeyDialogComponent } from '../hotkey-dialog/hotkey-dialog.component'
     RouterLinkWithHref,
     RouterOutlet,
     IconGuardPipe,
-    TooltipDirective,
-    HotkeysShortcutPipe,
   ],
 })
 export class NavComponent implements OnInit {
