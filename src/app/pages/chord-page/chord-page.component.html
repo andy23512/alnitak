@@ -1,13 +1,23 @@
-@switch (stage()) {
-  @case ("setting") {
-    <app-chord-practice-setting
-      [chords]="chords()"
-      [selectedChordIds]="selectedChordIds()"
-      (selectionChange)="onChordSelectionChange($event)"
-      (startPractice)="startChordPractice()"
-    ></app-chord-practice-setting>
-  }
-  @case ("practice") {
-    <app-chord-practice></app-chord-practice>
-  }
-}
+<nav mat-tab-nav-bar [tabPanel]="tabPanel">
+  <a
+    mat-tab-link
+    [routerLink]="'practice'"
+    routerLinkActive
+    #rlaP="routerLinkActive"
+    [active]="rlaP.isActive"
+  >
+    Practice
+  </a>
+  <a
+    mat-tab-link
+    [routerLink]="'manager'"
+    routerLinkActive
+    #rlaM="routerLinkActive"
+    [active]="rlaM.isActive"
+  >
+    Manager
+  </a>
+</nav>
+<mat-tab-nav-panel #tabPanel>
+  <router-outlet></router-outlet>
+</mat-tab-nav-panel>

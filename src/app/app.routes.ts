@@ -22,6 +22,20 @@ export const APP_ROUTES: Route[] = [
       import('./pages/chord-page/chord-page.component').then(
         (m) => m.ChordPageComponent,
       ),
+    children: [
+      {
+        path: 'practice',
+        loadComponent: () =>
+          import(
+            './pages/chord-practice-sub-page/chord-practice-sub-page.component'
+          ).then((m) => m.ChordPracticeSubPageComponent),
+      },
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'practice',
+      },
+    ],
   },
   {
     path: 'layout-schematic',

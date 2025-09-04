@@ -1,0 +1,13 @@
+@switch (stage()) {
+  @case ("setting") {
+    <app-chord-practice-setting
+      [chords]="chords()"
+      [selectedChordIds]="selectedChordIds()"
+      (selectionChange)="onChordSelectionChange($event)"
+      (startPractice)="startChordPractice()"
+    ></app-chord-practice-setting>
+  }
+  @case ("practice") {
+    <app-chord-practice></app-chord-practice>
+  }
+}
