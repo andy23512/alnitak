@@ -34,14 +34,14 @@
     [tooltip]="$any(altGraphToggleTooltip)"
     contentType="template"
     placement="bottom"
-    >AltGr</mat-checkbox
+    >Alt Graph</mat-checkbox
   >
   <ng-template #shiftToggleTooltip>
     Toggle Shift Modifier <br />
     <kbd [innerHTML]="'alt+s' | hotkeysShortcut: ' + '"></kbd>
   </ng-template>
   <ng-template #altGraphToggleTooltip>
-    Toggle AltGr Modifier <br />
+    Toggle Alt Graph Modifier <br />
     <kbd [innerHTML]="'alt+a' | hotkeysShortcut: ' + '"></kbd>
   </ng-template>
   <div class="flex-1"></div>
@@ -179,6 +179,9 @@
                     "shift" | iconGuard
                   }}</mat-icon>
                 }
+                @case ("alt-gr") {
+                  <span class="px-1 text-alnitak-500">AltGr</span>
+                }
               }
             }
             to access this layer)
@@ -188,59 +191,73 @@
     </mat-sidenav-content>
   </mat-sidenav-container>
   <div id="print-section" class="hidden">
-    @for (layer of layers; track $index) {
-      @for (shiftKey of [false, true]; track $index) {
-        <section class="relative h-1/2">
-          <app-layout
-            class="block h-full overflow-hidden"
-            [alwaysHideLayoutGuides]="true"
-            [alwaysShowLayout]="true"
-            [showThumb3Switch]="visibilitySettingStore.layoutThumb3Switch()"
-            [keyLabelMap]="keyLabelMap"
-            [highlightKeyCombination]="{
-              positionCodes: getHighlightPositionCodes(layer.value, shiftKey),
-              score: 0,
-              characterKeyPositionCode: 0,
-              layer: layer.value,
-              shiftKey: shiftKey,
-              altGraphKey: false
-            }"
-          ></app-layout>
-          <diV
-            class="absolute top-20 flex w-full items-center justify-center text-black"
-          >
-            @if (getHoldKeys(layer.value, shiftKey); as holdKeys) {
-              @if (holdKeys.length) {
-                (Hold
-                @for (key of holdKeys; track $index) {
-                  @if ($index > 0) {
-                    and
+    @for (altGraphKey of [false, true]; track $index) {
+      @for (layer of layers; track $index) {
+        @for (shiftKey of [false, true]; track $index) {
+          <section class="relative h-1/2">
+            <app-layout
+              class="block h-full overflow-hidden"
+              [alwaysHideLayoutGuides]="true"
+              [alwaysShowLayout]="true"
+              [showThumb3Switch]="visibilitySettingStore.layoutThumb3Switch()"
+              [keyLabelMap]="keyLabelMap"
+              [highlightKeyCombination]="{
+                positionCodes: getHighlightPositionCodes(
+                  layer.value,
+                  shiftKey,
+                  altGraphKey
+                ),
+                score: 0,
+                characterKeyPositionCode: 0,
+                layer: layer.value,
+                shiftKey: shiftKey,
+                altGraphKey: false
+              }"
+            ></app-layout>
+            <diV
+              class="absolute top-20 flex w-full items-center justify-center text-black"
+            >
+              @if (
+                getHoldKeys(layer.value, shiftKey, altGraphKey);
+                as holdKeys
+              ) {
+                @if (holdKeys.length) {
+                  (Hold
+                  @for (key of holdKeys; track $index) {
+                    @if ($index > 0) {
+                      and
+                    }
+                    @switch (key) {
+                      @case ("num-shift") {
+                        <mat-icon
+                          class="mx-1 text-alnitak-500 print:text-black"
+                          >{{ "counter_2" | iconGuard }}</mat-icon
+                        >
+                      }
+                      @case ("fn") {
+                        <mat-icon
+                          class="mx-1 text-alnitak-500 print:text-black"
+                          >{{ "counter_3" | iconGuard }}</mat-icon
+                        >
+                      }
+                      @case ("shift") {
+                        <mat-icon class="text-alnitak-500 print:text-black">{{
+                          "shift" | iconGuard
+                        }}</mat-icon>
+                      }
+                      @case ("alt-gr") {
+                        <span class="px-1 text-alnitak-500 print:text-black"
+                          >AltGr</span
+                        >
+                      }
+                    }
                   }
-                  @switch (key) {
-                    @case ("num-shift") {
-                      <mat-icon
-                        class="mx-1 text-alnitak-500 print:text-black"
-                        >{{ "counter_2" | iconGuard }}</mat-icon
-                      >
-                    }
-                    @case ("fn") {
-                      <mat-icon
-                        class="mx-1 text-alnitak-500 print:text-black"
-                        >{{ "counter_3" | iconGuard }}</mat-icon
-                      >
-                    }
-                    @case ("shift") {
-                      <mat-icon class="text-alnitak-500 print:text-black">{{
-                        "shift" | iconGuard
-                      }}</mat-icon>
-                    }
-                  }
+                  to access this layer)
                 }
-                to access this layer)
               }
-            }
-          </diV>
-        </section>
+            </diV>
+          </section>
+        }
       }
     }
   </div>

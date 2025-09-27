@@ -3,7 +3,7 @@ import { NonWSKCode } from '../models/key-code.models';
 
 export const NON_WSK_CODE_2_KEY_NAMES_MAP: Record<NonWSKCode, string[]> = {
   AltLeft: ['left alt', 'left option'],
-  AltRight: ['right alt', 'right option'],
+  AltRight: ['right alt', 'right option', 'altgr', 'alt graph'],
   Backspace: ['backspace', 'bksp'],
   CapsLock: ['caps lock'],
   ContextMenu: ['context menu'],

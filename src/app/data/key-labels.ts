@@ -35,8 +35,8 @@ export const NON_WSK_CODE_2_RAW_KEY_LABEL_MAP: Record<NonWSKCode, RawKeyLabel> =
     },
     AltRight: {
       type: KeyLabelType.String,
-      c: 'ALT',
-      title: 'Alt / Option (right)',
+      c: 'ALT(GR)',
+      title: 'Alt / Option (right) / Alt Graph',
     },
     Backspace: { type: KeyLabelType.Icon, c: 'backspace', title: 'Backspace' },
     CapsLock: {

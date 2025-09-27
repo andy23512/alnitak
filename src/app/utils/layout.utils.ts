@@ -1,7 +1,7 @@
 import { ACTION_REPRESENTATION_ICON_MAP } from '../data/action-representation-icon-map';
 import {
   ACTIONS,
-  ALT_GR_ACTION_CODE,
+  ALT_GRAPH_ACTION_CODE,
   FN_SHIFT_ACTION_CODES,
   NUM_SHIFT_ACTION_CODES,
   SHIFT_ACTION_CODES,
@@ -135,7 +135,7 @@ export function getModifierKeyPositionCodeMap(deviceLayout: DeviceLayout) {
     )
       .filter(nonNullable)
       .flat(),
-    altGraph: [ALT_GR_ACTION_CODE]
+    altGraph: [ALT_GRAPH_ACTION_CODE]
       .map((actionCode) =>
         getKeyCombinationsFromActionCodes(
           [{ actionCode, shiftKey: false, altGraphKey: false }],
@@ -373,8 +373,12 @@ export function getHighlightKeyCombinationFromKeyCombinations(
     })[0];
 }
 
-export function getHoldKeys(layer: Layer, shiftKey: boolean) {
-  const holdKeys: ('num-shift' | 'fn' | 'shift')[] = [];
+export function getHoldKeys(
+  layer: Layer,
+  shiftKey: boolean,
+  altGraphKey: boolean,
+) {
+  const holdKeys: ('num-shift' | 'fn' | 'shift' | 'alt-gr')[] = [];
   switch (layer) {
     case Layer.Secondary:
       holdKeys.push('num-shift');
@@ -384,6 +388,9 @@ export function getHoldKeys(layer: Layer, shiftKey: boolean) {
   }
   if (shiftKey) {
     holdKeys.push('shift');
+  }
+  if (altGraphKey) {
+    holdKeys.push('alt-gr');
   }
   return holdKeys;
 }

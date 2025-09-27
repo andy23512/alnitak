@@ -64,31 +64,27 @@ function getHighlightPositionCodes(
   deviceLayout: DeviceLayout | null,
   layer: Layer,
   shiftKey: boolean,
+  altGraphKey: boolean,
 ) {
+  if (!deviceLayout) {
+    return [];
+  }
   let highlightPositionCodes: number[] = [];
-  if (deviceLayout) {
-    const modifierKeyPositionCodeMap =
-      getModifierKeyPositionCodeMap(deviceLayout);
-    switch (layer) {
-      case Layer.Secondary:
-        highlightPositionCodes = [
-          ...highlightPositionCodes,
-          ...modifierKeyPositionCodeMap.numShift,
-        ];
-        break;
-      case Layer.Tertiary:
-        highlightPositionCodes = [
-          ...highlightPositionCodes,
-          ...modifierKeyPositionCodeMap.fnShift,
-        ];
-        break;
-    }
-    if (shiftKey) {
-      highlightPositionCodes = [
-        ...highlightPositionCodes,
-        ...modifierKeyPositionCodeMap.shift,
-      ];
-    }
+  const modifierKeyPositionCodeMap =
+    getModifierKeyPositionCodeMap(deviceLayout);
+  switch (layer) {
+    case Layer.Secondary:
+      highlightPositionCodes.push(...modifierKeyPositionCodeMap.numShift);
+      break;
+    case Layer.Tertiary:
+      highlightPositionCodes.push(...modifierKeyPositionCodeMap.fnShift);
+      break;
+  }
+  if (shiftKey) {
+    highlightPositionCodes.push(...modifierKeyPositionCodeMap.shift);
+  }
+  if (altGraphKey) {
+    highlightPositionCodes.push(...modifierKeyPositionCodeMap.altGraph);
   }
   return highlightPositionCodes;
 }
@@ -183,7 +179,11 @@ export class LayoutViewerPageComponent {
   altGraphKey = signal(false);
 
   readonly holdKeys = computed(() => {
-    return getHoldKeys(this.currentLayer(), this.shiftKey());
+    return getHoldKeys(
+      this.currentLayer(),
+      this.shiftKey(),
+      this.altGraphKey(),
+    );
   });
 
   readonly highlightPositionCodes = computed(() => {
@@ -191,6 +191,7 @@ export class LayoutViewerPageComponent {
       this.deviceLayout(),
       this.currentLayer(),
       this.shiftKey(),
+      this.altGraphKey(),
     );
   });
 
@@ -428,12 +429,21 @@ export class LayoutViewerPageComponent {
     }
   }
 
-  public getHoldKeys(layer: Layer, shiftKey: boolean) {
-    return getHoldKeys(layer, shiftKey);
+  public getHoldKeys(layer: Layer, shiftKey: boolean, altGraphKey: boolean) {
+    return getHoldKeys(layer, shiftKey, altGraphKey);
   }
 
-  public getHighlightPositionCodes(layer: Layer, shiftKey: boolean) {
-    return getHighlightPositionCodes(this.deviceLayout(), layer, shiftKey);
+  public getHighlightPositionCodes(
+    layer: Layer,
+    shiftKey: boolean,
+    altGraphKey: boolean,
+  ) {
+    return getHighlightPositionCodes(
+      this.deviceLayout(),
+      layer,
+      shiftKey,
+      altGraphKey,
+    );
   }
 
   public resetSelectedPositions() {

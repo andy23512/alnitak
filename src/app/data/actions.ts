@@ -9,7 +9,7 @@ import {
 export const NUM_SHIFT_ACTION_CODES = [550, 551];
 export const FN_SHIFT_ACTION_CODES = [552, 553];
 export const SHIFT_ACTION_CODES = [513, 517];
-export const ALT_GR_ACTION_CODE = 518;
+export const ALT_GRAPH_ACTION_CODE = 518;
 export const WSK_ACTIONS: Omit<WSKAction, 'type'>[] = [
   { codeId: 33, keyCode: 'Digit1', withShift: true },
   { codeId: 34, keyCode: 'Quote', withShift: true },
