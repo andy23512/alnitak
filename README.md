@@ -25,7 +25,7 @@ An unofficial practice tool of CharaChorder 3D input devices (CharaChorder One, 
   - only show the labels of keys from the input of the selected chords
   - highlight the keys of current chord
 - Layout Viewer
-  - can view the final layout (actual output under the selected OS keyboard layout) by layers and with/without shift
+  - can view the final layout (actual output under the selected OS keyboard layout) by layers and key modifiers (Shift and Alt Graph)
   - search for a key in the layout
   - print the final layout (or generate a pdf file of it)
 

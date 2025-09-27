@@ -26,6 +26,24 @@ export const NUM_SHIFT_KEY_LABEL: KeyLabel = {
   title: 'Numeric Layer',
 };
 
+export const FN_SHIFT_KEY_LABEL: KeyLabel = {
+  type: KeyLabelType.Icon,
+  c: 'counter_3',
+  layer: null,
+  shiftKey: null,
+  altGraphKey: null,
+  title: 'Function Layer',
+};
+
+export const ALT_GRAPH_KEY_LABEL: KeyLabel = {
+  type: KeyLabelType.String,
+  c: 'ALT(GR)',
+  layer: null,
+  shiftKey: null,
+  altGraphKey: null,
+  title: 'Alt Graph',
+};
+
 export const NON_WSK_CODE_2_RAW_KEY_LABEL_MAP: Record<NonWSKCode, RawKeyLabel> =
   {
     AltLeft: {

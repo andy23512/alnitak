@@ -29,7 +29,12 @@ import { interval } from 'rxjs';
 import { ComboCounterComponent } from 'src/app/components/combo-counter/combo-counter.component';
 import { LayoutComponent } from 'src/app/components/layout/layout.component';
 import { SpeedometerComponent } from 'src/app/components/speedometer/speedometer.component';
-import { NUM_SHIFT_KEY_LABEL, SHIFT_KEY_LABEL } from 'src/app/data/key-labels';
+import {
+  ALT_GRAPH_KEY_LABEL,
+  FN_SHIFT_KEY_LABEL,
+  NUM_SHIFT_KEY_LABEL,
+  SHIFT_KEY_LABEL,
+} from 'src/app/data/key-labels';
 import { LESSONS } from 'src/app/data/topics';
 import { db } from 'src/app/db';
 import { VisibleDirective } from 'src/app/directives/visible.directive';
@@ -173,6 +178,8 @@ export class LessonPageComponent implements OnInit, OnDestroy {
     const keyLabelMap: Record<number, KeyLabel[]> = {};
     let addShiftLabel = false;
     let addNumShiftLabel = false;
+    let addFnShiftLabel = false;
+    let addAltGraphLabel = false;
     lessonCharactersDevicePositionCodes.forEach((v) => {
       v?.characterDeviceKeys?.forEach(
         ({ characterKeyPositionCode, layer, shiftKey, altGraphKey }) => {
@@ -195,6 +202,12 @@ export class LessonPageComponent implements OnInit, OnDestroy {
           if (layer === Layer.Secondary && !addNumShiftLabel) {
             addNumShiftLabel = true;
           }
+          if (layer === Layer.Tertiary && !addFnShiftLabel) {
+            addFnShiftLabel = true;
+          }
+          if (altGraphKey && !addAltGraphLabel) {
+            addAltGraphLabel = true;
+          }
         },
       );
     });
@@ -213,6 +226,24 @@ export class LessonPageComponent implements OnInit, OnDestroy {
           keyLabelMap[pos] = [NUM_SHIFT_KEY_LABEL];
         } else {
           keyLabelMap[pos].push(NUM_SHIFT_KEY_LABEL);
+        }
+      });
+    }
+    if (addFnShiftLabel) {
+      modifierKeyPositionCodeMap.fnShift.forEach((pos) => {
+        if (!keyLabelMap[pos]) {
+          keyLabelMap[pos] = [FN_SHIFT_KEY_LABEL];
+        } else {
+          keyLabelMap[pos].push(FN_SHIFT_KEY_LABEL);
+        }
+      });
+    }
+    if (addAltGraphLabel) {
+      modifierKeyPositionCodeMap.altGraph.forEach((pos) => {
+        if (!keyLabelMap[pos]) {
+          keyLabelMap[pos] = [ALT_GRAPH_KEY_LABEL];
+        } else {
+          keyLabelMap[pos].push(ALT_GRAPH_KEY_LABEL);
         }
       });
     }

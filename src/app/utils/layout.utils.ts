@@ -362,7 +362,15 @@ export function getHighlightKeyCombinationFromKeyCombinations(
           });
         }
       }
-      return result;
+      return k.altGraphKey
+        ? result.map((r) => ({
+            ...r,
+            positionCodes: [
+              ...r.positionCodes,
+              ...modifierKeyPositionCodeMap.altGraph,
+            ],
+          }))
+        : result;
     })
     .flat()
     .sort((a, b) => {

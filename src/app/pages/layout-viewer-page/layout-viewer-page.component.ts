@@ -237,6 +237,26 @@ export class LayoutViewerPageComponent {
                 },
               );
             }
+            if (keyboardLayoutKey?.withShiftAltGraph) {
+              keyLabels.push(
+                {
+                  type: KeyLabelType.String,
+                  c: keyboardLayoutKey.withShiftAltGraph,
+                  title: `Character: ${keyboardLayoutKey.withShiftAltGraph}`,
+                  layer,
+                  shiftKey: false,
+                  altGraphKey: true,
+                },
+                {
+                  type: KeyLabelType.String,
+                  c: keyboardLayoutKey.withShiftAltGraph,
+                  title: `Character: ${keyboardLayoutKey.withShiftAltGraph}`,
+                  layer,
+                  shiftKey: true,
+                  altGraphKey: true,
+                },
+              );
+            }
           } else {
             if (keyboardLayoutKey?.unmodified) {
               keyLabels.push({
@@ -256,6 +276,26 @@ export class LayoutViewerPageComponent {
                 layer,
                 shiftKey: true,
                 altGraphKey: false,
+              });
+            }
+            if (keyboardLayoutKey?.withAltGraph) {
+              keyLabels.push({
+                type: KeyLabelType.String,
+                c: keyboardLayoutKey.withAltGraph,
+                title: `Character: ${keyboardLayoutKey.withAltGraph}`,
+                layer,
+                shiftKey: false,
+                altGraphKey: true,
+              });
+            }
+            if (keyboardLayoutKey?.withShiftAltGraph) {
+              keyLabels.push({
+                type: KeyLabelType.String,
+                c: keyboardLayoutKey.withShiftAltGraph,
+                title: `Character: ${keyboardLayoutKey.withShiftAltGraph}`,
+                layer,
+                shiftKey: true,
+                altGraphKey: true,
               });
             }
           }
@@ -317,6 +357,7 @@ export class LayoutViewerPageComponent {
       keyName: string;
       positions: Partial<Record<Layer, number[]>>;
       withShift?: boolean;
+      withAltGraph?: boolean;
     }[] = [];
     for (const positionIndex of range(0, 90)) {
       for (const layerIndex of range(0, 3)) {
@@ -341,12 +382,21 @@ export class LayoutViewerPageComponent {
         const action = ACTIONS.find((a) => a.codeId === +actionCodeId);
         let keyNames: string[] | null = null;
         let shiftLayerKeyNames: string[] | null = null;
+        let altGraphLayerKeyNames: string[] | null = null;
+        let shiftAltGraphLayerKeyNames: string[] | null = null;
         if (action?.type === ActionType.WSK && action.keyCode) {
           const keyboardLayoutKey = keyboardLayout.layout[action?.keyCode];
           if (action?.withShift) {
             if (keyboardLayoutKey?.withShift) {
               const char = keyboardLayoutKey.withShift;
               keyNames = [char, ...(CHARACTER_NAME_MAP.get(char) ?? [])];
+            }
+            if (keyboardLayoutKey?.withShiftAltGraph) {
+              const char = keyboardLayoutKey.withShiftAltGraph;
+              altGraphLayerKeyNames = [
+                char,
+                ...(CHARACTER_NAME_MAP.get(char) ?? []),
+              ];
             }
           } else {
             if (keyboardLayoutKey?.unmodified) {
@@ -356,6 +406,20 @@ export class LayoutViewerPageComponent {
             if (keyboardLayoutKey?.withShift) {
               const char = keyboardLayoutKey.withShift;
               shiftLayerKeyNames = [
+                char,
+                ...(CHARACTER_NAME_MAP.get(char) ?? []),
+              ];
+            }
+            if (keyboardLayoutKey?.withAltGraph) {
+              const char = keyboardLayoutKey.withAltGraph;
+              altGraphLayerKeyNames = [
+                char,
+                ...(CHARACTER_NAME_MAP.get(char) ?? []),
+              ];
+            }
+            if (keyboardLayoutKey?.withShiftAltGraph) {
+              const char = keyboardLayoutKey.withShiftAltGraph;
+              shiftAltGraphLayerKeyNames = [
                 char,
                 ...(CHARACTER_NAME_MAP.get(char) ?? []),
               ];
@@ -376,6 +440,25 @@ export class LayoutViewerPageComponent {
         if (shiftLayerKeyNames) {
           shiftLayerKeyNames.forEach((keyName) => {
             keyList.push({ keyName, positions, withShift: true });
+          });
+        }
+        if (altGraphLayerKeyNames) {
+          altGraphLayerKeyNames.forEach((keyName) => {
+            keyList.push({
+              keyName,
+              positions,
+              withAltGraph: true,
+            });
+          });
+        }
+        if (shiftAltGraphLayerKeyNames) {
+          shiftAltGraphLayerKeyNames.forEach((keyName) => {
+            keyList.push({
+              keyName,
+              positions,
+              withShift: true,
+              withAltGraph: true,
+            });
           });
         }
       },
@@ -412,14 +495,17 @@ export class LayoutViewerPageComponent {
 
   public onKeyInSearchResultClick({
     withShift,
+    withAltGraph,
     positions,
   }: {
     keyName: string;
     positions: Partial<Record<Layer, number[]>>;
     withShift?: boolean;
+    withAltGraph?: boolean;
   }) {
     this.searchMenuIsOpen.set(false);
     this.shiftKey.set(Boolean(withShift));
+    this.altGraphKey.set(Boolean(withAltGraph));
     for (const layer of [Layer.Primary, Layer.Secondary, Layer.Tertiary]) {
       if (positions[layer]) {
         this.currentLayer.set(layer);
