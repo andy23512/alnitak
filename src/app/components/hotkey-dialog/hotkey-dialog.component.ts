@@ -43,6 +43,7 @@ export const HOTKEY_GROUPS = [
       { key: 'alt.2', description: 'Switch to the numeric layer' },
       { key: 'alt.3', description: 'Switch to the functional layer' },
       { key: 'alt.s', description: 'Toggle the Shift modifier' },
+      { key: 'alt.a', description: 'Toggle the AltGr modifier' },
     ],
   },
 ];

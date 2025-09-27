@@ -180,6 +180,7 @@ export class LayoutViewerPageComponent {
   ];
   currentLayer = signal(Layer.Primary);
   shiftKey = signal(false);
+  altGraphKey = signal(false);
 
   readonly holdKeys = computed(() => {
     return getHoldKeys(this.currentLayer(), this.shiftKey());
@@ -454,6 +455,9 @@ export class LayoutViewerPageComponent {
           break;
         case 'KeyS':
           this.shiftKey.set(!this.shiftKey());
+          break;
+        case 'KeyA':
+          this.altGraphKey.set(!this.altGraphKey());
           break;
       }
     }

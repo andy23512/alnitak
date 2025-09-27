@@ -27,9 +27,22 @@
     placement="bottom"
     >Shift</mat-checkbox
   >
+  <mat-checkbox
+    [(ngModel)]="altGraphKey"
+    color="primary"
+    (ngModelChange)="resetSelectedPositions()"
+    [tooltip]="$any(altGraphToggleTooltip)"
+    contentType="template"
+    placement="bottom"
+    >AltGr</mat-checkbox
+  >
   <ng-template #shiftToggleTooltip>
     Toggle Shift Modifier <br />
     <kbd [innerHTML]="'alt+s' | hotkeysShortcut: ' + '"></kbd>
+  </ng-template>
+  <ng-template #altGraphToggleTooltip>
+    Toggle AltGr Modifier <br />
+    <kbd [innerHTML]="'alt+a' | hotkeysShortcut: ' + '"></kbd>
   </ng-template>
   <div class="flex-1"></div>
   <mat-form-field class="w-96" [subscriptSizing]="'dynamic'">
