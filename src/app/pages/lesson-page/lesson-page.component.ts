@@ -35,7 +35,6 @@ import {
   NUM_SHIFT_KEY_LABEL,
   SHIFT_KEY_LABEL,
 } from 'src/app/data/key-labels';
-import { LESSONS } from 'src/app/data/topics';
 import { db } from 'src/app/db';
 import { VisibleDirective } from 'src/app/directives/visible.directive';
 import {
@@ -44,6 +43,7 @@ import {
   KeyLabelType,
   Layer,
 } from 'src/app/models/device-layout.models';
+import { LessonWithPreviousAndNextLessonUrl } from 'src/app/models/topic.models';
 import { IconGuardPipe } from 'src/app/pipes/icon-guard.pipe';
 import { AirModeSettingStore } from 'src/app/stores/air-mode-setting.store';
 import { DeviceLayoutStore } from 'src/app/stores/device-layout.store';
@@ -84,8 +84,7 @@ import { nonNullable } from 'src/app/utils/non-nullable.utils';
   providers: [LessonStore],
 })
 export class LessonPageComponent implements OnInit, OnDestroy {
-  readonly topicId = input.required<string>();
-  readonly lessonId = input.required<string>();
+  readonly lesson = input.required<LessonWithPreviousAndNextLessonUrl | null>();
 
   readonly highlightSettingStore = inject(HighlightSettingStore);
   readonly visibilitySettingStore = inject(VisibilitySettingStore);
@@ -103,27 +102,6 @@ export class LessonPageComponent implements OnInit, OnDestroy {
     pauseLesson: 'escape',
   };
 
-  readonly lesson = computed(() => {
-    const topicId = this.topicId();
-    const lessonId = this.lessonId();
-    const lessonIndex = LESSONS.findIndex(
-      (lesson) => lesson.id === lessonId && lesson.topic.id === topicId,
-    );
-    if (lessonIndex === -1) {
-      return null;
-    }
-    const lesson = LESSONS[lessonIndex];
-    const previous = lessonIndex !== 0 ? LESSONS[lessonIndex - 1] : null;
-    const next =
-      lessonIndex !== LESSONS.length - 1 ? LESSONS[lessonIndex + 1] : null;
-    return {
-      ...lesson,
-      previousLessonUrl: previous
-        ? `/topic/${previous.topic.id}/lesson/${previous.id}`
-        : null,
-      nextLessonUrl: next ? `/topic/${next.topic.id}/lesson/${next.id}` : null,
-    };
-  });
   @ViewChild('input', { static: true })
   public input!: ElementRef<HTMLInputElement>;
 
