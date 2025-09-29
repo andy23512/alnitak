@@ -17,3 +17,12 @@ export function generateCharacterLesson(str: string): RawLesson {
       .flat(),
   };
 }
+
+export function generateTrigramLesson(trigrams: string[]): RawLesson {
+  return {
+    id: trigrams.join(','),
+    name: trigrams.join(' '),
+    components: trigrams,
+    componentNames: trigrams,
+  };
+}

@@ -38,6 +38,7 @@ export type Icon =
   | 'menu'
   | 'move_down'
   | 'move_up'
+  | 'password_2'
   | 'pause'
   | 'piano'
   | 'play_arrow'

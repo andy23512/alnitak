@@ -1,5 +1,8 @@
 import { Lesson, Topic } from '../models/topic.models';
-import { generateCharacterLesson } from '../utils/lesson.utils';
+import {
+  generateCharacterLesson,
+  generateTrigramLesson,
+} from '../utils/lesson.utils';
 
 export const LETTER_TOPIC: Topic = {
   id: 'letter',
@@ -64,7 +67,26 @@ export const SYMBOL_TOPIC: Topic = {
   ].map(generateCharacterLesson),
 };
 
-export const TOPICS = [NUMBER_TOPIC, LETTER_TOPIC, SYMBOL_TOPIC];
+export const TRIGRAM_TOPIC: Topic = {
+  id: 'trigram',
+  name: 'Trigrams',
+  iconName: 'password_2',
+  type: 'trigram',
+  lessons: [
+    ['the', 'and', 'ing'],
+    ['ent', 'ion', 'her'],
+    ['for', 'tha', 'nth'],
+    ['int', 'ere', 'tio'],
+    ['ter', 'est', 'ers'],
+    ['ati', 'hat', 'ate'],
+    ['all', 'eth', 'hes'],
+    ['ver', 'his', 'oft'],
+    ['ith', 'fth', 'sth'],
+    ['oth', 'res', 'ont'],
+  ].map(generateTrigramLesson),
+};
+
+export const TOPICS = [NUMBER_TOPIC, LETTER_TOPIC, SYMBOL_TOPIC, TRIGRAM_TOPIC];
 export const LESSONS: Lesson[] = TOPICS.map((topic) =>
   topic.lessons.map((l) => ({ ...l, topic })),
 ).flat();

@@ -1,6 +1,6 @@
 import { Icon } from '../types/icon.types';
 
-export type TopicType = 'character' | 'word' | 'chord';
+export type TopicType = 'character' | 'trigram';
 
 export interface RawLesson {
   id: string;
@@ -19,4 +19,9 @@ export interface Topic {
 
 export interface Lesson extends RawLesson {
   topic: Topic;
+}
+
+export interface LessonWithPreviousAndNextLessonUrl extends Lesson {
+  previousLessonUrl: string | null;
+  nextLessonUrl: string | null;
 }
