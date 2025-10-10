@@ -3,10 +3,13 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  ElementRef,
   HostBinding,
   HostListener,
   inject,
+  Signal,
   signal,
+  viewChild,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -121,6 +124,7 @@ function getHighlightPositionCodes(
 export class LayoutViewerPageComponent {
   @HostBinding('class') classes = 'flex flex-col gap-2 h-full';
 
+  readonly pipSupported = 'documentPictureInPicture' in window;
   readonly highlightSettingStore = inject(HighlightSettingStore);
   readonly visibilitySettingStore = inject(VisibilitySettingStore);
   readonly keyboardLayoutStore = inject(LayoutViewerKeyboardLayoutStore);
@@ -135,6 +139,7 @@ export class LayoutViewerPageComponent {
   readonly searchMenuIsOpen = signal(false);
   readonly keySearchQuery = signal('');
   readonly selectedPositions = signal<number[]>([]);
+  readonly layout: Signal<ElementRef<HTMLElement>> = viewChild.required('layout', {read: ElementRef});
 
   readonly filteredKeyboardLayouts = computed(() => {
     const keyboardLayouts = this.keyboardLayouts();
@@ -557,5 +562,14 @@ export class LayoutViewerPageComponent {
           break;
       }
     }
+  }
+
+  public async openPipWindow() {
+    const options = {
+      width: 400,
+      height: 300,
+    }
+    const pipWindow = await (window as any).documentPictureInPicture.requestWindow(options);
+    pipWindow.document.body.append(this.layout().nativeElement);
   }
 }

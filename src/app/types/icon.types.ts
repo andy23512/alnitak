@@ -40,6 +40,7 @@ export type Icon =
   | 'move_up'
   | 'pause'
   | 'piano'
+  | 'picture_in_picture'
   | 'play_arrow'
   | 'print'
   | 'question_mark'
