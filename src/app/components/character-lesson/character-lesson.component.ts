@@ -20,45 +20,45 @@ import { MatButton, MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { MatTooltip } from '@angular/material/tooltip';
 import { Router, RouterLinkWithHref } from '@angular/router';
-import { LetDirective } from '@ngrx/component';
-import { VisibleDirective } from 'src/app/directives/visible.directive';
-import { CharacterLessonWithPreviousAndNextLessonUrl } from 'src/app/models/topic.models';
-import { IconGuardPipe } from 'src/app/pipes/icon-guard.pipe';
-import { LessonStore } from 'src/app/stores/lesson.store';
-import { ComboCounterComponent } from '../combo-counter/combo-counter.component';
-import { LayoutComponent } from '../layout/layout.component';
-import { SpeedometerComponent } from '../speedometer/speedometer.component';
 import { HotkeysService } from '@ngneat/hotkeys';
 import { untilDestroyed } from '@ngneat/until-destroy';
+import { LetDirective } from '@ngrx/component';
 import { getState } from '@ngrx/signals';
 import { liveQuery } from 'dexie';
 import { interval } from 'rxjs';
 import {
-  SHIFT_KEY_LABEL,
-  NUM_SHIFT_KEY_LABEL,
-  FN_SHIFT_KEY_LABEL,
   ALT_GRAPH_KEY_LABEL,
+  FN_SHIFT_KEY_LABEL,
+  NUM_SHIFT_KEY_LABEL,
+  SHIFT_KEY_LABEL,
 } from 'src/app/data/key-labels';
 import { db } from 'src/app/db';
+import { VisibleDirective } from 'src/app/directives/visible.directive';
 import {
+  HighlightKeyCombination,
   KeyLabel,
   KeyLabelType,
   Layer,
-  HighlightKeyCombination,
 } from 'src/app/models/device-layout.models';
+import { CharacterLessonWithPreviousAndNextLessonUrl } from 'src/app/models/topic.models';
+import { IconGuardPipe } from 'src/app/pipes/icon-guard.pipe';
 import { AirModeSettingStore } from 'src/app/stores/air-mode-setting.store';
+import { CharacterLessonStore } from 'src/app/stores/character-lesson.store';
 import { DeviceLayoutStore } from 'src/app/stores/device-layout.store';
 import { HighlightSettingStore } from 'src/app/stores/highlight-setting.store';
 import { KeyboardLayoutStore } from 'src/app/stores/keyboard-layout.store';
 import { VisibilitySettingStore } from 'src/app/stores/visibility-setting.store';
 import {
-  getCharacterKeyCodeFromCharacter,
   getCharacterActionCodesFromCharacterKeyCode,
+  getCharacterKeyCodeFromCharacter,
+  getHighlightKeyCombinationFromKeyCombinations,
   getKeyCombinationsFromActionCodes,
   getModifierKeyPositionCodeMap,
-  getHighlightKeyCombinationFromKeyCombinations,
 } from 'src/app/utils/layout.utils';
 import { nonNullable } from 'src/app/utils/non-nullable.utils';
+import { ComboCounterComponent } from '../combo-counter/combo-counter.component';
+import { LayoutComponent } from '../layout/layout.component';
+import { SpeedometerComponent } from '../speedometer/speedometer.component';
 
 @Component({
   selector: 'accel-shooter-character-lesson',
@@ -80,7 +80,7 @@ import { nonNullable } from 'src/app/utils/non-nullable.utils';
     VisibleDirective,
     IconGuardPipe,
   ],
-  providers: [LessonStore],
+  providers: [CharacterLessonStore],
 })
 export class CharacterLessonComponent implements OnInit, OnDestroy {
   lesson = input.required<CharacterLessonWithPreviousAndNextLessonUrl>();
@@ -253,9 +253,9 @@ export class CharacterLessonComponent implements OnInit, OnDestroy {
     return highlightCharacterKeyMap;
   });
 
-  readonly lessonStore = inject(LessonStore);
+  readonly characterLessonStore = inject(CharacterLessonStore);
   readonly highlightKeyCombination = computed(() => {
-    const currentCharacter = this.lessonStore.queue()[0];
+    const currentCharacter = this.characterLessonStore.queue()[0];
     const highlightCharacterKeyCombinationMap =
       this.highlightCharacterKeyCombinationMap();
     return highlightCharacterKeyCombinationMap[currentCharacter];
@@ -269,13 +269,13 @@ export class CharacterLessonComponent implements OnInit, OnDestroy {
       const lesson = this.lesson();
       untracked(() => {
         if (lesson) {
-          this.lessonStore.setLesson(lesson);
+          this.characterLessonStore.setLesson(lesson);
         }
       });
     });
     effect(() => {
       const errorTooltip = this.errorTooltip();
-      const error = this.lessonStore.error();
+      const error = this.characterLessonStore.error();
       if (!errorTooltip) {
         return;
       }
@@ -331,7 +331,7 @@ export class CharacterLessonComponent implements OnInit, OnDestroy {
       return;
     }
     if (data?.length === 1) {
-      this.lessonStore.type(data);
+      this.characterLessonStore.type(data);
     }
   }
 
@@ -345,13 +345,13 @@ export class CharacterLessonComponent implements OnInit, OnDestroy {
       interval(characterEntryInterval)
         .pipe(untilDestroyed(this))
         .subscribe(() => {
-          this.lessonStore.airType();
+          this.characterLessonStore.airType();
         });
     }
   }
 
   pauseLesson() {
-    this.lessonStore.pauseLesson();
+    this.characterLessonStore.pauseLesson();
   }
 
   keyRecords$ = liveQuery(() => db.keyRecords.toArray());

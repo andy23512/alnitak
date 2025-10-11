@@ -11,23 +11,26 @@
   />
   @if (isFocus()) {
     <span class="whitespace-pre font-mono text-2xl text-gray-300">{{
-      lessonStore.history().join("")
+      characterLessonStore.history().join("")
     }}</span>
     <span
       class="pointer-events-none relative font-mono text-2xl before:absolute before:-top-[0.5ch] before:block before:h-0 before:w-0 before:border-x-[0.5ch] before:border-t-[0.5ch] before:border-solid before:border-x-transparent before:border-t-white after:absolute after:block after:h-0 after:w-0 after:border-x-[0.5ch] after:border-b-[0.5ch] after:border-solid after:border-x-transparent after:border-b-white"
       [ngClass]="
-        lessonStore.error()
+        characterLessonStore.error()
           ? 'before:!border-t-red-500 after:!border-b-red-500'
           : null
       "
       #errorTooltip="matTooltip"
-      matTooltip="You typed: {{ lessonStore.lastErrorComponent() }}"
+      matTooltip="You typed: {{ characterLessonStore.lastErrorComponent() }}"
       matTooltipPosition="below"
     >
-      @for (character of lessonStore.queue(); track $index) {
-        <span [ngClass]="lessonStore.error() ? 'first:text-red-500 ' : null">{{
-          character
-        }}</span>
+      @for (character of characterLessonStore.queue(); track $index) {
+        <span
+          [ngClass]="
+            characterLessonStore.error() ? 'first:text-red-500 ' : null
+          "
+          >{{ character }}</span
+        >
       }
       <span class="text-gray-300">...</span>
     </span>
@@ -81,8 +84,12 @@
 }
 <app-layout
   class="opacity-1 block flex-1 overflow-hidden px-5 pb-5 transition-[opacity] ease-in-out"
-  [class.opacity-0]="lessonStore.combo() > 20 && !airModeSettingStore.enabled()"
-  [style.transition-duration]="(lessonStore.combo() >= 20 ? 10000 : 100) + 'ms'"
+  [class.opacity-0]="
+    characterLessonStore.combo() > 20 && !airModeSettingStore.enabled()
+  "
+  [style.transition-duration]="
+    (characterLessonStore.combo() >= 20 ? 10000 : 100) + 'ms'
+  "
   [showThumb3Switch]="visibilitySettingStore.layoutThumb3Switch()"
   [keyLabelMap]="keyLabelMap()"
   [highlightKeyCombination]="isFocus() ? highlightKeyCombination() : null"
@@ -91,13 +98,13 @@
   *appVisible="'comboCounter'"
   class="absolute bottom-4 left-4"
   [class.opacity-50]="isFocus()"
-  [combo]="lessonStore.combo()"
+  [combo]="characterLessonStore.combo()"
 ></app-combo-counter>
 <app-speedometer
   *appVisible="'speedometer'"
   class="absolute bottom-4 right-4 h-24 w-24 opacity-50"
   [class.opacity-50]="isFocus()"
-  [speed]="lessonStore.cpm()"
+  [speed]="characterLessonStore.cpm()"
   [maxSpeed]="200"
   [speedUnit]="'CPM'"
 ></app-speedometer>

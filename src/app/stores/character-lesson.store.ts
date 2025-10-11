@@ -7,13 +7,13 @@ import {
   withMethods,
   withState,
 } from '@ngrx/signals';
-import { Lesson } from '../models/topic.models';
+import { CharacterLesson } from '../models/topic.models';
 import { KeyRecordService } from '../services/key-record.service';
 import { pickRandomItem, pickRandomItemNTimes } from '../utils/random.utils';
 
 const QUEUE_SIZE = 20;
 
-interface LessonState {
+interface CharacterLessonState {
   topicId: string | null;
   lessonId: string | null;
   components: string[];
@@ -26,7 +26,7 @@ interface LessonState {
   lastErrorComponent: string | null;
 }
 
-const initialState: LessonState = {
+const initialState: CharacterLessonState = {
   topicId: null,
   lessonId: null,
   components: [],
@@ -39,11 +39,11 @@ const initialState: LessonState = {
   lastErrorComponent: null,
 };
 
-export const LessonStore = signalStore(
-  withDevtools('lesson'),
+export const CharacterLessonStore = signalStore(
+  withDevtools('characterLesson'),
   withState(initialState),
   withMethods((store, keyRecordService = inject(KeyRecordService)) => ({
-    setLesson(lesson: Lesson) {
+    setLesson(lesson: CharacterLesson) {
       patchState(store, () => ({
         topicId: lesson.topic.id,
         lessonId: lesson.id,
