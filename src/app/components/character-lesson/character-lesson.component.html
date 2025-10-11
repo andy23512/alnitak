@@ -1,0 +1,103 @@
+<section class="flex h-12 flex-none items-center justify-center bg-gray-700">
+  <input
+    class="h-0 w-0 opacity-0"
+    title="input box for practicing typing"
+    #input
+    type="text"
+    inputmode="none"
+    (input)="onInput($any($event))"
+    (focus)="isFocus.set(true)"
+    (blur)="isFocus.set(false); pauseLesson()"
+  />
+  @if (isFocus()) {
+    <span class="whitespace-pre font-mono text-2xl text-gray-300">{{
+      lessonStore.history().join("")
+    }}</span>
+    <span
+      class="pointer-events-none relative font-mono text-2xl before:absolute before:-top-[0.5ch] before:block before:h-0 before:w-0 before:border-x-[0.5ch] before:border-t-[0.5ch] before:border-solid before:border-x-transparent before:border-t-white after:absolute after:block after:h-0 after:w-0 after:border-x-[0.5ch] after:border-b-[0.5ch] after:border-solid after:border-x-transparent after:border-b-white"
+      [ngClass]="
+        lessonStore.error()
+          ? 'before:!border-t-red-500 after:!border-b-red-500'
+          : null
+      "
+      #errorTooltip="matTooltip"
+      matTooltip="You typed: {{ lessonStore.lastErrorComponent() }}"
+      matTooltipPosition="below"
+    >
+      @for (character of lessonStore.queue(); track $index) {
+        <span [ngClass]="lessonStore.error() ? 'first:text-red-500 ' : null">{{
+          character
+        }}</span>
+      }
+      <span class="text-gray-300">...</span>
+    </span>
+  } @else {
+    <span>{{ lesson()?.topic?.name }}</span>
+    <mat-icon>{{ "arrow_right" | iconGuard }}</mat-icon>
+    <span> {{ lesson()?.name }}</span>
+  }
+</section>
+<div class="absolute right-0 top-0 h-12 content-center">
+  @if (isFocus()) {
+    <button mat-flat-button (click)="pauseLesson()">
+      <mat-icon class="text-white">{{ "pause" | iconGuard }}</mat-icon> Pause
+      <kbd class="small ml-1">esc</kbd>
+    </button>
+  } @else {
+    <button mat-flat-button (click)="startLesson()">
+      <mat-icon class="text-white">{{ "play_arrow" | iconGuard }}</mat-icon>
+      Start
+      <kbd class="small ml-1">space</kbd>
+    </button>
+  }
+</div>
+@if (!isFocus()) {
+  <div class="absolute left-0 top-0 h-12 content-center">
+    <a
+      class="text-inherit"
+      *ngrxLet="lesson()?.previousLessonUrl as previousLessonUrl"
+      aria-label="link to previous lesson"
+      [routerLink]="previousLessonUrl"
+      matTooltip="Go to previous lesson"
+      [matTooltipDisabled]="!previousLessonUrl"
+    >
+      <button type="button" mat-icon-button [disabled]="!previousLessonUrl">
+        <mat-icon>{{ "chevron_left" | iconGuard }}</mat-icon>
+      </button>
+    </a>
+    <a
+      class="text-inherit"
+      *ngrxLet="lesson()?.nextLessonUrl as nextLessonUrl"
+      aria-label="link to next lesson"
+      [routerLink]="nextLessonUrl"
+      matTooltip="Go to next lesson"
+      [matTooltipDisabled]="!nextLessonUrl"
+    >
+      <button type="button" mat-icon-button [disabled]="!nextLessonUrl">
+        <mat-icon>{{ "chevron_right" | iconGuard }}</mat-icon>
+      </button>
+    </a>
+  </div>
+}
+<app-layout
+  class="opacity-1 block flex-1 overflow-hidden px-5 pb-5 transition-[opacity] ease-in-out"
+  [class.opacity-0]="lessonStore.combo() > 20 && !airModeSettingStore.enabled()"
+  [style.transition-duration]="(lessonStore.combo() >= 20 ? 10000 : 100) + 'ms'"
+  [showThumb3Switch]="visibilitySettingStore.layoutThumb3Switch()"
+  [keyLabelMap]="keyLabelMap()"
+  [highlightKeyCombination]="isFocus() ? highlightKeyCombination() : null"
+></app-layout>
+<app-combo-counter
+  *appVisible="'comboCounter'"
+  class="absolute bottom-4 left-4"
+  [class.opacity-50]="isFocus()"
+  [combo]="lessonStore.combo()"
+></app-combo-counter>
+<app-speedometer
+  *appVisible="'speedometer'"
+  class="absolute bottom-4 right-4 h-24 w-24 opacity-50"
+  [class.opacity-50]="isFocus()"
+  [speed]="lessonStore.cpm()"
+  [maxSpeed]="200"
+  [speedUnit]="'CPM'"
+></app-speedometer>

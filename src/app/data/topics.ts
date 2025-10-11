@@ -1,10 +1,10 @@
-import { Lesson, Topic } from '../models/topic.models';
+import { CharacterTopic, Lesson, TrigramTopic } from '../models/topic.models';
 import {
   generateCharacterLesson,
   generateTrigramLesson,
 } from '../utils/lesson.utils';
 
-export const LETTER_TOPIC: Topic = {
+export const LETTER_TOPIC: CharacterTopic = {
   id: 'letter',
   iconName: 'abc',
   name: 'Letters',
@@ -36,7 +36,7 @@ export const LETTER_TOPIC: Topic = {
   ],
 };
 
-export const NUMBER_TOPIC: Topic = {
+export const NUMBER_TOPIC: CharacterTopic = {
   id: 'number',
   iconName: '123',
   name: 'Numbers',
@@ -50,7 +50,7 @@ export const NUMBER_TOPIC: Topic = {
   ]),
 };
 
-export const SYMBOL_TOPIC: Topic = {
+export const SYMBOL_TOPIC: CharacterTopic = {
   id: 'symbol',
   name: 'Symbols',
   iconName: 'question_mark',
@@ -67,7 +67,7 @@ export const SYMBOL_TOPIC: Topic = {
   ].map(generateCharacterLesson),
 };
 
-export const TRIGRAM_TOPIC: Topic = {
+export const TRIGRAM_TOPIC: TrigramTopic = {
   id: 'trigram',
   name: 'Trigrams',
   iconName: 'password_2',
@@ -88,7 +88,7 @@ export const TRIGRAM_TOPIC: Topic = {
 
 export const TOPICS = [NUMBER_TOPIC, LETTER_TOPIC, SYMBOL_TOPIC, TRIGRAM_TOPIC];
 export const LESSONS: Lesson[] = TOPICS.map((topic) =>
-  topic.lessons.map((l) => ({ ...l, topic })),
+  topic.lessons.map((l) => ({ ...l, topic, topicType: topic.type }) as Lesson),
 ).flat();
 export const LESSON_DATA_FOR_SEARCH = LESSONS.map((lesson) =>
   [{ key: lesson.name, lesson }]

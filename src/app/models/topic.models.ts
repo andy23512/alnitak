@@ -9,19 +9,47 @@ export interface RawLesson {
   componentNames: string[];
 }
 
-export interface Topic {
+export interface BaseTopic {
   id: string;
   iconName?: Icon;
   name: string;
-  type: TopicType;
   lessons: RawLesson[];
+  type: TopicType;
 }
 
-export interface Lesson extends RawLesson {
-  topic: Topic;
+export interface CharacterTopic extends BaseTopic {
+  type: 'character';
 }
 
-export interface LessonWithPreviousAndNextLessonUrl extends Lesson {
+export interface TrigramTopic extends BaseTopic {
+  type: 'trigram';
+}
+
+export type Topic = CharacterTopic | TrigramTopic;
+
+export interface CharacterLesson extends RawLesson {
+  topic: CharacterTopic;
+  topicType: CharacterTopic['type'];
+}
+
+export interface TrigramLesson extends RawLesson {
+  topic: TrigramTopic;
+  topicType: TrigramTopic['type'];
+}
+
+export type Lesson = CharacterLesson | TrigramLesson;
+
+interface LessonUrlMixin {
   previousLessonUrl: string | null;
   nextLessonUrl: string | null;
 }
+
+export type CharacterLessonWithPreviousAndNextLessonUrl = CharacterLesson &
+  LessonUrlMixin;
+
+export type TrigramLessonWithPreviousAndNextLessonUrl = TrigramLesson &
+  LessonUrlMixin;
+
+export type LessonWithPreviousAndNextLessonUrl =
+  | CharacterLessonWithPreviousAndNextLessonUrl
+  | TrigramLessonWithPreviousAndNextLessonUrl;
