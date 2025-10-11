@@ -1,0 +1,64 @@
+<section class="flex h-12 flex-none items-center justify-center bg-gray-700">
+  <input
+    class="h-0 w-0 opacity-0"
+    title="input box for practicing typing"
+    #input
+    type="text"
+    inputmode="none"
+    (input)="onInput($any($event))"
+    (focus)="isFocus.set(true)"
+    (blur)="isFocus.set(false); pauseLesson()"
+  />
+  @if (isFocus()) {
+    <!-- TODO - show lesson text -->
+  } @else {
+    <span>{{ lesson().topic.name }}</span>
+    <mat-icon>{{ "arrow_right" | iconGuard }}</mat-icon>
+    <span> {{ lesson().name }}</span>
+  }
+</section>
+<div class="absolute right-0 top-0 h-12 content-center">
+  @if (isFocus()) {
+    <button mat-flat-button (click)="pauseLesson()">
+      <mat-icon class="text-white">{{ "pause" | iconGuard }}</mat-icon> Pause
+      <kbd class="small ml-1">esc</kbd>
+    </button>
+  } @else {
+    <button mat-flat-button (click)="startLesson()">
+      <mat-icon class="text-white">{{ "play_arrow" | iconGuard }}</mat-icon>
+      Start
+      <kbd class="small ml-1">space</kbd>
+    </button>
+  }
+</div>
+@if (!isFocus()) {
+  <div class="absolute left-0 top-0 h-12 content-center">
+    <a
+      class="text-inherit"
+      *ngrxLet="lesson()?.previousLessonUrl as previousLessonUrl"
+      aria-label="link to previous lesson"
+      [routerLink]="previousLessonUrl"
+      matTooltip="Go to previous lesson"
+      [matTooltipDisabled]="!previousLessonUrl"
+    >
+      <button type="button" mat-icon-button [disabled]="!previousLessonUrl">
+        <mat-icon>{{ "chevron_left" | iconGuard }}</mat-icon>
+      </button>
+    </a>
+    <a
+      class="text-inherit"
+      *ngrxLet="lesson()?.nextLessonUrl as nextLessonUrl"
+      aria-label="link to next lesson"
+      [routerLink]="nextLessonUrl"
+      matTooltip="Go to next lesson"
+      [matTooltipDisabled]="!nextLessonUrl"
+    >
+      <button type="button" mat-icon-button [disabled]="!nextLessonUrl">
+        <mat-icon>{{ "chevron_right" | iconGuard }}</mat-icon>
+      </button>
+    </a>
+  </div>
+}
+<!-- TODO - show layout -->
+<!-- TODO - show combo counter -->
+<!-- TODO - show speedometer -->

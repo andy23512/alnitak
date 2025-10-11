@@ -32,9 +32,9 @@
       <span class="text-gray-300">...</span>
     </span>
   } @else {
-    <span>{{ lesson()?.topic?.name }}</span>
+    <span>{{ lesson().topic.name }}</span>
     <mat-icon>{{ "arrow_right" | iconGuard }}</mat-icon>
-    <span> {{ lesson()?.name }}</span>
+    <span> {{ lesson().name }}</span>
   }
 </section>
 <div class="absolute right-0 top-0 h-12 content-center">
