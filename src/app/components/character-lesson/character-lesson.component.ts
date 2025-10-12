@@ -24,7 +24,6 @@ import { HotkeysService } from '@ngneat/hotkeys';
 import { untilDestroyed } from '@ngneat/until-destroy';
 import { LetDirective } from '@ngrx/component';
 import { getState } from '@ngrx/signals';
-import { liveQuery } from 'dexie';
 import { interval } from 'rxjs';
 import {
   ALT_GRAPH_KEY_LABEL,
@@ -32,7 +31,6 @@ import {
   NUM_SHIFT_KEY_LABEL,
   SHIFT_KEY_LABEL,
 } from 'src/app/data/key-labels';
-import { db } from 'src/app/db';
 import { VisibleDirective } from 'src/app/directives/visible.directive';
 import {
   HighlightKeyCombination,
@@ -353,6 +351,4 @@ export class CharacterLessonComponent implements OnInit, OnDestroy {
   pauseLesson() {
     this.characterLessonStore.pauseLesson();
   }
-
-  keyRecords$ = liveQuery(() => db.keyRecords.toArray());
 }
