@@ -93,8 +93,18 @@
 }
 <app-layout
   class="opacity-1 block flex-1 overflow-hidden px-5 pb-5 transition-[opacity] ease-in-out"
+  [class.opacity-0]="
+    trigramLessonStore.combo() > 20 && !airModeSettingStore.enabled()
+  "
+  [style.transition-duration]="
+    (trigramLessonStore.combo() >= 20 ? 10000 : 100) + 'ms'
+  "
   [showThumb3Switch]="visibilitySettingStore.layoutThumb3Switch()"
   [keyLabelMap]="keyLabelMap()"
+  [highlightKeyCombination]="isFocus() ? highlightKeyCombination() : null"
+  [showThumb3Switch]="visibilitySettingStore.layoutThumb3Switch()"
+  [keyLabelMap]="keyLabelMap()"
+  [highlightKeyCombination]="isFocus() ? highlightKeyCombination() : null"
 ></app-layout>
 <!-- TODO - show combo counter -->
 <!-- TODO - show speedometer -->
