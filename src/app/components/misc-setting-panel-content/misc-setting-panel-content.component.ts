@@ -20,8 +20,15 @@ export class MiscSettingPanelContentComponent {
   thumbRotationAngle = computed(() =>
     this.miscSettingStore.thumbRotationAngle(),
   );
+  nonThumbRotationAngle = computed(() =>
+    this.miscSettingStore.nonThumbRotationAngle(),
+  );
 
   setThumbRotationAngle(angle: number) {
     this.miscSettingStore.set('thumbRotationAngle', angle);
+  }
+
+  setNonThumbRotationAngle(angle: number) {
+    this.miscSettingStore.set('nonThumbRotationAngle', angle);
   }
 }

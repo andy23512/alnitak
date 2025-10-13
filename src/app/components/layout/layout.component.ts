@@ -103,6 +103,9 @@ export class LayoutComponent {
   thumbRotationAngle = computed(() =>
     this.miscSettingStore.thumbRotationAngle(),
   );
+  nonThumbRotationAngle = computed(() =>
+    this.miscSettingStore.nonThumbRotationAngle(),
+  );
 
   gridY(rowIndex: number) {
     return rowIndex * (cellSize + gap) + cellSize / 2;
