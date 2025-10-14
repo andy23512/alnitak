@@ -66,6 +66,7 @@ export const TrigramLessonStore = signalStore(
       }));
     },
     // TODO - add airType
+    // TODO - record to queue
     input(event: InputEvent) {
       patchState(
         store,

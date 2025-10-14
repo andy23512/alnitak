@@ -106,5 +106,17 @@
   [keyLabelMap]="keyLabelMap()"
   [highlightKeyCombination]="isFocus() ? highlightKeyCombination() : null"
 ></app-layout>
-<!-- TODO - show combo counter -->
-<!-- TODO - show speedometer -->
+<app-combo-counter
+  *appVisible="'comboCounter'"
+  class="absolute bottom-4 left-4"
+  [class.opacity-50]="isFocus()"
+  [combo]="trigramLessonStore.combo()"
+></app-combo-counter>
+<app-speedometer
+  *appVisible="'speedometer'"
+  class="absolute bottom-4 right-4 h-24 w-24 opacity-50"
+  [class.opacity-50]="isFocus()"
+  [speed]="trigramLessonStore.wpm()"
+  [maxSpeed]="40"
+  [speedUnit]="'WPM'"
+></app-speedometer>

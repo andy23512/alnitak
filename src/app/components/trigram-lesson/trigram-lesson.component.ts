@@ -27,6 +27,7 @@ import {
   NUM_SHIFT_KEY_LABEL,
   SHIFT_KEY_LABEL,
 } from 'src/app/data/key-labels';
+import { VisibleDirective } from 'src/app/directives/visible.directive';
 import {
   HighlightKeyCombination,
   KeyLabel,
@@ -49,7 +50,9 @@ import {
   getModifierKeyPositionCodeMap,
 } from 'src/app/utils/layout.utils';
 import { nonNullable } from 'src/app/utils/non-nullable.utils';
+import { ComboCounterComponent } from '../combo-counter/combo-counter.component';
 import { LayoutComponent } from '../layout/layout.component';
+import { SpeedometerComponent } from '../speedometer/speedometer.component';
 
 @Component({
   selector: 'accel-shooter-trigram-lesson',
@@ -57,6 +60,7 @@ import { LayoutComponent } from '../layout/layout.component';
   templateUrl: 'trigram-lesson.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
+    ComboCounterComponent,
     IconGuardPipe,
     LetDirective,
     LayoutComponent,
@@ -66,6 +70,8 @@ import { LayoutComponent } from '../layout/layout.component';
     MatTooltipModule,
     NgClass,
     RouterLinkWithHref,
+    SpeedometerComponent,
+    VisibleDirective,
   ],
   providers: [TrigramLessonStore],
 })
