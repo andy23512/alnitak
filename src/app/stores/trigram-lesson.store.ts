@@ -129,7 +129,7 @@ export const TrigramLessonStore = signalStore(
     },
   })),
   withComputed((state) => ({
-    wpm: computed(() => {
+    cpm: computed(() => {
       const trigramIntervals = state.trigramIntervals();
       const totalPeriodInMinute =
         trigramIntervals.reduce((a, b) => a + b, 0) / 1000 / 60;
@@ -137,7 +137,7 @@ export const TrigramLessonStore = signalStore(
         return 0;
       }
       const characterNumber = trigramIntervals.length * 3;
-      return Math.floor(characterNumber / 5 / totalPeriodInMinute);
+      return Math.floor(characterNumber / totalPeriodInMinute);
     }),
   })),
 );

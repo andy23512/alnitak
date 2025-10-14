@@ -116,7 +116,7 @@
   *appVisible="'speedometer'"
   class="absolute bottom-4 right-4 h-24 w-24 opacity-50"
   [class.opacity-50]="isFocus()"
-  [speed]="trigramLessonStore.wpm()"
-  [maxSpeed]="40"
-  [speedUnit]="'WPM'"
+  [speed]="trigramLessonStore.cpm()"
+  [maxSpeed]="200"
+  [speedUnit]="'CPM'"
 ></app-speedometer>
