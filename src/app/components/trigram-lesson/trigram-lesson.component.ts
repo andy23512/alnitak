@@ -241,7 +241,9 @@ export class TrigramLessonComponent implements OnInit, OnDestroy {
 
   readonly trigramLessonStore = inject(TrigramLessonStore);
   readonly highlightKeyCombination = computed(() => {
-    const currentCharacter = this.trigramLessonStore.queue()[0][0];
+    const currentTrigram = this.trigramLessonStore.queue()[0];
+    const currentBuffer = this.trigramLessonStore.buffer();
+    const currentCharacter = currentTrigram[currentBuffer.length];
     const highlightCharacterKeyCombinationMap =
       this.highlightCharacterKeyCombinationMap();
     return highlightCharacterKeyCombinationMap[currentCharacter];
