@@ -2,7 +2,7 @@ import { Icon } from '../types/icon.types';
 import { Tuple } from '../types/tuple.types';
 
 /**
- * Shape of CharaChorder 3D device layout data. 90 keys x 3 layers = 180 action codes
+ * Shape of CharaChorder 3D device layout data. 90 keys x 3 layers
  */
 export interface DeviceLayout {
   id: string;
