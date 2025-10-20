@@ -14,4 +14,12 @@ export interface HighlightSetting {
     preferShiftSide: PreferKeySide;
     preferCharacterKeySide: PreferKeySide;
   };
+  fnShiftLayer: {
+    preferSides: PreferSides;
+    preferFnShiftSide: PreferKeySide;
+  };
+  shiftAndFnShiftLayer: {
+    preferShiftSide: PreferKeySide;
+    preferCharacterKeySide: PreferKeySide;
+  };
 }

@@ -67,12 +67,14 @@ export const NON_KEY_ACTION_NAME_2_KEY_NAMES_MAP: Record<
     'toggle function layer (left)',
     'toggle tertiary layer (left)',
     'tertiary keymap (left)',
+    'fn-shift (left)',
   ],
   TertiaryKeymapRight: [
     'toggle A3 layer (right)',
     'toggle function layer (right)',
     'toggle tertiary layer (right)',
     'tertiary keymap (right)',
+    'fn-shift (right)',
   ],
   SecondaryKeymapLeft: [
     'toggle A2 layer (left)',

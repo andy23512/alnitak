@@ -82,4 +82,62 @@
       </li>
     </ul>
   </section>
+  <section class="space-y-2">
+    <h4 class="text-lg">Fn-shift Layer</h4>
+    <ul>
+      <li>
+        Tend to choose the key combination from
+        <app-sides-dropdown
+          [value]="highlightSettingStore.fnShiftLayer().preferSides"
+          (select)="setHighlightSetting('fnShiftLayer', 'preferSides', $event)"
+        ></app-sides-dropdown
+        >.
+      </li>
+      <li>
+        Tend to choose the
+        <app-key-side-dropdown
+          [value]="highlightSettingStore.fnShiftLayer().preferFnShiftSide"
+          (select)="
+            setHighlightSetting('fnShiftLayer', 'preferFnShiftSide', $event)
+          "
+        ></app-key-side-dropdown>
+        Fn-shift key.
+      </li>
+    </ul>
+  </section>
+  <section class="space-y-2">
+    <h4 class="text-lg">Shift Fn-Shift Layer</h4>
+    <ul>
+      <li>
+        Tend to choose the character key on the
+        <app-key-side-dropdown
+          [value]="
+            highlightSettingStore.shiftAndFnShiftLayer().preferCharacterKeySide
+          "
+          (select)="
+            setHighlightSetting(
+              'shiftAndFnShiftLayer',
+              'preferCharacterKeySide',
+              $event
+            )
+          "
+        ></app-key-side-dropdown>
+        side.
+      </li>
+      <li>
+        Tend to use the
+        <app-key-side-dropdown
+          [value]="highlightSettingStore.shiftAndFnShiftLayer().preferShiftSide"
+          (select)="
+            setHighlightSetting(
+              'shiftAndFnShiftLayer',
+              'preferShiftSide',
+              $event
+            )
+          "
+        ></app-key-side-dropdown>
+        Shift key.
+      </li>
+    </ul>
+  </section>
 </section>

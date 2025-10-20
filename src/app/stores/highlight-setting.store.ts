@@ -19,6 +19,14 @@ export const INITIAL_HIGHLIGHT_SETTING: HighlightSetting = {
     preferShiftSide: 'right',
     preferCharacterKeySide: 'right',
   },
+  fnShiftLayer: {
+    preferSides: 'both',
+    preferFnShiftSide: 'left',
+  },
+  shiftAndFnShiftLayer: {
+    preferShiftSide: 'right',
+    preferCharacterKeySide: 'right',
+  },
 };
 
 export const HighlightSettingStore = signalStore(
