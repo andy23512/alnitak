@@ -327,7 +327,7 @@ export class LayoutViewerPageComponent {
               altGraphKey: false,
             });
           }
-        } else {
+        } else if (actionCodeId >= 32) {
           keyLabels.push({
             type: KeyLabelType.ActionCode,
             c: actionCodeId,
