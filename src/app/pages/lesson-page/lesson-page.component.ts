@@ -60,6 +60,13 @@ import {
 } from 'src/app/utils/layout.utils';
 import { nonNullable } from 'src/app/utils/non-nullable.utils';
 
+function normalizeInputData(data: string): string {
+  if (data === ' ̃') {
+    return '~';
+  }
+  return data;
+}
+
 @UntilDestroy()
 @Component({
   selector: 'app-lesson-page',
@@ -354,7 +361,7 @@ export class LessonPageComponent implements OnInit, OnDestroy {
       return;
     }
     if (data?.length === 1) {
-      this.lessonStore.type(data);
+      this.lessonStore.type(normalizeInputData(data));
     }
   }
 
