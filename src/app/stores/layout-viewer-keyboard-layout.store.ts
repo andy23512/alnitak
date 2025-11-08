@@ -12,6 +12,7 @@ import {
 } from '@ngrx/signals';
 import { CHINESE_KEYBOARD_LAYOUTS } from '../data/chinese-keyboard-layouts';
 import { KEYBOARD_LAYOUTS_FROM_KBDLAYOUT } from '../data/keyboard-layouts-from-kbdlayout';
+import { KEYBOARD_LAYOUTS_FROM_XKEYBOARD } from '../data/keyboard-layouts-from-xkeyboard';
 import { KeyBoardLayout } from '../models/keyboard-layout.models';
 import { convertKeyboardLayoutToCharacterKeyCodeMap } from '../utils/layout.utils';
 
@@ -33,6 +34,7 @@ export const LayoutViewerKeyboardLayoutStore = signalStore(
   withComputed(() => ({
     entities: computed(() => [
       ...KEYBOARD_LAYOUTS_FROM_KBDLAYOUT,
+      ...KEYBOARD_LAYOUTS_FROM_XKEYBOARD,
       ...CHINESE_KEYBOARD_LAYOUTS,
     ]),
   })),
