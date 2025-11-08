@@ -1,0 +1,16 @@
+<mat-dialog-content>
+  Are you sure to delete all the imported device layouts? <br />
+  (After deleted, the selected device layout will be changed to CC1/CC2
+  default.)
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button type="button" mat-button mat-dialog-close>Cancel</button>
+  <button
+    type="button"
+    mat-button
+    [color]="'warn'"
+    [mat-dialog-close]="{ confirmed: true }"
+  >
+    Yes. Delete them.
+  </button>
+</mat-dialog-actions>

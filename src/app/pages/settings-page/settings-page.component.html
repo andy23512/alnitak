@@ -32,17 +32,28 @@
   </mat-expansion-panel>
   <mat-expansion-panel>
     <mat-expansion-panel-header class="!text-xl"
-      >Chords</mat-expansion-panel-header
+      >Data Deletion</mat-expansion-panel-header
     >
-    <button
-      type="button"
-      [color]="'warn'"
-      mat-flat-button
-      (click)="openDeleteChordsConfirmDialog()"
-    >
-      <mat-icon>{{ "delete" | iconGuard }}</mat-icon>
-      Delete All Imported Chords
-    </button>
+    <div class="flex flex-col items-start gap-3">
+      <button
+        type="button"
+        [color]="'warn'"
+        mat-flat-button
+        (click)="openDeleteDeviceLayoutsConfirmDialog()"
+      >
+        <mat-icon>{{ "delete" | iconGuard }}</mat-icon>
+        Delete All Imported Device Layouts
+      </button>
+      <button
+        type="button"
+        [color]="'warn'"
+        mat-flat-button
+        (click)="openDeleteChordsConfirmDialog()"
+      >
+        <mat-icon>{{ "delete" | iconGuard }}</mat-icon>
+        Delete All Imported Chords
+      </button>
+    </div>
   </mat-expansion-panel>
   <mat-expansion-panel>
     <mat-expansion-panel-header class="!text-xl"
