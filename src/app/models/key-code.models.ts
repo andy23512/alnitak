@@ -80,6 +80,7 @@ export type NonWSKCode =
   | 'F10'
   | 'F11'
   | 'F12'
+  | 'PrintScreen'
   | 'Delete'
   | 'ArrowDown'
   | 'ArrowLeft'
@@ -89,6 +90,10 @@ export type NonWSKCode =
   | 'PageDown'
   | 'Insert'
   | 'Home'
-  | 'End';
+  | 'End'
+  | 'NumpadDivide'
+  | 'NumpadMultiply'
+  | 'NumpadSubtract'
+  | 'NumpadAdd';
 
 export type KCode = WSKCode | NonWSKCode;

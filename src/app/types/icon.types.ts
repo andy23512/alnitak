@@ -47,6 +47,7 @@ export type Icon =
   | 'replay'
   | 'restart_alt'
   | 'right_click'
+  | 'screenshot_monitor'
   | 'search'
   | 'settings'
   | 'space_bar'

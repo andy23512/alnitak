@@ -40,6 +40,7 @@ export const WSK_ACTIONS: Omit<WSKAction, 'type'>[] = [
   { codeId: 59, keyCode: 'Semicolon' },
   { codeId: 60, keyCode: 'Comma', withShift: true },
   { codeId: 61, keyCode: 'Equal' },
+  { codeId: 356, keyCode: 'IntlBackslash' },
   { codeId: 62, keyCode: 'Period', withShift: true },
   { codeId: 63, keyCode: 'Slash', withShift: true },
   { codeId: 64, keyCode: 'Digit2', withShift: true },
@@ -135,6 +136,7 @@ export const NON_WSK_ACTIONS: Omit<NonWSKAction, 'type'>[] = [
   { codeId: 323, keyCode: 'F10' },
   { codeId: 324, keyCode: 'F11' },
   { codeId: 325, keyCode: 'F12' },
+  { codeId: 326, keyCode: 'PrintScreen' },
   { codeId: 127, keyCode: 'Delete' },
   { codeId: 329, keyCode: 'Insert' },
   { codeId: 330, keyCode: 'Home' },
@@ -145,6 +147,10 @@ export const NON_WSK_ACTIONS: Omit<NonWSKAction, 'type'>[] = [
   { codeId: 336, keyCode: 'ArrowLeft' },
   { codeId: 335, keyCode: 'ArrowRight' },
   { codeId: 338, keyCode: 'ArrowUp' },
+  { codeId: 340, keyCode: 'NumpadDivide' },
+  { codeId: 341, keyCode: 'NumpadMultiply' },
+  { codeId: 342, keyCode: 'NumpadSubtract' },
+  { codeId: 343, keyCode: 'NumpadAdd' },
 ];
 export const NON_KEY_ACTIONS: Omit<NonKeyAction, 'type'>[] = [
   { codeId: 256, actionName: 'NoKeyPressed' },

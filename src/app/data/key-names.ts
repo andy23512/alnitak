@@ -41,6 +41,7 @@ export const NON_WSK_CODE_2_KEY_NAMES_MAP: Record<NonWSKCode, string[]> = {
   F10: ['f10'],
   F11: ['f11'],
   F12: ['f12'],
+  PrintScreen: ['print screen', 'prtsc', 'prtscn', 'prntscrn'],
   Delete: ['del', 'delete', 'delete forward'],
   ArrowDown: ['down arrow'],
   ArrowLeft: ['left arrow'],
@@ -51,6 +52,31 @@ export const NON_WSK_CODE_2_KEY_NAMES_MAP: Record<NonWSKCode, string[]> = {
   Home: ['home'],
   End: ['end'],
   Insert: ['insert'],
+  NumpadDivide: ['numpad divide', 'numpad /', 'keypad divide', 'keypad /'],
+  NumpadMultiply: [
+    'numpad multiply',
+    'numpad asterisk',
+    'numpad *',
+    'keypad multiply',
+    'keypad asterisk',
+    'keypad *',
+  ],
+  NumpadSubtract: [
+    'numpad subtract',
+    'numpad minus',
+    'numpad -',
+    'keypad subtract',
+    'keypad minus',
+    'keypad -',
+  ],
+  NumpadAdd: [
+    'numpad add',
+    'numpad plus',
+    'number +',
+    'keypad add',
+    'keypad plus',
+    'keypad +',
+  ],
 };
 
 export const NON_KEY_ACTION_NAME_2_KEY_NAMES_MAP: Record<

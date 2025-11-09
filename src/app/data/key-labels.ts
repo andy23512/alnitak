@@ -101,6 +101,11 @@ export const NON_WSK_CODE_2_RAW_KEY_LABEL_MAP: Record<NonWSKCode, RawKeyLabel> =
     F10: { type: KeyLabelType.String, c: 'F10', title: 'F10' },
     F11: { type: KeyLabelType.String, c: 'F11', title: 'F11' },
     F12: { type: KeyLabelType.String, c: 'F12', title: 'F12' },
+    PrintScreen: {
+      type: KeyLabelType.Icon,
+      c: 'screenshot_monitor',
+      title: 'Print Screen',
+    },
     Delete: { type: KeyLabelType.String, c: 'DEL', title: 'Delete' },
     ArrowDown: {
       type: KeyLabelType.Icon,
@@ -127,6 +132,26 @@ export const NON_WSK_CODE_2_RAW_KEY_LABEL_MAP: Record<NonWSKCode, RawKeyLabel> =
     Home: { type: KeyLabelType.Icon, c: 'home', title: 'Home' },
     End: { type: KeyLabelType.String, c: 'END', title: 'End' },
     Insert: { type: KeyLabelType.Icon, c: 'insert_text', title: 'Insert' },
+    NumpadDivide: {
+      type: KeyLabelType.String,
+      c: '/(KP)',
+      title: 'Keypad: /',
+    },
+    NumpadMultiply: {
+      type: KeyLabelType.String,
+      c: '*(KP)',
+      title: 'Keypad: *',
+    },
+    NumpadSubtract: {
+      type: KeyLabelType.String,
+      c: '-(KP)',
+      title: 'Keypad: -',
+    },
+    NumpadAdd: {
+      type: KeyLabelType.String,
+      c: '+(KP)',
+      title: 'Keypad: +',
+    },
   };
 
 export const NON_KEY_ACTION_NAME_2_RAW_KEY_LABEL_MAP: Record<
