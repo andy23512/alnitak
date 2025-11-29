@@ -1,6 +1,6 @@
 <section class="flex flex-none items-center gap-2 bg-gray-700">
   <mat-button-toggle-group
-    class="flex-none"
+    class="flex-none opacity-80"
     [(ngModel)]="currentLayer"
     (ngModelChange)="resetSelectedPositions()"
     [hideSingleSelectionIndicator]="true"
@@ -21,7 +21,7 @@
     }
   </mat-button-toggle-group>
   <mat-button-toggle-group
-    class="flex-none"
+    class="flex-none opacity-80"
     [multiple]="true"
     [ngModel]="modifiersState"
     (ngModelChange)="onModifierStateChanged($event)"
