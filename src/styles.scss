@@ -80,6 +80,11 @@ html {
       0.5) !important;
 }
 
+.mat-button-toggle-checked {
+  background-color: mat.get-color_from_palette($alnitak-primary, 500) !important;
+  color: mat.get-contrast_color_from_palette($alnitak-primary, 500) !important;
+}
+
 /* You can add global styles to this file, and also import other style files */
 
 html,

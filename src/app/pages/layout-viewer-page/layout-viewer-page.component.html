@@ -1,7 +1,9 @@
-<section class="flex flex-none items-center gap-1 bg-gray-700">
+<section class="flex flex-none items-center gap-2 bg-gray-700">
   <mat-button-toggle-group
+    class="flex-none"
     [(ngModel)]="currentLayer"
     (ngModelChange)="resetSelectedPositions()"
+    [hideSingleSelectionIndicator]="true"
   >
     @for (layer of layers; track $index) {
       <mat-button-toggle
@@ -18,24 +20,29 @@
       </ng-template>
     }
   </mat-button-toggle-group>
-  <mat-checkbox
-    [(ngModel)]="shiftKey"
-    color="primary"
-    (ngModelChange)="resetSelectedPositions()"
-    [tooltip]="$any(shiftToggleTooltip)"
-    contentType="template"
-    placement="bottom"
-    >Shift</mat-checkbox
+  <mat-button-toggle-group
+    class="flex-none"
+    [multiple]="true"
+    [ngModel]="modifiersState"
+    (ngModelChange)="onModifierStateChanged($event)"
+    [hideMultipleSelectionIndicator]="true"
   >
-  <mat-checkbox
-    [(ngModel)]="altGraphKey"
-    color="primary"
-    (ngModelChange)="resetSelectedPositions()"
-    [tooltip]="$any(altGraphToggleTooltip)"
-    contentType="template"
-    placement="bottom"
-    >Alt Graph</mat-checkbox
-  >
+    <mat-button-toggle
+      [value]="Modifier.Shift"
+      [tooltip]="$any(shiftToggleTooltip)"
+      contentType="template"
+      placement="bottom"
+      >Shift</mat-button-toggle
+    >
+    <mat-button-toggle
+      [value]="Modifier.AltGraph"
+      [tooltip]="$any(altGraphToggleTooltip)"
+      contentType="template"
+      placement="bottom"
+    >
+      AltGr
+    </mat-button-toggle>
+  </mat-button-toggle-group>
   <ng-template #shiftToggleTooltip>
     Toggle Shift Modifier <br />
     <kbd [innerHTML]="'alt+s' | hotkeysShortcut: ' + '"></kbd>
@@ -44,8 +51,8 @@
     Toggle Alt Graph Modifier <br />
     <kbd [innerHTML]="'alt+a' | hotkeysShortcut: ' + '"></kbd>
   </ng-template>
-  <div class="flex-1"></div>
-  <mat-form-field class="w-96" [subscriptSizing]="'dynamic'">
+  <div class="flex-[1_0_0]"></div>
+  <mat-form-field class="w-96 flex-[0_1_auto]" [subscriptSizing]="'dynamic'">
     <mat-label>OS Keyboard Layout</mat-label>
     <mat-select
       class="!font-bold !text-alnitak-200"

@@ -60,6 +60,11 @@ import {
   getModifierKeyPositionCodeMap,
 } from 'src/app/utils/layout.utils';
 
+enum Modifier {
+  Shift = 'shift',
+  AltGraph = 'alt-graph',
+}
+
 function getHighlightPositionCodes(
   deviceLayout: DeviceLayout | null,
   layer: Layer,
@@ -177,6 +182,13 @@ export class LayoutViewerPageComponent {
   currentLayer = signal(Layer.Primary);
   shiftKey = signal(false);
   altGraphKey = signal(false);
+  modifiersState = computed<Modifier[]>(() => {
+    return [
+      this.shiftKey() ? Modifier.Shift : null,
+      this.altGraphKey() ? Modifier.AltGraph : null,
+    ].filter(Boolean) as Modifier[];
+  });
+  readonly Modifier = Modifier;
 
   readonly holdKeys = computed(() => {
     return getHoldKeys(
@@ -530,6 +542,11 @@ export class LayoutViewerPageComponent {
       shiftKey,
       altGraphKey,
     );
+  }
+
+  public onModifierStateChanged(value: Modifier[]) {
+    this.shiftKey.set(value.includes(Modifier.Shift));
+    this.altGraphKey.set(value.includes(Modifier.AltGraph));
   }
 
   public resetSelectedPositions() {
