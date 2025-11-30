@@ -54,7 +54,6 @@ import { DeviceLayoutStore } from 'src/app/stores/device-layout.store';
 import { HighlightSettingStore } from 'src/app/stores/highlight-setting.store';
 import { LayoutViewerKeyboardLayoutStore } from 'src/app/stores/layout-viewer-keyboard-layout.store';
 import { VisibilitySettingStore } from 'src/app/stores/visibility-setting.store';
-import { Icon } from 'src/app/types/icon.types';
 import {
   getHoldKeys,
   getModifierKeyPositionCodeMap,
@@ -156,25 +155,25 @@ export class LayoutViewerPageComponent {
   readonly Layer = Layer;
   readonly layers: {
     value: Layer;
-    icon: Icon;
+    name: string;
     tooltip: string;
     hotkey: string;
   }[] = [
     {
       value: Layer.Primary,
-      icon: 'abc',
+      name: 'A1',
       tooltip: 'Primary layer',
       hotkey: 'alt.1',
     },
     {
       value: Layer.Secondary,
-      icon: '123',
-      tooltip: 'Numeric layer',
+      name: 'A2',
+      tooltip: 'Number layer',
       hotkey: 'alt.2',
     },
     {
       value: Layer.Tertiary,
-      icon: 'function',
+      name: 'A3',
       tooltip: 'Function layer',
       hotkey: 'alt.3',
     },
