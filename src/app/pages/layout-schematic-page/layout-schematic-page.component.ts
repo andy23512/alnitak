@@ -3,12 +3,14 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  inject,
   signal,
   Signal,
 } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { timer } from 'rxjs';
 import { SwitchComponent } from 'src/app/components/switch/switch.component';
 import {
@@ -59,7 +61,13 @@ const ZH_HANT_TEXT = {
 @Component({
   selector: 'app-layout-schematic-page',
   standalone: true,
-  imports: [CommonModule, MatFormFieldModule, MatSelectModule, SwitchComponent],
+  imports: [
+    CommonModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    SwitchComponent,
+    TranslatePipe,
+  ],
   templateUrl: './layout-schematic-page.component.html',
   styleUrl: './layout-schematic-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -201,5 +209,11 @@ export class LayoutSchematicPageComponent {
 
   public onLanguageChange(language: 'en' | 'zh_Hant') {
     this.currentLanguage.set(language);
+  }
+
+  private translate = inject(TranslateService);
+
+  public useLanguage(language: 'en' | 'zh-TW') {
+    this.translate.use(language);
   }
 }
