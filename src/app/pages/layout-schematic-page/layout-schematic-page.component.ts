@@ -3,14 +3,13 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
-  inject,
   signal,
   Signal,
 } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
-import { TranslatePipe, TranslateService } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { timer } from 'rxjs';
 import { SwitchComponent } from 'src/app/components/switch/switch.component';
 import {
@@ -209,11 +208,5 @@ export class LayoutSchematicPageComponent {
 
   public onLanguageChange(language: 'en' | 'zh_Hant') {
     this.currentLanguage.set(language);
-  }
-
-  private translate = inject(TranslateService);
-
-  public useLanguage(language: 'en' | 'zh-TW') {
-    this.translate.use(language);
   }
 }

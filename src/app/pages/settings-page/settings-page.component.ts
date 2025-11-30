@@ -1,10 +1,13 @@
+import { TitleCasePipe } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
   HostBinding,
   inject,
 } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { MatButton } from '@angular/material/button';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatDialog } from '@angular/material/dialog';
 import {
   MatAccordion,
@@ -15,6 +18,7 @@ import { MatIcon } from '@angular/material/icon';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { patchState } from '@ngrx/signals';
 import { removeAllEntities } from '@ngrx/signals/entities';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { AirModeSettingPanelContentComponent } from 'src/app/components/air-mode-setting-panel-content/air-mode-setting-panel-content.component';
 import { DeleteChordsConfirmDialogComponent } from 'src/app/components/delete-chords-confirm-dialog/delete-chords-confirm-dialog.component';
 import { DeleteDeviceLayoutsConfirmDialogComponent } from 'src/app/components/delete-device-layouts-confirm-dialog/delete-device-layouts-confirm-dialog.component';
@@ -43,6 +47,10 @@ import { VisibilitySettingPanelContentComponent } from '../../components/visibil
     IconGuardPipe,
     MiscSettingPanelContentComponent,
     QuickSettingPanelContentComponent,
+    MatButtonToggleModule,
+    FormsModule,
+    TranslatePipe,
+    TitleCasePipe,
   ],
   templateUrl: './settings-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -86,4 +94,24 @@ export class SettingsPageComponent {
         }
       });
   }
+
+  private translateService = inject(TranslateService);
+
+  get currentLanguage() {
+    return this.translateService.getCurrentLang();
+  }
+
+  public supportedLanguages: LanguageInfo[] = [
+    { id: 'en', name: 'English' },
+    { id: 'zh-TW', name: '繁體中文' },
+  ];
+
+  public setLanguage(languageId: LanguageInfo['id']) {
+    this.translateService.use(languageId);
+  }
+}
+
+interface LanguageInfo {
+  id: 'en' | 'zh-TW';
+  name: string;
 }

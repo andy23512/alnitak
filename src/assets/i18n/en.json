@@ -1,3 +1,5 @@
 {
-  "t": "Test"
+  "settings": {
+    "ui-language": "UI Language"
+  }
 }
