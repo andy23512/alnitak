@@ -1,3 +1,5 @@
 {
-  "t": "測試"
+  "settings": {
+    "ui-language": "介面語言"
+  }
 }
