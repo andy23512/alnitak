@@ -1,4 +1,3 @@
-import { TitleCasePipe } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -24,9 +23,12 @@ import { DeleteChordsConfirmDialogComponent } from 'src/app/components/delete-ch
 import { DeleteDeviceLayoutsConfirmDialogComponent } from 'src/app/components/delete-device-layouts-confirm-dialog/delete-device-layouts-confirm-dialog.component';
 import { DeviceLayoutSettingPanelContentComponent } from 'src/app/components/device-layout-setting-panel-content/device-layout-setting-panel-content.component';
 import { QuickSettingPanelContentComponent } from 'src/app/components/quick-setting-panel-content/quick-setting-panel-content.component';
+import { UiLanguage } from 'src/app/models/language-setting.models';
 import { IconGuardPipe } from 'src/app/pipes/icon-guard.pipe';
+import { RealTitleCasePipe } from 'src/app/pipes/real-title-case.pipe';
 import { ChordStore } from 'src/app/stores/chord.store';
 import { DeviceLayoutStore } from 'src/app/stores/device-layout.store';
+import { LanguageSettingStore } from 'src/app/stores/language-setting.store';
 import { LayoutHighlightSettingPanelContentComponent } from '../../components/layout-highlight-setting-panel-content/layout-highlight-setting-panel-content.component';
 import { MiscSettingPanelContentComponent } from '../../components/misc-setting-panel-content/misc-setting-panel-content.component';
 import { VisibilitySettingPanelContentComponent } from '../../components/visibility-setting-panel-content/visibility-setting-panel-content.component';
@@ -50,7 +52,7 @@ import { VisibilitySettingPanelContentComponent } from '../../components/visibil
     MatButtonToggleModule,
     FormsModule,
     TranslatePipe,
-    TitleCasePipe,
+    RealTitleCasePipe,
   ],
   templateUrl: './settings-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -96,22 +98,20 @@ export class SettingsPageComponent {
   }
 
   private translateService = inject(TranslateService);
-
-  get currentLanguage() {
-    return this.translateService.getCurrentLang();
-  }
+  public languageSettingStore = inject(LanguageSettingStore);
 
   public supportedLanguages: LanguageInfo[] = [
-    { id: 'en', name: 'English' },
-    { id: 'zh-TW', name: '繁體中文' },
+    { id: UiLanguage.EN, name: 'English' },
+    { id: UiLanguage.ZH_TW, name: '繁體中文' },
   ];
 
   public setLanguage(languageId: LanguageInfo['id']) {
+    this.languageSettingStore.set('uiLanguage', languageId);
     this.translateService.use(languageId);
   }
 }
 
 interface LanguageInfo {
-  id: 'en' | 'zh-TW';
+  id: UiLanguage;
   name: string;
 }

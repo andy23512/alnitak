@@ -63,12 +63,12 @@
   </mat-expansion-panel>
   <mat-expansion-panel>
     <mat-expansion-panel-header class="!text-xl">{{
-      "settings.ui-language" | translate | titlecase
+      "settings.ui-language" | translate | realTitleCase
     }}</mat-expansion-panel-header>
     <div>
       <mat-button-toggle-group
         class="opacity-80"
-        [ngModel]="currentLanguage"
+        [ngModel]="languageSettingStore.uiLanguage()"
         (ngModelChange)="setLanguage($event)"
         [hideSingleSelectionIndicator]="true"
       >
