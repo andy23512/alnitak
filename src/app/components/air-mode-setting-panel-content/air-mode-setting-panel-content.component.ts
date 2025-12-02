@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { MatCheckbox } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { TranslatePipe } from '@ngx-translate/core';
 import { AirModeSettingStore } from 'src/app/stores/air-mode-setting.store';
 
 @Component({
@@ -15,6 +16,7 @@ import { AirModeSettingStore } from 'src/app/stores/air-mode-setting.store';
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
+    TranslatePipe,
   ],
   templateUrl: './air-mode-setting-panel-content.component.html',
 })

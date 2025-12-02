@@ -1,5 +1,8 @@
 {
   "settings": {
-    "ui-language": "UI Language"
+    "ui-language": "UI Language",
+    "air-mode": {
+      "description": "Air mode is an experimental practice mode that you can practice without a device.\nThe characters or chords will be automatically entered at the speed you set, so you can follow along and move your fingers as if you were typing or chording."
+    }
   }
 }
