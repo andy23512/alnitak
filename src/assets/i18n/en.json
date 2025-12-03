@@ -2,7 +2,11 @@
   "settings": {
     "ui-language": "UI Language",
     "air-mode": {
-      "description": "Air mode is an experimental practice mode that you can practice without a device.\nThe characters or chords will be automatically entered at the speed you set, so you can follow along and move your fingers as if you were typing or chording."
+      "description": "Air mode is an experimental practice mode that you can practice without a device.\nThe characters or chords will be automatically entered at the speed you set, so you can follow along and move your fingers as if you were typing or chording.",
+      "checkbox-label": "enable air mode",
+      "character-entry-speed-label": "character entry speed",
+      "chord-speed-label": "chord speed",
+      "character-entry-speed-input-aria-label": "input box for character entry speed in air mode"
     }
   }
 }

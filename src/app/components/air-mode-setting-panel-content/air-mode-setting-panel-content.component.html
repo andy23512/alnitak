@@ -10,24 +10,32 @@
     [checked]="enabled()"
     (change)="setEnabled($event.checked)"
   >
-    Enable Air Mode
+    {{ "settings.air-mode.checkbox-label" | translate | realTitleCase }}
   </mat-checkbox>
 </div>
 <div class="mt-2 space-x-1">
   <mat-form-field>
-    <mat-label>Character Entry Speed</mat-label>
+    <mat-label>{{
+      "settings.air-mode.character-entry-speed-label"
+        | translate
+        | realTitleCase
+    }}</mat-label>
     <input
       matInput
       type="number"
       [ngModel]="characterEntrySpeed()"
       (ngModelChange)="setCharacterEntrySpeed($event)"
-      aria-label="input box for character entry speed in air mode"
+      attr.aria-label="{{
+        'settings.air-mode.character-entry-speed-input-aria-label' | translate
+      }}"
       [disabled]="!enabled()"
     />
     <span matTextSuffix>CPM</span>
   </mat-form-field>
   <mat-form-field>
-    <mat-label>Chord Speed</mat-label>
+    <mat-label>{{
+      "settings.air-mode.chord-speed-label" | translate | realTitleCase
+    }}</mat-label>
     <input
       matInput
       type="number"

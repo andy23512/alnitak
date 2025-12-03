@@ -2,7 +2,11 @@
   "settings": {
     "ui-language": "介面語言",
     "air-mode": {
-      "description": "隔空模式是即使你沒有裝置也能練習的一個實驗性的練習模式。\n字元或者和弦會用你所設定的速度自動輸入，因此你可以跟著它，像在真的裝置上打字一般移動你的手指。"
+      "description": "隔空模式是即使你沒有裝置也能練習的一個實驗性的練習模式。\n字元或者和弦會用你所設定的速度自動輸入，因此你可以跟著它，像在真的裝置上打字一般移動你的手指。",
+      "checkbox-label": "啟動隔空模式",
+      "character-entry-speed-label": "逐字輸入速度",
+      "chord-speed-label": "和弦輸入速度",
+      "character-entry-speed-input-aria-label": "隔空模式的逐字輸入速度輸入框"
     }
   }
 }
