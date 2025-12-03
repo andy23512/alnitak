@@ -14,6 +14,7 @@ import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { HotkeysService } from '@ngneat/hotkeys';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { interval } from 'rxjs';
 import { VisibleDirective } from 'src/app/directives/visible.directive';
 import {
@@ -24,6 +25,7 @@ import {
   Layer,
 } from 'src/app/models/device-layout.models';
 import { IconGuardPipe } from 'src/app/pipes/icon-guard.pipe';
+import { RealTitleCasePipe } from 'src/app/pipes/real-title-case.pipe';
 import { AirModeSettingStore } from 'src/app/stores/air-mode-setting.store';
 import { ChordPracticeStore } from 'src/app/stores/chord-practice.store';
 import { DeviceLayoutStore } from 'src/app/stores/device-layout.store';
@@ -49,6 +51,8 @@ import { SpeedometerComponent } from '../speedometer/speedometer.component';
     SpeedometerComponent,
     VisibleDirective,
     IconGuardPipe,
+    TranslatePipe,
+    RealTitleCasePipe,
   ],
   templateUrl: './chord-practice.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -73,6 +77,7 @@ export class ChordPracticeComponent implements OnInit {
   readonly keyboardLayout = inject(KeyboardLayoutStore).selectedEntity;
   readonly deviceLayout = inject(DeviceLayoutStore).selectedEntity;
   readonly airModeSettingStore = inject(AirModeSettingStore);
+  readonly translateService = inject(TranslateService);
 
   readonly practiceCharactersDevicePositionCodes = computed(() => {
     const chords = this.chordPracticeStore.chords();
@@ -109,7 +114,9 @@ export class ChordPracticeComponent implements OnInit {
           const d = {
             type: KeyLabelType.String as const,
             c: v.c,
-            title: `Character: ${v.c}`,
+            title: this.translateService.instant('general.character-tooltip', {
+              character: v.c,
+            }),
             layer,
             shiftKey,
             altGraphKey,

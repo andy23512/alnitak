@@ -1,5 +1,5 @@
 <section class="flex h-12 flex-none items-center bg-gray-700 px-5">
-  Chord - Practice
+  {{ "chord-page.chord-practice.title" | translate | realTitleCase }}
 </section>
 <section class="flex-none">
   <div class="relative h-16 overflow-hidden">
@@ -40,7 +40,7 @@
     >
       <button mat-flat-button (click)="startPractice()">
         <mat-icon class="text-white">{{ "play_arrow" | iconGuard }}</mat-icon>
-        Start
+        {{ "general.start-action" | translate | realTitleCase }}
       </button>
     </div>
   </div>
@@ -57,5 +57,5 @@
   [class.opacity-50]="isFocus()"
   [speed]="chordPracticeStore.chpm()"
   [maxSpeed]="100"
-  [speedUnit]="'ChPM'"
+  [speedUnit]="'general.chord-speed-unit' | translate"
 ></app-speedometer>
