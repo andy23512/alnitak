@@ -1,7 +1,9 @@
 {
   "general": {
     "character-entry-speed-unit": "CPM",
-    "chord-speed-unit": "ChPM"
+    "chord-speed-unit": "ChPM",
+    "start-action": "start",
+    "character-tooltip": "Character: {{character}}"
   },
   "settings": {
     "ui-language": "UI Language",
@@ -12,6 +14,11 @@
       "chord-speed-label": "chord speed",
       "character-entry-speed-input-aria-label": "input box for character entry speed in air mode",
       "chord-speed-input-aria-label": "input box for chord speed in air mode"
+    }
+  },
+  "chord-page": {
+    "chord-practice": {
+      "title": "chord - practice"
     }
   }
 }

@@ -1,7 +1,9 @@
 {
   "general": {
     "character-entry-speed-unit": "字元/分鐘",
-    "chord-speed-unit": "和弦/分鐘"
+    "chord-speed-unit": "和弦/分鐘",
+    "start-action": "開始",
+    "character-tooltip": "字元：{{character}}"
   },
   "settings": {
     "ui-language": "介面語言",
@@ -12,6 +14,11 @@
       "chord-speed-label": "和弦輸入速度",
       "character-entry-speed-input-aria-label": "隔空模式的逐字輸入速度輸入框",
       "chord-speed-input-aria-label": "隔空模式的和弦輸入速度輸入框"
+    }
+  },
+  "chord-page": {
+    "chord-practice": {
+      "title": "和弦 - 練習"
     }
   }
 }
