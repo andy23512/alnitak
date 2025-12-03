@@ -30,7 +30,9 @@
       }}"
       [disabled]="!enabled()"
     />
-    <span matTextSuffix>CPM</span>
+    <span matTextSuffix>{{
+      "general.character-entry-speed-unit" | translate
+    }}</span>
   </mat-form-field>
   <mat-form-field>
     <mat-label>{{
@@ -41,9 +43,11 @@
       type="number"
       [ngModel]="chordSpeed()"
       (ngModelChange)="setChordSpeed($event)"
-      aria-label="input box for chord speed in air mode"
+      attr.aria-label="{{
+        'settings.air-mode.chord-speed-input-aria-label' | translate
+      }}"
       [disabled]="!enabled()"
     />
-    <span matTextSuffix>ChPM</span>
+    <span matTextSuffix>{{ "general.chord-speed-unit" | translate }}</span>
   </mat-form-field>
 </div>

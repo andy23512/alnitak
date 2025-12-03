@@ -1,4 +1,8 @@
 {
+  "general": {
+    "character-entry-speed-unit": "CPM",
+    "chord-speed-unit": "ChPM"
+  },
   "settings": {
     "ui-language": "UI Language",
     "air-mode": {
@@ -6,7 +10,8 @@
       "checkbox-label": "enable air mode",
       "character-entry-speed-label": "character entry speed",
       "chord-speed-label": "chord speed",
-      "character-entry-speed-input-aria-label": "input box for character entry speed in air mode"
+      "character-entry-speed-input-aria-label": "input box for character entry speed in air mode",
+      "chord-speed-input-aria-label": "input box for chord speed in air mode"
     }
   }
 }

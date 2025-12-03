@@ -1,4 +1,8 @@
 {
+  "general": {
+    "character-entry-speed-unit": "字元/分鐘",
+    "chord-speed-unit": "和弦/分鐘"
+  },
   "settings": {
     "ui-language": "介面語言",
     "air-mode": {
@@ -6,7 +10,8 @@
       "checkbox-label": "啟動隔空模式",
       "character-entry-speed-label": "逐字輸入速度",
       "chord-speed-label": "和弦輸入速度",
-      "character-entry-speed-input-aria-label": "隔空模式的逐字輸入速度輸入框"
+      "character-entry-speed-input-aria-label": "隔空模式的逐字輸入速度輸入框",
+      "chord-speed-input-aria-label": "隔空模式的和弦輸入速度輸入框"
     }
   }
 }
