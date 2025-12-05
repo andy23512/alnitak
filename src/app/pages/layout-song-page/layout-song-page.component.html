@@ -1,0 +1,30 @@
+<section
+  class="flex h-12 flex-none items-center justify-center gap-1 bg-gray-700 px-3"
+>
+  <h2 class="flex-none text-lg">Layout Song</h2>
+  <button mat-icon-button class="flex-none" (click)="handlePlayPause()">
+    <mat-icon>
+      {{ (isPlaying() ? "pause" : "play_arrow") | iconGuard }}
+    </mat-icon>
+  </button>
+  <mat-slider class="flex-1" min="0" max="100">
+    <input
+      matSliderThumb
+      [value]="progress()"
+      (valueChange)="handleSeek($event)"
+    />
+  </mat-slider>
+</section>
+<app-layout
+  class="block flex-1 overflow-hidden px-5 pb-5"
+  [alwaysShowLayout]="true"
+  [alwaysHideLayoutGuides]="true"
+  [showThumb3Switch]="visibilitySettingStore.layoutThumb3Switch()"
+  [keyLabelMap]="keyLabelMap()"
+  [highlightKeyCombination]="highlightKeyCombination()"
+></app-layout>
+<app-lyrics-view
+  class="absolute left-1/2 top-14 h-12 w-full max-w-[30rem] -translate-x-1/2"
+  [currentTime]="currentTime()"
+  [shownLyricSegments]="shownLyricSegments()"
+></app-lyrics-view>

@@ -1,0 +1,14 @@
+@for (s of shownLyricSegments(); track s.start; let first = $first) {
+  <div class="text-center">
+    @for (w of s.words; track $index) {
+      <span
+        class="current-line bg-clip-text text-transparent"
+        [class.active]="currentTime() >= w.start + (w.end - w.start) * 0.15"
+        [style.transition]="
+          'background-position ' + (w.end - w.start) * 0.7 + 's linear'
+        "
+        >{{ w.word }}</span
+      >
+    }
+  </div>
+}

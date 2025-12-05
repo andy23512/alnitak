@@ -34,6 +34,14 @@ export const NAV_LINKS: NavLink[] = [
     icon: 'map',
   },
   {
+    title: 'Song',
+    routerLink: '/layout-song',
+    routerLinkActiveOptions: { exact: false },
+    ariaLabel: 'layout song page link',
+    tooltipMessage: 'Go to Layout Song page',
+    icon: 'music_note_2',
+  },
+  {
     title: 'Settings',
     routerLink: '/settings',
     routerLinkActiveOptions: { exact: false },
