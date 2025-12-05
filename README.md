@@ -28,6 +28,8 @@ An unofficial practice tool of CharaChorder 3D input devices (CharaChorder One, 
   - can view the final layout (actual output under the selected OS keyboard layout) by layers and modifier keyss (Shift and Alt Graph)
   - search for a key in the layout
   - print the final layout (or generate a pdf file of it)
+- Layout Song
+  - an AI generated song that can help you that can help you memorize the letter keys on the default layout.
 
 ## Disclaimer
 
