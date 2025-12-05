@@ -19,6 +19,9 @@
   "chord-page": {
     "chord-practice": {
       "title": "和弦 - 練習"
+    },
+    "chord-practice-setting": {
+      "title": "和弦 - 練習設定"
     }
   }
 }
