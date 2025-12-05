@@ -17,9 +17,11 @@ import {
 } from '@angular/material/list';
 import { patchState } from '@ngrx/signals';
 import { setEntities } from '@ngrx/signals/entities';
+import { TranslatePipe } from '@ngx-translate/core';
 import { sort } from 'ramda';
 import { ChordWithChordKeys } from 'src/app/models/chord.models';
 import { IconGuardPipe } from 'src/app/pipes/icon-guard.pipe';
+import { RealTitleCasePipe } from 'src/app/pipes/real-title-case.pipe';
 import { ChordStore } from 'src/app/stores/chord.store';
 import { ChordInputKeysComponent } from '../chord-input-keys/chord-input-keys.component';
 import { ChordOutputKeysComponent } from '../chord-output-keys/chord-output-keys.component';
@@ -37,6 +39,8 @@ const sortWithNumber = sort((a: number, b: number) => a - b);
     ChordInputKeysComponent,
     ChordOutputKeysComponent,
     IconGuardPipe,
+    TranslatePipe,
+    RealTitleCasePipe,
   ],
   templateUrl: './chord-practice-setting.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

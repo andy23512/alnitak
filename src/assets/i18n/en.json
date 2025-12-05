@@ -19,6 +19,9 @@
   "chord-page": {
     "chord-practice": {
       "title": "chord - practice"
+    },
+    "chord-practice-setting": {
+      "title": "chord - practice setting"
     }
   }
 }
