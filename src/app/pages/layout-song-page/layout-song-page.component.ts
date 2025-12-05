@@ -9,8 +9,10 @@ import {
   signal,
 } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialog } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSliderModule } from '@angular/material/slider';
+import { LayoutSongHelpDialogComponent } from 'src/app/components/layout-song-help-dialog/layout-song-help-dialog.component';
 import { LayoutComponent } from 'src/app/components/layout/layout.component';
 import { LyricsViewComponent } from 'src/app/components/lyrics-view/lyrics-view.component';
 import {
@@ -278,4 +280,10 @@ export class LayoutSongPageComponent implements OnInit {
       score: -1,
     };
   });
+
+  private readonly matDialog = inject(MatDialog);
+
+  public openLayoutSongHelpDialog() {
+    this.matDialog.open(LayoutSongHelpDialogComponent);
+  }
 }

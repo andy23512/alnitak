@@ -14,6 +14,14 @@
       (valueChange)="handleSeek($event)"
     />
   </mat-slider>
+  <button
+    type="button"
+    mat-icon-button
+    aria-label="open help dialog for layout song"
+    (click)="openLayoutSongHelpDialog()"
+  >
+    <mat-icon>{{ "help" | iconGuard }}</mat-icon>
+  </button>
 </section>
 <app-layout
   class="block flex-1 overflow-hidden px-5 pb-5"
