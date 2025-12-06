@@ -5,7 +5,8 @@
     "start-action": "開始",
     "character-tooltip": "字元：{{character}}",
     "choose-file-action": "選擇檔案",
-    "combo-unit": "連擊"
+    "combo-unit": "連擊",
+    "cancel-action": "取消"
   },
   "settings": {
     "ui-language": "介面語言",
@@ -33,5 +34,9 @@
       "select-chords-step": "從底下的已匯入的和弦清單中，選擇你想練習的和弦。",
       "click-start-button-step": "按下底下的按鍵來開始練習。"
     }
+  },
+  "delete-chords-confirm-dialog": {
+    "description": "你確定要刪除所有已匯入的和弦嗎？",
+    "delete-button": "是，確定要刪除。"
   }
 }
