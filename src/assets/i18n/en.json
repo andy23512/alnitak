@@ -5,7 +5,8 @@
     "start-action": "start",
     "character-tooltip": "Character: {{character}}",
     "choose-file-action": "choose file",
-    "combo-unit": "combo"
+    "combo-unit": "combo",
+    "cancel-action": "cancel"
   },
   "settings": {
     "ui-language": "UI Language",
@@ -33,5 +34,9 @@
       "select-chords-step": "Select the chords you want to practice from the imported chord list below.",
       "click-start-button-step": "Click the following button to start the practice."
     }
+  },
+  "delete-chords-confirm-dialog": {
+    "description": "Are you sure to delete all the imported chords?",
+    "delete-button": "Yes. Delete them."
   }
 }

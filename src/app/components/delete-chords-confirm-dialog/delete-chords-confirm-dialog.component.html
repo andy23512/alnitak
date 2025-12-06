@@ -1,7 +1,16 @@
 <mat-dialog-content>
-  Are you sure to delete all the imported chords?
+  {{ "delete-chords-confirm-dialog.description" | translate }}
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button type="button" mat-button mat-dialog-close>Cancel</button>
-  <button type="button" mat-button [color]="'warn'" [mat-dialog-close]="{confirmed: true}">Yes. Delete them.</button>
+  <button type="button" mat-button mat-dialog-close>
+    {{ "general.cancel-action" | translate | realTitleCase }}
+  </button>
+  <button
+    type="button"
+    mat-button
+    [color]="'warn'"
+    [mat-dialog-close]="{ confirmed: true }"
+  >
+    {{ "delete-chords-confirm-dialog.delete-button" | translate }}
+  </button>
 </mat-dialog-actions>
