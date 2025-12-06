@@ -6,7 +6,8 @@
     "character-tooltip": "字元：{{character}}",
     "choose-file-action": "選擇檔案",
     "combo-unit": "連擊",
-    "cancel-action": "取消"
+    "cancel-action": "取消",
+    "delete-confirm-button": "是，我確定要刪除。"
   },
   "settings": {
     "ui-language": "介面語言",
@@ -36,7 +37,9 @@
     }
   },
   "delete-chords-confirm-dialog": {
-    "description": "你確定要刪除所有已匯入的和弦嗎？",
-    "delete-button": "是，我確定要刪除。"
+    "description": "你確定要刪除所有已匯入的和弦嗎？"
+  },
+  "delete-device-layouts-confirm-dialog": {
+    "description": "你確定要刪除所有已匯入的裝置佈局嗎？\n（刪除之後，裝置佈局設定會改為 CC1/CC2 的預設佈局。）"
   }
 }

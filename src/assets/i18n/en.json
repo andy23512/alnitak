@@ -6,7 +6,8 @@
     "character-tooltip": "Character: {{character}}",
     "choose-file-action": "choose file",
     "combo-unit": "combo",
-    "cancel-action": "cancel"
+    "cancel-action": "cancel",
+    "delete-confirm-button": "Yes. Delete them."
   },
   "settings": {
     "ui-language": "UI Language",
@@ -36,7 +37,9 @@
     }
   },
   "delete-chords-confirm-dialog": {
-    "description": "Are you sure to delete all the imported chords?",
-    "delete-button": "Yes. Delete them."
+    "description": "Are you sure to delete all the imported chords?"
+  },
+  "delete-device-layouts-confirm-dialog": {
+    "description": "Are you sure to delete all the imported device layouts?\n(After deleted, the selected device layout will be changed to CC1/CC2 default.)"
   }
 }
