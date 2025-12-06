@@ -4,7 +4,8 @@
     "chord-speed-unit": "ChPM",
     "start-action": "start",
     "character-tooltip": "Character: {{character}}",
-    "choose-file-action": "choose file"
+    "choose-file-action": "choose file",
+    "combo-unit": "combo"
   },
   "settings": {
     "ui-language": "UI Language",
