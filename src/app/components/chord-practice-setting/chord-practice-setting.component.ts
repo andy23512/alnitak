@@ -52,7 +52,7 @@ export class ChordPracticeSettingComponent {
   readonly selectionChange = output<MatSelectionListChange>();
   readonly startPractice = output<void>();
 
-  @HostBinding() classes = 'flex flex-col';
+  @HostBinding('class') public classes = 'flex flex-col';
 
   @ViewChild('fileInput')
   public fileInput!: ElementRef<HTMLInputElement>;

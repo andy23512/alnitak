@@ -3,15 +3,24 @@
 </section>
 <ol class="flex-1 list-inside list-decimal overflow-auto p-5">
   <li>
-    Import your chord list file (the backup file from
+    {{
+      "chord-page.chord-practice-setting.import-chord-list-file-step.0"
+        | translate
+    }}
     <a
       class="underline"
       href="https://charachorder.io/"
       target="_blank"
       rel="noopener"
-      >CharaChorder Device Manager</a
-    >
-    website). (for first time usage or updating the chord list)
+      >{{
+        "chord-page.chord-practice-setting.import-chord-list-file-step.1"
+          | translate
+      }}
+    </a>
+    {{
+      "chord-page.chord-practice-setting.import-chord-list-file-step.2"
+        | translate
+    }}
     <br />
     <button
       class="my-2"
@@ -21,19 +30,21 @@
       (click)="fileInput.click()"
     >
       <mat-icon>{{ "upload" | iconGuard }}</mat-icon>
-      Choose File
+      {{ "general.choose-file-action" | translate | realTitleCase }}
     </button>
     <input
       hidden
       #fileInput
       type="file"
       accept=".json"
-      aria-label="file input for selecting a chord map file to load into this tool"
+      [attr.aria-label]="
+        'chord-page.chord-practice-setting.file-input-aria-label' | translate
+      "
       (change)="loadChordFile()"
     />
   </li>
   <li>
-    Select the chords you want to practice from the imported chord list below.
+    {{ "chord-page.chord-practice-setting.select-chords-step" | translate }}
     <mat-selection-list
       class="!my-2 max-h-56 overflow-auto rounded border"
       (selectionChange)="onChordSelectionChange($event)"
@@ -55,7 +66,9 @@
     </mat-selection-list>
   </li>
   <li>
-    Click the following button to start.
+    {{
+      "chord-page.chord-practice-setting.click-start-button-step" | translate
+    }}
     <br />
     <button
       class="my-2"
@@ -66,7 +79,7 @@
       (click)="startPractice.emit()"
     >
       <mat-icon>{{ "play_arrow" | iconGuard }}</mat-icon>
-      Start
+      {{ "general.start-action" | translate | realTitleCase }}
     </button>
   </li>
 </ol>

@@ -3,7 +3,8 @@
     "character-entry-speed-unit": "字元/分鐘",
     "chord-speed-unit": "和弦/分鐘",
     "start-action": "開始",
-    "character-tooltip": "字元：{{character}}"
+    "character-tooltip": "字元：{{character}}",
+    "choose-file-action": "選擇檔案"
   },
   "settings": {
     "ui-language": "介面語言",
@@ -21,7 +22,15 @@
       "title": "和弦 - 練習"
     },
     "chord-practice-setting": {
-      "title": "和弦 - 練習設定"
+      "title": "和弦 - 練習設定",
+      "import-chord-list-file-step": [
+        "匯入你的和弦清單檔案（來自",
+        "CharaChorder 裝置管理工具",
+        "的備份檔案）。（給初次使用或更新和弦清單用）"
+      ],
+      "file-input-aria-label": "選擇要匯入到此工具的和弦清單檔案用的檔案輸入框",
+      "select-chords-step": "從底下的已匯入的和弦清單中，選擇你想練習的和弦。",
+      "click-start-button-step": "按下底下的按鍵來開始練習。"
     }
   }
 }

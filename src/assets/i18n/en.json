@@ -3,7 +3,8 @@
     "character-entry-speed-unit": "CPM",
     "chord-speed-unit": "ChPM",
     "start-action": "start",
-    "character-tooltip": "Character: {{character}}"
+    "character-tooltip": "Character: {{character}}",
+    "choose-file-action": "choose file"
   },
   "settings": {
     "ui-language": "UI Language",
@@ -21,7 +22,15 @@
       "title": "chord - practice"
     },
     "chord-practice-setting": {
-      "title": "chord - practice setting"
+      "title": "chord - practice setting",
+      "import-chord-list-file-step": [
+        "Import your chord list file (the backup file from",
+        "CharaChorder Device Manager",
+        "website). (for first time usage or updating the chord list)"
+      ],
+      "file-input-aria-label": "file input for selecting a chord list file to load into this tool",
+      "select-chords-step": "Select the chords you want to practice from the imported chord list below.",
+      "click-start-button-step": "Click the following button to start the practice."
     }
   }
 }
