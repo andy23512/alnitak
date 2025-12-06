@@ -4,7 +4,8 @@
     "chord-speed-unit": "和弦/分鐘",
     "start-action": "開始",
     "character-tooltip": "字元：{{character}}",
-    "choose-file-action": "選擇檔案"
+    "choose-file-action": "選擇檔案",
+    "combo-unit": "連擊"
   },
   "settings": {
     "ui-language": "介面語言",
