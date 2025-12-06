@@ -37,6 +37,6 @@
   },
   "delete-chords-confirm-dialog": {
     "description": "你確定要刪除所有已匯入的和弦嗎？",
-    "delete-button": "是，確定要刪除。"
+    "delete-button": "是，我確定要刪除。"
   }
 }
