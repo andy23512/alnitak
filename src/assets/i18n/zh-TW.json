@@ -55,6 +55,23 @@
   "hotkey-dialog": {
     "title": "快捷鍵"
   },
+  "key-notation-help-dialog": {
+    "title": "按鍵表示法",
+    "key-notation-explanation-paragraph": "在本工具中，按鍵表示法是一個表示 CharaChorder 3D 輸入裝置上的按鍵位置的實驗性的簡寫。",
+    "key-notation-example-paragraph": "舉例來說，「左手拇指中央的西鍵」就表示成「L1bW」、「右手小指下壓（3D 按壓）」就表示成「R5D」。",
+    "first-and-last-letters-explanation-paragraph": "第一個和最後一個字母分別是左右手（L/R）和方向（北 N / 東 E / 南 S/ 西 W/ 下壓 D）的簡寫。",
+    "middle-part-explanation-paragraph": [
+      "中間的部分用來指定搖桿。數字表示手指（從 1 到 5 為從拇指到小指），跟",
+      "現代樂譜中鍵盤樂器的指法記號",
+      "一樣。額外加上去的「b」或「bb」，則來自音樂中的",
+      {
+        "url": "https://zh.wikipedia.org/wiki/%E9%99%8D%E8%99%9F",
+        "text": "降號（♭）和重降號（𝄫）"
+      },
+      "，分別用來表示那個手指的副/中間和後面的搖桿。"
+    ],
+    "layout-image-explanation-paragraph": "下圖會展示每個搖桿的表示法。"
+  },
   "hotkey": {
     "global": {
       "name": "全域共通",

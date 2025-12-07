@@ -1,42 +1,64 @@
-<h2 mat-dialog-title class="!text-xl">Key Notation</h2>
+<h2 mat-dialog-title class="!text-xl">
+  {{ "key-notation-help-dialog.title" | translate | realTitleCase }}
+</h2>
 <mat-dialog-content>
   <p>
-    In this tool, key notation is an experimental short format that represents
-    the key locations on CharaChorder 3D input devices.
+    {{
+      "key-notation-help-dialog.key-notation-explanation-paragraph" | translate
+    }}
   </p>
   <br />
   <p>
-    For example, the 'Left Thumb Middle West' key is noted as 'L1bW', and the
-    'Right Pinky Down (3D press)' is noted as 'R5D'.
+    {{ "key-notation-help-dialog.key-notation-example-paragraph" | translate }}
   </p>
   <br />
   <p>
-    The first and the last letters are the shorthands for the side (L/R) and the
-    direction (N/E/S/W/D), respectively.
+    {{
+      "key-notation-help-dialog.first-and-last-letters-explanation-paragraph"
+        | translate
+    }}
   </p>
   <br />
   <p>
-    The middle part indicates the switch. The number represents the finger (1 to
-    5: thumb to pinky), using the same way as
+    {{
+      "key-notation-help-dialog.middle-part-explanation-paragraph.0" | translate
+    }}
     <a
       class="underline"
       target="_blank"
       rel="noopener"
       href="https://en.wikipedia.org/wiki/Fingering_(music)#Keyboard_instruments"
-      >fingering notation for keyboard instruments in modern scores</a
-    >. The additional 'b' and 'bb', originating from the
+      >{{
+        "key-notation-help-dialog.middle-part-explanation-paragraph.1"
+          | translate
+      }}</a
+    >
+    {{
+      "key-notation-help-dialog.middle-part-explanation-paragraph.2" | translate
+    }}
     <a
       class="underline"
       target="_blank"
       rel="noopener"
-      href="https://en.wikipedia.org/wiki/Flat_(music)"
-      >flat (♭) and double flat (𝄫) symbols</a
+      [href]="
+        'key-notation-help-dialog.middle-part-explanation-paragraph.3.url'
+          | translate
+      "
+      >{{
+        "key-notation-help-dialog.middle-part-explanation-paragraph.3.text"
+          | translate
+      }}</a
     >
-    in music, are used to indicate the secondary/middle and back switch of that
-    finger.
+    {{
+      "key-notation-help-dialog.middle-part-explanation-paragraph.4" | translate
+    }}
   </p>
   <br />
-  <p>Below is a layout image that shows the notation of each switch.</p>
+  <p>
+    {{
+      "key-notation-help-dialog.layout-image-explanation-paragraph" | translate
+    }}
+  </p>
   <br />
   <app-layout
     [alwaysShowLayout]="true"
@@ -233,5 +255,7 @@
   ></app-layout>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button type="button" mat-button [mat-dialog-close]="true">Close</button>
+  <button type="button" mat-button [mat-dialog-close]="true">
+    {{ "general.close-action" | translate | realTitleCase }}
+  </button>
 </mat-dialog-actions>
