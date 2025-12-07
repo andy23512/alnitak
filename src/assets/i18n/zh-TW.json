@@ -8,7 +8,9 @@
     "combo-unit": "連擊",
     "cancel-action": "取消",
     "delete-confirm-button": "是，我確定要刪除。",
-    "close-action": "關閉"
+    "close-action": "關閉",
+    "left-side": "左邊",
+    "right-side": "右邊"
   },
   "settings": {
     "ui-language": "介面語言",

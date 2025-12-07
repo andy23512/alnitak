@@ -8,7 +8,9 @@
     "combo-unit": "combo",
     "cancel-action": "cancel",
     "delete-confirm-button": "Yes. Delete them.",
-    "close-action": "close"
+    "close-action": "close",
+    "left-side": "left",
+    "right-side": "right"
   },
   "settings": {
     "ui-language": "UI Language",
