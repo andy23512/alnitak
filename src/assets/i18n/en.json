@@ -7,7 +7,8 @@
     "choose-file-action": "choose file",
     "combo-unit": "combo",
     "cancel-action": "cancel",
-    "delete-confirm-button": "Yes. Delete them."
+    "delete-confirm-button": "Yes. Delete them.",
+    "close-action": "close"
   },
   "settings": {
     "ui-language": "UI Language",
@@ -50,5 +51,39 @@
   },
   "delete-device-layouts-confirm-dialog": {
     "description": "Are you sure to delete all the imported device layouts?\n(After deleted, the selected device layout will be changed to CC1/CC2 default.)"
+  },
+  "hotkey-dialog": {
+    "title": "hotkeys"
+  },
+  "hotkey": {
+    "global": {
+      "name": "global",
+      "toggle-hotkey-dialog": "toggle hotkey dialog",
+      "toggle-side-menu": "toggle side menu"
+    },
+    "home-page": {
+      "name": "home page",
+      "go-to-the-first-lesson": "go to the first lesson"
+    },
+    "lesson-page": {
+      "name": "lesson page",
+      "go-to-the-previous-lesson": "go to the previous lesson",
+      "go-to-the-next-lesson": "go to the next lesson",
+      "start-or-resume-the-lesson": "start/resume the lesson",
+      "pause-the-lesson": "pause the lesson"
+    },
+    "chord-practice-page": {
+      "name": "chord practice page",
+      "start-or-resume-the-practice": "start/resume the practice",
+      "pause-the-practice": "pause the practice"
+    },
+    "layout-viewer-page": {
+      "name": "layout viewer page",
+      "switch-to-the-a1-layer": "switch to the A1 (primary) layer",
+      "switch-to-the-a2-layer": "switch to the A2 (numeric) layer",
+      "switch-to-the-a3-layer": "switch to the A3 (functional) layer",
+      "toggle-shift-modifier": "toggle Shift modifier",
+      "toggle-alt-graph-modifier": "toggle Alt Graph modifier"
+    }
   }
 }

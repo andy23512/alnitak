@@ -7,43 +7,77 @@ import {
   MatDialogTitle,
 } from '@angular/material/dialog';
 import { HotkeysShortcutPipe } from '@ngneat/hotkeys';
+import { TranslatePipe } from '@ngx-translate/core';
+import { RealTitleCasePipe } from 'src/app/pipes/real-title-case.pipe';
 
 export const HOTKEY_GROUPS = [
   {
-    name: 'Global',
+    name: 'hotkey.global.name',
     hotkeys: [
-      { key: '?', description: 'Toggle hotkey dialog' },
-      { key: 'meta.b', description: 'Toggle side menu' },
+      { key: '?', description: 'hotkey.global.toggle-hotkey-dialog' },
+      { key: 'meta.b', description: 'hotkey.global.toggle-side-menu' },
     ],
   },
   {
-    name: 'Home Page',
-    hotkeys: [{ key: 'space', description: 'Go to first lesson' }],
-  },
-  {
-    name: 'Lesson Page',
+    name: 'hotkey.home-page.name',
     hotkeys: [
-      { key: 'meta.left', description: 'Go to previous lesson' },
-      { key: 'meta.right', description: 'Go to next lesson' },
-      { key: 'space', description: 'Start/resume lesson' },
-      { key: 'escape', description: 'Pause lesson' },
+      { key: 'space', description: 'hotkey.home-page.go-to-the-first-lesson' },
     ],
   },
   {
-    name: 'Chord Practice Page',
+    name: 'hotkey.lesson-page.name',
     hotkeys: [
-      { key: 'space', description: 'Start/resume practice' },
-      { key: 'escape', description: 'Pause practice' },
+      {
+        key: 'meta.left',
+        description: 'hotkey.lesson-page.go-to-the-previous-lesson',
+      },
+      {
+        key: 'meta.right',
+        description: 'hotkey.lesson-page.go-to-the-next-lesson',
+      },
+      {
+        key: 'space',
+        description: 'hotkey.lesson-page.start-or-resume-the-lesson',
+      },
+      { key: 'escape', description: 'hotkey.lesson-page.pause-the-lesson' },
     ],
   },
   {
-    name: 'Layout Viewer Page',
+    name: 'hotkey.chord-practice-page.name',
     hotkeys: [
-      { key: 'alt.1', description: 'Switch to the primary layer' },
-      { key: 'alt.2', description: 'Switch to the numeric layer' },
-      { key: 'alt.3', description: 'Switch to the functional layer' },
-      { key: 'alt.s', description: 'Toggle the Shift modifier' },
-      { key: 'alt.a', description: 'Toggle the Alt Graph modifier' },
+      {
+        key: 'space',
+        description: 'hotkey.chord-practice-page.start-or-resume-the-practice',
+      },
+      {
+        key: 'escape',
+        description: 'hotkey.chord-practice-page.pause-the-practice',
+      },
+    ],
+  },
+  {
+    name: 'hotkey.layout-viewer-page.name',
+    hotkeys: [
+      {
+        key: 'alt.1',
+        description: 'hotkey.layout-viewer-page.switch-to-the-a1-layer',
+      },
+      {
+        key: 'alt.2',
+        description: 'hotkey.layout-viewer-page.switch-to-the-a2-layer',
+      },
+      {
+        key: 'alt.3',
+        description: 'hotkey.layout-viewer-page.switch-to-the-a3-layer',
+      },
+      {
+        key: 'alt.s',
+        description: 'hotkey.layout-viewer-page.toggle-shift-modifier',
+      },
+      {
+        key: 'alt.a',
+        description: 'hotkey.layout-viewer-page.toggle-alt-graph-modifier',
+      },
     ],
   },
 ];
@@ -58,6 +92,8 @@ export const HOTKEY_GROUPS = [
     MatDialogTitle,
     MatButton,
     HotkeysShortcutPipe,
+    TranslatePipe,
+    RealTitleCasePipe,
   ],
   templateUrl: './hotkey-dialog.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -119,3 +119,11 @@ mat-sidenav[data-style-dense] {
 .mat-mdc-icon-button {
   @apply leading-none;
 }
+
+span.first-cap {
+  display: inline-block;
+}
+
+.first-cap:first-letter {
+  text-transform: uppercase;
+}

@@ -7,7 +7,8 @@
     "choose-file-action": "選擇檔案",
     "combo-unit": "連擊",
     "cancel-action": "取消",
-    "delete-confirm-button": "是，我確定要刪除。"
+    "delete-confirm-button": "是，我確定要刪除。",
+    "close-action": "關閉"
   },
   "settings": {
     "ui-language": "介面語言",
@@ -50,5 +51,39 @@
   },
   "delete-device-layouts-confirm-dialog": {
     "description": "你確定要刪除所有已匯入的裝置佈局嗎？\n（刪除之後，裝置佈局設定會改為 CC1/CC2 的預設佈局。）"
+  },
+  "hotkey-dialog": {
+    "title": "快捷鍵"
+  },
+  "hotkey": {
+    "global": {
+      "name": "全域共通",
+      "toggle-hotkey-dialog": "開啟或關閉快捷鍵對話框",
+      "toggle-side-menu": "開啟或關閉側邊欄"
+    },
+    "home-page": {
+      "name": "首頁",
+      "go-to-the-first-lesson": "前往第一個課程"
+    },
+    "lesson-page": {
+      "name": "課程頁面",
+      "go-to-the-previous-lesson": "回到上一個課程",
+      "go-to-the-next-lesson": "前往下一個課程",
+      "start-or-resume-the-lesson": "開始或繼續課程",
+      "pause-the-lesson": "暫停課程"
+    },
+    "chord-practice-page": {
+      "name": "和弦練習頁面",
+      "start-or-resume-the-practice": "開始或繼續練習",
+      "pause-the-practice": "暫停練習"
+    },
+    "layout-viewer-page": {
+      "name": "佈局檢視頁面",
+      "switch-to-the-a1-layer": "切換到 A1（主要）層",
+      "switch-to-the-a2-layer": "切換到 A2（數字）層",
+      "switch-to-the-a3-layer": "切換到 A3（功能）層",
+      "toggle-shift-modifier": "開啟或關閉 Shift 修飾鍵",
+      "toggle-alt-graph-modifier": "開啟或關閉 Alt Graph 修飾鍵"
+    }
   }
 }

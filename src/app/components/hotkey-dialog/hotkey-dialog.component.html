@@ -1,10 +1,14 @@
-<h2 mat-dialog-title class="!text-xl">Hotkeys</h2>
+<h2 mat-dialog-title class="!text-xl">
+  {{ "hotkey-dialog.title" | translate | realTitleCase }}
+</h2>
 <mat-dialog-content class="columns-2 space-y-3">
   @for (hotkeyGroup of hotkeyGroups; track $index) {
     <section
       class="break-inside-avoid break-inside-avoid-page break-inside-avoid-column space-y-2"
     >
-      <h3 class="text-lg text-white">{{ hotkeyGroup.name }}</h3>
+      <h3 class="text-lg text-white">
+        {{ hotkeyGroup.name | translate | realTitleCase }}
+      </h3>
       <ul class="space-y-1">
         @for (hotkey of hotkeyGroup.hotkeys; track hotkey.key) {
           <li class="flex items-center gap-1">
@@ -15,7 +19,7 @@
                 "
               ></kbd>
             </div>
-            <span>{{ hotkey.description }}</span>
+            <span class="first-cap">{{ hotkey.description | translate }}</span>
           </li>
         }
       </ul>
@@ -23,5 +27,7 @@
   }
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button type="button" mat-button [mat-dialog-close]="true">Close</button>
+  <button type="button" mat-button [mat-dialog-close]="true">
+    {{ "general.close-action" | translate | realTitleCase }}
+  </button>
 </mat-dialog-actions>
