@@ -18,6 +18,15 @@
       "chord-speed-label": "chord speed",
       "character-entry-speed-input-aria-label": "input box for character entry speed in air mode",
       "chord-speed-input-aria-label": "input box for chord speed in air mode"
+    },
+    "device-layout": {
+      "import-device-layout-file-step": [
+        "(Optional) Import a device layout file (the backup file from",
+        "CharaChorder Device Manager",
+        "website)."
+      ],
+      "file-input-aria-label": "file input for selecting a device layout file to load into this tool",
+      "select-device-layout-step": "Select a loaded device layout."
     }
   },
   "chord-page": {

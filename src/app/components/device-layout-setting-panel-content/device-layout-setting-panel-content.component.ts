@@ -7,14 +7,14 @@ import {
   inject,
 } from '@angular/core';
 import { MatButton } from '@angular/material/button';
-import { MatDialog } from '@angular/material/dialog';
 import { MatFormField } from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
 import { MatOption, MatSelect } from '@angular/material/select';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { patchState } from '@ngrx/signals';
 import { addEntity } from '@ngrx/signals/entities';
+import { TranslatePipe } from '@ngx-translate/core';
 import { IconGuardPipe } from 'src/app/pipes/icon-guard.pipe';
+import { RealTitleCasePipe } from 'src/app/pipes/real-title-case.pipe';
 import { DeviceLayoutStore } from 'src/app/stores/device-layout.store';
 
 @Component({
@@ -27,14 +27,14 @@ import { DeviceLayoutStore } from 'src/app/stores/device-layout.store';
     MatButton,
     MatIcon,
     IconGuardPipe,
+    TranslatePipe,
+    RealTitleCasePipe,
   ],
   templateUrl: './device-layout-setting-panel-content.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DeviceLayoutSettingPanelContentComponent {
   private deviceLayoutStore = inject(DeviceLayoutStore);
-  private matDialog = inject(MatDialog);
-  private matSnackBar = inject(MatSnackBar);
   public selectedDeviceLayoutId = this.deviceLayoutStore.selectedId;
   public deviceLayouts = this.deviceLayoutStore.entities;
 

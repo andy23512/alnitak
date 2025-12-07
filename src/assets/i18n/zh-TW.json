@@ -18,6 +18,15 @@
       "chord-speed-label": "和弦輸入速度",
       "character-entry-speed-input-aria-label": "隔空模式的逐字輸入速度輸入框",
       "chord-speed-input-aria-label": "隔空模式的和弦輸入速度輸入框"
+    },
+    "device-layout": {
+      "import-device-layout-file-step": [
+        "（非必要）匯入你的裝置佈局檔案（來自",
+        "CharaChorder 裝置管理工具",
+        "的備份檔案）。"
+      ],
+      "file-input-aria-label": "選擇要匯入到此工具的裝置佈局檔案用的檔案輸入框",
+      "select-device-layout-step": "選擇一個已匯入的裝置佈局。"
     }
   },
   "chord-page": {
