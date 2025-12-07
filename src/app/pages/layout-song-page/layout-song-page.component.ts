@@ -1,3 +1,4 @@
+import { JsonPipe, NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -56,6 +57,8 @@ const AUDIO_URL = './assets/layout.mp3';
     MatButtonModule,
     LyricsViewComponent,
     LayoutComponent,
+    JsonPipe,
+    NgClass,
   ],
 })
 export class LayoutSongPageComponent implements OnInit, OnDestroy {
@@ -89,6 +92,12 @@ export class LayoutSongPageComponent implements OnInit, OnDestroy {
         this.audio.muted = muted;
       }
     });
+    effect(() => {
+      const loop = this.layoutSongSettingStore.loop();
+      if (this.audio) {
+        this.audio.loop = loop;
+      }
+    });
   }
 
   ngOnInit() {
@@ -107,6 +116,7 @@ export class LayoutSongPageComponent implements OnInit, OnDestroy {
     this.audio = new Audio(AUDIO_URL);
     this.audio.volume = this.layoutSongSettingStore.volume();
     this.audio.muted = this.layoutSongSettingStore.muted();
+    this.audio.loop = this.layoutSongSettingStore.loop();
 
     this.audio.addEventListener('timeupdate', this.updateProgress.bind(this));
     this.audio.addEventListener('ended', () => {
@@ -148,6 +158,10 @@ export class LayoutSongPageComponent implements OnInit, OnDestroy {
 
   toggleMute() {
     this.layoutSongSettingStore.setMuted(!this.layoutSongSettingStore.muted());
+  }
+
+  toggleLoop() {
+    this.layoutSongSettingStore.setLoop(!this.layoutSongSettingStore.loop());
   }
 
   shownLyricSegments = computed(() => {

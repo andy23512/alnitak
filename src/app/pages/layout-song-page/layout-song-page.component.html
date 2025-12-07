@@ -7,6 +7,17 @@
       {{ (isPlaying() ? "pause" : "play_arrow") | iconGuard }}
     </mat-icon>
   </button>
+  <button
+    mat-icon-button
+    class="flex-none"
+    (click)="toggleLoop()"
+    [class.!text-alnitak-500]="layoutSongSettingStore.loop()"
+    [class.!text-gray-200]="!layoutSongSettingStore.loop()"
+  >
+    <mat-icon>
+      {{ "repeat" | iconGuard }}
+    </mat-icon>
+  </button>
   <mat-slider class="flex-1" min="0" max="100">
     <input
       matSliderThumb

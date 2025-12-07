@@ -45,6 +45,7 @@ export type Icon =
   | 'print'
   | 'question_mark'
   | 'radio_button_checked'
+  | 'repeat'
   | 'replay'
   | 'restart_alt'
   | 'right_click'

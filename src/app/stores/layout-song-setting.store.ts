@@ -15,6 +15,7 @@ import { LayoutSongSetting } from '../models/layout-song-setting.models';
 const INITIAL_LAYOUT_SONG_SETTING: LayoutSongSetting = {
   volume: 1,
   muted: false,
+  loop: false,
 };
 
 export const LayoutSongSettingStore = signalStore(
@@ -41,7 +42,7 @@ export const LayoutSongSettingStore = signalStore(
   })),
   withMethods((store) => ({
     setVolume(volume: number) {
-      patchState(store, (state) => ({
+      patchState(store, () => ({
         muted: volume === 0,
         volume,
       }));
@@ -50,6 +51,11 @@ export const LayoutSongSettingStore = signalStore(
       patchState(store, (state) => ({
         muted,
         volume: !muted && state.volume === 0 ? 1 : state.volume,
+      }));
+    },
+    setLoop(loop: boolean) {
+      patchState(store, () => ({
+        loop,
       }));
     },
   })),
