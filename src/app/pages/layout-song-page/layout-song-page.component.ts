@@ -5,6 +5,7 @@ import {
   effect,
   HostBinding,
   inject,
+  OnDestroy,
   OnInit,
   Signal,
   signal,
@@ -57,7 +58,7 @@ const AUDIO_URL = './assets/layout.mp3';
     LayoutComponent,
   ],
 })
-export class LayoutSongPageComponent implements OnInit {
+export class LayoutSongPageComponent implements OnInit, OnDestroy {
   @HostBinding('class') classes =
     'flex flex-col gap-2 h-full w-full relative overflow-hidden';
 
@@ -92,6 +93,13 @@ export class LayoutSongPageComponent implements OnInit {
 
   ngOnInit() {
     this.loadAudio();
+  }
+
+  ngOnDestroy(): void {
+    if (this.audio) {
+      this.audio.pause();
+      this.audio.currentTime = 0;
+    }
   }
 
   loadAudio() {
