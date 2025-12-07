@@ -61,14 +61,14 @@
     "key-notation-example-paragraph": "For example, the 'Left Thumb Middle West' key is noted as 'L1bW', and the 'Right Pinky Down (3D press)' is noted as 'R5D'.",
     "first-and-last-letters-explanation-paragraph": "The first and the last letters are the shorthands for the side (L/R) and the direction (N/E/S/W/D), respectively.",
     "middle-part-explanation-paragraph": [
-      "The middle part indicates the switch. The number represents the finger (1 to 5: thumb to pinky), using the same way as",
+      "The middle part indicates the switch. The number represents the finger (1 to 5: thumb to pinky), using the same way as ",
       "fingering notation for keyboard instruments in modern scores.",
-      "The additional 'b' and 'bb', originating from the",
+      " The additional 'b' and 'bb', originating from the ",
       {
         "url": "https://en.wikipedia.org/wiki/Flat_(music)",
         "text": "flat (♭) and double flat (𝄫) symbols"
       },
-      "in music, are used to indicate the secondary/middle and back switch of that finger."
+      " in music, are used to indicate the secondary/middle and back switch of that finger."
     ],
     "layout-image-explanation-paragraph": "Below is a layout image that shows the notation of each switch."
   },
