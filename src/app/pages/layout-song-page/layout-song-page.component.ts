@@ -2,6 +2,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  effect,
   HostBinding,
   inject,
   OnInit,
@@ -29,6 +30,7 @@ import {
 import { IconGuardPipe } from 'src/app/pipes/icon-guard.pipe';
 import { INITIAL_HIGHLIGHT_SETTING } from 'src/app/stores/highlight-setting.store';
 import { KeyboardLayoutStore } from 'src/app/stores/keyboard-layout.store';
+import { LayoutSongSettingStore } from 'src/app/stores/layout-song-setting.store';
 import { VisibilitySettingStore } from 'src/app/stores/visibility-setting.store';
 import {
   getCharacterActionCodesFromCharacterKeyCode,
@@ -58,7 +60,9 @@ const AUDIO_URL = './assets/layout.mp3';
 export class LayoutSongPageComponent implements OnInit {
   @HostBinding('class') classes =
     'flex flex-col gap-2 h-full w-full relative overflow-hidden';
+
   readonly visibilitySettingStore = inject(VisibilitySettingStore);
+  readonly layoutSongSettingStore = inject(LayoutSongSettingStore);
 
   isPlaying = signal(false);
   currentTime = signal(0);
@@ -71,6 +75,21 @@ export class LayoutSongPageComponent implements OnInit {
   error = signal<string | null>(null);
   private audio: HTMLAudioElement | null = null;
 
+  constructor() {
+    effect(() => {
+      const volume = this.layoutSongSettingStore.volume();
+      if (this.audio) {
+        this.audio.volume = volume;
+      }
+    });
+    effect(() => {
+      const muted = this.layoutSongSettingStore.muted();
+      if (this.audio) {
+        this.audio.muted = muted;
+      }
+    });
+  }
+
   ngOnInit() {
     this.loadAudio();
   }
@@ -78,6 +97,8 @@ export class LayoutSongPageComponent implements OnInit {
   loadAudio() {
     this.audio?.pause();
     this.audio = new Audio(AUDIO_URL);
+    this.audio.volume = this.layoutSongSettingStore.volume();
+    this.audio.muted = this.layoutSongSettingStore.muted();
 
     this.audio.addEventListener('timeupdate', this.updateProgress.bind(this));
     this.audio.addEventListener('ended', () => {
@@ -115,6 +136,10 @@ export class LayoutSongPageComponent implements OnInit {
       const currentTime = this.audio.currentTime;
       this.currentTime.set(currentTime);
     }
+  }
+
+  toggleMute() {
+    this.layoutSongSettingStore.setMuted(!this.layoutSongSettingStore.muted());
   }
 
   shownLyricSegments = computed(() => {

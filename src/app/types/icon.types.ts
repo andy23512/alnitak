@@ -64,4 +64,6 @@ export type Icon =
   | 'touchpad_mouse'
   | 'trending_up'
   | 'upload'
+  | 'volume_off'
+  | 'volume_up'
   | 'window';

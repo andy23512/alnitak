@@ -1,5 +1,5 @@
 <section
-  class="flex h-12 flex-none items-center justify-center gap-1 bg-gray-700 px-3"
+  class="flex h-12 flex-none items-center justify-center bg-gray-700 px-3"
 >
   <h2 class="flex-none text-lg">Layout Song</h2>
   <button mat-icon-button class="flex-none" (click)="handlePlayPause()">
@@ -12,6 +12,24 @@
       matSliderThumb
       [value]="progress()"
       (valueChange)="handleSeek($event)"
+    />
+  </mat-slider>
+  <button
+    type="button"
+    mat-icon-button
+    aria-label="toggle mute for layout song"
+    (click)="toggleMute()"
+  >
+    <mat-icon>{{
+      (layoutSongSettingStore.displayMuted() ? "volume_off" : "volume_up")
+        | iconGuard
+    }}</mat-icon>
+  </button>
+  <mat-slider class="w-28 flex-none" min="0" max="1" step="0.05">
+    <input
+      matSliderThumb
+      [value]="layoutSongSettingStore.displayVolume()"
+      (valueChange)="layoutSongSettingStore.setVolume($event)"
     />
   </mat-slider>
   <button
