@@ -9,6 +9,10 @@
     "west": "west",
     "north": "north"
   },
+  "device-layout": {
+    "cc1-cc2-default": "CC1/CC2 default",
+    "m4g-default": "M4G default"
+  },
   "general": {
     "character-entry-speed-unit": "CPM",
     "chord-speed-unit": "ChPM",

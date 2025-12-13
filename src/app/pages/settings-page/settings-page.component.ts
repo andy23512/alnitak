@@ -8,11 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { MatButton } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatDialog } from '@angular/material/dialog';
-import {
-  MatAccordion,
-  MatExpansionPanel,
-  MatExpansionPanelHeader,
-} from '@angular/material/expansion';
+import { MatAccordion, MatExpansionModule } from '@angular/material/expansion';
 import { MatIcon } from '@angular/material/icon';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { patchState } from '@ngrx/signals';
@@ -38,8 +34,6 @@ import { VisibilitySettingPanelContentComponent } from '../../components/visibil
   standalone: true,
   imports: [
     MatAccordion,
-    MatExpansionPanel,
-    MatExpansionPanelHeader,
     MatButton,
     MatIcon,
     VisibilitySettingPanelContentComponent,
@@ -53,6 +47,7 @@ import { VisibilitySettingPanelContentComponent } from '../../components/visibil
     FormsModule,
     TranslatePipe,
     RealTitleCasePipe,
+    MatExpansionModule,
   ],
   templateUrl: './settings-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -9,6 +9,10 @@
     "west": "西",
     "north": "北"
   },
+  "device-layout": {
+    "cc1-cc2-default": "CC1/CC2 預設",
+    "m4g-default": "M4G 預設"
+  },
   "general": {
     "character-entry-speed-unit": "字元/分鐘",
     "chord-speed-unit": "和弦/分鐘",

@@ -4,80 +4,96 @@
     <mat-expansion-panel-header class="!text-xl"
       >Quick Setting</mat-expansion-panel-header
     >
-    <app-quick-setting-panel-content></app-quick-setting-panel-content>
+    <ng-template matExpansionPanelContent>
+      <app-quick-setting-panel-content></app-quick-setting-panel-content>
+    </ng-template>
   </mat-expansion-panel>
   <mat-expansion-panel>
     <mat-expansion-panel-header class="!text-xl"
       >Visibility</mat-expansion-panel-header
     >
-    <app-visibility-setting-panel-content></app-visibility-setting-panel-content>
+    <ng-template matExpansionPanelContent>
+      <app-visibility-setting-panel-content></app-visibility-setting-panel-content>
+    </ng-template>
   </mat-expansion-panel>
   <mat-expansion-panel>
     <mat-expansion-panel-header class="!text-xl"
       >Layout Highlight</mat-expansion-panel-header
     >
-    <app-layout-highlight-setting-panel-content></app-layout-highlight-setting-panel-content>
+    <ng-template matExpansionPanelContent>
+      <app-layout-highlight-setting-panel-content></app-layout-highlight-setting-panel-content>
+    </ng-template>
   </mat-expansion-panel>
   <mat-expansion-panel>
     <mat-expansion-panel-header class="!text-xl"
       >Device Layout</mat-expansion-panel-header
     >
-    <app-device-layout-setting-panel-content></app-device-layout-setting-panel-content>
+    <ng-template matExpansionPanelContent>
+      <app-device-layout-setting-panel-content></app-device-layout-setting-panel-content>
+    </ng-template>
   </mat-expansion-panel>
   <mat-expansion-panel>
     <mat-expansion-panel-header class="!text-xl"
       >Air Mode</mat-expansion-panel-header
     >
-    <app-air-mode-setting-panel-content></app-air-mode-setting-panel-content>
+    <ng-template matExpansionPanelContent>
+      <app-air-mode-setting-panel-content></app-air-mode-setting-panel-content>
+    </ng-template>
   </mat-expansion-panel>
   <mat-expansion-panel>
     <mat-expansion-panel-header class="!text-xl"
       >Data Deletion</mat-expansion-panel-header
     >
-    <div class="flex flex-col items-start gap-3">
-      <button
-        type="button"
-        [color]="'warn'"
-        mat-flat-button
-        (click)="openDeleteDeviceLayoutsConfirmDialog()"
-      >
-        <mat-icon>{{ "delete" | iconGuard }}</mat-icon>
-        Delete All Imported Device Layouts
-      </button>
-      <button
-        type="button"
-        [color]="'warn'"
-        mat-flat-button
-        (click)="openDeleteChordsConfirmDialog()"
-      >
-        <mat-icon>{{ "delete" | iconGuard }}</mat-icon>
-        Delete All Imported Chords
-      </button>
-    </div>
+    <ng-template matExpansionPanelContent>
+      <div class="flex flex-col items-start gap-3">
+        <button
+          type="button"
+          [color]="'warn'"
+          mat-flat-button
+          (click)="openDeleteDeviceLayoutsConfirmDialog()"
+        >
+          <mat-icon>{{ "delete" | iconGuard }}</mat-icon>
+          Delete All Imported Device Layouts
+        </button>
+        <button
+          type="button"
+          [color]="'warn'"
+          mat-flat-button
+          (click)="openDeleteChordsConfirmDialog()"
+        >
+          <mat-icon>{{ "delete" | iconGuard }}</mat-icon>
+          Delete All Imported Chords
+        </button>
+      </div>
+    </ng-template>
   </mat-expansion-panel>
   <mat-expansion-panel>
     <mat-expansion-panel-header class="!text-xl"
       >Misc</mat-expansion-panel-header
     >
-    <app-misc-setting-panel-content></app-misc-setting-panel-content>
+    <ng-template matExpansionPanelContent>
+      <app-misc-setting-panel-content></app-misc-setting-panel-content>
+    </ng-template>
   </mat-expansion-panel>
   <mat-expansion-panel>
     <mat-expansion-panel-header class="!text-xl">{{
       "settings.ui-language" | translate | realTitleCase
     }}</mat-expansion-panel-header>
-    <div>
-      <mat-button-toggle-group
-        class="opacity-80"
-        [ngModel]="languageSettingStore.uiLanguage()"
-        (ngModelChange)="setLanguage($event)"
-        [hideSingleSelectionIndicator]="true"
-      >
-        @for (language of supportedLanguages; track language.id) {
-          <mat-button-toggle [value]="language.id">
-            {{ language.name }}
-          </mat-button-toggle>
-        }
-      </mat-button-toggle-group>
-    </div>
+    <ng-template matExpansionPanelContent>
+      <div>
+        <mat-button-toggle-group
+          class="opacity-80"
+          [ngModel]="languageSettingStore.uiLanguage()"
+          (ngModelChange)="setLanguage($event)"
+          [hideSingleSelectionIndicator]="true"
+        >
+          @for (language of supportedLanguages; track language.id) {
+            <mat-button-toggle [value]="language.id">
+              {{ language.name }}
+            </mat-button-toggle>
+          }
+        </mat-button-toggle-group>
+      </div>
+    </ng-template>
   </mat-expansion-panel>
 </mat-accordion>

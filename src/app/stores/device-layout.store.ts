@@ -38,21 +38,26 @@ export const DeviceLayoutStore = signalStore(
       }
       const entities = store.entities();
       const defaultLayout = entities.find((e) => e.id === 'default');
-      if (
-        defaultLayout &&
-        ['Default', 'CC1 Default'].includes(defaultLayout.name)
-      ) {
+      if (defaultLayout && defaultLayout.name !== 'cc1-cc2-default') {
         patchState(
           store,
           updateEntity({
             id: 'default',
-            changes: { name: 'CC1/CC2 Default' },
+            changes: { name: 'cc1-cc2-default' },
           }),
         );
       }
       const m4gDefaultLayout = entities.find((e) => e.id === 'm4g-default');
       if (!m4gDefaultLayout) {
         patchState(store, addEntity(M4G_DEFAULT_DEVICE_LAYOUT));
+      } else if (m4gDefaultLayout.name !== 'm4g-default') {
+        patchState(
+          store,
+          updateEntity({
+            id: 'm4g-default',
+            changes: { name: 'm4g-default' },
+          }),
+        );
       }
     },
   }),

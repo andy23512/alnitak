@@ -41,7 +41,10 @@
         [value]="selectedDeviceLayoutId()"
         (valueChange)="setSelectedDeviceLayoutId($event)"
       >
-        @for (deviceLayout of deviceLayouts(); track deviceLayout.id) {
+        @for (
+          deviceLayout of translatedDeviceLayouts();
+          track deviceLayout.id
+        ) {
           <mat-option [value]="deviceLayout.id">{{
             deviceLayout.name
           }}</mat-option>
