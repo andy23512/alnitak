@@ -30,6 +30,43 @@
   },
   "nav": {
     "hotkey": "Hotkey",
+    "page": {
+      "home": {
+        "title": "home",
+        "tooltip": "Go to Home page",
+        "aria-label": "home page link"
+      },
+      "statistics": {
+        "title": "stats",
+        "tooltip": "Go to Statistics page",
+        "aria-label": "statistics page link"
+      },
+      "chord": {
+        "title": "chord",
+        "tooltip": "Go to Chord page",
+        "aria-label": "chord page link"
+      },
+      "layout": {
+        "title": "layout",
+        "tooltip": "Go to Layout Viewer page",
+        "aria-label": "layout viewer page link"
+      },
+      "song": {
+        "title": "song",
+        "tooltip": "Go to Layout Song page",
+        "aria-label": "layout song page link"
+      },
+      "settings": {
+        "title": "settings",
+        "tooltip": "Go to Settings page",
+        "aria-label": "settings page link"
+      },
+      "information": {
+        "title": "info",
+        "tooltip": "Go to Information page",
+        "aria-label": "information page link"
+      }
+    },
     "search-lessons-input": {
       "placeholder": "search lessons",
       "aria-label": "search box for lesson"

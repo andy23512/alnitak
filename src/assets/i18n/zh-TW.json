@@ -29,7 +29,44 @@
     "same-side": "同一邊"
   },
   "nav": {
-    "hotkey": "快捷鍵",
+    "hotkey": "熱鍵",
+    "page": {
+      "home": {
+        "title": "首頁",
+        "tooltip": "前往首頁",
+        "aria-label": "首頁連結"
+      },
+      "statistics": {
+        "title": "統計",
+        "tooltip": "前往統計頁面",
+        "aria-label": "統計頁面連結"
+      },
+      "chord": {
+        "title": "和弦",
+        "tooltip": "前往和弦頁面",
+        "aria-label": "和弦頁面連結"
+      },
+      "layout": {
+        "title": "佈局",
+        "tooltip": "前往佈局檢視頁面",
+        "aria-label": "佈局檢視頁面連結"
+      },
+      "song": {
+        "title": "歌曲",
+        "tooltip": "前往佈局記憶歌頁面",
+        "aria-label": "佈局記憶歌頁面連結"
+      },
+      "settings": {
+        "title": "設定",
+        "tooltip": "前往設定頁面",
+        "aria-label": "設定頁面連結"
+      },
+      "information": {
+        "title": "資訊",
+        "tooltip": "前往資訊頁面",
+        "aria-label": "資訊頁面連結"
+      }
+    },
     "search-lessons-input": {
       "placeholder": "搜尋課程",
       "aria-label": "課程搜尋框"

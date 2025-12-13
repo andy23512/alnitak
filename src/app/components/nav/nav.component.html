@@ -18,8 +18,8 @@
             routerLinkActive
             [routerLinkActiveOptions]="navLink.routerLinkActiveOptions"
             #rla="routerLinkActive"
-            [attr.aria-label]="navLink.ariaLabel"
-            [matTooltip]="navLink.tooltipMessage"
+            [attr.aria-label]="navLink.ariaLabel | translate"
+            [matTooltip]="navLink.tooltipMessage | translate"
             (click)="onNavLinkClick()"
           >
             <button
@@ -28,7 +28,7 @@
               [color]="rla.isActive ? 'primary' : null"
             >
               <mat-icon>{{ navLink.icon | iconGuard }}</mat-icon>
-              {{ navLink.title }}
+              {{ navLink.title | translate | realTitleCase }}
             </button>
           </a>
         }
