@@ -126,5 +126,18 @@
     ],
     "fn-shift-side-choice": ["傾向選擇", "{{左邊 / 右邊}}", "的 Fn-shift 鍵。"],
     "character-key-side-choice": ["傾向選擇", "{{左邊 / 右邊}}", "的字元鍵。"]
+  },
+  "layout-song-help-dialog": {
+    "title": "佈局記憶歌",
+    "summary": "佈局記憶歌是一首由 AI 生成、能幫助你記憶預設佈局上的字母鍵的英文歌。",
+    "tool-explanation": "歌詞是由 Kimi K2 Thinking 生成，而整首歌是由 Suno AI 生成。",
+    "license-explanation": "這首歌僅授權用於非商業用途。",
+    "download-explanation": [
+      "如果你有需要，你可以下載這首歌的",
+      "音檔",
+      "或",
+      "歌詞",
+      "。請勿用於任何商業用途！"
+    ]
   }
 }
