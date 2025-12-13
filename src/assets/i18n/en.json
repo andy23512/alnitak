@@ -10,7 +10,9 @@
     "delete-confirm-button": "Yes. Delete them.",
     "close-action": "close",
     "left-side": "left",
-    "right-side": "right"
+    "right-side": "right",
+    "both-sides": "both sides",
+    "same-side": "same side"
   },
   "settings": {
     "ui-language": "UI Language",
@@ -104,5 +106,37 @@
       "toggle-shift-modifier": "toggle Shift modifier",
       "toggle-alt-graph-modifier": "toggle Alt Graph modifier"
     }
+  },
+  "layout-highlight-setting": {
+    "shift-layer": "shift layer",
+    "num-shift-layer": "num-shift layer",
+    "shift-num-shift-layer": "shift num-shift layer",
+    "fn-shift-layer": "fn-shift layer",
+    "shift-fn-shift-layer": "shift fn-shift layer",
+    "key-combination-sides-choice": [
+      "Tend to choose the key combination from ",
+      "{{both sides / same side}}",
+      "."
+    ],
+    "shift-side-choice": [
+      "Tend to choose the ",
+      "{{(left / right)}}",
+      " Shift key."
+    ],
+    "num-shift-side-choice": [
+      "Tend to choose the ",
+      "{{(left / right)}}",
+      " Num-shift key."
+    ],
+    "fn-shift-side-choice": [
+      "Tend to choose the ",
+      "{{(left / right)}}",
+      " Fn-shift key."
+    ],
+    "character-key-side-choice": [
+      "Tend to choose the character key on the ",
+      "{{(left / right)}}",
+      " side."
+    ]
   }
 }

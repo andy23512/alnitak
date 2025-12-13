@@ -4,6 +4,10 @@
   [panelWidth]="null"
   (valueChange)="select.emit($event)"
 >
-  <mat-option [value]="'both'">both sides</mat-option>
-  <mat-option [value]="'same'">same side</mat-option>
+  <mat-option [value]="'both'">
+    {{ "general.both-sides" | translate }}
+  </mat-option>
+  <mat-option [value]="'same'">
+    {{ "general.same-side" | translate }}
+  </mat-option>
 </mat-select>

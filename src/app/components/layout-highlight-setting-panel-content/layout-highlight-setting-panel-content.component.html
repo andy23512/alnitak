@@ -1,55 +1,75 @@
 <section class="space-y-4">
   <section class="space-y-2">
-    <h4 class="text-lg">Shift Layer</h4>
+    <h4 class="text-lg">
+      {{ "layout-highlight-setting.shift-layer" | translate | realTitleCase }}
+    </h4>
     <ul>
       <li>
-        Tend to choose the key combination from
+        {{
+          "layout-highlight-setting.key-combination-sides-choice.0" | translate
+        }}
         <app-sides-dropdown
           [value]="highlightSettingStore.shiftLayer().preferSides"
           (select)="setHighlightSetting('shiftLayer', 'preferSides', $event)"
-        ></app-sides-dropdown
-        >.
+        ></app-sides-dropdown>
+        {{
+          "layout-highlight-setting.key-combination-sides-choice.2" | translate
+        }}
       </li>
       <li>
-        Tend to choose the
+        {{ "layout-highlight-setting.shift-side-choice.0" | translate }}
         <app-key-side-dropdown
           [value]="highlightSettingStore.shiftLayer().preferShiftSide"
           (select)="
             setHighlightSetting('shiftLayer', 'preferShiftSide', $event)
           "
         ></app-key-side-dropdown>
-        Shift key.
+        {{ "layout-highlight-setting.shift-side-choice.2" | translate }}
       </li>
     </ul>
   </section>
   <section class="space-y-2">
-    <h4 class="text-lg">Num-shift Layer</h4>
+    <h4 class="text-lg">
+      {{
+        "layout-highlight-setting.num-shift-layer" | translate | realTitleCase
+      }}
+    </h4>
     <ul>
       <li>
-        Tend to choose the key combination from
+        {{
+          "layout-highlight-setting.key-combination-sides-choice.0" | translate
+        }}
         <app-sides-dropdown
           [value]="highlightSettingStore.numShiftLayer().preferSides"
           (select)="setHighlightSetting('numShiftLayer', 'preferSides', $event)"
-        ></app-sides-dropdown
-        >.
+        ></app-sides-dropdown>
+        {{
+          "layout-highlight-setting.key-combination-sides-choice.2" | translate
+        }}
       </li>
       <li>
-        Tend to choose the
+        {{ "layout-highlight-setting.num-shift-side-choice.0" | translate }}
         <app-key-side-dropdown
           [value]="highlightSettingStore.numShiftLayer().preferNumShiftSide"
           (select)="
             setHighlightSetting('numShiftLayer', 'preferNumShiftSide', $event)
           "
         ></app-key-side-dropdown>
-        Num-shift key.
+        {{ "layout-highlight-setting.num-shift-side-choice.2" | translate }}
       </li>
     </ul>
   </section>
   <section class="space-y-2">
-    <h4 class="text-lg">Shift Num-Shift Layer</h4>
+    <h4 class="text-lg">
+      {{
+        "layout-highlight-setting.shift-num-shift-layer"
+          | translate
+          | realTitleCase
+      }}
+    </h4>
     <ul>
       <li>
-        Tend to choose the character key on the
+        {{ "layout-highlight-setting.character-key-side-choice.0" | translate }}
         <app-key-side-dropdown
           [value]="
             highlightSettingStore.shiftAndNumShiftLayer().preferCharacterKeySide
@@ -62,10 +82,10 @@
             )
           "
         ></app-key-side-dropdown>
-        side.
+        {{ "layout-highlight-setting.character-key-side-choice.2" | translate }}
       </li>
       <li>
-        Tend to use the
+        {{ "layout-highlight-setting.shift-side-choice.0" | translate }}
         <app-key-side-dropdown
           [value]="
             highlightSettingStore.shiftAndNumShiftLayer().preferShiftSide
@@ -78,38 +98,52 @@
             )
           "
         ></app-key-side-dropdown>
-        Shift key.
+        {{ "layout-highlight-setting.shift-side-choice.2" | translate }}
       </li>
     </ul>
   </section>
   <section class="space-y-2">
-    <h4 class="text-lg">Fn-shift Layer</h4>
+    <h4 class="text-lg">
+      {{
+        "layout-highlight-setting.fn-shift-layer" | translate | realTitleCase
+      }}
+    </h4>
     <ul>
       <li>
-        Tend to choose the key combination from
+        {{
+          "layout-highlight-setting.key-combination-sides-choice.0" | translate
+        }}
         <app-sides-dropdown
           [value]="highlightSettingStore.fnShiftLayer().preferSides"
           (select)="setHighlightSetting('fnShiftLayer', 'preferSides', $event)"
-        ></app-sides-dropdown
-        >.
+        ></app-sides-dropdown>
+        {{
+          "layout-highlight-setting.key-combination-sides-choice.2" | translate
+        }}
       </li>
       <li>
-        Tend to choose the
+        {{ "layout-highlight-setting.fn-shift-side-choice.0" | translate }}
         <app-key-side-dropdown
           [value]="highlightSettingStore.fnShiftLayer().preferFnShiftSide"
           (select)="
             setHighlightSetting('fnShiftLayer', 'preferFnShiftSide', $event)
           "
         ></app-key-side-dropdown>
-        Fn-shift key.
+        {{ "layout-highlight-setting.fn-shift-side-choice.2" | translate }}
       </li>
     </ul>
   </section>
   <section class="space-y-2">
-    <h4 class="text-lg">Shift Fn-Shift Layer</h4>
+    <h4 class="text-lg">
+      {{
+        "layout-highlight-setting.shift-fn-shift-layer"
+          | translate
+          | realTitleCase
+      }}
+    </h4>
     <ul>
       <li>
-        Tend to choose the character key on the
+        {{ "layout-highlight-setting.character-key-side-choice.0" | translate }}
         <app-key-side-dropdown
           [value]="
             highlightSettingStore.shiftAndFnShiftLayer().preferCharacterKeySide
@@ -122,10 +156,10 @@
             )
           "
         ></app-key-side-dropdown>
-        side.
+        {{ "layout-highlight-setting.character-key-side-choice.2" | translate }}
       </li>
       <li>
-        Tend to use the
+        {{ "layout-highlight-setting.shift-side-choice.0" | translate }}
         <app-key-side-dropdown
           [value]="highlightSettingStore.shiftAndFnShiftLayer().preferShiftSide"
           (select)="
@@ -136,7 +170,7 @@
             )
           "
         ></app-key-side-dropdown>
-        Shift key.
+        {{ "layout-highlight-setting.shift-side-choice.2" | translate }}
       </li>
     </ul>
   </section>

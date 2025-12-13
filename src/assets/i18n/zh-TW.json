@@ -10,7 +10,9 @@
     "delete-confirm-button": "是，我確定要刪除。",
     "close-action": "關閉",
     "left-side": "左邊",
-    "right-side": "右邊"
+    "right-side": "右邊",
+    "both-sides": "兩邊",
+    "same-side": "同一邊"
   },
   "settings": {
     "ui-language": "介面語言",
@@ -104,5 +106,25 @@
       "toggle-shift-modifier": "開啟或關閉 Shift 修飾鍵",
       "toggle-alt-graph-modifier": "開啟或關閉 Alt Graph 修飾鍵"
     }
+  },
+  "layout-highlight-setting": {
+    "shift-layer": "Shift 層",
+    "num-shift-layer": "num-shift 層",
+    "shift-num-shift-layer": "shift num-shift 層",
+    "fn-shift-layer": "fn-shift 層",
+    "shift-fn-shift-layer": "shift fn-shift 層",
+    "key-combination-sides-choice": [
+      "傾向從",
+      "{{兩邊 / 同一邊}}",
+      "選擇按鍵組合。"
+    ],
+    "shift-side-choice": ["傾向選擇", "{{左邊 / 右邊}}", "的 Shift 鍵。"],
+    "num-shift-side-choice": [
+      "傾向選擇",
+      "{{左邊 / 右邊}}",
+      "的 Num-shift 鍵。"
+    ],
+    "fn-shift-side-choice": ["傾向選擇", "{{左邊 / 右邊}}", "的 Fn-shift 鍵。"],
+    "character-key-side-choice": ["傾向選擇", "{{左邊 / 右邊}}", "的字元鍵。"]
   }
 }
