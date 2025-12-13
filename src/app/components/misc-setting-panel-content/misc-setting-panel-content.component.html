@@ -1,22 +1,32 @@
 <mat-form-field>
-  <mat-label>Rotation Angle for Thumb Switches</mat-label>
+  <mat-label>
+    {{ "misc-setting.thumb-rotation-angle.title" | translate | realTitleCase }}
+  </mat-label>
   <input
     matInput
     type="number"
     [ngModel]="thumbRotationAngle()"
     (ngModelChange)="setThumbRotationAngle($event)"
-    aria-label="input box for rotation angle for thumb switches on the layout display"
+    [attr.aria-label]="
+      'misc-setting.thumb-rotation-angle.input-aria-label' | translate
+    "
   />
   <span matTextSuffix>°</span>
 </mat-form-field>
 <mat-form-field>
-  <mat-label>Rotation Angle for Non-Thumb Switches</mat-label>
+  <mat-label>
+    {{
+      "misc-setting.non-thumb-rotation-angle.title" | translate | realTitleCase
+    }}
+  </mat-label>
   <input
     matInput
     type="number"
     [ngModel]="nonThumbRotationAngle()"
     (ngModelChange)="setNonThumbRotationAngle($event)"
-    aria-label="input box for rotation angle for non-thumb switches on the layout display"
+    [attr.aria-label]="
+      'misc-setting.non-thumb-rotation-angle.input-aria-label' | translate
+    "
   />
   <span matTextSuffix>°</span>
 </mat-form-field>
@@ -27,8 +37,8 @@
     '11': [
       {
         type: KeyLabelType.String,
-        c: 'E',
-        title: 'East',
+        c: 'direction.E' | translate,
+        title: 'direction.east' | translate | realTitleCase,
         layer: null,
         shiftKey: null,
         altGraphKey: null
@@ -37,8 +47,8 @@
     '12': [
       {
         type: KeyLabelType.String,
-        c: 'N',
-        title: 'North',
+        c: 'direction.N' | translate,
+        title: 'direction.north' | translate | realTitleCase,
         layer: null,
         shiftKey: null,
         altGraphKey: null
@@ -47,8 +57,8 @@
     '13': [
       {
         type: KeyLabelType.String,
-        c: 'W',
-        title: 'West',
+        c: 'direction.W' | translate,
+        title: 'direction.west' | translate | realTitleCase,
         layer: null,
         shiftKey: null,
         altGraphKey: null
@@ -57,8 +67,8 @@
     '14': [
       {
         type: KeyLabelType.String,
-        c: 'S',
-        title: 'South',
+        c: 'direction.S' | translate,
+        title: 'direction.south' | translate | realTitleCase,
         layer: null,
         shiftKey: null,
         altGraphKey: null
@@ -67,8 +77,8 @@
     '56': [
       {
         type: KeyLabelType.String,
-        c: 'W',
-        title: 'West',
+        c: 'direction.W' | translate,
+        title: 'direction.west' | translate | realTitleCase,
         layer: null,
         shiftKey: null,
         altGraphKey: null
@@ -77,8 +87,8 @@
     '57': [
       {
         type: KeyLabelType.String,
-        c: 'N',
-        title: 'North',
+        c: 'direction.N' | translate,
+        title: 'direction.north' | translate | realTitleCase,
         layer: null,
         shiftKey: null,
         altGraphKey: null
@@ -87,8 +97,8 @@
     '58': [
       {
         type: KeyLabelType.String,
-        c: 'E',
-        title: 'East',
+        c: 'direction.E' | translate,
+        title: 'direction.east' | translate | realTitleCase,
         layer: null,
         shiftKey: null,
         altGraphKey: null
@@ -97,8 +107,8 @@
     '59': [
       {
         type: KeyLabelType.String,
-        c: 'S',
-        title: 'South',
+        c: 'direction.S' | translate,
+        title: 'direction.south' | translate | realTitleCase,
         layer: null,
         shiftKey: null,
         altGraphKey: null
@@ -107,8 +117,8 @@
     '16': [
       {
         type: KeyLabelType.String,
-        c: 'E',
-        title: 'East',
+        c: 'direction.E' | translate,
+        title: 'direction.east' | translate | realTitleCase,
         layer: null,
         shiftKey: null,
         altGraphKey: null
@@ -117,8 +127,8 @@
     '17': [
       {
         type: KeyLabelType.String,
-        c: 'N',
-        title: 'North',
+        c: 'direction.N' | translate,
+        title: 'direction.north' | translate | realTitleCase,
         layer: null,
         shiftKey: null,
         altGraphKey: null
@@ -127,8 +137,8 @@
     '18': [
       {
         type: KeyLabelType.String,
-        c: 'W',
-        title: 'West',
+        c: 'direction.W' | translate,
+        title: 'direction.west' | translate | realTitleCase,
         layer: null,
         shiftKey: null,
         altGraphKey: null
@@ -137,8 +147,8 @@
     '19': [
       {
         type: KeyLabelType.String,
-        c: 'S',
-        title: 'South',
+        c: 'direction.S' | translate,
+        title: 'direction.south' | translate | realTitleCase,
         layer: null,
         shiftKey: null,
         altGraphKey: null
@@ -147,8 +157,8 @@
     '61': [
       {
         type: KeyLabelType.String,
-        c: 'E',
-        title: 'East',
+        c: 'direction.W' | translate,
+        title: 'direction.west' | translate | realTitleCase,
         layer: null,
         shiftKey: null,
         altGraphKey: null
@@ -157,8 +167,8 @@
     '62': [
       {
         type: KeyLabelType.String,
-        c: 'N',
-        title: 'North',
+        c: 'direction.N' | translate,
+        title: 'direction.north' | translate | realTitleCase,
         layer: null,
         shiftKey: null,
         altGraphKey: null
@@ -167,8 +177,8 @@
     '63': [
       {
         type: KeyLabelType.String,
-        c: 'W',
-        title: 'West',
+        c: 'direction.E' | translate,
+        title: 'direction.east' | translate | realTitleCase,
         layer: null,
         shiftKey: null,
         altGraphKey: null
@@ -177,8 +187,8 @@
     '64': [
       {
         type: KeyLabelType.String,
-        c: 'S',
-        title: 'South',
+        c: 'direction.S' | translate,
+        title: 'direction.south' | translate | realTitleCase,
         layer: null,
         shiftKey: null,
         altGraphKey: null

@@ -1,4 +1,14 @@
 {
+  "direction": {
+    "E": "E",
+    "S": "S",
+    "W": "W",
+    "N": "N",
+    "east": "east",
+    "south": "south",
+    "west": "west",
+    "north": "north"
+  },
   "general": {
     "character-entry-speed-unit": "CPM",
     "chord-speed-unit": "ChPM",
@@ -151,5 +161,15 @@
       "the lyrics",
       " of this song if you need them. Please don't use this song for any commercial purpose!"
     ]
+  },
+  "misc-setting": {
+    "thumb-rotation-angle": {
+      "title": "rotation angle for thumb switches",
+      "input-aria-label": "input box for rotation angle for thumb switches on the layout display"
+    },
+    "non-thumb-rotation-angle": {
+      "title": "rotation angle for non-thumb switches",
+      "input-aria-label": "input box for rotation angle for non-thumb switches on the layout display"
+    }
   }
 }
