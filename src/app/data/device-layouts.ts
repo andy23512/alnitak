@@ -2,7 +2,7 @@ import { DeviceLayout } from '../models/device-layout.models';
 
 export const DEFAULT_DEVICE_LAYOUT: DeviceLayout = {
   id: 'default',
-  name: 'CC1/CC2 Default',
+  name: 'cc1-cc2-default',
   layout: [
     [
       600, 47, 45, 515, 297, 601, 119, 562, 103, 122, 602, 107, 118, 109, 99,
@@ -33,7 +33,7 @@ export const DEFAULT_DEVICE_LAYOUT: DeviceLayout = {
 
 export const M4G_DEFAULT_DEVICE_LAYOUT: DeviceLayout = {
   id: 'm4g-default',
-  name: 'M4G Default',
+  name: 'm4g-default',
   layout: [
     [
       0, 0, 0, 0, 0, 0, 119, 63, 103, 122, 0, 107, 118, 109, 99, 0, 114, 298,
