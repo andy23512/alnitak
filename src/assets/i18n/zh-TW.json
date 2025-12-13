@@ -171,5 +171,9 @@
       "title": "非拇指搖桿旋轉角度",
       "input-aria-label": "佈局顯示上的非拇指搖桿旋轉角度的輸入框"
     }
+  },
+  "quick-setting": {
+    "cc1-cc2-default-layout": "CC1/CC2 預設佈局",
+    "m4g-default-layout": "M4G 預設佈局"
   }
 }

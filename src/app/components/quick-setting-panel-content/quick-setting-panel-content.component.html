@@ -1,7 +1,7 @@
 @for (quickSetting of quickSettings; track $index) {
   @if (deviceLayoutStore.selectedId() === quickSetting.deviceLayoutId) {
     <button type="button" mat-flat-button color="primary">
-      {{ quickSetting.name }}
+      {{ quickSetting.name | translate }}
     </button>
   } @else {
     <button
@@ -10,7 +10,7 @@
       class="!bg-gray-600"
       (click)="onQuickSettingButtonClick(quickSetting)"
     >
-      {{ quickSetting.name }}
+      {{ quickSetting.name | translate }}
     </button>
   }
 }

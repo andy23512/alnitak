@@ -1,5 +1,6 @@
 import { Component, HostBinding, inject } from '@angular/core';
 import { MatButton } from '@angular/material/button';
+import { TranslatePipe } from '@ngx-translate/core';
 import { DeviceLayoutStore } from 'src/app/stores/device-layout.store';
 import { VisibilitySettingStore } from 'src/app/stores/visibility-setting.store';
 
@@ -14,7 +15,7 @@ interface QuickSetting {
   templateUrl: './quick-setting-panel-content.component.html',
   styleUrls: ['./quick-setting-panel-content.component.scss'],
   standalone: true,
-  imports: [MatButton],
+  imports: [MatButton, TranslatePipe],
 })
 export class QuickSettingPanelContentComponent {
   @HostBinding('class') classes = 'flex flex-col gap-3 items-start';
@@ -23,12 +24,12 @@ export class QuickSettingPanelContentComponent {
   public deviceLayoutStore = inject(DeviceLayoutStore);
   public quickSettings: QuickSetting[] = [
     {
-      name: 'CC1/CC2 default layout',
+      name: 'quick-setting.cc1-cc2-default-layout',
       deviceLayoutId: 'default',
       layoutThumb3SwitchVisibility: true,
     },
     {
-      name: 'M4G default layout',
+      name: 'quick-setting.m4g-default-layout',
       deviceLayoutId: 'm4g-default',
       layoutThumb3SwitchVisibility: false,
     },
