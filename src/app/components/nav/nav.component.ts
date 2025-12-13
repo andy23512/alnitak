@@ -31,12 +31,14 @@ import {
   RouterOutlet,
 } from '@angular/router';
 import { HotkeysService } from '@ngneat/hotkeys';
+import { TranslatePipe } from '@ngx-translate/core';
 import * as fuzzy from 'fuzzy';
 import { uniqBy } from 'ramda';
 import { Observable } from 'rxjs';
 import { filter, map, shareReplay, take } from 'rxjs/operators';
 import { NAV_LINKS } from 'src/app/data/nav-links';
 import { IconGuardPipe } from 'src/app/pipes/icon-guard.pipe';
+import { RealTitleCasePipe } from 'src/app/pipes/real-title-case.pipe';
 import { LESSON_DATA_FOR_SEARCH, TOPICS } from '../../data/topics';
 import { HotkeyDialogComponent } from '../hotkey-dialog/hotkey-dialog.component';
 
@@ -63,6 +65,8 @@ import { HotkeyDialogComponent } from '../hotkey-dialog/hotkey-dialog.component'
     RouterLinkWithHref,
     RouterOutlet,
     IconGuardPipe,
+    TranslatePipe,
+    RealTitleCasePipe,
   ],
 })
 export class NavComponent implements OnInit {

@@ -24,6 +24,18 @@
     "both-sides": "both sides",
     "same-side": "same side"
   },
+  "nav": {
+    "hotkey": "Hotkey",
+    "search-lessons-input": {
+      "placeholder": "search lessons",
+      "aria-label": "search box for lesson"
+    },
+    "no-result-message": "No results were found.",
+    "side-menu-toggle": {
+      "aria-label": "toggle side menu",
+      "icon-aria-label": "side nav toggle icon"
+    }
+  },
   "settings": {
     "ui-language": "UI Language",
     "air-mode": {

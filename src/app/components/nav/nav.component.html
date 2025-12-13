@@ -34,13 +34,15 @@
         }
         <a class="w-1/2">
           <button
+            class="whitespace-nowrap"
             type="button"
             mat-flat-button
             aria-label="button that opens hotkey dialog"
             (click)="openHotkeyDialog()"
             matTooltip="Open hotkey dialog"
           >
-            <mat-icon>{{ "keyboard" | iconGuard }}</mat-icon> Hotkey
+            <mat-icon>{{ "keyboard" | iconGuard }}</mat-icon>
+            {{ "nav.hotkey" | translate | realTitleCase }}
           </button></a
         >
       </div>
@@ -52,11 +54,13 @@
           (ngModelChange)="searchQuery.set($event)"
           matInput
           type="search"
-          placeholder="Search Lessons"
-          aria-label="search box for lesson"
+          [attr.placeholder]="
+            'nav.search-lessons-input.placeholder' | translate | realTitleCase
+          "
+          [attr.aria-label]="'nav.search-lessons-input.aria-label' | translate"
         />
         @if (!searchQuery()) {
-          <button mat-icon-button matSuffix aria-label="clear search query">
+          <button mat-icon-button matSuffix>
             <mat-icon>{{ "search" | iconGuard }}</mat-icon>
           </button>
         }
@@ -73,7 +77,7 @@
             >{{ lesson.topic.name }} - {{ lesson.name }}</a
           >
         } @empty {
-          <a mat-list-item> No results were found.</a>
+          <a mat-list-item>{{ "nav.no-result-message" | translate }}</a>
         }
       } @else {
         @for (topic of topics; track topic.id) {
@@ -99,13 +103,14 @@
       <button
         type="button"
         class="!fixed left-1 top-1/2 !z-10 -translate-y-1/2 cursor-pointer opacity-80 hover:text-alnitak-500"
-        aria-label="Toggle side menu"
+        [attr.aria-label]="'nav.side-menu-toggle.aria-label' | translate"
         mat-icon-button
         (click)="drawer.toggle()"
       >
-        <mat-icon aria-label="Side nav toggle icon">{{
-          "left_panel_open" | iconGuard
-        }}</mat-icon>
+        <mat-icon
+          [attr.aria-label]="'nav.side-menu-toggle.icon-aria-label' | translate"
+          >{{ "left_panel_open" | iconGuard }}</mat-icon
+        >
       </button>
     }
     <router-outlet></router-outlet>

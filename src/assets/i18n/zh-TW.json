@@ -24,6 +24,18 @@
     "both-sides": "兩邊",
     "same-side": "同一邊"
   },
+  "nav": {
+    "hotkey": "快捷鍵",
+    "search-lessons-input": {
+      "placeholder": "搜尋課程",
+      "aria-label": "課程搜尋框"
+    },
+    "no-result-message": "沒有找到任何結果。",
+    "side-menu-toggle": {
+      "aria-label": "開啟/關閉側邊欄",
+      "icon-aria-label": "側邊欄開關圖標"
+    }
+  },
   "settings": {
     "ui-language": "介面語言",
     "air-mode": {
