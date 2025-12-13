@@ -6,6 +6,8 @@ import {
   MatDialogContent,
   MatDialogTitle,
 } from '@angular/material/dialog';
+import { TranslatePipe } from '@ngx-translate/core';
+import { RealTitleCasePipe } from 'src/app/pipes/real-title-case.pipe';
 
 @Component({
   selector: 'app-thumb-3-switch-help-dialog',
@@ -18,6 +20,8 @@ import {
     MatDialogClose,
     MatDialogContent,
     MatDialogTitle,
+    TranslatePipe,
+    RealTitleCasePipe,
   ],
 })
 export class Thumb3SwitchHelpDialogComponent {}

@@ -175,5 +175,9 @@
   "quick-setting": {
     "cc1-cc2-default-layout": "CC1/CC2 預設佈局",
     "m4g-default-layout": "M4G 預設佈局"
+  },
+  "thumb-3-switch-help-dialog": {
+    "title": "拇指第三搖桿",
+    "content": "Master Forge 不像 CharaChorder One 或 CharaChorder Two 有拇指第三搖桿。如果你使用的是 Master Forge，或你使用的是 CharaChorder One 或 CharaChorder Two 但沒有用到拇指第三搖桿的話，你可以取消勾選這個設定來在佈局顯示上隱藏它們。"
   }
 }

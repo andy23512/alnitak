@@ -187,5 +187,9 @@
   "quick-setting": {
     "cc1-cc2-default-layout": "CC1/CC2 default layout",
     "m4g-default-layout": "M4G default layout"
+  },
+  "thumb-3-switch-help-dialog": {
+    "title": "thumb 3 switch",
+    "content": "Master Forge doesn't have the thumb 3 switches as CharaChorder One and CharaChorder Two. If you use Master Forge, or you use CharaChorder One or CharaChorder Two but don't use the thumb 3 switches, you can uncheck this setting to hide them in the layout."
   }
 }
