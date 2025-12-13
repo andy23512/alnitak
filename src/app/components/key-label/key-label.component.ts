@@ -1,6 +1,7 @@
 import { NgClass } from '@angular/common';
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { MatTooltip } from '@angular/material/tooltip';
+import { TranslatePipe } from '@ngx-translate/core';
 import {
   HighlightKeyCombination,
   KeyLabel,
@@ -13,7 +14,7 @@ import {
   templateUrl: './key-label.component.html',
   styleUrl: './key-label.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MatTooltip, NgClass],
+  imports: [MatTooltip, NgClass, TranslatePipe],
 })
 export class KeyLabelComponent {
   readonly x = input.required<number>();

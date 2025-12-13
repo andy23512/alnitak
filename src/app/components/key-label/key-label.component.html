@@ -12,7 +12,7 @@
     [class.fill-red-500]="label.type === KeyLabelType.ActionCode"
     [ngClass]="label.type === KeyLabelType.Logo ? label.c : null"
     [attr.opacity]="isLabelActive(label) ? 1 : 0"
-    [matTooltip]="label.title"
+    [matTooltip]="label.title | translate"
     [matTooltipDisabled]="!isLabelActive(label)"
     [class.pointer-events-none]="!isLabelActive(label)"
   >
