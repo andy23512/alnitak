@@ -191,5 +191,16 @@
   "thumb-3-switch-help-dialog": {
     "title": "thumb 3 switch",
     "content": "Master Forge doesn't have the thumb 3 switches as CharaChorder One and CharaChorder Two. If you use Master Forge, or you use CharaChorder One or CharaChorder Two but don't use the thumb 3 switches, you can uncheck this setting to hide them in the layout."
+  },
+  "visibility-setting": {
+    "thumb-3-switch-help-button-aria-label": "open help dialog for thumb 3 switch",
+    "key-notation-help-button-aria-label": "open help dialog for key notation",
+    "layout": "layout",
+    "layout-text-guide": "layout - text guide",
+    "layout-key-notation-guide": "layout - key notation guide",
+    "layout-thumb-3-switch": "layout - thumb 3 switch",
+    "combo-counter": "combo counter",
+    "speedometer": "speedometer",
+    "home-page-chording-animation": "home page chording animation"
   }
 }

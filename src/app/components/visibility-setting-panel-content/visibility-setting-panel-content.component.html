@@ -6,12 +6,15 @@
       [checked]="item.value"
       (change)="setVisible(item.key, $event.checked)"
     >
-      {{ item.name }}
+      {{ item.name | translate | realTitleCase }}
       @if (item.key === "layoutThumb3Switch") {
         <button
           type="button"
           mat-icon-button
-          aria-label="open help dialog for thumb 3 switch"
+          [attr.aria-label]="
+            'visibility-setting.thumb-3-switch-help-button-aria-label'
+              | translate
+          "
           (click)="openThumb3SwitchHelpDialog()"
         >
           <mat-icon>{{ "help" | iconGuard }}</mat-icon>
@@ -21,7 +24,9 @@
         <button
           type="button"
           mat-icon-button
-          aria-label="open help dialog for key notation"
+          [attr.aria-label]="
+            'visibility-setting.key-notation-help-button-aria-label' | translate
+          "
           (click)="openKeyNotationHelpDialog()"
         >
           <mat-icon>{{ "help" | iconGuard }}</mat-icon>

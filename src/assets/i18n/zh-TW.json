@@ -179,5 +179,16 @@
   "thumb-3-switch-help-dialog": {
     "title": "拇指第三搖桿",
     "content": "Master Forge 不像 CharaChorder One 或 CharaChorder Two 有拇指第三搖桿。如果你使用的是 Master Forge，或你使用的是 CharaChorder One 或 CharaChorder Two 但沒有用到拇指第三搖桿的話，你可以取消勾選這個設定來在佈局顯示上隱藏它們。"
+  },
+  "visibility-setting": {
+    "thumb-3-switch-help-button-aria-label": "開啟拇指第三搖桿的幫助視窗",
+    "key-notation-help-button-aria-label": "開啟按鍵表示法的幫助視窗",
+    "layout": "佈局",
+    "layout-text-guide": "佈局 - 文字指引",
+    "layout-key-notation-guide": "佈局 - 按鍵表示法指引",
+    "layout-thumb-3-switch": "佈局 - 拇指第三搖桿",
+    "combo-counter": "連擊計數器",
+    "speedometer": "速度計",
+    "home-page-chording-animation": "首頁的和弦動畫"
   }
 }
