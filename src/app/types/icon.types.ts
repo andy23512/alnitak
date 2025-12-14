@@ -12,6 +12,7 @@ export type Icon =
   | 'block'
   | 'chevron_left'
   | 'chevron_right'
+  | 'close'
   | 'code'
   | 'copy_all'
   | 'counter_2'

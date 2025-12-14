@@ -18,6 +18,7 @@
     "chord-speed-unit": "和弦/分鐘",
     "start-action": "開始",
     "character-tooltip": "字元：{{character}}",
+    "action-code-tooltip": "操作代碼：{{actionCode}}",
     "choose-file-action": "選擇檔案",
     "combo-unit": "連擊",
     "cancel-action": "取消",
@@ -421,5 +422,25 @@
     "title": "佈局記憶歌",
     "mute-button-aria-label": "佈局記憶歌靜音/取消靜音按鈕",
     "help-button-aria-label": "開啟佈局記憶歌說明視窗按鈕"
+  },
+  "layout-viewer-page": {
+    "toggle-shift-modifier": "切換 Shift 修飾鍵",
+    "toggle-alt-graph-modifier": "切換 Alt Graph 修飾鍵",
+    "os-keyboard-layout": {
+      "label": "作業系統鍵盤佈局",
+      "search-placeholder": "搜尋佈局...",
+      "search-no-entry": "找不到符合的佈局。",
+      "search-key-button-tooltip": "搜尋按鍵",
+      "print-layout-button-tooltip": "列印佈局",
+      "print-layout-title": "{{keyboardLayout}} 作業系統鍵盤佈局下的 {{deviceLayout}} 裝置佈局"
+    },
+    "hold-hint": ["（按住", "{{keys}}", "以進入此層）"],
+    "and": " 和 ",
+    "comma": "、",
+    "layer": {
+      "a1": "主要層",
+      "a2": "數字層",
+      "a3": "功能層"
+    }
   }
 }

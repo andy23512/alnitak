@@ -18,6 +18,7 @@
     "chord-speed-unit": "ChPM",
     "start-action": "start",
     "character-tooltip": "Character: {{character}}",
+    "action-code-tooltip": "Action Code: {{actionCode}}",
     "choose-file-action": "choose file",
     "combo-unit": "combo",
     "cancel-action": "cancel",
@@ -437,5 +438,31 @@
     "title": "layout song",
     "mute-button-aria-label": "toggle mute for layout song",
     "help-button-aria-label": "open help dialog for layout song"
+  },
+  "layout-viewer-page": {
+    "toggle-shift-modifier": "toggle Shift modifier",
+    "toggle-alt-graph-modifier": "toggle Alt Graph modifier",
+    "os-keyboard-layout": {
+      "label": "OS keyboard layout",
+      "search-placeholder": "Find layout...",
+      "search-no-entry": "No matching layout was found."
+    },
+    "search-key-button-tooltip": "search for key",
+    "print-layout-button-tooltip": "print the layout",
+    "print-layout-title": "{{deviceLayout}} device layout under {{keyboardLayout}} OS layout",
+    "key-search": {
+      "placeholder": "Find key...",
+      "aria-label": "search box for key",
+      "clear-button-aria-label": "clear search query",
+      "search-no-entry": "No matching key was found."
+    },
+    "hold-hint": ["(Hold ", "{{keys}}", " to access this layer)"],
+    "and": " and ",
+    "comma": ", ",
+    "layer": {
+      "a1": "primary layer",
+      "a2": "numeric layer",
+      "a3": "functional layer"
+    }
   }
 }

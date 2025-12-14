@@ -24,6 +24,7 @@ import {
 } from '@angular/material/sidenav';
 import { MatTooltip } from '@angular/material/tooltip';
 import { HotkeysShortcutPipe } from '@ngneat/hotkeys';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { TooltipDirective } from '@webed/angular-tooltip';
 import * as fuzzy from 'fuzzy';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
@@ -49,6 +50,7 @@ import {
   Layer,
 } from 'src/app/models/device-layout.models';
 import { IconGuardPipe } from 'src/app/pipes/icon-guard.pipe';
+import { RealTitleCasePipe } from 'src/app/pipes/real-title-case.pipe';
 import { OperatingSystemService } from 'src/app/services/operating-system.service';
 import { DeviceLayoutStore } from 'src/app/stores/device-layout.store';
 import { HighlightSettingStore } from 'src/app/stores/highlight-setting.store';
@@ -118,6 +120,8 @@ function getHighlightPositionCodes(
     MatTooltip,
     TooltipDirective,
     HotkeysShortcutPipe,
+    TranslatePipe,
+    RealTitleCasePipe,
   ],
   templateUrl: './layout-viewer-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -129,6 +133,7 @@ export class LayoutViewerPageComponent {
   readonly visibilitySettingStore = inject(VisibilitySettingStore);
   readonly keyboardLayoutStore = inject(LayoutViewerKeyboardLayoutStore);
   readonly operatingSystemService = inject(OperatingSystemService);
+  readonly translateService = inject(TranslateService);
 
   readonly keyboardLayout = this.keyboardLayoutStore.selectedEntity;
   readonly selectedKeyboardLayoutId = this.keyboardLayoutStore.selectedId;
@@ -140,6 +145,17 @@ export class LayoutViewerPageComponent {
   readonly keySearchQuery = signal('');
   readonly selectedPositions = signal<number[]>([]);
 
+  deviceLayoutDisplayName = computed(() => {
+    const deviceLayout = this.deviceLayout();
+    if (!deviceLayout) {
+      return '';
+    }
+    return 'default' === deviceLayout.id
+      ? this.translateService.instant('device-layout.cc1-cc2-default')
+      : 'm4g-default' === deviceLayout.id
+        ? this.translateService.instant('device-layout.m4g-default')
+        : deviceLayout.name;
+  });
   readonly filteredKeyboardLayouts = computed(() => {
     const keyboardLayouts = this.keyboardLayouts();
     const keyboardLayoutSearchQuery =
@@ -162,19 +178,19 @@ export class LayoutViewerPageComponent {
     {
       value: Layer.Primary,
       name: 'A1',
-      tooltip: 'Primary layer',
+      tooltip: 'layout-viewer-page.layer.a1',
       hotkey: 'alt.1',
     },
     {
       value: Layer.Secondary,
       name: 'A2',
-      tooltip: 'Number layer',
+      tooltip: 'layout-viewer-page.layer.a2',
       hotkey: 'alt.2',
     },
     {
       value: Layer.Tertiary,
       name: 'A3',
-      tooltip: 'Function layer',
+      tooltip: 'layout-viewer-page.layer.a3',
       hotkey: 'alt.3',
     },
   ];
@@ -233,7 +249,12 @@ export class LayoutViewerPageComponent {
                 {
                   type: KeyLabelType.String,
                   c: keyboardLayoutKey.withShift,
-                  title: `Character: ${keyboardLayoutKey.withShift}`,
+                  title: this.translateService.instant(
+                    'general.character-tooltip',
+                    {
+                      character: keyboardLayoutKey.withShift,
+                    },
+                  ),
                   layer,
                   shiftKey: false,
                   altGraphKey: false,
@@ -241,7 +262,12 @@ export class LayoutViewerPageComponent {
                 {
                   type: KeyLabelType.String,
                   c: keyboardLayoutKey.withShift,
-                  title: `Character: ${keyboardLayoutKey.withShift}`,
+                  title: this.translateService.instant(
+                    'general.character-tooltip',
+                    {
+                      character: keyboardLayoutKey.withShift,
+                    },
+                  ),
                   layer,
                   shiftKey: true,
                   altGraphKey: false,
@@ -253,7 +279,12 @@ export class LayoutViewerPageComponent {
                 {
                   type: KeyLabelType.String,
                   c: keyboardLayoutKey.withShiftAltGraph,
-                  title: `Character: ${keyboardLayoutKey.withShiftAltGraph}`,
+                  title: this.translateService.instant(
+                    'general.character-tooltip',
+                    {
+                      character: keyboardLayoutKey.withShiftAltGraph,
+                    },
+                  ),
                   layer,
                   shiftKey: false,
                   altGraphKey: true,
@@ -261,7 +292,12 @@ export class LayoutViewerPageComponent {
                 {
                   type: KeyLabelType.String,
                   c: keyboardLayoutKey.withShiftAltGraph,
-                  title: `Character: ${keyboardLayoutKey.withShiftAltGraph}`,
+                  title: this.translateService.instant(
+                    'general.character-tooltip',
+                    {
+                      character: keyboardLayoutKey.withShiftAltGraph,
+                    },
+                  ),
                   layer,
                   shiftKey: true,
                   altGraphKey: true,
@@ -273,7 +309,12 @@ export class LayoutViewerPageComponent {
               keyLabels.push({
                 type: KeyLabelType.String,
                 c: keyboardLayoutKey.unmodified,
-                title: `Character: ${keyboardLayoutKey.unmodified}`,
+                title: this.translateService.instant(
+                  'general.character-tooltip',
+                  {
+                    character: keyboardLayoutKey.unmodified,
+                  },
+                ),
                 layer,
                 shiftKey: false,
                 altGraphKey: false,
@@ -283,7 +324,12 @@ export class LayoutViewerPageComponent {
               keyLabels.push({
                 type: KeyLabelType.String,
                 c: keyboardLayoutKey.withShift,
-                title: `Character: ${keyboardLayoutKey.withShift}`,
+                title: this.translateService.instant(
+                  'general.character-tooltip',
+                  {
+                    character: keyboardLayoutKey.withShift,
+                  },
+                ),
                 layer,
                 shiftKey: true,
                 altGraphKey: false,
@@ -293,7 +339,12 @@ export class LayoutViewerPageComponent {
               keyLabels.push({
                 type: KeyLabelType.String,
                 c: keyboardLayoutKey.withAltGraph,
-                title: `Character: ${keyboardLayoutKey.withAltGraph}`,
+                title: this.translateService.instant(
+                  'general.character-tooltip',
+                  {
+                    character: keyboardLayoutKey.withAltGraph,
+                  },
+                ),
                 layer,
                 shiftKey: false,
                 altGraphKey: true,
@@ -303,7 +354,12 @@ export class LayoutViewerPageComponent {
               keyLabels.push({
                 type: KeyLabelType.String,
                 c: keyboardLayoutKey.withShiftAltGraph,
-                title: `Character: ${keyboardLayoutKey.withShiftAltGraph}`,
+                title: this.translateService.instant(
+                  'general.character-tooltip',
+                  {
+                    character: keyboardLayoutKey.withShiftAltGraph,
+                  },
+                ),
                 layer,
                 shiftKey: true,
                 altGraphKey: true,
@@ -342,7 +398,12 @@ export class LayoutViewerPageComponent {
           keyLabels.push({
             type: KeyLabelType.ActionCode,
             c: actionCodeId,
-            title: `Action Code: ${actionCodeId}`,
+            title: this.translateService.instant(
+              'general.action-code-tooltip',
+              {
+                actionCode: actionCodeId,
+              },
+            ),
             layer,
             shiftKey: false,
             altGraphKey: false,

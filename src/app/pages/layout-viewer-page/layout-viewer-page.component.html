@@ -15,7 +15,7 @@
         {{ layer.name }}
       </mat-button-toggle>
       <ng-template #layerToggleTooltip>
-        {{ layer.tooltip }} <br />
+        {{ layer.tooltip | translate | realTitleCase }} <br />
         <kbd [innerHTML]="layer.hotkey | hotkeysShortcut: ' + '"></kbd>
       </ng-template>
     }
@@ -44,16 +44,22 @@
     </mat-button-toggle>
   </mat-button-toggle-group>
   <ng-template #shiftToggleTooltip>
-    Toggle Shift Modifier <br />
+    {{ "layout-viewer-page.toggle-shift-modifier" | translate | realTitleCase }}
+    <br />
     <kbd [innerHTML]="'alt+s' | hotkeysShortcut: ' + '"></kbd>
   </ng-template>
   <ng-template #altGraphToggleTooltip>
-    Toggle Alt Graph Modifier <br />
+    {{
+      "layout-viewer-page.toggle-alt-graph-modifier" | translate | realTitleCase
+    }}
+    <br />
     <kbd [innerHTML]="'alt+a' | hotkeysShortcut: ' + '"></kbd>
   </ng-template>
   <div class="flex-[1_0_0]"></div>
   <mat-form-field class="w-96 flex-[0_1_auto]" [subscriptSizing]="'dynamic'">
-    <mat-label>OS Keyboard Layout</mat-label>
+    <mat-label>{{
+      "layout-viewer-page.os-keyboard-layout.label" | translate | realTitleCase
+    }}</mat-label>
     <mat-select
       class="!font-bold !text-alnitak-200"
       [value]="selectedKeyboardLayoutId()"
@@ -63,8 +69,13 @@
         <ngx-mat-select-search
           [ngModel]="keyboardLayoutSearchQuery()"
           (ngModelChange)="keyboardLayoutSearchQuery.set($event)"
-          placeholderLabel="Find layout..."
-          noEntriesFoundLabel="No matching layout found."
+          [placeholderLabel]="
+            'layout-viewer-page.os-keyboard-layout.search-placeholder'
+              | translate
+          "
+          [noEntriesFoundLabel]="
+            'layout-viewer-page.os-keyboard-layout.search-no-entry' | translate
+          "
         ></ngx-mat-select-search>
       </mat-option>
       @for (
@@ -89,19 +100,30 @@
     mat-icon-button
     (click)="toggleSearchMenu()"
     [color]="searchMenuIsOpen() ? 'primary' : null"
-    matTooltip="Search for key"
+    [matTooltip]="
+      'layout-viewer-page.search-key-button-tooltip' | translate | realTitleCase
+    "
   >
     <mat-icon>{{ "search" | iconGuard }}</mat-icon>
   </button>
   <button
     mat-icon-button
     ngxPrint
-    printTitle="{{ deviceLayout()?.name }} Device Layout under {{
-      keyboardLayout().name
-    }} OS Layout"
+    [printTitle]="
+      'layout-viewer-page.print-layout-title'
+        | translate
+          : {
+              deviceLayout: deviceLayoutDisplayName(),
+              keyboardLayout: keyboardLayout().name
+            }
+    "
     printSectionId="print-section"
     [useExistingCss]="true"
-    matTooltip="Print the layout"
+    [matTooltip]="
+      'layout-viewer-page.print-layout-button-tooltip'
+        | translate
+        | realTitleCase
+    "
   >
     <mat-icon>{{ "print" | iconGuard }}</mat-icon>
   </button>
@@ -122,11 +144,22 @@
           (ngModelChange)="keySearchQuery.set($event)"
           matInput
           type="search"
-          placeholder="Search Keys"
-          aria-label="search box for key"
+          [placeholder]="
+            'layout-viewer-page.key-search.placeholder' | translate
+          "
+          [attr.aria-label]="
+            'layout-viewer-page.key-search.aria-label' | translate
+          "
         />
         @if (!keySearchQuery()) {
-          <button mat-icon-button matSuffix aria-label="clear search query">
+          <button
+            mat-icon-button
+            matSuffix
+            [attr.aria-label]="
+              'layout-viewer-page.key-search.clear-button-aria-label'
+                | translate
+            "
+          >
             <mat-icon>{{ "search" | iconGuard }}</mat-icon>
           </button>
         }
@@ -138,7 +171,9 @@
               {{ key.keyName }}
             </button>
           } @empty {
-            <button mat-list-item disabled>No results were found.</button>
+            <button mat-list-item disabled>
+              {{ "layout-viewer-page.key-search.search-no-entry" | translate }}
+            </button>
           }
         }
       </mat-action-list>
@@ -165,10 +200,14 @@
           class="absolute left-1/2 top-0 flex -translate-x-1/2 items-center justify-center text-gray-100"
         >
           @if (holdKeys().length) {
-            (Hold
+            {{ "layout-viewer-page.hold-hint.0" | translate }}
             @for (key of holdKeys(); track $index) {
               @if ($index > 0) {
-                and
+                @if ($index === holdKeys().length - 1) {
+                  {{ "layout-viewer-page.and" | translate }}
+                } @else {
+                  {{ "layout-viewer-page.comma" | translate }}
+                }
               }
               @switch (key) {
                 @case ("num-shift") {
@@ -191,7 +230,7 @@
                 }
               }
             }
-            to access this layer)
+            {{ "layout-viewer-page.hold-hint.2" | translate }}
           }
         </diV>
       </section>
@@ -229,10 +268,14 @@
                 as holdKeys
               ) {
                 @if (holdKeys.length) {
-                  (Hold
+                  {{ "layout-viewer-page.hold-hint.0" | translate }}
                   @for (key of holdKeys; track $index) {
                     @if ($index > 0) {
-                      and
+                      @if ($index === holdKeys.length - 1) {
+                        {{ "layout-viewer-page.and" | translate }}
+                      } @else {
+                        {{ "layout-viewer-page.comma" | translate }}
+                      }
                     }
                     @switch (key) {
                       @case ("num-shift") {
@@ -259,7 +302,7 @@
                       }
                     }
                   }
-                  to access this layer)
+                  {{ "layout-viewer-page.hold-hint.2" | translate }}
                 }
               }
             </diV>
