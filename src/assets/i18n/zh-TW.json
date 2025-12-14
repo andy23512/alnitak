@@ -359,5 +359,62 @@
         "切換到「CC1/CC2 預設」"
       ]
     }
+  },
+  "information-page": {
+    "description": "本網站，Alnitak 參宿一，是專為 CharaChorder One、CharaChorder Two 和 Master Forge 等 CharaChorder 3D 輸入裝置所設計的一個非官方練習工具。",
+    "page-introductions-title": "頁面介紹",
+    "key-lesson-page": {
+      "title": "按鍵課程頁面",
+      "description": [
+        "在按鍵課程頁面，您可以練習在您的 CharaChorder 3D 輸入裝置上輸入數字、字母或符號鍵。在側邊欄中有課程列表。",
+        [
+          "如果您想要有一個練習目標，您可以嘗試在每個非複習課程中同時達成 100 連擊和 100 CPM。（我在",
+          {
+            "url": "https://andy23512.github.io/blog-zh-tw/2025/07/12/tangent-%E5%B0%8D%E5%AD%B8%E7%BF%92%E4%BD%BF%E7%94%A8-charachorder-3d-%E8%BC%B8%E5%85%A5%E8%A3%9D%E7%BD%AE%E8%8B%B1%E6%89%93%EF%BC%88%E9%80%90%E5%AD%97%E8%BC%B8%E5%85%A5%EF%BC%89%E7%9A%84%E5%BB%BA%E8%AD%B0/",
+            "text": "這篇文章中寫了關於如何在 CharaChorder 3D 輸入裝置上學習英文逐字打字的建議"
+          },
+          "。）"
+        ]
+      ]
+    },
+    "statistics-page": {
+      "title": "統計頁面",
+      "description": "在統計頁面，您可以查看您在按鍵課程中的練習統計數據，包括顯示您打字速度和連擊數隨時間變化的圖表。"
+    },
+    "chord-page": {
+      "title": "和弦頁面",
+      "description": "在和弦頁面，您可以從您的和弦庫中選擇多個和弦進行練習。"
+    },
+    "layout-viewer-page": {
+      "title": "佈局檢視頁面",
+      "description": "在佈局檢視頁面，您可以查看在特定作業系統鍵盤佈局和修飾鍵（Shift 和 Alt Graph）狀態下，您的裝置的實際輸出佈局。它還提供按鍵搜尋和佈局列印功能。"
+    },
+    "layout-song-page": {
+      "title": "佈局記憶歌頁面",
+      "description": "在佈局記憶歌頁面，有一首由 AI 生成的歌曲，可以幫助您記憶預設佈局上的字母鍵。"
+    },
+    "settings-page": {
+      "title": "設定頁面",
+      "description": "在設定頁面，您可以調整此工具的一些設定，例如某些元件的可見性、佈局預覽上的點亮邏輯、裝置佈局、隔空模式等。"
+    },
+    "disclaimers": {
+      "title": "免責聲明",
+      "description": [
+        [
+          "本網站與 CharaChorder 和 Forge Keyboard 沒有隸屬、關聯、授權、認可，或任何正式關聯的關係。他們的官方網站可以在 ",
+          "{{charachorder url}}",
+          " 和 ",
+          "{{forge keyboard url}}",
+          " 上找到。"
+        ],
+        [
+          "你的打字統計和設定資料會保存在你的瀏覽器的 ",
+          "IndexedDB",
+          " 和 ",
+          "localStorage",
+          " 之中。這些資料不會透過本工具傳送到其他任何地方。"
+        ]
+      ]
+    }
   }
 }

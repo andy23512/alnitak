@@ -1,126 +1,122 @@
 <p>
-  This website, Alnitak, is an unofficial practice tool designed for
-  CharaChorder 3D input devices, including CharaChorder One, CharaChorder Two
-  and Master Forge.
+  {{ "information-page.description" | translate }}
 </p>
-<h2 class="pb-2 pt-5 text-xl">Page Introductions</h2>
+<h2 class="pb-2 pt-5 text-xl">
+  {{ "information-page.page-introductions-title" | translate | realTitleCase }}
+</h2>
 <h3 class="pb-2 text-lg font-bold text-alnitak-300">
   <a [routerLink]="'/topic/number/lesson/123'" class="flex items-center gap-1">
     <mat-icon>123</mat-icon>
-    Key Lesson Page</a
+    {{
+      "information-page.key-lesson-page.title" | translate | realTitleCase
+    }}</a
   >
 </h3>
 <p class="pb-2">
-  At key lesson page, you can practice typing the number, letter, or symbol keys
-  on your CharaChorder 3D input device. The accessible lessons are listed in the
-  side menu.
+  {{ "information-page.key-lesson-page.description.0" | translate }}
 </p>
 <p>
-  If you want a goal for your practice, you can try to achieve both 100 combos
-  and 100 CPM at the same time under each non-review lesson. (I wrote
-  <a
+  {{ "information-page.key-lesson-page.description.1.0" | translate
+  }}<a
     class="underline"
-    href="https://andy23512.github.io/blog/2025/06/30/tangent-s-suggestions-for-learning-english-character-entry-on-charachorder-3d-input-devices/"
+    [href]="'information-page.key-lesson-page.description.1.1.url' | translate"
     target="_blank"
     rel="noopener"
-    >my suggestions for learning English character entry on CharaChorder 3D
-    input devices in this article</a
-  >. )
+    >{{
+      "information-page.key-lesson-page.description.1.1.text" | translate
+    }}</a
+  >{{ "information-page.key-lesson-page.description.1.2" | translate }}
 </p>
 <h3 class="pb-2 pt-6 text-lg font-bold text-alnitak-300">
   <a class="flex items-center gap-1" [routerLink]="'/statistics'">
     <mat-icon>trending_up</mat-icon>
-    Statistics Page</a
+    {{
+      "information-page.statistics-page.title" | translate | realTitleCase
+    }}</a
   >
 </h3>
 <p>
-  At statistics page, you can check the statistics of your practices in key
-  lessons, including a graph that shows your typing speed and combo counts over
-  time.
+  {{ "information-page.statistics-page.description" | translate }}
 </p>
 <h3 class="pb-2 pt-6 text-lg font-bold text-alnitak-300">
   <a class="flex items-center gap-1" [routerLink]="'/chord'">
     <mat-icon>piano</mat-icon>
-    Chord Page</a
+    {{ "information-page.chord-page.title" | translate | realTitleCase }}</a
   >
 </h3>
 <p>
-  At chord page, you can pick several chords in your chord library and practice
-  them.
+  {{ "information-page.chord-page.description" | translate }}
 </p>
 <h3 class="pb-2 pt-6 text-lg font-bold text-alnitak-300">
   <a class="flex items-center gap-1" [routerLink]="'/layout-viewer'">
     <mat-icon>map</mat-icon>
-    Layout Viewer Page</a
+    {{
+      "information-page.layout-viewer-page.title" | translate | realTitleCase
+    }}</a
   >
 </h3>
 <p>
-  At layout viewer page, you can see the actual layout of your device under a
-  certain OS keyboard layout and modifier keys (Shift and Alt Graph) state. It
-  also provides key searching and layout printing features.
+  {{ "information-page.layout-viewer-page.description" | translate }}
 </p>
 <h3 class="pb-2 pt-6 text-lg font-bold text-alnitak-300">
   <a class="flex items-center gap-1" [routerLink]="'/layout-song'">
     <mat-icon>{{ "music_note_2" | iconGuard }}</mat-icon>
-    Layout Song Page</a
+    {{
+      "information-page.layout-song-page.title" | translate | realTitleCase
+    }}</a
   >
 </h3>
 <p>
-  At layout song page, there is an AI-generated song that can help you memorize
-  the letter keys on the default layout.
+  {{ "information-page.layout-song-page.description" | translate }}
 </p>
 <h3 class="pb-2 pt-6 text-lg font-bold text-alnitak-300">
   <a class="flex items-center gap-1" [routerLink]="'/settings'">
     <mat-icon>settings</mat-icon>
-    Settings Page</a
+    {{ "information-page.settings-page.title" | translate | realTitleCase }}</a
   >
 </h3>
 <p>
-  At settings page, you can tweak some settings of this tool, such as the
-  visibility of some components, the highlight logic on the layout preview, the
-  device layout, the air mode, and the chord library.
+  {{ "information-page.settings-page.description" | translate }}
 </p>
 
-<h2 class="pb-2 pt-8 text-xl">Disclaimers</h2>
+<h2 class="pb-2 pt-8 text-xl">
+  {{ "information-page.disclaimers.title" | translate | realTitleCase }}
+</h2>
 <ol class="list-inside list-decimal">
   <li>
-    This site is not affiliated, associated, authorized, endorsed by, or in any
-    way officially connected with CharaChorder and Forge Keyboard. Their
-    official websites can be found at
-    <a
+    {{ "information-page.disclaimers.description.0.0" | translate
+    }}<a
       class="underline"
       href="https://www.charachorder.com/"
       target="_blank"
       rel="noopener"
-      >https://www.charachorder.com/</a
     >
-    and
-    <a
+      https://www.charachorder.com/</a
+    >{{ "information-page.disclaimers.description.0.2" | translate
+    }}<a
       class="underline"
       href="https://forgekeyboard.com/"
       target="_blank"
       rel="noopener"
       >https://forgekeyboard.com/</a
-    >.
+    >{{ "information-page.disclaimers.description.0.4" | translate }}
   </li>
   <li>
-    Your typing statistics and settings in this tool are kept and stored locally
-    in the
-    <a
+    {{ "information-page.disclaimers.description.1.0" | translate
+    }}<a
       class="underline"
       href="https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API"
       target="_blank"
       rel="noopener"
-      >IndexedDB</a
-    >
-    and
+      >{{ "information-page.disclaimers.description.1.1" | translate }}</a
+    >{{ "information-page.disclaimers.description.1.2" | translate }}
     <a
       class="underline"
       href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage"
       target="_blank"
       rel="noopener"
-      >localStorage</a
+      >{{ "information-page.disclaimers.description.1.3" | translate }}</a
     >
-    of your browser. They are not transmitted to any other place via this tool.
+    {{ "information-page.disclaimers.description.1.4" | translate }}
   </li>
 </ol>

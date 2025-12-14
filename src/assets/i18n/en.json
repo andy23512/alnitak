@@ -375,5 +375,62 @@
         "Switch it to \"CC1/CC2 default\""
       ]
     }
+  },
+  "information-page": {
+    "description": "This website, Alnitak, is an unofficial practice tool designed for CharaChorder 3D input devices, including CharaChorder One, CharaChorder Two and Master Forge.",
+    "page-introductions-title": "page introductions",
+    "key-lesson-page": {
+      "title": "key lesson page",
+      "description": [
+        "At key lesson page, you can practice typing the number, letter, or symbol keys on your CharaChorder 3D input device. The accessible lessons are listed in the side menu.",
+        [
+          "If you want a goal for your practice, you can try to achieve both 100 combos and 100 CPM at the same time under each non-review lesson. (I wrote ",
+          {
+            "url": "https://andy23512.github.io/blog/2025/06/30/tangent-s-suggestions-for-learning-english-character-entry-on-charachorder-3d-input-devices/",
+            "text": "my suggestions for learning English character entry on CharaChorder 3D input devices in this article"
+          },
+          ".)"
+        ]
+      ]
+    },
+    "statistics-page": {
+      "title": "statistics page",
+      "description": "At statistics page, you can check the statistics of your practices in key lessons, including a graph that shows your typing speed and combo counts over time."
+    },
+    "chord-page": {
+      "title": "chord page",
+      "description": "At chord page, you can pick several chords in your chord library and practice them."
+    },
+    "layout-viewer-page": {
+      "title": "layout viewer page",
+      "description": "At layout viewer page, you can see the actual output layout of your device under a certain OS keyboard layout and modifier keys (Shift and Alt Graph) state. It also provides key searching and layout printing features."
+    },
+    "layout-song-page": {
+      "title": "layout song page",
+      "description": "At layout song page, there is an AI-generated song that can help you memorize the letter keys on the default layout."
+    },
+    "settings-page": {
+      "title": "settings page",
+      "description": "At settings page, you can tweak some settings of this tool, such as the visibility of some components, the highlight logic on the layout preview, the device layout, the air mode, etc."
+    },
+    "disclaimers": {
+      "title": "disclaimers",
+      "description": [
+        [
+          "This site is not affiliated, associated, authorized, endorsed by, or in any way officially connected with CharaChorder and Forge Keyboard. Their official websites can be found at ",
+          "{{charachorder url}}",
+          " and ",
+          "{{forge keyboard url}}",
+          "."
+        ],
+        [
+          "Your typing statistics and settings in this tool are kept and stored locally in the ",
+          "IndexedDB",
+          " and ",
+          "localStorage",
+          " of your browser. They are not transmitted to any other place via this tool."
+        ]
+      ]
+    }
   }
 }
