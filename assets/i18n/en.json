@@ -1,3 +1,522 @@
 {
-  "t": "Test"
+  "hand": {
+    "left": "left",
+    "right": "right"
+  },
+  "switch": {
+    "thumb-back": "thumb back",
+    "thumb-middle": "thumb middle",
+    "thumb-front": "thumb front",
+    "index": "index",
+    "middle": "middle",
+    "ring": "ring",
+    "pinky": "pinky",
+    "middle-secondary": "middle secondary",
+    "ring-secondary": "ring secondary"
+  },
+  "direction": {
+    "E": "E",
+    "S": "S",
+    "W": "W",
+    "N": "N",
+    "east": "east",
+    "south": "south",
+    "west": "west",
+    "north": "north",
+    "down": "down (press)"
+  },
+  "device-layout": {
+    "cc1-cc2-default": "CC1/CC2 default",
+    "m4g-default": "M4G default"
+  },
+  "general": {
+    "character-entry-speed-unit": "CPM",
+    "chord-speed-unit": "ChPM",
+    "start-action": "start",
+    "character-tooltip": "Character: {{character}}",
+    "action-code-tooltip": "Action Code: {{actionCode}}",
+    "choose-file-action": "choose file",
+    "combo-unit": "combo",
+    "combo-unit-plural": "combos",
+    "cancel-action": "cancel",
+    "delete-confirm-button": "Yes. Delete them.",
+    "close-action": "close",
+    "left-side": "left",
+    "right-side": "right",
+    "both-sides": "both sides",
+    "same-side": "same side"
+  },
+  "nav": {
+    "hotkey": "Hotkey",
+    "page": {
+      "home": {
+        "title": "home",
+        "tooltip": "Go to Home page",
+        "aria-label": "home page link"
+      },
+      "statistics": {
+        "title": "stats",
+        "tooltip": "Go to Statistics page",
+        "aria-label": "statistics page link"
+      },
+      "chord": {
+        "title": "chord",
+        "tooltip": "Go to Chord page",
+        "aria-label": "chord page link"
+      },
+      "layout": {
+        "title": "layout",
+        "tooltip": "Go to Layout Viewer page",
+        "aria-label": "layout viewer page link"
+      },
+      "song": {
+        "title": "song",
+        "tooltip": "Go to Layout Song page",
+        "aria-label": "layout song page link"
+      },
+      "settings": {
+        "title": "settings",
+        "tooltip": "Go to Settings page",
+        "aria-label": "settings page link"
+      },
+      "information": {
+        "title": "info",
+        "tooltip": "Go to Information page",
+        "aria-label": "information page link"
+      }
+    },
+    "search-lessons-input": {
+      "placeholder": "search lessons",
+      "aria-label": "search box for lesson"
+    },
+    "no-result-message": "No results were found.",
+    "side-menu-toggle": {
+      "aria-label": "toggle side menu",
+      "icon-aria-label": "side nav toggle icon"
+    }
+  },
+  "settings": {
+    "air-mode": {
+      "description": "Air mode is an experimental practice mode that you can practice without a device.\nThe characters or chords will be automatically entered at the speed you set, so you can follow along and move your fingers as if you were typing or chording.",
+      "checkbox-label": "enable air mode",
+      "character-entry-speed-label": "character entry speed",
+      "chord-speed-label": "chord speed",
+      "character-entry-speed-input-aria-label": "input box for character entry speed in air mode",
+      "chord-speed-input-aria-label": "input box for chord speed in air mode"
+    },
+    "device-layout": {
+      "import-device-layout-file-step": [
+        "(Optional) Import a device layout file (the backup file from",
+        "CharaChorder Device Manager",
+        "website)."
+      ],
+      "file-input-aria-label": "file input for selecting a device layout file to load into this tool",
+      "select-device-layout-step": "Select a loaded device layout."
+    }
+  },
+  "chord-page": {
+    "chord-practice": {
+      "title": "chord - practice"
+    },
+    "chord-practice-setting": {
+      "title": "chord - practice setting",
+      "import-chord-list-file-step": [
+        "Import your chord list file (the backup file from",
+        "CharaChorder Device Manager",
+        "website). (for first time usage or updating the chord list)"
+      ],
+      "file-input-aria-label": "file input for selecting a chord list file to load into this tool",
+      "select-chords-step": "Select the chords you want to practice from the imported chord list below.",
+      "click-start-button-step": "Click the following button to start the practice."
+    }
+  },
+  "delete-chords-confirm-dialog": {
+    "description": "Are you sure to delete all the imported chords?"
+  },
+  "delete-device-layouts-confirm-dialog": {
+    "description": "Are you sure to delete all the imported device layouts?\n(After deleted, the selected device layout will be changed to CC1/CC2 default.)"
+  },
+  "hotkey-dialog": {
+    "title": "hotkeys"
+  },
+  "key-notation-help-dialog": {
+    "title": "key notation",
+    "key-notation-explanation-paragraph": "In this tool, key notation is an experimental short format that represents the key locations on CharaChorder 3D input devices.",
+    "key-notation-example-paragraph": "For example, the 'Left Thumb Middle West' key is noted as 'L1bW', and the 'Right Pinky Down (3D press)' is noted as 'R5D'.",
+    "first-and-last-letters-explanation-paragraph": "The first and the last letters are the shorthands for the side (L/R) and the direction (N/E/S/W/D), respectively.",
+    "middle-part-explanation-paragraph": [
+      "The middle part indicates the switch. The number represents the finger (1 to 5: thumb to pinky), using the same way as ",
+      "fingering notation for keyboard instruments in modern scores.",
+      " The additional 'b' and 'bb', originating from the ",
+      {
+        "url": "https://en.wikipedia.org/wiki/Flat_(music)",
+        "text": "flat (♭) and double flat (𝄫) symbols"
+      },
+      " in music, are used to indicate the secondary/middle and back switch of that finger."
+    ],
+    "layout-image-explanation-paragraph": "Below is a layout image that shows the notation of each switch."
+  },
+  "hotkey": {
+    "global": {
+      "name": "global",
+      "toggle-hotkey-dialog": "toggle hotkey dialog",
+      "toggle-side-menu": "toggle side menu"
+    },
+    "home-page": {
+      "name": "home page",
+      "go-to-the-first-lesson": "go to the first lesson"
+    },
+    "lesson-page": {
+      "name": "lesson page",
+      "go-to-the-previous-lesson": "go to the previous lesson",
+      "go-to-the-next-lesson": "go to the next lesson",
+      "start-or-resume-the-lesson": "start/resume the lesson",
+      "pause-the-lesson": "pause the lesson"
+    },
+    "chord-practice-page": {
+      "name": "chord practice page",
+      "start-or-resume-the-practice": "start/resume the practice",
+      "pause-the-practice": "pause the practice"
+    },
+    "layout-viewer-page": {
+      "name": "layout viewer page",
+      "switch-to-the-a1-layer": "switch to the A1 (primary) layer",
+      "switch-to-the-a2-layer": "switch to the A2 (numeric) layer",
+      "switch-to-the-a3-layer": "switch to the A3 (functional) layer",
+      "toggle-shift-modifier": "toggle Shift modifier",
+      "toggle-alt-graph-modifier": "toggle Alt Graph modifier"
+    }
+  },
+  "layout-highlight-setting": {
+    "shift-layer": "shift layer",
+    "num-shift-layer": "num-shift layer",
+    "shift-num-shift-layer": "shift num-shift layer",
+    "fn-shift-layer": "fn-shift layer",
+    "shift-fn-shift-layer": "shift fn-shift layer",
+    "key-combination-sides-choice": [
+      "Tend to choose the key combination from ",
+      "{{both sides / same side}}",
+      "."
+    ],
+    "shift-side-choice": [
+      "Tend to choose the ",
+      "{{(left / right)}}",
+      " Shift key."
+    ],
+    "num-shift-side-choice": [
+      "Tend to choose the ",
+      "{{(left / right)}}",
+      " Num-shift key."
+    ],
+    "fn-shift-side-choice": [
+      "Tend to choose the ",
+      "{{(left / right)}}",
+      " Fn-shift key."
+    ],
+    "character-key-side-choice": [
+      "Tend to choose the character key on the ",
+      "{{(left / right)}}",
+      " side."
+    ]
+  },
+  "layout-song-help-dialog": {
+    "title": "layout song",
+    "summary": "Layout song is a AI-generated song that can help you memorize the letter keys on the default layout.",
+    "tool-explanation": "The lyrics was generated by Kimi K2 Thinking, and the whole song by Suno AI.",
+    "license-explanation": "This song is licensed for non-commercial use only.",
+    "download-explanation": [
+      "You can download ",
+      "the music",
+      " or ",
+      "the lyrics",
+      " of this song if you need them. Please don't use this song for any commercial purpose!"
+    ]
+  },
+  "misc-setting": {
+    "thumb-rotation-angle": {
+      "title": "rotation angle for thumb switches",
+      "input-aria-label": "input box for rotation angle for thumb switches on the layout display"
+    },
+    "non-thumb-rotation-angle": {
+      "title": "rotation angle for non-thumb switches",
+      "input-aria-label": "input box for rotation angle for non-thumb switches on the layout display"
+    }
+  },
+  "quick-setting": {
+    "cc1-cc2-default-layout": "CC1/CC2 default layout",
+    "m4g-default-layout": "M4G default layout"
+  },
+  "thumb-3-switch-help-dialog": {
+    "title": "thumb 3 switch",
+    "content": "Master Forge doesn't have the thumb 3 switches as CharaChorder One and CharaChorder Two. If you use Master Forge, or you use CharaChorder One or CharaChorder Two but don't use the thumb 3 switches, you can uncheck this setting to hide them in the layout."
+  },
+  "visibility-setting": {
+    "thumb-3-switch-help-button-aria-label": "open help dialog for thumb 3 switch",
+    "key-notation-help-button-aria-label": "open help dialog for key notation",
+    "layout": "layout",
+    "layout-text-guide": "layout - text guide",
+    "layout-key-notation-guide": "layout - key notation guide",
+    "layout-thumb-3-switch": "layout - thumb 3 switch",
+    "combo-counter": "combo counter",
+    "speedometer": "speedometer",
+    "home-page-chording-animation": "home page chording animation"
+  },
+  "topic": {
+    "letters": "Letters",
+    "numbers": "Numbers",
+    "symbols": "Symbols"
+  },
+  "lesson": {
+    "review-1": "Review 1",
+    "review-2": "Review 2",
+    "review-3": "Review 3",
+    "all-letters": "All Letters",
+    "all-numbers": "All Numbers"
+  },
+  "key-label": {
+    "shift": "Shift",
+    "numeric-layer": "Numeric Layer",
+    "function-layer": "Function Layer",
+    "alt-graph": "Alt Graph",
+    "alt-left": "Alt / Option (left)",
+    "alt-right": "Alt / Option (right) / Alt Graph",
+    "backspace": "Backspace",
+    "caps-lock": "CapsLock",
+    "context-menu": "Application",
+    "control-left": "Ctrl (left)",
+    "control-right": "Ctrl (right)",
+    "enter": "Enter / Return",
+    "meta-left": "Windows / Command / Super (left)",
+    "meta-right": "Windows / Command / Super (right)",
+    "shift-left": "Shift (left)",
+    "shift-right": "Shift (right)",
+    "space": "Space",
+    "tab": "Tab",
+    "esc": "Esc",
+    "f1": "F1",
+    "f2": "F2",
+    "f3": "F3",
+    "f4": "F4",
+    "f5": "F5",
+    "f6": "F6",
+    "f7": "F7",
+    "f8": "F8",
+    "f9": "F9",
+    "f10": "F10",
+    "f11": "F11",
+    "f12": "F12",
+    "print-screen": "Print Screen",
+    "delete": "Delete",
+    "arrow-down": "Arrow Down",
+    "arrow-left": "Arrow Left",
+    "arrow-right": "Arrow Right",
+    "arrow-up": "Arrow Up",
+    "page-up": "Page Up",
+    "page-down": "Page Down",
+    "home": "Home",
+    "end": "End",
+    "insert": "Insert",
+    "numpad-divide": "Keypad: /",
+    "numpad-multiply": "Keypad: *",
+    "numpad-subtract": "Keypad: -",
+    "numpad-add": "Keypad: +",
+    "no-key-pressed": "No Key Pressed",
+    "restart-input-device": "Restart Input Device",
+    "mouse-left-click": "Mouse Left Click",
+    "mouse-right-click": "Mouse Right Click",
+    "mouse-middle-click": "Mouse Middle Click",
+    "tertiary-keymap-left": "Function Layer (left)",
+    "tertiary-keymap-right": "Function Layer (right)",
+    "secondary-keymap-left": "Numeric Layer (left)",
+    "secondary-keymap-right": "Numeric Layer (right)",
+    "ambidextrous-throwover-left": "Ambidextrous Throwover (left)",
+    "ambidextrous-throwover-right": "Ambidextrous Throwover (right)",
+    "mouse-scroll-coast-right": "Mouse Scroll Right",
+    "mouse-scroll-coast-left": "Mouse Scroll Left",
+    "mouse-scroll-coast-down": "Mouse Scroll Down",
+    "mouse-scroll-coast-up": "Mouse Scroll Up",
+    "mouse-move-right": "Mouse Move Right",
+    "mouse-move-left": "Mouse Move Left",
+    "mouse-move-down": "Mouse Move Down",
+    "mouse-move-up": "Mouse Move Up",
+    "dup": "Repeat Last Note",
+    "gtm": "Toggle Generative Text Menu",
+    "impulse": "Toggle Impulse Mode",
+    "left-hand-thumb-3-center": "Left Hand Thumb 3 3D Click",
+    "left-hand-thumb-2-center": "Left Hand Thumb 2 3D Click",
+    "left-hand-thumb-1-center": "Left Hand Thumb 1 3D Click",
+    "left-hand-index-center": "Left Hand Index 3D Click",
+    "left-hand-middle-1-center": "Left Hand Middle 1 3D Click",
+    "left-hand-ring-1-center": "Left Hand Ring 1 3D Click",
+    "left-hand-pinky-center": "Left Hand Pinky 3D Click",
+    "left-hand-middle-2-center": "Left Hand Middle 2 3D Click",
+    "left-hand-ring-2-center": "Left Hand Ring 2 3D Click",
+    "right-hand-thumb-3-center": "Right Hand Thumb 3 3D Click",
+    "right-hand-thumb-2-center": "Right Hand Thumb 2 3D Click",
+    "right-hand-thumb-1-center": "Right Hand Thumb 1 3D Click",
+    "right-hand-index-center": "Right Hand Index 3D Click",
+    "right-hand-middle-1-center": "Right Hand Middle 1 3D Click",
+    "right-hand-ring-1-center": "Right Hand Ring 1 3D Click",
+    "right-hand-pinky-center": "Right Hand Pinky 3D Click",
+    "right-hand-middle-2-center": "Right Hand Middle 2 3D Click",
+    "right-hand-ring-2-center": "Right Hand Ring 2 3D Click",
+    "apple-meta-left": "Command [Windows / Super] (left)",
+    "apple-meta-right": "Command [Windows / Super] (right)",
+    "windows-meta-left": "Windows [Command / Super] (left)",
+    "windows-meta-right": "Windows [Command / Super] (right)",
+    "unix-meta-left": "Super [Windows / Command] (left)",
+    "unix-meta-right": "Super [Windows / Command] (right)"
+  },
+  "home-page": {
+    "website-name": "Alnitak",
+    "summary": [
+      "An unofficial practice tool tailored for",
+      "CharaChorder 3D input devices",
+      ""
+    ],
+    "lesson-start-instruction": [
+      "Use ",
+      "space",
+      " key to enter the first lesson, or select a lesson from the list on the left."
+    ],
+    "source-code": "source code",
+    "dev-note": "dev note",
+    "dev-note-url": "https://andy23512.github.io/blog/2024/05/01/alnitak-a-practice-tool-of-charachorder-3d-input-devices-developed-by-tangent/",
+    "current-device-layout-hint": {
+      "cc1-cc2-default": [
+        "Device Layout is set to \"CC1/CC2 default\".",
+        "Switch it to \"M4G default\""
+      ],
+      "m4g-default": [
+        "Device Layout is set to \"M4G default\".",
+        "Switch it to \"CC1/CC2 default\""
+      ]
+    }
+  },
+  "information-page": {
+    "description": "This website, Alnitak, is an unofficial practice tool designed for CharaChorder 3D input devices, including CharaChorder One, CharaChorder Two and Master Forge.",
+    "page-introductions-title": "page introductions",
+    "key-lesson-page": {
+      "title": "key lesson page",
+      "description": [
+        "At key lesson page, you can practice typing the number, letter, or symbol keys on your CharaChorder 3D input device. The accessible lessons are listed in the side menu.",
+        [
+          "If you want a goal for your practice, you can try to achieve both 100 combos and 100 CPM at the same time under each non-review lesson. (I wrote ",
+          {
+            "url": "https://andy23512.github.io/blog/2025/06/30/tangent-s-suggestions-for-learning-english-character-entry-on-charachorder-3d-input-devices/",
+            "text": "my suggestions for learning English character entry on CharaChorder 3D input devices in this article"
+          },
+          ".)"
+        ]
+      ]
+    },
+    "statistics-page": {
+      "title": "statistics page",
+      "description": "At statistics page, you can check the statistics of your practices in key lessons, including a graph that shows your typing speed and combo counts over time."
+    },
+    "chord-page": {
+      "title": "chord page",
+      "description": "At chord page, you can pick several chords in your chord library and practice them."
+    },
+    "layout-viewer-page": {
+      "title": "layout viewer page",
+      "description": "At layout viewer page, you can see the actual output layout of your device under a certain OS keyboard layout and modifier keys (Shift and Alt Graph) state. It also provides key searching and layout printing features."
+    },
+    "layout-song-page": {
+      "title": "layout song page",
+      "description": "At layout song page, there is an AI-generated song that can help you memorize the letter keys on the default layout."
+    },
+    "settings-page": {
+      "title": "settings page",
+      "description": "At settings page, you can tweak some settings of this tool, such as the visibility of some components, the highlight logic on the layout preview, the device layout, the air mode, etc."
+    },
+    "disclaimers": {
+      "title": "disclaimers",
+      "description": [
+        [
+          "This site is not affiliated, associated, authorized, endorsed by, or in any way officially connected with CharaChorder and Forge Keyboard. Their official websites can be found at ",
+          "{{charachorder url}}",
+          " and ",
+          "{{forge keyboard url}}",
+          "."
+        ],
+        [
+          "Your typing statistics and settings in this tool are kept and stored locally in the ",
+          "IndexedDB",
+          " and ",
+          "localStorage",
+          " of your browser. They are not transmitted to any other place via this tool."
+        ]
+      ]
+    }
+  },
+  "layout-song-page": {
+    "title": "layout song",
+    "mute-button-aria-label": "toggle mute for layout song",
+    "help-button-aria-label": "open help dialog for layout song"
+  },
+  "layout-viewer-page": {
+    "toggle-shift-modifier": "toggle Shift modifier",
+    "toggle-alt-graph-modifier": "toggle Alt Graph modifier",
+    "os-keyboard-layout": {
+      "label": "OS keyboard layout",
+      "search-placeholder": "Find layout...",
+      "search-no-entry": "No matching layout was found."
+    },
+    "search-key-button-tooltip": "search for key",
+    "print-layout-button-tooltip": "print the layout",
+    "print-layout-title": "{{deviceLayout}} device layout under {{keyboardLayout}} OS layout",
+    "key-search": {
+      "placeholder": "Find key...",
+      "aria-label": "search box for key",
+      "clear-button-aria-label": "clear search query",
+      "search-no-entry": "No matching key was found."
+    },
+    "hold-hint": ["(Hold ", "{{keys}}", " to access this layer)"],
+    "and": " and ",
+    "comma": ", ",
+    "layer": {
+      "a1": "primary layer",
+      "a2": "numeric layer",
+      "a3": "functional layer"
+    }
+  },
+  "lesson-page": {
+    "input-box-title": "input box for practicing lesson",
+    "pause-action": "pause",
+    "start-action": "start",
+    "previous-lesson-link": {
+      "aria-label": "link to the previous lesson",
+      "tooltip": "Go to previous lesson"
+    },
+    "next-lesson-link": {
+      "aria-label": "link to the next lesson",
+      "tooltip": "Go to next lesson"
+    }
+  },
+  "settings-page": {
+    "title": "settings",
+    "panel-header": {
+      "quick-setting": "quick setting",
+      "visibility": "visibility",
+      "layout-highlight": "layout highlight",
+      "device-layout": "device layout",
+      "air-mode": "air mode",
+      "data-deletion": "data deletion",
+      "misc": "misc",
+      "ui-language": "UI language"
+    },
+    "button": {
+      "delete-all-imported-device-layouts": "delete all imported device layouts",
+      "delete-all-imported-chords": "delete all imported chords"
+    },
+    "message": {
+      "device-layout-deleted": "All imported device layouts have been deleted.",
+      "chords-deleted": "All imported chords have been deleted."
+    }
+  },
+  "statistics-page": {
+    "metric": "metric"
+  },
+  "layout-text-guide": "{{hand}} {{switch}} {{direction}}"
 }
