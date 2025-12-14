@@ -6,7 +6,6 @@ import {
   signal,
 } from '@angular/core';
 import { MatSelectionListChange } from '@angular/material/list';
-import { ChordOutputKeysComponent } from 'src/app/components/chord-output-keys/chord-output-keys.component';
 import { ChordPracticeSettingComponent } from 'src/app/components/chord-practice-setting/chord-practice-setting.component';
 import { ChordPracticeComponent } from 'src/app/components/chord-practice/chord-practice.component';
 import { ChordWithChordKeys } from 'src/app/models/chord.models';
@@ -18,11 +17,7 @@ import { getChordKeyFromActionCode } from 'src/app/utils/layout.utils';
 @Component({
   selector: 'app-chord-page',
   standalone: true,
-  imports: [
-    ChordOutputKeysComponent,
-    ChordPracticeSettingComponent,
-    ChordPracticeComponent,
-  ],
+  imports: [ChordPracticeSettingComponent, ChordPracticeComponent],
   templateUrl: './chord-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
