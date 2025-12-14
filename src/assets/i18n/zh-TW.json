@@ -443,11 +443,11 @@
     "os-keyboard-layout": {
       "label": "作業系統鍵盤佈局",
       "search-placeholder": "搜尋佈局...",
-      "search-no-entry": "找不到符合的佈局。",
-      "search-key-button-tooltip": "搜尋按鍵",
-      "print-layout-button-tooltip": "列印佈局",
-      "print-layout-title": "{{keyboardLayout}} 作業系統鍵盤佈局下的 {{deviceLayout}} 裝置佈局"
+      "search-no-entry": "找不到符合的佈局。"
     },
+    "search-key-button-tooltip": "搜尋按鍵",
+    "print-layout-button-tooltip": "列印佈局",
+    "print-layout-title": "{{keyboardLayout}} 作業系統鍵盤佈局下的 {{deviceLayout}} 裝置佈局",
     "hold-hint": ["（按住", "{{keys}}", "以進入此層）"],
     "and": " 和 ",
     "comma": "、",
