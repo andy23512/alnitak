@@ -79,7 +79,6 @@
     }
   },
   "settings": {
-    "ui-language": "UI Language",
     "air-mode": {
       "description": "Air mode is an experimental practice mode that you can practice without a device.\nThe characters or chords will be automatically entered at the speed you set, so you can follow along and move your fingers as if you were typing or chording.",
       "checkbox-label": "enable air mode",
@@ -476,6 +475,23 @@
     "next-lesson-link": {
       "aria-label": "link to the next lesson",
       "tooltip": "Go to next lesson"
+    }
+  },
+  "settings-page": {
+    "title": "settings",
+    "panel-header": {
+      "quick-setting": "quick setting",
+      "visibility": "visibility",
+      "layout-highlight": "layout highlight",
+      "device-layout": "device layout",
+      "air-mode": "air mode",
+      "data-deletion": "data deletion",
+      "misc": "misc",
+      "ui-language": "UI language"
+    },
+    "button": {
+      "delete-all-imported-device-layouts": "delete all imported device layouts",
+      "delete-all-imported-chords": "delete all imported chords"
     }
   }
 }

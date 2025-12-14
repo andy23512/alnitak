@@ -79,7 +79,6 @@
     }
   },
   "settings": {
-    "ui-language": "介面語言",
     "air-mode": {
       "description": "隔空模式是即使你沒有裝置也能練習的一個實驗性的練習模式。\n字元或者和弦會用你所設定的速度自動輸入，因此你可以跟著它，像在真的裝置上打字一般移動你的手指。",
       "checkbox-label": "啟動隔空模式",
@@ -454,6 +453,23 @@
     "next-lesson-link": {
       "aria-label": "前往下一個課程的連結",
       "tooltip": "前往下一個課程"
+    }
+  },
+  "settings-page": {
+    "title": "設定",
+    "panel-header": {
+      "quick-setting": "快速設定",
+      "visibility": "顯示",
+      "layout-highlight": "佈局點亮",
+      "device-layout": "裝置佈局",
+      "air-mode": "隔空模式",
+      "data-deletion": "資料刪除",
+      "misc": "其他",
+      "ui-language": "介面語言"
+    },
+    "button": {
+      "delete-all-imported-device-layouts": "刪除所有已匯入的裝置佈局",
+      "delete-all-imported-chords": "刪除所有已匯入的和弦"
     }
   }
 }
