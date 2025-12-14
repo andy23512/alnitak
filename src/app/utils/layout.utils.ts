@@ -1,3 +1,4 @@
+import { TranslateService } from '@ngx-translate/core';
 import { ACTION_REPRESENTATION_ICON_MAP } from '../data/action-representation-icon-map';
 import {
   ACTIONS,
@@ -26,6 +27,7 @@ import {
   KeyBoardLayout,
   KeyboardLayoutKey,
 } from '../models/keyboard-layout.models';
+import { toTitleCase } from './case.utils';
 import { nonNullable } from './non-nullable.utils';
 
 export function convertKeyboardLayoutToCharacterKeyCodeMap(
@@ -230,25 +232,49 @@ export function meetPreferSides(
   }
 }
 
-export function convertPositionCodeToText(positionCode: number) {
-  const hand = positionCode < 45 ? 'Left' : 'Right';
-  const sw = [
-    'Thumb Back',
-    'Thumb Middle',
-    'Thumb Front',
-    'Index',
-    'Middle',
-    'Ring',
-    'Pinky',
-    'Middle Secondary',
-    'Ring Secondary',
-  ][Math.floor((positionCode % 45) / 5)];
+// TODO - i18n
+export function convertPositionCodeToText(
+  positionCode: number,
+  translateService: TranslateService,
+) {
+  const hand = positionCode < 45 ? 'hand.left' : 'hand.right';
+  const sw =
+    'switch.' +
+    [
+      'thumb-back',
+      'thumb-middle',
+      'thumb-front',
+      'index',
+      'middle',
+      'ring',
+      'pinky',
+      'middle-secondary',
+      'ring-secondary',
+    ][Math.floor((positionCode % 45) / 5)];
   const direction = (
-    hand === 'Left'
-      ? ['Down (Press)', 'East', 'North', 'West', 'South']
-      : ['Down (Press)', 'West', 'North', 'East', 'South']
+    hand === 'hand.left'
+      ? [
+          'direction.down',
+          'direction.east',
+          'direction.north',
+          'direction.west',
+          'direction.south',
+        ]
+      : [
+          'direction.down',
+          'direction.west',
+          'direction.north',
+          'direction.east',
+          'direction.south',
+        ]
   )[positionCode % 5];
-  return [hand, sw, direction].join(' ');
+  return toTitleCase(
+    translateService.instant('layout-text-guide', {
+      hand: translateService.instant(hand),
+      switch: translateService.instant(sw),
+      direction: translateService.instant(direction),
+    }),
+  );
 }
 
 export function convertPositionCodeToKeyNotation(positionCode: number) {

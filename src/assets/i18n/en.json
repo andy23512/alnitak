@@ -1,4 +1,19 @@
 {
+  "hand": {
+    "left": "left",
+    "right": "right"
+  },
+  "switch": {
+    "thumb-back": "thumb back",
+    "thumb-middle": "thumb middle",
+    "thumb-front": "thumb front",
+    "index": "index",
+    "middle": "middle",
+    "ring": "ring",
+    "pinky": "pinky",
+    "middle-secondary": "middle secondary",
+    "ring-secondary": "ring secondary"
+  },
   "direction": {
     "E": "E",
     "S": "S",
@@ -7,7 +22,8 @@
     "east": "east",
     "south": "south",
     "west": "west",
-    "north": "north"
+    "north": "north",
+    "down": "down (press)"
   },
   "device-layout": {
     "cc1-cc2-default": "CC1/CC2 default",
@@ -501,5 +517,6 @@
   },
   "statistics-page": {
     "metric": "metric"
-  }
+  },
+  "layout-text-guide": "{{hand}} {{switch}} {{direction}}"
 }

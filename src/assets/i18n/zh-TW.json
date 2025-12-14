@@ -1,4 +1,19 @@
 {
+  "hand": {
+    "left": "左手",
+    "right": "右手"
+  },
+  "switch": {
+    "thumb-back": "拇指後面",
+    "thumb-middle": "拇指中間",
+    "thumb-front": "拇指前面",
+    "index": "食指",
+    "middle": "中指",
+    "ring": "無名指",
+    "pinky": "小指",
+    "middle-secondary": "中指第二搖桿",
+    "ring-secondary": "無名指第二搖桿"
+  },
   "direction": {
     "E": "東",
     "S": "南",
@@ -478,5 +493,6 @@
   },
   "statistics-page": {
     "metric": "指標"
-  }
+  },
+  "layout-text-guide": "{{hand}}{{switch}}{{direction}}鍵"
 }

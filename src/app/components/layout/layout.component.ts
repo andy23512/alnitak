@@ -5,6 +5,7 @@ import {
   inject,
   input,
 } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { POSITION_CODE_LAYOUT } from 'src/app/data/layouts';
 import { VisibleDirective } from 'src/app/directives/visible.directive';
 import {
@@ -47,6 +48,7 @@ export class LayoutComponent {
     null,
   );
   readonly secondaryHighlightPositions = input<number[]>([]);
+  readonly translateService = inject(TranslateService);
 
   readonly highlightKeyCombinationInText = computed(() => {
     const highlightKeyCombination = this.highlightKeyCombination();
@@ -55,7 +57,9 @@ export class LayoutComponent {
     }
     return [...highlightKeyCombination.positionCodes]
       .reverse()
-      .map(convertPositionCodeToText)
+      .map((positionCode) =>
+        convertPositionCodeToText(positionCode, this.translateService),
+      )
       .join(' + ');
   });
 
