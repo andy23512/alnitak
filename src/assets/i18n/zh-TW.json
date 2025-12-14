@@ -369,7 +369,7 @@
       "description": [
         "在按鍵課程頁面，您可以練習在您的 CharaChorder 3D 輸入裝置上輸入數字、字母或符號鍵。在側邊欄中有課程列表。",
         [
-          "如果您想要有一個練習目標，您可以嘗試在每個非複習課程中同時達成 100 連擊和 100 CPM。（我在",
+          "如果您想要有一個練習目標，您可以嘗試在每個非複習課程中同時達成 100 連擊和 100 字元/分鐘。（我在",
           {
             "url": "https://andy23512.github.io/blog-zh-tw/2025/07/12/tangent-%E5%B0%8D%E5%AD%B8%E7%BF%92%E4%BD%BF%E7%94%A8-charachorder-3d-%E8%BC%B8%E5%85%A5%E8%A3%9D%E7%BD%AE%E8%8B%B1%E6%89%93%EF%BC%88%E9%80%90%E5%AD%97%E8%BC%B8%E5%85%A5%EF%BC%89%E7%9A%84%E5%BB%BA%E8%AD%B0/",
             "text": "這篇文章中寫了關於如何在 CharaChorder 3D 輸入裝置上學習英文逐字打字的建議"
@@ -441,6 +441,19 @@
       "a1": "主要層",
       "a2": "數字層",
       "a3": "功能層"
+    }
+  },
+  "lesson-page": {
+    "input-box-title": "用於練習課程的輸入框",
+    "pause-action": "暫停",
+    "start-action": "開始",
+    "previous-lesson-link": {
+      "aria-label": "前往上一個課程的連結",
+      "tooltip": "前往上一個課程"
+    },
+    "next-lesson-link": {
+      "aria-label": "前往下一個課程的連結",
+      "tooltip": "前往下一個課程"
     }
   }
 }

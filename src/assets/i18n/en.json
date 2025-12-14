@@ -464,5 +464,18 @@
       "a2": "numeric layer",
       "a3": "functional layer"
     }
+  },
+  "lesson-page": {
+    "input-box-title": "input box for practicing lesson",
+    "pause-action": "pause",
+    "start-action": "start",
+    "previous-lesson-link": {
+      "aria-label": "link to the previous lesson",
+      "tooltip": "Go to previous lesson"
+    },
+    "next-lesson-link": {
+      "aria-label": "link to the next lesson",
+      "tooltip": "Go to next lesson"
+    }
   }
 }

@@ -46,6 +46,7 @@ import {
   Layer,
 } from 'src/app/models/device-layout.models';
 import { IconGuardPipe } from 'src/app/pipes/icon-guard.pipe';
+import { RealTitleCasePipe } from 'src/app/pipes/real-title-case.pipe';
 import { AirModeSettingStore } from 'src/app/stores/air-mode-setting.store';
 import { DeviceLayoutStore } from 'src/app/stores/device-layout.store';
 import { HighlightSettingStore } from 'src/app/stores/highlight-setting.store';
@@ -87,6 +88,7 @@ function normalizeInputData(data: string): string {
     VisibleDirective,
     IconGuardPipe,
     TranslatePipe,
+    RealTitleCasePipe,
   ],
   templateUrl: './lesson-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

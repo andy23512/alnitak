@@ -1,7 +1,7 @@
 <section class="flex h-12 flex-none items-center justify-center bg-gray-700">
   <input
     class="h-0 w-0 opacity-0"
-    title="input box for practicing typing"
+    [attr.title]="'lesson-page.input-box-title' | translate"
     #input
     type="text"
     inputmode="none"
@@ -40,13 +40,14 @@
 <div class="absolute right-0 top-0 h-12 content-center">
   @if (isFocus()) {
     <button mat-flat-button (click)="pauseLesson()">
-      <mat-icon class="text-white">{{ "pause" | iconGuard }}</mat-icon> Pause
+      <mat-icon class="text-white">{{ "pause" | iconGuard }}</mat-icon>
+      {{ "lesson-page.pause-action" | translate | realTitleCase }}
       <kbd class="small ml-1">esc</kbd>
     </button>
   } @else {
     <button mat-flat-button (click)="startLesson()">
       <mat-icon class="text-white">{{ "play_arrow" | iconGuard }}</mat-icon>
-      Start
+      {{ "lesson-page.start-action" | translate | realTitleCase }}
       <kbd class="small ml-1">space</kbd>
     </button>
   }
@@ -56,9 +57,11 @@
     <a
       class="text-inherit"
       *ngrxLet="lesson()?.previousLessonUrl as previousLessonUrl"
-      aria-label="link to previous lesson"
+      [attr.aria-label]="
+        'lesson-page.previous-lesson-link.aria-label' | translate
+      "
       [routerLink]="previousLessonUrl"
-      matTooltip="Go to previous lesson"
+      [matTooltip]="'lesson-page.previous-lesson-link.tooltip' | translate"
       [matTooltipDisabled]="!previousLessonUrl"
     >
       <button type="button" mat-icon-button [disabled]="!previousLessonUrl">
@@ -68,9 +71,9 @@
     <a
       class="text-inherit"
       *ngrxLet="lesson()?.nextLessonUrl as nextLessonUrl"
-      aria-label="link to next lesson"
+      [attr.aria-label]="'lesson-page.next-lesson-link.aria-label' | translate"
       [routerLink]="nextLessonUrl"
-      matTooltip="Go to next lesson"
+      [matTooltip]="'lesson-page.next-lesson-link.tooltip' | translate"
       [matTooltipDisabled]="!nextLessonUrl"
     >
       <button type="button" mat-icon-button [disabled]="!nextLessonUrl">
@@ -99,5 +102,5 @@
   [class.opacity-50]="isFocus()"
   [speed]="lessonStore.cpm()"
   [maxSpeed]="200"
-  [speedUnit]="'CPM'"
+  [speedUnit]="'general.character-entry-speed-unit' | translate"
 ></app-speedometer>
