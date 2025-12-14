@@ -14,7 +14,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSliderModule } from '@angular/material/slider';
-import { TranslatePipe } from '@ngx-translate/core';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { LayoutSongHelpDialogComponent } from 'src/app/components/layout-song-help-dialog/layout-song-help-dialog.component';
 import { LayoutComponent } from 'src/app/components/layout/layout.component';
 import { LyricsViewComponent } from 'src/app/components/lyrics-view/lyrics-view.component';
@@ -68,8 +68,10 @@ export class LayoutSongPageComponent implements OnInit, OnDestroy {
 
   readonly visibilitySettingStore = inject(VisibilitySettingStore);
   readonly layoutSongSettingStore = inject(LayoutSongSettingStore);
+  readonly translateService = inject(TranslateService);
 
   isPlaying = signal(false);
+  canPlay = signal(false);
   currentTime = signal(0);
   progress = computed(() => {
     if (!this.audio) {
@@ -77,7 +79,6 @@ export class LayoutSongPageComponent implements OnInit, OnDestroy {
     }
     return (this.currentTime() / this.audio.duration) * 100;
   });
-  error = signal<string | null>(null);
   private audio: HTMLAudioElement | null = null;
 
   constructor() {
@@ -123,9 +124,9 @@ export class LayoutSongPageComponent implements OnInit, OnDestroy {
     this.audio.addEventListener('ended', () => {
       this.isPlaying.set(false);
     });
-    this.audio.addEventListener('canplay', () => this.error.set(null));
+    this.audio.addEventListener('canplay', () => this.canPlay.set(true));
     this.audio.addEventListener('error', () => {
-      this.error.set('Unable to load audio. Please check the audio source.');
+      this.canPlay.set(false);
       this.isPlaying.set(false);
     });
   }
@@ -136,7 +137,7 @@ export class LayoutSongPageComponent implements OnInit, OnDestroy {
         this.audio.pause();
       } else {
         this.audio.play().catch(() => {
-          this.error.set('Playback failed. Please try again.');
+          this.canPlay.set(false);
         });
       }
       this.isPlaying.set(!this.isPlaying());
@@ -265,7 +266,9 @@ export class LayoutSongPageComponent implements OnInit, OnDestroy {
           const d = {
             type: KeyLabelType.String as const,
             c: v.c,
-            title: `Character: ${v.c}`,
+            title: this.translateService.instant('general.character-tooltip', {
+              character: v.c,
+            }),
             layer,
             shiftKey,
             altGraphKey,
