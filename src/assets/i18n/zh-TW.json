@@ -475,5 +475,8 @@
       "device-layout-deleted": "所有已匯入的裝置佈局已被刪除。",
       "chords-deleted": "所有已匯入的和弦已被刪除。"
     }
+  },
+  "statistics-page": {
+    "metric": "指標"
   }
 }

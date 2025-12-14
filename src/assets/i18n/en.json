@@ -21,6 +21,7 @@
     "action-code-tooltip": "Action Code: {{actionCode}}",
     "choose-file-action": "choose file",
     "combo-unit": "combo",
+    "combo-unit-plural": "combos",
     "cancel-action": "cancel",
     "delete-confirm-button": "Yes. Delete them.",
     "close-action": "close",
@@ -497,5 +498,8 @@
       "device-layout-deleted": "All imported device layouts have been deleted.",
       "chords-deleted": "All imported chords have been deleted."
     }
+  },
+  "statistics-page": {
+    "metric": "metric"
   }
 }

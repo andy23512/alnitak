@@ -3,10 +3,12 @@ import {
   Component,
   computed,
   HostBinding,
+  inject,
   signal,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { liveQuery } from 'dexie';
 import { HighchartsChartModule } from 'highcharts-angular';
 import * as Highcharts from 'highcharts/highstock';
@@ -15,6 +17,8 @@ import { Observable } from 'rxjs';
 import { TOPICS } from 'src/app/data/topics';
 import { db } from 'src/app/db';
 import { KeyRecord } from 'src/app/models/key-record.models';
+import { RealTitleCasePipe } from 'src/app/pipes/real-title-case.pipe';
+import { toTitleCase } from 'src/app/utils/case.utils';
 import { computedAsync } from 'src/app/utils/computed-async.utils';
 theme(Highcharts);
 
@@ -26,12 +30,19 @@ enum Metric {
 @Component({
   selector: 'app-statistics-page',
   standalone: true,
-  imports: [HighchartsChartModule, MatButtonToggleModule, FormsModule],
+  imports: [
+    HighchartsChartModule,
+    MatButtonToggleModule,
+    FormsModule,
+    TranslatePipe,
+    RealTitleCasePipe,
+  ],
   templateUrl: './statistics-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StatisticsPageComponent {
   @HostBinding('class') classes = 'flex flex-col gap-2 h-full';
+  private translateService = inject(TranslateService);
 
   Highcharts: typeof Highcharts = Highcharts;
   Metric = Metric;
@@ -57,7 +68,7 @@ export class StatisticsPageComponent {
           data: keyRecords
             .filter((k) => k.cpm && k.topicId === t.id)
             .map((k) => [k.timestamp, k.cpm]),
-          name: t.name,
+          name: this.translateService.instant(t.name),
           dataGrouping: {
             groupPixelWidth: 20,
           },
@@ -66,6 +77,9 @@ export class StatisticsPageComponent {
             radius: 5,
           },
         })).filter((s) => s.data.length > 0);
+        const unit = this.translateService.instant(
+          'general.character-entry-speed-unit',
+        );
         return {
           legend: { enabled: true },
           scrollbar: { enabled: false },
@@ -75,12 +89,12 @@ export class StatisticsPageComponent {
           },
           tooltip: {
             formatter: function () {
-              return `${this.series.name}: ${this.y?.toFixed(1)} CPM`;
+              return `${this.series.name}: ${this.y?.toFixed(1)} ` + unit;
             },
           },
           yAxis: {
             title: {
-              text: 'CPM',
+              text: unit,
             },
           },
           xAxis: {
@@ -95,7 +109,7 @@ export class StatisticsPageComponent {
           data: keyRecords
             .filter((k) => k.combo && k.topicId === t.id)
             .map((k) => [k.timestamp, k.combo]),
-          name: t.name,
+          name: this.translateService.instant(t.name),
           dataGrouping: {
             groupPixelWidth: 20,
             approximation: function (this: {
@@ -115,6 +129,10 @@ export class StatisticsPageComponent {
             radius: 5,
           },
         })).filter((s) => s.data.length > 0);
+        const comboUnit = this.translateService.instant('general.combo-unit');
+        const comboUnitPlural = this.translateService.instant(
+          'general.combo-unit-plural',
+        );
         return {
           legend: { enabled: true },
           scrollbar: { enabled: false },
@@ -124,12 +142,19 @@ export class StatisticsPageComponent {
           },
           tooltip: {
             formatter: function () {
-              return `${this.series.name}: ${Math.round(this.y as number)} Combos`;
+              return (
+                `${this.series.name}: ${Math.round(this.y as number)} ` +
+                toTitleCase(
+                  Math.round(this.y as number) === 1
+                    ? comboUnit
+                    : comboUnitPlural,
+                )
+              );
             },
           },
           yAxis: {
             title: {
-              text: 'Combo',
+              text: toTitleCase(comboUnit),
             },
           },
           xAxis: {
