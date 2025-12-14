@@ -416,5 +416,10 @@
         ]
       ]
     }
+  },
+  "layout-song-page": {
+    "title": "佈局記憶歌",
+    "mute-button-aria-label": "佈局記憶歌靜音/取消靜音按鈕",
+    "help-button-aria-label": "開啟佈局記憶歌說明視窗按鈕"
   }
 }

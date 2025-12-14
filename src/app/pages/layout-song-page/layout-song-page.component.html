@@ -1,7 +1,9 @@
 <section
   class="flex h-12 flex-none items-center justify-center bg-gray-700 px-3"
 >
-  <h2 class="flex-none text-lg">Layout Song</h2>
+  <h2 class="flex-none text-lg">
+    {{ "layout-song-page.title" | translate | realTitleCase }}
+  </h2>
   <button mat-icon-button class="flex-none" (click)="handlePlayPause()">
     <mat-icon>
       {{ (isPlaying() ? "pause" : "play_arrow") | iconGuard }}
@@ -28,7 +30,7 @@
   <button
     type="button"
     mat-icon-button
-    aria-label="toggle mute for layout song"
+    [attr.aria-label]="'layout-song-page.mute-button-aria-label' | translate"
     (click)="toggleMute()"
   >
     <mat-icon>{{
@@ -46,7 +48,7 @@
   <button
     type="button"
     mat-icon-button
-    aria-label="open help dialog for layout song"
+    [attr.aria-label]="'layout-song-page.help-button-aria-label' | translate"
     (click)="openLayoutSongHelpDialog()"
   >
     <mat-icon>{{ "help" | iconGuard }}</mat-icon>

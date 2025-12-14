@@ -432,5 +432,10 @@
         ]
       ]
     }
+  },
+  "layout-song-page": {
+    "title": "layout song",
+    "mute-button-aria-label": "toggle mute for layout song",
+    "help-button-aria-label": "open help dialog for layout song"
   }
 }

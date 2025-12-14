@@ -1,4 +1,3 @@
-import { JsonPipe, NgClass } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -15,6 +14,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSliderModule } from '@angular/material/slider';
+import { TranslatePipe } from '@ngx-translate/core';
 import { LayoutSongHelpDialogComponent } from 'src/app/components/layout-song-help-dialog/layout-song-help-dialog.component';
 import { LayoutComponent } from 'src/app/components/layout/layout.component';
 import { LyricsViewComponent } from 'src/app/components/lyrics-view/lyrics-view.component';
@@ -30,6 +30,7 @@ import {
   Layer,
 } from 'src/app/models/device-layout.models';
 import { IconGuardPipe } from 'src/app/pipes/icon-guard.pipe';
+import { RealTitleCasePipe } from 'src/app/pipes/real-title-case.pipe';
 import { INITIAL_HIGHLIGHT_SETTING } from 'src/app/stores/highlight-setting.store';
 import { KeyboardLayoutStore } from 'src/app/stores/keyboard-layout.store';
 import { LayoutSongSettingStore } from 'src/app/stores/layout-song-setting.store';
@@ -57,8 +58,8 @@ const AUDIO_URL = './assets/layout.mp3';
     MatButtonModule,
     LyricsViewComponent,
     LayoutComponent,
-    JsonPipe,
-    NgClass,
+    TranslatePipe,
+    RealTitleCasePipe,
   ],
 })
 export class LayoutSongPageComponent implements OnInit, OnDestroy {
