@@ -492,6 +492,10 @@
     "button": {
       "delete-all-imported-device-layouts": "delete all imported device layouts",
       "delete-all-imported-chords": "delete all imported chords"
+    },
+    "message": {
+      "device-layout-deleted": "All imported device layouts have been deleted.",
+      "chords-deleted": "All imported chords have been deleted."
     }
   }
 }

@@ -57,6 +57,7 @@ export class SettingsPageComponent {
   private matSnackBar = inject(MatSnackBar);
   private chordStore = inject(ChordStore);
   private deviceLayoutStore = inject(DeviceLayoutStore);
+  private translateService = inject(TranslateService);
 
   @HostBinding('class') classes = 'block p-5';
 
@@ -68,7 +69,9 @@ export class SettingsPageComponent {
         if (response.confirmed) {
           this.deviceLayoutStore.load();
           this.matSnackBar.open(
-            'All imported device layouts has been deleted.',
+            this.translateService.instant(
+              'settings-page.message.device-layout-deleted',
+            ),
             undefined,
             { duration: 2000 },
           );
@@ -84,7 +87,9 @@ export class SettingsPageComponent {
         if (response.confirmed) {
           patchState(this.chordStore, removeAllEntities());
           this.matSnackBar.open(
-            'All imported chords has been deleted.',
+            this.translateService.instant(
+              'settings-page.message.chords-deleted',
+            ),
             undefined,
             { duration: 2000 },
           );
@@ -92,7 +97,6 @@ export class SettingsPageComponent {
       });
   }
 
-  private translateService = inject(TranslateService);
   public languageSettingStore = inject(LanguageSettingStore);
 
   public supportedLanguages: LanguageInfo[] = [

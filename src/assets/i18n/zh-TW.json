@@ -470,6 +470,10 @@
     "button": {
       "delete-all-imported-device-layouts": "刪除所有已匯入的裝置佈局",
       "delete-all-imported-chords": "刪除所有已匯入的和弦"
+    },
+    "message": {
+      "device-layout-deleted": "所有已匯入的裝置佈局已被刪除。",
+      "chords-deleted": "所有已匯入的和弦已被刪除。"
     }
   }
 }
