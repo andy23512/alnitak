@@ -34,10 +34,12 @@
 </svg>
 <main class="flex h-full flex-col items-center justify-center gap-4 p-4">
   <header class="text-center">
-    <h1 class="mb-0 text-4xl text-alnitak-500">Alnitak</h1>
+    <h1 class="mb-0 text-4xl text-alnitak-500">
+      {{ "home-page.website-name" | translate }}
+    </h1>
   </header>
-  <div class="flex">
-    <div>An unofficial practice tool of&nbsp;</div>
+  <div class="flex gap-1">
+    <span>{{ "home-page.summary.0" | translate }}</span>
     <div class="cursor-pointer font-bold" (click)="useAndReplayAnimation()">
       @if (
         visibilitySettingStore.homePageChordingAnimation() || useAnimation()
@@ -46,13 +48,15 @@
           {{ typingDeviceName$ | async }}<span>_</span>
         </div>
       } @else {
-        CharaChorder 3D input devices_
+        {{ "home-page.summary.1" | translate }}
       }
     </div>
+    <div>{{ "home-page.summary.2" | translate }}</div>
   </div>
   <span
-    >Use <kbd>space</kbd> key to enter the first lesson, or select a lesson from
-    the side menu.</span
+    >{{ "home-page.lesson-start-instruction.0" | translate
+    }}<kbd>{{ "home-page.lesson-start-instruction.1" | translate }}</kbd
+    >{{ "home-page.lesson-start-instruction.2" | translate }}</span
   >
   <div>
     <a
@@ -61,32 +65,36 @@
       rel="noopener"
     >
       <button type="button" mat-button>
-        <mat-icon>{{ "code" | iconGuard }}</mat-icon> Source Code
+        <mat-icon>{{ "code" | iconGuard }}</mat-icon>
+        {{ "home-page.source-code" | translate | realTitleCase }}
       </button>
     </a>
     <a
-      href="https://andy23512.github.io/blog/2024/05/01/alnitak-a-practice-tool-of-charachorder-3d-input-devices-developed-by-tangent/"
+      [href]="'home-page.dev-note-url' | translate"
       target="_blank"
       rel="noopener"
     >
       <button type="button" mat-button>
-        <mat-icon>{{ "article" | iconGuard }}</mat-icon> Dev Note
+        <mat-icon>{{ "article" | iconGuard }}</mat-icon>
+        {{ "home-page.dev-note" | translate | realTitleCase }}
       </button>
     </a>
   </div>
   @if (deviceLayoutStore.selectedId() === "default") {
     <div class="flex items-center text-gray-200">
-      Device Layout is set to "CC1/CC2 default".
+      {{ "home-page.current-device-layout-hint.cc1-cc2-default.0" | translate }}
       <button mat-button color="primary" (click)="switchToM4GDefaultLayout()">
-        Switch it to "M4G default"
+        {{
+          "home-page.current-device-layout-hint.cc1-cc2-default.1" | translate
+        }}
       </button>
     </div>
   }
   @if (deviceLayoutStore.selectedId() === "m4g-default") {
     <div class="flex items-center text-gray-200">
-      Device Layout is set to "M4G default".
+      {{ "home-page.current-device-layout-hint.m4g-default.0" | translate }}
       <button mat-button color="primary" (click)="switchToCC1DefaultLayout()">
-        Switch it to "CC1/CC2 default"
+        {{ "home-page.current-device-layout-hint.m4g-default.1" | translate }}
       </button>
     </div>
   }

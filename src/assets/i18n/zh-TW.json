@@ -337,5 +337,27 @@
     "windows-meta-right": "Windows [Command / Super] （右）",
     "unix-meta-left": "Super [Windows / Command] （左）",
     "unix-meta-right": "Super [Windows / Command] （右）"
+  },
+  "home-page": {
+    "website-name": "Alnitak 參宿一",
+    "summary": ["專為", "CharaChorder 3D 輸入裝置", "量身打造的非官方練習工具"],
+    "lesson-start-instruction": [
+      "使用 ",
+      "space",
+      " 鍵進入第一個課程，或從左側列表中選擇一個課程。"
+    ],
+    "source-code": "原始碼",
+    "dev-note": "開發筆記",
+    "dev-note-url": "https://andy23512.github.io/blog-zh-tw/2024/05/01/alnitak-%E5%8F%83%E5%AE%BF%E4%B8%80-tangent-%E6%89%80%E9%96%8B%E7%99%BC%E7%9A%84-charachorder-3d-%E8%BC%B8%E5%85%A5%E8%A3%9D%E7%BD%AE%E7%B7%B4%E7%BF%92%E5%B7%A5%E5%85%B7/",
+    "current-device-layout-hint": {
+      "cc1-cc2-default": [
+        "裝置佈局目前是設定為「CC1/CC2 預設」。",
+        "切換到「M4G 預設」"
+      ],
+      "m4g-default": [
+        "裝置佈局目前是設定為「M4G 預設」。",
+        "切換到「CC1/CC2 預設」"
+      ]
+    }
   }
 }

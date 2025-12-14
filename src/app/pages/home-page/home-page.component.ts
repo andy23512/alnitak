@@ -10,11 +10,13 @@ import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { Router } from '@angular/router';
 import { HotkeysService } from '@ngneat/hotkeys';
+import { TranslatePipe } from '@ngx-translate/core';
 import { BehaviorSubject, concatMap, exhaustMap, from } from 'rxjs';
 import { SwitchComponent } from 'src/app/components/switch/switch.component';
 import { CHORDING_TIMING } from 'src/app/data/chord-timing';
 import { Layer } from 'src/app/models/device-layout.models';
 import { IconGuardPipe } from 'src/app/pipes/icon-guard.pipe';
+import { RealTitleCasePipe } from 'src/app/pipes/real-title-case.pipe';
 import { DeviceLayoutStore } from 'src/app/stores/device-layout.store';
 import { VisibilitySettingStore } from 'src/app/stores/visibility-setting.store';
 import { chordAnimationEventsToObservable } from 'src/app/utils/chord-animation.utils';
@@ -23,7 +25,15 @@ import { pickRandomItem, shuffle } from 'src/app/utils/random.utils';
 @Component({
   selector: 'app-home-page',
   standalone: true,
-  imports: [MatButton, MatIcon, SwitchComponent, IconGuardPipe, AsyncPipe],
+  imports: [
+    MatButton,
+    MatIcon,
+    SwitchComponent,
+    IconGuardPipe,
+    AsyncPipe,
+    TranslatePipe,
+    RealTitleCasePipe,
+  ],
   templateUrl: './home-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
