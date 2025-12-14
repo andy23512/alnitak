@@ -24,6 +24,7 @@ import { HotkeysService } from '@ngneat/hotkeys';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { LetDirective } from '@ngrx/component';
 import { getState } from '@ngrx/signals';
+import { TranslatePipe } from '@ngx-translate/core';
 import { liveQuery } from 'dexie';
 import { interval } from 'rxjs';
 import { ComboCounterComponent } from 'src/app/components/combo-counter/combo-counter.component';
@@ -85,6 +86,7 @@ function normalizeInputData(data: string): string {
     SpeedometerComponent,
     VisibleDirective,
     IconGuardPipe,
+    TranslatePipe,
   ],
   templateUrl: './lesson-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

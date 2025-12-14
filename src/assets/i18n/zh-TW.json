@@ -232,6 +232,18 @@
     "speedometer": "速度計",
     "home-page-chording-animation": "首頁的和弦動畫"
   },
+  "topic": {
+    "letters": "字母",
+    "numbers": "數字",
+    "symbols": "符號"
+  },
+  "lesson": {
+    "review-1": "複習一",
+    "review-2": "複習二",
+    "review-3": "複習三",
+    "all-letters": "所有字母鍵",
+    "all-numbers": "所有數字鍵"
+  },
   "key-label": {
     "shift": "Shift",
     "numeric-layer": "數字層",

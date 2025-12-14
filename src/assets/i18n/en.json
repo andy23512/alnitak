@@ -244,6 +244,18 @@
     "speedometer": "speedometer",
     "home-page-chording-animation": "home page chording animation"
   },
+  "topic": {
+    "letters": "Letters",
+    "numbers": "Numbers",
+    "symbols": "Symbols"
+  },
+  "lesson": {
+    "review-1": "Review 1",
+    "review-2": "Review 2",
+    "review-3": "Review 3",
+    "all-letters": "All Letters",
+    "all-numbers": "All Numbers"
+  },
   "key-label": {
     "shift": "Shift",
     "numeric-layer": "Numeric Layer",

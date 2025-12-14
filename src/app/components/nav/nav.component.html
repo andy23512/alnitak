@@ -74,7 +74,8 @@
             routerLink="/topic/{{ lesson.topic.id }}/lesson/{{ lesson.id }}"
             routerLinkActive="list-item-active"
             (click)="onNavLinkClick()"
-            >{{ lesson.topic.name }} - {{ lesson.name }}</a
+            >{{ lesson.topic.name | translate }} -
+            {{ lesson.name | translate }}</a
           >
         } @empty {
           <a mat-list-item>{{ "nav.no-result-message" | translate }}</a>
@@ -83,7 +84,7 @@
         @for (topic of topics; track topic.id) {
           <h4 class="flex items-center gap-1 font-bold" matSubheader>
             <mat-icon>{{ topic.iconName || "topic" | iconGuard }}</mat-icon
-            >{{ topic.name }}
+            >{{ topic.name | translate }}
           </h4>
           @for (lesson of topic.lessons; track lesson.id) {
             <a
@@ -91,7 +92,7 @@
               routerLink="/topic/{{ topic.id }}/lesson/{{ lesson.id }}"
               routerLinkActive="list-item-active"
               (click)="onNavLinkClick()"
-              >{{ lesson.name }}</a
+              >{{ lesson.name | translate }}</a
             >
           }
         }
