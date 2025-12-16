@@ -306,6 +306,7 @@
     "numpad-multiply": "小鍵盤：*",
     "numpad-subtract": "小鍵盤：-",
     "numpad-add": "小鍵盤：+",
+    "numpad-enter": "小鍵盤：確認鍵",
     "no-key-pressed": "不按下任何鍵",
     "restart-input-device": "重新啟動輸入裝置",
     "mouse-left-click": "滑鼠左鍵點擊",

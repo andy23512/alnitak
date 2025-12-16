@@ -320,6 +320,7 @@
     "numpad-multiply": "Keypad: *",
     "numpad-subtract": "Keypad: -",
     "numpad-add": "Keypad: +",
+    "numpad-enter": "Keypad: Enter",
     "no-key-pressed": "No Key Pressed",
     "restart-input-device": "Restart Input Device",
     "mouse-left-click": "Mouse Left Click",

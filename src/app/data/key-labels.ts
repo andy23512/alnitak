@@ -188,6 +188,11 @@ export const NON_WSK_CODE_2_RAW_KEY_LABEL_MAP: Record<NonWSKCode, RawKeyLabel> =
       c: '+(KP)',
       title: 'key-label.numpad-add',
     },
+    NumpadEnter: {
+      type: KeyLabelType.String,
+      c: 'Enter(KP)',
+      title: 'key-label.numpad-enter',
+    },
   };
 
 export const NON_KEY_ACTION_NAME_2_RAW_KEY_LABEL_MAP: Record<

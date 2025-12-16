@@ -120,6 +120,7 @@ export const NON_WSK_CODE_2_KEY_NAMES_MAP: Record<NonWSKCode, string[]> = {
     'keypad +',
     '小鍵盤加號',
   ],
+  NumpadEnter: ['numpad enter', 'keypad enter', '小鍵盤回車鍵', '小鍵盤確認鍵'],
 };
 
 export const NON_KEY_ACTION_NAME_2_KEY_NAMES_MAP: Record<

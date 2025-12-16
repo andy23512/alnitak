@@ -94,6 +94,7 @@ export type NonWSKCode =
   | 'NumpadDivide'
   | 'NumpadMultiply'
   | 'NumpadSubtract'
-  | 'NumpadAdd';
+  | 'NumpadAdd'
+  | 'NumpadEnter';
 
 export type KCode = WSKCode | NonWSKCode;
