@@ -91,6 +91,7 @@ export class DeviceLayoutSettingPanelContentComponent {
         return;
       }
       const data = JSON.parse(e.target.result as string);
+      console.log(data);
       if (!data) {
         return;
       }
@@ -99,7 +100,7 @@ export class DeviceLayoutSettingPanelContentComponent {
         layoutItem = data.history[0].find(
           (item: any) =>
             item.type === 'layout' &&
-            ['One', 'TWO', 'M4G'].includes(item.device),
+            ['One', 'ONE', 'TWO', 'M4G'].includes(item.device),
         );
       } else {
         layoutItem = data;
