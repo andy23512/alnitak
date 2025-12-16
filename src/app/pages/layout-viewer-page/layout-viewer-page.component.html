@@ -23,7 +23,7 @@
   <mat-button-toggle-group
     class="flex-none opacity-80"
     [multiple]="true"
-    [ngModel]="modifiersState"
+    [ngModel]="modifiersState()"
     (ngModelChange)="onModifierStateChanged($event)"
     [hideMultipleSelectionIndicator]="true"
   >
