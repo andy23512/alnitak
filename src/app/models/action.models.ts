@@ -20,6 +20,8 @@ export type NonKeyActionName =
   | 'TertiaryKeymapRight'
   | 'SecondaryKeymapLeft'
   | 'SecondaryKeymapRight'
+  | 'PrimaryKeymapLeft'
+  | 'PrimaryKeymapRight'
   | 'AmbidextrousThrowoverLeft'
   | 'AmbidextrousThrowoverRight'
   | 'MouseScrollCoastRight'

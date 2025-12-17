@@ -187,6 +187,8 @@ export const NON_KEY_ACTIONS: Omit<NonKeyAction, 'type'>[] = [
   { codeId: 553, actionName: 'TertiaryKeymapRight' },
   { codeId: 550, actionName: 'SecondaryKeymapLeft' },
   { codeId: 551, actionName: 'SecondaryKeymapRight' },
+  { codeId: 548, actionName: 'PrimaryKeymapLeft' },
+  { codeId: 549, actionName: 'PrimaryKeymapRight' },
   { codeId: 540, actionName: 'AmbidextrousThrowoverLeft' },
   { codeId: 542, actionName: 'AmbidextrousThrowoverRight' },
   { codeId: 569, actionName: 'MouseScrollCoastRight' },

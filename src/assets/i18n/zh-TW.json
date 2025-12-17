@@ -339,6 +339,8 @@
     "tertiary-keymap-right": "功能層（右）",
     "secondary-keymap-left": "數字層（左）",
     "secondary-keymap-right": "數字層（右）",
+    "primary-keymap-left": "主要層（左）",
+    "primary-keymap-right": "主要層（右）",
     "ambidextrous-throwover-left": "佈局鏡射鍵（左）",
     "ambidextrous-throwover-right": "佈局鏡射鍵（右）",
     "mouse-scroll-coast-right": "滑鼠滾輪向右滑動",

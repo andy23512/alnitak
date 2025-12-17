@@ -306,6 +306,16 @@ export const NON_KEY_ACTION_NAME_2_RAW_KEY_LABEL_MAP: Record<
     c: 'counter_2',
     title: 'key-label.secondary-keymap-right',
   },
+  PrimaryKeymapLeft: {
+    type: KeyLabelType.Icon,
+    c: 'counter_1',
+    title: 'key-label.primary-keymap-left',
+  },
+  PrimaryKeymapRight: {
+    type: KeyLabelType.Icon,
+    c: 'counter_1',
+    title: 'key-label.primary-keymap-right',
+  },
   AmbidextrousThrowoverLeft: {
     type: KeyLabelType.Icon,
     c: 'switch_left',

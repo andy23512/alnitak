@@ -209,6 +209,18 @@ export const NON_KEY_ACTION_NAME_2_KEY_NAMES_MAP: Record<
     '數字層切換鍵（右）',
     '比較級和弦修飾鍵',
   ],
+  PrimaryKeymapLeft: [
+    'toggle A1 layer (left)',
+    'toggle primary layer (left)',
+    'primary keymap (left)',
+    '主要層切換鍵（左）',
+  ],
+  PrimaryKeymapRight: [
+    'toggle A1 layer (right)',
+    'toggle primary layer (right)',
+    'primary keymap (right)',
+    '主要層切換鍵（右）',
+  ],
   AmbidextrousThrowoverLeft: [
     'ambidextrous throwover (left)',
     'ambithrow (left)',

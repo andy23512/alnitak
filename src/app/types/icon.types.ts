@@ -15,6 +15,7 @@ export type Icon =
   | 'close'
   | 'code'
   | 'copy_all'
+  | 'counter_1'
   | 'counter_2'
   | 'counter_3'
   | 'delete'
