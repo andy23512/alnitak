@@ -163,6 +163,18 @@ export const NON_WSK_ACTIONS: Omit<NonWSKAction, 'type'>[] = [
   { codeId: 352, keyCode: 'Numpad8' },
   { codeId: 353, keyCode: 'Numpad9' },
   { codeId: 354, keyCode: 'Numpad0' },
+  { codeId: 360, keyCode: 'F13' },
+  { codeId: 361, keyCode: 'F14' },
+  { codeId: 362, keyCode: 'F15' },
+  { codeId: 363, keyCode: 'F16' },
+  { codeId: 364, keyCode: 'F17' },
+  { codeId: 365, keyCode: 'F18' },
+  { codeId: 366, keyCode: 'F19' },
+  { codeId: 367, keyCode: 'F20' },
+  { codeId: 368, keyCode: 'F21' },
+  { codeId: 369, keyCode: 'F22' },
+  { codeId: 370, keyCode: 'F23' },
+  { codeId: 371, keyCode: 'F24' },
 ];
 export const NON_KEY_ACTIONS: Omit<NonKeyAction, 'type'>[] = [
   { codeId: 256, actionName: 'NoKeyPressed' },
