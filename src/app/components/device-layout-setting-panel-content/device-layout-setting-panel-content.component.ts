@@ -91,7 +91,6 @@ export class DeviceLayoutSettingPanelContentComponent {
         return;
       }
       const data = JSON.parse(e.target.result as string);
-      console.log(data);
       if (!data) {
         return;
       }
