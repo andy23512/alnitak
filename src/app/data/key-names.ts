@@ -121,6 +121,16 @@ export const NON_WSK_CODE_2_KEY_NAMES_MAP: Record<NonWSKCode, string[]> = {
     '小鍵盤加號',
   ],
   NumpadEnter: ['numpad enter', 'keypad enter', '小鍵盤回車鍵', '小鍵盤確認鍵'],
+  Numpad0: ['numpad 0', 'keypad 0', '小鍵盤 0 鍵'],
+  Numpad1: ['numpad 1', 'keypad 1', '小鍵盤 1 鍵'],
+  Numpad2: ['numpad 2', 'keypad 2', '小鍵盤 2 鍵'],
+  Numpad3: ['numpad 3', 'keypad 3', '小鍵盤 3 鍵'],
+  Numpad4: ['numpad 4', 'keypad 4', '小鍵盤 4 鍵'],
+  Numpad5: ['numpad 5', 'keypad 5', '小鍵盤 5 鍵'],
+  Numpad6: ['numpad 6', 'keypad 6', '小鍵盤 6 鍵'],
+  Numpad7: ['numpad 7', 'keypad 7', '小鍵盤 7 鍵'],
+  Numpad8: ['numpad 8', 'keypad 8', '小鍵盤 8 鍵'],
+  Numpad9: ['numpad 9', 'keypad 9', '小鍵盤 9 鍵'],
 };
 
 export const NON_KEY_ACTION_NAME_2_KEY_NAMES_MAP: Record<

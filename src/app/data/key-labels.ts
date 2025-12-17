@@ -193,6 +193,56 @@ export const NON_WSK_CODE_2_RAW_KEY_LABEL_MAP: Record<NonWSKCode, RawKeyLabel> =
       c: 'Enter(KP)',
       title: 'key-label.numpad-enter',
     },
+    Numpad0: {
+      type: KeyLabelType.String,
+      c: '0(KP)',
+      title: 'key-label.numpad-0',
+    },
+    Numpad1: {
+      type: KeyLabelType.String,
+      c: '1(KP)',
+      title: 'key-label.numpad-1',
+    },
+    Numpad2: {
+      type: KeyLabelType.String,
+      c: '2(KP)',
+      title: 'key-label.numpad-2',
+    },
+    Numpad3: {
+      type: KeyLabelType.String,
+      c: '3(KP)',
+      title: 'key-label.numpad-3',
+    },
+    Numpad4: {
+      type: KeyLabelType.String,
+      c: '4(KP)',
+      title: 'key-label.numpad-4',
+    },
+    Numpad5: {
+      type: KeyLabelType.String,
+      c: '5(KP)',
+      title: 'key-label.numpad-5',
+    },
+    Numpad6: {
+      type: KeyLabelType.String,
+      c: '6(KP)',
+      title: 'key-label.numpad-6',
+    },
+    Numpad7: {
+      type: KeyLabelType.String,
+      c: '7(KP)',
+      title: 'key-label.numpad-7',
+    },
+    Numpad8: {
+      type: KeyLabelType.String,
+      c: '8(KP)',
+      title: 'key-label.numpad-8',
+    },
+    Numpad9: {
+      type: KeyLabelType.String,
+      c: '9(KP)',
+      title: 'key-label.numpad-9',
+    },
   };
 
 export const NON_KEY_ACTION_NAME_2_RAW_KEY_LABEL_MAP: Record<

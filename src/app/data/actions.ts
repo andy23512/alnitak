@@ -153,6 +153,16 @@ export const NON_WSK_ACTIONS: Omit<NonWSKAction, 'type'>[] = [
   { codeId: 342, keyCode: 'NumpadSubtract' },
   { codeId: 343, keyCode: 'NumpadAdd' },
   { codeId: 344, keyCode: 'NumpadEnter' },
+  { codeId: 345, keyCode: 'Numpad1' },
+  { codeId: 346, keyCode: 'Numpad2' },
+  { codeId: 347, keyCode: 'Numpad3' },
+  { codeId: 348, keyCode: 'Numpad4' },
+  { codeId: 349, keyCode: 'Numpad5' },
+  { codeId: 350, keyCode: 'Numpad6' },
+  { codeId: 351, keyCode: 'Numpad7' },
+  { codeId: 352, keyCode: 'Numpad8' },
+  { codeId: 353, keyCode: 'Numpad9' },
+  { codeId: 354, keyCode: 'Numpad0' },
 ];
 export const NON_KEY_ACTIONS: Omit<NonKeyAction, 'type'>[] = [
   { codeId: 256, actionName: 'NoKeyPressed' },
