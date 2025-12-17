@@ -352,6 +352,8 @@
     "tertiary-keymap-right": "Function Layer (right)",
     "secondary-keymap-left": "Numeric Layer (left)",
     "secondary-keymap-right": "Numeric Layer (right)",
+    "primary-keymap-left": "Primary Layer (left)",
+    "primary-keymap-right": "Primary Layer (right)",
     "ambidextrous-throwover-left": "Ambidextrous Throwover (left)",
     "ambidextrous-throwover-right": "Ambidextrous Throwover (right)",
     "mouse-scroll-coast-right": "Mouse Scroll Right",
