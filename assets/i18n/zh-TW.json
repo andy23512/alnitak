@@ -22,7 +22,8 @@
     "east": "東",
     "south": "南",
     "west": "西",
-    "north": "北"
+    "north": "北",
+    "down": "下壓"
   },
   "device-layout": {
     "cc1-cc2-default": "CC1/CC2 預設",
