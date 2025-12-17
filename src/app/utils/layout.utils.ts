@@ -115,7 +115,10 @@ export function getNumShiftKeyPositionCodes(
   const [primaryLayer, secondaryLayer] = deviceLayout.layout;
   return primaryLayer
     .map((ac, index) => (NUM_SHIFT_ACTION_CODES.includes(ac) ? index : -1))
-    .filter((pos) => pos !== -1 && primaryLayer[pos] === secondaryLayer[pos]);
+    .filter(
+      (pos) =>
+        pos !== -1 && NUM_SHIFT_ACTION_CODES.includes(secondaryLayer[pos]),
+    );
 }
 
 export function getModifierKeyPositionCodeMap(deviceLayout: DeviceLayout) {

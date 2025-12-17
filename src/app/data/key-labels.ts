@@ -242,7 +242,7 @@ export const NON_KEY_ACTION_NAME_2_RAW_KEY_LABEL_MAP: Record<
   SecondaryKeymapRight: {
     type: KeyLabelType.Icon,
     c: 'counter_2',
-    title: 'key-label.secondary-keymap-left',
+    title: 'key-label.secondary-keymap-right',
   },
   AmbidextrousThrowoverLeft: {
     type: KeyLabelType.Icon,
