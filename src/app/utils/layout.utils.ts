@@ -121,6 +121,17 @@ export function getNumShiftKeyPositionCodes(
     );
 }
 
+export function getFnShiftKeyPositionCodes(
+  deviceLayout: DeviceLayout,
+): number[] {
+  const [primaryLayer, _, tertiaryLayer] = deviceLayout.layout;
+  return primaryLayer
+    .map((ac, index) => (FN_SHIFT_ACTION_CODES.includes(ac) ? index : -1))
+    .filter(
+      (pos) => pos !== -1 && FN_SHIFT_ACTION_CODES.includes(tertiaryLayer[pos]),
+    );
+}
+
 export function getModifierKeyPositionCodeMap(deviceLayout: DeviceLayout) {
   return {
     shift: SHIFT_ACTION_CODES.map((actionCode) =>
@@ -132,14 +143,7 @@ export function getModifierKeyPositionCodeMap(deviceLayout: DeviceLayout) {
       .filter(nonNullable)
       .flat(),
     numShift: getNumShiftKeyPositionCodes(deviceLayout),
-    fnShift: FN_SHIFT_ACTION_CODES.map((actionCode) =>
-      getKeyCombinationsFromActionCodes(
-        [{ actionCode, shiftKey: false, altGraphKey: false }],
-        deviceLayout,
-      )?.map((k) => k.characterKeyPositionCode),
-    )
-      .filter(nonNullable)
-      .flat(),
+    fnShift: getFnShiftKeyPositionCodes(deviceLayout),
     altGraph: [ALT_GRAPH_ACTION_CODE]
       .map((actionCode) =>
         getKeyCombinationsFromActionCodes(
