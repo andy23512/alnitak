@@ -102,6 +102,7 @@ export class SettingsPageComponent {
   public supportedLanguages: LanguageInfo[] = [
     { id: UiLanguage.EN, name: 'English' },
     { id: UiLanguage.ZH_TW, name: '繁體中文' },
+    { id: UiLanguage.JP, name: '日本語' },
   ];
 
   public setLanguage(languageId: LanguageInfo['id']) {

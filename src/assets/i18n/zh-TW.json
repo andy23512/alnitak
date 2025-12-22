@@ -145,7 +145,10 @@
     "first-and-last-letters-explanation-paragraph": "第一個和最後一個字母分別是左右手（L/R）和方向（北 N / 東 E / 南 S/ 西 W/ 下壓 D）的簡寫。",
     "middle-part-explanation-paragraph": [
       "中間的部分用來指定搖桿。數字表示手指（從 1 到 5 為從拇指到小指），跟",
-      "現代樂譜中鍵盤樂器的指法記號",
+      {
+        "url": "https://en.wikipedia.org/wiki/Fingering_(music)#Keyboard_instruments",
+        "text": "現代樂譜中鍵盤樂器的指法記號"
+      },
       "一樣。額外加上去的「b」或「bb」，則來自音樂中的",
       {
         "url": "https://zh.wikipedia.org/wiki/%E9%99%8D%E8%99%9F",

@@ -1,7 +1,7 @@
 <mat-sidenav-container class="h-full" autosize>
   <mat-sidenav
     #drawer
-    class="!w-[220px] !bg-gray-450"
+    class="!w-[240px] !bg-gray-450"
     fixedInViewport
     [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'"
@@ -25,6 +25,7 @@
             <button
               type="button"
               mat-flat-button
+              class="whitespace-nowrap"
               [color]="rla.isActive ? 'primary' : null"
             >
               <mat-icon>{{ navLink.icon | iconGuard }}</mat-icon>
