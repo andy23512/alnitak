@@ -5,7 +5,7 @@ An unofficial practice tool of CharaChorder 3D input devices (CharaChorder One, 
 ## Links
 
 - [Website](https://andy23512.github.io/alnitak/)
-- [Introduction & Development Note](https://andy23512.github.io/blog/2024/05/01/alnitak-a-practice-tool-of-charachorder-3d-input-devices-developed-by-tangent/)
+- [Introduction & Development Note](https://andy23512.github.io/blog/alnitak-a-practice-tool-of-charachorder-3d-input-devices-developed-by-tangent/)
 
 ## Features
 

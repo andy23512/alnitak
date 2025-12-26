@@ -408,7 +408,7 @@
     ],
     "source-code": "ソースコード",
     "dev-note": "開発ノート",
-    "dev-note-url": "https://andy23512.github.io/blog/2024/05/01/alnitak-a-practice-tool-of-charachorder-3d-input-devices-developed-by-tangent/",
+    "dev-note-url": "https://andy23512.github.io/blog/alnitak-a-practice-tool-of-charachorder-3d-input-devices-developed-by-tangent/",
     "current-device-layout-hint": {
       "cc1-cc2-default": [
         "デバイスのレイアウトは「CC1/CC2のデフォルト」に設定されています。",
@@ -430,7 +430,7 @@
         [
           "練習の目標を立てたい場合は、復習以外のレッスンで 100 コンボと毎分 100 文字数の両方を同時に達成することを目指してください。（",
           {
-            "url": "https://andy23512.github.io/blog/2025/06/30/tangent-s-suggestions-for-learning-english-character-entry-on-charachorder-3d-input-devices/",
+            "url": "https://andy23512.github.io/blog/tangent-s-suggestions-for-learning-english-character-entry-on-charachorder-3d-input-devices/",
             "text": "CharaChorder 3D 入力デバイスで英語の文字入力を学習するための私のおすすめについては、こちらの記事に書きました"
           },
           "。）"
