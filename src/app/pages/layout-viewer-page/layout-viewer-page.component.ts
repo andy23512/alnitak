@@ -53,7 +53,6 @@ import { IconGuardPipe } from 'src/app/pipes/icon-guard.pipe';
 import { RealTitleCasePipe } from 'src/app/pipes/real-title-case.pipe';
 import { OperatingSystemService } from 'src/app/services/operating-system.service';
 import { DeviceLayoutStore } from 'src/app/stores/device-layout.store';
-import { HighlightSettingStore } from 'src/app/stores/highlight-setting.store';
 import { LayoutViewerKeyboardLayoutStore } from 'src/app/stores/layout-viewer-keyboard-layout.store';
 import { VisibilitySettingStore } from 'src/app/stores/visibility-setting.store';
 import {
@@ -129,7 +128,6 @@ function getHighlightPositionCodes(
 export class LayoutViewerPageComponent {
   @HostBinding('class') classes = 'flex flex-col gap-2 h-full';
 
-  readonly highlightSettingStore = inject(HighlightSettingStore);
   readonly visibilitySettingStore = inject(VisibilitySettingStore);
   readonly keyboardLayoutStore = inject(LayoutViewerKeyboardLayoutStore);
   readonly operatingSystemService = inject(OperatingSystemService);
