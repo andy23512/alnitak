@@ -106,6 +106,7 @@ export const WSK_ACTIONS: Omit<WSKAction, 'type'>[] = [
   { codeId: 124, keyCode: 'Backslash', withShift: true },
   { codeId: 125, keyCode: 'BracketRight', withShift: true },
   { codeId: 126, keyCode: 'Backquote', withShift: true },
+  { codeId: 829, keyCode: 'IntlBackslash' },
 ];
 export const NON_WSK_ACTIONS: Omit<NonWSKAction, 'type'>[] = [
   { codeId: 514, keyCode: 'AltLeft' },
@@ -176,6 +177,7 @@ export const NON_WSK_ACTIONS: Omit<NonWSKAction, 'type'>[] = [
   { codeId: 369, keyCode: 'F22' },
   { codeId: 370, keyCode: 'F23' },
   { codeId: 371, keyCode: 'F24' },
+  { codeId: 796, keyCode: 'Home' },
 ];
 export const NON_KEY_ACTIONS: Omit<NonKeyAction, 'type'>[] = [
   { codeId: 256, actionName: 'NoKeyPressed' },
