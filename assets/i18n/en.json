@@ -186,6 +186,7 @@
       "switch-to-the-a1-layer": "switch to the A1 (primary) layer",
       "switch-to-the-a2-layer": "switch to the A2 (numeric) layer",
       "switch-to-the-a3-layer": "switch to the A3 (functional) layer",
+      "switch-to-the-a4-layer": "switch to the A4 (functional) layer",
       "toggle-shift-modifier": "toggle Shift modifier",
       "toggle-alt-graph-modifier": "toggle Alt Graph modifier"
     }
@@ -196,6 +197,8 @@
     "shift-num-shift-layer": "shift num-shift layer",
     "fn-shift-layer": "fn-shift layer",
     "shift-fn-shift-layer": "shift fn-shift layer",
+    "flag-shift-layer": "flag-shift layer",
+    "shift-flag-shift-layer": "shift flag-shift layer",
     "key-combination-sides-choice": [
       "Tend to choose the key combination from ",
       "{{both sides / same side}}",
@@ -215,6 +218,11 @@
       "Tend to choose the ",
       "{{(left / right)}}",
       " Fn-shift key."
+    ],
+    "flag-shift-side-choice": [
+      "Tend to choose the ",
+      "{{(left / right)}}",
+      " Flag-shift key."
     ],
     "character-key-side-choice": [
       "Tend to choose the character key on the ",
@@ -280,6 +288,7 @@
     "shift": "Shift",
     "numeric-layer": "Numeric Layer",
     "function-layer": "Function Layer",
+    "flag-layer": "Flag Layer",
     "alt-graph": "Alt Graph",
     "alt-left": "Alt / Option (left)",
     "alt-right": "Alt / Option (right) / Alt Graph",
@@ -351,6 +360,8 @@
     "mouse-left-click": "Mouse Left Click",
     "mouse-right-click": "Mouse Right Click",
     "mouse-middle-click": "Mouse Middle Click",
+    "quaternary-keymap-left": "Flag Layer (left)",
+    "quaternary-keymap-right": "Flag Layer (right)",
     "tertiary-keymap-left": "Function Layer (left)",
     "tertiary-keymap-right": "Function Layer (right)",
     "secondary-keymap-left": "Numeric Layer (left)",
@@ -506,7 +517,8 @@
     "layer": {
       "a1": "primary layer",
       "a2": "numeric layer",
-      "a3": "functional layer"
+      "a3": "functional layer",
+      "a4": "flag layer"
     }
   },
   "lesson-page": {

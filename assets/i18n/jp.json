@@ -186,6 +186,7 @@
       "switch-to-the-a1-layer": "A1（基本）レイヤーに切り替える",
       "switch-to-the-a2-layer": "A2（数字）レイヤーに切り替える",
       "switch-to-the-a3-layer": "A3（機能）レイヤーに切り替える",
+      "switch-to-the-a4-layer": "A4（フラグ）レイヤーに切り替える",
       "toggle-shift-modifier": "Shift 修飾キーの切り替え",
       "toggle-alt-graph-modifier": "Alt Graph 修飾キーの切り替え"
     }
@@ -196,6 +197,8 @@
     "shift-num-shift-layer": "shift num-shift レイヤー",
     "fn-shift-layer": "fn-shift レイヤー",
     "shift-fn-shift-layer": "shift fn-shift レイヤー",
+    "flag-shift-layer": "flag-shift レイヤー",
+    "shift-flag-shift-layer": "shift flag-shift レイヤー",
     "key-combination-sides-choice": [
       "",
       "{{(両側 / 同側)}}",
@@ -215,6 +218,11 @@
       "",
       "{{(左側 / 右側)}}",
       "な Fn-shift キーを選択する傾向があります。"
+    ],
+    "flag-shift-side-choice": [
+      "",
+      "{{(左側 / 右側)}}",
+      "な Flag-shift キーを選択する傾向があります。"
     ],
     "character-key-side-choice": [
       "",
@@ -280,6 +288,7 @@
     "shift": "Shift",
     "numeric-layer": "数字レイヤー",
     "function-layer": "機能レイヤー",
+    "flag-layer": "フラグレイヤー",
     "alt-graph": "Alt Graph",
     "alt-left": "Alt / Option（左）",
     "alt-right": "Alt / Option（右）/ Alt Graph",
@@ -509,7 +518,8 @@
     "layer": {
       "a1": "基本レイヤー",
       "a2": "数字レイヤー",
-      "a3": "機能レイヤー"
+      "a3": "機能レイヤー",
+      "a4": "フラグレイヤー"
     }
   },
   "lesson-page": {
