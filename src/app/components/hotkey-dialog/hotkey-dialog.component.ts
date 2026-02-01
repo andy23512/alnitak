@@ -71,6 +71,10 @@ export const HOTKEY_GROUPS = [
         description: 'hotkey.layout-viewer-page.switch-to-the-a3-layer',
       },
       {
+        key: 'alt.4',
+        description: 'hotkey.layout-viewer-page.switch-to-the-a4-layer',
+      },
+      {
         key: 'alt.s',
         description: 'hotkey.layout-viewer-page.toggle-shift-modifier',
       },

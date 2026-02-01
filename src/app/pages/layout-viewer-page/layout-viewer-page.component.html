@@ -5,7 +5,7 @@
     (ngModelChange)="resetSelectedPositions()"
     [hideSingleSelectionIndicator]="true"
   >
-    @for (layer of layers; track $index) {
+    @for (layer of layers(); track $index) {
       <mat-button-toggle
         [value]="layer.value"
         [tooltip]="$any(layerToggleTooltip)"
@@ -220,6 +220,11 @@
                     "counter_3" | iconGuard
                   }}</mat-icon>
                 }
+                @case ("flag-shift") {
+                  <mat-icon class="mx-1 text-alnitak-500">{{
+                    "counter_4" | iconGuard
+                  }}</mat-icon>
+                }
                 @case ("shift") {
                   <mat-icon class="text-alnitak-500">{{
                     "shift" | iconGuard
@@ -238,7 +243,7 @@
   </mat-sidenav-container>
   <div id="print-section" class="hidden">
     @for (altGraphKey of [false, true]; track $index) {
-      @for (layer of layers; track $index) {
+      @for (layer of layers(); track $index) {
         @for (shiftKey of [false, true]; track $index) {
           <section class="relative h-1/2">
             <app-layout

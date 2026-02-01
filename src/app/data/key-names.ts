@@ -171,6 +171,22 @@ export const NON_KEY_ACTION_NAME_2_KEY_NAMES_MAP: Record<
     'mouse middle button press/release',
     '滑鼠中鍵點擊',
   ],
+  QuaternaryKeymapLeft: [
+    'toggle A4 layer (left)',
+    'toggle flag layer (left)',
+    'toggle quaternary layer (left)',
+    'quaternary keymap (left)',
+    'flag-shift (left)',
+    '旗標層切換鍵（左）',
+  ],
+  QuaternaryKeymapRight: [
+    'toggle A4 layer (right)',
+    'toggle flag layer (right)',
+    'toggle quaternary layer (right)',
+    'quaternary keymap (right)',
+    'flag-shift (right)',
+    '旗標層切換鍵（右）',
+  ],
   TertiaryKeymapLeft: [
     'toggle A3 layer (left)',
     'toggle function layer (left)',

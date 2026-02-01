@@ -8,6 +8,7 @@ import {
 
 export const NUM_SHIFT_ACTION_CODES = [550, 551];
 export const FN_SHIFT_ACTION_CODES = [552, 553];
+export const FLAG_SHIFT_ACTION_CODES = [554, 555];
 export const SHIFT_ACTION_CODES = [513, 517];
 export const ALT_GRAPH_ACTION_CODE = 518;
 export const WSK_ACTIONS: Omit<WSKAction, 'type'>[] = [
@@ -185,6 +186,8 @@ export const NON_KEY_ACTIONS: Omit<NonKeyAction, 'type'>[] = [
   { codeId: 562, actionName: 'MouseLeftClick' },
   { codeId: 563, actionName: 'MouseRightClick' },
   { codeId: 564, actionName: 'MouseMiddleClick' },
+  { codeId: 554, actionName: 'QuaternaryKeymapLeft' },
+  { codeId: 555, actionName: 'QuaternaryKeymapRight' },
   { codeId: 552, actionName: 'TertiaryKeymapLeft' },
   { codeId: 553, actionName: 'TertiaryKeymapRight' },
   { codeId: 550, actionName: 'SecondaryKeymapLeft' },

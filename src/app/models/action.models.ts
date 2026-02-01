@@ -16,6 +16,8 @@ export type NonKeyActionName =
   | 'MouseLeftClick'
   | 'MouseRightClick'
   | 'MouseMiddleClick'
+  | 'QuaternaryKeymapLeft'
+  | 'QuaternaryKeymapRight'
   | 'TertiaryKeymapLeft'
   | 'TertiaryKeymapRight'
   | 'SecondaryKeymapLeft'

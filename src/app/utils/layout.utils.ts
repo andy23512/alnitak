@@ -3,6 +3,7 @@ import { ACTION_REPRESENTATION_ICON_MAP } from '../data/action-representation-ic
 import {
   ACTIONS,
   ALT_GRAPH_ACTION_CODE,
+  FLAG_SHIFT_ACTION_CODES,
   FN_SHIFT_ACTION_CODES,
   NUM_SHIFT_ACTION_CODES,
   SHIFT_ACTION_CODES,
@@ -132,6 +133,21 @@ export function getFnShiftKeyPositionCodes(
     );
 }
 
+export function getFlagShiftKeyPositionCodes(
+  deviceLayout: DeviceLayout,
+): number[] {
+  const [primaryLayer, _, __, quaternaryLayer] = deviceLayout.layout;
+  if (!quaternaryLayer) {
+    return [];
+  }
+  return primaryLayer
+    .map((ac, index) => (FLAG_SHIFT_ACTION_CODES.includes(ac) ? index : -1))
+    .filter(
+      (pos) =>
+        pos !== -1 && FLAG_SHIFT_ACTION_CODES.includes(quaternaryLayer[pos]),
+    );
+}
+
 export function getModifierKeyPositionCodeMap(deviceLayout: DeviceLayout) {
   return {
     shift: SHIFT_ACTION_CODES.map((actionCode) =>
@@ -144,6 +160,7 @@ export function getModifierKeyPositionCodeMap(deviceLayout: DeviceLayout) {
       .flat(),
     numShift: getNumShiftKeyPositionCodes(deviceLayout),
     fnShift: getFnShiftKeyPositionCodes(deviceLayout),
+    flagShift: getFlagShiftKeyPositionCodes(deviceLayout),
     altGraph: [ALT_GRAPH_ACTION_CODE]
       .map((actionCode) =>
         getKeyCombinationsFromActionCodes(
@@ -175,6 +192,8 @@ export function getKeyCombinationsFromActionCodes(
               layer = Layer.Secondary;
             } else if (layerIndex === 2) {
               layer = Layer.Tertiary;
+            } else if (layerIndex === 3) {
+              layer = Layer.Quaternary;
             }
             return {
               characterKeyPositionCode: pos,
@@ -301,6 +320,7 @@ export function getHighlightKeyCombinationFromKeyCombinations(
     shift: number[];
     numShift: number[];
     fnShift: number[];
+    flagShift: number[];
     altGraph: number[];
   },
   highlightSetting: HighlightSetting,
@@ -366,6 +386,37 @@ export function getHighlightKeyCombinationFromKeyCombinations(
                   k.characterKeyPositionCode,
                   shiftPositionCode,
                   fnShiftPositionCode,
+                ],
+                score,
+              });
+            }
+          }
+        } else if (k.layer === Layer.Quaternary) {
+          const { preferCharacterKeySide, preferShiftSide } =
+            highlightSetting.shiftAndFlagShiftLayer;
+          for (const shiftPositionCode of modifierKeyPositionCodeMap.shift) {
+            for (const flagShiftPositionCode of modifierKeyPositionCodeMap.flagShift) {
+              let score = 0;
+              if (
+                isPositionAtSide(
+                  k.characterKeyPositionCode,
+                  preferCharacterKeySide,
+                )
+              ) {
+                score += 1;
+              }
+              if (isPositionAtSide(shiftPositionCode, preferShiftSide)) {
+                score += 1;
+              }
+              if (!isPositionAtSide(flagShiftPositionCode, preferShiftSide)) {
+                score += 1;
+              }
+              result.push({
+                ...k,
+                positionCodes: [
+                  k.characterKeyPositionCode,
+                  shiftPositionCode,
+                  flagShiftPositionCode,
                 ],
                 score,
               });
@@ -441,6 +492,32 @@ export function getHighlightKeyCombinationFromKeyCombinations(
               score,
             });
           }
+        } else if (k.layer === Layer.Quaternary) {
+          const { preferFlagShiftSide, preferSides } =
+            highlightSetting.flagShiftLayer;
+          for (const flagShiftPositionCode of modifierKeyPositionCodeMap.flagShift) {
+            let score = 0;
+            if (
+              meetPreferSides(
+                k.characterKeyPositionCode,
+                flagShiftPositionCode,
+                preferSides,
+              )
+            ) {
+              score += 2;
+            }
+            if (isPositionAtSide(flagShiftPositionCode, preferFlagShiftSide)) {
+              score += 1;
+            }
+            result.push({
+              ...k,
+              positionCodes: [
+                k.characterKeyPositionCode,
+                flagShiftPositionCode,
+              ],
+              score,
+            });
+          }
         } else {
           result.push({
             ...k,
@@ -476,13 +553,17 @@ export function getHoldKeys(
   shiftKey: boolean,
   altGraphKey: boolean,
 ) {
-  const holdKeys: ('num-shift' | 'fn' | 'shift' | 'alt-gr')[] = [];
+  const holdKeys: ('num-shift' | 'fn' | 'flag-shift' | 'shift' | 'alt-gr')[] =
+    [];
   switch (layer) {
     case Layer.Secondary:
       holdKeys.push('num-shift');
       break;
     case Layer.Tertiary:
       holdKeys.push('fn');
+      break;
+    case Layer.Quaternary:
+      holdKeys.push('flag-shift');
   }
   if (shiftKey) {
     holdKeys.push('shift');

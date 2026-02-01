@@ -174,4 +174,81 @@
       </li>
     </ul>
   </section>
+  <section class="space-y-2">
+    <h4 class="text-lg">
+      {{
+        "layout-highlight-setting.flag-shift-layer" | translate | realTitleCase
+      }}
+    </h4>
+    <ul>
+      <li>
+        {{
+          "layout-highlight-setting.key-combination-sides-choice.0" | translate
+        }}
+        <app-sides-dropdown
+          [value]="highlightSettingStore.flagShiftLayer().preferSides"
+          (select)="
+            setHighlightSetting('flagShiftLayer', 'preferSides', $event)
+          "
+        ></app-sides-dropdown>
+        {{
+          "layout-highlight-setting.key-combination-sides-choice.2" | translate
+        }}
+      </li>
+      <li>
+        {{ "layout-highlight-setting.flag-shift-side-choice.0" | translate }}
+        <app-key-side-dropdown
+          [value]="highlightSettingStore.flagShiftLayer().preferFlagShiftSide"
+          (select)="
+            setHighlightSetting('flagShiftLayer', 'preferFlagShiftSide', $event)
+          "
+        ></app-key-side-dropdown>
+        {{ "layout-highlight-setting.flag-shift-side-choice.2" | translate }}
+      </li>
+    </ul>
+  </section>
+  <section class="space-y-2">
+    <h4 class="text-lg">
+      {{
+        "layout-highlight-setting.shift-flag-shift-layer"
+          | translate
+          | realTitleCase
+      }}
+    </h4>
+    <ul>
+      <li>
+        {{ "layout-highlight-setting.character-key-side-choice.0" | translate }}
+        <app-key-side-dropdown
+          [value]="
+            highlightSettingStore.shiftAndFlagShiftLayer()
+              .preferCharacterKeySide
+          "
+          (select)="
+            setHighlightSetting(
+              'shiftAndFlagShiftLayer',
+              'preferCharacterKeySide',
+              $event
+            )
+          "
+        ></app-key-side-dropdown>
+        {{ "layout-highlight-setting.character-key-side-choice.2" | translate }}
+      </li>
+      <li>
+        {{ "layout-highlight-setting.shift-side-choice.0" | translate }}
+        <app-key-side-dropdown
+          [value]="
+            highlightSettingStore.shiftAndFlagShiftLayer().preferShiftSide
+          "
+          (select)="
+            setHighlightSetting(
+              'shiftAndFlagShiftLayer',
+              'preferShiftSide',
+              $event
+            )
+          "
+        ></app-key-side-dropdown>
+        {{ "layout-highlight-setting.shift-side-choice.2" | translate }}
+      </li>
+    </ul>
+  </section>
 </section>

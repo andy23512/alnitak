@@ -18,6 +18,7 @@ export type Icon =
   | 'counter_1'
   | 'counter_2'
   | 'counter_3'
+  | 'counter_4'
   | 'delete'
   | 'function'
   | 'heap_snapshot_multiple'

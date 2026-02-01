@@ -22,4 +22,12 @@ export interface HighlightSetting {
     preferShiftSide: PreferKeySide;
     preferCharacterKeySide: PreferKeySide;
   };
+  flagShiftLayer: {
+    preferSides: PreferSides;
+    preferFlagShiftSide: PreferKeySide;
+  };
+  shiftAndFlagShiftLayer: {
+    preferShiftSide: PreferKeySide;
+    preferCharacterKeySide: PreferKeySide;
+  };
 }

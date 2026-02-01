@@ -84,6 +84,9 @@ function getHighlightPositionCodes(
     case Layer.Tertiary:
       highlightPositionCodes.push(...modifierKeyPositionCodeMap.fnShift);
       break;
+    case Layer.Quaternary:
+      highlightPositionCodes.push(...modifierKeyPositionCodeMap.flagShift);
+      break;
   }
   if (shiftKey) {
     highlightPositionCodes.push(...modifierKeyPositionCodeMap.shift);
@@ -137,6 +140,8 @@ export class LayoutViewerPageComponent {
   readonly selectedKeyboardLayoutId = this.keyboardLayoutStore.selectedId;
   readonly keyboardLayouts = this.keyboardLayoutStore.entities;
   readonly deviceLayout = inject(DeviceLayoutStore).selectedEntity;
+  readonly deviceLayoutLayerNumber =
+    inject(DeviceLayoutStore).selectedEntityLayerNumber;
 
   readonly keyboardLayoutSearchQuery = signal('');
   readonly searchMenuIsOpen = signal(false);
@@ -167,31 +172,46 @@ export class LayoutViewerPageComponent {
   });
 
   readonly Layer = Layer;
-  readonly layers: {
-    value: Layer;
-    name: string;
-    tooltip: string;
-    hotkey: string;
-  }[] = [
+  readonly layers = computed<
     {
-      value: Layer.Primary,
-      name: 'A1',
-      tooltip: 'layout-viewer-page.layer.a1',
-      hotkey: 'alt.1',
-    },
-    {
-      value: Layer.Secondary,
-      name: 'A2',
-      tooltip: 'layout-viewer-page.layer.a2',
-      hotkey: 'alt.2',
-    },
-    {
-      value: Layer.Tertiary,
-      name: 'A3',
-      tooltip: 'layout-viewer-page.layer.a3',
-      hotkey: 'alt.3',
-    },
-  ];
+      value: Layer;
+      name: string;
+      tooltip: string;
+      hotkey: string;
+    }[]
+  >(() => {
+    const deviceLayoutLayerNumber = this.deviceLayoutLayerNumber();
+    if (!deviceLayoutLayerNumber) {
+      return [];
+    }
+    const allLayers = [
+      {
+        value: Layer.Primary,
+        name: 'A1',
+        tooltip: 'layout-viewer-page.layer.a1',
+        hotkey: 'alt.1',
+      },
+      {
+        value: Layer.Secondary,
+        name: 'A2',
+        tooltip: 'layout-viewer-page.layer.a2',
+        hotkey: 'alt.2',
+      },
+      {
+        value: Layer.Tertiary,
+        name: 'A3',
+        tooltip: 'layout-viewer-page.layer.a3',
+        hotkey: 'alt.3',
+      },
+      {
+        value: Layer.Quaternary,
+        name: 'A4',
+        tooltip: 'layout-viewer-page.layer.a4',
+        hotkey: 'alt.4',
+      },
+    ];
+    return allLayers.slice(0, deviceLayoutLayerNumber);
+  });
   currentLayer = signal(Layer.Primary);
   shiftKey = signal(false);
   altGraphKey = signal(false);
@@ -225,17 +245,20 @@ export class LayoutViewerPageComponent {
     const keyLabelMap: Record<number, KeyLabel[]> = {};
     const deviceLayout = this.deviceLayout();
     const keyboardLayout = this.keyboardLayout();
-    if (!deviceLayout || !keyboardLayout) {
+    const deviceLayoutLayerNumber = this.deviceLayoutLayerNumber();
+    if (!deviceLayout || !keyboardLayout || !deviceLayoutLayerNumber) {
       return null;
     }
     for (const positionIndex of range(0, 90)) {
       const keyLabels: KeyLabel[] = [];
-      for (const layerIndex of range(0, 3)) {
+      for (const layerIndex of range(0, deviceLayoutLayerNumber)) {
         let layer = Layer.Primary;
         if (layerIndex === 1) {
           layer = Layer.Secondary;
         } else if (layerIndex === 2) {
           layer = Layer.Tertiary;
+        } else if (layerIndex === 3) {
+          layer = Layer.Quaternary;
         }
         const actionCodeId = deviceLayout.layout[layerIndex][positionIndex];
         const action = ACTIONS.find((a) => a.codeId === actionCodeId);
@@ -416,7 +439,8 @@ export class LayoutViewerPageComponent {
   readonly keyListForSearch = computed(() => {
     const deviceLayout = this.deviceLayout();
     const keyboardLayout = this.keyboardLayout();
-    if (!deviceLayout || !keyboardLayout) {
+    const deviceLayoutLayerNumber = this.deviceLayoutLayerNumber();
+    if (!deviceLayout || !keyboardLayout || !deviceLayoutLayerNumber) {
       return null;
     }
     const actionCodeToPositionsMap: Record<
@@ -430,12 +454,14 @@ export class LayoutViewerPageComponent {
       withAltGraph?: boolean;
     }[] = [];
     for (const positionIndex of range(0, 90)) {
-      for (const layerIndex of range(0, 3)) {
+      for (const layerIndex of range(0, deviceLayoutLayerNumber)) {
         let layer = Layer.Primary;
         if (layerIndex === 1) {
           layer = Layer.Secondary;
         } else if (layerIndex === 2) {
           layer = Layer.Tertiary;
+        } else if (layerIndex === 3) {
+          layer = Layer.Quaternary;
         }
         const actionCodeId = deviceLayout.layout[layerIndex][positionIndex];
         if (!actionCodeToPositionsMap[actionCodeId]) {
@@ -576,7 +602,12 @@ export class LayoutViewerPageComponent {
     this.searchMenuIsOpen.set(false);
     this.shiftKey.set(Boolean(withShift));
     this.altGraphKey.set(Boolean(withAltGraph));
-    for (const layer of [Layer.Primary, Layer.Secondary, Layer.Tertiary]) {
+    for (const layer of [
+      Layer.Primary,
+      Layer.Secondary,
+      Layer.Tertiary,
+      Layer.Quaternary,
+    ]) {
       if (positions[layer]) {
         this.currentLayer.set(layer);
         this.selectedPositions.set(positions[layer] ?? []);
@@ -616,13 +647,16 @@ export class LayoutViewerPageComponent {
     if (altKey) {
       switch (code) {
         case 'Digit1':
-          this.currentLayer.set(Layer.Primary);
+          this.setCurrentLayer(Layer.Primary);
           break;
         case 'Digit2':
-          this.currentLayer.set(Layer.Secondary);
+          this.setCurrentLayer(Layer.Secondary);
           break;
         case 'Digit3':
-          this.currentLayer.set(Layer.Tertiary);
+          this.setCurrentLayer(Layer.Tertiary);
+          break;
+        case 'Digit4':
+          this.setCurrentLayer(Layer.Quaternary);
           break;
         case 'KeyS':
           this.shiftKey.set(!this.shiftKey());
@@ -631,6 +665,14 @@ export class LayoutViewerPageComponent {
           this.altGraphKey.set(!this.altGraphKey());
           break;
       }
+    }
+  }
+
+  private setCurrentLayer(layer: Layer) {
+    const layers = this.layers();
+    const targetLayer = layers.find((l) => l.value === layer);
+    if (targetLayer) {
+      this.currentLayer.set(targetLayer.value);
     }
   }
 }

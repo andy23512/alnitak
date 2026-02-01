@@ -32,6 +32,7 @@ import { LayoutComponent } from 'src/app/components/layout/layout.component';
 import { SpeedometerComponent } from 'src/app/components/speedometer/speedometer.component';
 import {
   ALT_GRAPH_KEY_LABEL,
+  FLAG_SHIFT_KEY_LABEL,
   FN_SHIFT_KEY_LABEL,
   NUM_SHIFT_KEY_LABEL,
   SHIFT_KEY_LABEL,
@@ -190,6 +191,7 @@ export class LessonPageComponent implements OnInit, OnDestroy {
     let addShiftLabel = false;
     let addNumShiftLabel = false;
     let addFnShiftLabel = false;
+    let addFlagShiftLabel = false;
     let addAltGraphLabel = false;
     lessonCharactersDevicePositionCodes.forEach((v) => {
       v?.characterDeviceKeys?.forEach(
@@ -215,6 +217,9 @@ export class LessonPageComponent implements OnInit, OnDestroy {
           }
           if (layer === Layer.Tertiary && !addFnShiftLabel) {
             addFnShiftLabel = true;
+          }
+          if (layer === Layer.Quaternary && !addFlagShiftLabel) {
+            addFlagShiftLabel = true;
           }
           if (altGraphKey && !addAltGraphLabel) {
             addAltGraphLabel = true;
@@ -246,6 +251,15 @@ export class LessonPageComponent implements OnInit, OnDestroy {
           keyLabelMap[pos] = [FN_SHIFT_KEY_LABEL];
         } else {
           keyLabelMap[pos].push(FN_SHIFT_KEY_LABEL);
+        }
+      });
+    }
+    if (addFlagShiftLabel) {
+      modifierKeyPositionCodeMap.flagShift.forEach((pos) => {
+        if (!keyLabelMap[pos]) {
+          keyLabelMap[pos] = [FLAG_SHIFT_KEY_LABEL];
+        } else {
+          keyLabelMap[pos].push(FLAG_SHIFT_KEY_LABEL);
         }
       });
     }

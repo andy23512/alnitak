@@ -35,6 +35,15 @@ export const FN_SHIFT_KEY_LABEL: KeyLabel = {
   title: 'key-label.function-layer',
 };
 
+export const FLAG_SHIFT_KEY_LABEL: KeyLabel = {
+  type: KeyLabelType.Icon,
+  c: 'counter_4',
+  layer: null,
+  shiftKey: null,
+  altGraphKey: null,
+  title: 'key-label.flag-layer',
+};
+
 export const ALT_GRAPH_KEY_LABEL: KeyLabel = {
   type: KeyLabelType.String,
   c: 'ALT(GR)',
@@ -285,6 +294,16 @@ export const NON_KEY_ACTION_NAME_2_RAW_KEY_LABEL_MAP: Record<
     type: KeyLabelType.Icon,
     c: 'touchpad_mouse',
     title: 'key-label.mouse-middle-click',
+  },
+  QuaternaryKeymapLeft: {
+    type: KeyLabelType.Icon,
+    c: 'counter_4',
+    title: 'key-label.quaternary-keymap-left',
+  },
+  QuaternaryKeymapRight: {
+    type: KeyLabelType.Icon,
+    c: 'counter_4',
+    title: 'key-label.quaternary-keymap-right',
   },
   TertiaryKeymapLeft: {
     type: KeyLabelType.Icon,

@@ -185,6 +185,7 @@
       "switch-to-the-a1-layer": "切換到 A1（主要）層",
       "switch-to-the-a2-layer": "切換到 A2（數字）層",
       "switch-to-the-a3-layer": "切換到 A3（功能）層",
+      "switch-to-the-a4-layer": "切換到 A4（旗標）層",
       "toggle-shift-modifier": "開啟或關閉 Shift 修飾鍵",
       "toggle-alt-graph-modifier": "開啟或關閉 Alt Graph 修飾鍵"
     }
@@ -195,6 +196,8 @@
     "shift-num-shift-layer": "shift num-shift 層",
     "fn-shift-layer": "fn-shift 層",
     "shift-fn-shift-layer": "shift fn-shift 層",
+    "flag-shift-layer": "flag-shift 層",
+    "shift-flag-shift-layer": "shift flag-shift 層",
     "key-combination-sides-choice": [
       "傾向從",
       "{{兩邊 / 同一邊}}",
@@ -207,6 +210,11 @@
       "的 Num-shift 鍵。"
     ],
     "fn-shift-side-choice": ["傾向選擇", "{{左邊 / 右邊}}", "的 Fn-shift 鍵。"],
+    "flag-shift-side-choice": [
+      "傾向選擇",
+      "{{左邊 / 右邊}}",
+      "的 Flag-shift 鍵。"
+    ],
     "character-key-side-choice": ["傾向選擇", "{{左邊 / 右邊}}", "的字元鍵。"]
   },
   "layout-song-help-dialog": {
@@ -267,6 +275,7 @@
     "shift": "Shift",
     "numeric-layer": "數字層",
     "function-layer": "功能層",
+    "flag-layer": "旗標層",
     "alt-graph": "Alt Graph",
     "alt-left": "Alt / Option（左）",
     "alt-right": "Alt / Option（右）/ Alt Graph",
@@ -483,7 +492,8 @@
     "layer": {
       "a1": "主要層",
       "a2": "數字層",
-      "a3": "功能層"
+      "a3": "功能層",
+      "a4": "旗標層"
     }
   },
   "lesson-page": {

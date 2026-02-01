@@ -2,7 +2,14 @@ import {
   withDevtools,
   withStorageSync,
 } from '@angular-architects/ngrx-toolkit';
-import { patchState, signalStore, withHooks, withMethods } from '@ngrx/signals';
+import { computed } from '@angular/core';
+import {
+  patchState,
+  signalStore,
+  withComputed,
+  withHooks,
+  withMethods,
+} from '@ngrx/signals';
 import {
   addEntity,
   setAllEntities,
@@ -22,6 +29,15 @@ export const DeviceLayoutStore = signalStore(
   withStorageSync('deviceLayout'),
   withEntities<DeviceLayout>(),
   withSelectedEntity(),
+  withComputed((state) => ({
+    selectedEntityLayerNumber: computed((): number | null => {
+      const selectedEntity = state.selectedEntity();
+      if (!selectedEntity) {
+        return null;
+      }
+      return selectedEntity.layout.length;
+    }),
+  })),
   withMethods((store) => ({
     load() {
       patchState(
