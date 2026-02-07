@@ -40,6 +40,7 @@
     "combo-unit": "連擊",
     "cancel-action": "取消",
     "delete-confirm-button": "是，我確定要刪除。",
+    "delete-single-confirm-button": "是，我確定要刪除。",
     "close-action": "關閉",
     "left-side": "左邊",
     "right-side": "右邊",
@@ -111,7 +112,8 @@
         "的備份檔案）。"
       ],
       "file-input-aria-label": "選擇要匯入到此工具的裝置佈局檔案用的檔案輸入框",
-      "select-device-layout-step": "選擇一個已匯入的裝置佈局。"
+      "select-device-layout-step": "選擇一個已匯入的裝置佈局。",
+      "single-device-layout-deleted-message": "裝置佈局「{{deviceLayoutName}}」已被刪除。"
     }
   },
   "chord-page": {
@@ -135,6 +137,13 @@
   },
   "delete-device-layouts-confirm-dialog": {
     "description": "你確定要刪除所有已匯入的裝置佈局嗎？\n（刪除之後，裝置佈局設定會改為 CC1/CC2 的預設佈局。）"
+  },
+  "delete-device-layout-confirm-dialog": {
+    "description": [
+      "你確定要刪除裝置佈局「",
+      "{{deviceLayoutName}}",
+      "」嗎？\n(刪除之後，所選的裝置佈局會改為 CC1/CC2 的預設佈局。)"
+    ]
   },
   "hotkey-dialog": {
     "title": "快捷鍵"

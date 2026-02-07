@@ -35,21 +35,35 @@
   </li>
   <li>
     {{ "settings.device-layout.select-device-layout-step" | translate }}
-    <mat-form-field class="my-2 w-full">
-      <mat-select
-        class="!font-bold !text-alnitak-500"
-        [value]="selectedDeviceLayoutId()"
-        (valueChange)="setSelectedDeviceLayoutId($event)"
-      >
-        @for (
-          deviceLayout of translatedDeviceLayouts();
-          track deviceLayout.id
-        ) {
-          <mat-option [value]="deviceLayout.id">{{
-            deviceLayout.name
-          }}</mat-option>
-        }
-      </mat-select>
-    </mat-form-field>
+    <div class="my-2 flex">
+      <mat-form-field class="w-72 flex-none">
+        <mat-select
+          class="!font-bold !text-alnitak-500"
+          [value]="selectedDeviceLayoutId()"
+          (valueChange)="setSelectedDeviceLayoutId($event)"
+        >
+          @for (
+            deviceLayout of translatedDeviceLayouts();
+            track deviceLayout.id
+          ) {
+            <mat-option [value]="deviceLayout.id">{{
+              deviceLayout.name
+            }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      @if (!selectedDeviceLayoutIsDefault()) {
+        <button
+          class="flex-none"
+          mat-icon-button
+          matSuffix
+          aria-label="Delete selected device layout"
+          (click)="onDeleteDeviceLayoutButtonClick($event)"
+          color="warn"
+        >
+          <mat-icon>{{ "delete" | iconGuard }}</mat-icon>
+        </button>
+      }
+    </div>
   </li>
 </ol>

@@ -41,6 +41,7 @@
     "combo-unit-plural": "コンボ",
     "cancel-action": "キャンセル",
     "delete-confirm-button": "はい、削除します。",
+    "delete-single-confirm-button": "はい、削除します。",
     "close-action": "閉じる",
     "left-side": "左側",
     "right-side": "右側",
@@ -112,7 +113,8 @@
         "サイトのバックアップファイル）をインポートしてください。"
       ],
       "file-input-aria-label": "このツールにインポートするデバイスレイアウトファイルを選択するためのファイル入力",
-      "select-device-layout-step": "インポートしたデバイスレイアウトを選択してください。"
+      "select-device-layout-step": "インポートしたデバイスレイアウトを選択してください。",
+      "single-device-layout-deleted-message": "デバイスレイアウト「{{deviceLayoutName}}」が削除されました。"
     }
   },
   "chord-page": {
@@ -136,6 +138,13 @@
   },
   "delete-device-layouts-confirm-dialog": {
     "description": "インポートしたデバイスレイアウトをすべて削除してもよろしいですか？\n（削除後、選択されているデバイスレイアウトは CC1/CC2 のデフォルトに変更されます）"
+  },
+  "delete-device-layout-confirm-dialog": {
+    "description": [
+      "デバイスレイアウト「",
+      "{{deviceLayoutName}}",
+      "」を削除してもよろしいですか？\n（削除後、選択されているデバイスレイアウトは CC1/CC2 のデフォルトに変更されます）"
+    ]
   },
   "hotkey-dialog": {
     "title": "ホットキー"

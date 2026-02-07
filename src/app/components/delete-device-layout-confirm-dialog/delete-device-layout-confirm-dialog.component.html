@@ -1,0 +1,20 @@
+<mat-dialog-content class="whitespace-pre-wrap"
+  >{{ "delete-device-layout-confirm-dialog.description.0" | translate
+  }}{{ data.deviceLayoutName
+  }}{{
+    "delete-device-layout-confirm-dialog.description.2" | translate
+  }}</mat-dialog-content
+>
+<mat-dialog-actions align="end">
+  <button type="button" mat-button mat-dialog-close>
+    {{ "general.cancel-action" | translate | realTitleCase }}
+  </button>
+  <button
+    type="button"
+    mat-button
+    [color]="'warn'"
+    [mat-dialog-close]="{ confirmed: true }"
+  >
+    {{ "general.delete-single-confirm-button" | translate | realTitleCase }}
+  </button>
+</mat-dialog-actions>
