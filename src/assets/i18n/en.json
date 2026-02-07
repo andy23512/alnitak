@@ -280,7 +280,8 @@
     "layout-thumb-3-switch": "layout - thumb 3 switch",
     "combo-counter": "combo counter",
     "speedometer": "speedometer",
-    "home-page-chording-animation": "home page chording animation"
+    "home-page-chording-animation": "home page chording animation",
+    "entry-error-tooltip": "entry error tooltip"
   },
   "topic": {
     "letters": "Letters",

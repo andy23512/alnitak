@@ -6,4 +6,5 @@ export interface VisibilitySetting {
   comboCounter: boolean;
   speedometer: boolean;
   homePageChordingAnimation: boolean;
+  entryErrorTooltip: boolean;
 }

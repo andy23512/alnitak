@@ -23,6 +23,7 @@
       #errorTooltip="matTooltip"
       matTooltip="You typed: {{ lessonStore.lastErrorComponent() }}"
       matTooltipPosition="below"
+      [matTooltipDisabled]="!visibilitySettingStore.entryErrorTooltip()"
     >
       @for (character of lessonStore.queue(); track $index) {
         <span [ngClass]="lessonStore.error() ? 'first:text-red-500 ' : null">{{

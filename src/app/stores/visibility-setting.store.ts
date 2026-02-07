@@ -13,6 +13,7 @@ const INITIAL_VISIBILITY_SETTING: VisibilitySetting = {
   comboCounter: true,
   speedometer: true,
   homePageChordingAnimation: false,
+  entryErrorTooltip: true,
 };
 
 export const VisibilitySettingStore = signalStore(

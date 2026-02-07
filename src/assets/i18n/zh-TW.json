@@ -267,7 +267,8 @@
     "layout-thumb-3-switch": "佈局 - 拇指第三搖桿",
     "combo-counter": "連擊計數器",
     "speedometer": "速度計",
-    "home-page-chording-animation": "首頁的和弦動畫"
+    "home-page-chording-animation": "首頁的和弦動畫",
+    "entry-error-tooltip": "錯誤輸入提示"
   },
   "topic": {
     "letters": "字母",

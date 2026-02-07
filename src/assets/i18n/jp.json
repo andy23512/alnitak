@@ -280,7 +280,8 @@
     "layout-thumb-3-switch": "レイアウト - 親指後列スイッチ",
     "combo-counter": "コンボカウンター",
     "speedometer": "スピードメーター",
-    "home-page-chording-animation": "ホームページの和音入力アニメーション"
+    "home-page-chording-animation": "ホームページの和音入力アニメーション",
+    "entry-error-tooltip": "入力エラーのツールチップ"
   },
   "topic": {
     "letters": "アルファベット",
