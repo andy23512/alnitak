@@ -494,6 +494,9 @@
   "layout-viewer-page": {
     "toggle-shift-modifier": "Shift 修飾キーの切り替え",
     "toggle-alt-graph-modifier": "Alt Graph 修飾キーの切り替え",
+    "device-layout": {
+      "label": "デバイスレイアウト"
+    },
     "os-keyboard-layout": {
       "label": "OSキーボードレイアウト",
       "search-placeholder": "レイアウトを検索...",
