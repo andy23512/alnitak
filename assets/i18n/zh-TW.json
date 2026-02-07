@@ -33,6 +33,7 @@
     "character-entry-speed-unit": "字元/分鐘",
     "chord-speed-unit": "和弦/分鐘",
     "start-action": "開始",
+    "submit-action": "送出",
     "character-tooltip": "字元：{{character}}",
     "action-code-tooltip": "操作代碼：{{actionCode}}",
     "choose-file-action": "選擇檔案",
@@ -536,5 +537,9 @@
   "statistics-page": {
     "metric": "指標"
   },
-  "layout-text-guide": "{{hand}}{{switch}}{{direction}}鍵"
+  "layout-text-guide": "{{hand}}{{switch}}{{direction}}鍵",
+  "device-layout-import-dialog": {
+    "title": "匯入裝置佈局",
+    "name-label": "名稱"
+  }
 }
