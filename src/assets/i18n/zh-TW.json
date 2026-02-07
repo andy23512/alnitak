@@ -478,6 +478,9 @@
   "layout-viewer-page": {
     "toggle-shift-modifier": "切換 Shift 修飾鍵",
     "toggle-alt-graph-modifier": "切換 Alt Graph 修飾鍵",
+    "device-layout": {
+      "label": "裝置佈局"
+    },
     "os-keyboard-layout": {
       "label": "作業系統鍵盤佈局",
       "search-placeholder": "搜尋佈局...",

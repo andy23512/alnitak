@@ -64,6 +64,7 @@ export type Icon =
   | 'switch_left'
   | 'switch_right'
   | 'terminal'
+  | 'thumb_up'
   | 'topic'
   | 'touchpad_mouse'
   | 'trending_up'

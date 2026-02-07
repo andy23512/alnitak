@@ -8,6 +8,7 @@ import {
   inject,
   signal,
 } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
@@ -53,6 +54,7 @@ import { IconGuardPipe } from 'src/app/pipes/icon-guard.pipe';
 import { RealTitleCasePipe } from 'src/app/pipes/real-title-case.pipe';
 import { OperatingSystemService } from 'src/app/services/operating-system.service';
 import { DeviceLayoutStore } from 'src/app/stores/device-layout.store';
+import { LanguageSettingStore } from 'src/app/stores/language-setting.store';
 import { LayoutViewerKeyboardLayoutStore } from 'src/app/stores/layout-viewer-keyboard-layout.store';
 import { VisibilitySettingStore } from 'src/app/stores/visibility-setting.store';
 import {
@@ -135,11 +137,21 @@ export class LayoutViewerPageComponent {
   readonly keyboardLayoutStore = inject(LayoutViewerKeyboardLayoutStore);
   readonly operatingSystemService = inject(OperatingSystemService);
   readonly translateService = inject(TranslateService);
+  private readonly deviceLayoutStore = inject(DeviceLayoutStore);
+  readonly languageSettingStore = inject(LanguageSettingStore);
 
+  readonly selectedDeviceLayoutId = this.deviceLayoutStore.selectedId;
   readonly keyboardLayout = this.keyboardLayoutStore.selectedEntity;
   readonly selectedKeyboardLayoutId = this.keyboardLayoutStore.selectedId;
   readonly keyboardLayouts = this.keyboardLayoutStore.entities;
-  readonly deviceLayout = inject(DeviceLayoutStore).selectedEntity;
+  readonly deviceLayout = this.deviceLayoutStore.selectedEntity;
+  public deviceLayouts = this.deviceLayoutStore.entities;
+  public cc1cc2DefaultLayoutName = toSignal(
+    this.translateService.stream('device-layout.cc1-cc2-default'),
+  );
+  public m4gDefaultLayoutName = toSignal(
+    this.translateService.stream('device-layout.m4g-default'),
+  );
   readonly deviceLayoutLayerNumber =
     inject(DeviceLayoutStore).selectedEntityLayerNumber;
 
@@ -147,6 +159,21 @@ export class LayoutViewerPageComponent {
   readonly searchMenuIsOpen = signal(false);
   readonly keySearchQuery = signal('');
   readonly selectedPositions = signal<number[]>([]);
+  public translatedDeviceLayouts = computed(() => {
+    const _ = this.languageSettingStore.uiLanguage();
+    const deviceLayouts = this.deviceLayouts();
+    const cc1cc2DefaultLayoutName = this.cc1cc2DefaultLayoutName();
+    const m4gDefaultLayoutName = this.m4gDefaultLayoutName();
+    return deviceLayouts.map((deviceLayout) => ({
+      ...deviceLayout,
+      name:
+        'default' === deviceLayout.id
+          ? cc1cc2DefaultLayoutName
+          : 'm4g-default' === deviceLayout.id
+            ? m4gDefaultLayoutName
+            : deviceLayout.name,
+    }));
+  });
 
   deviceLayoutDisplayName = computed(() => {
     const deviceLayout = this.deviceLayout();
@@ -666,6 +693,18 @@ export class LayoutViewerPageComponent {
           break;
       }
     }
+  }
+
+  public setSelectedDeviceLayoutId(deviceLayoutId: string) {
+    this.deviceLayoutStore.setSelectedId(deviceLayoutId);
+  }
+
+  public onThumb3SwitchToggleButtonClick(event: MouseEvent) {
+    event.stopPropagation();
+    this.visibilitySettingStore.set(
+      'layoutThumb3Switch',
+      !this.visibilitySettingStore.layoutThumb3Switch(),
+    );
   }
 
   private setCurrentLayer(layer: Layer) {

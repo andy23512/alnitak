@@ -497,6 +497,9 @@
   "layout-viewer-page": {
     "toggle-shift-modifier": "toggle Shift modifier",
     "toggle-alt-graph-modifier": "toggle Alt Graph modifier",
+    "device-layout": {
+      "label": "device layout"
+    },
     "os-keyboard-layout": {
       "label": "OS keyboard layout",
       "search-placeholder": "Find layout...",

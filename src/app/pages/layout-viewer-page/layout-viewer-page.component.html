@@ -1,4 +1,4 @@
-<section class="flex flex-none items-center gap-2 bg-gray-700">
+<section class="flex flex-none flex-wrap items-center gap-2 bg-gray-700">
   <mat-button-toggle-group
     class="flex-none opacity-80"
     [(ngModel)]="currentLayer"
@@ -56,7 +56,35 @@
     <kbd [innerHTML]="'alt+a' | hotkeysShortcut: ' + '"></kbd>
   </ng-template>
   <div class="flex-[1_0_0]"></div>
-  <mat-form-field class="w-96 flex-[0_1_auto]" [subscriptSizing]="'dynamic'">
+  <mat-form-field class="w-72 flex-[0_1_auto]" [subscriptSizing]="'dynamic'">
+    <mat-label>{{
+      "layout-viewer-page.device-layout.label" | translate | realTitleCase
+    }}</mat-label>
+    <mat-select
+      class="!font-bold !text-alnitak-200"
+      [value]="selectedDeviceLayoutId()"
+      (valueChange)="setSelectedDeviceLayoutId($event)"
+    >
+      @for (deviceLayout of translatedDeviceLayouts(); track deviceLayout.id) {
+        <mat-option [value]="deviceLayout.id">{{
+          deviceLayout.name
+        }}</mat-option>
+      }
+    </mat-select>
+    <mat-button-toggle
+      matSuffix
+      [checked]="visibilitySettingStore.layoutThumb3Switch()"
+      (click)="onThumb3SwitchToggleButtonClick($event)"
+      class="relative"
+    >
+      <mat-icon class="relative top-1">{{ "thumb_up" | iconGuard }}</mat-icon>
+      <span
+        class="absolute left-1/2 top-1 inline-block h-4 -translate-x-1/2 text-sm"
+        >3rd</span
+      >
+    </mat-button-toggle>
+  </mat-form-field>
+  <mat-form-field class="w-72 flex-[0_1_auto]" [subscriptSizing]="'dynamic'">
     <mat-label>{{
       "layout-viewer-page.os-keyboard-layout.label" | translate | realTitleCase
     }}</mat-label>
