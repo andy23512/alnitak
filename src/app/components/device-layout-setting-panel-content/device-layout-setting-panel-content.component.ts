@@ -109,13 +109,18 @@ export class DeviceLayoutSettingPanelContentComponent {
       if (!layoutItem) {
         return;
       }
-      this.matDialog.open(DeviceLayoutImportDialogComponent, {
-        data: {
-          fileName: file.name,
-          layout: layoutItem.layout,
-        },
-        width: '400px',
-      });
+      this.matDialog
+        .open(DeviceLayoutImportDialogComponent, {
+          data: {
+            fileName: file.name,
+            layout: layoutItem.layout,
+          },
+          width: '400px',
+        })
+        .afterClosed()
+        .subscribe(() => {
+          this.fileInput.nativeElement.value = '';
+        });
     };
 
     reader.readAsText(fileInputElement.files[0]);
