@@ -33,6 +33,7 @@
     "character-entry-speed-unit": "文字数毎分",
     "chord-speed-unit": "和音毎分",
     "start-action": "開始",
+    "submit-action": "送信",
     "character-tooltip": "文字：{{character}}",
     "action-code-tooltip": "操作コード：{{actionCode}}",
     "choose-file-action": "ファイルを選択",
@@ -562,5 +563,9 @@
   "statistics-page": {
     "metric": "メトリック"
   },
-  "layout-text-guide": "{{hand}}{{switch}}{{direction}}キー"
+  "layout-text-guide": "{{hand}}{{switch}}{{direction}}キー",
+  "device-layout-import-dialog": {
+    "title": "デバイスレイアウトのインポート",
+    "name-label": "名前"
+  }
 }

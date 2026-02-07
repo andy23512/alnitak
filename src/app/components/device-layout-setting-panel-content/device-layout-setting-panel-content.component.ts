@@ -9,16 +9,16 @@ import {
 } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { MatButton } from '@angular/material/button';
+import { MatDialog } from '@angular/material/dialog';
 import { MatFormField } from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
 import { MatOption, MatSelect } from '@angular/material/select';
-import { patchState } from '@ngrx/signals';
-import { addEntity } from '@ngrx/signals/entities';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { IconGuardPipe } from 'src/app/pipes/icon-guard.pipe';
 import { RealTitleCasePipe } from 'src/app/pipes/real-title-case.pipe';
 import { DeviceLayoutStore } from 'src/app/stores/device-layout.store';
 import { LanguageSettingStore } from 'src/app/stores/language-setting.store';
+import { DeviceLayoutImportDialogComponent } from '../device-layout-import-dialog/device-layout-import-dialog.component';
 
 @Component({
   selector: 'app-device-layout-setting-panel-content',
@@ -40,6 +40,8 @@ export class DeviceLayoutSettingPanelContentComponent {
   private deviceLayoutStore = inject(DeviceLayoutStore);
   readonly translateService = inject(TranslateService);
   readonly languageSettingStore = inject(LanguageSettingStore);
+  readonly matDialog = inject(MatDialog);
+
   public selectedDeviceLayoutId = this.deviceLayoutStore.selectedId;
   public deviceLayouts = this.deviceLayoutStore.entities;
   public cc1cc2DefaultLayoutName = toSignal(
@@ -107,15 +109,13 @@ export class DeviceLayoutSettingPanelContentComponent {
       if (!layoutItem) {
         return;
       }
-      patchState(
-        this.deviceLayoutStore,
-        addEntity({
-          id: file.name,
-          name: file.name,
+      this.matDialog.open(DeviceLayoutImportDialogComponent, {
+        data: {
+          fileName: file.name,
           layout: layoutItem.layout,
-        }),
-      );
-      this.deviceLayoutStore.setSelectedId(file.name);
+        },
+        width: '400px',
+      });
     };
 
     reader.readAsText(fileInputElement.files[0]);

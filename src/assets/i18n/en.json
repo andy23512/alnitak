@@ -33,6 +33,7 @@
     "character-entry-speed-unit": "CPM",
     "chord-speed-unit": "ChPM",
     "start-action": "start",
+    "submit-action": "submit",
     "character-tooltip": "Character: {{character}}",
     "action-code-tooltip": "Action Code: {{actionCode}}",
     "choose-file-action": "choose file",
@@ -561,5 +562,9 @@
   "statistics-page": {
     "metric": "metric"
   },
-  "layout-text-guide": "{{hand}} {{switch}} {{direction}}"
+  "layout-text-guide": "{{hand}} {{switch}} {{direction}}",
+  "device-layout-import-dialog": {
+    "title": "import device layout",
+    "name-label": "name"
+  }
 }

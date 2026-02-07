@@ -1,0 +1,26 @@
+<h2 mat-dialog-title class="!text-xl">
+  {{ "device-layout-import-dialog.title" | translate | realTitleCase }}
+</h2>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <mat-dialog-content>
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>{{
+        "device-layout-import-dialog.name-label" | translate | realTitleCase
+      }}</mat-label>
+      <input matInput formControlName="name" required />
+    </mat-form-field>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button type="button" mat-button [mat-dialog-close]="false">
+      {{ "general.close-action" | translate | realTitleCase }}
+    </button>
+    <button
+      type="submit"
+      mat-button
+      [disabled]="!form.valid"
+      [color]="'primary'"
+    >
+      {{ "general.submit-action" | translate | realTitleCase }}
+    </button>
+  </mat-dialog-actions>
+</form>
