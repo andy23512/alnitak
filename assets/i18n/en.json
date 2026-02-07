@@ -41,6 +41,7 @@
     "combo-unit-plural": "combos",
     "cancel-action": "cancel",
     "delete-confirm-button": "Yes. Delete them.",
+    "delete-single-confirm-button": "Yes. Delete it.",
     "close-action": "close",
     "left-side": "left",
     "right-side": "right",
@@ -112,7 +113,8 @@
         "website)."
       ],
       "file-input-aria-label": "file input for selecting a device layout file to load into this tool",
-      "select-device-layout-step": "Select a loaded device layout."
+      "select-device-layout-step": "Select a loaded device layout.",
+      "single-device-layout-deleted-message": "The device layout \"{{deviceLayoutName}}\" has been deleted."
     }
   },
   "chord-page": {
@@ -136,6 +138,13 @@
   },
   "delete-device-layouts-confirm-dialog": {
     "description": "Are you sure to delete all the imported device layouts?\n(After deleted, the selected device layout will be changed to CC1/CC2 default.)"
+  },
+  "delete-device-layout-confirm-dialog": {
+    "description": [
+      "Are you sure to delete the device layout \"",
+      "{{deviceLayoutName}}",
+      "\"?\n(After deleted, the selected device layout will be changed to CC1/CC2 default.)"
+    ]
   },
   "hotkey-dialog": {
     "title": "hotkeys"
