@@ -26,7 +26,7 @@
     "down": "下壓"
   },
   "device-layout": {
-    "cc1-cc2-default": "CC1/CC2 預設",
+    "cc1-cc2-default": "CC1/CC2/CCU 預設",
     "m4g-default": "M4G 預設"
   },
   "general": {
@@ -136,13 +136,13 @@
     "description": "你確定要刪除所有已匯入的和弦嗎？"
   },
   "delete-device-layouts-confirm-dialog": {
-    "description": "你確定要刪除所有已匯入的裝置佈局嗎？\n（刪除之後，裝置佈局設定會改為 CC1/CC2 的預設佈局。）"
+    "description": "你確定要刪除所有已匯入的裝置佈局嗎？\n（刪除之後，裝置佈局設定會改為 CC1/CC2/CCU 的預設佈局。）"
   },
   "delete-device-layout-confirm-dialog": {
     "description": [
       "你確定要刪除裝置佈局「",
       "{{deviceLayoutName}}",
-      "」嗎？\n(刪除之後，所選的裝置佈局會改為 CC1/CC2 的預設佈局。)"
+      "」嗎？\n(刪除之後，所選的裝置佈局會改為 CC1/CC2/CCU 的預設佈局。)"
     ]
   },
   "hotkey-dialog": {
@@ -251,12 +251,12 @@
     }
   },
   "quick-setting": {
-    "cc1-cc2-default-layout": "CC1/CC2 預設佈局",
+    "cc1-cc2-default-layout": "CC1/CC2/CCU 預設佈局",
     "m4g-default-layout": "M4G 預設佈局"
   },
   "thumb-3-switch-help-dialog": {
     "title": "拇指第三搖桿",
-    "content": "Master Forge 不像 CharaChorder One 或 CharaChorder Two 有拇指第三搖桿。如果你使用的是 Master Forge，或你使用的是 CharaChorder One 或 CharaChorder Two 但沒有用到拇指第三搖桿的話，你可以取消勾選這個設定來在佈局顯示上隱藏它們。"
+    "content": "Master Forge 不像 CharaChorder One、CharaChorder Two 及 CCU 有拇指第三搖桿。如果你使用的是 Master Forge，或你使用的是 CharaChorder One、CharaChorder Two 或 CCU 但沒有用到拇指第三搖桿的話，你可以取消勾選這個設定來在佈局顯示上隱藏它們。"
   },
   "visibility-setting": {
     "thumb-3-switch-help-button-aria-label": "開啟拇指第三搖桿的幫助視窗",
@@ -415,12 +415,12 @@
     "dev-note-url": "https://andy23512.github.io/blog-zh-tw/2024/05/01/alnitak-%E5%8F%83%E5%AE%BF%E4%B8%80-tangent-%E6%89%80%E9%96%8B%E7%99%BC%E7%9A%84-charachorder-3d-%E8%BC%B8%E5%85%A5%E8%A3%9D%E7%BD%AE%E7%B7%B4%E7%BF%92%E5%B7%A5%E5%85%B7/",
     "current-device-layout-hint": {
       "cc1-cc2-default": [
-        "裝置佈局目前是設定為「CC1/CC2 預設」。",
+        "裝置佈局目前是設定為「CC1/CC2/CCU 預設」。",
         "切換到「M4G 預設」"
       ],
       "m4g-default": [
         "裝置佈局目前是設定為「M4G 預設」。",
-        "切換到「CC1/CC2 預設」"
+        "切換到「CC1/CC2/CCU 預設」"
       ]
     }
   },

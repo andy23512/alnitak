@@ -26,7 +26,7 @@
     "down": "下 (押す)"
   },
   "device-layout": {
-    "cc1-cc2-default": "CC1/CC2 のデフォルト",
+    "cc1-cc2-default": "CC1/CC2/CCU のデフォルト",
     "m4g-default": "M4G のデフォルト"
   },
   "general": {
@@ -137,13 +137,13 @@
     "description": "インポートした和音をすべて削除してもよろしいですか？"
   },
   "delete-device-layouts-confirm-dialog": {
-    "description": "インポートしたデバイスレイアウトをすべて削除してもよろしいですか？\n（削除後、選択されているデバイスレイアウトは CC1/CC2 のデフォルトに変更されます）"
+    "description": "インポートしたデバイスレイアウトをすべて削除してもよろしいですか？\n（削除後、選択されているデバイスレイアウトは CC1/CC2/CCU のデフォルトに変更されます）"
   },
   "delete-device-layout-confirm-dialog": {
     "description": [
       "デバイスレイアウト「",
       "{{deviceLayoutName}}",
-      "」を削除してもよろしいですか？\n（削除後、選択されているデバイスレイアウトは CC1/CC2 のデフォルトに変更されます）"
+      "」を削除してもよろしいですか？\n（削除後、選択されているデバイスレイアウトは CC1/CC2/CCU のデフォルトに変更されます）"
     ]
   },
   "hotkey-dialog": {
@@ -264,12 +264,12 @@
     }
   },
   "quick-setting": {
-    "cc1-cc2-default-layout": "CC1/CC2 のデフォルトレイアウト",
+    "cc1-cc2-default-layout": "CC1/CC2/CCU のデフォルトレイアウト",
     "m4g-default-layout": "M4G のデフォルトレイアウト"
   },
   "thumb-3-switch-help-dialog": {
     "title": "親指後列スイッチ",
-    "content": "Master Forge には、CharaChorder One および CharaChorder Two のような親指後列スイッチがありません。Master Forge をご利用の場合、または CharaChorder One または CharaChorder Two をご利用で親指後列スイッチを使用しない場合は、この設定のチェックを外してレイアウトから非表示にすることができます。"
+    "content": "Master Forge には、CharaChorder One、CharaChorder Two および CCU のような親指後列スイッチがありません。Master Forge をご利用の場合、または CharaChorder One、CharaChorder Two または CCU をご利用で親指後列スイッチを使用しない場合は、この設定のチェックを外してレイアウトから非表示にすることができます。"
   },
   "visibility-setting": {
     "thumb-3-switch-help-button-aria-label": "親指後列スイッチのヘルプダイアログを開く",
@@ -431,17 +431,17 @@
     "dev-note-url": "https://andy23512.github.io/blog/alnitak-a-practice-tool-of-charachorder-3d-input-devices-developed-by-tangent/",
     "current-device-layout-hint": {
       "cc1-cc2-default": [
-        "デバイスのレイアウトは「CC1/CC2のデフォルト」に設定されています。",
+        "デバイスのレイアウトは「CC1/CC2/CCUのデフォルト」に設定されています。",
         "「M4Gのデフォルト」に切り替えます。"
       ],
       "m4g-default": [
         "デバイスのレイアウトは「M4Gのデフォルト」に設定されています。",
-        "「CC1/CC2のデフォルト」に切り替えます。"
+        "「CC1/CC2/CCUのデフォルト」に切り替えます。"
       ]
     }
   },
   "information-page": {
-    "description": "このウェブサイト、「Alnitak アルニタク」は、CharaChorder One、CharaChorder Two、Master Forge などの CharaChorder 3D 入力デバイス用に設計された非公式の練習ツールです。",
+    "description": "このウェブサイト、「Alnitak アルニタク」は、CharaChorder One、CharaChorder Two、CCU、Master Forge などの CharaChorder 3D 入力デバイス用に設計された非公式の練習ツールです。",
     "page-introductions-title": "ページ紹介",
     "key-lesson-page": {
       "title": "キーレッスンページ",

@@ -26,7 +26,7 @@
     "down": "down (press)"
   },
   "device-layout": {
-    "cc1-cc2-default": "CC1/CC2 default",
+    "cc1-cc2-default": "CC1/CC2/CCU default",
     "m4g-default": "M4G default"
   },
   "general": {
@@ -137,13 +137,13 @@
     "description": "Are you sure to delete all the imported chords?"
   },
   "delete-device-layouts-confirm-dialog": {
-    "description": "Are you sure to delete all the imported device layouts?\n(After deleted, the selected device layout will be changed to CC1/CC2 default.)"
+    "description": "Are you sure to delete all the imported device layouts?\n(After deleted, the selected device layout will be changed to CC1/CC2/CCU default.)"
   },
   "delete-device-layout-confirm-dialog": {
     "description": [
       "Are you sure to delete the device layout \"",
       "{{deviceLayoutName}}",
-      "\"?\n(After deleted, the selected device layout will be changed to CC1/CC2 default.)"
+      "\"?\n(After deleted, the selected device layout will be changed to CC1/CC2/CCU default.)"
     ]
   },
   "hotkey-dialog": {
@@ -264,12 +264,12 @@
     }
   },
   "quick-setting": {
-    "cc1-cc2-default-layout": "CC1/CC2 default layout",
+    "cc1-cc2-default-layout": "CC1/CC2/CCU default layout",
     "m4g-default-layout": "M4G default layout"
   },
   "thumb-3-switch-help-dialog": {
     "title": "thumb 3 switch",
-    "content": "Master Forge doesn't have the thumb 3 switches as CharaChorder One and CharaChorder Two. If you use Master Forge, or you use CharaChorder One or CharaChorder Two but don't use the thumb 3 switches, you can uncheck this setting to hide them in the layout."
+    "content": "Master Forge doesn't have the thumb 3 switches as CharaChorder One, CharaChorder Two and CCU. If you use Master Forge, or you use CharaChorder One, CharaChorder Two or CCU but don't use the thumb 3 switches, you can uncheck this setting to hide them in the layout."
   },
   "visibility-setting": {
     "thumb-3-switch-help-button-aria-label": "open help dialog for thumb 3 switch",
@@ -434,17 +434,17 @@
     "dev-note-url": "https://andy23512.github.io/blog/alnitak-a-practice-tool-of-charachorder-3d-input-devices-developed-by-tangent/",
     "current-device-layout-hint": {
       "cc1-cc2-default": [
-        "Device Layout is set to \"CC1/CC2 default\".",
+        "Device Layout is set to \"CC1/CC2/CCU default\".",
         "Switch it to \"M4G default\""
       ],
       "m4g-default": [
         "Device Layout is set to \"M4G default\".",
-        "Switch it to \"CC1/CC2 default\""
+        "Switch it to \"CC1/CC2/CCU default\""
       ]
     }
   },
   "information-page": {
-    "description": "This website, Alnitak, is an unofficial practice tool designed for CharaChorder 3D input devices, including CharaChorder One, CharaChorder Two and Master Forge.",
+    "description": "This website, Alnitak, is an unofficial practice tool designed for CharaChorder 3D input devices, including CharaChorder One, CharaChorder Two, CCU and Master Forge.",
     "page-introductions-title": "page introductions",
     "key-lesson-page": {
       "title": "key lesson page",
