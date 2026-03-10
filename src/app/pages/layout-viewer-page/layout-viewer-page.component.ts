@@ -707,6 +707,10 @@ export class LayoutViewerPageComponent {
     );
   }
 
+  public onOpenReferenceButtonClick(event: MouseEvent) {
+    event.stopPropagation();
+  }
+
   private setCurrentLayer(layer: Layer) {
     const layers = this.layers();
     const targetLayer = layers.find((l) => l.value === layer);

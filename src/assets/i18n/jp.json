@@ -511,7 +511,9 @@
     "os-keyboard-layout": {
       "label": "OSキーボードレイアウト",
       "search-placeholder": "レイアウトを検索...",
-      "search-no-entry": "一致するレイアウトが見つかりませんでした。"
+      "search-no-entry": "一致するレイアウトが見つかりませんでした。",
+      "open-reference-button-tooltip": "このレイアウトの参照サイトを開く",
+      "reset-button-tooltip": "このレイアウトの選択をリセット"
     },
     "search-key-button-tooltip": "キーを検索",
     "print-layout-button-tooltip": "レイアウトを印刷",

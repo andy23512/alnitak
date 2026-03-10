@@ -495,7 +495,9 @@
     "os-keyboard-layout": {
       "label": "作業系統鍵盤佈局",
       "search-placeholder": "搜尋佈局...",
-      "search-no-entry": "找不到符合的佈局。"
+      "search-no-entry": "找不到符合的佈局。",
+      "open-reference-button-tooltip": "開啟此佈局的參考網站",
+      "reset-button-tooltip": "重置"
     },
     "search-key-button-tooltip": "搜尋按鍵",
     "print-layout-button-tooltip": "列印佈局",

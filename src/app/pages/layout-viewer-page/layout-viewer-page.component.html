@@ -115,14 +115,35 @@
         }}</mat-option>
       }
     </mat-select>
-    <button
-      mat-icon-button
-      matSuffix
-      (click)="onResetButtonClick($event)"
-      [disabled]="selectedKeyboardLayoutId() === 'us'"
-    >
-      <mat-icon>{{ "replay" | iconGuard }}</mat-icon>
-    </button>
+    <div matSuffix class="flex">
+      <a
+        [href]="keyboardLayout().reference"
+        target="_blank"
+        rel="noopener noreferrer"
+        (click)="onOpenReferenceButtonClick($event)"
+        [matTooltip]="
+          'layout-viewer-page.os-keyboard-layout.open-reference-button-tooltip'
+            | translate
+            | realTitleCase
+        "
+      >
+        <button mat-icon-button>
+          <mat-icon>{{ "open_in_new" | iconGuard }}</mat-icon>
+        </button>
+      </a>
+      <button
+        mat-icon-button
+        (click)="onResetButtonClick($event)"
+        [disabled]="selectedKeyboardLayoutId() === 'us'"
+        [matTooltip]="
+          'layout-viewer-page.os-keyboard-layout.reset-button-tooltip'
+            | translate
+            | realTitleCase
+        "
+      >
+        <mat-icon>{{ "replay" | iconGuard }}</mat-icon>
+      </button>
+    </div>
   </mat-form-field>
   <button
     mat-icon-button
