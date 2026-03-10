@@ -514,7 +514,9 @@
     "os-keyboard-layout": {
       "label": "OS keyboard layout",
       "search-placeholder": "Find layout...",
-      "search-no-entry": "No matching layout was found."
+      "search-no-entry": "No matching layout was found.",
+      "open-reference-button-tooltip": "open reference website for this layout",
+      "reset-button-tooltip": "reset"
     },
     "search-key-button-tooltip": "search for key",
     "print-layout-button-tooltip": "print the layout",
