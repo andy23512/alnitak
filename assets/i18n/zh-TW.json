@@ -511,7 +511,8 @@
       "a2": "數字層",
       "a3": "功能層",
       "a4": "旗標層"
-    }
+    },
+    "dead-key-legend": "死鍵"
   },
   "lesson-page": {
     "input-box-title": "用於練習課程的輸入框",

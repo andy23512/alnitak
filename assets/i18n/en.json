@@ -536,7 +536,8 @@
       "a2": "numeric layer",
       "a3": "functional layer",
       "a4": "flag layer"
-    }
+    },
+    "dead-key-legend": "Dead key"
   },
   "lesson-page": {
     "input-box-title": "input box for practicing lesson",
