@@ -24,7 +24,7 @@ import { HotkeysService } from '@ngneat/hotkeys';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { LetDirective } from '@ngrx/component';
 import { getState } from '@ngrx/signals';
-import { TranslatePipe } from '@ngx-translate/core';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { liveQuery } from 'dexie';
 import { interval } from 'rxjs';
 import { ComboCounterComponent } from 'src/app/components/combo-counter/combo-counter.component';
@@ -102,6 +102,7 @@ export class LessonPageComponent implements OnInit, OnDestroy {
   readonly highlightSettingStore = inject(HighlightSettingStore);
   readonly visibilitySettingStore = inject(VisibilitySettingStore);
   readonly airModeSettingStore = inject(AirModeSettingStore);
+  readonly translateService = inject(TranslateService);
 
   readonly isFocus = signal(false);
 
@@ -199,7 +200,9 @@ export class LessonPageComponent implements OnInit, OnDestroy {
           const d = {
             type: KeyLabelType.String as const,
             c: v.c,
-            title: `Character: ${v.c}`,
+            title: this.translateService.instant('general.character-tooltip', {
+              character: v.c,
+            }),
             layer,
             shiftKey,
             altGraphKey,

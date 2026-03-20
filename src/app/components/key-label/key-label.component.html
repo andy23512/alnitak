@@ -1,25 +1,35 @@
 @for (label of labels(); track $index) {
-  <svg:text
-    [attr.x]="x()"
-    [attr.y]="y()"
-    dominant-baseline="central"
-    text-anchor="middle"
-    [style.font-size.px]="getFontSize(label)"
-    [class.material-icons]="label.type === KeyLabelType.Icon"
-    [class.font-logos]="label.type === KeyLabelType.Logo"
-    class="transition-opacity"
-    [class.fill-current]="label.type !== KeyLabelType.ActionCode"
-    [class.fill-red-500]="label.type === KeyLabelType.ActionCode"
-    [ngClass]="label.type === KeyLabelType.Logo ? label.c : null"
-    [attr.opacity]="isLabelActive(label) ? 1 : 0"
-    [matTooltip]="label.title | translate"
-    [matTooltipDisabled]="!isLabelActive(label)"
-    [class.pointer-events-none]="!isLabelActive(label)"
-  >
-    @if (label.type === KeyLabelType.ActionCode) {
-      ({{ label.c }})
-    } @else {
-      {{ label.c }}
+  <svg:g [attr.opacity]="isLabelActive(label) ? 1 : 0">
+    @if (label.type === KeyLabelType.String && label.isDeadKey) {
+      <svg:line
+        [attr.x1]="x()"
+        [attr.y1]="y() - 40"
+        [attr.x2]="x()"
+        [attr.y2]="y() + 40"
+        class="stroke-alnitak-900 stroke-[40] print:stroke-alnitak-200"
+      ></svg:line>
     }
-  </svg:text>
+    <svg:text
+      [attr.x]="x()"
+      [attr.y]="y()"
+      dominant-baseline="central"
+      text-anchor="middle"
+      [style.font-size.px]="getFontSize(label)"
+      [class.material-icons]="label.type === KeyLabelType.Icon"
+      [class.font-logos]="label.type === KeyLabelType.Logo"
+      class="transition-opacity"
+      [class.fill-current]="label.type !== KeyLabelType.ActionCode"
+      [class.fill-red-500]="label.type === KeyLabelType.ActionCode"
+      [ngClass]="label.type === KeyLabelType.Logo ? label.c : null"
+      [matTooltip]="label.title | translate"
+      [matTooltipDisabled]="!isLabelActive(label)"
+      [class.pointer-events-none]="!isLabelActive(label)"
+    >
+      @if (label.type === KeyLabelType.ActionCode) {
+        ({{ label.c }})
+      } @else {
+        {{ label.c }}
+      }
+    </svg:text>
+  </svg:g>
 }

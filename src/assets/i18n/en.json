@@ -36,6 +36,7 @@
     "submit-action": "submit",
     "character-tooltip": "Character: {{character}}",
     "action-code-tooltip": "Action Code: {{actionCode}}",
+    "dead-key-tooltip": "Dead Key: {{character}}",
     "choose-file-action": "choose file",
     "combo-unit": "combo",
     "combo-unit-plural": "combos",

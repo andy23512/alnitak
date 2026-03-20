@@ -36,6 +36,7 @@
     "submit-action": "送出",
     "character-tooltip": "字元：{{character}}",
     "action-code-tooltip": "操作代碼：{{actionCode}}",
+    "dead-key-tooltip": "死鍵：{{character}}",
     "choose-file-action": "選擇檔案",
     "combo-unit": "連擊",
     "cancel-action": "取消",

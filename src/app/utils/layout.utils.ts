@@ -46,26 +46,23 @@ export function convertKeyboardLayoutToCharacterKeyCodeMap(
     )
       .map(([keyCode, keyboardLayoutKey]) =>
         keyboardLayoutKey
-          ? (
-              Object.entries(keyboardLayoutKey) as [
-                keyof KeyboardLayoutKey,
-                string,
-              ][]
-            ).map(
-              ([modifier, character]) =>
-                [
-                  character,
-                  {
-                    keyCode,
-                    shiftKey:
-                      modifier === 'withShift' ||
-                      modifier === 'withShiftAltGraph',
-                    altGraphKey:
-                      modifier === 'withAltGraph' ||
-                      modifier === 'withShiftAltGraph',
-                  },
-                ] as const,
-            )
+          ? Object.entries(keyboardLayoutKey)
+              .filter(([, output]) => output.type === 'text')
+              .map(
+                ([modifier, output]) =>
+                  [
+                    output.value,
+                    {
+                      keyCode,
+                      shiftKey:
+                        modifier === 'withShift' ||
+                        modifier === 'withShiftAltGraph',
+                      altGraphKey:
+                        modifier === 'withAltGraph' ||
+                        modifier === 'withShiftAltGraph',
+                    },
+                  ] as const,
+              )
           : [],
       )
       .flat(),
@@ -225,10 +222,10 @@ export function getChordKeyFromActionCode(
     const keyboardLayoutKey = keyboardLayout.layout[action.keyCode];
     const modifier = action.withShift ? 'withShift' : 'unmodified';
     const character = keyboardLayoutKey?.[modifier];
-    if (!character) {
+    if (character?.type !== 'text') {
       return null;
     }
-    return { type: 'character', value: character };
+    return { type: 'character', value: character.value };
   } else {
     const icon = ACTION_REPRESENTATION_ICON_MAP.get(actionCode);
     if (!icon) {

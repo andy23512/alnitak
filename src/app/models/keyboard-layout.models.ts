@@ -1,15 +1,18 @@
 import { Action } from './action.models';
 import { WSKCode } from './key-code.models';
 
+export interface KeyboardLayoutKeyOutput {
+  type: 'text' | 'dead-key';
+  value: string;
+}
+
 /**
  * Output character information of a key on a keyboard layout.
  */
-export interface KeyboardLayoutKey {
-  unmodified: string;
-  withShift: string;
-  withAltGraph: string;
-  withShiftAltGraph: string;
-}
+export type KeyboardLayoutKey = Record<
+  'unmodified' | 'withShift' | 'withAltGraph' | 'withShiftAltGraph',
+  KeyboardLayoutKeyOutput
+>;
 
 /**
  * Data of a keyboard layout (OS layout), which map key codes to keyboard layout keys

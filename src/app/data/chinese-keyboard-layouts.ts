@@ -7,58 +7,199 @@ export const CHINESE_KEYBOARD_LAYOUTS: KeyBoardLayout[] = [
     reference:
       'https://en.wikipedia.org/wiki/Cangjie_input_method#Keyboard_layout',
     layout: {
-      Backquote: { unmodified: '`', withShift: '~' },
-      Digit1: { unmodified: '1', withShift: '!' },
-      Digit2: { unmodified: '2', withShift: '@' },
-      Digit3: { unmodified: '3', withShift: '#' },
-      Digit4: { unmodified: '4', withShift: '$' },
-      Digit5: { unmodified: '5', withShift: '%' },
-      Digit6: { unmodified: '6', withShift: '^' },
-      Digit7: { unmodified: '7', withShift: '&' },
-      Digit8: { unmodified: '8', withShift: '*' },
-      Digit9: { unmodified: '9', withShift: '(' },
-      Digit0: { unmodified: '0', withShift: ')' },
-      Minus: { unmodified: '-', withShift: '_' },
-      Equal: { unmodified: '=', withShift: '+' },
+      Backquote: {
+        unmodified: { type: 'text', value: '`' },
+        withShift: { type: 'text', value: '~' },
+      },
+      Digit1: {
+        unmodified: { type: 'text', value: '1' },
+        withShift: { type: 'text', value: '!' },
+      },
+      Digit2: {
+        unmodified: { type: 'text', value: '2' },
+        withShift: { type: 'text', value: '@' },
+      },
+      Digit3: {
+        unmodified: { type: 'text', value: '3' },
+        withShift: { type: 'text', value: '#' },
+      },
+      Digit4: {
+        unmodified: { type: 'text', value: '4' },
+        withShift: { type: 'text', value: '$' },
+      },
+      Digit5: {
+        unmodified: { type: 'text', value: '5' },
+        withShift: { type: 'text', value: '%' },
+      },
+      Digit6: {
+        unmodified: { type: 'text', value: '6' },
+        withShift: { type: 'text', value: '^' },
+      },
+      Digit7: {
+        unmodified: { type: 'text', value: '7' },
+        withShift: { type: 'text', value: '&' },
+      },
+      Digit8: {
+        unmodified: { type: 'text', value: '8' },
+        withShift: { type: 'text', value: '*' },
+      },
+      Digit9: {
+        unmodified: { type: 'text', value: '9' },
+        withShift: { type: 'text', value: '(' },
+      },
+      Digit0: {
+        unmodified: { type: 'text', value: '0' },
+        withShift: { type: 'text', value: ')' },
+      },
+      Minus: {
+        unmodified: { type: 'text', value: '-' },
+        withShift: { type: 'text', value: '_' },
+      },
+      Equal: {
+        unmodified: { type: 'text', value: '=' },
+        withShift: { type: 'text', value: '+' },
+      },
       IntlYen: undefined,
 
-      KeyQ: { unmodified: '手', withShift: 'Q' },
-      KeyW: { unmodified: '田', withShift: 'W' },
-      KeyE: { unmodified: '水', withShift: 'E' },
-      KeyR: { unmodified: '口', withShift: 'R' },
-      KeyT: { unmodified: '廿', withShift: 'T' },
-      KeyY: { unmodified: '卜', withShift: 'Y' },
-      KeyU: { unmodified: '山', withShift: 'U' },
-      KeyI: { unmodified: '戈', withShift: 'I' },
-      KeyO: { unmodified: '人', withShift: 'O' },
-      KeyP: { unmodified: '心', withShift: 'P' },
-      BracketLeft: { unmodified: '[', withShift: '{' },
-      BracketRight: { unmodified: ']', withShift: '}' },
-      Backslash: { unmodified: '\\', withShift: '|' },
+      KeyQ: {
+        unmodified: { type: 'text', value: '手' },
+        withShift: { type: 'text', value: 'Q' },
+      },
+      KeyW: {
+        unmodified: { type: 'text', value: '田' },
+        withShift: { type: 'text', value: 'W' },
+      },
+      KeyE: {
+        unmodified: { type: 'text', value: '水' },
+        withShift: { type: 'text', value: 'E' },
+      },
+      KeyR: {
+        unmodified: { type: 'text', value: '口' },
+        withShift: { type: 'text', value: 'R' },
+      },
+      KeyT: {
+        unmodified: { type: 'text', value: '廿' },
+        withShift: { type: 'text', value: 'T' },
+      },
+      KeyY: {
+        unmodified: { type: 'text', value: '卜' },
+        withShift: { type: 'text', value: 'Y' },
+      },
+      KeyU: {
+        unmodified: { type: 'text', value: '山' },
+        withShift: { type: 'text', value: 'U' },
+      },
+      KeyI: {
+        unmodified: { type: 'text', value: '戈' },
+        withShift: { type: 'text', value: 'I' },
+      },
+      KeyO: {
+        unmodified: { type: 'text', value: '人' },
+        withShift: { type: 'text', value: 'O' },
+      },
+      KeyP: {
+        unmodified: { type: 'text', value: '心' },
+        withShift: { type: 'text', value: 'P' },
+      },
+      BracketLeft: {
+        unmodified: { type: 'text', value: '[' },
+        withShift: { type: 'text', value: '{' },
+      },
+      BracketRight: {
+        unmodified: { type: 'text', value: ']' },
+        withShift: { type: 'text', value: '}' },
+      },
+      Backslash: {
+        unmodified: { type: 'text', value: '\\' },
+        withShift: { type: 'text', value: '|' },
+      },
 
-      KeyA: { unmodified: '日', withShift: 'A' },
-      KeyS: { unmodified: '尸', withShift: 'S' },
-      KeyD: { unmodified: '木', withShift: 'D' },
-      KeyF: { unmodified: '火', withShift: 'F' },
-      KeyG: { unmodified: '土', withShift: 'G' },
-      KeyH: { unmodified: '竹', withShift: 'H' },
-      KeyJ: { unmodified: '十', withShift: 'J' },
-      KeyK: { unmodified: '大', withShift: 'K' },
-      KeyL: { unmodified: '中', withShift: 'L' },
-      Semicolon: { unmodified: ';', withShift: ':' },
-      Quote: { unmodified: "'", withShift: '"' },
+      KeyA: {
+        unmodified: { type: 'text', value: '日' },
+        withShift: { type: 'text', value: 'A' },
+      },
+      KeyS: {
+        unmodified: { type: 'text', value: '尸' },
+        withShift: { type: 'text', value: 'S' },
+      },
+      KeyD: {
+        unmodified: { type: 'text', value: '木' },
+        withShift: { type: 'text', value: 'D' },
+      },
+      KeyF: {
+        unmodified: { type: 'text', value: '火' },
+        withShift: { type: 'text', value: 'F' },
+      },
+      KeyG: {
+        unmodified: { type: 'text', value: '土' },
+        withShift: { type: 'text', value: 'G' },
+      },
+      KeyH: {
+        unmodified: { type: 'text', value: '竹' },
+        withShift: { type: 'text', value: 'H' },
+      },
+      KeyJ: {
+        unmodified: { type: 'text', value: '十' },
+        withShift: { type: 'text', value: 'J' },
+      },
+      KeyK: {
+        unmodified: { type: 'text', value: '大' },
+        withShift: { type: 'text', value: 'K' },
+      },
+      KeyL: {
+        unmodified: { type: 'text', value: '中' },
+        withShift: { type: 'text', value: 'L' },
+      },
+      Semicolon: {
+        unmodified: { type: 'text', value: ';' },
+        withShift: { type: 'text', value: ':' },
+      },
+      Quote: {
+        unmodified: { type: 'text', value: "'" },
+        withShift: { type: 'text', value: '"' },
+      },
 
       IntlBackslash: undefined,
-      KeyZ: { unmodified: '重', withShift: 'Z' },
-      KeyX: { unmodified: '難', withShift: 'X' },
-      KeyC: { unmodified: '金', withShift: 'C' },
-      KeyV: { unmodified: '女', withShift: 'V' },
-      KeyB: { unmodified: '月', withShift: 'B' },
-      KeyN: { unmodified: '弓', withShift: 'N' },
-      KeyM: { unmodified: '一', withShift: 'M' },
-      Comma: { unmodified: ',', withShift: '<' },
-      Period: { unmodified: '.', withShift: '>' },
-      Slash: { unmodified: '/', withShift: '?' },
+      KeyZ: {
+        unmodified: { type: 'text', value: '重' },
+        withShift: { type: 'text', value: 'Z' },
+      },
+      KeyX: {
+        unmodified: { type: 'text', value: '難' },
+        withShift: { type: 'text', value: 'X' },
+      },
+      KeyC: {
+        unmodified: { type: 'text', value: '金' },
+        withShift: { type: 'text', value: 'C' },
+      },
+      KeyV: {
+        unmodified: { type: 'text', value: '女' },
+        withShift: { type: 'text', value: 'V' },
+      },
+      KeyB: {
+        unmodified: { type: 'text', value: '月' },
+        withShift: { type: 'text', value: 'B' },
+      },
+      KeyN: {
+        unmodified: { type: 'text', value: '弓' },
+        withShift: { type: 'text', value: 'N' },
+      },
+      KeyM: {
+        unmodified: { type: 'text', value: '一' },
+        withShift: { type: 'text', value: 'M' },
+      },
+      Comma: {
+        unmodified: { type: 'text', value: ',' },
+        withShift: { type: 'text', value: '<' },
+      },
+      Period: {
+        unmodified: { type: 'text', value: '.' },
+        withShift: { type: 'text', value: '>' },
+      },
+      Slash: {
+        unmodified: { type: 'text', value: '/' },
+        withShift: { type: 'text', value: '?' },
+      },
       IntlRo: undefined,
     },
   },
@@ -67,58 +208,199 @@ export const CHINESE_KEYBOARD_LAYOUTS: KeyBoardLayout[] = [
     name: '標準注音 (Standard Bopomofo)',
     reference: 'https://en.wikipedia.org/wiki/Bopomofo#Input_method',
     layout: {
-      Backquote: { unmodified: '`', withShift: '~' },
-      Digit1: { unmodified: 'ㄅ', withShift: '!' },
-      Digit2: { unmodified: 'ㄉ', withShift: '@' },
-      Digit3: { unmodified: 'ˇ', withShift: '#' },
-      Digit4: { unmodified: 'ㄓ', withShift: '$' },
-      Digit5: { unmodified: 'ˋ', withShift: '%' },
-      Digit6: { unmodified: 'ˊ', withShift: '^' },
-      Digit7: { unmodified: '˙', withShift: '&' },
-      Digit8: { unmodified: 'ㄚ', withShift: '*' },
-      Digit9: { unmodified: 'ㄞ', withShift: '(' },
-      Digit0: { unmodified: 'ㄢ', withShift: ')' },
-      Minus: { unmodified: 'ㄦ', withShift: '_' },
-      Equal: { unmodified: '=', withShift: '+' },
+      Backquote: {
+        unmodified: { type: 'text', value: '`' },
+        withShift: { type: 'text', value: '~' },
+      },
+      Digit1: {
+        unmodified: { type: 'text', value: 'ㄅ' },
+        withShift: { type: 'text', value: '!' },
+      },
+      Digit2: {
+        unmodified: { type: 'text', value: 'ㄉ' },
+        withShift: { type: 'text', value: '@' },
+      },
+      Digit3: {
+        unmodified: { type: 'text', value: 'ˇ' },
+        withShift: { type: 'text', value: '#' },
+      },
+      Digit4: {
+        unmodified: { type: 'text', value: 'ㄓ' },
+        withShift: { type: 'text', value: '$' },
+      },
+      Digit5: {
+        unmodified: { type: 'text', value: 'ˋ' },
+        withShift: { type: 'text', value: '%' },
+      },
+      Digit6: {
+        unmodified: { type: 'text', value: 'ˊ' },
+        withShift: { type: 'text', value: '^' },
+      },
+      Digit7: {
+        unmodified: { type: 'text', value: '˙' },
+        withShift: { type: 'text', value: '&' },
+      },
+      Digit8: {
+        unmodified: { type: 'text', value: 'ㄚ' },
+        withShift: { type: 'text', value: '*' },
+      },
+      Digit9: {
+        unmodified: { type: 'text', value: 'ㄞ' },
+        withShift: { type: 'text', value: '(' },
+      },
+      Digit0: {
+        unmodified: { type: 'text', value: 'ㄢ' },
+        withShift: { type: 'text', value: ')' },
+      },
+      Minus: {
+        unmodified: { type: 'text', value: 'ㄦ' },
+        withShift: { type: 'text', value: '_' },
+      },
+      Equal: {
+        unmodified: { type: 'text', value: '=' },
+        withShift: { type: 'text', value: '+' },
+      },
       IntlYen: undefined,
 
-      KeyQ: { unmodified: 'ㄆ', withShift: 'Q' },
-      KeyW: { unmodified: 'ㄊ', withShift: 'W' },
-      KeyE: { unmodified: 'ㄍ', withShift: 'E' },
-      KeyR: { unmodified: 'ㄐ', withShift: 'R' },
-      KeyT: { unmodified: 'ㄔ', withShift: 'T' },
-      KeyY: { unmodified: 'ㄗ', withShift: 'Y' },
-      KeyU: { unmodified: 'ㄧ', withShift: 'U' },
-      KeyI: { unmodified: 'ㄛ', withShift: 'I' },
-      KeyO: { unmodified: 'ㄟ', withShift: 'O' },
-      KeyP: { unmodified: 'ㄣ', withShift: 'P' },
-      BracketLeft: { unmodified: '[', withShift: '{' },
-      BracketRight: { unmodified: ']', withShift: '}' },
-      Backslash: { unmodified: '\\', withShift: '|' },
+      KeyQ: {
+        unmodified: { type: 'text', value: 'ㄆ' },
+        withShift: { type: 'text', value: 'Q' },
+      },
+      KeyW: {
+        unmodified: { type: 'text', value: 'ㄊ' },
+        withShift: { type: 'text', value: 'W' },
+      },
+      KeyE: {
+        unmodified: { type: 'text', value: 'ㄍ' },
+        withShift: { type: 'text', value: 'E' },
+      },
+      KeyR: {
+        unmodified: { type: 'text', value: 'ㄐ' },
+        withShift: { type: 'text', value: 'R' },
+      },
+      KeyT: {
+        unmodified: { type: 'text', value: 'ㄔ' },
+        withShift: { type: 'text', value: 'T' },
+      },
+      KeyY: {
+        unmodified: { type: 'text', value: 'ㄗ' },
+        withShift: { type: 'text', value: 'Y' },
+      },
+      KeyU: {
+        unmodified: { type: 'text', value: 'ㄧ' },
+        withShift: { type: 'text', value: 'U' },
+      },
+      KeyI: {
+        unmodified: { type: 'text', value: 'ㄛ' },
+        withShift: { type: 'text', value: 'I' },
+      },
+      KeyO: {
+        unmodified: { type: 'text', value: 'ㄟ' },
+        withShift: { type: 'text', value: 'O' },
+      },
+      KeyP: {
+        unmodified: { type: 'text', value: 'ㄣ' },
+        withShift: { type: 'text', value: 'P' },
+      },
+      BracketLeft: {
+        unmodified: { type: 'text', value: '[' },
+        withShift: { type: 'text', value: '{' },
+      },
+      BracketRight: {
+        unmodified: { type: 'text', value: ']' },
+        withShift: { type: 'text', value: '}' },
+      },
+      Backslash: {
+        unmodified: { type: 'text', value: '\\' },
+        withShift: { type: 'text', value: '|' },
+      },
 
-      KeyA: { unmodified: 'ㄇ', withShift: 'A' },
-      KeyS: { unmodified: 'ㄋ', withShift: 'S' },
-      KeyD: { unmodified: 'ㄎ', withShift: 'D' },
-      KeyF: { unmodified: 'ㄑ', withShift: 'F' },
-      KeyG: { unmodified: 'ㄕ', withShift: 'G' },
-      KeyH: { unmodified: 'ㄘ', withShift: 'H' },
-      KeyJ: { unmodified: 'ㄨ', withShift: 'J' },
-      KeyK: { unmodified: 'ㄜ', withShift: 'K' },
-      KeyL: { unmodified: 'ㄠ', withShift: 'L' },
-      Semicolon: { unmodified: 'ㄤ', withShift: ':' },
-      Quote: { unmodified: "'", withShift: '"' },
+      KeyA: {
+        unmodified: { type: 'text', value: 'ㄇ' },
+        withShift: { type: 'text', value: 'A' },
+      },
+      KeyS: {
+        unmodified: { type: 'text', value: 'ㄋ' },
+        withShift: { type: 'text', value: 'S' },
+      },
+      KeyD: {
+        unmodified: { type: 'text', value: 'ㄎ' },
+        withShift: { type: 'text', value: 'D' },
+      },
+      KeyF: {
+        unmodified: { type: 'text', value: 'ㄑ' },
+        withShift: { type: 'text', value: 'F' },
+      },
+      KeyG: {
+        unmodified: { type: 'text', value: 'ㄕ' },
+        withShift: { type: 'text', value: 'G' },
+      },
+      KeyH: {
+        unmodified: { type: 'text', value: 'ㄘ' },
+        withShift: { type: 'text', value: 'H' },
+      },
+      KeyJ: {
+        unmodified: { type: 'text', value: 'ㄨ' },
+        withShift: { type: 'text', value: 'J' },
+      },
+      KeyK: {
+        unmodified: { type: 'text', value: 'ㄜ' },
+        withShift: { type: 'text', value: 'K' },
+      },
+      KeyL: {
+        unmodified: { type: 'text', value: 'ㄠ' },
+        withShift: { type: 'text', value: 'L' },
+      },
+      Semicolon: {
+        unmodified: { type: 'text', value: 'ㄤ' },
+        withShift: { type: 'text', value: ':' },
+      },
+      Quote: {
+        unmodified: { type: 'text', value: "'" },
+        withShift: { type: 'text', value: '"' },
+      },
 
       IntlBackslash: undefined,
-      KeyZ: { unmodified: 'ㄈ', withShift: 'Z' },
-      KeyX: { unmodified: 'ㄌ', withShift: 'X' },
-      KeyC: { unmodified: 'ㄏ', withShift: 'C' },
-      KeyV: { unmodified: 'ㄒ', withShift: 'V' },
-      KeyB: { unmodified: 'ㄖ', withShift: 'B' },
-      KeyN: { unmodified: 'ㄙ', withShift: 'N' },
-      KeyM: { unmodified: 'ㄩ', withShift: 'M' },
-      Comma: { unmodified: 'ㄝ', withShift: '<' },
-      Period: { unmodified: 'ㄡ', withShift: '>' },
-      Slash: { unmodified: 'ㄥ', withShift: '?' },
+      KeyZ: {
+        unmodified: { type: 'text', value: 'ㄈ' },
+        withShift: { type: 'text', value: 'Z' },
+      },
+      KeyX: {
+        unmodified: { type: 'text', value: 'ㄌ' },
+        withShift: { type: 'text', value: 'X' },
+      },
+      KeyC: {
+        unmodified: { type: 'text', value: 'ㄏ' },
+        withShift: { type: 'text', value: 'C' },
+      },
+      KeyV: {
+        unmodified: { type: 'text', value: 'ㄒ' },
+        withShift: { type: 'text', value: 'V' },
+      },
+      KeyB: {
+        unmodified: { type: 'text', value: 'ㄖ' },
+        withShift: { type: 'text', value: 'B' },
+      },
+      KeyN: {
+        unmodified: { type: 'text', value: 'ㄙ' },
+        withShift: { type: 'text', value: 'N' },
+      },
+      KeyM: {
+        unmodified: { type: 'text', value: 'ㄩ' },
+        withShift: { type: 'text', value: 'M' },
+      },
+      Comma: {
+        unmodified: { type: 'text', value: 'ㄝ' },
+        withShift: { type: 'text', value: '<' },
+      },
+      Period: {
+        unmodified: { type: 'text', value: 'ㄡ' },
+        withShift: { type: 'text', value: '>' },
+      },
+      Slash: {
+        unmodified: { type: 'text', value: 'ㄥ' },
+        withShift: { type: 'text', value: '?' },
+      },
       IntlRo: undefined,
     },
   },
@@ -128,58 +410,199 @@ export const CHINESE_KEYBOARD_LAYOUTS: KeyBoardLayout[] = [
     reference:
       'https://andy23512.github.io/blog/tangent-s-progress-for-finding-a-bopomofo-solution-on-master-forge/#V2',
     layout: {
-      Backquote: { unmodified: '`', withShift: '~' },
-      Digit1: { unmodified: '1', withShift: '!' },
-      Digit2: { unmodified: '2', withShift: '@' },
-      Digit3: { unmodified: '3', withShift: '#' },
-      Digit4: { unmodified: '4', withShift: '$' },
-      Digit5: { unmodified: '5', withShift: '%' },
-      Digit6: { unmodified: '6', withShift: '^' },
-      Digit7: { unmodified: '7', withShift: '&' },
-      Digit8: { unmodified: '8', withShift: '*' },
-      Digit9: { unmodified: '9', withShift: '(' },
-      Digit0: { unmodified: '0', withShift: ')' },
-      Minus: { unmodified: 'ㄏㄒ', withShift: '_' },
-      Equal: { unmodified: 'ㄈ', withShift: '+' },
+      Backquote: {
+        unmodified: { type: 'text', value: '`' },
+        withShift: { type: 'text', value: '~' },
+      },
+      Digit1: {
+        unmodified: { type: 'text', value: '1' },
+        withShift: { type: 'text', value: '!' },
+      },
+      Digit2: {
+        unmodified: { type: 'text', value: '2' },
+        withShift: { type: 'text', value: '@' },
+      },
+      Digit3: {
+        unmodified: { type: 'text', value: '3' },
+        withShift: { type: 'text', value: '#' },
+      },
+      Digit4: {
+        unmodified: { type: 'text', value: '4' },
+        withShift: { type: 'text', value: '$' },
+      },
+      Digit5: {
+        unmodified: { type: 'text', value: '5' },
+        withShift: { type: 'text', value: '%' },
+      },
+      Digit6: {
+        unmodified: { type: 'text', value: '6' },
+        withShift: { type: 'text', value: '^' },
+      },
+      Digit7: {
+        unmodified: { type: 'text', value: '7' },
+        withShift: { type: 'text', value: '&' },
+      },
+      Digit8: {
+        unmodified: { type: 'text', value: '8' },
+        withShift: { type: 'text', value: '*' },
+      },
+      Digit9: {
+        unmodified: { type: 'text', value: '9' },
+        withShift: { type: 'text', value: '(' },
+      },
+      Digit0: {
+        unmodified: { type: 'text', value: '0' },
+        withShift: { type: 'text', value: ')' },
+      },
+      Minus: {
+        unmodified: { type: 'text', value: 'ㄏㄒ' },
+        withShift: { type: 'text', value: '_' },
+      },
+      Equal: {
+        unmodified: { type: 'text', value: 'ㄈ' },
+        withShift: { type: 'text', value: '+' },
+      },
       IntlYen: undefined,
 
-      KeyQ: { unmodified: 'ㄟ', withShift: 'Q' },
-      KeyW: { unmodified: 'ㄅ', withShift: 'W' },
-      KeyE: { unmodified: 'ㄎㄑ', withShift: 'E' },
-      KeyR: { unmodified: 'ㄍㄐ', withShift: 'R' },
-      KeyT: { unmodified: 'ㄨ', withShift: 'T' },
-      KeyY: { unmodified: 'ㄩ', withShift: 'Y' },
-      KeyU: { unmodified: 'ㄘ', withShift: 'U' },
-      KeyI: { unmodified: 'ㄓ', withShift: 'I' },
-      KeyO: { unmodified: 'ㄔ', withShift: 'O' },
-      KeyP: { unmodified: 'ㄥㄦ', withShift: 'P' },
-      BracketLeft: { unmodified: 'ㄖ', withShift: '{' },
-      BracketRight: { unmodified: 'ˊ', withShift: '}' },
-      Backslash: { unmodified: 'ㄠ', withShift: '|' },
+      KeyQ: {
+        unmodified: { type: 'text', value: 'ㄟ' },
+        withShift: { type: 'text', value: 'Q' },
+      },
+      KeyW: {
+        unmodified: { type: 'text', value: 'ㄅ' },
+        withShift: { type: 'text', value: 'W' },
+      },
+      KeyE: {
+        unmodified: { type: 'text', value: 'ㄎㄑ' },
+        withShift: { type: 'text', value: 'E' },
+      },
+      KeyR: {
+        unmodified: { type: 'text', value: 'ㄍㄐ' },
+        withShift: { type: 'text', value: 'R' },
+      },
+      KeyT: {
+        unmodified: { type: 'text', value: 'ㄨ' },
+        withShift: { type: 'text', value: 'T' },
+      },
+      KeyY: {
+        unmodified: { type: 'text', value: 'ㄩ' },
+        withShift: { type: 'text', value: 'Y' },
+      },
+      KeyU: {
+        unmodified: { type: 'text', value: 'ㄘ' },
+        withShift: { type: 'text', value: 'U' },
+      },
+      KeyI: {
+        unmodified: { type: 'text', value: 'ㄓ' },
+        withShift: { type: 'text', value: 'I' },
+      },
+      KeyO: {
+        unmodified: { type: 'text', value: 'ㄔ' },
+        withShift: { type: 'text', value: 'O' },
+      },
+      KeyP: {
+        unmodified: { type: 'text', value: 'ㄥㄦ' },
+        withShift: { type: 'text', value: 'P' },
+      },
+      BracketLeft: {
+        unmodified: { type: 'text', value: 'ㄖ' },
+        withShift: { type: 'text', value: '{' },
+      },
+      BracketRight: {
+        unmodified: { type: 'text', value: 'ˊ' },
+        withShift: { type: 'text', value: '}' },
+      },
+      Backslash: {
+        unmodified: { type: 'text', value: 'ㄠ' },
+        withShift: { type: 'text', value: '|' },
+      },
 
-      KeyA: { unmodified: 'ㄧ', withShift: 'A' },
-      KeyS: { unmodified: 'ˇ', withShift: 'S' },
-      KeyD: { unmodified: 'ㄣ', withShift: 'D' },
-      KeyF: { unmodified: 'ㄢ', withShift: 'F' },
-      KeyG: { unmodified: 'ㄇ', withShift: 'G' },
-      KeyH: { unmodified: 'ㄤ', withShift: 'H' },
-      KeyJ: { unmodified: 'ㄛ', withShift: 'J' },
-      KeyK: { unmodified: 'ㄉ', withShift: 'K' },
-      KeyL: { unmodified: 'ㄜㄝ', withShift: 'L' },
-      Semicolon: { unmodified: 'ˋ', withShift: ':' },
-      Quote: { unmodified: 'ㄗ', withShift: '"' },
+      KeyA: {
+        unmodified: { type: 'text', value: 'ㄧ' },
+        withShift: { type: 'text', value: 'A' },
+      },
+      KeyS: {
+        unmodified: { type: 'text', value: 'ˇ' },
+        withShift: { type: 'text', value: 'S' },
+      },
+      KeyD: {
+        unmodified: { type: 'text', value: 'ㄣ' },
+        withShift: { type: 'text', value: 'D' },
+      },
+      KeyF: {
+        unmodified: { type: 'text', value: 'ㄢ' },
+        withShift: { type: 'text', value: 'F' },
+      },
+      KeyG: {
+        unmodified: { type: 'text', value: 'ㄇ' },
+        withShift: { type: 'text', value: 'G' },
+      },
+      KeyH: {
+        unmodified: { type: 'text', value: 'ㄤ' },
+        withShift: { type: 'text', value: 'H' },
+      },
+      KeyJ: {
+        unmodified: { type: 'text', value: 'ㄛ' },
+        withShift: { type: 'text', value: 'J' },
+      },
+      KeyK: {
+        unmodified: { type: 'text', value: 'ㄉ' },
+        withShift: { type: 'text', value: 'K' },
+      },
+      KeyL: {
+        unmodified: { type: 'text', value: 'ㄜㄝ' },
+        withShift: { type: 'text', value: 'L' },
+      },
+      Semicolon: {
+        unmodified: { type: 'text', value: 'ˋ' },
+        withShift: { type: 'text', value: ':' },
+      },
+      Quote: {
+        unmodified: { type: 'text', value: 'ㄗ' },
+        withShift: { type: 'text', value: '"' },
+      },
 
       IntlBackslash: undefined,
-      KeyZ: { unmodified: 'ㄆ', withShift: 'Z' },
-      KeyX: { unmodified: 'ㄡ', withShift: 'X' },
-      KeyC: { unmodified: 'ㄊ', withShift: 'C' },
-      KeyV: { unmodified: 'ㄌ', withShift: 'V' },
-      KeyB: { unmodified: 'ㄞ', withShift: 'B' },
-      KeyN: { unmodified: 'ㄚ', withShift: 'N' },
-      KeyM: { unmodified: 'ㄋ', withShift: 'M' },
-      Comma: { unmodified: 'ㄙ', withShift: '<' },
-      Period: { unmodified: 'ㄕ', withShift: '>' },
-      Slash: { unmodified: '˙', withShift: '?' },
+      KeyZ: {
+        unmodified: { type: 'text', value: 'ㄆ' },
+        withShift: { type: 'text', value: 'Z' },
+      },
+      KeyX: {
+        unmodified: { type: 'text', value: 'ㄡ' },
+        withShift: { type: 'text', value: 'X' },
+      },
+      KeyC: {
+        unmodified: { type: 'text', value: 'ㄊ' },
+        withShift: { type: 'text', value: 'C' },
+      },
+      KeyV: {
+        unmodified: { type: 'text', value: 'ㄌ' },
+        withShift: { type: 'text', value: 'V' },
+      },
+      KeyB: {
+        unmodified: { type: 'text', value: 'ㄞ' },
+        withShift: { type: 'text', value: 'B' },
+      },
+      KeyN: {
+        unmodified: { type: 'text', value: 'ㄚ' },
+        withShift: { type: 'text', value: 'N' },
+      },
+      KeyM: {
+        unmodified: { type: 'text', value: 'ㄋ' },
+        withShift: { type: 'text', value: 'M' },
+      },
+      Comma: {
+        unmodified: { type: 'text', value: 'ㄙ' },
+        withShift: { type: 'text', value: '<' },
+      },
+      Period: {
+        unmodified: { type: 'text', value: 'ㄕ' },
+        withShift: { type: 'text', value: '>' },
+      },
+      Slash: {
+        unmodified: { type: 'text', value: '˙' },
+        withShift: { type: 'text', value: '?' },
+      },
       IntlRo: undefined,
     },
   },

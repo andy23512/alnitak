@@ -60,6 +60,7 @@ export type RawKeyLabel =
       type: KeyLabelType.String;
       c: string;
       title: string;
+      isDeadKey?: boolean;
     }
   | { type: KeyLabelType.Icon; c: Icon; title: string }
   | { type: KeyLabelType.Logo; c: FontLogo; title: string }
