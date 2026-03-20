@@ -36,6 +36,7 @@
     "submit-action": "送信",
     "character-tooltip": "文字：{{character}}",
     "action-code-tooltip": "操作コード：{{actionCode}}",
+    "dead-key-tooltip": "デッドキー：{{character}}",
     "choose-file-action": "ファイルを選択",
     "combo-unit": "コンボ",
     "combo-unit-plural": "コンボ",
