@@ -143,6 +143,7 @@ export class LayoutViewerPageComponent {
   readonly selectedDeviceLayoutId = this.deviceLayoutStore.selectedId;
   readonly keyboardLayout = this.keyboardLayoutStore.selectedEntity;
   readonly selectedKeyboardLayoutId = this.keyboardLayoutStore.selectedId;
+  readonly hasDeadKey = this.keyboardLayoutStore.hasDeadKey;
   readonly keyboardLayouts = this.keyboardLayoutStore.entities;
   readonly deviceLayout = this.deviceLayoutStore.selectedEntity;
   public deviceLayouts = this.deviceLayoutStore.entities;

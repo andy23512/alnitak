@@ -287,6 +287,14 @@
             {{ "layout-viewer-page.hold-hint.2" | translate }}
           }
         </diV>
+        @if (hasDeadKey()) {
+          <div
+            class="absolute bottom-2 right-2 flex items-center gap-2 text-sm"
+          >
+            <div class="size-4 bg-alnitak-900"></div>
+            {{ "layout-viewer-page.dead-key-legend" | translate }}
+          </div>
+        }
       </section>
     </mat-sidenav-content>
   </mat-sidenav-container>
@@ -360,6 +368,14 @@
                 }
               }
             </diV>
+            @if (hasDeadKey() && shiftKey) {
+              <div
+                class="absolute bottom-2 right-2 flex items-center gap-2 text-sm"
+              >
+                <div class="size-4 bg-alnitak-200"></div>
+                {{ "layout-viewer-page.dead-key-legend" | translate }}
+              </div>
+            }
           </section>
         }
       }

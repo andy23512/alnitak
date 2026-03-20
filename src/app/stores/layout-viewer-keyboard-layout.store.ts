@@ -51,5 +51,11 @@ export const LayoutViewerKeyboardLayoutStore = signalStore(
       const keyboardLayout = state.selectedEntity();
       return convertKeyboardLayoutToCharacterKeyCodeMap(keyboardLayout);
     }),
+    hasDeadKey: computed(() => {
+      const keyboardLayout = state.selectedEntity();
+      return Object.values(keyboardLayout.layout).some((key) =>
+        Object.values(key).some((output) => output.type === 'dead-key'),
+      );
+    }),
   })),
 );
