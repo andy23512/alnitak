@@ -439,7 +439,8 @@
         "デバイスのレイアウトは「M4Gのデフォルト」に設定されています。",
         "「CC1/CC2/CCUのデフォルト」に切り替えます。"
       ]
-    }
+    },
+    "remark": "Alnitak（発音：/ælˈnaɪtæk/）、アルニタク、オリオンの三つ星の東端に位置する明るい青色超巨星。"
   },
   "information-page": {
     "description": "このウェブサイト、「Alnitak アルニタク」は、CharaChorder One、CharaChorder Two、CCU、Master Forge などの CharaChorder 3D 入力デバイス用に設計された非公式の練習ツールです。",

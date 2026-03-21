@@ -442,7 +442,8 @@
         "Device Layout is set to \"M4G default\".",
         "Switch it to \"CC1/CC2/CCU default\""
       ]
-    }
+    },
+    "remark": "Alnitak (pronunciation: /ælˈnaɪtæk/) is the bright blue supergiant marking the eastern edge of Orion's Belt."
   },
   "information-page": {
     "description": "This website, Alnitak, is an unofficial practice tool designed for CharaChorder 3D input devices, including CharaChorder One, CharaChorder Two, CCU and Master Forge.",
