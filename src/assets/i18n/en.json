@@ -50,7 +50,11 @@
     "same-side": "same side"
   },
   "nav": {
-    "hotkey": "Hotkey",
+    "hotkey": {
+      "title": "hotkey",
+      "tooltip": "Open Hotkey Dialog",
+      "aria-label": "button that opens hotkey dialog"
+    },
     "page": {
       "home": {
         "title": "home",
