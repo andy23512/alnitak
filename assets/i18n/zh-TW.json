@@ -49,7 +49,11 @@
     "same-side": "同一邊"
   },
   "nav": {
-    "hotkey": "熱鍵",
+    "hotkey": {
+      "title": "熱鍵",
+      "tooltip": "開啟熱鍵對話框",
+      "aria-label": "開啟熱鍵對話框的按鈕"
+    },
     "page": {
       "home": {
         "title": "首頁",
