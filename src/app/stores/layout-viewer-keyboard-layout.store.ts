@@ -53,8 +53,10 @@ export const LayoutViewerKeyboardLayoutStore = signalStore(
     }),
     hasDeadKey: computed(() => {
       const keyboardLayout = state.selectedEntity();
-      return Object.values(keyboardLayout.layout).some((key) =>
-        Object.values(key).some((output) => output.type === 'dead-key'),
+      return Object.values(keyboardLayout.layout).some(
+        (key) =>
+          key &&
+          Object.values(key).some((output) => output.type === 'dead-key'),
       );
     }),
   })),
