@@ -1,11 +1,10 @@
-import { NonKeyActionName } from '../models/action.models';
+import { NonKeyActionName, NonWSKCode } from 'tangent-cc-lib';
 import {
   FontLogo,
   KeyLabel,
   KeyLabelType,
   RawKeyLabel,
 } from '../models/device-layout.models';
-import { NonWSKCode } from '../models/key-code.models';
 import { OperatingSystemName } from '../models/operating-system.models';
 
 export const SHIFT_KEY_LABEL: KeyLabel = {

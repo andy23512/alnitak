@@ -1,5 +1,4 @@
-import { NonKeyActionName } from '../models/action.models';
-import { NonWSKCode } from '../models/key-code.models';
+import { NonKeyActionName, NonWSKCode } from 'tangent-cc-lib';
 
 export const NON_WSK_CODE_2_KEY_NAMES_MAP: Record<NonWSKCode, string[]> = {
   AltLeft: ['left alt', 'left option', '左 Alt 鍵', '左 Option 鍵'],

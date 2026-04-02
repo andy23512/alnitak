@@ -1,14 +1,15 @@
 import { TranslateService } from '@ngx-translate/core';
-import { ACTION_REPRESENTATION_ICON_MAP } from '../data/action-representation-icon-map';
 import {
   ACTIONS,
+  ActionType,
   ALT_GRAPH_ACTION_CODE,
   FLAG_SHIFT_ACTION_CODES,
   FN_SHIFT_ACTION_CODES,
   NUM_SHIFT_ACTION_CODES,
   SHIFT_ACTION_CODES,
-} from '../data/actions';
-import { ActionType } from '../models/action.models';
+  WSKCode,
+} from 'tangent-cc-lib';
+import { ACTION_REPRESENTATION_ICON_MAP } from '../data/action-representation-icon-map';
 import { ChordKey } from '../models/chord.models';
 import {
   DeviceLayout,
@@ -20,7 +21,6 @@ import {
   HighlightSetting,
   PreferSides,
 } from '../models/highlight-setting.models';
-import { WSKCode } from '../models/key-code.models';
 import {
   CharacterActionCode,
   CharacterKeyCode,

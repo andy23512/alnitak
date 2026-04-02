@@ -32,7 +32,6 @@ import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { NgxPrintModule } from 'ngx-print';
 import { range } from 'ramda';
 import { LayoutComponent } from 'src/app/components/layout/layout.component';
-import { ACTIONS, NO_ACTION_ACTION_CODES } from 'src/app/data/actions';
 import { CHARACTER_NAME_MAP } from 'src/app/data/character-name-map';
 import {
   NON_KEY_ACTION_NAME_2_RAW_KEY_LABEL_MAP,
@@ -43,7 +42,6 @@ import {
   NON_KEY_ACTION_NAME_2_KEY_NAMES_MAP,
   NON_WSK_CODE_2_KEY_NAMES_MAP,
 } from 'src/app/data/key-names';
-import { ActionType } from 'src/app/models/action.models';
 import {
   DeviceLayout,
   KeyLabel,
@@ -61,6 +59,7 @@ import {
   getHoldKeys,
   getModifierKeyPositionCodeMap,
 } from 'src/app/utils/layout.utils';
+import { ACTIONS, ActionType, NO_ACTION_ACTION_CODES } from 'tangent-cc-lib';
 
 enum Modifier {
   Shift = 'shift',

@@ -1,5 +1,4 @@
-import { Action } from './action.models';
-import { WSKCode } from './key-code.models';
+import { Action, WSKCode } from 'tangent-cc-lib';
 
 export interface KeyboardLayoutKeyOutput {
   type: 'text' | 'dead-key';
