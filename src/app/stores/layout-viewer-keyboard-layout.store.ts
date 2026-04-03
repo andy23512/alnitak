@@ -10,10 +10,12 @@ import {
   withMethods,
   withState,
 } from '@ngrx/signals';
-import { CHINESE_KEYBOARD_LAYOUTS } from '../data/chinese-keyboard-layouts';
-import { KEYBOARD_LAYOUTS_FROM_KBDLAYOUT } from '../data/keyboard-layouts-from-kbdlayout';
-import { KEYBOARD_LAYOUTS_FROM_XKEYBOARD } from '../data/keyboard-layouts-from-xkeyboard';
-import { KeyBoardLayout } from '../models/keyboard-layout.models';
+import {
+  CHINESE_KEYBOARD_LAYOUTS,
+  KEYBOARD_LAYOUTS_FROM_KBDLAYOUT,
+  KEYBOARD_LAYOUTS_FROM_XKEYBOARD,
+  KeyBoardLayout,
+} from 'tangent-cc-lib';
 import { convertKeyboardLayoutToCharacterKeyCodeMap } from '../utils/layout.utils';
 
 export const LayoutViewerKeyboardLayoutStore = signalStore(

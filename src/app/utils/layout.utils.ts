@@ -3,8 +3,13 @@ import {
   ACTIONS,
   ActionType,
   ALT_GRAPH_ACTION_CODE,
+  CharacterActionCode,
+  CharacterKeyCode,
+  CharacterKeyCodeMap,
   FLAG_SHIFT_ACTION_CODES,
   FN_SHIFT_ACTION_CODES,
+  KeyBoardLayout,
+  KeyboardLayoutKey,
   NUM_SHIFT_ACTION_CODES,
   SHIFT_ACTION_CODES,
   WSKCode,
@@ -21,13 +26,6 @@ import {
   HighlightSetting,
   PreferSides,
 } from '../models/highlight-setting.models';
-import {
-  CharacterActionCode,
-  CharacterKeyCode,
-  CharacterKeyCodeMap,
-  KeyBoardLayout,
-  KeyboardLayoutKey,
-} from '../models/keyboard-layout.models';
 import { toTitleCase } from './case.utils';
 import { nonNullable } from './non-nullable.utils';
 
