@@ -14,9 +14,9 @@ import {
   CHINESE_KEYBOARD_LAYOUTS,
   KEYBOARD_LAYOUTS_FROM_KBDLAYOUT,
   KEYBOARD_LAYOUTS_FROM_XKEYBOARD,
-  KeyBoardLayout,
+  KeyboardLayout,
+  convertKeyboardLayoutToCharacterKeyCodeMap,
 } from 'tangent-cc-lib';
-import { convertKeyboardLayoutToCharacterKeyCodeMap } from '../utils/layout.utils';
 
 export const LayoutViewerKeyboardLayoutStore = signalStore(
   { providedIn: 'root' },
@@ -45,7 +45,7 @@ export const LayoutViewerKeyboardLayoutStore = signalStore(
       const selectedId = state.selectedId();
       return state
         .entities()
-        .find((layout) => layout.id === selectedId) as KeyBoardLayout;
+        .find((layout) => layout.id === selectedId) as KeyboardLayout;
     }),
   })),
   withComputed((state) => ({

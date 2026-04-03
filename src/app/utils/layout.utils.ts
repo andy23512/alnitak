@@ -9,12 +9,10 @@ import {
   DeviceLayout,
   FLAG_SHIFT_ACTION_CODES,
   FN_SHIFT_ACTION_CODES,
-  KeyBoardLayout,
-  KeyboardLayoutKey,
+  KeyboardLayout,
   Layer,
   NUM_SHIFT_ACTION_CODES,
   SHIFT_ACTION_CODES,
-  WSKCode,
 } from 'tangent-cc-lib';
 import { ACTION_REPRESENTATION_ICON_MAP } from '../data/action-representation-icon-map';
 import { ChordKey } from '../models/chord.models';
@@ -28,44 +26,6 @@ import {
 } from '../models/highlight-setting.models';
 import { toTitleCase } from './case.utils';
 import { nonNullable } from './non-nullable.utils';
-
-export function convertKeyboardLayoutToCharacterKeyCodeMap(
-  keyboardLayout: KeyBoardLayout | null,
-): CharacterKeyCodeMap {
-  if (!keyboardLayout) {
-    return new Map();
-  }
-  return new Map(
-    (
-      Object.entries(keyboardLayout.layout) as [
-        WSKCode,
-        Partial<KeyboardLayoutKey>,
-      ][]
-    )
-      .map(([keyCode, keyboardLayoutKey]) =>
-        keyboardLayoutKey
-          ? Object.entries(keyboardLayoutKey)
-              .filter(([, output]) => output.type === 'text')
-              .map(
-                ([modifier, output]) =>
-                  [
-                    output.value,
-                    {
-                      keyCode,
-                      shiftKey:
-                        modifier === 'withShift' ||
-                        modifier === 'withShiftAltGraph',
-                      altGraphKey:
-                        modifier === 'withAltGraph' ||
-                        modifier === 'withShiftAltGraph',
-                    },
-                  ] as const,
-              )
-          : [],
-      )
-      .flat(),
-  );
-}
 
 export function getCharacterKeyCodeFromCharacter(
   character: string,
@@ -210,7 +170,7 @@ export function getKeyCombinationsFromActionCodes(
 
 export function getChordKeyFromActionCode(
   actionCode: number,
-  keyboardLayout: KeyBoardLayout | null,
+  keyboardLayout: KeyboardLayout | null,
 ): ChordKey | null {
   if (!keyboardLayout) {
     return null;

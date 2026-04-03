@@ -10,19 +10,19 @@ import {
 import { setAllEntities, withEntities } from '@ngrx/signals/entities';
 import {
   KEYBOARD_LAYOUTS_FROM_KBDLAYOUT,
-  KeyBoardLayout,
+  KeyboardLayout,
+  convertKeyboardLayoutToCharacterKeyCodeMap,
 } from 'tangent-cc-lib';
-import { convertKeyboardLayoutToCharacterKeyCodeMap } from '../utils/layout.utils';
 import { withSelectedEntity } from './selected-entity.feature';
 
 const US_KEYBOARD_LAYOUT = KEYBOARD_LAYOUTS_FROM_KBDLAYOUT.find(
   (layout) => layout.id === 'us',
-) as KeyBoardLayout;
+) as KeyboardLayout;
 
 export const KeyboardLayoutStore = signalStore(
   { providedIn: 'root' },
   withDevtools('keyboardLayout'),
-  withEntities<KeyBoardLayout>(),
+  withEntities<KeyboardLayout>(),
   withSelectedEntity(),
   withMethods((store) => ({
     load() {
