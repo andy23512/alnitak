@@ -1,4 +1,4 @@
-import { CHARACTER_NAME_MAP } from '../data/character-name-map';
+import { CHARACTER_NAME_MAP } from 'tangent-cc-lib';
 import { RawLesson } from '../models/topic.models';
 import { nonNullable } from './non-nullable.utils';
 

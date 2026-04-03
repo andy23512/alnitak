@@ -32,7 +32,6 @@ import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { NgxPrintModule } from 'ngx-print';
 import { range } from 'ramda';
 import { LayoutComponent } from 'src/app/components/layout/layout.component';
-import { CHARACTER_NAME_MAP } from 'src/app/data/character-name-map';
 import {
   NON_KEY_ACTION_NAME_2_RAW_KEY_LABEL_MAP,
   NON_WSK_CODE_2_RAW_KEY_LABEL_MAP,
@@ -57,6 +56,7 @@ import {
 import {
   ACTIONS,
   ActionType,
+  CHARACTER_NAME_MAP,
   DeviceLayout,
   Layer,
   NO_ACTION_ACTION_CODES,
