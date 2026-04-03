@@ -44,7 +44,6 @@ import {
   HighlightKeyCombination,
   KeyLabel,
   KeyLabelType,
-  Layer,
 } from 'src/app/models/device-layout.models';
 import { IconGuardPipe } from 'src/app/pipes/icon-guard.pipe';
 import { RealTitleCasePipe } from 'src/app/pipes/real-title-case.pipe';
@@ -62,6 +61,7 @@ import {
   getModifierKeyPositionCodeMap,
 } from 'src/app/utils/layout.utils';
 import { nonNullable } from 'src/app/utils/non-nullable.utils';
+import { Layer } from 'tangent-cc-lib';
 
 function normalizeInputData(data: string): string {
   if (data === ' ̃') {

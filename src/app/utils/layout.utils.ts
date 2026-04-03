@@ -6,10 +6,12 @@ import {
   CharacterActionCode,
   CharacterKeyCode,
   CharacterKeyCodeMap,
+  DeviceLayout,
   FLAG_SHIFT_ACTION_CODES,
   FN_SHIFT_ACTION_CODES,
   KeyBoardLayout,
   KeyboardLayoutKey,
+  Layer,
   NUM_SHIFT_ACTION_CODES,
   SHIFT_ACTION_CODES,
   WSKCode,
@@ -17,10 +19,8 @@ import {
 import { ACTION_REPRESENTATION_ICON_MAP } from '../data/action-representation-icon-map';
 import { ChordKey } from '../models/chord.models';
 import {
-  DeviceLayout,
   HighlightKeyCombination,
   KeyCombination,
-  Layer,
 } from '../models/device-layout.models';
 import {
   HighlightSetting,

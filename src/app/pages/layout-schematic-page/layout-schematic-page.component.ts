@@ -12,11 +12,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { TranslatePipe } from '@ngx-translate/core';
 import { timer } from 'rxjs';
 import { SwitchComponent } from 'src/app/components/switch/switch.component';
-import {
-  KeyLabel,
-  KeyLabelType,
-  Layer,
-} from 'src/app/models/device-layout.models';
+import { KeyLabel, KeyLabelType } from 'src/app/models/device-layout.models';
+import { Layer } from 'tangent-cc-lib';
 
 // 0: all off
 // 1: scan code on, scan code output

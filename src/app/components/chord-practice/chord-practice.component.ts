@@ -22,7 +22,6 @@ import {
   KeyCombination,
   KeyLabel,
   KeyLabelType,
-  Layer,
 } from 'src/app/models/device-layout.models';
 import { IconGuardPipe } from 'src/app/pipes/icon-guard.pipe';
 import { RealTitleCasePipe } from 'src/app/pipes/real-title-case.pipe';
@@ -35,6 +34,7 @@ import {
   getChordKeyFromActionCode,
   getKeyCombinationsFromActionCodes,
 } from 'src/app/utils/layout.utils';
+import { Layer } from 'tangent-cc-lib';
 import { ChordOutputKeysComponent } from '../chord-output-keys/chord-output-keys.component';
 import { LayoutComponent } from '../layout/layout.component';
 import { SpeedometerComponent } from '../speedometer/speedometer.component';

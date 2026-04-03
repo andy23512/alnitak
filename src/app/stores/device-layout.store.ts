@@ -18,9 +18,9 @@ import {
 } from '@ngrx/signals/entities';
 import {
   DEFAULT_DEVICE_LAYOUT,
+  DeviceLayout,
   M4G_DEFAULT_DEVICE_LAYOUT,
-} from '../data/device-layouts';
-import { DeviceLayout } from '../models/device-layout.models';
+} from 'tangent-cc-lib';
 import { withSelectedEntity } from './selected-entity.feature';
 
 export const DeviceLayoutStore = signalStore(

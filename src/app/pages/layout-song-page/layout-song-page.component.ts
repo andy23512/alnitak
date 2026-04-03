@@ -22,12 +22,10 @@ import {
   LAYOUT_SONG_LYRICS,
   WORDS_WITH_COMPONENTS_IN_LAYOUT_SONG_LYRICS,
 } from 'src/app/const/lyrics.const';
-import { DEFAULT_DEVICE_LAYOUT } from 'src/app/data/device-layouts';
 import {
   HighlightKeyCombination,
   KeyLabel,
   KeyLabelType,
-  Layer,
 } from 'src/app/models/device-layout.models';
 import { IconGuardPipe } from 'src/app/pipes/icon-guard.pipe';
 import { RealTitleCasePipe } from 'src/app/pipes/real-title-case.pipe';
@@ -43,6 +41,7 @@ import {
   getModifierKeyPositionCodeMap,
 } from 'src/app/utils/layout.utils';
 import { nonNullable } from 'src/app/utils/non-nullable.utils';
+import { DEFAULT_DEVICE_LAYOUT, Layer } from 'tangent-cc-lib';
 
 const AUDIO_URL = './assets/layout.mp3';
 

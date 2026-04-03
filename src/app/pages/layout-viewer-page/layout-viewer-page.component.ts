@@ -42,12 +42,7 @@ import {
   NON_KEY_ACTION_NAME_2_KEY_NAMES_MAP,
   NON_WSK_CODE_2_KEY_NAMES_MAP,
 } from 'src/app/data/key-names';
-import {
-  DeviceLayout,
-  KeyLabel,
-  KeyLabelType,
-  Layer,
-} from 'src/app/models/device-layout.models';
+import { KeyLabel, KeyLabelType } from 'src/app/models/device-layout.models';
 import { IconGuardPipe } from 'src/app/pipes/icon-guard.pipe';
 import { RealTitleCasePipe } from 'src/app/pipes/real-title-case.pipe';
 import { OperatingSystemService } from 'src/app/services/operating-system.service';
@@ -59,7 +54,13 @@ import {
   getHoldKeys,
   getModifierKeyPositionCodeMap,
 } from 'src/app/utils/layout.utils';
-import { ACTIONS, ActionType, NO_ACTION_ACTION_CODES } from 'tangent-cc-lib';
+import {
+  ACTIONS,
+  ActionType,
+  DeviceLayout,
+  Layer,
+  NO_ACTION_ACTION_CODES,
+} from 'tangent-cc-lib';
 
 enum Modifier {
   Shift = 'shift',
