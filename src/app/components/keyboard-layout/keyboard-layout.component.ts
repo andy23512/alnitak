@@ -5,20 +5,21 @@ import {
   inject,
   input,
 } from '@angular/core';
-import { KCode, WSKCode } from 'src/app/models/key-code.models';
-import {
-  KeyBoardLayout,
-  KeyboardLayoutKey,
-} from 'src/app/models/keyboard-layout.models';
 import { KeyboardLayoutStore } from 'src/app/stores/keyboard-layout.store';
+import {
+  KeyboardLayout,
+  KeyboardLayoutKey,
+  KeyCode,
+  WSKCode,
+} from 'tangent-cc-lib';
 
-function generateKeyboard(keyboardLayout: KeyBoardLayout) {
+function generateKeyboard(keyboardLayout: KeyboardLayout) {
   const keySize = 10;
   const gap = 1;
   const step = keySize / 2;
   const keyboardWidth = 14 * keySize + (14 - 1) * gap + step;
   const keyboardHeight = 5 * keySize + (5 - 1) * gap;
-  const keyMatrix: KCode[][] = [
+  const keyMatrix: KeyCode[][] = [
     [
       'Backquote',
       'Digit1',
@@ -96,7 +97,7 @@ function generateKeyboard(keyboardLayout: KeyBoardLayout) {
   const shiftWidth = (keyboardWidth - 10 * keySize - 11 * gap) / 2;
   const spaceWidth = 5 * keySize + (5 - 1) * gap;
   const rowFiveOtherKeyWidth = (keyboardWidth - spaceWidth - 7 * gap) / 7;
-  const keyWidthMap: Partial<Record<KCode, number>> = {
+  const keyWidthMap: Partial<Record<KeyCode, number>> = {
     Backspace: backspaceAndTabWidth,
     Tab: backspaceAndTabWidth,
     CapsLock: capsLockAndEnterWidth,
