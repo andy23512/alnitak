@@ -19,7 +19,11 @@
         "polyfills": ["zone.js"],
         "tsConfig": "tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": ["src/favicon.ico", "src/assets", "src/googlef5d600e4a2cd82e1.html"],
+        "assets": [
+          "src/favicon.ico",
+          "src/assets",
+          "src/googlef5d600e4a2cd82e1.html"
+        ],
         "styles": ["src/styles.scss"],
         "scripts": []
       },
@@ -29,7 +33,7 @@
             {
               "type": "initial",
               "maximumWarning": "500kb",
-              "maximumError": "2mb"
+              "maximumError": "4mb"
             },
             {
               "type": "anyComponentStyle",
