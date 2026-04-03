@@ -4,7 +4,6 @@ import {
   ActionType,
   ALT_GRAPH_ACTION_CODE,
   CharacterActionCode,
-  CharacterKeyCode,
   DeviceLayout,
   FLAG_SHIFT_ACTION_CODES,
   FN_SHIFT_ACTION_CODES,
@@ -25,37 +24,6 @@ import {
 } from '../models/highlight-setting.models';
 import { toTitleCase } from './case.utils';
 import { nonNullable } from './non-nullable.utils';
-
-export function getCharacterActionCodesFromCharacterKeyCode({
-  keyCode,
-  shiftKey,
-  altGraphKey,
-}: CharacterKeyCode): CharacterActionCode[] {
-  const characterActionCodes: CharacterActionCode[] = [];
-  const action = ACTIONS.find(
-    (a) => a.type === ActionType.WSK && a.keyCode === keyCode && !a.withShift,
-  );
-  if (action) {
-    characterActionCodes.push({
-      actionCode: action.codeId,
-      shiftKey,
-      altGraphKey,
-    });
-  }
-  if (shiftKey) {
-    const holdShiftKeyAction = ACTIONS.find(
-      (a) => a.type === ActionType.WSK && a.keyCode === keyCode && a.withShift,
-    );
-    if (holdShiftKeyAction) {
-      characterActionCodes.push({
-        actionCode: holdShiftKeyAction.codeId,
-        shiftKey: false,
-        altGraphKey,
-      });
-    }
-  }
-  return characterActionCodes;
-}
 
 export function getNumShiftKeyPositionCodes(
   deviceLayout: DeviceLayout,

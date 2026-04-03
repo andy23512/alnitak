@@ -30,7 +30,6 @@ import { KeyboardLayoutStore } from 'src/app/stores/keyboard-layout.store';
 import { LayoutSongSettingStore } from 'src/app/stores/layout-song-setting.store';
 import { VisibilitySettingStore } from 'src/app/stores/visibility-setting.store';
 import {
-  getCharacterActionCodesFromCharacterKeyCode,
   getHighlightKeyCombinationFromKeyCombinations,
   getKeyCombinationsFromActionCodes,
   getModifierKeyPositionCodeMap,
@@ -38,6 +37,7 @@ import {
 import { nonNullable } from 'src/app/utils/non-nullable.utils';
 import {
   DEFAULT_DEVICE_LAYOUT,
+  getCharacterActionCodesFromCharacterKeyCode,
   KeyLabel,
   KeyLabelType,
   Layer,

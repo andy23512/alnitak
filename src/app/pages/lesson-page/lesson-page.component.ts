@@ -43,7 +43,6 @@ import { KeyboardLayoutStore } from 'src/app/stores/keyboard-layout.store';
 import { LessonStore } from 'src/app/stores/lesson.store';
 import { VisibilitySettingStore } from 'src/app/stores/visibility-setting.store';
 import {
-  getCharacterActionCodesFromCharacterKeyCode,
   getHighlightKeyCombinationFromKeyCombinations,
   getKeyCombinationsFromActionCodes,
   getModifierKeyPositionCodeMap,
@@ -58,6 +57,7 @@ import {
   Layer,
   NUM_SHIFT_KEY_LABEL,
   SHIFT_KEY_LABEL,
+  getCharacterActionCodesFromCharacterKeyCode,
 } from 'tangent-cc-lib';
 
 function normalizeInputData(data: string): string {
