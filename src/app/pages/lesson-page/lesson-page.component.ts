@@ -44,7 +44,6 @@ import { LessonStore } from 'src/app/stores/lesson.store';
 import { VisibilitySettingStore } from 'src/app/stores/visibility-setting.store';
 import {
   getCharacterActionCodesFromCharacterKeyCode,
-  getCharacterKeyCodeFromCharacter,
   getHighlightKeyCombinationFromKeyCombinations,
   getKeyCombinationsFromActionCodes,
   getModifierKeyPositionCodeMap,
@@ -147,10 +146,7 @@ export class LessonPageComponent implements OnInit, OnDestroy {
     const deviceLayout = this.deviceLayout();
     return lesson?.components
       .map((c) => {
-        const characterKeyCode = getCharacterKeyCodeFromCharacter(
-          c,
-          characterKeyCodeMap,
-        );
+        const characterKeyCode = characterKeyCodeMap.get(c);
         if (!characterKeyCode) {
           return null;
         }

@@ -31,7 +31,6 @@ import { LayoutSongSettingStore } from 'src/app/stores/layout-song-setting.store
 import { VisibilitySettingStore } from 'src/app/stores/visibility-setting.store';
 import {
   getCharacterActionCodesFromCharacterKeyCode,
-  getCharacterKeyCodeFromCharacter,
   getHighlightKeyCombinationFromKeyCombinations,
   getKeyCombinationsFromActionCodes,
   getModifierKeyPositionCodeMap,
@@ -215,10 +214,7 @@ export class LayoutSongPageComponent implements OnInit, OnDestroy {
     const deviceLayout = DEFAULT_DEVICE_LAYOUT;
     return currentLyricSegment.components
       ?.map((c) => {
-        const characterKeyCode = getCharacterKeyCodeFromCharacter(
-          c,
-          characterKeyCodeMap,
-        );
+        const characterKeyCode = characterKeyCodeMap.get(c);
         if (!characterKeyCode) {
           return null;
         }

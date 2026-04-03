@@ -5,7 +5,6 @@ import {
   ALT_GRAPH_ACTION_CODE,
   CharacterActionCode,
   CharacterKeyCode,
-  CharacterKeyCodeMap,
   DeviceLayout,
   FLAG_SHIFT_ACTION_CODES,
   FN_SHIFT_ACTION_CODES,
@@ -26,13 +25,6 @@ import {
 } from '../models/highlight-setting.models';
 import { toTitleCase } from './case.utils';
 import { nonNullable } from './non-nullable.utils';
-
-export function getCharacterKeyCodeFromCharacter(
-  character: string,
-  characterKeyCodeMap: CharacterKeyCodeMap,
-) {
-  return characterKeyCodeMap.get(character);
-}
 
 export function getCharacterActionCodesFromCharacterKeyCode({
   keyCode,
