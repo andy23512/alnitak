@@ -4,11 +4,9 @@ import {
   computed,
   input,
 } from '@angular/core';
-import {
-  HighlightKeyCombination,
-  KeyLabel,
-} from 'src/app/models/device-layout.models';
+import { HighlightKeyCombination } from 'src/app/models/device-layout.models';
 import { cos, sin } from 'src/app/utils/math.utils';
+import { KeyLabel } from 'tangent-cc-lib';
 import { KeyLabelComponent } from '../key-label/key-label.component';
 
 const o = 8;

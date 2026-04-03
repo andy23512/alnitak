@@ -4,11 +4,9 @@ import {
   computed,
   input,
 } from '@angular/core';
-import {
-  HighlightKeyCombination,
-  KeyLabel,
-} from 'src/app/models/device-layout.models';
+import { HighlightKeyCombination } from 'src/app/models/device-layout.models';
 import { DirectionMap } from 'src/app/models/layout.models';
+import { KeyLabel } from 'tangent-cc-lib';
 import { KeyLabelComponent } from '../key-label/key-label.component';
 import { SwitchSectorComponent } from '../switch-sector/switch-sector.component';
 

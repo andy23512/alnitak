@@ -20,8 +20,6 @@ import { VisibleDirective } from 'src/app/directives/visible.directive';
 import {
   HighlightKeyCombination,
   KeyCombination,
-  KeyLabel,
-  KeyLabelType,
 } from 'src/app/models/device-layout.models';
 import { IconGuardPipe } from 'src/app/pipes/icon-guard.pipe';
 import { RealTitleCasePipe } from 'src/app/pipes/real-title-case.pipe';
@@ -34,7 +32,7 @@ import {
   getChordKeyFromActionCode,
   getKeyCombinationsFromActionCodes,
 } from 'src/app/utils/layout.utils';
-import { Layer } from 'tangent-cc-lib';
+import { KeyLabel, KeyLabelType, Layer } from 'tangent-cc-lib';
 import { ChordOutputKeysComponent } from '../chord-output-keys/chord-output-keys.component';
 import { LayoutComponent } from '../layout/layout.component';
 import { SpeedometerComponent } from '../speedometer/speedometer.component';

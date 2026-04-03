@@ -3,10 +3,9 @@ import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { TranslatePipe } from '@ngx-translate/core';
-import { KeyLabelType } from 'src/app/models/device-layout.models';
 import { RealTitleCasePipe } from 'src/app/pipes/real-title-case.pipe';
 import { MiscSettingStore } from 'src/app/stores/misc-setting.store';
-import { Layer } from 'tangent-cc-lib';
+import { KeyLabelType, Layer } from 'tangent-cc-lib';
 import { LayoutComponent } from '../layout/layout.component';
 
 @Component({

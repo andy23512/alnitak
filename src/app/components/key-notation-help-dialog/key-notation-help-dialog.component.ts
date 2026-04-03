@@ -8,9 +8,8 @@ import {
   MatDialogTitle,
 } from '@angular/material/dialog';
 import { TranslatePipe } from '@ngx-translate/core';
-import { KeyLabelType } from 'src/app/models/device-layout.models';
 import { RealTitleCasePipe } from 'src/app/pipes/real-title-case.pipe';
-import { Layer } from 'tangent-cc-lib';
+import { KeyLabelType, Layer } from 'tangent-cc-lib';
 import { LayoutComponent } from '../layout/layout.component';
 
 @Component({

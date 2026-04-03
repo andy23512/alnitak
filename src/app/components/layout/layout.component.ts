@@ -8,16 +8,14 @@ import {
 import { TranslateService } from '@ngx-translate/core';
 import { POSITION_CODE_LAYOUT } from 'src/app/data/layouts';
 import { VisibleDirective } from 'src/app/directives/visible.directive';
-import {
-  HighlightKeyCombination,
-  KeyLabel,
-} from 'src/app/models/device-layout.models';
+import { HighlightKeyCombination } from 'src/app/models/device-layout.models';
 import { FingerMap, HandMap } from 'src/app/models/layout.models';
 import { MiscSettingStore } from 'src/app/stores/misc-setting.store';
 import {
   convertPositionCodeToKeyNotation,
   convertPositionCodeToText,
 } from 'src/app/utils/layout.utils';
+import { KeyLabel } from 'tangent-cc-lib';
 import { SwitchComponent } from '../switch/switch.component';
 const cellSize = 350;
 const gap = 35;

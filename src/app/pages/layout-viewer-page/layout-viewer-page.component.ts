@@ -33,15 +33,9 @@ import { NgxPrintModule } from 'ngx-print';
 import { range } from 'ramda';
 import { LayoutComponent } from 'src/app/components/layout/layout.component';
 import {
-  NON_KEY_ACTION_NAME_2_RAW_KEY_LABEL_MAP,
-  NON_WSK_CODE_2_RAW_KEY_LABEL_MAP,
-  OS_2_META_KEY_LABEL_MAP,
-} from 'src/app/data/key-labels';
-import {
   NON_KEY_ACTION_NAME_2_KEY_NAMES_MAP,
   NON_WSK_CODE_2_KEY_NAMES_MAP,
 } from 'src/app/data/key-names';
-import { KeyLabel, KeyLabelType } from 'src/app/models/device-layout.models';
 import { IconGuardPipe } from 'src/app/pipes/icon-guard.pipe';
 import { RealTitleCasePipe } from 'src/app/pipes/real-title-case.pipe';
 import { OperatingSystemService } from 'src/app/services/operating-system.service';
@@ -58,8 +52,13 @@ import {
   ActionType,
   CHARACTER_NAME_MAP,
   DeviceLayout,
+  KeyLabel,
+  KeyLabelType,
   Layer,
   NO_ACTION_ACTION_CODES,
+  NON_KEY_ACTION_NAME_2_RAW_KEY_LABEL_MAP,
+  NON_WSK_CODE_2_RAW_KEY_LABEL_MAP,
+  OS_2_META_KEY_LABEL_MAP,
 } from 'tangent-cc-lib';
 
 enum Modifier {

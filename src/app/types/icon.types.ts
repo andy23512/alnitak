@@ -1,3 +1,5 @@
+import { KeyLabelIcon } from 'tangent-cc-lib';
+
 export type Icon =
   | '123'
   | 'abc'
@@ -73,3 +75,5 @@ export type Icon =
   | 'volume_off'
   | 'volume_up'
   | 'window';
+
+const _assertIconType: [KeyLabelIcon] extends [Icon] ? true : false = true;

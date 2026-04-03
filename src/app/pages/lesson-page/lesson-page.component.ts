@@ -30,21 +30,10 @@ import { interval } from 'rxjs';
 import { ComboCounterComponent } from 'src/app/components/combo-counter/combo-counter.component';
 import { LayoutComponent } from 'src/app/components/layout/layout.component';
 import { SpeedometerComponent } from 'src/app/components/speedometer/speedometer.component';
-import {
-  ALT_GRAPH_KEY_LABEL,
-  FLAG_SHIFT_KEY_LABEL,
-  FN_SHIFT_KEY_LABEL,
-  NUM_SHIFT_KEY_LABEL,
-  SHIFT_KEY_LABEL,
-} from 'src/app/data/key-labels';
 import { LESSONS } from 'src/app/data/topics';
 import { db } from 'src/app/db';
 import { VisibleDirective } from 'src/app/directives/visible.directive';
-import {
-  HighlightKeyCombination,
-  KeyLabel,
-  KeyLabelType,
-} from 'src/app/models/device-layout.models';
+import { HighlightKeyCombination } from 'src/app/models/device-layout.models';
 import { IconGuardPipe } from 'src/app/pipes/icon-guard.pipe';
 import { RealTitleCasePipe } from 'src/app/pipes/real-title-case.pipe';
 import { AirModeSettingStore } from 'src/app/stores/air-mode-setting.store';
@@ -61,7 +50,16 @@ import {
   getModifierKeyPositionCodeMap,
 } from 'src/app/utils/layout.utils';
 import { nonNullable } from 'src/app/utils/non-nullable.utils';
-import { Layer } from 'tangent-cc-lib';
+import {
+  ALT_GRAPH_KEY_LABEL,
+  FLAG_SHIFT_KEY_LABEL,
+  FN_SHIFT_KEY_LABEL,
+  KeyLabel,
+  KeyLabelType,
+  Layer,
+  NUM_SHIFT_KEY_LABEL,
+  SHIFT_KEY_LABEL,
+} from 'tangent-cc-lib';
 
 function normalizeInputData(data: string): string {
   if (data === ' ̃') {

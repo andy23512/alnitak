@@ -2,11 +2,8 @@ import { NgClass } from '@angular/common';
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { MatTooltip } from '@angular/material/tooltip';
 import { TranslatePipe } from '@ngx-translate/core';
-import {
-  HighlightKeyCombination,
-  KeyLabel,
-  KeyLabelType,
-} from 'src/app/models/device-layout.models';
+import { HighlightKeyCombination } from 'src/app/models/device-layout.models';
+import { KeyLabel, KeyLabelType } from 'tangent-cc-lib';
 
 @Component({
   selector: '[appKeyLabel]',
