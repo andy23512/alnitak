@@ -7,7 +7,6 @@ import {
 } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { VisibleDirective } from 'src/app/directives/visible.directive';
-import { HighlightKeyCombination } from 'src/app/models/device-layout.models';
 import { MiscSettingStore } from 'src/app/stores/misc-setting.store';
 import {
   convertPositionCodeToKeyNotation,
@@ -16,6 +15,7 @@ import {
 import {
   FingerMap,
   HandMap,
+  HighlightKeyCombination,
   KeyLabel,
   POSITION_CODE_LAYOUT,
 } from 'tangent-cc-lib';

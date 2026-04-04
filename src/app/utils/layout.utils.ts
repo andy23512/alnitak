@@ -2,131 +2,18 @@ import { TranslateService } from '@ngx-translate/core';
 import {
   ACTIONS,
   ActionType,
-  ALT_GRAPH_ACTION_CODE,
-  CharacterActionCode,
-  DeviceLayout,
-  FLAG_SHIFT_ACTION_CODES,
-  FN_SHIFT_ACTION_CODES,
+  HighlightKeyCombination,
   KeyboardLayout,
+  KeyCombination,
   Layer,
-  NUM_SHIFT_ACTION_CODES,
-  SHIFT_ACTION_CODES,
 } from 'tangent-cc-lib';
 import { ACTION_REPRESENTATION_ICON_MAP } from '../data/action-representation-icon-map';
 import { ChordKey } from '../models/chord.models';
-import {
-  HighlightKeyCombination,
-  KeyCombination,
-} from '../models/device-layout.models';
 import {
   HighlightSetting,
   PreferSides,
 } from '../models/highlight-setting.models';
 import { toTitleCase } from './case.utils';
-import { nonNullable } from './non-nullable.utils';
-
-export function getNumShiftKeyPositionCodes(
-  deviceLayout: DeviceLayout,
-): number[] {
-  const [primaryLayer, secondaryLayer] = deviceLayout.layout;
-  return primaryLayer
-    .map((ac, index) => (NUM_SHIFT_ACTION_CODES.includes(ac) ? index : -1))
-    .filter(
-      (pos) =>
-        pos !== -1 && NUM_SHIFT_ACTION_CODES.includes(secondaryLayer[pos]),
-    );
-}
-
-export function getFnShiftKeyPositionCodes(
-  deviceLayout: DeviceLayout,
-): number[] {
-  const [primaryLayer, _, tertiaryLayer] = deviceLayout.layout;
-  return primaryLayer
-    .map((ac, index) => (FN_SHIFT_ACTION_CODES.includes(ac) ? index : -1))
-    .filter(
-      (pos) => pos !== -1 && FN_SHIFT_ACTION_CODES.includes(tertiaryLayer[pos]),
-    );
-}
-
-export function getFlagShiftKeyPositionCodes(
-  deviceLayout: DeviceLayout,
-): number[] {
-  const [primaryLayer, _, __, quaternaryLayer] = deviceLayout.layout;
-  if (!quaternaryLayer) {
-    return [];
-  }
-  return primaryLayer
-    .map((ac, index) => (FLAG_SHIFT_ACTION_CODES.includes(ac) ? index : -1))
-    .filter(
-      (pos) =>
-        pos !== -1 && FLAG_SHIFT_ACTION_CODES.includes(quaternaryLayer[pos]),
-    );
-}
-
-export function getModifierKeyPositionCodeMap(deviceLayout: DeviceLayout) {
-  return {
-    shift: SHIFT_ACTION_CODES.map((actionCode) =>
-      getKeyCombinationsFromActionCodes(
-        [{ actionCode, shiftKey: false, altGraphKey: false }],
-        deviceLayout,
-      )?.map((k) => k.characterKeyPositionCode),
-    )
-      .filter(nonNullable)
-      .flat(),
-    numShift: getNumShiftKeyPositionCodes(deviceLayout),
-    fnShift: getFnShiftKeyPositionCodes(deviceLayout),
-    flagShift: getFlagShiftKeyPositionCodes(deviceLayout),
-    altGraph: [ALT_GRAPH_ACTION_CODE]
-      .map((actionCode) =>
-        getKeyCombinationsFromActionCodes(
-          [{ actionCode, shiftKey: false, altGraphKey: false }],
-          deviceLayout,
-        )?.map((k) => k.characterKeyPositionCode),
-      )
-      .filter(nonNullable)
-      .flat(),
-  };
-}
-
-export function getKeyCombinationsFromActionCodes(
-  characterActionCodes: CharacterActionCode[],
-  deviceLayout: DeviceLayout | null,
-): KeyCombination[] | null {
-  if (!deviceLayout) {
-    return null;
-  }
-  return characterActionCodes
-    .map(({ actionCode, shiftKey, altGraphKey }) =>
-      deviceLayout.layout.map((layer, layerIndex) => {
-        const positionCodesList = layer
-          .map((ac, index) => (ac === actionCode ? index : -1))
-          .filter((pos) => pos !== -1)
-          .map((pos) => {
-            let layer = Layer.Primary;
-            if (layerIndex === 1) {
-              layer = Layer.Secondary;
-            } else if (layerIndex === 2) {
-              layer = Layer.Tertiary;
-            } else if (layerIndex === 3) {
-              layer = Layer.Quaternary;
-            }
-            return {
-              characterKeyPositionCode: pos,
-              layer,
-              shiftKey,
-              altGraphKey,
-            };
-          });
-        if (positionCodesList.length === 0) {
-          return null;
-        }
-        return positionCodesList;
-      }),
-    )
-    .flat()
-    .flat()
-    .filter(nonNullable);
-}
 
 export function getChordKeyFromActionCode(
   actionCode: number,

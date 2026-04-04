@@ -33,7 +33,6 @@ import { SpeedometerComponent } from 'src/app/components/speedometer/speedometer
 import { LESSONS } from 'src/app/data/topics';
 import { db } from 'src/app/db';
 import { VisibleDirective } from 'src/app/directives/visible.directive';
-import { HighlightKeyCombination } from 'src/app/models/device-layout.models';
 import { IconGuardPipe } from 'src/app/pipes/icon-guard.pipe';
 import { RealTitleCasePipe } from 'src/app/pipes/real-title-case.pipe';
 import { AirModeSettingStore } from 'src/app/stores/air-mode-setting.store';
@@ -42,22 +41,21 @@ import { HighlightSettingStore } from 'src/app/stores/highlight-setting.store';
 import { KeyboardLayoutStore } from 'src/app/stores/keyboard-layout.store';
 import { LessonStore } from 'src/app/stores/lesson.store';
 import { VisibilitySettingStore } from 'src/app/stores/visibility-setting.store';
-import {
-  getHighlightKeyCombinationFromKeyCombinations,
-  getKeyCombinationsFromActionCodes,
-  getModifierKeyPositionCodeMap,
-} from 'src/app/utils/layout.utils';
+import { getHighlightKeyCombinationFromKeyCombinations } from 'src/app/utils/layout.utils';
 import { nonNullable } from 'src/app/utils/non-nullable.utils';
 import {
   ALT_GRAPH_KEY_LABEL,
   FLAG_SHIFT_KEY_LABEL,
   FN_SHIFT_KEY_LABEL,
+  HighlightKeyCombination,
   KeyLabel,
   KeyLabelType,
   Layer,
   NUM_SHIFT_KEY_LABEL,
   SHIFT_KEY_LABEL,
   getCharacterActionCodesFromCharacterKeyCode,
+  getKeyCombinationsFromActionCodes,
+  getModifierKeyPositionCodeMap,
 } from 'tangent-cc-lib';
 
 function normalizeInputData(data: string): string {

@@ -39,15 +39,13 @@ import { DeviceLayoutStore } from 'src/app/stores/device-layout.store';
 import { LanguageSettingStore } from 'src/app/stores/language-setting.store';
 import { LayoutViewerKeyboardLayoutStore } from 'src/app/stores/layout-viewer-keyboard-layout.store';
 import { VisibilitySettingStore } from 'src/app/stores/visibility-setting.store';
-import {
-  getHoldKeys,
-  getModifierKeyPositionCodeMap,
-} from 'src/app/utils/layout.utils';
+import { getHoldKeys } from 'src/app/utils/layout.utils';
 import {
   ACTIONS,
   ActionType,
   CHARACTER_NAME_MAP,
   DeviceLayout,
+  getModifierKeyPositionCodeMap,
   KeyLabel,
   KeyLabelType,
   Layer,

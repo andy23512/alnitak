@@ -17,10 +17,6 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { interval } from 'rxjs';
 import { VisibleDirective } from 'src/app/directives/visible.directive';
-import {
-  HighlightKeyCombination,
-  KeyCombination,
-} from 'src/app/models/device-layout.models';
 import { IconGuardPipe } from 'src/app/pipes/icon-guard.pipe';
 import { RealTitleCasePipe } from 'src/app/pipes/real-title-case.pipe';
 import { AirModeSettingStore } from 'src/app/stores/air-mode-setting.store';
@@ -28,11 +24,15 @@ import { ChordPracticeStore } from 'src/app/stores/chord-practice.store';
 import { DeviceLayoutStore } from 'src/app/stores/device-layout.store';
 import { KeyboardLayoutStore } from 'src/app/stores/keyboard-layout.store';
 import { VisibilitySettingStore } from 'src/app/stores/visibility-setting.store';
+import { getChordKeyFromActionCode } from 'src/app/utils/layout.utils';
 import {
-  getChordKeyFromActionCode,
   getKeyCombinationsFromActionCodes,
-} from 'src/app/utils/layout.utils';
-import { KeyLabel, KeyLabelType, Layer } from 'tangent-cc-lib';
+  HighlightKeyCombination,
+  KeyCombination,
+  KeyLabel,
+  KeyLabelType,
+  Layer,
+} from 'tangent-cc-lib';
 import { ChordOutputKeysComponent } from '../chord-output-keys/chord-output-keys.component';
 import { LayoutComponent } from '../layout/layout.component';
 import { SpeedometerComponent } from '../speedometer/speedometer.component';
