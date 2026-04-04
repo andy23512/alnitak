@@ -41,8 +41,6 @@ import { HighlightSettingStore } from 'src/app/stores/highlight-setting.store';
 import { KeyboardLayoutStore } from 'src/app/stores/keyboard-layout.store';
 import { LessonStore } from 'src/app/stores/lesson.store';
 import { VisibilitySettingStore } from 'src/app/stores/visibility-setting.store';
-import { getHighlightKeyCombinationFromKeyCombinations } from 'src/app/utils/layout.utils';
-import { nonNullable } from 'src/app/utils/non-nullable.utils';
 import {
   ALT_GRAPH_KEY_LABEL,
   FLAG_SHIFT_KEY_LABEL,
@@ -54,8 +52,10 @@ import {
   NUM_SHIFT_KEY_LABEL,
   SHIFT_KEY_LABEL,
   getCharacterActionCodesFromCharacterKeyCode,
+  getHighlightKeyCombinationFromKeyCombinations,
   getKeyCombinationsFromActionCodes,
   getModifierKeyPositionCodeMap,
+  nonNullable,
 } from 'tangent-cc-lib';
 
 function normalizeInputData(data: string): string {

@@ -28,17 +28,17 @@ import { INITIAL_HIGHLIGHT_SETTING } from 'src/app/stores/highlight-setting.stor
 import { KeyboardLayoutStore } from 'src/app/stores/keyboard-layout.store';
 import { LayoutSongSettingStore } from 'src/app/stores/layout-song-setting.store';
 import { VisibilitySettingStore } from 'src/app/stores/visibility-setting.store';
-import { getHighlightKeyCombinationFromKeyCombinations } from 'src/app/utils/layout.utils';
-import { nonNullable } from 'src/app/utils/non-nullable.utils';
 import {
   DEFAULT_DEVICE_LAYOUT,
   getCharacterActionCodesFromCharacterKeyCode,
+  getHighlightKeyCombinationFromKeyCombinations,
   getKeyCombinationsFromActionCodes,
   getModifierKeyPositionCodeMap,
   HighlightKeyCombination,
   KeyLabel,
   KeyLabelType,
   Layer,
+  nonNullable,
 } from 'tangent-cc-lib';
 
 const AUDIO_URL = './assets/layout.mp3';

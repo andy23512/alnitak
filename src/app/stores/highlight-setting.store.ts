@@ -4,7 +4,7 @@ import {
 } from '@angular-architects/ngrx-toolkit';
 import { patchState, signalStore, withMethods, withState } from '@ngrx/signals';
 import { mergeDeepLeft } from 'ramda';
-import { HighlightSetting } from '../models/highlight-setting.models';
+import { HighlightSetting } from 'tangent-cc-lib';
 
 export const INITIAL_HIGHLIGHT_SETTING: HighlightSetting = {
   shiftLayer: {

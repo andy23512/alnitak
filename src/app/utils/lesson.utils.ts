@@ -1,6 +1,5 @@
-import { CHARACTER_NAME_MAP } from 'tangent-cc-lib';
+import { CHARACTER_NAME_MAP, nonNullable } from 'tangent-cc-lib';
 import { RawLesson } from '../models/topic.models';
-import { nonNullable } from './non-nullable.utils';
 
 export function generateCharacterLesson(str: string): RawLesson {
   const components = str.split('');
