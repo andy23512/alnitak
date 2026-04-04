@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { MatOption, MatSelect } from '@angular/material/select';
 import { TranslatePipe } from '@ngx-translate/core';
-import { PreferSides } from '../../models/highlight-setting.models';
+import { PreferSides } from 'tangent-cc-lib';
 
 @Component({
   selector: 'app-sides-dropdown',
