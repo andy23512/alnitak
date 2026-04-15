@@ -3,12 +3,26 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { InformationPageComponent } from './pages/information-page/information-page.component';
 import { LessonPageComponent } from './pages/lesson-page/lesson-page.component';
 import { SettingsPageComponent } from './pages/settings-page/settings-page.component';
+import { lessonResolver } from './resolvers/lesson.resolver';
 
 export const APP_ROUTES: Route[] = [
   { path: '', pathMatch: 'full', component: HomePageComponent },
   { path: 'information', component: InformationPageComponent },
   { path: 'settings', component: SettingsPageComponent },
-  { path: 'topic/:topicId/lesson/:lessonId', component: LessonPageComponent },
+  {
+    path: 'topic/:topicId/lesson/:lessonId',
+    component: LessonPageComponent,
+    resolve: {
+      lesson: lessonResolver,
+    },
+  },
+  {
+    path: 'lesson-not-found',
+    loadComponent: () =>
+      import(
+        './pages/lesson-not-found-page/lesson-not-found-page.component'
+      ).then((m) => m.LessonNotFoundPageComponent),
+  },
   {
     path: 'statistics',
     loadComponent: () =>

@@ -33,9 +33,9 @@
       <span class="text-gray-300">...</span>
     </span>
   } @else {
-    <span>{{ lesson()?.topic?.name | translate }}</span>
+    <span>{{ lesson().topic.name | translate }}</span>
     <mat-icon>{{ "arrow_right" | iconGuard }}</mat-icon>
-    <span> {{ lesson()?.name | translate }}</span>
+    <span> {{ lesson().name | translate }}</span>
   }
 </section>
 <div class="absolute right-0 top-0 h-12 content-center">
@@ -57,7 +57,7 @@
   <div class="absolute left-0 top-0 h-12 content-center">
     <a
       class="text-inherit"
-      *ngrxLet="lesson()?.previousLessonUrl as previousLessonUrl"
+      *ngrxLet="lesson().previousLessonUrl as previousLessonUrl"
       [attr.aria-label]="
         'lesson-page.previous-lesson-link.aria-label' | translate
       "
@@ -71,7 +71,7 @@
     </a>
     <a
       class="text-inherit"
-      *ngrxLet="lesson()?.nextLessonUrl as nextLessonUrl"
+      *ngrxLet="lesson().nextLessonUrl as nextLessonUrl"
       [attr.aria-label]="'lesson-page.next-lesson-link.aria-label' | translate"
       [routerLink]="nextLessonUrl"
       [matTooltip]="'lesson-page.next-lesson-link.tooltip' | translate"

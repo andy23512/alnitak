@@ -20,3 +20,8 @@ export interface Topic {
 export interface Lesson extends RawLesson {
   topic: Topic;
 }
+
+export interface ResolvedLesson extends Lesson {
+  previousLessonUrl: string | null;
+  nextLessonUrl: string | null;
+}
