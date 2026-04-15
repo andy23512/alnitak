@@ -159,6 +159,15 @@ https://github.com/cartant/rxjs-etc by Nicholas Jamieson, MIT licensed. See the
 file header for details.
 
 
+@ngx-loading-bar/core
+MIT
+
+@ngx-loading-bar/http-client
+MIT
+
+@ngx-loading-bar/router
+MIT
+
 @ngx-translate/core
 MIT
 Copyright (c) 2018 Olivier Combe
