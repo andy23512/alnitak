@@ -1,7 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { HotkeysService } from '@ngneat/hotkeys';
-import { HotkeyDialogComponent } from './components/hotkey-dialog/hotkey-dialog.component';
 import { NavComponent } from './components/nav/nav.component';
 
 @Component({
@@ -14,16 +13,23 @@ export class AppComponent implements OnInit {
   private readonly matDialog = inject(MatDialog);
   private readonly hotkeysService = inject(HotkeysService);
 
-  private hotkeyDialogRef: MatDialogRef<HotkeyDialogComponent> | null = null;
+  private hotkeyDialogRef: MatDialogRef<unknown> | null = null;
 
   ngOnInit(): void {
     this.hotkeysService.addShortcut({ keys: 'shift.?' }).subscribe(() => {
-      if (!this.hotkeyDialogRef) {
-        this.hotkeyDialogRef = this.matDialog.open(HotkeyDialogComponent);
-        return;
-      }
-      this.hotkeyDialogRef.close();
-      this.hotkeyDialogRef = null;
+      void this.toggleHotkeyDialog();
     });
+  }
+
+  private async toggleHotkeyDialog() {
+    if (!this.hotkeyDialogRef) {
+      const { HotkeyDialogComponent } = await import(
+        './components/hotkey-dialog/hotkey-dialog.component'
+      );
+      this.hotkeyDialogRef = this.matDialog.open(HotkeyDialogComponent);
+      return;
+    }
+    this.hotkeyDialogRef.close();
+    this.hotkeyDialogRef = null;
   }
 }

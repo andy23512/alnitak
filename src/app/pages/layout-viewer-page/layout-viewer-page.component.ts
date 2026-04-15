@@ -27,10 +27,8 @@ import { MatTooltip } from '@angular/material/tooltip';
 import { HotkeysShortcutPipe } from '@ngneat/hotkeys';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { TooltipDirective } from '@webed/angular-tooltip';
-import * as fuzzy from 'fuzzy';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { NgxPrintModule } from 'ngx-print';
-import { range } from 'ramda';
 import { LayoutComponent } from 'src/app/components/layout/layout.component';
 import { IconGuardPipe } from 'src/app/pipes/icon-guard.pipe';
 import { RealTitleCasePipe } from 'src/app/pipes/real-title-case.pipe';
@@ -272,9 +270,13 @@ export class LayoutViewerPageComponent {
     if (!deviceLayout || !keyboardLayout || !deviceLayoutLayerNumber) {
       return null;
     }
-    for (const positionIndex of range(0, 90)) {
+    for (let positionIndex = 0; positionIndex < 90; positionIndex += 1) {
       const keyLabels: KeyLabel[] = [];
-      for (const layerIndex of range(0, deviceLayoutLayerNumber)) {
+      for (
+        let layerIndex = 0;
+        layerIndex < deviceLayoutLayerNumber;
+        layerIndex += 1
+      ) {
         let layer = Layer.Primary;
         if (layerIndex === 1) {
           layer = Layer.Secondary;
@@ -501,8 +503,12 @@ export class LayoutViewerPageComponent {
       withShift?: boolean;
       withAltGraph?: boolean;
     }[] = [];
-    for (const positionIndex of range(0, 90)) {
-      for (const layerIndex of range(0, deviceLayoutLayerNumber)) {
+    for (let positionIndex = 0; positionIndex < 90; positionIndex += 1) {
+      for (
+        let layerIndex = 0;
+        layerIndex < deviceLayoutLayerNumber;
+        layerIndex += 1
+      ) {
         let layer = Layer.Primary;
         if (layerIndex === 1) {
           layer = Layer.Secondary;
@@ -648,15 +654,13 @@ export class LayoutViewerPageComponent {
 
   readonly filteredKeyList = computed(() => {
     const keyListForSearch = this.keyListForSearch();
-    const keySearchQuery = this.keySearchQuery();
+    const keySearchQuery = this.keySearchQuery().trim().toLowerCase();
     if (!keySearchQuery || !keyListForSearch) {
       return null;
     }
-    return fuzzy
-      .filter(keySearchQuery, keyListForSearch, {
-        extract: (k) => k.keyName,
-      })
-      .map((r) => r.original);
+    return keyListForSearch.filter((item) =>
+      item.keyName.toLowerCase().includes(keySearchQuery),
+    );
   });
 
   public setSelectedKeyboardLayoutId(keyboardLayoutId: string) {

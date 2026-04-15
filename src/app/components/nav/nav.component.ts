@@ -2,6 +2,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { AsyncPipe } from '@angular/common';
 import {
   Component,
+  OnDestroy,
   OnInit,
   ViewChild,
   computed,
@@ -32,15 +33,31 @@ import {
 } from '@angular/router';
 import { HotkeysService } from '@ngneat/hotkeys';
 import { TranslatePipe } from '@ngx-translate/core';
-import * as fuzzy from 'fuzzy';
-import { uniqBy } from 'ramda';
 import { Observable } from 'rxjs';
 import { filter, map, shareReplay, take } from 'rxjs/operators';
 import { NAV_LINKS } from 'src/app/data/nav-links';
+import { Lesson } from 'src/app/models/topic.models';
 import { IconGuardPipe } from 'src/app/pipes/icon-guard.pipe';
 import { RealTitleCasePipe } from 'src/app/pipes/real-title-case.pipe';
 import { LESSON_DATA_FOR_SEARCH, TOPICS } from '../../data/topics';
-import { HotkeyDialogComponent } from '../hotkey-dialog/hotkey-dialog.component';
+
+function searchLessons(query: string): Lesson[] {
+  const normalizedQuery = query.trim().toLowerCase();
+  if (!normalizedQuery) {
+    return [];
+  }
+
+  const matchedById = new Map<string, Lesson>();
+  for (const entry of LESSON_DATA_FOR_SEARCH) {
+    if (!entry.key.toLowerCase().includes(normalizedQuery)) {
+      continue;
+    }
+    if (!matchedById.has(entry.lesson.id)) {
+      matchedById.set(entry.lesson.id, entry.lesson);
+    }
+  }
+  return Array.from(matchedById.values());
+}
 
 @Component({
   selector: 'app-nav',
@@ -69,7 +86,7 @@ import { HotkeyDialogComponent } from '../hotkey-dialog/hotkey-dialog.component'
     RealTitleCasePipe,
   ],
 })
-export class NavComponent implements OnInit {
+export class NavComponent implements OnInit, OnDestroy {
   public topics = TOPICS;
   public navLinks = NAV_LINKS;
   public toggleSideMenuShortcut = 'meta.b';
@@ -81,14 +98,7 @@ export class NavComponent implements OnInit {
     if (!searchQuery) {
       return null;
     }
-    return uniqBy(
-      (d) => d.id,
-      fuzzy
-        .filter(searchQuery, LESSON_DATA_FOR_SEARCH, {
-          extract: (d) => d.key,
-        })
-        .map((d) => d.original.lesson),
-    );
+    return searchLessons(searchQuery);
   });
 
   private readonly breakpointObserver = inject(BreakpointObserver);
@@ -127,7 +137,10 @@ export class NavComponent implements OnInit {
       });
   }
 
-  openHotkeyDialog() {
+  async openHotkeyDialog() {
+    const { HotkeyDialogComponent } = await import(
+      '../hotkey-dialog/hotkey-dialog.component'
+    );
     this.matDialog.open(HotkeyDialogComponent);
   }
 
