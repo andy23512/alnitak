@@ -1,1 +1,8 @@
 <app-nav></app-nav>
+@if (loader.value$ | async; as value) {
+  <mat-progress-bar
+    class="!fixed top-0 z-10 w-full opacity-50"
+    mode="determinate"
+    [value]="value"
+  ></mat-progress-bar>
+}

@@ -2662,6 +2662,27 @@
   resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-17.3.5.tgz#5f1a8d6e59e8fb37b8f1a4fe69116d9f46f2102f"
   integrity sha512-0heI0yHUckdGI8uywu/wkp24KR/tdYMKYJOaYIU+9JydyN1zJRpbR7x0thddl7+k/zu2ZGbfFdv1779Ecw/xdA==
 
+"@ngx-loading-bar/core@^7.0.1":
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/@ngx-loading-bar/core/-/core-7.0.1.tgz#1cb4076539fbaa6c503d28f62a163302aca48708"
+  integrity sha512-myVfxA+BI9lXtNMNcM3uYCS8jVg9aAc37CY77f0W31p/skY9Js254fARB0UtI8PWv4YTFI/NANShK5/tlZPqNg==
+  dependencies:
+    tslib "^2.0.0"
+
+"@ngx-loading-bar/http-client@^7.0.1":
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/@ngx-loading-bar/http-client/-/http-client-7.0.1.tgz#3a54dc8e464ab56bf6f298429cae658f6fb96874"
+  integrity sha512-frk3tzunQgbtqeEbvyKb3WHFqyaAiEGx5apovLBa+R/lRjPBZ8KDaXlXPFmhtvtmYMVd6kHOzYnnnhOp0n7Wyg==
+  dependencies:
+    tslib "^2.0.0"
+
+"@ngx-loading-bar/router@^7.0.1":
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/@ngx-loading-bar/router/-/router-7.0.1.tgz#e47759f8aa2764b6345457b41432bf85f95d0273"
+  integrity sha512-v7KZh0WCByJPqOElMp3ZLP0XVurvwxVzXIzHkT5/RJwZOpcv7HOa3Tl3yLqTqYsevPpWqIxqw7DiNNBK98ocHw==
+  dependencies:
+    tslib "^2.0.0"
+
 "@ngx-translate/core@^17.0.0":
   version "17.0.0"
   resolved "https://registry.yarnpkg.com/@ngx-translate/core/-/core-17.0.0.tgz#d6c0738c5004b53273bc97e6ca5488f6a6816f25"
