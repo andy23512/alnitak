@@ -586,5 +586,9 @@
   "device-layout-import-dialog": {
     "title": "デバイスレイアウトのインポート",
     "name-label": "名前"
+  },
+  "lesson-not-found-page": {
+    "title": "レッスンが見つかりません",
+    "description": "アクセスしようとしたレッスンは見つかりませんでした。削除された可能性があります。または、URLが間違っている可能性があります。サイドメニューからレッスンを選択してください。"
   }
 }

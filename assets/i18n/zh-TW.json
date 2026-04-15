@@ -560,5 +560,9 @@
   "device-layout-import-dialog": {
     "title": "匯入裝置佈局",
     "name-label": "名稱"
+  },
+  "lesson-not-found-page": {
+    "title": "找不到課程",
+    "description": "您嘗試訪問的課程不存在。它可能已被刪除或 URL 錯誤。請從側邊菜單中選擇一個課程。"
   }
 }

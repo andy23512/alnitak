@@ -585,5 +585,9 @@
   "device-layout-import-dialog": {
     "title": "import device layout",
     "name-label": "name"
+  },
+  "lesson-not-found-page": {
+    "title": "Lesson Not Found",
+    "description": "The lesson you are trying to access is not found. It may have been deleted or the URL may be wrong. Please select a lesson from the side menu."
   }
 }
