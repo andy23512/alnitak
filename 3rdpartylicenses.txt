@@ -734,6 +734,7 @@ Apache-2.0
 
 
 tangent-cc-lib
+MIT
 
 tslib
 0BSD
