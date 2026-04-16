@@ -22,7 +22,7 @@ import { RealTitleCasePipe } from 'src/app/pipes/real-title-case.pipe';
 import { AirModeSettingStore } from 'src/app/stores/air-mode-setting.store';
 import { ChordPracticeStore } from 'src/app/stores/chord-practice.store';
 import { DeviceLayoutStore } from 'src/app/stores/device-layout.store';
-import { KeyboardLayoutStore } from 'src/app/stores/keyboard-layout.store';
+import { LessonSettingStore } from 'src/app/stores/lesson-setting.store';
 import { VisibilitySettingStore } from 'src/app/stores/visibility-setting.store';
 import { getChordKeyFromActionCode } from 'src/app/utils/layout.utils';
 import {
@@ -72,7 +72,7 @@ export class ChordPracticeComponent implements OnInit {
   @ViewChild('input', { static: true })
   public input!: ElementRef<HTMLInputElement>;
 
-  readonly keyboardLayout = inject(KeyboardLayoutStore).selectedEntity;
+  readonly keyboardLayout = inject(LessonSettingStore).keyboardLayout;
   readonly deviceLayout = inject(DeviceLayoutStore).selectedEntity;
   readonly airModeSettingStore = inject(AirModeSettingStore);
   readonly translateService = inject(TranslateService);

@@ -120,6 +120,10 @@
       "file-input-aria-label": "このツールにインポートするデバイスレイアウトファイルを選択するためのファイル入力",
       "select-device-layout-step": "インポートしたデバイスレイアウトを選択してください。",
       "single-device-layout-deleted-message": "デバイスレイアウト「{{deviceLayoutName}}」が削除されました。"
+    },
+    "lesson": {
+      "language-label": "レッスン言語",
+      "os-keyboard-layout-label": "レッスンで使用するOSキーボードレイアウト"
     }
   },
   "chord-page": {
@@ -565,6 +569,7 @@
       "visibility": "表示",
       "layout-highlight": "レイアウトハイライト",
       "device-layout": "デバイスレイアウト",
+      "lesson": "レッスン",
       "air-mode": "エアモード",
       "data-deletion": "データ削除",
       "misc": "その他",

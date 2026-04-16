@@ -120,6 +120,10 @@
       "file-input-aria-label": "file input for selecting a device layout file to load into this tool",
       "select-device-layout-step": "Select a loaded device layout.",
       "single-device-layout-deleted-message": "The device layout \"{{deviceLayoutName}}\" has been deleted."
+    },
+    "lesson": {
+      "language-label": "lesson language",
+      "os-keyboard-layout-label": "OS keyboard layout in lesson"
     }
   },
   "chord-page": {
@@ -564,6 +568,7 @@
       "visibility": "visibility",
       "layout-highlight": "layout highlight",
       "device-layout": "device layout",
+      "lesson": "lesson",
       "air-mode": "air mode",
       "data-deletion": "data deletion",
       "misc": "misc",

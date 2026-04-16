@@ -1,0 +1,29 @@
+<mat-form-field class="w-96 flex-none opacity-50">
+  <mat-label class="cursor-not-allowed">{{
+    "settings.lesson.language-label" | translate | realTitleCase
+  }}</mat-label>
+  <mat-select
+    class="!font-bold !text-alnitak-500"
+    [value]="languageCode()"
+    disabled
+  >
+    <mat-option [value]="'en'">English</mat-option>
+  </mat-select>
+</mat-form-field>
+<br />
+<mat-form-field class="w-96 flex-none">
+  <mat-label>{{
+    "settings.lesson.os-keyboard-layout-label" | translate | realTitleCase
+  }}</mat-label>
+  <mat-select
+    class="!font-bold !text-alnitak-500"
+    [value]="keyboardLayoutId()"
+    (valueChange)="setKeyboardLayoutId($event)"
+  >
+    @for (keyboardLayout of keyboardLayoutOptions(); track keyboardLayout.id) {
+      <mat-option [value]="keyboardLayout.id">{{
+        keyboardLayout.name
+      }}</mat-option>
+    }
+  </mat-select>
+</mat-form-field>

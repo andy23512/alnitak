@@ -5,7 +5,7 @@ import {
   inject,
   input,
 } from '@angular/core';
-import { KeyboardLayoutStore } from 'src/app/stores/keyboard-layout.store';
+import { LessonSettingStore } from 'src/app/stores/lesson-setting.store';
 import {
   KeyboardLayout,
   KeyboardLayoutKey,
@@ -145,7 +145,7 @@ function generateKeyboard(keyboardLayout: KeyboardLayout) {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KeyboardLayoutComponent {
-  readonly keyboardLayout = inject(KeyboardLayoutStore).selectedEntity;
+  readonly keyboardLayout = inject(LessonSettingStore).keyboardLayout;
   readonly withShift = input(false);
   readonly withAltGraph = input(false);
   keyboard = computed(() => {

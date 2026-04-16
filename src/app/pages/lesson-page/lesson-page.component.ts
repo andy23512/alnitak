@@ -38,7 +38,7 @@ import { RealTitleCasePipe } from 'src/app/pipes/real-title-case.pipe';
 import { AirModeSettingStore } from 'src/app/stores/air-mode-setting.store';
 import { DeviceLayoutStore } from 'src/app/stores/device-layout.store';
 import { HighlightSettingStore } from 'src/app/stores/highlight-setting.store';
-import { KeyboardLayoutStore } from 'src/app/stores/keyboard-layout.store';
+import { LessonSettingStore } from 'src/app/stores/lesson-setting.store';
 import { LessonStore } from 'src/app/stores/lesson.store';
 import { VisibilitySettingStore } from 'src/app/stores/visibility-setting.store';
 import {
@@ -113,8 +113,7 @@ export class LessonPageComponent implements OnInit, OnDestroy {
   @ViewChild('input', { static: true })
   public input!: ElementRef<HTMLInputElement>;
 
-  readonly characterKeyCodeMap =
-    inject(KeyboardLayoutStore).characterKeyCodeMap;
+  readonly characterKeyCodeMap = inject(LessonSettingStore).characterKeyCodeMap;
   readonly deviceLayout = inject(DeviceLayoutStore).selectedEntity;
   readonly lessonCharactersDevicePositionCodes = computed(() => {
     const lesson = this.lesson();

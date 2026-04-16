@@ -11,7 +11,7 @@ import { ChordPracticeComponent } from 'src/app/components/chord-practice/chord-
 import { ChordWithChordKeys } from 'src/app/models/chord.models';
 import { ChordPracticeStore } from 'src/app/stores/chord-practice.store';
 import { ChordStore } from 'src/app/stores/chord.store';
-import { KeyboardLayoutStore } from 'src/app/stores/keyboard-layout.store';
+import { LessonSettingStore } from 'src/app/stores/lesson-setting.store';
 import { getChordKeyFromActionCode } from 'src/app/utils/layout.utils';
 
 @Component({
@@ -23,7 +23,7 @@ import { getChordKeyFromActionCode } from 'src/app/utils/layout.utils';
 })
 export class ChordPageComponent {
   readonly chordStore = inject(ChordStore);
-  readonly keyboardLayout = inject(KeyboardLayoutStore).selectedEntity;
+  readonly keyboardLayout = inject(LessonSettingStore).keyboardLayout;
   readonly chordPracticeStore = inject(ChordPracticeStore);
 
   readonly selectedChordIds = signal<Set<string>>(new Set());

@@ -119,6 +119,10 @@
       "file-input-aria-label": "選擇要匯入到此工具的裝置佈局檔案用的檔案輸入框",
       "select-device-layout-step": "選擇一個已匯入的裝置佈局。",
       "single-device-layout-deleted-message": "裝置佈局「{{deviceLayoutName}}」已被刪除。"
+    },
+    "lesson": {
+      "language-label": "課程語言",
+      "os-keyboard-layout-label": "課程中所使用的作業系統鍵盤佈局"
     }
   },
   "chord-page": {
@@ -539,6 +543,7 @@
       "visibility": "顯示",
       "layout-highlight": "佈局點亮",
       "device-layout": "裝置佈局",
+      "lesson": "課程",
       "air-mode": "隔空模式",
       "data-deletion": "資料刪除",
       "misc": "其他",

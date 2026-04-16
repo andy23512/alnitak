@@ -18,6 +18,7 @@ import { AirModeSettingPanelContentComponent } from 'src/app/components/air-mode
 import { DeleteChordsConfirmDialogComponent } from 'src/app/components/delete-chords-confirm-dialog/delete-chords-confirm-dialog.component';
 import { DeleteDeviceLayoutsConfirmDialogComponent } from 'src/app/components/delete-device-layouts-confirm-dialog/delete-device-layouts-confirm-dialog.component';
 import { DeviceLayoutSettingPanelContentComponent } from 'src/app/components/device-layout-setting-panel-content/device-layout-setting-panel-content.component';
+import { LessonSettingPanelContentComponent } from 'src/app/components/lesson-setting-panel-content/lesson-setting-panel-content.component';
 import { QuickSettingPanelContentComponent } from 'src/app/components/quick-setting-panel-content/quick-setting-panel-content.component';
 import { UiLanguage } from 'src/app/models/language-setting.models';
 import { IconGuardPipe } from 'src/app/pipes/icon-guard.pipe';
@@ -48,6 +49,7 @@ import { VisibilitySettingPanelContentComponent } from '../../components/visibil
     TranslatePipe,
     RealTitleCasePipe,
     MatExpansionModule,
+    LessonSettingPanelContentComponent,
   ],
   templateUrl: './settings-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
