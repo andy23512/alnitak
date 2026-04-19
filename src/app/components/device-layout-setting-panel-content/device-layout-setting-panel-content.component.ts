@@ -54,11 +54,15 @@ export class DeviceLayoutSettingPanelContentComponent {
   public m4gDefaultLayoutName = toSignal(
     this.translateService.stream('device-layout.m4g-default'),
   );
+  public cc1cc2RightHandOnlyLayoutName = toSignal(
+    this.translateService.stream('device-layout.cc1-cc2-right-hand-only'),
+  );
   public translatedDeviceLayouts = computed(() => {
     const _ = this.languageSettingStore.uiLanguage();
     const deviceLayouts = this.deviceLayouts();
     const cc1cc2DefaultLayoutName = this.cc1cc2DefaultLayoutName();
     const m4gDefaultLayoutName = this.m4gDefaultLayoutName();
+    const cc1cc2RightHandOnlyLayoutName = this.cc1cc2RightHandOnlyLayoutName();
     return deviceLayouts.map((deviceLayout) => ({
       ...deviceLayout,
       name:
@@ -66,7 +70,9 @@ export class DeviceLayoutSettingPanelContentComponent {
           ? cc1cc2DefaultLayoutName
           : 'm4g-default' === deviceLayout.id
             ? m4gDefaultLayoutName
-            : deviceLayout.name,
+            : 'cc1-cc2-right-hand-only' === deviceLayout.id
+              ? cc1cc2RightHandOnlyLayoutName
+              : deviceLayout.name,
     }));
   });
   public delayedSelectedDeviceLayoutId = computed(() => {
@@ -75,7 +81,11 @@ export class DeviceLayoutSettingPanelContentComponent {
   });
   public selectedDeviceLayoutIsDefault = computed(() => {
     const selectedId = this.selectedDeviceLayoutId();
-    return 'default' === selectedId || 'm4g-default' === selectedId;
+    return (
+      'default' === selectedId ||
+      'm4g-default' === selectedId ||
+      'cc1-cc2-right-hand-only' === selectedId
+    );
   });
 
   @ViewChild('fileInput', { static: true })

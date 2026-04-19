@@ -274,7 +274,8 @@
   },
   "quick-setting": {
     "cc1-cc2-default-layout": "CC1/CC2/CCU のデフォルトレイアウト",
-    "m4g-default-layout": "M4G のデフォルトレイアウト"
+    "m4g-default-layout": "M4G のデフォルトレイアウト",
+    "cc1-cc2-right-hand-only-layout": "CC1/CC2/CCU 右手のみレイアウト"
   },
   "thumb-3-switch-help-dialog": {
     "title": "親指後列スイッチ",

@@ -146,6 +146,9 @@ export class LayoutViewerPageComponent {
   public m4gDefaultLayoutName = toSignal(
     this.translateService.stream('device-layout.m4g-default'),
   );
+  public cc1cc2RightHandOnlyLayoutName = toSignal(
+    this.translateService.stream('device-layout.cc1-cc2-right-hand-only'),
+  );
   readonly deviceLayoutLayerNumber =
     inject(DeviceLayoutStore).selectedEntityLayerNumber;
 
@@ -165,7 +168,9 @@ export class LayoutViewerPageComponent {
           ? cc1cc2DefaultLayoutName
           : 'm4g-default' === deviceLayout.id
             ? m4gDefaultLayoutName
-            : deviceLayout.name,
+            : 'cc1-cc2-right-hand-only' === deviceLayout.id
+              ? this.cc1cc2RightHandOnlyLayoutName()
+              : deviceLayout.name,
     }));
   });
 
@@ -178,7 +183,11 @@ export class LayoutViewerPageComponent {
       ? this.translateService.instant('device-layout.cc1-cc2-default')
       : 'm4g-default' === deviceLayout.id
         ? this.translateService.instant('device-layout.m4g-default')
-        : deviceLayout.name;
+        : 'cc1-cc2-right-hand-only' === deviceLayout.id
+          ? this.translateService.instant(
+              'device-layout.cc1-cc2-right-hand-only',
+            )
+          : deviceLayout.name;
   });
   readonly filteredKeyboardLayouts = computed(() => {
     const keyboardLayouts = this.keyboardLayouts();

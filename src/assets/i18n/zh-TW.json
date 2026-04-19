@@ -261,7 +261,8 @@
   },
   "quick-setting": {
     "cc1-cc2-default-layout": "CC1/CC2/CCU 預設佈局",
-    "m4g-default-layout": "M4G 預設佈局"
+    "m4g-default-layout": "M4G 預設佈局",
+    "cc1-cc2-right-hand-only-layout": "CC1/CC2/CCU 僅用右手佈局"
   },
   "thumb-3-switch-help-dialog": {
     "title": "拇指第三搖桿",
