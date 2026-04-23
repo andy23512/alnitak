@@ -14,13 +14,16 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { patchState } from '@ngrx/signals';
 import { removeEntity } from '@ngrx/signals/entities';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { IconGuardPipe } from 'src/app/pipes/icon-guard.pipe';
 import { RealTitleCasePipe } from 'src/app/pipes/real-title-case.pipe';
+import { SerialHandlerService } from 'src/app/services/serial-handler.service';
 import { DeviceLayoutStore } from 'src/app/stores/device-layout.store';
 import { LanguageSettingStore } from 'src/app/stores/language-setting.store';
+import { dateToString } from 'src/app/utils/date.utils';
 import { DeleteDeviceLayoutConfirmDialogComponent } from '../delete-device-layout-confirm-dialog/delete-device-layout-confirm-dialog.component';
 import { DeviceLayoutImportDialogComponent } from '../device-layout-import-dialog/device-layout-import-dialog.component';
 
@@ -35,6 +38,7 @@ import { DeviceLayoutImportDialogComponent } from '../device-layout-import-dialo
     IconGuardPipe,
     TranslatePipe,
     RealTitleCasePipe,
+    MatTooltipModule,
   ],
   templateUrl: './device-layout-setting-panel-content.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -45,7 +49,9 @@ export class DeviceLayoutSettingPanelContentComponent {
   readonly languageSettingStore = inject(LanguageSettingStore);
   readonly matDialog = inject(MatDialog);
   readonly matSnackBar = inject(MatSnackBar);
+  private readonly serialHandlerService = inject(SerialHandlerService);
 
+  public isWebSerialApiSupported = 'serial' in navigator;
   public selectedDeviceLayoutId = this.deviceLayoutStore.selectedId;
   public deviceLayouts = this.deviceLayoutStore.entities;
   public cc1cc2DefaultLayoutName = toSignal(
@@ -142,6 +148,20 @@ export class DeviceLayoutSettingPanelContentComponent {
     };
 
     reader.readAsText(fileInputElement.files[0]);
+  }
+
+  public async loadDeviceLayoutFromDevice() {
+    const { id } = await this.serialHandlerService.connect();
+    const layout = await this.serialHandlerService.loadLayout();
+    await this.serialHandlerService.disconnect();
+    const date = new Date();
+    this.matDialog.open(DeviceLayoutImportDialogComponent, {
+      data: {
+        fileName: `${id}_${dateToString(date)}`,
+        layout,
+      },
+      width: '400px',
+    });
   }
 
   setSelectedDeviceLayoutId(deviceLayoutId: string) {

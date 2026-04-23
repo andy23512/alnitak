@@ -46,7 +46,9 @@
     "left-side": "左邊",
     "right-side": "右邊",
     "both-sides": "兩邊",
-    "same-side": "同一邊"
+    "same-side": "同一邊",
+    "load-from-device-action": "從裝置讀取",
+    "web-serial-api-not-supported-message": "您的瀏覽器不支援 Web Serial API。請使用相容的瀏覽器從您的裝置讀取佈局。"
   },
   "nav": {
     "hotkey": {
@@ -112,9 +114,9 @@
     },
     "device-layout": {
       "import-device-layout-file-step": [
-        "（非必要）匯入你的裝置佈局檔案（來自",
+        "（非必要）透過匯入檔案（來自",
         "CharaChorder 裝置管理工具",
-        "的備份檔案）。"
+        "的備份檔案）或從輸入裝置讀取，以新增裝置佈局。"
       ],
       "file-input-aria-label": "選擇要匯入到此工具的裝置佈局檔案用的檔案輸入框",
       "select-device-layout-step": "選擇一個已匯入的裝置佈局。",

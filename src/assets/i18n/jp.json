@@ -47,7 +47,9 @@
     "left-side": "左側",
     "right-side": "右側",
     "both-sides": "両側",
-    "same-side": "同側"
+    "same-side": "同側",
+    "load-from-device-action": "デバイスから読み込む",
+    "web-serial-api-not-supported-message": "お使いのブラウザは Web Serial API をサポートしていません。デバイスからレイアウトを読み込むには、対応するブラウザを使用してください。"
   },
   "nav": {
     "hotkey": {
@@ -113,9 +115,9 @@
     },
     "device-layout": {
       "import-device-layout-file-step": [
-        "（任意）デバイスレイアウトファイル（",
-        "CharaChorder デバイスマネージャーウェブ",
-        "サイトのバックアップファイル）をインポートしてください。"
+        "（任意）ファイル（",
+        "CharaChorder Device Manager ウェブサイト",
+        "のバックアップファイル）またはデバイスから、デバイスレイアウトをインポートしてください。"
       ],
       "file-input-aria-label": "このツールにインポートするデバイスレイアウトファイルを選択するためのファイル入力",
       "select-device-layout-step": "インポートしたデバイスレイアウトを選択してください。",

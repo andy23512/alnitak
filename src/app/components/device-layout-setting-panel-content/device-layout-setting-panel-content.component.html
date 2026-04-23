@@ -11,27 +11,47 @@
       }}</a
     >
     {{ "settings.device-layout.import-device-layout-file-step.2" | translate }}
-    <br />
-    <button
-      class="my-2"
-      type="button"
-      [color]="'primary'"
-      mat-flat-button
-      (click)="fileInput.click()"
-    >
-      <mat-icon>{{ "upload" | iconGuard }}</mat-icon>
-      {{ "general.choose-file-action" | translate | realTitleCase }}
-    </button>
-    <input
-      hidden
-      #fileInput
-      type="file"
-      accept=".json"
-      [attr.aria-label]="
-        'settings.device-layout.file-input-aria-label' | translate
-      "
-      (change)="loadDeviceLayoutFile()"
-    />
+    <div class="my-2 flex items-center gap-2">
+      <button
+        class="my-2"
+        type="button"
+        [color]="'primary'"
+        mat-flat-button
+        (click)="fileInput.click()"
+      >
+        <mat-icon>{{ "upload" | iconGuard }}</mat-icon>
+        {{ "general.choose-file-action" | translate | realTitleCase }}
+      </button>
+      <input
+        hidden
+        #fileInput
+        type="file"
+        accept=".json"
+        [attr.aria-label]="
+          'settings.device-layout.file-input-aria-label' | translate
+        "
+        (change)="loadDeviceLayoutFile()"
+      />
+      or
+      <div
+        [matTooltip]="
+          'general.web-serial-api-not-supported-message' | translate
+        "
+        [matTooltipDisabled]="isWebSerialApiSupported"
+      >
+        <button
+          class="!bg-yellow-500 !text-black"
+          [class.opacity-30]="!isWebSerialApiSupported"
+          type="button"
+          mat-flat-button
+          [disabled]="!isWebSerialApiSupported"
+          (click)="loadDeviceLayoutFromDevice()"
+        >
+          <mat-icon>{{ "developer_board" | iconGuard }}</mat-icon>
+          {{ "general.load-from-device-action" | translate | realTitleCase }}
+        </button>
+      </div>
+    </div>
   </li>
   <li>
     {{ "settings.device-layout.select-device-layout-step" | translate }}

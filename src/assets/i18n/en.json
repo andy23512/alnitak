@@ -48,7 +48,9 @@
     "left-side": "left",
     "right-side": "right",
     "both-sides": "both sides",
-    "same-side": "same side"
+    "same-side": "same side",
+    "load-from-device-action": "load from device",
+    "web-serial-api-not-supported-message": "Web Serial API is not supported in your browser. Please use a compatible browser to load device layouts from your device."
   },
   "nav": {
     "hotkey": {
@@ -114,9 +116,9 @@
     },
     "device-layout": {
       "import-device-layout-file-step": [
-        "(Optional) Import a device layout file (the backup file from",
+        "(Optional) Load a device layout from a file (the backup file from",
         "CharaChorder Device Manager",
-        "website)."
+        "website) or from a device."
       ],
       "file-input-aria-label": "file input for selecting a device layout file to load into this tool",
       "select-device-layout-step": "Select a loaded device layout.",
