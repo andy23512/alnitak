@@ -46,6 +46,21 @@
             {{ "nav.hotkey.title" | translate | realTitleCase }}
           </button></a
         >
+        @if (isWebSerialApiSupported) {
+          <a class="w-1/2">
+            <button
+              class="whitespace-nowrap"
+              type="button"
+              mat-flat-button
+              [attr.aria-label]="'nav.serial-log.aria-label' | translate"
+              (click)="openSerialLogDialog()"
+              [matTooltip]="'nav.serial-log.tooltip' | translate"
+            >
+              <mat-icon>{{ "article" | iconGuard }}</mat-icon>
+              {{ "nav.serial-log.title" | translate | realTitleCase }}
+            </button></a
+          >
+        }
       </div>
       <mat-form-field
         class="w-full [&_.mat-mdc-form-field-subscript-wrapper]:hidden"

@@ -8,6 +8,8 @@ export type Icon =
   | 'arrow_circle_left'
   | 'arrow_circle_right'
   | 'arrow_circle_up'
+  | 'arrow_drop_down'
+  | 'arrow_drop_up'
   | 'arrow_right'
   | 'article'
   | 'backspace'

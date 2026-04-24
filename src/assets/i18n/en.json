@@ -58,6 +58,11 @@
       "tooltip": "Open Hotkey Dialog",
       "aria-label": "button that opens hotkey dialog"
     },
+    "serial-log": {
+      "title": "serial log",
+      "tooltip": "Open Serial Log Dialog",
+      "aria-label": "button that opens serial log dialog"
+    },
     "page": {
       "home": {
         "title": "home",
@@ -597,5 +602,9 @@
   "lesson-not-found-page": {
     "title": "Lesson Not Found",
     "description": "The lesson you are trying to access is not found. It may have been deleted or the URL may be wrong. Please select a lesson from the side menu."
+  },
+  "serial-log-dialog": {
+    "title": "serial log",
+    "no-data-message": "No serial log data is available."
   }
 }

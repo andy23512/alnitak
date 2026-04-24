@@ -5444,6 +5444,11 @@ etag@~1.8.1:
   resolved "https://registry.yarnpkg.com/etag/-/etag-1.8.1.tgz#41ae2eeb65efa62268aebfea83ac7d79299b0887"
   integrity sha512-aIL5Fx7mawVa300al2BnEE4iNvo1qETxLrPI/o05L7z6go7fCw1J6EQmbK4FmJ2AS7kgVF/KEZWufBfdClMcPg==
 
+eventemitter2@^6.4.9:
+  version "6.4.9"
+  resolved "https://registry.yarnpkg.com/eventemitter2/-/eventemitter2-6.4.9.tgz#41f2750781b4230ed58827bc119d293471ecb125"
+  integrity sha512-JEPTiaOt9f04oa6NOkc4aH+nVp5I3wEjpHbIPqfgCdD5v5bUzy7xQqwcVO2aDQgOWhI28da57HksMrzK9HlRxg==
+
 eventemitter3@^4.0.0:
   version "4.0.7"
   resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-4.0.7.tgz#2de9b68f6528d5644ef5c59526a1b4a07306169f"
@@ -9298,10 +9303,10 @@ tailwindcss@^3.0.2:
     resolve "^1.22.2"
     sucrase "^3.32.0"
 
-tangent-cc-lib@0.0.28:
-  version "0.0.28"
-  resolved "https://registry.yarnpkg.com/tangent-cc-lib/-/tangent-cc-lib-0.0.28.tgz#ee196f9b43fc96845fe661bf58e44629e97a7819"
-  integrity sha512-RZv1Lz4wEmlhkqOeWD/O1hbYPWduigtksNfmnWmLp87tAqEvLZ0rJ/n6KOez4xSE6x8WdI3KvrJcWeQ5EObxag==
+tangent-cc-lib@0.0.29:
+  version "0.0.29"
+  resolved "https://registry.yarnpkg.com/tangent-cc-lib/-/tangent-cc-lib-0.0.29.tgz#d0c6cf73241f49c992ac53ce6b9262855d04e527"
+  integrity sha512-w2zyiCUy2KylJlIBbK6EeRVYrvQI8aZpiIjXCwD3N037nvV9giQEIKlU51G3sNaV0lwnR1DkH70fUn81Kfv2Ag==
   dependencies:
     tslib "^2.3.0"
 

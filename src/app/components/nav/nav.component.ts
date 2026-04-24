@@ -87,6 +87,7 @@ function searchLessons(query: string): Lesson[] {
   ],
 })
 export class NavComponent implements OnInit, OnDestroy {
+  public isWebSerialApiSupported = 'serial' in navigator;
   public topics = TOPICS;
   public navLinks = NAV_LINKS;
   public toggleSideMenuShortcut = 'meta.b';
@@ -142,6 +143,16 @@ export class NavComponent implements OnInit, OnDestroy {
       '../hotkey-dialog/hotkey-dialog.component'
     );
     this.matDialog.open(HotkeyDialogComponent);
+  }
+
+  async openSerialLogDialog() {
+    const { SerialLogDialogComponent } = await import(
+      '../serial-log-dialog/serial-log-dialog.component'
+    );
+    this.matDialog.open(SerialLogDialogComponent, {
+      width: '80vw',
+      height: '80vh',
+    });
   }
 
   private cleanSearchQuery() {

@@ -1,0 +1,30 @@
+<h2 mat-dialog-title>
+  {{ "serial-log-dialog.title" | translate | realTitleCase }}
+</h2>
+<mat-dialog-content>
+  @if (serialLogItems().length > 0) {
+    <ul>
+      @for (item of serialLogItems(); track $index) {
+        <li class="flex items-center">
+          @if (item.type === SerialLogItemType.Send) {
+            <mat-icon class="flex-none text-green-500">
+              {{ "arrow_drop_up" | iconGuard }}
+            </mat-icon>
+          } @else {
+            <mat-icon class="flex-none text-red-500">
+              {{ "arrow_drop_down" | iconGuard }}
+            </mat-icon>
+          }
+          <span class="font-code whitespace-nowrap">{{ item.data }}</span>
+        </li>
+      }
+    </ul>
+  } @else {
+    <p>{{ "serial-log-dialog.no-data-message" | translate }}</p>
+  }
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>
+    {{ "general.close-action" | translate | realTitleCase }}
+  </button>
+</mat-dialog-actions>

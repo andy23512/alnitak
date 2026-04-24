@@ -11,6 +11,7 @@ module.exports = {
     fontFamily: {
       body: ["Roboto", '"Helvetica Neue"', "sans-serif"],
       mono: ['"Roboto Mono"', "monospace"],
+      code: ["Consolas", "Courier New", "monospace"],
       "7seg": ['"FS Sevegment"', '"Roboto Mono"', "monospace"],
       logos: ["font-logos"],
     },
