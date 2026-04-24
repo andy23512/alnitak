@@ -47,13 +47,20 @@
     "left-side": "左側",
     "right-side": "右側",
     "both-sides": "両側",
-    "same-side": "同側"
+    "same-side": "同側",
+    "load-from-device-action": "デバイスから読み込む",
+    "web-serial-api-not-supported-message": "お使いのブラウザは Web Serial API をサポートしていません。デバイスからレイアウトを読み込むには、対応するブラウザを使用してください。"
   },
   "nav": {
     "hotkey": {
       "title": "ホットキー",
       "tooltip": "ホットキーのダイアログ・ボックスを開く",
       "aria-label": "ホットキーのダイアログ・ボックスを開くボタン"
+    },
+    "serial-log": {
+      "title": "シリアルログ",
+      "tooltip": "シリアルログのダイアログ・ボックスを開く",
+      "aria-label": "シリアルログのダイアログ・ボックスを開くボタン"
     },
     "page": {
       "home": {
@@ -113,13 +120,17 @@
     },
     "device-layout": {
       "import-device-layout-file-step": [
-        "（任意）デバイスレイアウトファイル（",
-        "CharaChorder デバイスマネージャーウェブ",
-        "サイトのバックアップファイル）をインポートしてください。"
+        "（任意）ファイル（",
+        "CharaChorder Device Manager ウェブサイト",
+        "のバックアップファイル）またはデバイスから、デバイスレイアウトをインポートしてください。"
       ],
       "file-input-aria-label": "このツールにインポートするデバイスレイアウトファイルを選択するためのファイル入力",
       "select-device-layout-step": "インポートしたデバイスレイアウトを選択してください。",
       "single-device-layout-deleted-message": "デバイスレイアウト「{{deviceLayoutName}}」が削除されました。"
+    },
+    "lesson": {
+      "language-label": "レッスン言語",
+      "os-keyboard-layout-label": "レッスンで使用するOSキーボードレイアウト"
     }
   },
   "chord-page": {
@@ -270,7 +281,8 @@
   },
   "quick-setting": {
     "cc1-cc2-default-layout": "CC1/CC2/CCU のデフォルトレイアウト",
-    "m4g-default-layout": "M4G のデフォルトレイアウト"
+    "m4g-default-layout": "M4G のデフォルトレイアウト",
+    "cc1-cc2-right-hand-only-layout": "CC1/CC2/CCU 右手のみレイアウト"
   },
   "thumb-3-switch-help-dialog": {
     "title": "親指後列スイッチ",
@@ -565,6 +577,7 @@
       "visibility": "表示",
       "layout-highlight": "レイアウトハイライト",
       "device-layout": "デバイスレイアウト",
+      "lesson": "レッスン",
       "air-mode": "エアモード",
       "data-deletion": "データ削除",
       "misc": "その他",
@@ -590,5 +603,9 @@
   "lesson-not-found-page": {
     "title": "レッスンが見つかりません",
     "description": "アクセスしようとしたレッスンは見つかりませんでした。削除された可能性があります。または、URLが間違っている可能性があります。サイドメニューからレッスンを選択してください。"
+  },
+  "serial-log-dialog": {
+    "title": "シリアルログ",
+    "no-data-message": "利用可能なシリアルログデータはありません。"
   }
 }

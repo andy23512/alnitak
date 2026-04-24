@@ -46,13 +46,20 @@
     "left-side": "左邊",
     "right-side": "右邊",
     "both-sides": "兩邊",
-    "same-side": "同一邊"
+    "same-side": "同一邊",
+    "load-from-device-action": "從裝置讀取",
+    "web-serial-api-not-supported-message": "您的瀏覽器不支援 Web Serial API。請使用相容的瀏覽器從您的裝置讀取佈局。"
   },
   "nav": {
     "hotkey": {
       "title": "熱鍵",
       "tooltip": "開啟熱鍵對話框",
       "aria-label": "開啟熱鍵對話框的按鈕"
+    },
+    "serial-log": {
+      "title": "序列埠日誌",
+      "tooltip": "開啟序列埠日誌對話框",
+      "aria-label": "開啟序列埠日誌對話框的按鈕"
     },
     "page": {
       "home": {
@@ -112,13 +119,17 @@
     },
     "device-layout": {
       "import-device-layout-file-step": [
-        "（非必要）匯入你的裝置佈局檔案（來自",
+        "（非必要）透過匯入檔案（來自",
         "CharaChorder 裝置管理工具",
-        "的備份檔案）。"
+        "的備份檔案）或從輸入裝置讀取，以新增裝置佈局。"
       ],
       "file-input-aria-label": "選擇要匯入到此工具的裝置佈局檔案用的檔案輸入框",
       "select-device-layout-step": "選擇一個已匯入的裝置佈局。",
       "single-device-layout-deleted-message": "裝置佈局「{{deviceLayoutName}}」已被刪除。"
+    },
+    "lesson": {
+      "language-label": "課程語言",
+      "os-keyboard-layout-label": "課程中所使用的作業系統鍵盤佈局"
     }
   },
   "chord-page": {
@@ -257,7 +268,8 @@
   },
   "quick-setting": {
     "cc1-cc2-default-layout": "CC1/CC2/CCU 預設佈局",
-    "m4g-default-layout": "M4G 預設佈局"
+    "m4g-default-layout": "M4G 預設佈局",
+    "cc1-cc2-right-hand-only-layout": "CC1/CC2/CCU 僅用右手佈局"
   },
   "thumb-3-switch-help-dialog": {
     "title": "拇指第三搖桿",
@@ -539,6 +551,7 @@
       "visibility": "顯示",
       "layout-highlight": "佈局點亮",
       "device-layout": "裝置佈局",
+      "lesson": "課程",
       "air-mode": "隔空模式",
       "data-deletion": "資料刪除",
       "misc": "其他",
@@ -564,5 +577,9 @@
   "lesson-not-found-page": {
     "title": "找不到課程",
     "description": "您嘗試訪問的課程不存在。它可能已被刪除或 URL 錯誤。請從側邊菜單中選擇一個課程。"
+  },
+  "serial-log-dialog": {
+    "title": "序列埠日誌",
+    "no-data-message": "沒有可用的序列埠日誌資料。"
   }
 }

@@ -27,7 +27,8 @@
   },
   "device-layout": {
     "cc1-cc2-default": "CC1/CC2/CCU default",
-    "m4g-default": "M4G default"
+    "m4g-default": "M4G default",
+    "cc1-cc2-right-hand-only": "CC1/CC2/CCU right-hand-only"
   },
   "general": {
     "character-entry-speed-unit": "CPM",
@@ -47,13 +48,20 @@
     "left-side": "left",
     "right-side": "right",
     "both-sides": "both sides",
-    "same-side": "same side"
+    "same-side": "same side",
+    "load-from-device-action": "load from device",
+    "web-serial-api-not-supported-message": "Web Serial API is not supported in your browser. Please use a compatible browser to load device layouts from your device."
   },
   "nav": {
     "hotkey": {
       "title": "hotkey",
       "tooltip": "Open Hotkey Dialog",
       "aria-label": "button that opens hotkey dialog"
+    },
+    "serial-log": {
+      "title": "serial log",
+      "tooltip": "Open Serial Log Dialog",
+      "aria-label": "button that opens serial log dialog"
     },
     "page": {
       "home": {
@@ -113,13 +121,17 @@
     },
     "device-layout": {
       "import-device-layout-file-step": [
-        "(Optional) Import a device layout file (the backup file from",
+        "(Optional) Load a device layout from a file (the backup file from",
         "CharaChorder Device Manager",
-        "website)."
+        "website) or from a device."
       ],
       "file-input-aria-label": "file input for selecting a device layout file to load into this tool",
       "select-device-layout-step": "Select a loaded device layout.",
       "single-device-layout-deleted-message": "The device layout \"{{deviceLayoutName}}\" has been deleted."
+    },
+    "lesson": {
+      "language-label": "lesson language",
+      "os-keyboard-layout-label": "OS keyboard layout in lesson"
     }
   },
   "chord-page": {
@@ -564,6 +576,7 @@
       "visibility": "visibility",
       "layout-highlight": "layout highlight",
       "device-layout": "device layout",
+      "lesson": "lesson",
       "air-mode": "air mode",
       "data-deletion": "data deletion",
       "misc": "misc",
@@ -589,5 +602,9 @@
   "lesson-not-found-page": {
     "title": "Lesson Not Found",
     "description": "The lesson you are trying to access is not found. It may have been deleted or the URL may be wrong. Please select a lesson from the side menu."
+  },
+  "serial-log-dialog": {
+    "title": "serial log",
+    "no-data-message": "No serial log data is available."
   }
 }
