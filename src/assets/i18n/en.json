@@ -28,7 +28,8 @@
   "device-layout": {
     "cc1-cc2-default": "CC1/CC2/CCU default",
     "m4g-default": "M4G default",
-    "cc1-cc2-right-hand-only": "CC1/CC2/CCU right-hand-only"
+    "cc1-cc2-right-hand-only": "CC1/CC2/CCU right-hand-only",
+    "cc1-cc2-left-hand-only": "CC1/CC2/CCU left-hand-only"
   },
   "general": {
     "character-entry-speed-unit": "CPM",

@@ -149,6 +149,9 @@ export class LayoutViewerPageComponent {
   public cc1cc2RightHandOnlyLayoutName = toSignal(
     this.translateService.stream('device-layout.cc1-cc2-right-hand-only'),
   );
+  public cc1cc2LeftHandOnlyLayoutName = toSignal(
+    this.translateService.stream('device-layout.cc1-cc2-left-hand-only'),
+  );
   readonly deviceLayoutLayerNumber =
     inject(DeviceLayoutStore).selectedEntityLayerNumber;
 
@@ -170,7 +173,9 @@ export class LayoutViewerPageComponent {
             ? m4gDefaultLayoutName
             : 'cc1-cc2-right-hand-only' === deviceLayout.id
               ? this.cc1cc2RightHandOnlyLayoutName()
-              : deviceLayout.name,
+              : 'cc1-cc2-left-hand-only' === deviceLayout.id
+                ? this.cc1cc2LeftHandOnlyLayoutName()
+                : deviceLayout.name,
     }));
   });
 

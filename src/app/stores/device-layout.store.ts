@@ -17,6 +17,7 @@ import {
   withEntities,
 } from '@ngrx/signals/entities';
 import {
+  CC1_CC2_LEFT_HAND_ONLY_DEVICE_LAYOUT,
   CC1_CC2_RIGHT_HAND_ONLY_DEVICE_LAYOUT,
   DEFAULT_DEVICE_LAYOUT,
   DeviceLayout,
@@ -47,6 +48,7 @@ export const DeviceLayoutStore = signalStore(
           DEFAULT_DEVICE_LAYOUT,
           M4G_DEFAULT_DEVICE_LAYOUT,
           CC1_CC2_RIGHT_HAND_ONLY_DEVICE_LAYOUT,
+          CC1_CC2_LEFT_HAND_ONLY_DEVICE_LAYOUT,
         ]),
       );
       store.setSelectedId(DEFAULT_DEVICE_LAYOUT.id);
@@ -91,6 +93,20 @@ export const DeviceLayoutStore = signalStore(
           updateEntity({
             id: 'cc1-cc2-right-hand-only',
             changes: CC1_CC2_RIGHT_HAND_ONLY_DEVICE_LAYOUT,
+          }),
+        );
+      }
+      const cc1CC2LeftHandOnlyLayout = entities.find(
+        (e) => e.id === 'cc1-cc2-left-hand-only',
+      );
+      if (!cc1CC2LeftHandOnlyLayout) {
+        patchState(store, addEntity(CC1_CC2_LEFT_HAND_ONLY_DEVICE_LAYOUT));
+      } else {
+        patchState(
+          store,
+          updateEntity({
+            id: 'cc1-cc2-left-hand-only',
+            changes: CC1_CC2_LEFT_HAND_ONLY_DEVICE_LAYOUT,
           }),
         );
       }
