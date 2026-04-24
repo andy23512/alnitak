@@ -87,7 +87,11 @@ export class DeviceLayoutSettingPanelContentComponent {
   });
   public selectedDeviceLayoutIsDefault = computed(() => {
     const selectedId = this.selectedDeviceLayoutId();
-    return 'default' === selectedId;
+    return (
+      'default' === selectedId ||
+      'm4g-default' === selectedId ||
+      'cc1-cc2-right-hand-only' === selectedId
+    );
   });
 
   @ViewChild('fileInput', { static: true })
