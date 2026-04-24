@@ -27,7 +27,9 @@
   },
   "device-layout": {
     "cc1-cc2-default": "CC1/CC2/CCU のデフォルト",
-    "m4g-default": "M4G のデフォルト"
+    "m4g-default": "M4G のデフォルト",
+    "cc1-cc2-right-hand-only": "CC1/CC2/CCU 右手のみ",
+    "cc1-cc2-left-hand-only": "CC1/CC2/CCU 左手のみ"
   },
   "general": {
     "character-entry-speed-unit": "文字数毎分",

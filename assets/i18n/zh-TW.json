@@ -27,7 +27,9 @@
   },
   "device-layout": {
     "cc1-cc2-default": "CC1/CC2/CCU 預設",
-    "m4g-default": "M4G 預設"
+    "m4g-default": "M4G 預設",
+    "cc1-cc2-right-hand-only": "CC1/CC2/CCU 僅用右手",
+    "cc1-cc2-left-hand-only": "CC1/CC2/CCU 僅用左手"
   },
   "general": {
     "character-entry-speed-unit": "字元/分鐘",
