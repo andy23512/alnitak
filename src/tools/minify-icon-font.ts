@@ -8,10 +8,10 @@ import { readFileSync, writeFileSync } from 'fs';
     readFileSync('./src/app/types/icon.types.ts', { encoding: 'utf-8' }),
   );
 
-  const icons = query(
-    iconTypesAst,
-    'Identifier[name="Icon"] ~ UnionType StringLiteral',
-  ).map((node) => (node as any).text);
+  const icons = query(iconTypesAst, 'StringLiteral').map(
+    (node) => (node as any).text,
+  );
+  console.log(icons);
   const font = fontkitOpenSync(
     './src/assets/material-symbols-rounded-latin-full-normal.woff2',
   ) as Font;
