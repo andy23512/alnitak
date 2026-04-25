@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -9,7 +8,6 @@ import {
 import { toSignal } from '@angular/core/rxjs-interop';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
-import { TranslatePipe } from '@ngx-translate/core';
 import { timer } from 'rxjs';
 import { SwitchComponent } from 'src/app/components/switch/switch.component';
 import { KeyLabel, KeyLabelType, Layer } from 'tangent-cc-lib';
@@ -56,13 +54,7 @@ const ZH_HANT_TEXT = {
 @Component({
   selector: 'app-layout-schematic-page',
   standalone: true,
-  imports: [
-    CommonModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    SwitchComponent,
-    TranslatePipe,
-  ],
+  imports: [MatFormFieldModule, MatSelectModule, SwitchComponent],
   templateUrl: './layout-schematic-page.component.html',
   styleUrl: './layout-schematic-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

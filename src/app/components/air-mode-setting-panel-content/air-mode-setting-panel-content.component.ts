@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, computed, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatCheckbox } from '@angular/material/checkbox';
@@ -12,14 +12,13 @@ import { AirModeSettingStore } from 'src/app/stores/air-mode-setting.store';
   selector: 'app-air-mode-setting-panel-content',
   standalone: true,
   imports: [
-    CommonModule,
     MatCheckbox,
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
     TranslatePipe,
-    RealTitleCasePipe,
-  ],
+    RealTitleCasePipe
+],
   templateUrl: './air-mode-setting-panel-content.component.html',
 })
 export class AirModeSettingPanelContentComponent {

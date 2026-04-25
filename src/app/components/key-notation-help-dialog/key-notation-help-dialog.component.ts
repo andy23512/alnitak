@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import {
@@ -16,7 +16,6 @@ import { LayoutComponent } from '../layout/layout.component';
   selector: 'app-key-notation-help-dialog',
   standalone: true,
   imports: [
-    CommonModule,
     MatButton,
     MatDialogActions,
     MatDialogClose,
@@ -24,8 +23,8 @@ import { LayoutComponent } from '../layout/layout.component';
     MatDialogTitle,
     LayoutComponent,
     TranslatePipe,
-    RealTitleCasePipe,
-  ],
+    RealTitleCasePipe
+],
   templateUrl: './key-notation-help-dialog.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

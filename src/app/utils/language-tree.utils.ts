@@ -1,4 +1,4 @@
-import { LanguageTreeNode } from 'tangent-cc-lib/dist/lib/model/language-tree.models';
+import { LanguageTreeNode } from 'tangent-cc-lib';
 import { LANGUAGE_TREE } from '../data/language-tree';
 import { SimpleKeyboardLayout } from '../models/simple-keyboard-layout.models';
 

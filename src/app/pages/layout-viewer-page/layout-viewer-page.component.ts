@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import {
   ChangeDetectionStrategy,
   Component,
@@ -105,7 +105,6 @@ function getHighlightPositionCodes(
   selector: 'app-layout-viewer-page',
   standalone: true,
   imports: [
-    CommonModule,
     LayoutComponent,
     MatButtonToggleModule,
     MatIconModule,
@@ -127,8 +126,8 @@ function getHighlightPositionCodes(
     TooltipDirective,
     HotkeysShortcutPipe,
     TranslatePipe,
-    RealTitleCasePipe,
-  ],
+    RealTitleCasePipe
+],
   templateUrl: './layout-viewer-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

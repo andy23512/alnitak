@@ -46,3 +46,5 @@ Thumbs.db
 .nx/workspace-data
 .nx
 src/assets/material-symbols-rounded-latin-full-normal.min.woff2
+
+.claude/worktrees
