@@ -44,11 +44,11 @@ import { DeviceLayoutImportDialogComponent } from '../device-layout-import-dialo
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DeviceLayoutSettingPanelContentComponent {
-  private deviceLayoutStore = inject(DeviceLayoutStore);
-  readonly translateService = inject(TranslateService);
-  readonly languageSettingStore = inject(LanguageSettingStore);
-  readonly matDialog = inject(MatDialog);
-  readonly matSnackBar = inject(MatSnackBar);
+  private readonly deviceLayoutStore = inject(DeviceLayoutStore);
+  private readonly translateService = inject(TranslateService);
+  private readonly languageSettingStore = inject(LanguageSettingStore);
+  private readonly matDialog = inject(MatDialog);
+  private readonly matSnackBar = inject(MatSnackBar);
   private readonly serialHandlerService = inject(SerialHandlerService);
 
   public isWebSerialApiSupported = 'serial' in navigator;
@@ -173,6 +173,32 @@ export class DeviceLayoutSettingPanelContentComponent {
 
   setSelectedDeviceLayoutId(deviceLayoutId: string) {
     this.deviceLayoutStore.setSelectedId(deviceLayoutId);
+  }
+
+  onDownloadDeviceLayoutButtonClick(event: MouseEvent) {
+    event.stopPropagation();
+    const selectedDeviceLayout = this.deviceLayoutStore.selectedEntity();
+    if (selectedDeviceLayout) {
+      const blob = new Blob(
+        [
+          JSON.stringify({
+            charaVersion: 1,
+            type: 'layout',
+            device: 'TWO',
+            layout: selectedDeviceLayout.layout,
+          }),
+        ],
+        {
+          type: 'application/json',
+        },
+      );
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `${selectedDeviceLayout.name.replace(/\.json$/, '')}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
   }
 
   onDeleteDeviceLayoutButtonClick(event: MouseEvent) {

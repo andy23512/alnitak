@@ -72,6 +72,15 @@
           }
         </mat-select>
       </mat-form-field>
+      <button
+        class="flex-none"
+        mat-icon-button
+        matSuffix
+        aria-label="Download selected device layout"
+        (click)="onDownloadDeviceLayoutButtonClick($event)"
+      >
+        <mat-icon>{{ "download" | iconGuard }}</mat-icon>
+      </button>
       @if (!selectedDeviceLayoutIsDefault()) {
         <button
           class="flex-none"
