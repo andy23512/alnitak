@@ -26,7 +26,7 @@ import {
 import { withSelectedEntity } from './selected-entity.feature';
 
 export const DeviceLayoutStore = signalStore(
-  { providedIn: 'root' },
+  { providedIn: 'root', protectedState: false },
   withDevtools('deviceLayout'),
   withStorageSync('deviceLayout'),
   withEntities<DeviceLayout>(),

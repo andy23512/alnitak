@@ -31,7 +31,7 @@ const initialState: ChordPracticeState = {
 };
 
 export const ChordPracticeStore = signalStore(
-  { providedIn: 'root' },
+  { providedIn: 'root', protectedState: false },
   withDevtools('chordPractice'),
   withState(initialState),
   withMethods((store) => ({

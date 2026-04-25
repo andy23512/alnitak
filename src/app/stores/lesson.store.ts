@@ -40,7 +40,7 @@ const initialState: LessonState = {
 };
 
 export const LessonStore = signalStore(
-  withDevtools('lesson'),
+  { protectedState: false }, withDevtools('lesson'),
   withState(initialState),
   withMethods((store, keyRecordService = inject(KeyRecordService)) => ({
     setLesson(lesson: Lesson) {

@@ -19,7 +19,7 @@ const INITIAL_LAYOUT_SONG_SETTING: LayoutSongSetting = {
 };
 
 export const LayoutSongSettingStore = signalStore(
-  { providedIn: 'root' },
+  { providedIn: 'root', protectedState: false },
   withDevtools('layoutSongSetting'),
   withStorageSync({
     key: 'layoutSongSetting',

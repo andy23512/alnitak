@@ -38,7 +38,7 @@ export const INITIAL_HIGHLIGHT_SETTING: HighlightSetting = {
 };
 
 export const HighlightSettingStore = signalStore(
-  { providedIn: 'root' },
+  { providedIn: 'root', protectedState: false },
   withDevtools('highlightSetting'),
   withStorageSync({
     key: 'highlightSetting',

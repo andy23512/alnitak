@@ -12,7 +12,7 @@ const INITIAL_AIR_MODE_SETTING: AirModeSetting = {
 };
 
 export const AirModeSettingStore = signalStore(
-  { providedIn: 'root' },
+  { providedIn: 'root', protectedState: false },
   withDevtools('airModeSetting'),
   withStorageSync({
     key: 'airModeSetting',

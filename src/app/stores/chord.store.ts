@@ -7,7 +7,7 @@ import { withEntities } from '@ngrx/signals/entities';
 import { Chord } from '../models/chord.models';
 
 export const ChordStore = signalStore(
-  { providedIn: 'root' },
+  { providedIn: 'root', protectedState: false },
   withDevtools('chord'),
   withStorageSync('chord'),
   withEntities<Chord>(),

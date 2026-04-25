@@ -18,7 +18,7 @@ import { KEYBOARD_LAYOUTS } from '../data/keyboard-layouts';
 import { findKeyboardLayoutsByLanguageCode } from '../utils/language-tree.utils';
 
 export const LessonSettingStore = signalStore(
-  { providedIn: 'root' },
+  { providedIn: 'root', protectedState: false },
   withDevtools('lessonSetting'),
   withStorageSync('lessonSetting'),
   withState({

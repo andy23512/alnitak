@@ -5,7 +5,7 @@ import { SerialLogItemType, SerialLogState } from '../models/serial-log.model';
 const INITIAL_SERIAL_LOG_STATE: SerialLogState = { items: [] };
 
 export const SerialLogStore = signalStore(
-  { providedIn: 'root' },
+  { providedIn: 'root', protectedState: false },
   withDevtools('serialLog'),
   withState(INITIAL_SERIAL_LOG_STATE),
   withMethods((store) => ({

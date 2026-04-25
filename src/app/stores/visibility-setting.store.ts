@@ -17,7 +17,7 @@ const INITIAL_VISIBILITY_SETTING: VisibilitySetting = {
 };
 
 export const VisibilitySettingStore = signalStore(
-  { providedIn: 'root' },
+  { providedIn: 'root', protectedState: false },
   withDevtools('visibilitySetting'),
   withStorageSync({
     key: 'visibilitySetting',

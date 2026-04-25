@@ -46,15 +46,15 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$alnitak-primary: mat.define-palette($primary-map);
-$alnitak-accent: mat.define-palette($accent-map);
+$alnitak-primary: mat.m2-define-palette($primary-map);
+$alnitak-accent: mat.m2-define-palette($accent-map);
 
 // The warn palette is optional (defaults to red).
-$alnitak-warn: mat.define-palette(mat.$red-palette);
+$alnitak-warn: mat.m2-define-palette(mat.$m2-red-palette);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$alnitak-theme: mat.define-dark-theme((color: (primary: $alnitak-primary,
+$alnitak-theme: mat.m2-define-dark-theme((color: (primary: $alnitak-primary,
         accent: $alnitak-accent,
         warn: $alnitak-warn,
       ),
@@ -81,8 +81,8 @@ html {
 }
 
 .mat-button-toggle-checked {
-  background-color: mat.get-color_from_palette($alnitak-primary, 500) !important;
-  color: mat.get-contrast_color_from_palette($alnitak-primary, 500) !important;
+  background-color: mat.get-theme-color($alnitak-theme, primary) !important;
+  color: mat.get-theme-color($alnitak-theme, primary, default-contrast) !important;
 }
 
 /* You can add global styles to this file, and also import other style files */

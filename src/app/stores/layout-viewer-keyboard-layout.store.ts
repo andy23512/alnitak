@@ -17,7 +17,7 @@ import {
 import { KEYBOARD_LAYOUTS } from '../data/keyboard-layouts';
 
 export const LayoutViewerKeyboardLayoutStore = signalStore(
-  { providedIn: 'root' },
+  { providedIn: 'root', protectedState: false },
   withDevtools('layoutViewerKeyboardLayout'),
   withStorageSync('layoutViewerKeyboardLayout'),
   withState({
