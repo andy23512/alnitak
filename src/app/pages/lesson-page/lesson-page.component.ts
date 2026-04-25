@@ -54,6 +54,7 @@ import {
   getCharacterActionCodesFromCharacterKeyCode,
   getHighlightKeyCombinationFromKeyCombinations,
   getKeyCombinationsFromActionCodes,
+  getLayerShiftPositionCodeMap,
   getModifierKeyPositionCodeMap,
   nonNullable,
 } from 'tangent-cc-lib';
@@ -140,6 +141,13 @@ export class LessonPageComponent implements OnInit, OnDestroy {
       })
       .filter(nonNullable);
   });
+  readonly layerShiftKeyPositionMap = computed(() => {
+    const deviceLayout = this.deviceLayout();
+    if (!deviceLayout) {
+      return null;
+    }
+    return getLayerShiftPositionCodeMap(deviceLayout);
+  });
   readonly modifierKeyPositionCodeMap = computed(() => {
     const deviceLayout = this.deviceLayout();
     if (!deviceLayout) {
@@ -154,7 +162,8 @@ export class LessonPageComponent implements OnInit, OnDestroy {
       return {};
     }
     const modifierKeyPositionCodeMap = this.modifierKeyPositionCodeMap();
-    if (!modifierKeyPositionCodeMap) {
+    const layerShiftKeyPositionCodeMap = this.layerShiftKeyPositionMap();
+    if (!modifierKeyPositionCodeMap || !layerShiftKeyPositionCodeMap) {
       return {};
     }
     const keyLabelMap: Record<number, KeyLabel[]> = {};
@@ -200,16 +209,26 @@ export class LessonPageComponent implements OnInit, OnDestroy {
       );
     });
     if (addShiftLabel) {
-      modifierKeyPositionCodeMap.shift.forEach((pos) => {
-        if (!keyLabelMap[pos]) {
-          keyLabelMap[pos] = [SHIFT_KEY_LABEL];
-        } else {
-          keyLabelMap[pos].push(SHIFT_KEY_LABEL);
-        }
-      });
+      Object.entries(modifierKeyPositionCodeMap.shift).forEach(
+        ([layer, positions]) => {
+          const keyLabel = {
+            ...SHIFT_KEY_LABEL,
+            layer: layer as Layer,
+            shiftKey: null,
+            altGraphKey: null,
+          };
+          positions.forEach((pos) => {
+            if (!keyLabelMap[pos]) {
+              keyLabelMap[pos] = [keyLabel];
+            } else {
+              keyLabelMap[pos].push(keyLabel);
+            }
+          });
+        },
+      );
     }
     if (addNumShiftLabel) {
-      modifierKeyPositionCodeMap.numShift.forEach((pos) => {
+      layerShiftKeyPositionCodeMap.numShift.forEach((pos) => {
         if (!keyLabelMap[pos]) {
           keyLabelMap[pos] = [NUM_SHIFT_KEY_LABEL];
         } else {
@@ -218,7 +237,7 @@ export class LessonPageComponent implements OnInit, OnDestroy {
       });
     }
     if (addFnShiftLabel) {
-      modifierKeyPositionCodeMap.fnShift.forEach((pos) => {
+      layerShiftKeyPositionCodeMap.fnShift.forEach((pos) => {
         if (!keyLabelMap[pos]) {
           keyLabelMap[pos] = [FN_SHIFT_KEY_LABEL];
         } else {
@@ -227,7 +246,7 @@ export class LessonPageComponent implements OnInit, OnDestroy {
       });
     }
     if (addFlagShiftLabel) {
-      modifierKeyPositionCodeMap.flagShift.forEach((pos) => {
+      layerShiftKeyPositionCodeMap.flagShift.forEach((pos) => {
         if (!keyLabelMap[pos]) {
           keyLabelMap[pos] = [FLAG_SHIFT_KEY_LABEL];
         } else {
@@ -236,14 +255,25 @@ export class LessonPageComponent implements OnInit, OnDestroy {
       });
     }
     if (addAltGraphLabel) {
-      modifierKeyPositionCodeMap.altGraph.forEach((pos) => {
-        if (!keyLabelMap[pos]) {
-          keyLabelMap[pos] = [ALT_GRAPH_KEY_LABEL];
-        } else {
-          keyLabelMap[pos].push(ALT_GRAPH_KEY_LABEL);
-        }
-      });
+      Object.entries(modifierKeyPositionCodeMap.altGraph).forEach(
+        ([layer, positions]) => {
+          const keyLabel = {
+            ...ALT_GRAPH_KEY_LABEL,
+            layer: layer as Layer,
+            shiftKey: null,
+            altGraphKey: null,
+          };
+          positions.forEach((pos) => {
+            if (!keyLabelMap[pos]) {
+              keyLabelMap[pos] = [keyLabel];
+            } else {
+              keyLabelMap[pos].push(keyLabel);
+            }
+          });
+        },
+      );
     }
+    console.log('keyLabelMap', keyLabelMap);
     return keyLabelMap;
   });
   readonly highlightCharacterKeyCombinationMap: Signal<
@@ -257,15 +287,21 @@ export class LessonPageComponent implements OnInit, OnDestroy {
       return {};
     }
     const modifierKeyPositionCodeMap = this.modifierKeyPositionCodeMap();
+    const layerShiftKeyPositionMap = this.layerShiftKeyPositionMap();
     const highlightCharacterKeyMap: Record<string, HighlightKeyCombination> =
       {};
     lessonCharactersDevicePositionCodes.forEach((k) => {
-      if (!k?.characterDeviceKeys || !modifierKeyPositionCodeMap) {
+      if (
+        !k?.characterDeviceKeys ||
+        !modifierKeyPositionCodeMap ||
+        !layerShiftKeyPositionMap
+      ) {
         return;
       }
       highlightCharacterKeyMap[k.c] =
         getHighlightKeyCombinationFromKeyCombinations(
           k.characterDeviceKeys,
+          layerShiftKeyPositionMap,
           modifierKeyPositionCodeMap,
           highlightSetting,
         );

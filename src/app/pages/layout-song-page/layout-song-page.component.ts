@@ -34,6 +34,7 @@ import {
   getCharacterActionCodesFromCharacterKeyCode,
   getHighlightKeyCombinationFromKeyCombinations,
   getKeyCombinationsFromActionCodes,
+  getLayerShiftPositionCodeMap,
   getModifierKeyPositionCodeMap,
   HighlightKeyCombination,
   KeyboardLayout,
@@ -238,6 +239,14 @@ export class LayoutSongPageComponent implements OnInit, OnDestroy {
       .filter(nonNullable);
   });
 
+  readonly layerShiftKeyPositionCodeMap = computed(() => {
+    const deviceLayout = DEFAULT_DEVICE_LAYOUT;
+    if (!deviceLayout) {
+      return null;
+    }
+    return getLayerShiftPositionCodeMap(deviceLayout);
+  });
+
   readonly modifierKeyPositionCodeMap = computed(() => {
     const deviceLayout = DEFAULT_DEVICE_LAYOUT;
     if (!deviceLayout) {
@@ -295,15 +304,21 @@ export class LayoutSongPageComponent implements OnInit, OnDestroy {
       return {};
     }
     const modifierKeyPositionCodeMap = this.modifierKeyPositionCodeMap();
+    const layerShiftKeyPositionCodeMap = this.layerShiftKeyPositionCodeMap();
     const highlightCharacterKeyMap: Record<string, HighlightKeyCombination> =
       {};
     lessonCharactersDevicePositionCodes.forEach((k) => {
-      if (!k?.characterDeviceKeys || !modifierKeyPositionCodeMap) {
+      if (
+        !k?.characterDeviceKeys ||
+        !modifierKeyPositionCodeMap ||
+        !layerShiftKeyPositionCodeMap
+      ) {
         return;
       }
       highlightCharacterKeyMap[k.c] =
         getHighlightKeyCombinationFromKeyCombinations(
           k.characterDeviceKeys,
+          layerShiftKeyPositionCodeMap,
           modifierKeyPositionCodeMap,
           highlightSetting,
         );

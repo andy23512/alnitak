@@ -43,6 +43,7 @@ import {
   ActionType,
   CHARACTER_NAME_MAP,
   DeviceLayout,
+  getLayerShiftPositionCodeMap,
   getModifierKeyPositionCodeMap,
   KeyLabel,
   KeyLabelType,
@@ -72,22 +73,30 @@ function getHighlightPositionCodes(
   let highlightPositionCodes: number[] = [];
   const modifierKeyPositionCodeMap =
     getModifierKeyPositionCodeMap(deviceLayout);
+  const layerShiftKeyPositionCodeMap =
+    getLayerShiftPositionCodeMap(deviceLayout);
   switch (layer) {
     case Layer.Secondary:
-      highlightPositionCodes.push(...modifierKeyPositionCodeMap.numShift);
+      highlightPositionCodes.push(...layerShiftKeyPositionCodeMap.numShift);
       break;
     case Layer.Tertiary:
-      highlightPositionCodes.push(...modifierKeyPositionCodeMap.fnShift);
+      highlightPositionCodes.push(...layerShiftKeyPositionCodeMap.fnShift);
       break;
     case Layer.Quaternary:
-      highlightPositionCodes.push(...modifierKeyPositionCodeMap.flagShift);
+      highlightPositionCodes.push(...layerShiftKeyPositionCodeMap.flagShift);
       break;
   }
   if (shiftKey) {
-    highlightPositionCodes.push(...modifierKeyPositionCodeMap.shift);
+    if (!modifierKeyPositionCodeMap.shift[layer]) {
+      return [];
+    }
+    highlightPositionCodes.push(...modifierKeyPositionCodeMap.shift[layer]);
   }
   if (altGraphKey) {
-    highlightPositionCodes.push(...modifierKeyPositionCodeMap.altGraph);
+    if (!modifierKeyPositionCodeMap.altGraph[layer]) {
+      return [];
+    }
+    highlightPositionCodes.push(...modifierKeyPositionCodeMap.altGraph[layer]);
   }
   return highlightPositionCodes;
 }
