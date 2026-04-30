@@ -273,7 +273,6 @@ export class LessonPageComponent implements OnInit, OnDestroy {
         },
       );
     }
-    console.log('keyLabelMap', keyLabelMap);
     return keyLabelMap;
   });
   readonly highlightCharacterKeyCombinationMap: Signal<
