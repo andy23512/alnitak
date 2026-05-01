@@ -24,6 +24,7 @@ import { SerialHandlerService } from 'src/app/services/serial-handler.service';
 import { DeviceLayoutStore } from 'src/app/stores/device-layout.store';
 import { LanguageSettingStore } from 'src/app/stores/language-setting.store';
 import { dateToString } from 'src/app/utils/date.utils';
+import { downloadDeviceLayout } from 'tangent-cc-lib';
 import { DeleteDeviceLayoutConfirmDialogComponent } from '../delete-device-layout-confirm-dialog/delete-device-layout-confirm-dialog.component';
 import { DeviceLayoutImportDialogComponent } from '../device-layout-import-dialog/device-layout-import-dialog.component';
 
@@ -179,25 +180,7 @@ export class DeviceLayoutSettingPanelContentComponent {
     event.stopPropagation();
     const selectedDeviceLayout = this.deviceLayoutStore.selectedEntity();
     if (selectedDeviceLayout) {
-      const blob = new Blob(
-        [
-          JSON.stringify({
-            charaVersion: 1,
-            type: 'layout',
-            device: 'TWO',
-            layout: selectedDeviceLayout.layout,
-          }),
-        ],
-        {
-          type: 'application/json',
-        },
-      );
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `${selectedDeviceLayout.name.replace(/\.json$/, '')}.json`;
-      a.click();
-      URL.revokeObjectURL(url);
+      downloadDeviceLayout(selectedDeviceLayout);
     }
   }
 
