@@ -431,7 +431,18 @@
     "windows-meta-left": "Windows [Command / Super]（左）",
     "windows-meta-right": "Windows [Command / Super]（右）",
     "unix-meta-left": "Super [Windows / Command]（左）",
-    "unix-meta-right": "Super [Windows / Command]（右）"
+    "unix-meta-right": "Super [Windows / Command]（右）",
+    "brightness-up": "明るさを上げる",
+    "brightness-down": "明るさを下げる",
+    "play-pause": "再生/一時停止",
+    "next-track": "次のトラック",
+    "previous-track": "前のトラック",
+    "mute": "消音",
+    "volume-up": "音量を上げる",
+    "volume-down": "音量を下げる",
+    "search": "検索",
+    "back": "戻る",
+    "forward": "進む"
   },
   "home-page": {
     "website-name": "Alnitak アルニタク",
@@ -533,7 +544,7 @@
       "search-placeholder": "レイアウトを検索...",
       "search-no-entry": "一致するレイアウトが見つかりませんでした。",
       "open-reference-button-tooltip": "このレイアウトの参照サイトを開く",
-      "reset-button-tooltip": "このレイアウトの選択をリセット"
+      "reset-button-tooltip": "リセット"
     },
     "search-key-button-tooltip": "キーを検索",
     "print-layout-button-tooltip": "レイアウトを印刷",

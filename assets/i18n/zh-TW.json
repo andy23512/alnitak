@@ -419,7 +419,18 @@
     "windows-meta-left": "Windows [Command / Super] （左）",
     "windows-meta-right": "Windows [Command / Super] （右）",
     "unix-meta-left": "Super [Windows / Command] （左）",
-    "unix-meta-right": "Super [Windows / Command] （右）"
+    "unix-meta-right": "Super [Windows / Command] （右）",
+    "brightness-up": "調亮亮度",
+    "brightness-down": "調低亮度",
+    "play-pause": "播放/暫停",
+    "next-track": "下一首歌曲",
+    "previous-track": "上一首歌曲",
+    "mute": "靜音",
+    "volume-up": "調高音量",
+    "volume-down": "調低音量",
+    "search": "搜尋",
+    "back": "返回",
+    "forward": "前進"
   },
   "home-page": {
     "website-name": "Alnitak 參宿一",

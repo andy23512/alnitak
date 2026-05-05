@@ -433,7 +433,18 @@
     "windows-meta-left": "Windows [Command / Super] (left)",
     "windows-meta-right": "Windows [Command / Super] (right)",
     "unix-meta-left": "Super [Windows / Command] (left)",
-    "unix-meta-right": "Super [Windows / Command] (right)"
+    "unix-meta-right": "Super [Windows / Command] (right)",
+    "brightness-up": "Brightness Up",
+    "brightness-down": "Brightness Down",
+    "play-pause": "Play/Pause",
+    "next-track": "Next Track",
+    "previous-track": "Previous Track",
+    "mute": "Mute",
+    "volume-up": "Volume Up",
+    "volume-down": "Volume Down",
+    "search": "Search",
+    "back": "Back",
+    "forward": "Forward"
   },
   "home-page": {
     "website-name": "Alnitak",
