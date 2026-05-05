@@ -3,6 +3,10 @@ import { subset } from '@web-alchemy/fonttools';
 import { Font, openSync as fontkitOpenSync } from 'fontkit';
 import { readFileSync, writeFileSync } from 'fs';
 
+const codePointsMap: Record<string, string> = {
+  no_sound: 'e710',
+};
+
 (async () => {
   const iconTypesAst = ast(
     readFileSync('./src/app/types/icon.types.ts', { encoding: 'utf-8' }),
@@ -10,7 +14,7 @@ import { readFileSync, writeFileSync } from 'fs';
 
   const icons = query(iconTypesAst, 'StringLiteral').map(
     (node) => (node as any).text,
-  );
+  ) as string[];
   console.log(icons);
   const font = fontkitOpenSync(
     './src/assets/material-symbols-rounded-latin-full-normal.woff2',
@@ -28,6 +32,14 @@ import { readFileSync, writeFileSync } from 'fs';
       .flatMap((it) => font.stringsForGlyph(it.id))
       .flatMap((it) => [...it])
       .map((it) => it.codePointAt(0)?.toString(16) as string);
+
+    const codePoint = codePointsMap[icon];
+    if (codePoint) {
+      glyphs.push(codePoint);
+    } else if (codePoints.length === 0) {
+      console.error(`No code point found for ${icon}.`);
+      process.exit(-1);
+    }
 
     glyphs.push(...codePoints);
   }
