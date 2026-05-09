@@ -8,21 +8,27 @@ const codePointsMap: Record<string, string> = {
 };
 
 (async () => {
-  const iconTypesAst = ast(
-    readFileSync('./src/app/types/icon.types.ts', { encoding: 'utf-8' }),
-  );
-
-  const icons = query(iconTypesAst, 'StringLiteral').map(
-    (node) => (node as any).text,
-  ) as string[];
-  console.log(icons);
+  const iconTypeFiles = [
+    './src/app/types/icon.types.ts',
+    './node_modules/tangent-cc-lib/dist/lib/type/key-label-icon.type.d.ts',
+  ];
+  let iconSet = new Set<string>();
+  iconTypeFiles.forEach((iconTypeFile) => {
+    const iconTypesAst = ast(readFileSync(iconTypeFile, { encoding: 'utf-8' }));
+    query(iconTypesAst, 'UnionType StringLiteral')
+      .map((node) => (node as any).text as string)
+      .forEach((icon) => {
+        iconSet.add(icon);
+      });
+  });
+  console.log(iconSet);
   const font = fontkitOpenSync(
     './src/assets/material-symbols-rounded-latin-full-normal.woff2',
   ) as Font;
 
   const glyphs = ['5f-7a', '30-39'];
 
-  for (const icon of icons) {
+  for (const icon of iconSet) {
     const iconGlyphs = font.layout(icon).glyphs;
     if (iconGlyphs.length === 0) {
       console.error(`${icon} not found in font.`);
