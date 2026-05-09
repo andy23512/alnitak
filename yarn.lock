@@ -11739,10 +11739,10 @@ tailwindcss@^3.0.2:
     resolve "^1.22.2"
     sucrase "^3.32.0"
 
-tangent-cc-lib@0.0.40:
-  version "0.0.40"
-  resolved "https://registry.yarnpkg.com/tangent-cc-lib/-/tangent-cc-lib-0.0.40.tgz#1464e20a6fae6cdc6bb3f39170e85cae56f33ded"
-  integrity sha512-eJcifa9fYMdZ+x9JejhMBJWz0sLQPDvEWWh/49bKe5wqtjpVwV4Eu7yS6C+0EsAGjhj7zf5bVHs8u1y39pnkhA==
+tangent-cc-lib@0.0.43:
+  version "0.0.43"
+  resolved "https://registry.yarnpkg.com/tangent-cc-lib/-/tangent-cc-lib-0.0.43.tgz#c239ac4800a96b5e69e73f696a7fe732636c35fb"
+  integrity sha512-erUwrEMlj1bJNRJYJKuySFp6VQFskbcvq7JTfeMsTi4y2KVp3+j2Inga6TD/n01XIWekG70qQjWUWNL5WwSa4Q==
   dependencies:
     tslib "^2.3.0"
 
