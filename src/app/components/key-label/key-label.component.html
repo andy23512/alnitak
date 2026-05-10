@@ -10,6 +10,15 @@
           class="stroke-alnitak-900 stroke-[40] print:stroke-alnitak-200"
         ></svg:line>
       }
+      @if (label.type === KeyLabelType.String && label.isWindowsAltCode) {
+        <svg:line
+          [attr.x1]="x()"
+          [attr.y1]="y() - 40"
+          [attr.x2]="x()"
+          [attr.y2]="y() + 40"
+          class="stroke-yellow-900 stroke-[40] print:stroke-yellow-200"
+        ></svg:line>
+      }
       <svg:text
         [attr.x]="x()"
         [attr.y]="y()"

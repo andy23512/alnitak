@@ -1,4 +1,3 @@
-
 import {
   ChangeDetectionStrategy,
   Component,
@@ -126,8 +125,8 @@ function getHighlightPositionCodes(
     TooltipDirective,
     HotkeysShortcutPipe,
     TranslatePipe,
-    RealTitleCasePipe
-],
+    RealTitleCasePipe,
+  ],
   templateUrl: './layout-viewer-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -487,6 +486,19 @@ export class LayoutViewerPageComponent {
               altGraphKey: false,
             });
           }
+        } else if (
+          action?.type === ActionType.WindowsAltCode &&
+          action.character
+        ) {
+          keyLabels.push({
+            type: KeyLabelType.String,
+            c: action.character,
+            title: 'Windows Alt Code: ' + action.character,
+            layer,
+            shiftKey: false,
+            altGraphKey: false,
+            isWindowsAltCode: true,
+          });
         } else if (actionCodeId >= 32) {
           keyLabels.push({
             type: KeyLabelType.ActionCode,
@@ -637,6 +649,11 @@ export class LayoutViewerPageComponent {
           keyNames = NON_WSK_CODE_2_KEY_NAMES_MAP[action.keyCode];
         } else if (action?.type === ActionType.NonKey && action.actionName) {
           keyNames = NON_KEY_ACTION_NAME_2_KEY_NAMES_MAP[action.actionName];
+        } else if (
+          action?.type === ActionType.WindowsAltCode &&
+          action.character
+        ) {
+          keyNames = [`${action.character} (Windows Alt Code)`];
         } else if (NO_ACTION_ACTION_CODES.includes(+actionCodeId)) {
           return;
         }
