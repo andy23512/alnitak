@@ -1,0 +1,6 @@
+@media print {
+  .keep-bg {
+    -webkit-print-color-adjust: exact !important;   /* Chrome, Safari, Edge */
+    print-color-adjust: exact !important;
+  }
+}

@@ -53,6 +53,7 @@ import {
   NON_WSK_CODE_2_KEY_NAMES_MAP,
   NON_WSK_CODE_2_RAW_KEY_LABEL_MAP,
   OS_2_META_KEY_LABEL_MAP,
+  WINDOWS_ALT_CODE_ACTIONS,
 } from 'tangent-cc-lib';
 
 enum Modifier {
@@ -128,6 +129,7 @@ function getHighlightPositionCodes(
     RealTitleCasePipe,
   ],
   templateUrl: './layout-viewer-page.component.html',
+  styleUrl: './layout-viewer-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LayoutViewerPageComponent {
@@ -147,6 +149,18 @@ export class LayoutViewerPageComponent {
   readonly keyboardLayouts = this.keyboardLayoutStore.entities;
   readonly deviceLayout = this.deviceLayoutStore.selectedEntity;
   public deviceLayouts = this.deviceLayoutStore.entities;
+  readonly hasWindowsAltCodeKey = computed(() => {
+    const deviceLayout = this.deviceLayout();
+    if (!deviceLayout) {
+      return false;
+    }
+    const windowsAltCodeActionCodeSet = new Set(
+      WINDOWS_ALT_CODE_ACTIONS.map((a) => a.codeId),
+    );
+    return deviceLayout.layout
+      .flat()
+      .some((actionCode) => windowsAltCodeActionCodeSet.has(actionCode));
+  });
   public cc1cc2DefaultLayoutName = toSignal(
     this.translateService.stream('device-layout.cc1-cc2-default'),
   );
