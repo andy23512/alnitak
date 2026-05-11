@@ -39,6 +39,7 @@
     "character-tooltip": "字元：{{character}}",
     "action-code-tooltip": "操作代碼：{{actionCode}}",
     "dead-key-tooltip": "死鍵：{{character}}",
+    "windows-alt-code-tooltip": "Windows Alt 碼：{{character}}",
     "choose-file-action": "選擇檔案",
     "combo-unit": "連擊",
     "cancel-action": "取消",
@@ -543,7 +544,8 @@
       "a3": "功能層",
       "a4": "旗標層"
     },
-    "dead-key-legend": "死鍵"
+    "dead-key-legend": "死鍵",
+    "windows-alt-code-legend": "Windows Alt 碼"
   },
   "lesson-page": {
     "input-box-title": "用於練習課程的輸入框",

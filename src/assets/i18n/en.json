@@ -39,6 +39,7 @@
     "character-tooltip": "Character: {{character}}",
     "action-code-tooltip": "Action Code: {{actionCode}}",
     "dead-key-tooltip": "Dead Key: {{character}}",
+    "windows-alt-code-tooltip": "Windows Alt Code: {{character}}",
     "choose-file-action": "choose file",
     "combo-unit": "combo",
     "combo-unit-plural": "combos",
@@ -567,7 +568,8 @@
       "a3": "functional layer",
       "a4": "flag layer"
     },
-    "dead-key-legend": "Dead key"
+    "dead-key-legend": "Dead key",
+    "windows-alt-code-legend": "Windows Alt code"
   },
   "lesson-page": {
     "input-box-title": "input box for practicing lesson",

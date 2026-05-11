@@ -507,7 +507,10 @@ export class LayoutViewerPageComponent {
           keyLabels.push({
             type: KeyLabelType.String,
             c: action.character,
-            title: 'Windows Alt Code: ' + action.character,
+            title: this.translateService.instant(
+              'general.windows-alt-code-tooltip',
+              { character: action.character },
+            ),
             layer,
             shiftKey: false,
             altGraphKey: false,

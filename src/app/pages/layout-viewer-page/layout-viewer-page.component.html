@@ -298,7 +298,7 @@
             @if (hasWindowsAltCodeKey()) {
               <div class="flex items-center gap-2">
                 <div class="size-4 bg-yellow-900"></div>
-                Windows Alt Code
+                {{ "layout-viewer-page.windows-alt-code-legend" | translate }}
               </div>
             }
           </div>
@@ -389,7 +389,9 @@
                 @if (hasWindowsAltCodeKey()) {
                   <div class="flex items-center gap-2">
                     <div class="keep-bg size-4 bg-yellow-300"></div>
-                    Windows Alt Code
+                    {{
+                      "layout-viewer-page.windows-alt-code-legend" | translate
+                    }}
                   </div>
                 }
               </div>
