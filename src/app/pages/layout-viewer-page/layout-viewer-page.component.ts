@@ -52,6 +52,7 @@ import {
   NON_KEY_ACTION_NAME_2_RAW_KEY_LABEL_MAP,
   NON_WSK_CODE_2_KEY_NAMES_MAP,
   NON_WSK_CODE_2_RAW_KEY_LABEL_MAP,
+  OS_2_ALT_KEY_LABEL_MAP,
   OS_2_META_KEY_LABEL_MAP,
   WINDOWS_ALT_CODE_ACTIONS,
 } from 'tangent-cc-lib';
@@ -469,11 +470,19 @@ export class LayoutViewerPageComponent {
           }
         } else if (action?.type === ActionType.NonWSK && action.keyCode) {
           let rawKeyLabelMap = NON_WSK_CODE_2_RAW_KEY_LABEL_MAP;
-          if (operatingSystem && OS_2_META_KEY_LABEL_MAP[operatingSystem]) {
-            rawKeyLabelMap = {
-              ...rawKeyLabelMap,
-              ...OS_2_META_KEY_LABEL_MAP[operatingSystem],
-            };
+          if (operatingSystem) {
+            if (OS_2_META_KEY_LABEL_MAP[operatingSystem]) {
+              rawKeyLabelMap = {
+                ...rawKeyLabelMap,
+                ...OS_2_META_KEY_LABEL_MAP[operatingSystem],
+              };
+            }
+            if (OS_2_ALT_KEY_LABEL_MAP[operatingSystem]) {
+              rawKeyLabelMap = {
+                ...rawKeyLabelMap,
+                ...OS_2_ALT_KEY_LABEL_MAP[operatingSystem],
+              };
+            }
           }
           const rawKeyLabel = rawKeyLabelMap[action.keyCode];
           if (rawKeyLabel) {

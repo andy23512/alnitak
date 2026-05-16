@@ -431,6 +431,8 @@
     "right-hand-pinky-center": "Pseudo 16 / Right Hand Pinky 3D Click",
     "right-hand-middle-2-center": "Pseudo 17 / Right Hand Middle 2 3D Click",
     "right-hand-ring-2-center": "Pseudo 18 / Right Hand Ring 2 3D Click",
+    "apple-alt-left": "Option / Alt (left)",
+    "apple-alt-right": "Option / Alt (right) / Alt Graph",
     "apple-meta-left": "Command [Windows / Super] (left)",
     "apple-meta-right": "Command [Windows / Super] (right)",
     "windows-meta-left": "Windows [Command / Super] (left)",
