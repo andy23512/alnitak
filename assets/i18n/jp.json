@@ -212,10 +212,10 @@
     },
     "layout-viewer-page": {
       "name": "レイアウト表示ページ",
-      "switch-to-the-a1-layer": "A1（基本）レイヤーに切り替える",
-      "switch-to-the-a2-layer": "A2（数字）レイヤーに切り替える",
-      "switch-to-the-a3-layer": "A3（機能）レイヤーに切り替える",
-      "switch-to-the-a4-layer": "A4（フラグ）レイヤーに切り替える",
+      "switch-to-the-first-layer": "第一（基本）レイヤーに切り替える",
+      "switch-to-the-second-layer": "第二（数字）レイヤーに切り替える",
+      "switch-to-the-third-layer": "第三（機能）レイヤーに切り替える",
+      "switch-to-the-fourth-layer": "第四（フラグ）レイヤーに切り替える",
       "toggle-shift-modifier": "Shift 修飾キーの切り替え",
       "toggle-alt-graph-modifier": "Alt Graph 修飾キーの切り替え"
     }
@@ -565,10 +565,10 @@
     "and": "と",
     "comma": "、",
     "layer": {
-      "a1": "基本レイヤー",
-      "a2": "数字レイヤー",
-      "a3": "機能レイヤー",
-      "a4": "フラグレイヤー"
+      "1": "基本レイヤー",
+      "2": "数字レイヤー",
+      "3": "機能レイヤー",
+      "4": "フラグレイヤー"
     },
     "dead-key-legend": "デッドキー",
     "windows-alt-code-legend": "Windows Alt コード"
@@ -614,7 +614,7 @@
   "layout-text-guide": "{{hand}}{{switch}}{{direction}}キー",
   "device-layout-import-dialog": {
     "title": "デバイスレイアウトのインポート",
-    "name-label": "名前"
+    "name-label": "プロファイル {{profile}}"
   },
   "lesson-not-found-page": {
     "title": "レッスンが見つかりません",
