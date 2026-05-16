@@ -23,7 +23,6 @@ import { RealTitleCasePipe } from 'src/app/pipes/real-title-case.pipe';
 import { SerialHandlerService } from 'src/app/services/serial-handler.service';
 import { DeviceLayoutStore } from 'src/app/stores/device-layout.store';
 import { LanguageSettingStore } from 'src/app/stores/language-setting.store';
-import { dateToString } from 'src/app/utils/date.utils';
 import { downloadDeviceLayout } from 'tangent-cc-lib';
 import { DeleteDeviceLayoutConfirmDialogComponent } from '../delete-device-layout-confirm-dialog/delete-device-layout-confirm-dialog.component';
 import { DeviceLayoutImportDialogComponent } from '../device-layout-import-dialog/device-layout-import-dialog.component';
@@ -144,8 +143,9 @@ export class DeviceLayoutSettingPanelContentComponent {
       this.matDialog
         .open(DeviceLayoutImportDialogComponent, {
           data: {
-            fileName: file.name,
-            layout: layoutItem.layout,
+            device: file.name,
+            date: new Date(),
+            layoutMap: { A: layoutItem.layout },
           },
           width: '400px',
         })
@@ -159,14 +159,15 @@ export class DeviceLayoutSettingPanelContentComponent {
   }
 
   public async loadDeviceLayoutFromDevice() {
-    const { id } = await this.serialHandlerService.connect();
-    const layout = await this.serialHandlerService.loadLayout();
+    await this.serialHandlerService.connect();
+    const layoutMap = await this.serialHandlerService.loadLayout();
     await this.serialHandlerService.disconnect();
     const date = new Date();
     this.matDialog.open(DeviceLayoutImportDialogComponent, {
       data: {
-        fileName: `${id}_${dateToString(date)}`,
-        layout,
+        device: this.serialHandlerService.device,
+        date,
+        layoutMap,
       },
       width: '400px',
     });

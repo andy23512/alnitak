@@ -212,10 +212,10 @@
     },
     "layout-viewer-page": {
       "name": "layout viewer page",
-      "switch-to-the-a1-layer": "switch to the A1 (primary) layer",
-      "switch-to-the-a2-layer": "switch to the A2 (numeric) layer",
-      "switch-to-the-a3-layer": "switch to the A3 (functional) layer",
-      "switch-to-the-a4-layer": "switch to the A4 (functional) layer",
+      "switch-to-the-first-layer": "switch to the first (primary) layer",
+      "switch-to-the-second-layer": "switch to the second (numeric) layer",
+      "switch-to-the-third-layer": "switch to the third (functional) layer",
+      "switch-to-the-fourth-layer": "switch to the fourth (functional) layer",
       "toggle-shift-modifier": "toggle Shift modifier",
       "toggle-alt-graph-modifier": "toggle Alt Graph modifier"
     }
@@ -563,10 +563,10 @@
     "and": " and ",
     "comma": ", ",
     "layer": {
-      "a1": "primary layer",
-      "a2": "numeric layer",
-      "a3": "functional layer",
-      "a4": "flag layer"
+      "1": "primary layer",
+      "2": "numeric layer",
+      "3": "functional layer",
+      "4": "flag layer"
     },
     "dead-key-legend": "Dead key",
     "windows-alt-code-legend": "Windows Alt code"
@@ -612,7 +612,7 @@
   "layout-text-guide": "{{hand}} {{switch}} {{direction}}",
   "device-layout-import-dialog": {
     "title": "import device layout",
-    "name-label": "name"
+    "name-label": "Profile {{profile}}"
   },
   "lesson-not-found-page": {
     "title": "Lesson Not Found",

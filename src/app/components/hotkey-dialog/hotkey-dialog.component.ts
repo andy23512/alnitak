@@ -60,19 +60,19 @@ export const HOTKEY_GROUPS = [
     hotkeys: [
       {
         key: 'alt.1',
-        description: 'hotkey.layout-viewer-page.switch-to-the-a1-layer',
+        description: 'hotkey.layout-viewer-page.switch-to-the-first-layer',
       },
       {
         key: 'alt.2',
-        description: 'hotkey.layout-viewer-page.switch-to-the-a2-layer',
+        description: 'hotkey.layout-viewer-page.switch-to-the-second-layer',
       },
       {
         key: 'alt.3',
-        description: 'hotkey.layout-viewer-page.switch-to-the-a3-layer',
+        description: 'hotkey.layout-viewer-page.switch-to-the-third-layer',
       },
       {
         key: 'alt.4',
-        description: 'hotkey.layout-viewer-page.switch-to-the-a4-layer',
+        description: 'hotkey.layout-viewer-page.switch-to-the-fourth-layer',
       },
       {
         key: 'alt.s',

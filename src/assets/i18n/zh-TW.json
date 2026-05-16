@@ -211,10 +211,10 @@
     },
     "layout-viewer-page": {
       "name": "佈局檢視頁面",
-      "switch-to-the-a1-layer": "切換到 A1（主要）層",
-      "switch-to-the-a2-layer": "切換到 A2（數字）層",
-      "switch-to-the-a3-layer": "切換到 A3（功能）層",
-      "switch-to-the-a4-layer": "切換到 A4（旗標）層",
+      "switch-to-the-first-layer": "切換到第一（主要）層",
+      "switch-to-the-second-layer": "切換到第二（數字）層",
+      "switch-to-the-third-layer": "切換到第三（功能）層",
+      "switch-to-the-fourth-layer": "切換到第四（旗標）層",
       "toggle-shift-modifier": "開啟或關閉 Shift 修飾鍵",
       "toggle-alt-graph-modifier": "開啟或關閉 Alt Graph 修飾鍵"
     }
@@ -539,10 +539,10 @@
     "and": " 和 ",
     "comma": "、",
     "layer": {
-      "a1": "主要層",
-      "a2": "數字層",
-      "a3": "功能層",
-      "a4": "旗標層"
+      "1": "主要層",
+      "2": "數字層",
+      "3": "功能層",
+      "4": "旗標層"
     },
     "dead-key-legend": "死鍵",
     "windows-alt-code-legend": "Windows Alt 碼"
@@ -588,7 +588,7 @@
   "layout-text-guide": "{{hand}}{{switch}}{{direction}}鍵",
   "device-layout-import-dialog": {
     "title": "匯入裝置佈局",
-    "name-label": "名稱"
+    "name-label": "設定檔 {{profile}}"
   },
   "lesson-not-found-page": {
     "title": "找不到課程",

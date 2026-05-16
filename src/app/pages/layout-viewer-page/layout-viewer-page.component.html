@@ -12,7 +12,7 @@
         contentType="template"
         placement="bottom"
       >
-        {{ layer.name }}
+        {{ deviceLayout()?.profile ?? "A" }}{{ layer.value }}
       </mat-button-toggle>
       <ng-template #layerToggleTooltip>
         {{ layer.tooltip | translate | realTitleCase }} <br />

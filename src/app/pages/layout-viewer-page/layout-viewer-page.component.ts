@@ -231,7 +231,6 @@ export class LayoutViewerPageComponent {
   readonly layers = computed<
     {
       value: Layer;
-      name: string;
       tooltip: string;
       hotkey: string;
     }[]
@@ -243,26 +242,22 @@ export class LayoutViewerPageComponent {
     const allLayers = [
       {
         value: Layer.Primary,
-        name: 'A1',
-        tooltip: 'layout-viewer-page.layer.a1',
+        tooltip: 'layout-viewer-page.layer.1',
         hotkey: 'alt.1',
       },
       {
         value: Layer.Secondary,
-        name: 'A2',
-        tooltip: 'layout-viewer-page.layer.a2',
+        tooltip: 'layout-viewer-page.layer.2',
         hotkey: 'alt.2',
       },
       {
         value: Layer.Tertiary,
-        name: 'A3',
-        tooltip: 'layout-viewer-page.layer.a3',
+        tooltip: 'layout-viewer-page.layer.3',
         hotkey: 'alt.3',
       },
       {
         value: Layer.Quaternary,
-        name: 'A4',
-        tooltip: 'layout-viewer-page.layer.a4',
+        tooltip: 'layout-viewer-page.layer.4',
         hotkey: 'alt.4',
       },
     ];
