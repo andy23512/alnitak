@@ -129,7 +129,8 @@
       ],
       "file-input-aria-label": "このツールにインポートするデバイスレイアウトファイルを選択するためのファイル入力",
       "select-device-layout-step": "インポートしたデバイスレイアウトを選択してください。",
-      "single-device-layout-deleted-message": "デバイスレイアウト「{{deviceLayoutName}}」が削除されました。"
+      "single-device-layout-deleted-message": "デバイスレイアウト「{{deviceLayoutName}}」が削除されました。",
+      "device-layout-loading-message": "デバイスレイアウトを読み込んでいます..."
     },
     "lesson": {
       "language-label": "レッスン言語",

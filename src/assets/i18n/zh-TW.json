@@ -128,7 +128,8 @@
       ],
       "file-input-aria-label": "選擇要匯入到此工具的裝置佈局檔案用的檔案輸入框",
       "select-device-layout-step": "選擇一個已匯入的裝置佈局。",
-      "single-device-layout-deleted-message": "裝置佈局「{{deviceLayoutName}}」已被刪除。"
+      "single-device-layout-deleted-message": "裝置佈局「{{deviceLayoutName}}」已被刪除。",
+      "device-layout-loading-message": "載入裝置佈局中..."
     },
     "lesson": {
       "language-label": "課程語言",

@@ -160,9 +160,15 @@ export class DeviceLayoutSettingPanelContentComponent {
 
   public async loadDeviceLayoutFromDevice() {
     await this.serialHandlerService.connect();
+    const snackBarRef = this.matSnackBar.open(
+      this.translateService.instant(
+        'settings.device-layout.device-layout-loading-message',
+      ),
+    );
     const layoutMap = await this.serialHandlerService.loadLayout();
     await this.serialHandlerService.disconnect();
     const date = new Date();
+    snackBarRef.dismiss();
     this.matDialog.open(DeviceLayoutImportDialogComponent, {
       data: {
         device: this.serialHandlerService.device,
