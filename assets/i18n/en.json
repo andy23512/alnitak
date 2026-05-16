@@ -129,7 +129,8 @@
       ],
       "file-input-aria-label": "file input for selecting a device layout file to load into this tool",
       "select-device-layout-step": "Select a loaded device layout.",
-      "single-device-layout-deleted-message": "The device layout \"{{deviceLayoutName}}\" has been deleted."
+      "single-device-layout-deleted-message": "The device layout \"{{deviceLayoutName}}\" has been deleted.",
+      "device-layout-loading-message": "Loading device layout..."
     },
     "lesson": {
       "language-label": "lesson language",
