@@ -1,7 +1,15 @@
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
-import { APP_INITIALIZER, ErrorHandler, inject, provideZoneChangeDetection } from '@angular/core';
+import {
+  provideHttpClient,
+  withInterceptorsFromDi,
+} from '@angular/common/http';
+import {
+  ErrorHandler,
+  inject,
+  provideAppInitializer,
+  provideZoneChangeDetection,
+} from '@angular/core';
+import { MAT_TOOLTIP_DEFAULT_OPTIONS } from '@angular/material/tooltip';
 import { bootstrapApplication } from '@angular/platform-browser';
-import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideRouter, withComponentInputBinding } from '@angular/router';
 import { provideLoadingBarInterceptor } from '@ngx-loading-bar/http-client';
 import { provideLoadingBarRouter } from '@ngx-loading-bar/router';
@@ -19,8 +27,8 @@ export function initializeAppFactory() {
 
 bootstrapApplication(AppComponent, {
   providers: [
-    provideZoneChangeDetection(),provideRouter(APP_ROUTES, withComponentInputBinding()),
-    provideAnimations(),
+    provideZoneChangeDetection(),
+    provideRouter(APP_ROUTES, withComponentInputBinding()),
     provideHttpClient(withInterceptorsFromDi()),
     provideLoadingBarInterceptor(),
     provideLoadingBarRouter(),
@@ -32,15 +40,17 @@ bootstrapApplication(AppComponent, {
         suffix: '.json',
       }),
     }),
-    {
-      provide: APP_INITIALIZER,
-      useFactory: initializeAppFactory,
-      deps: [TranslateService, LanguageSettingStore],
-      multi: true,
-    },
+    provideAppInitializer(() => {
+      const _languageSettingStore = inject(LanguageSettingStore);
+      const _translateService = inject(TranslateService);
+    }),
     {
       provide: ErrorHandler,
       useClass: GlobalErrorHandler,
+    },
+    {
+      provide: MAT_TOOLTIP_DEFAULT_OPTIONS,
+      useValue: { disableTooltipInteractivity: true },
     },
   ],
 }).catch((err) => console.error(err));
