@@ -18,6 +18,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { patchState } from '@ngrx/signals';
 import { removeEntity } from '@ngrx/signals/entities';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
+import { throttleTime } from 'rxjs';
 import { IconGuardPipe } from 'src/app/pipes/icon-guard.pipe';
 import { RealTitleCasePipe } from 'src/app/pipes/real-title-case.pipe';
 import { SerialHandlerService } from 'src/app/services/serial-handler.service';
@@ -26,6 +27,10 @@ import { LanguageSettingStore } from 'src/app/stores/language-setting.store';
 import { downloadDeviceLayout } from 'tangent-cc-lib';
 import { DeleteDeviceLayoutConfirmDialogComponent } from '../delete-device-layout-confirm-dialog/delete-device-layout-confirm-dialog.component';
 import { DeviceLayoutImportDialogComponent } from '../device-layout-import-dialog/device-layout-import-dialog.component';
+import {
+  ProgressSnackBarComponent,
+  ProgressSnackBarData,
+} from '../progress-snack-bar/progress-snack-bar.component';
 
 @Component({
   selector: 'app-device-layout-setting-panel-content',
@@ -160,23 +165,37 @@ export class DeviceLayoutSettingPanelContentComponent {
 
   public async loadDeviceLayoutFromDevice() {
     await this.serialHandlerService.connect();
-    const snackBarRef = this.matSnackBar.open(
-      this.translateService.instant(
-        'settings.device-layout.device-layout-loading-message',
-      ),
-    );
-    const layoutMap = await this.serialHandlerService.loadLayout();
-    await this.serialHandlerService.disconnect();
-    const date = new Date();
-    snackBarRef.dismiss();
-    this.matDialog.open(DeviceLayoutImportDialogComponent, {
+    const snackBarRef = this.matSnackBar.openFromComponent<
+      ProgressSnackBarComponent,
+      ProgressSnackBarData
+    >(ProgressSnackBarComponent, {
       data: {
-        device: this.serialHandlerService.device,
-        date,
-        layoutMap,
+        message: this.translateService.instant(
+          'settings.device-layout.device-layout-loading-message',
+        ),
+        progress: 0,
       },
-      width: '400px',
     });
+    this.serialHandlerService
+      .loadProfileLayoutMap()
+      .pipe(throttleTime(300, undefined, { trailing: true }))
+      .subscribe(async (r) => {
+        if (r.complete) {
+          await this.serialHandlerService.disconnect();
+          const date = new Date();
+          snackBarRef.dismiss();
+          this.matDialog.open(DeviceLayoutImportDialogComponent, {
+            data: {
+              device: this.serialHandlerService.device,
+              date,
+              layoutMap: r.profileLayoutMap,
+            },
+            width: '400px',
+          });
+        } else {
+          snackBarRef.instance.updateProgress((r.loaded / r.total) * 100);
+        }
+      });
   }
 
   setSelectedDeviceLayoutId(deviceLayoutId: string) {

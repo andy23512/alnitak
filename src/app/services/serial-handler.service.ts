@@ -11,11 +11,9 @@ export class SerialHandlerService extends SerialHandler {
   constructor(protected serialPortHandlerService: SerialPortHandlerService) {
     super(serialPortHandlerService);
     this.on('sendSerialData', (data: string) => {
-      console.log('sendSerialData', data);
       this.serialLogStore.push(SerialLogItemType.Send, data);
     });
     this.on('receiveSerialData', (data: string) => {
-      console.log('receiveSerialData', data);
       this.serialLogStore.push(SerialLogItemType.Receive, data);
     });
   }
