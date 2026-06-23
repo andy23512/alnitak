@@ -6,7 +6,7 @@
 </h2>
 <h3 class="pb-2 text-lg font-bold text-alnitak-300">
   <a [routerLink]="'/topic/number/lesson/123'" class="flex items-center gap-1">
-    <mat-icon>123</mat-icon>
+    <mat-icon>{{ "123" | iconGuard }}</mat-icon>
     {{
       "information-page.key-lesson-page.title" | translate | realTitleCase
     }}</a
@@ -29,7 +29,7 @@
 </p>
 <h3 class="pb-2 pt-6 text-lg font-bold text-alnitak-300">
   <a class="flex items-center gap-1" [routerLink]="'/statistics'">
-    <mat-icon>trending_up</mat-icon>
+    <mat-icon>{{ "trending_up" | iconGuard }}</mat-icon>
     {{
       "information-page.statistics-page.title" | translate | realTitleCase
     }}</a
@@ -40,7 +40,7 @@
 </p>
 <h3 class="pb-2 pt-6 text-lg font-bold text-alnitak-300">
   <a class="flex items-center gap-1" [routerLink]="'/chord'">
-    <mat-icon>piano</mat-icon>
+    <mat-icon>{{ "piano" | iconGuard }}</mat-icon>
     {{ "information-page.chord-page.title" | translate | realTitleCase }}</a
   >
 </h3>
@@ -49,7 +49,7 @@
 </p>
 <h3 class="pb-2 pt-6 text-lg font-bold text-alnitak-300">
   <a class="flex items-center gap-1" [routerLink]="'/layout-viewer'">
-    <mat-icon>map</mat-icon>
+    <mat-icon>{{ "map" | iconGuard }}</mat-icon>
     {{
       "information-page.layout-viewer-page.title" | translate | realTitleCase
     }}</a
@@ -71,7 +71,7 @@
 </p>
 <h3 class="pb-2 pt-6 text-lg font-bold text-alnitak-300">
   <a class="flex items-center gap-1" [routerLink]="'/settings'">
-    <mat-icon>settings</mat-icon>
+    <mat-icon>{{ "settings" | iconGuard }}</mat-icon>
     {{ "information-page.settings-page.title" | translate | realTitleCase }}</a
   >
 </h3>
