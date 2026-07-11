@@ -6290,7 +6290,7 @@ __metadata:
     rxjs: "npm:~7.8.0"
     source-map-explorer: "npm:^2.5.3"
     tailwindcss: "npm:^3.0.2"
-    tangent-cc-lib: "npm:0.0.49"
+    tangent-cc-lib: "npm:0.0.54"
     ts-node: "npm:^10.9.2"
     tslib: "npm:^2.3.0"
     typescript: "npm:5.9.3"
@@ -14692,16 +14692,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tangent-cc-lib@npm:0.0.49":
-  version: 0.0.49
-  resolution: "tangent-cc-lib@npm:0.0.49"
+"tangent-cc-lib@npm:0.0.54":
+  version: 0.0.54
+  resolution: "tangent-cc-lib@npm:0.0.54"
   dependencies:
     tslib: "npm:^2.3.0"
+    web-serial-polyfill: "npm:^1.0.15"
   peerDependencies:
     eventemitter2: ~6.4.9
     rxjs: ~7.8.0
     semver: ^7.8.0
-  checksum: 10c0/ffb351f609c4b5070681f87a0685e8f04bf836a38edd33bfb697ad839bcb197f837a2c5c259f4bddacab51b0d4638d34116c7c275595d3810667591e1844c9fb
+  checksum: 10c0/0652546566ff8781c0d941a83facbdcaf0ba9bc79ff5cd04f59102f3e3a9ebcb23e363e3fc4b4efab7c2edc28eb1ac29e1155f1cd85ddb6be66c555464eca5de
   languageName: node
   linkType: hard
 
@@ -15504,6 +15505,13 @@ __metadata:
   version: 1.2.2
   resolution: "weak-lru-cache@npm:1.2.2"
   checksum: 10c0/744847bd5b96ca86db1cb40d0aea7e92c02bbdb05f501181bf9c581e82fa2afbda32a327ffbe75749302b8492ab449f1c657ca02410d725f5d412d1e6c607d72
+  languageName: node
+  linkType: hard
+
+"web-serial-polyfill@npm:^1.0.15":
+  version: 1.0.15
+  resolution: "web-serial-polyfill@npm:1.0.15"
+  checksum: 10c0/00c1506154eef3078d63b661a91916a73e914adf38f29b18df00425c8f295a689425f1a953f19598d8016c02cb96eeec47bbfbe8c641d1aa67bddf7cf5ac6edd
   languageName: node
   linkType: hard
 
