@@ -18,6 +18,7 @@ export type Icon =
   | 'help'
   | 'info'
   | 'keyboard'
+  | 'kid_star'
   | 'left_panel_open'
   | 'map'
   | 'music_note_2'
