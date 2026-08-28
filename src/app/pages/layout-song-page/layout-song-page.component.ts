@@ -226,7 +226,7 @@ export class LayoutSongPageComponent implements OnInit, OnDestroy {
         for (const characterKeyCode of characterKeyCodes) {
           const actionCodes =
             getCharacterActionCodesFromCharacterKeyCode(characterKeyCode);
-          if (actionCodes.length > 0) {
+          if (actionCodes.length === 0) {
             continue;
           }
           const keyCombinations = getKeyCombinationsFromActionCodes(
