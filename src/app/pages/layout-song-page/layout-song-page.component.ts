@@ -351,6 +351,7 @@ export class LayoutSongPageComponent implements OnInit, OnDestroy {
       altGraphKey: false,
       positionCodes,
       score: -1,
+      useLayerLock: false,
     };
   });
 

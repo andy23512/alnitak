@@ -163,7 +163,7 @@
         | translate
           : {
               deviceLayout: deviceLayoutDisplayName(),
-              keyboardLayout: keyboardLayout().name
+              keyboardLayout: keyboardLayout().name,
             }
     "
     printSectionId="print-section"
@@ -241,7 +241,8 @@
             characterKeyPositionCode: 0,
             layer: currentLayer(),
             shiftKey: shiftKey(),
-            altGraphKey: altGraphKey()
+            altGraphKey: altGraphKey(),
+            useLayerLock: false,
           }"
           [secondaryHighlightPositions]="selectedPositions()"
         ></app-layout>
@@ -327,7 +328,8 @@
                 characterKeyPositionCode: 0,
                 layer: layer.value,
                 shiftKey: shiftKey,
-                altGraphKey: altGraphKey
+                altGraphKey: altGraphKey,
+                useLayerLock: false,
               }"
             ></app-layout>
             <diV

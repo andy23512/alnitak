@@ -623,5 +623,8 @@
   "serial-log-dialog": {
     "title": "serial log",
     "no-data-message": "No serial log data is available."
+  },
+  "layout": {
+    "layer-hint": ["On", "{{layer}}", "layer"]
   }
 }

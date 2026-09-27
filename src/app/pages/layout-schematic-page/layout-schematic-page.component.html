@@ -93,7 +93,8 @@
           shiftKey: false,
           altGraphKey: false,
           positionCodes: scancodeOn() ? [keyIndex() + 1] : [],
-          score: 0
+          score: 0,
+          useLayerLock: false,
         }"
         [keyLabelMap]="keyLabelMap"
         [highlightOpacity]="1"
@@ -119,7 +120,8 @@
           shiftKey: false,
           altGraphKey: false,
           positionCodes: scancodeOn() ? [keyIndex() + 1] : [],
-          score: 0
+          score: 0,
+          useLayerLock: false,
         }"
         [keyLabelMap]="scancodeLabelMap"
         [highlightOpacity]="1"

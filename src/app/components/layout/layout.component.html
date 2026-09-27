@@ -4,6 +4,20 @@
   preserveAspectRatio="xMidYMid meet"
   [attr.viewBox]="'0 0 ' + viewBoxWidth + ' ' + viewBoxHeight()"
 >
+  @if (showLayerGuides() && highlightLayerText()) {
+    <text
+      [attr.x]="viewBoxWidth / 2"
+      [attr.y]="0"
+      text-anchor="middle"
+      dominant-baseline="text-top"
+      font-size="80px"
+      class="fill-gray-100"
+    >
+      {{ "layout.layer-hint.0" | translate }}
+      <tspan class="fill-alnitak-500">{{ highlightLayerText() }}</tspan>
+      {{ "layout.layer-hint.2" | translate }}
+    </text>
+  }
   @if (!alwaysHideLayoutGuides()) {
     <text
       *appVisible="'layoutTextGuide'"

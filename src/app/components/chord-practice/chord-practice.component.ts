@@ -159,6 +159,7 @@ export class ChordPracticeComponent implements OnInit {
           )
           .flat() as number[],
         score: 0,
+        useLayerLock: false,
       };
     });
     return highlightChordKeyCombinationMap;

@@ -599,5 +599,8 @@
   "serial-log-dialog": {
     "title": "序列埠日誌",
     "no-data-message": "沒有可用的序列埠日誌資料。"
+  },
+  "layout": {
+    "layer-hint": ["在", "{{layer}}", "層"]
   }
 }

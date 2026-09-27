@@ -50,6 +50,7 @@ import {
   KeyLabelType,
   Layer,
   NUM_SHIFT_KEY_LABEL,
+  Profile,
   SHIFT_KEY_LABEL,
   getCharacterActionCodesFromCharacterKeyCode,
   getHighlightKeyCombinationFromKeyCombinations,
@@ -99,6 +100,7 @@ export class LessonPageComponent implements OnInit, OnDestroy {
   readonly airModeSettingStore = inject(AirModeSettingStore);
   readonly translateService = inject(TranslateService);
 
+  readonly Profile = Profile;
   readonly isFocus = signal(false);
 
   @HostBinding('class') classes = 'flex flex-col gap-2 h-full relative';

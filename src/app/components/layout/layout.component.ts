@@ -5,7 +5,7 @@ import {
   inject,
   input,
 } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { VisibleDirective } from 'src/app/directives/visible.directive';
 import { MiscSettingStore } from 'src/app/stores/misc-setting.store';
 import {
@@ -17,7 +17,9 @@ import {
   HandMap,
   HighlightKeyCombination,
   KeyLabel,
+  Layer,
   POSITION_CODE_LAYOUT,
+  Profile,
 } from 'tangent-cc-lib';
 import { SwitchComponent } from '../switch/switch.component';
 const cellSize = 350;
@@ -27,7 +29,7 @@ const gridColumns = 10;
 @Component({
   selector: 'app-layout',
   standalone: true,
-  imports: [SwitchComponent, VisibleDirective],
+  imports: [SwitchComponent, VisibleDirective, TranslatePipe],
   templateUrl: './layout.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -35,6 +37,8 @@ export class LayoutComponent {
   public showThumb3Switch = input<boolean>(true);
   public alwaysShowLayout = input<boolean>(false);
   public alwaysHideLayoutGuides = input<boolean>(false);
+  public showLayerGuides = input<boolean>(false);
+  public profile = input<Profile>(Profile.A);
   public gridRows = computed(() => {
     const showThumb3Switch = this.showThumb3Switch();
     return showThumb3Switch ? 5 : 4;
@@ -51,6 +55,17 @@ export class LayoutComponent {
   readonly secondaryHighlightPositions = input<number[]>([]);
   readonly translateService = inject(TranslateService);
 
+  readonly highlightLayerText = computed(() => {
+    const highlightKeyCombination = this.highlightKeyCombination();
+    if (!highlightKeyCombination) {
+      return null;
+    }
+    const { layer, useLayerLock } = highlightKeyCombination;
+    if (!layer || layer === Layer.Primary || !useLayerLock) {
+      return null;
+    }
+    return (this.profile() ?? 'A') + layer;
+  });
   readonly highlightKeyCombinationInText = computed(() => {
     const highlightKeyCombination = this.highlightKeyCombination();
     if (!highlightKeyCombination) {
