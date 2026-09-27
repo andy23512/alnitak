@@ -625,5 +625,8 @@
   "serial-log-dialog": {
     "title": "シリアルログ",
     "no-data-message": "利用可能なシリアルログデータはありません。"
+  },
+  "layout": {
+    "layer-hint": ["", "{{layer}}", "レイヤー上で"]
   }
 }
