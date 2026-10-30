@@ -461,6 +461,8 @@
       "space",
       "キーで最初のレッスンに入るか、左側のリストからレッスンを選択してください。"
     ],
+    "space-hint": "space キーは強調表示された位置にあります。",
+    "space-hint-not-found": "現在のデバイスレイアウトの第1レイヤーには space キーがありません。",
     "source-code": "ソースコード",
     "dev-note": "開発ノート",
     "dev-note-url": "https://andy23512.github.io/blog/alnitak-a-practice-tool-of-charachorder-3d-input-devices-developed-by-tangent/",

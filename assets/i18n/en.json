@@ -463,6 +463,8 @@
       "space",
       " key to enter the first lesson, or select a lesson from the list on the left."
     ],
+    "space-hint": "The space key is at the highlighted positions.",
+    "space-hint-not-found": "The current device layout has no space key on the first layer.",
     "source-code": "source code",
     "dev-note": "dev note",
     "dev-note-url": "https://andy23512.github.io/blog/alnitak-a-practice-tool-of-charachorder-3d-input-devices-developed-by-tangent/",

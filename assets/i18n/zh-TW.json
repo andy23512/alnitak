@@ -445,6 +445,8 @@
       "space",
       " 鍵進入第一個課程，或從左側列表中選擇一個課程。"
     ],
+    "space-hint": "space 鍵在標示的位置。",
+    "space-hint-not-found": "目前的裝置佈局在第一層沒有 space 鍵。",
     "source-code": "原始碼",
     "dev-note": "開發筆記",
     "dev-note-url": "https://andy23512.github.io/blog-zh-tw/2024/05/01/alnitak-%E5%8F%83%E5%AE%BF%E4%B8%80-tangent-%E6%89%80%E9%96%8B%E7%99%BC%E7%9A%84-charachorder-3d-%E8%BC%B8%E5%85%A5%E8%A3%9D%E7%BD%AE%E7%B7%B4%E7%BF%92%E5%B7%A5%E5%85%B7/",
