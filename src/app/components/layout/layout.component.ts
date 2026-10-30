@@ -38,6 +38,7 @@ export class LayoutComponent {
   public alwaysShowLayout = input<boolean>(false);
   public alwaysHideLayoutGuides = input<boolean>(false);
   public showLayerGuides = input<boolean>(false);
+  public strokeWidth = input<number>(1);
   public profile = input<Profile>(Profile.A);
   public gridRows = computed(() => {
     const showThumb3Switch = this.showThumb3Switch();

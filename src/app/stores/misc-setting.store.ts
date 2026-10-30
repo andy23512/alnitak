@@ -8,6 +8,7 @@ import { MiscSetting } from '../models/misc-setting.models';
 const INITIAL_MISC_SETTING: MiscSetting = {
   thumbRotationAngle: 10,
   nonThumbRotationAngle: 0,
+  homePageSpaceHintSeen: false,
 };
 
 export const MiscSettingStore = signalStore(

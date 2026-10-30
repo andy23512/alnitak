@@ -57,9 +57,51 @@
   </div>
   <span
     >{{ "home-page.lesson-start-instruction.0" | translate
-    }}<kbd>{{ "home-page.lesson-start-instruction.1" | translate }}</kbd
+    }}<kbd
+      #spaceKbd
+      class="cursor-help"
+      cdkOverlayOrigin
+      #spaceHintOrigin="cdkOverlayOrigin"
+      (click)="toggleSpaceHint()"
+      >{{ "home-page.lesson-start-instruction.1" | translate }}</kbd
     >{{ "home-page.lesson-start-instruction.2" | translate }}</span
   >
+  <ng-template
+    cdkConnectedOverlay
+    [cdkConnectedOverlayOrigin]="spaceHintOrigin"
+    [cdkConnectedOverlayOpen]="spaceHintOpen()"
+    [cdkConnectedOverlayPositions]="spaceHintPositions"
+    (overlayOutsideClick)="onSpaceHintOutsideClick($event, spaceKbd)"
+    (overlayKeydown)="onSpaceHintKeydown($event)"
+    (detach)="spaceHintOpen.set(false)"
+  >
+    <div
+      class="relative flex w-80 flex-col items-center gap-2 rounded-lg bg-gray-800 p-4 text-white shadow-lg"
+      role="dialog"
+    >
+      <div
+        class="absolute -top-1.5 left-[18px] h-3 w-3 rotate-45 bg-gray-800"
+      ></div>
+      @if (spaceHighlightKeyCombination(); as spaceKeyCombination) {
+        <div class="text-center text-sm">
+          {{ "home-page.space-hint" | translate }}
+        </div>
+        <div class="h-36 w-full">
+          <app-layout
+            [showThumb3Switch]="visibilitySettingStore.layoutThumb3Switch()"
+            [alwaysShowLayout]="true"
+            [alwaysHideLayoutGuides]="true"
+            [strokeWidth]="6"
+            [highlightKeyCombination]="spaceKeyCombination"
+          ></app-layout>
+        </div>
+      } @else {
+        <div class="text-center text-sm">
+          {{ "home-page.space-hint-not-found" | translate }}
+        </div>
+      }
+    </div>
+  </ng-template>
   <div>
     <a
       href="https://github.com/andy23512/alnitak"
