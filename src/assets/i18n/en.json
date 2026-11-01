@@ -216,7 +216,7 @@
       "switch-to-the-first-layer": "switch to the first (primary) layer",
       "switch-to-the-second-layer": "switch to the second (numeric) layer",
       "switch-to-the-third-layer": "switch to the third (functional) layer",
-      "switch-to-the-fourth-layer": "switch to the fourth (functional) layer",
+      "switch-to-the-fourth-layer": "switch to the fourth (flag) layer",
       "toggle-shift-modifier": "toggle Shift modifier",
       "toggle-alt-graph-modifier": "toggle Alt Graph modifier"
     }
