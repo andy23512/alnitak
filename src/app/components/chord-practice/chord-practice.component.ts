@@ -145,19 +145,29 @@ export class ChordPracticeComponent implements OnInit {
       HighlightKeyCombination
     > = {};
     chords?.forEach((chord) => {
+      const positionCodes: number[] = [];
+      for (const actionCode of chord.input) {
+        const keyCombinations = getKeyCombinationsFromActionCodes(
+          [{ actionCode, shiftKey: false, altGraphKey: false }],
+          deviceLayout,
+        );
+        const keyCombinationInPrimaryLayer = keyCombinations?.find(
+          (k) => k.layer === Layer.Primary,
+        );
+        if (keyCombinationInPrimaryLayer) {
+          positionCodes.push(
+            keyCombinationInPrimaryLayer.characterKeyPositionCode,
+          );
+        } else {
+          return;
+        }
+      }
       highlightChordKeyCombinationMap[chord.id] = {
         characterKeyPositionCode: -1,
         layer: Layer.Primary,
         shiftKey: false,
         altGraphKey: false,
-        positionCodes: chord.input
-          .map((actionCode) =>
-            getKeyCombinationsFromActionCodes(
-              [{ actionCode, shiftKey: false, altGraphKey: false }],
-              deviceLayout,
-            )?.map((k) => k.characterKeyPositionCode),
-          )
-          .flat() as number[],
+        positionCodes,
         score: 0,
         useLayerLock: false,
       };
