@@ -2,7 +2,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-tsc/spec",
-    "types": ["jasmine"],
+    "types": ["jasmine", "w3c-web-serial"],
     "moduleResolution": "bundler",
     "isolatedModules": true
   },

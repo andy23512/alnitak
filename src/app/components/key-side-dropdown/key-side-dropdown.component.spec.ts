@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { keySideDropdownComponent } from './key-side-dropdown.component';
+import { KeySideDropdownComponent } from './key-side-dropdown.component';
 
 describe('KeySideDropdownComponent', () => {
-  let component: keySideDropdownComponent;
-  let fixture: ComponentFixture<keySideDropdownComponent>;
+  let component: KeySideDropdownComponent;
+  let fixture: ComponentFixture<KeySideDropdownComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [keySideDropdownComponent],
+      imports: [KeySideDropdownComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(keySideDropdownComponent);
+    fixture = TestBed.createComponent(KeySideDropdownComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
