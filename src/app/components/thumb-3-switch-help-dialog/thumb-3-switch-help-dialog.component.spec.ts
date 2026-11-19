@@ -1,21 +1,73 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { OverlayContainer } from '@angular/cdk/overlay';
+import { TestBed } from '@angular/core/testing';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { provideTranslateService } from '@ngx-translate/core';
 import { Thumb3SwitchHelpDialogComponent } from './thumb-3-switch-help-dialog.component';
 
 describe('Thumb3SwitchHelpDialogComponent', () => {
-  let component: Thumb3SwitchHelpDialogComponent;
-  let fixture: ComponentFixture<Thumb3SwitchHelpDialogComponent>;
+  let overlay: HTMLElement;
+  let ref: MatDialogRef<Thumb3SwitchHelpDialogComponent>;
+  let result: unknown;
+  let closed: boolean;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [Thumb3SwitchHelpDialogComponent]
+  const content = () =>
+    (overlay.querySelector('mat-dialog-content')?.textContent ?? '')
+      .replace(/\s+/g, ' ')
+      .trim();
+  const closeButton = () =>
+    overlay.querySelector('mat-dialog-actions button') as HTMLButtonElement;
+  async function settle() {
+    await new Promise((r) => setTimeout(r, 0));
+  }
+
+  beforeEach(async () => {
+    TestBed.resetTestingModule();
+    await TestBed.configureTestingModule({
+      imports: [Thumb3SwitchHelpDialogComponent],
+      providers: [provideTranslateService()],
+    }).compileComponents();
+    overlay = TestBed.inject(OverlayContainer).getContainerElement();
+    ref = TestBed.inject(MatDialog).open(Thumb3SwitchHelpDialogComponent);
+    closed = false;
+    result = 'untouched';
+    ref.afterClosed().subscribe((r) => {
+      closed = true;
+      result = r;
     });
-    fixture = TestBed.createComponent(Thumb3SwitchHelpDialogComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    await settle();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  afterEach(() => {
+    TestBed.inject(MatDialog).closeAll();
+  });
+
+  it('shows the title', () => {
+    expect(
+      overlay.querySelector('h2[mat-dialog-title]')?.textContent?.toLowerCase(),
+    ).toContain('thumb-3-switch-help-dialog.title');
+  });
+
+  it('shows the explanation', () => {
+    expect(content()).toBe('thumb-3-switch-help-dialog.content');
+  });
+
+  it('has one button, which says close', () => {
+    expect(overlay.querySelectorAll('mat-dialog-actions button').length).toBe(
+      1,
+    );
+    expect(closeButton().textContent?.toLowerCase()).toContain(
+      'general.close-action',
+    );
+  });
+
+  it('stays open until the button is pressed', () => {
+    expect(closed).toBeFalse();
+  });
+
+  it('closes with true when the button is pressed', async () => {
+    closeButton().click();
+    await settle();
+    expect(closed).toBeTrue();
+    expect(result).toBeTrue();
   });
 });
