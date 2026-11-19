@@ -1,22 +1,37 @@
 import { GlobalErrorHandler } from './global-error-handler';
 
-/**
- * The branch for "Loading chunk N failed" calls window.location.reload(), which cannot be
- * replaced in the browser and would reload the test page, so it is not exercised here.
- */
 describe('GlobalErrorHandler', () => {
   let handler: GlobalErrorHandler;
   let consoleError: jasmine.Spy;
+  let reload: jasmine.Spy;
 
   beforeEach(() => {
     handler = new GlobalErrorHandler();
     consoleError = spyOn(console, 'error');
+    reload = spyOn(handler, 'reload');
   });
 
   it('logs an ordinary error', () => {
     const error = new Error('boom');
     handler.handleError(error);
     expect(consoleError).toHaveBeenCalledOnceWith(error);
+    expect(reload).not.toHaveBeenCalled();
+  });
+
+  it('reloads the page when a chunk fails to load, and still logs the error', () => {
+    for (const n of ['1', '23', '456']) {
+      const error = new Error(`Loading chunk ${n} failed`);
+      handler.handleError(error);
+      expect(consoleError).toHaveBeenCalledWith(error);
+    }
+    expect(reload).toHaveBeenCalledTimes(3);
+  });
+
+  it('reloads when the chunk message is part of a longer one', () => {
+    handler.handleError(
+      new Error('ChunkLoadError: Loading chunk 7 failed. (missing: x.js)'),
+    );
+    expect(reload).toHaveBeenCalledTimes(1);
   });
 
   it('logs an error that only looks a little like a chunk failure', () => {
@@ -30,6 +45,7 @@ describe('GlobalErrorHandler', () => {
       expect(consoleError).toHaveBeenCalledWith(error);
     }
     expect(consoleError).toHaveBeenCalledTimes(3);
+    expect(reload).not.toHaveBeenCalled();
   });
 
   it('logs an error without a message', () => {
