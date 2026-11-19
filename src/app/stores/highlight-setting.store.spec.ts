@@ -74,9 +74,7 @@ describe('HighlightSettingStore', () => {
     expect(store.shiftLayer().preferShiftSide).toBe('left');
   });
 
-  // Current behavior, probably a bug: parse uses mergeDeepLeft(INITIAL, saved),
-  // so the defaults win over saved values and a saved choice is lost on restart.
-  it('does not restore a value the user saved (defaults win on load)', () => {
+  it('restores a value the user saved on the next start', () => {
     const store = create();
     store.set('shiftLayer', 'preferShiftSide', 'right');
     TestBed.tick();
@@ -84,6 +82,18 @@ describe('HighlightSettingStore', () => {
       JSON.parse(localStorage.getItem(KEY)!).shiftLayer.preferShiftSide,
     ).toBe('right');
     const restored = create();
-    expect(restored.shiftLayer().preferShiftSide).toBe('left');
+    expect(restored.shiftLayer().preferShiftSide).toBe('right');
+  });
+
+  it('keeps saved values and fills only the missing keys of a layer', () => {
+    localStorage.setItem(
+      KEY,
+      JSON.stringify({ shiftLayer: { preferShiftSide: 'right' } }),
+    );
+    const store = create();
+    expect(store.shiftLayer()).toEqual({
+      ...INITIAL_HIGHLIGHT_SETTING.shiftLayer,
+      preferShiftSide: 'right',
+    });
   });
 });
