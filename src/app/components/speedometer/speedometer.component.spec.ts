@@ -42,16 +42,14 @@ describe('SpeedometerComponent', () => {
     discardPeriodicTasks();
   }));
 
-  // Current behavior, probably a leak: the interval is never unsubscribed
-  // (chara stops it with takeUntilDestroyed), so it keeps ticking after destroy.
-  it('keeps its timer running after it is destroyed', fakeAsync(() => {
+  it('stops its timer when it is destroyed', fakeAsync(() => {
     create(30);
     tick(FRAME_MS);
     expect(component.displaySpeed()).toBe(2);
     fixture.destroy();
+    // fakeAsync would fail here if a periodic timer were still running
     tick(FRAME_MS * 5);
-    expect(component.displaySpeed()).toBe(12);
-    discardPeriodicTasks();
+    expect(component.displaySpeed()).toBe(2);
   }));
 
   describe('displayed speed', () => {

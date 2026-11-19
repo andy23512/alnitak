@@ -3,10 +3,13 @@ import {
   Component,
   HostBinding,
   OnInit,
+  DestroyRef,
   computed,
+  inject,
   input,
   signal,
 } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { interval } from 'rxjs';
 import { temperatureToColor } from 'src/app/utils/color.utils';
 import { cos, sin } from 'src/app/utils/math.utils';
@@ -39,6 +42,8 @@ export class SpeedometerComponent implements OnInit {
   );
   public size = size;
 
+  private readonly destroyRef = inject(DestroyRef);
+
   sectors = Array.from({ length: sectorNumber }).map((_, i) => ({
     index: i,
     degFrom: i * (sectorDeg + gapDeg),
@@ -46,15 +51,17 @@ export class SpeedometerComponent implements OnInit {
   }));
 
   ngOnInit(): void {
-    interval(1000 / fps).subscribe(() => {
-      const speed = this.speed();
-      const displaySpeed = this.displaySpeed();
-      const diff = speed - displaySpeed;
-      this.displaySpeed.set(
-        displaySpeed +
-          Math.max(Math.min(diff, maxDiffPerFrame), -maxDiffPerFrame),
-      );
-    });
+    interval(1000 / fps)
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe(() => {
+        const speed = this.speed();
+        const displaySpeed = this.displaySpeed();
+        const diff = speed - displaySpeed;
+        this.displaySpeed.set(
+          displaySpeed +
+            Math.max(Math.min(diff, maxDiffPerFrame), -maxDiffPerFrame),
+        );
+      });
   }
 
   d({ degFrom, degTo }: { degFrom: number; degTo: number }) {
