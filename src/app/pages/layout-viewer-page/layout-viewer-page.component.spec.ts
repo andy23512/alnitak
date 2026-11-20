@@ -446,9 +446,11 @@ describe('LayoutViewerPageComponent', () => {
       });
     });
 
-    it('does not label anything when the keyboard layout is missing', () => {
+    it('labels with the US layout when the saved keyboard layout no longer exists', () => {
+      use(custom({ '0:1': A }));
       keyboardStore.setSelectedId('missing');
-      expect(component.keyLabelMap()).toBeNull();
+      expect(component.keyboardLayout().id).toBe('us');
+      expect(labels(1).map((l) => l.c)).toEqual(['a', 'A']);
     });
   });
 
@@ -673,9 +675,10 @@ describe('LayoutViewerPageComponent', () => {
       expect(list.every((k) => !k.withShift)).toBeTrue();
     });
 
-    it('lists nothing when the keyboard layout is missing', () => {
+    it('searches the US layout when the saved keyboard layout no longer exists', () => {
+      use(custom({ '0:1': A }));
       keyboardStore.setSelectedId('missing');
-      expect(component.keyListForSearch()).toBeNull();
+      expect(names()[0]).toBe('a');
     });
 
     describe('filtering', () => {

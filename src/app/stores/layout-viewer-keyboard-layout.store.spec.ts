@@ -72,11 +72,22 @@ describe('LayoutViewerKeyboardLayoutStore', () => {
     expect(store.hasDeadKey()).toBeFalse();
   });
 
-  it('throws when the saved layout id no longer exists (current behavior)', () => {
+  it('falls back to the US layout when the saved layout id no longer exists, and keeps the id', () => {
     const store = create();
     store.setSelectedId('no-such-layout');
-    expect(store.selectedEntity()).toBeUndefined();
-    expect(() => store.hasDeadKey()).toThrow();
+    expect(store.selectedEntity().id).toBe('us');
+    expect(store.selectedId()).toBe('no-such-layout');
+    expect(() => store.hasDeadKey()).not.toThrow();
+    expect(store.hasDeadKey()).toBe(false);
+    expect(store.characterKeyCodeMap()).toEqual(create().characterKeyCodeMap());
+  });
+
+  it('uses the saved layout again once its id is in the list', () => {
+    const store = create();
+    const other = KEYBOARD_LAYOUTS.find((l) => l.id !== 'us')!;
+    store.setSelectedId('no-such-layout');
+    store.setSelectedId(other.id);
+    expect(store.selectedEntity().id).toBe(other.id);
   });
 
   it('saves the selection under "layoutViewerKeyboardLayout" and restores it', () => {

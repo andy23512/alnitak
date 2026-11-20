@@ -68,7 +68,7 @@ export class SettingsPageComponent {
       .open(DeleteDeviceLayoutsConfirmDialogComponent)
       .afterClosed()
       .subscribe((response) => {
-        if (response.confirmed) {
+        if (response?.confirmed) {
           this.deviceLayoutStore.load();
           this.matSnackBar.open(
             this.translateService.instant(
@@ -86,7 +86,7 @@ export class SettingsPageComponent {
       .open(DeleteChordsConfirmDialogComponent)
       .afterClosed()
       .subscribe((response) => {
-        if (response.confirmed) {
+        if (response?.confirmed) {
           patchState(this.chordStore, removeAllEntities());
           this.matSnackBar.open(
             this.translateService.instant(

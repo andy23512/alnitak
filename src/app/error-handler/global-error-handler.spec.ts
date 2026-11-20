@@ -54,8 +54,10 @@ describe('GlobalErrorHandler', () => {
     expect(consoleError).toHaveBeenCalledOnceWith(error);
   });
 
-  it('currently throws for null, because it reads the message first (recorded behavior)', () => {
-    expect(() => handler.handleError(null)).toThrowError(TypeError);
-    expect(consoleError).not.toHaveBeenCalled();
+  it('logs null and undefined without throwing, and does not reload', () => {
+    expect(() => handler.handleError(null)).not.toThrow();
+    expect(() => handler.handleError(undefined)).not.toThrow();
+    expect(consoleError.calls.allArgs()).toEqual([[null], [undefined]]);
+    expect(reload).not.toHaveBeenCalled();
   });
 });

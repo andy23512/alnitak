@@ -4,7 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { patchState } from '@ngrx/signals';
 import { setEntities } from '@ngrx/signals/entities';
 import { provideTranslateService, TranslateService } from '@ngx-translate/core';
-import { of } from 'rxjs';
+import { config, of } from 'rxjs';
 import { DeleteChordsConfirmDialogComponent } from 'src/app/components/delete-chords-confirm-dialog/delete-chords-confirm-dialog.component';
 import { DeleteDeviceLayoutsConfirmDialogComponent } from 'src/app/components/delete-device-layouts-confirm-dialog/delete-device-layouts-confirm-dialog.component';
 import { UiLanguage } from 'src/app/models/language-setting.models';
@@ -65,6 +65,18 @@ describe('SettingsPageComponent', () => {
   });
 
   afterEach(() => localStorage.clear());
+
+  /** RxJS reports an error thrown in a subscriber later (not as a test failure), so catch it here. */
+  async function expectNoUnhandledError() {
+    const onError = jasmine.createSpy('onUnhandledError');
+    config.onUnhandledError = onError;
+    try {
+      await new Promise((resolve) => setTimeout(resolve));
+    } finally {
+      config.onUnhandledError = null;
+    }
+    expect(onError).not.toHaveBeenCalled();
+  }
 
   const answer = (confirmed: boolean) =>
     dialogOpen.and.returnValue({
@@ -140,6 +152,14 @@ describe('SettingsPageComponent', () => {
       );
     });
 
+    it('does nothing when the dialog is closed without an answer (Esc, backdrop)', async () => {
+      dialogOpen.and.returnValue({ afterClosed: () => of(undefined) } as never);
+      buttonWith('delete-all-imported-device-layouts').click();
+      await expectNoUnhandledError();
+      expect(load).not.toHaveBeenCalled();
+      expect(snackOpen).not.toHaveBeenCalled();
+    });
+
     it('does not touch the chords', () => {
       patchState(chordStore, setEntities(chords()));
       answer(true);
@@ -158,6 +178,15 @@ describe('SettingsPageComponent', () => {
       expect(dialogOpen).toHaveBeenCalledOnceWith(
         DeleteChordsConfirmDialogComponent,
       );
+      expect(chordStore.entities().length).toBe(1);
+      expect(snackOpen).not.toHaveBeenCalled();
+    });
+
+    it('keeps the chords when the dialog is closed without an answer (Esc, backdrop)', async () => {
+      patchState(chordStore, setEntities(chords()));
+      dialogOpen.and.returnValue({ afterClosed: () => of(undefined) } as never);
+      buttonWith('delete-all-imported-chords').click();
+      await expectNoUnhandledError();
       expect(chordStore.entities().length).toBe(1);
       expect(snackOpen).not.toHaveBeenCalled();
     });
