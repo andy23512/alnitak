@@ -12,6 +12,7 @@ import {
 import { FormsModule } from '@angular/forms';
 import { MatButton } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
+import { HOTKEY_DIALOG_ID } from '../hotkey-dialog/hotkey-dialog.const';
 import { MatFormField, MatSuffix } from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
 import { MatInput } from '@angular/material/input';
@@ -142,7 +143,10 @@ export class NavComponent implements OnInit, OnDestroy {
     const { HotkeyDialogComponent } = await import(
       '../hotkey-dialog/hotkey-dialog.component'
     );
-    this.matDialog.open(HotkeyDialogComponent);
+    if (this.matDialog.getDialogById(HOTKEY_DIALOG_ID)) {
+      return;
+    }
+    this.matDialog.open(HotkeyDialogComponent, { id: HOTKEY_DIALOG_ID });
   }
 
   async openSerialLogDialog() {

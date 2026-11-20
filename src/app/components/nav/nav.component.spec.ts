@@ -10,6 +10,7 @@ import { provideTranslateService } from '@ngx-translate/core';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { NAV_LINKS } from 'src/app/data/nav-links';
 import { TOPICS } from 'src/app/data/topics';
+import { HOTKEY_DIALOG_ID } from '../hotkey-dialog/hotkey-dialog.const';
 import { NavComponent } from './nav.component';
 
 describe('NavComponent', () => {
@@ -172,7 +173,16 @@ describe('NavComponent', () => {
         await import('../hotkey-dialog/hotkey-dialog.component');
       expect((dialog.open as jasmine.Spy).calls.mostRecent().args).toEqual([
         HotkeyDialogComponent,
+        { id: HOTKEY_DIALOG_ID },
       ]);
+    });
+
+    it('does not open a second hotkey dialog while one is open', async () => {
+      spyOn(dialog, 'getDialogById').and.returnValue({} as never);
+      byIcon('keyboard')!.click();
+      await new Promise((r) => setTimeout(r, 100));
+      expect(dialog.getDialogById).toHaveBeenCalledWith(HOTKEY_DIALOG_ID);
+      expect(dialog.open).not.toHaveBeenCalled();
     });
 
     it('opens the serial log dialog, big, when the Web Serial API is supported', async () => {

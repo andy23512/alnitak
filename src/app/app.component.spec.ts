@@ -5,10 +5,11 @@ import { By } from '@angular/platform-browser';
 import { HotkeysService } from '@ngneat/hotkeys';
 import { LoadingBarService } from '@ngx-loading-bar/core';
 import { provideTranslateService } from '@ngx-translate/core';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, firstValueFrom } from 'rxjs';
 import { provideRouter } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HotkeyDialogComponent } from './components/hotkey-dialog/hotkey-dialog.component';
+import { HOTKEY_DIALOG_ID } from './components/hotkey-dialog/hotkey-dialog.const';
 import { NavComponent } from './components/nav/nav.component';
 
 describe('AppComponent', () => {
@@ -17,8 +18,7 @@ describe('AppComponent', () => {
   let shortcuts: Subject<unknown>;
   let addShortcut: jasmine.Spy;
   let loading: BehaviorSubject<number>;
-  let dialogRef: { close: jasmine.Spy };
-  let open: jasmine.Spy;
+  let matDialog: MatDialog;
 
   beforeEach(() => {
     TestBed.resetTestingModule();
@@ -30,7 +30,6 @@ describe('AppComponent', () => {
         keys === 'shift.?' ? shortcuts : new Subject(),
       );
     loading = new BehaviorSubject(0);
-    dialogRef = { close: jasmine.createSpy('close') };
     TestBed.configureTestingModule({
       providers: [
         provideRouter([]),
@@ -42,15 +41,16 @@ describe('AppComponent', () => {
         { provide: LoadingBarService, useValue: { value$: loading } },
       ],
     });
-    open = spyOn(TestBed.inject(MatDialog), 'open').and.returnValue(
-      dialogRef as never,
-    );
+    matDialog = TestBed.inject(MatDialog);
     fixture = TestBed.createComponent(AppComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  afterEach(() => localStorage.clear());
+  afterEach(() => {
+    matDialog.closeAll();
+    localStorage.clear();
+  });
 
   /** the dialog is loaded lazily, so give the import time to finish */
   const press = async () => {
@@ -93,6 +93,12 @@ describe('AppComponent', () => {
   });
 
   describe('keyboard shortcut dialog', () => {
+    const isOpen = () => !!matDialog.getDialogById(HOTKEY_DIALOG_ID);
+    const closed = (ref: { afterClosed(): Observable<unknown> }) =>
+      firstValueFrom(ref.afterClosed());
+    const overlay = () =>
+      document.querySelector('.cdk-overlay-container') as HTMLElement;
+
     it('listens for shift+? once', () => {
       const own = addShortcut.calls
         .allArgs()
@@ -101,39 +107,99 @@ describe('AppComponent', () => {
     });
 
     it('does not open the dialog before the shortcut is pressed', () => {
-      expect(open).not.toHaveBeenCalled();
+      expect(isOpen()).toBeFalse();
     });
 
-    it('opens the dialog when the shortcut is pressed', async () => {
+    it('opens the hotkey dialog when the shortcut is pressed', async () => {
       await press();
-      expect(open).toHaveBeenCalledOnceWith(HotkeyDialogComponent);
-      expect(dialogRef.close).not.toHaveBeenCalled();
+      expect(isOpen()).toBeTrue();
+      expect(matDialog.openDialogs.length).toBe(1);
+      expect(
+        matDialog.getDialogById(HOTKEY_DIALOG_ID)!.componentInstance,
+      ).toBeInstanceOf(HotkeyDialogComponent);
     });
 
     it('closes it when the shortcut is pressed again', async () => {
       await press();
+      const ref = matDialog.getDialogById(HOTKEY_DIALOG_ID)!;
+      const done = closed(ref);
       await press();
-      expect(open).toHaveBeenCalledTimes(1);
-      expect(dialogRef.close).toHaveBeenCalledTimes(1);
+      await done;
+      expect(isOpen()).toBeFalse();
+      expect(matDialog.openDialogs.length).toBe(0);
     });
 
-    it('opens a new dialog when the shortcut is pressed after closing', async () => {
+    it('opens it again when the shortcut is pressed after closing', async () => {
       await press();
+      const done = closed({ afterClosed: () => matDialog.afterAllClosed });
       await press();
+      await done;
       await press();
-      expect(open).toHaveBeenCalledTimes(2);
-      expect(dialogRef.close).toHaveBeenCalledTimes(1);
-      await press();
-      expect(dialogRef.close).toHaveBeenCalledTimes(2);
+      expect(isOpen()).toBeTrue();
+      expect(matDialog.openDialogs.length).toBe(1);
     });
 
-    it('records that closing the dialog by other means (Esc, backdrop) is not noticed, so the next press closes it again', async () => {
+    describe('after the dialog was closed by other means', () => {
+      beforeEach(async () => {
+        await press();
+      });
+
+      it('opens it with the next press after Esc', async () => {
+        const ref = matDialog.getDialogById(HOTKEY_DIALOG_ID)!;
+        document.body.dispatchEvent(
+          new KeyboardEvent('keydown', {
+            key: 'Escape',
+            code: 'Escape',
+            keyCode: 27,
+            bubbles: true,
+          } as KeyboardEventInit),
+        );
+        await closed(ref);
+        expect(isOpen()).toBeFalse();
+        await press();
+        expect(isOpen()).toBeTrue();
+      });
+
+      it('opens it with the next press after a click on the backdrop', async () => {
+        const ref = matDialog.getDialogById(HOTKEY_DIALOG_ID)!;
+        (
+          overlay().querySelector('.cdk-overlay-backdrop') as HTMLElement
+        ).click();
+        await closed(ref);
+        expect(isOpen()).toBeFalse();
+        await press();
+        expect(isOpen()).toBeTrue();
+      });
+
+      it('opens it with the next press after the close button of the dialog', async () => {
+        const ref = matDialog.getDialogById(HOTKEY_DIALOG_ID)!;
+        (
+          overlay().querySelector('mat-dialog-actions button') as HTMLElement
+        ).click();
+        await closed(ref);
+        expect(isOpen()).toBeFalse();
+        await press();
+        expect(isOpen()).toBeTrue();
+      });
+    });
+
+    it('closes a dialog that was opened somewhere else, such as the nav button', async () => {
+      matDialog.open(HotkeyDialogComponent, { id: HOTKEY_DIALOG_ID });
+      const ref = matDialog.getDialogById(HOTKEY_DIALOG_ID)!;
+      const done = closed(ref);
       await press();
-      // the dialog was closed elsewhere; the component still holds the old reference
-      await press();
+      await done;
+      expect(matDialog.openDialogs.length).toBe(0);
+    });
+
+    it('does not try to open a second dialog when the shortcut is pressed twice while loading', async () => {
+      // opening a second dialog with the same id throws, so it must not even be tried
+      const open = spyOn(matDialog, 'open').and.callThrough();
+      shortcuts.next(undefined);
+      shortcuts.next(undefined);
+      await new Promise((resolve) => setTimeout(resolve, 50));
       expect(open).toHaveBeenCalledTimes(1);
-      expect(dialogRef.close).toHaveBeenCalledTimes(1);
-      expect(component).toBeTruthy();
+      expect(matDialog.openDialogs.length).toBe(1);
     });
   });
 });
