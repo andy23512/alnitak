@@ -1,6 +1,5 @@
-import { inject } from '@angular/core';
-import { ActivatedRouteSnapshot, Route, Router } from '@angular/router';
-import { ResolvedLesson } from './models/topic.models';
+import { Route } from '@angular/router';
+import { lessonResolver } from './resolvers/lesson.resolver';
 
 export const APP_ROUTES: Route[] = [
   {
@@ -31,46 +30,14 @@ export const APP_ROUTES: Route[] = [
       import('./pages/lesson-page/lesson-page.component').then(
         (m) => m.LessonPageComponent,
       ),
-    resolve: {
-      lesson: async (
-        route: ActivatedRouteSnapshot,
-      ): Promise<ResolvedLesson | null> => {
-        const router = inject(Router);
-        const { LESSONS } = await import('./data/topics');
-        const topicId = route.paramMap.get('topicId');
-        const lessonId = route.paramMap.get('lessonId');
-        const lessonIndex = LESSONS.findIndex(
-          (lesson) => lesson.id === lessonId && lesson.topic.id === topicId,
-        );
-
-        if (lessonIndex === -1) {
-          router.navigate(['/lesson-not-found']);
-          return null;
-        }
-
-        const lesson = LESSONS[lessonIndex];
-        const previous = lessonIndex === 0 ? null : LESSONS[lessonIndex - 1];
-        const next =
-          lessonIndex === LESSONS.length - 1 ? null : LESSONS[lessonIndex + 1];
-
-        return {
-          ...lesson,
-          previousLessonUrl: previous
-            ? `/topic/${previous.topic.id}/lesson/${previous.id}`
-            : null,
-          nextLessonUrl: next
-            ? `/topic/${next.topic.id}/lesson/${next.id}`
-            : null,
-        };
-      },
-    },
+    resolve: { lesson: lessonResolver },
   },
   {
     path: 'lesson-not-found',
     loadComponent: () =>
-      import(
-        './pages/lesson-not-found-page/lesson-not-found-page.component'
-      ).then((m) => m.LessonNotFoundPageComponent),
+      import('./pages/lesson-not-found-page/lesson-not-found-page.component').then(
+        (m) => m.LessonNotFoundPageComponent,
+      ),
   },
   {
     path: 'statistics',
@@ -89,9 +56,9 @@ export const APP_ROUTES: Route[] = [
   {
     path: 'layout-schematic',
     loadComponent: () =>
-      import(
-        './pages/layout-schematic-page/layout-schematic-page.component'
-      ).then((m) => m.LayoutSchematicPageComponent),
+      import('./pages/layout-schematic-page/layout-schematic-page.component').then(
+        (m) => m.LayoutSchematicPageComponent,
+      ),
   },
   {
     path: 'layout-viewer',

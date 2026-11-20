@@ -10,18 +10,9 @@ import { LESSONS } from '../data/topics';
 import { ResolvedLesson } from '../models/topic.models';
 import { lessonResolver } from './lesson.resolver';
 
-type Resolver = ResolveFn<ResolvedLesson | null>;
+type Resolver = ResolveFn<Promise<ResolvedLesson | null>>;
 
-/** The lesson route carries its own copy of the resolver, so both are held to the same behavior. */
-const routeResolver: Resolver = (route, state) =>
-  APP_ROUTES.find(
-    (r) => r.path === 'topic/:topicId/lesson/:lessonId',
-  )!.resolve!['lesson'](route, state) as never;
-
-[
-  ['lessonResolver', lessonResolver],
-  ['the resolver in the lesson route', routeResolver],
-].forEach(([name, resolver]) => {
+[['lessonResolver', lessonResolver]].forEach(([name, resolver]) => {
   describe(name as string, () => {
     let navigate: jasmine.Spy;
 
@@ -113,5 +104,14 @@ const routeResolver: Resolver = (route, state) =>
       expect(await resolve(null, null)).toBeNull();
       expect(navigate).toHaveBeenCalledOnceWith(['/lesson-not-found']);
     });
+  });
+});
+
+describe('the lesson route', () => {
+  it('uses lessonResolver, not a copy of it', () => {
+    const route = APP_ROUTES.find(
+      (r) => r.path === 'topic/:topicId/lesson/:lessonId',
+    )!;
+    expect(route.resolve!['lesson']).toBe(lessonResolver);
   });
 });
