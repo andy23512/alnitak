@@ -214,7 +214,11 @@ export class LayoutViewerPageComponent {
           ? this.translateService.instant(
               'device-layout.cc1-cc2-right-hand-only',
             )
-          : deviceLayout.name;
+          : 'cc1-cc2-left-hand-only' === deviceLayout.id
+            ? this.translateService.instant(
+                'device-layout.cc1-cc2-left-hand-only',
+              )
+            : deviceLayout.name;
   });
   readonly filteredKeyboardLayouts = computed(() => {
     const keyboardLayouts = this.keyboardLayouts();

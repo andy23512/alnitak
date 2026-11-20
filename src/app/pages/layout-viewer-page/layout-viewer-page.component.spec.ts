@@ -212,15 +212,34 @@ describe('LayoutViewerPageComponent', () => {
       expect(component.deviceLayoutDisplayName()).toBe('');
     });
 
-    it('records that the left-hand-only layout shows its stored name, not a translation, as the print title', () => {
+    it('shows the translated name of the left-hand-only layout too, as the print title', () => {
       patchState(
         deviceStore,
         setAllEntities([CC1_CC2_LEFT_HAND_ONLY_DEVICE_LAYOUT]),
       );
       deviceStore.setSelectedId(CC1_CC2_LEFT_HAND_ONLY_DEVICE_LAYOUT.id);
       expect(component.deviceLayoutDisplayName()).toBe(
-        CC1_CC2_LEFT_HAND_ONLY_DEVICE_LAYOUT.name,
+        'device-layout.cc1-cc2-left-hand-only',
       );
+    });
+
+    it('translates every built-in layout the same way in the list and in the print title', () => {
+      const builtIn = [
+        DEFAULT_DEVICE_LAYOUT,
+        M4G_DEFAULT_DEVICE_LAYOUT,
+        CC1_CC2_RIGHT_HAND_ONLY_DEVICE_LAYOUT,
+        CC1_CC2_LEFT_HAND_ONLY_DEVICE_LAYOUT,
+      ];
+      patchState(deviceStore, setAllEntities(builtIn));
+      for (const layout of builtIn) {
+        deviceStore.setSelectedId(layout.id);
+        const listed = component
+          .translatedDeviceLayouts()
+          .find((l) => l.id === layout.id)!.name;
+        expect(component.deviceLayoutDisplayName())
+          .withContext(layout.id)
+          .toBe(listed);
+      }
     });
   });
 
