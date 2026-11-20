@@ -3,7 +3,9 @@ import {
   Input,
   TemplateRef,
   ViewContainerRef,
+  effect,
   inject,
+  signal,
 } from '@angular/core';
 import { VisibilitySetting } from '../models/visibility-setting.models';
 import { VisibilitySettingStore } from '../stores/visibility-setting.store';
@@ -19,14 +21,25 @@ export class VisibleDirective {
   private viewContainer = inject(ViewContainerRef);
   private visibilitySettingStore = inject(VisibilitySettingStore);
 
+  private readonly key = signal<keyof VisibilitySetting | null>(null);
+
   @Input() set appVisible(key: keyof VisibilitySetting | null) {
-    const visible = !key || this.visibilitySettingStore[key]();
-    if (visible && !this.hasView) {
-      this.viewContainer.createEmbeddedView(this.templateRef);
-      this.hasView = true;
-    } else if (!visible && this.hasView) {
-      this.viewContainer.clear();
-      this.hasView = false;
-    }
+    this.key.set(key);
+  }
+
+  constructor() {
+    // Reads the setting inside an effect, so the content follows the setting
+    // while it is on screen, not only when the key changes.
+    effect(() => {
+      const key = this.key();
+      const visible = !key || this.visibilitySettingStore[key]();
+      if (visible && !this.hasView) {
+        this.viewContainer.createEmbeddedView(this.templateRef);
+        this.hasView = true;
+      } else if (!visible && this.hasView) {
+        this.viewContainer.clear();
+        this.hasView = false;
+      }
+    });
   }
 }
