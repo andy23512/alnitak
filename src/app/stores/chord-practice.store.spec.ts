@@ -57,14 +57,23 @@ describe('ChordPracticeStore', () => {
       expect(store.chordIntervals()).toEqual([]);
     });
 
-    it('keeps the typing buffer and last correct time of the previous practice (current behavior)', () => {
+    it('forgets the typing buffer and last correct time of the previous practice', () => {
       start([the]);
       store.input(insert('t'));
       store.airType();
       patchState(store, { buffer: ['x'] });
       store.setChords([the, and]);
-      expect(store.buffer()).toEqual(['x']);
-      expect(store.lastCorrectChordTime()).toBe(1_000);
+      expect(store.buffer()).toEqual([]);
+      expect(store.lastCorrectChordTime()).toBeNull();
+    });
+
+    it('does not count the time between two practices as a chord interval', () => {
+      start([the]);
+      store.airType();
+      store.setChords([the, and]);
+      patchState(store, { queue: [the] });
+      store.airType();
+      expect(store.chordIntervals()).toEqual([]);
     });
   });
 

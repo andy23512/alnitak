@@ -147,13 +147,27 @@ describe('LayoutSchematicPageComponent', () => {
   });
 
   describe('animation', () => {
-    it('has no step before the first timer tick (recorded behavior: the values are undefined for an instant)', fakeAsync(() => {
+    it('shows the first step at once, before the first timer tick', fakeAsync(() => {
       create();
-      expect(component.timer()).toBeUndefined();
-      expect(component.currentScancode()).toBeUndefined();
+      expect(component.timer()).toBe(0);
+      expect(component.currentScancode()).toBe('1E');
+      expect(component.currentKey()).toBeDefined();
       tick(0);
       expect(component.timer()).toBe(0);
       expect(component.currentScancode()).toBe('1E');
+      discardPeriodicTasks();
+    }));
+
+    it('gives each key drawing one size class only', fakeAsync(() => {
+      create();
+      at(0);
+      const drawings = Array.from(
+        el().querySelectorAll('svg[viewBox="0 0 350 350"]'),
+      );
+      expect(drawings.length).toBe(2);
+      for (const drawing of drawings) {
+        expect(drawing.getAttribute('class')).toBe('size-20');
+      }
       discardPeriodicTasks();
     }));
 

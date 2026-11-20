@@ -40,7 +40,9 @@ export const ChordPracticeStore = signalStore(
         chords,
         queue: pickRandomItemNTimes(chords, QUEUE_SIZE),
         history: [],
+        lastCorrectChordTime: null,
         chordIntervals: [],
+        buffer: [],
       }));
     },
     airType() {

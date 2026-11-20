@@ -166,7 +166,7 @@ export class LayoutSchematicPageComponent {
   osLayoutName = computed(() => this.osLayout().name);
   osLayoutKeys = computed(() => this.osLayout().keys);
 
-  timer = toSignal(timer(0, 750)) as Signal<number>;
+  timer = toSignal(timer(0, 750), { initialValue: 0 });
   keyIndex = computed(() => Math.floor(this.timer() / 4) % 4);
   scancodeOn = computed(() => this.timer() % 4 >= 1);
   scancodeOutputOn = computed(() => this.timer() % 4 >= 1);
