@@ -1,5 +1,7 @@
 # Alnitak
 
+[![CI](https://github.com/andy23512/alnitak/actions/workflows/ci.yml/badge.svg)](https://github.com/andy23512/alnitak/actions/workflows/ci.yml)
+
 An unofficial practice tool of CharaChorder 3D input devices (CharaChorder One, CharaChorder Two, CCU and Master Forge)
 
 ## Links
