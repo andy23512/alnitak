@@ -23,6 +23,12 @@ describe('DeviceLayoutImportDialogComponent', () => {
   async function settle() {
     await new Promise((r) => setTimeout(r, 0));
   }
+  // Closing finishes after the exit animation, so wait for it instead of a fixed delay.
+  async function waitUntilClosed() {
+    for (let i = 0; i < 300 && !closed; i++) {
+      await new Promise((r) => setTimeout(r, 10));
+    }
+  }
   async function open(
     layoutMap: Record<string, unknown>,
     device = 'My device',
@@ -114,7 +120,7 @@ describe('DeviceLayoutImportDialogComponent', () => {
       ref.afterClosed().subscribe((r) => (result = r));
       const before = store.ids().length;
       buttons()[0].click();
-      await settle();
+      await waitUntilClosed();
       expect(closed).toBeTrue();
       expect(result).toBe(false);
       expect(store.ids().length).toBe(before);
@@ -164,7 +170,7 @@ describe('DeviceLayoutImportDialogComponent', () => {
     it('closes after saving', async () => {
       await open({ A: [[1]] });
       buttons()[1].click();
-      await settle();
+      await waitUntilClosed();
       expect(closed).toBeTrue();
     });
 

@@ -20,6 +20,12 @@ describe('KeyNotationHelpDialogComponent', () => {
   async function settle() {
     await new Promise((r) => setTimeout(r, 0));
   }
+  // Closing finishes after the exit animation, so wait for it instead of a fixed delay.
+  async function waitUntilClosed() {
+    for (let i = 0; i < 300 && !closed; i++) {
+      await new Promise((r) => setTimeout(r, 10));
+    }
+  }
 
   beforeEach(async () => {
     TestBed.resetTestingModule();
@@ -84,6 +90,10 @@ describe('KeyNotationHelpDialogComponent', () => {
 
   it('draws the example layout even when the layout is hidden in the settings', async () => {
     TestBed.inject(MatDialog).closeAll();
+    // The first dialog leaves after its exit animation; wait so only the new one is counted.
+    for (let i = 0; i < 300 && overlay.querySelector('mat-dialog-container'); i++) {
+      await new Promise((r) => setTimeout(r, 10));
+    }
     TestBed.inject(VisibilitySettingStore).set('layout', false);
     TestBed.inject(MatDialog).open(KeyNotationHelpDialogComponent);
     await settle();
@@ -145,7 +155,7 @@ describe('KeyNotationHelpDialogComponent', () => {
 
   it('closes with true when the button is pressed', async () => {
     closeButton().click();
-    await settle();
+    await waitUntilClosed();
     expect(closed).toBeTrue();
     expect(result).toBeTrue();
   });

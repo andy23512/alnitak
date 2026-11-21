@@ -15,6 +15,12 @@ describe('DeleteChordsConfirmDialogComponent', () => {
   async function settle() {
     await new Promise((r) => setTimeout(r, 0));
   }
+  // Closing finishes after the exit animation, so wait for it instead of a fixed delay.
+  async function waitUntilClosed() {
+    for (let i = 0; i < 300 && !closed; i++) {
+      await new Promise((r) => setTimeout(r, 10));
+    }
+  }
 
   beforeEach(async () => {
     TestBed.resetTestingModule();
@@ -55,7 +61,7 @@ describe('DeleteChordsConfirmDialogComponent', () => {
 
   it('closes without confirming on cancel', async () => {
     buttons()[0].click();
-    await settle();
+    await waitUntilClosed();
     expect(closed).toBeTrue();
     // mat-dialog-close without a value yields '', which callers read via `?.confirmed`.
     expect(result).toBe('');
@@ -63,7 +69,7 @@ describe('DeleteChordsConfirmDialogComponent', () => {
 
   it('closes with { confirmed: true } on confirm', async () => {
     buttons()[1].click();
-    await settle();
+    await waitUntilClosed();
     expect(closed).toBeTrue();
     expect(result).toEqual({ confirmed: true });
   });

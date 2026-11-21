@@ -19,6 +19,12 @@ describe('Thumb3SwitchHelpDialogComponent', () => {
   async function settle() {
     await new Promise((r) => setTimeout(r, 0));
   }
+  // Closing finishes after the exit animation, so wait for it instead of a fixed delay.
+  async function waitUntilClosed() {
+    for (let i = 0; i < 300 && !closed; i++) {
+      await new Promise((r) => setTimeout(r, 10));
+    }
+  }
 
   beforeEach(async () => {
     TestBed.resetTestingModule();
@@ -66,7 +72,7 @@ describe('Thumb3SwitchHelpDialogComponent', () => {
 
   it('closes with true when the button is pressed', async () => {
     closeButton().click();
-    await settle();
+    await waitUntilClosed();
     expect(closed).toBeTrue();
     expect(result).toBeTrue();
   });
