@@ -98,6 +98,9 @@
     "@tufjs/models/minimatch": "^11.0.1",
     "@typescript-eslint/typescript-estree/minimatch": "^11.0.1",
     "glob/minimatch": "^11.0.1",
-    "ignore-walk/minimatch": "^11.0.1"
+    "ignore-walk/minimatch": "^11.0.1",
+    "angular-cli-ghpages/@angular-devkit/core": "~21.2.29",
+    "angular-cli-ghpages/@angular-devkit/schematics": "~21.2.29",
+    "angular-cli-ghpages/@angular-devkit/architect": "~0.2102.29"
   }
 }
