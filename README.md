@@ -42,4 +42,4 @@ This tool is not affiliated, associated, authorized, endorsed by, or in any way 
 
 The source code of this project is licensed under the [MIT License](LICENSE).
 
-The Layout Song (the AI generated song and its lyrics, i.e. `src/assets/layout.mp3` and `src/assets/layout-song-lyrics.txt`) is **not** covered by the MIT License. It may not be used for commercial purposes.
+The Layout Song (the AI generated song and its lyrics, i.e. `src/assets/layout.mp3` and `src/assets/layout-song-lyrics.txt`) is **not** covered by the MIT License. It can't be used for commercial purposes.
